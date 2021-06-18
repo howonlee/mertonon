@@ -1,0 +1,36 @@
+{
+  "name": "mertonon",
+  "version": "0.0.1-prealpha",
+  "description": "Neural Organizational Management",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/howonlee/mertonon"
+  },
+  "author": {
+    "name": "Howon Lee",
+    "email": "hleehowon@gmail.com"
+  },
+  "license": "SEE LICENSE IN license.md",
+  "dependencies": {
+    "@js-joda/core": "3.2.0",
+    "@js-joda/locale_en-us": "3.1.1",
+    "@js-joda/timezone": "2.5.0",
+    "d3-dag": "0.11.5",
+    "react": "18.2.0",
+    "react-datepicker": "4.15.0",
+    "react-dom": "18.2.0",
+    "react-tiny-popover": "7.2.4",
+    "reactflow": "11.5.6"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "shadow-cljs": "^2.21.0"
+  },
+  "scripts": {
+    "release": "yarn shadow-cljs release frontend",
+    "concurrently": "yarn && concurrently --kill-others -p name",
+    "dev": "yarn concurrently 'clojure -M:run:ee' 'yarn shadow-cljs watch frontend'",
+    "fe-only": "yarn shadow-cljs watch frontend",
+    "test": "shadow-cljs watch test"
+  }
+}

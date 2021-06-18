@@ -1,0 +1,6 @@
+node_modules
+public
+resources
+target
+package-lock.json
+.shadow-cljs

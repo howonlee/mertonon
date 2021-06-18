@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/public/css/tachyons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="/public/css/main.css" />
+    <link rel="stylesheet" href="/public/css/flow.css" />
+    <link rel="stylesheet" href="/public/css/react_datepicker.css" />
+  </head>
+  <body>
+    <div id="app" style="width: 100vw; height: 100vh"></div>
+
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- adjust this to switch back to js thing -->
+
+    <script type="text/javascript">window.mertonon_host="{{mt_url}}";</script>
+    <script type="text/javascript">window.mertonon_feature_flags={{mt_feature_flags|json|safe}};</script>
+    <script defer src="/public/cljs/main.js" type="text/javascript"></script>
+  </body>
+</html>
