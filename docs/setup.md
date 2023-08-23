@@ -25,7 +25,7 @@ In order to run Mertonon on your system, you will need:
 
 1. [Download the JAR file for Mertonon Community Edition](https://github.com/howonlee/mertonon/releases/)
 2. Create a new directory and move the Mertonon JAR into it.
-3. Change into that new directory and run the JAR with `java --jar` then the mertonon JAR file.
+3. Change into that new directory and run the JAR with `java -jar` then the mertonon JAR file.
 4. Mertonon will log things as it starts up. Wait to see "Mertonon initialization finished!"
 5. Navigate to http://localhost:5036.
 6. Now you can go and poke at Mertonon. [Here are some instructions as to how.](usage.md)
