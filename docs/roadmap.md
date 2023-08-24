@@ -2,6 +2,7 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
+- Non-quarter-assed CI/CD
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
 - Whack the test hang
 - Figure out CLA / FLA / whatever we're going to use situation
