@@ -4,8 +4,8 @@
 - [ ] Property test for probabilistic semantics for norms
 - [ ] True probabilistic semantics for normalization (first axiom, not just second and third)
 
-- [ ] User impl
-- [ ] Username/password auth impl
+- [ ] User impl (model, api)
+- [ ] Username/password auth impl (model, api)
 
 - [ ] Session generation, joined to user/password...
 - [ ] Session impl
