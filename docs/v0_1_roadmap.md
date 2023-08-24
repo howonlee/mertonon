@@ -6,10 +6,12 @@
 
 - [ ] Single script for total build of both yarn and jar
 - [ ] GH action for build
+
 - [ ] User impl
 - [ ] Username/password auth impl
 
 - [ ] Total (admin) trivial authn impl (rbac for later)
 - [ ] Session impl
+
 - [ ] Some kind of middling settings db thing
 - [ ] Intro screen w/ user creation
