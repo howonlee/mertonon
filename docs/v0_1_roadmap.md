@@ -1,6 +1,5 @@
-- [ ] User gen (no authz, just authn)
+- [ ] User gen (no authz, just authn) - [here](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 - [ ] User/password auth gen, joined to user gen
-- [ ] Session generation, joined to user/password...
 - [ ] Delineate net table vs nonnet in registry, adjust tests
 - [ ] Property test for probabilistic semantics for norms
 - [ ] True probabilistic semantics for normalization (first axiom, not just second and third)
@@ -8,7 +7,7 @@
 - [ ] User impl
 - [ ] Username/password auth impl
 
-- [ ] Session generation
+- [ ] Session generation, joined to user/password...
 - [ ] Session impl
 - [ ] Total (admin) trivial authn impl (rbac for later)
 
