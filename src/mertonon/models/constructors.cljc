@@ -8,6 +8,18 @@
    :created-at (t/instant)
    :updated-at (t/instant)})
 
+(defn ->MtUser [uuid email username]
+  {:uuid       uuid
+   :version    0
+   :created-at (t/instant)
+   :updated-at (t/instant)
+   :email      email
+   :username   username})
+
+;; ---
+;; Network models
+;; ---
+
 (defn ->Grid [uuid grid-name grid-label optimizer-type hyperparams]
   {:uuid           uuid
    :version        0
