@@ -14,7 +14,7 @@
    :create-at  (t/instant)
    :updated-at (t/instant)
    :email      email
-   :username   username
+   :username   username})
 
 ;; ---
 ;; Network models
