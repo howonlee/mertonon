@@ -1,22 +1,20 @@
 (ns mertonon.generators.mt-users
-  "Generating mertonon users and authentication methods"
-  (:require [clojure.test.check :as tc]
-            [clojure.test.check.clojure-test :refer :all]
+  "Net generation for both testing and demo purposes"
+  (:require [clojure.string :as str]
             [clojure.test.check.generators :as gen]
-            [clojure.test.check.properties :as prop]
-            [loom.graph :as graph]
-            [loom.alg :as graph-alg]
-            [loom.attr :as graph-attr]
-            [loom.alg-generic :as graph-alg-generic]))
+            [mertonon.generators.data :as gen-data]
+            [mertonon.generators.params :as net-params]
+            [mertonon.models.constructors :as mtc]))
 
 (defn generate-mt-user*
   [{:keys [name-type] :as params}]
   (gen/let [mt-user-uuid     gen/uuid
-            mt-user-email    (gen/data-gen-mt-user-emails name-type)
+            mt-user-email    (gen-data/gen-mt-user-emails name-type)
             mt-user-username (gen-data/gen-mt-user-usernames name-type)]
-    {:mt-users [(mtc/->MtUser mt-user-uuid
-                              mt-user-email
-                              mt-user-username)]}))
+    {:mertonon.mt-users [(mtc/->MtUser mt-user-uuid
+                                       mt-user-email
+                                       mt-user-username)]}))
 
-;; (def generate-mt-user
-;;   some crap)
+(def generate-mt-user (generate-mt-user* net-params/test-gen-params))
+
+(comment (gen/generate generate-mt-user))
