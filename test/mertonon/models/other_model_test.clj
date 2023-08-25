@@ -13,7 +13,7 @@
   [:mertonon.mt-users])
 
 (def tables->generates
-  {:mertonon.mt-users mt-user-gen/
+  {:mertonon.mt-users mt-user-gen/generate-mt-users})
 
 (defn setup! [generates]
   (let [all-members (for [table tables-under-test]
