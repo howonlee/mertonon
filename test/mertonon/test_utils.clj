@@ -139,17 +139,17 @@
        last
        keyword))
 
-(defn net->members
-  [net table-name]
+(defn generates->members
+  [generates table-name]
   (let [stripped-table (maybe-strip-schema table-name)]
     (cond
-      (vector? net) (flatten (mapv stripped-table net))
-      :else         (net stripped-table))))
+      (vector? generates) (flatten (mapv stripped-table generates))
+      :else         (generates stripped-table))))
 
-(defn net->member
-  [net table-name]
+(defn generates->member
+  [generates table-name]
   (let [stripped-table (maybe-strip-schema table-name)]
     (cond (= stripped-table :weights)
-          (first (flatten (net->members net stripped-table)))
+          (first (flatten (generates->members generates stripped-table)))
           :else
-          (first (net->members net stripped-table)))))
+          (first (generates->members generates stripped-table)))))
