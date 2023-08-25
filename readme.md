@@ -26,6 +26,7 @@ More things:
 - You can run it on your premises or on your own cloud box, if you obey the license terms.
 - You don't need to ask any permission from anyone to set the open core portion up.
 - Managed cloud hosting is coming.
+- Non-capitalist instances coming.
 - Completely self-contained binary is coming.
 
 Underlying Mertonon is a differentiable system of allocation ("neural network") modelling the organization as a soft constraint satisfaction problem. This is just as in the managerial-accounting theory of constraints, but dealing directly and flexibly with cost nodes instead of arbitrary processes and with distributed soft representations instead of narrowly scoped and hard representations.
