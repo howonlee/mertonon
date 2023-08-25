@@ -16,20 +16,18 @@
   Basically the linearized version of the DAG of them
   Better not have cycles in our fkey dependencies!"
   [:mertonon.grids :mertonon.layers :mertonon.cost-objects
-   :mertonon.weightsets
-   :mertonon.weights
-   ;; :mertonon.losses
-   ;; :mertonon.inputs :mertonon.entries
+   :mertonon.weightsets :mertonon.weights
+   :mertonon.losses :mertonon.inputs :mertonon.entries
 
-   ;; :mertonon.mt-users
-   ])
+   :mertonon.mt-users])
 
 (def tables->generates
   {:mertonon.grids        net-gen/generate-grid
    :mertonon.layers       net-gen/generate-linear-layers
    :mertonon.cost-objects net-gen/generate-linear-cost-objects
    :mertonon.weightsets   net-gen/generate-dag-weightsets
-   :mertonon.weights      net-gen/generate-dag-weights
+   :mertonon.weights      (gen/let [generates net-gen/generate-dag-weights]
+                            (update generates :weights flatten))
    :mertonon.losses       net-gen/generate-dag-losses
    :mertonon.inputs       net-gen/generate-dag-inputs
    :mertonon.entries      (gen/let [[net entries] aug-net-gen/dag-net-and-entries]
