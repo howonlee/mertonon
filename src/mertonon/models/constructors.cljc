@@ -11,7 +11,7 @@
 (defn ->MtUser [uuid email username]
   {:uuid       uuid
    :version    0
-   :create-at  (t/instant)
+   :created-at (t/instant)
    :updated-at (t/instant)
    :email      email
    :username   username})

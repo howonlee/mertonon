@@ -83,4 +83,4 @@
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
 
-(comment (create-and-delete-inversion))
+(comment (run-tests))
