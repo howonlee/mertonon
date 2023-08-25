@@ -1,3 +1,3 @@
-Mertonon uses MAJOR.MINOR.COMMITS where MAJOR and MINOR are not semantic versioning but just a vague indication of size of changes.
+Mertonon uses MAJOR.WEEKLY.COMMITS where MAJOR is not semantic versioning but just a vague indication of size of changes. WEEKLY is incremented every week, reset to 0 upon new MAJOR version. COMMITS is total number of commits on repo, with each commit being a squashed PR.
 
 We will deploy every business Thursday, no exceptions. Whether that's a major, minor or simple commit version will depend upon our coffee supply, number of sunspots, the phase of the moon, the flight of birds, the omens written in the entrails, the path of the smoke as it escapes the thurible, etc etc. We may even literally crank out a commit version with no actual changes, for the hell of it and to exercise the ol' CI/CD. We may speed up the deploy cadence but not slow it down.
