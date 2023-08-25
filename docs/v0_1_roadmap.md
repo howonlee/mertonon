@@ -1,3 +1,7 @@
+- [ ] 404 screen
+- [ ] 401 screen
+- [ ] 500 screen
+
 - [ ] User gen (no authz, just authn) - [here](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 - [ ] User/password auth gen, joined to user gen
 - [ ] Delineate net table vs nonnet in registry, adjust tests
@@ -15,7 +19,3 @@
 - [ ] Skip-authn and skip-authz for testing, make sure it never shows up in prod
 - [ ] Some kind of middling settings db thing
 - [ ] Intro screen w/ user creation
-
-- [ ] 404 screen
-- [ ] 401 screen
-- [ ] 500 screen
