@@ -12,13 +12,20 @@
 (def tables-under-test
   [:mertonon.mt-users])
 
-(defn test-inp [table generates]
+(defn setup! [net]
+  (let [all-members (for [table tables-under-test]
+                      [table (tu/net->members net table)])
+        ;; `vec` to engender the side effect
+        insert-all! (vec (for [[table members] all-members]
+                      (((reg/table->model table) :create-many!) (flatten [members]))))]
+    nil))
 
-(defspec model-instance-singular
-  100
-  (prop/for-all [table     (gen/elements tables-under-test)
-                 generates some crap]
-                (not (vector? (:model-instance (test-inp table generates))))))
+(defn test-inp [table generates]
+  (merge (reg/table->model table)
+         {:gen-net             net
+          :model-instance      (get generates (tu/maybe-strip-schema table))
+          :model-instances     (tu/net->members net table)
+          :setup               setup!}))
 
 (defspec create-and-generate-consonance
   100
