@@ -17,7 +17,7 @@
         res      {:dbtype   db-type
                   :host     host
                   :port     port
-                  :username username
+                  :user     username
                   :password password
                   :dbname   db-name}]
     res))
