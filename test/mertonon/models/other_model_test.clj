@@ -32,7 +32,7 @@
             :setup               setup!})))
 
 (def table-and-generates
-  (gen/let [table (gen/elements tables-under-test)
+  (gen/let [table     (gen/elements tables-under-test)
             generates (tables->generates table)]
     [table generates]))
 
