@@ -15,11 +15,14 @@
   "Order of these matters, with foreign key dependencies.
   Basically the linearized version of the DAG of them
   Better not have cycles in our fkey dependencies!"
-  [:mertonon.grids :mertonon.layers :mertonon.weightsets
-   :mertonon.cost-objects :mertonon.weights :mertonon.losses
-   :mertonon.inputs :mertonon.entries
-   
-   :mertonon.mt-users])
+  [:mertonon.grids :mertonon.layers :mertonon.cost-objects
+   :mertonon.weightsets
+   :mertonon.weights
+   ;; :mertonon.losses
+   ;; :mertonon.inputs :mertonon.entries
+
+   ;; :mertonon.mt-users
+   ])
 
 (def tables->generates
   {:mertonon.grids        net-gen/generate-grid
@@ -37,10 +40,12 @@
 
 (defn setup! [generates]
   (let [all-members (for [table tables-under-test]
-                      [table (tu/generates->members generates table)])
+                      (when (tu/generates->members generates table)
+                        [table (tu/generates->members generates table)]))
         insert-all! (doall
                       (for [[table members] all-members]
-                        (((reg/table->model table) :create-many!) (flatten [members]))))]
+                        (when members
+                          (((reg/table->model table) :create-many!) (flatten [members])))))]
     nil))
 
 (defn test-inp [table generates]

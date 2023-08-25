@@ -168,7 +168,7 @@
 
 (defn generate-linear-layers*
   [{:keys [num-layers name-type label-type] :as params}]
-  (gen/let [grid         net-gen/generate-
+  (gen/let [grid          (generate-grid* params)
             layer-uuids   (gen/vector gen/uuid num-layers)
             layer-names   (gen/vector (gen-data/gen-layer-names name-type) num-layers)
             layer-labels  (gen/vector (gen-data/gen-labels label-type) num-layers)]

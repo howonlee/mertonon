@@ -43,7 +43,7 @@
 
 (defn setup! [net]
   (let [all-members (for [table setup-tables]
-                      [table (tu/net->members net table)])
+                      [table (tu/generates->members net table)])
         ;; `vec` to proc the side effect
         insert-all! (vec (for [[table members] all-members]
                       (((reg/table->model table) :create-many!) (flatten [members]))))]
@@ -61,7 +61,7 @@
 (defn test-inp [net table]
   (let [app             (app-handler/app-handler)
         endpoint        (endpoints-under-test table)
-        elem            (tu/net->member net table)
+        elem            (tu/generates->member net table)
         indiv-endpoint  #(format "%s%s" endpoint (or (:uuid %) %))
         member->row     ((reg/table->model table) :member->row)
         row->member     ((reg/table->model table) :row->member)
@@ -89,7 +89,7 @@
                              (mapv row->member processed)))]
     {:gen-net           net
      :model-instance    elem
-     :model-instances   (tu/net->members net table)
+     :model-instances   (tu/generates->members net table)
      :create-one!       api-create-one!
      :create-many!      api-create-many!
      :read-one          api-read-one

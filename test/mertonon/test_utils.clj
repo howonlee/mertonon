@@ -144,12 +144,14 @@
   (let [stripped-table (maybe-strip-schema table-name)]
     (cond
       (vector? generates) (flatten (mapv stripped-table generates))
-      :else         (generates stripped-table))))
+      :else               (generates stripped-table))))
 
 (defn generates->member
   [generates table-name]
   (let [stripped-table (maybe-strip-schema table-name)]
-    (cond (= stripped-table :weights)
+    (cond (not (contains? generates stripped-table))
+          nil
+          (= stripped-table :weights)
           (first (flatten (generates->members generates stripped-table)))
           :else
           (first (generates->members generates stripped-table)))))
