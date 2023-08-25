@@ -11,8 +11,10 @@
 
 (defn env-connpool
   []
-  (let [db-spec  (mt-config/db-spec)
-        pool     (connection/->pool com.mchange.v2.c3p0.ComboPooledDataSource db-spec)
+  (let [db-url   (mt-config/db-url)
+        pool     (connection/->pool
+                   com.mchange.v2.c3p0.ComboPooledDataSource
+                   {:jdbcUrl db-url})
         ;; side-effecting validation check
         ;; otherwise, invalid connection spec will get caught lazily, not eagerly
         check!   (with-open [conn (jdbc/get-connection pool)]

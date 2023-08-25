@@ -1,5 +1,6 @@
 (ns mertonon.util.config
-  "Configutation dealing")
+  "Configutation dealing"
+  (:require [next.jdbc.connection :as connection]))
 
 (defn db-spec
   "Details for DB connection"
@@ -20,6 +21,10 @@
                   :password password
                   :dbname   db-name}]
     res))
+
+(defn db-url
+  []
+  (connection/jdbc-url (db-spec)))
 
 (defn feature-flags
   []

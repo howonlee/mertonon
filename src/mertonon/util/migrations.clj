@@ -7,4 +7,4 @@
              :migration-dir        "pg_migrations/"
              :init-script          "pg_init.sql"
              :migration-table-name "mertonon.mt_migrations"
-             :db                   (mt-config/db-spec)})
+             :db                   {:jdbcUrl (mt-config/db-url)}})
