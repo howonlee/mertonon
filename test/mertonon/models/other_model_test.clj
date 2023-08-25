@@ -12,12 +12,15 @@
 (def tables-under-test
   [:mertonon.mt-users])
 
+(def tables->generates
+  {:mertonon.mt-users mt-user-gen/
+
 (defn setup! [generates]
   (let [all-members (for [table tables-under-test]
                       [table (get generates table)])
-        ;; `vec` to engender the side effect
-        insert-all! (vec (for [[table members] all-members]
-                      (((reg/table->model table) :create-many!) (flatten [members]))))]
+        insert-all! (doall
+                      (for [[table members] all-members]
+                        (((reg/table->model table) :create-many!) (flatten [members]))))]
     nil))
 
 (defn test-inp [table generates]
@@ -25,12 +28,13 @@
     (merge (reg/table->model table)
            {:gen-net             net
             :model-instance      (first curr-gens)
-            :model-instances     (curr-gens)
+            :model-instances     curr-gens
             :setup               setup!})))
 
 (defspec create-and-generate-consonance
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [table     (gen/elements tables-under-test)
+                 generates some crap]
                 (tu/with-test-txn (tu/create-and-generate-consonance (test-inp table generates)))))
 
 (defspec member->row-round-trip

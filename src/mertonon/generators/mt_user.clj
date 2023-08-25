@@ -1,4 +1,4 @@
-(ns mertonon.generators.mt-users
+(ns mertonon.generators.mt-user
   "Net generation for both testing and demo purposes"
   (:require [clojure.string :as str]
             [clojure.test.check.generators :as gen]
