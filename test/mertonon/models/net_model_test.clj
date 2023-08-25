@@ -1,5 +1,5 @@
-(ns mertonon.models.model-test
-  "One test suite to test all the models! Model selected at testing time randomly!"
+(ns mertonon.models.net-model-test
+  "One test suite to test all the network models! Model selected at testing time randomly!"
   (:require [clojure.test :refer :all]
             [clojure.test.check :as tc]
             [clojure.test.check.clojure-test :refer :all]
