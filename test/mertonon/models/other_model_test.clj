@@ -13,7 +13,7 @@
   [:mertonon.mt-users])
 
 (def tables->generates
-  {:mertonon.mt-users mt-user-gen/generate-mt-users})
+  {:mertonon.mt-users mt-user-gen/generate-mt-user})
 
 (defn setup! [generates]
   (let [all-members (for [table tables-under-test]
@@ -26,55 +26,61 @@
 (defn test-inp [table generates]
   (let [curr-gens (get generates table)]
     (merge (reg/table->model table)
-           {:gen-net             net
+           {:gen-net             generates
             :model-instance      (first curr-gens)
             :model-instances     curr-gens
             :setup               setup!})))
 
+(def table-and-generates
+  (gen/let [table (gen/elements tables-under-test)
+            generates (tables->generates table)]
+    [table generates]))
+
 (defspec create-and-generate-consonance
   100
-  (prop/for-all [table     (gen/elements tables-under-test)
-                 generates some crap]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-generate-consonance (test-inp table generates)))))
 
 (defspec member->row-round-trip
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/member->row-round-trip (test-inp table generates)))))
 
 (defspec create-and-read-consonance
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-read-consonance (test-inp table generates)))))
 
 (defspec create-one-create-many-consonance
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-one-create-many-consonance (test-inp table generates)))))
 
 (defspec update-then-update-back
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/update-then-update-back (test-inp table generates)))))
 
 (defspec read-one-read-many-consonance
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
                   (tu/read-one-read-many-consonance (test-inp table generates)))))
 
 (defspec read-one-read-where-consonance
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
                   (tu/read-one-read-where-consonance (test-inp table generates)))))
 
 (defspec create-and-delete-inversion
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-delete-inversion (test-inp table generates)))))
 
 (defspec delete-one-delete-many-consonance
   100
-  (prop/for-all [table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
+
+(comment (create-and-delete-inversion))

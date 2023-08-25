@@ -82,18 +82,18 @@
                        :health_check :mertonon.health-checks
                        :mt_user      :mertonon.mt-users})
 
-(def table->model {:mertonon.grids        grid-model/model
-                   :mertonon.layers       layer-model/model
-                   :mertonon.weightsets   weightset-model/model
-                   :mertonon.cost-objects cost-object-model/model
-                   :mertonon.weights      weight-model/model
-                   :mertonon.inputs       input-model/model
-                   :mertonon.losses       loss-model/model
-                   :mertonon.entries      entry-model/model
+(def table->model {:mertonon.grids         grid-model/model
+                   :mertonon.layers        layer-model/model
+                   :mertonon.weightsets    weightset-model/model
+                   :mertonon.cost-objects  cost-object-model/model
+                   :mertonon.weights       weight-model/model
+                   :mertonon.inputs        input-model/model
+                   :mertonon.losses        loss-model/model
+                   :mertonon.entries       entry-model/model
 
                    :mertonon.health-checks health-check-model/model
 
-                   :mertonon.users         mt-user-model/model
+                   :mertonon.mt-users      mt-user-model/model
                    })
 
 ;; child-table child-table-col parent-table-col
