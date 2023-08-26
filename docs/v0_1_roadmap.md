@@ -4,6 +4,8 @@
 - [x] Gradient service test hang
 
 - [ ] User/password auth gen, joined to user gen
+- [ ] User validations
+- [ ] User validations test
 - [ ] User impl (api)
 - [ ] Username/password auth impl (model, api)
 - [ ] Testing - figure out properties for real for user/password
