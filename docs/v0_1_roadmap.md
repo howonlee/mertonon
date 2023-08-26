@@ -12,12 +12,16 @@
 - [ ] Session impl
 - [ ] Total (admin) trivial authn and really really trivial authz impl (rbac for later)
 - [ ] Figure out test for above...
+- [ ] Skip-authn and skip-authz for testing, make sure it never shows up in prod
 - [ ] Test for making sure that basically everything in routes gets covered by authn and authz test - prolly property on routes
 
 - [ ] Property test for probabilistic semantics for norms
 - [ ] True probabilistic semantics for normalization (first axiom, not just second and third)
 
-- [ ] Prod jar detection, rip out non-auto prod option
-- [ ] Skip-authn and skip-authz for testing, make sure it never shows up in prod
-- [ ] Some kind of middling settings db thing
+- [ ] Some kind of middlingly durable settings db thing... maybe with table
 - [ ] Intro screen w/ user creation
+
+- [ ] Dev diary
+- [ ] Changelog
+- [ ] Manual clicking around a bit
+- [ ] Cut release
