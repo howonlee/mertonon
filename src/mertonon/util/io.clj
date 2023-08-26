@@ -65,6 +65,7 @@
 (defn round-to-four
   "Rounds 'x' to 4 decimal places"
   [x]
+  (println x)
   (->> x
        bigdec
        (#(.setScale % 4 java.math.RoundingMode/HALF_UP))))
