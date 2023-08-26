@@ -17,4 +17,7 @@
 
 (def generate-mt-user (generate-mt-user* net-params/test-gen-params))
 
+;; generate-mt-user-password*
+;; generate-mt-user-password
+
 (comment (gen/generate generate-mt-user))
