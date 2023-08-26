@@ -1,8 +1,10 @@
 (ns mertonon.test-utils
   (:require [clojure.data :as cd]
             [clojure.string :as str]
+            [clojure.test.check.generators :as gen]
             [next.jdbc :as jdbc]
-            [mertonon.util.db :as db]))
+            [mertonon.util.db :as db]
+            [mertonon.util.registry :as reg]))
 
 ;; ---
 ;; Transaction macro
@@ -131,7 +133,7 @@
     (= state-1 state-2)))
 
 ;; ---
-;; Misc
+;; Generators and dealing with generates
 ;; ---
 
 (defn maybe-strip-schema [table-name]
@@ -139,17 +141,37 @@
        last
        keyword))
 
-(defn net->members
-  [net table-name]
+(defn generates->members
+  [generates table-name]
   (let [stripped-table (maybe-strip-schema table-name)]
     (cond
-      (vector? net) (flatten (mapv stripped-table net))
-      :else         (net stripped-table))))
+      (vector? generates) (flatten (mapv stripped-table generates))
+      :else               (generates stripped-table))))
 
-(defn net->member
-  [net table-name]
+(defn generates->member
+  [generates table-name]
   (let [stripped-table (maybe-strip-schema table-name)]
-    (cond (= stripped-table :weights)
-          (first (flatten (net->members net stripped-table)))
+    (cond (not (contains? generates stripped-table))
+          nil
+          (= stripped-table :weights)
+          (first (flatten (generates->members generates stripped-table)))
           :else
-          (first (net->members net stripped-table)))))
+          (first (generates->members generates stripped-table)))))
+
+(defn setup-generates!
+  [tables-under-test]
+  (fn [generates]
+    (let [all-members (for [table tables-under-test]
+                        (when (generates->members generates table)
+                          [table (generates->members generates table)]))
+          insert-all! (doall
+                        (for [[table members] all-members]
+                          (when members
+                            (((reg/table->model table) :create-many!) (flatten [members])))))]
+      nil)))
+
+(defn table-and-generates
+  [tables-under-test]
+  (gen/let [table     (gen/elements tables-under-test)
+            generates (reg/table->generator table)]
+    [table generates]))

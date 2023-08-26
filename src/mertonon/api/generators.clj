@@ -8,6 +8,7 @@
             [loom.graph :as graph]
             [mertonon.generators.net :as net-gen]
             [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.grad-net :as grad-net-gen]
             [mertonon.services.grad-service :as grad-service]
             [mertonon.services.graph-service :as graph-service]
             [mertonon.services.matrix-service :as matrix-service]
@@ -56,7 +57,7 @@
   []
   (reset! generated-net-atom
           (gen/generate
-            (aug-net-gen/net-and-backprop-and-updates
+            (grad-net-gen/net-and-backprop-and-updates
               aug-net-gen/dag-demo-net-and-entries))))
 
 (defn set-generated-net-atom!

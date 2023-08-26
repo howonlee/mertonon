@@ -16,6 +16,7 @@
             [mertonon.api.generators :as gen-api]
             [mertonon.api.grid :as grid-api]
             [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.grad-net :as grad-net-gen]
             [mertonon.models.entry :as entry-model]
             [mertonon.server.handler :as app-handler]
             [mertonon.services.coarse-serde-service :as coarse-serde]
@@ -50,7 +51,7 @@
 
 (defspec grid-dump-consonance-test
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)
@@ -71,7 +72,7 @@
 
 (defspec grid-graph-consonance-test
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)
@@ -85,7 +86,7 @@
 
 (defspec grid-view-consonance-test
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)
@@ -101,7 +102,7 @@
   ;; Layer-entry patterns will not be consonant, because the generator takes from all the entries every time
   ;; TODO: Make layer-entry patterns consonant
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)
@@ -117,7 +118,7 @@
 
 (defspec weightset-consonance-test
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)
@@ -133,7 +134,7 @@
 
 (defspec cobj-consonance-test
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)
@@ -150,7 +151,7 @@
 
 (defspec weight-consonance-test
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)
@@ -168,7 +169,7 @@
 
 (defspec grad-consonance-test
   20
-  (prop/for-all [net-and-backprop-and-updates (aug-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+  (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
                     (gen-api/set-generated-net-atom! net-and-backprop-and-updates)

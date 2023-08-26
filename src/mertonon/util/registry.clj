@@ -1,7 +1,11 @@
 (ns mertonon.util.registry
   "Bunch of global registries for stuff"
-  (:require [mertonon.autodiff.forward-ops :as forward-ops]
+  (:require [clojure.test.check.generators :as gen]
+            [mertonon.autodiff.forward-ops :as forward-ops]
             [mertonon.autodiff.reverse-ops :as ops]
+            [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.mt-user :as mt-user-gen]
+            [mertonon.generators.net :as net-gen]
             [mertonon.models.grid :as grid-model]
             [mertonon.models.layer :as layer-model]
             [mertonon.models.weightset :as weightset-model]
@@ -58,10 +62,8 @@
    :var    ops/back-op-var})
 
 ;; ---
-;; Model registry
+;; Model / Table / Etc registry
 ;; ---
-
-;; TODO: actually unify the naming everywhere
 
 (def tables [:mertonon.grids :mertonon.layers :mertonon.cost-objects
              :mertonon.weightsets :mertonon.weights
@@ -70,6 +72,12 @@
              :mertonon.health-checks
 
              :mertonon.mt-users])
+
+(def net-tables
+  "Tables which participate in the neural net portion of Mertonon. Used for testing"
+  [:mertonon.grids :mertonon.layers :mertonon.cost-objects
+   :mertonon.weightsets :mertonon.weights
+   :mertonon.inputs :mertonon.losses :mertonon.entries])
 
 (def raw-table->table {:grid         :mertonon.grids
                        :layer        :mertonon.layers
@@ -95,6 +103,19 @@
 
                    :mertonon.mt-users      mt-user-model/model
                    })
+
+(def table->generator
+  {:mertonon.grids        net-gen/generate-grid
+   :mertonon.layers       net-gen/generate-linear-layers
+   :mertonon.cost-objects net-gen/generate-linear-cost-objects
+   :mertonon.weightsets   net-gen/generate-dag-weightsets
+   :mertonon.weights      (gen/let [generates net-gen/generate-dag-weights]
+                            (update generates :weights flatten))
+   :mertonon.losses       net-gen/generate-dag-losses
+   :mertonon.inputs       net-gen/generate-dag-inputs
+   :mertonon.entries      aug-net-gen/merged-dag-net-and-entries
+
+   :mertonon.mt-users     mt-user-gen/generate-mt-user})
 
 ;; child-table child-table-col parent-table-col
 ;; change if we need to actually have parent table name specifically ever

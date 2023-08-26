@@ -7,14 +7,14 @@
             [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
-            [mertonon.generators.aug-net :as aug-net-gen]
             [mertonon.server.handler :as app-handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.registry :as reg]
             [mertonon.util.io :as uio]))
 
-(def gen-nets
-  (gen/vector aug-net-gen/net-enriched-with-entries 2 4))
+;; ---
+;; Preliminaries
+;; ---
 
 (def setup-tables
   "Order is linearized version of DAG implied by fkeys.
@@ -41,14 +41,6 @@
    :mertonon.losses       "/api/v1/loss/"
    :mertonon.inputs       "/api/v1/input/"})
 
-(defn setup! [net]
-  (let [all-members (for [table setup-tables]
-                      [table (tu/net->members net table)])
-        ;; `vec` to proc the side effect
-        insert-all! (vec (for [[table members] all-members]
-                      (((reg/table->model table) :create-many!) (flatten [members]))))]
-    nil))
-
 (defn encode-to-stream [inp]
   (io/input-stream (.getBytes (json/write-str inp))))
 
@@ -58,10 +50,10 @@
        uio/maybe-slurp
        uio/maybe-json-decode))
 
-(defn test-inp [net table]
+(defn test-inp [table generates]
   (let [app             (app-handler/app-handler)
         endpoint        (endpoints-under-test table)
-        elem            (tu/net->member net table)
+        elem            (tu/generates->member generates table)
         indiv-endpoint  #(format "%s%s" endpoint (or (:uuid %) %))
         member->row     ((reg/table->model table) :member->row)
         row->member     ((reg/table->model table) :row->member)
@@ -87,9 +79,9 @@
                            (let [res       (app {:uri endpoint :request-method :get})
                                  processed (process-app-response res)]
                              (mapv row->member processed)))]
-    {:gen-net           net
+    {:gen-net           generates
      :model-instance    elem
-     :model-instances   (tu/net->members net table)
+     :model-instances   (tu/generates->members generates table)
      :create-one!       api-create-one!
      :create-many!      api-create-many!
      :read-one          api-read-one
@@ -99,51 +91,50 @@
      :hard-delete-many! #(app {:uri endpoint :request-method :delete :body (encode-to-stream %)})
      :member->row       member->row
      :row->member       row->member
-     :setup             setup!}))
+     :setup             (tu/setup-generates! tables-under-test)}))
+
+(def table-and-generates (tu/table-and-generates tables-under-test))
+
+;; ---
+;; Actual Tests
+;; ---
 
 (defspec create-and-generate-consonance
   100
-  (prop/for-all [net   aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-and-generate-consonance (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-and-generate-consonance (test-inp table generates)))))
 
 (defspec member->row-round-trip
   100
-  (prop/for-all [net aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/member->row-round-trip (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/member->row-round-trip (test-inp table generates)))))
 
 (defspec create-and-read-consonance
   100
-  (prop/for-all [net aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-and-read-consonance (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-and-read-consonance (test-inp table generates)))))
 
 (defspec create-one-create-many-consonance
   100
-  (prop/for-all [nets gen-nets
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-one-create-many-consonance (test-inp nets table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-one-create-many-consonance (test-inp table generates)))))
 
 (defspec read-one-read-many-consonance
   100
-  (prop/for-all [nets gen-nets
-                 table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
-                  (tu/read-one-read-many-consonance (test-inp nets table)))))
+                  (tu/read-one-read-many-consonance (test-inp table generates)))))
 
 ;; API will not have arbitrary read-where semantics. That's a terrible idea.
 
 (defspec create-and-delete-inversion
   100
-  (prop/for-all [net aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-and-delete-inversion (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-and-delete-inversion (test-inp table generates)))))
 
 (defspec delete-one-delete-many-consonance
   100
-  (prop/for-all [nets gen-nets
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp nets table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
 
-(comment (create-and-generate-consonance))
+(comment (run-tests))

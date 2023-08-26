@@ -1,40 +1,47 @@
-(ns mertonon.models.other-model-test
-  "One test suite to test all the other models! Model selected at testing time randomly!"
+(ns mertonon.models.model-test
+  "One test suite to test all the models! Model selected at testing time randomly!"
   (:require [clojure.test :refer :all]
             [clojure.test.check :as tc]
             [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
+            [mertonon.generators.aug-net :as aug-net-gen]
             [mertonon.generators.mt-user :as mt-user-gen]
+            [mertonon.generators.net :as net-gen]
             [mertonon.test-utils :as tu]
             [mertonon.util.registry :as reg]))
 
+;; ---
+;; Preliminaries
+;; ---
+
 (def tables-under-test
-  [:mertonon.mt-users])
+  "Order of these matters, with foreign key dependencies.
+  Basically the linearized version of the DAG of them
+  Better not have cycles in our fkey dependencies!"
+  [:mertonon.grids :mertonon.layers :mertonon.cost-objects
+   :mertonon.weightsets :mertonon.weights
+   :mertonon.losses :mertonon.inputs :mertonon.entries
 
-(def tables->generates
-  {:mertonon.mt-users mt-user-gen/generate-mt-user})
-
-(defn setup! [generates]
-  (let [all-members (for [table tables-under-test]
-                      [table (get generates table)])
-        insert-all! (doall
-                      (for [[table members] all-members]
-                        (((reg/table->model table) :create-many!) (flatten [members]))))]
-    nil))
+   :mertonon.mt-users])
 
 (defn test-inp [table generates]
-  (let [curr-gens (get generates table)]
-    (merge (reg/table->model table)
-           {:gen-net             generates
-            :model-instance      (first curr-gens)
-            :model-instances     curr-gens
-            :setup               setup!})))
+  (merge (reg/table->model table)
+         {:gen-net         generates
+          :model-instance  (tu/generates->member generates table)
+          :model-instances (tu/generates->members generates table)
+          :setup           (tu/setup-generates! tables-under-test)}))
 
-(def table-and-generates
-  (gen/let [table     (gen/elements tables-under-test)
-            generates (tables->generates table)]
-    [table generates]))
+(def table-and-generates (tu/table-and-generates tables-under-test))
+
+;; ---
+;; Actual tests
+;; ---
+
+(defspec model-instance-singular
+  100
+  (prop/for-all [[table generates] table-and-generates]
+                (not (vector? (:model-instance (test-inp table generates))))))
 
 (defspec create-and-generate-consonance
   100

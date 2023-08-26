@@ -15,7 +15,7 @@
                                        net-gen/generate-linear-net
                                        net-gen/generate-dag-net])
                  ;; no weights because they're partitioned
-                 table    (gen/elements (remove #{:mertonon.weights :mertonon.health-checks} registry/tables))]
+                 table    (gen/elements (remove #{:mertonon.weights} registry/net-tables))]
                 (= (mapv :uuid (curr-net (tu/maybe-strip-schema table)))
                    (mapv :uuid (sort-by :uuid (curr-net (tu/maybe-strip-schema table)))))))
 
@@ -24,7 +24,7 @@
   (prop/for-all [curr-net (gen/one-of [net-gen/generate-simple-net
                                        net-gen/generate-linear-net
                                        net-gen/generate-dag-net])
-                 table    (gen/elements (remove #{:mertonon.entries :mertonon.health-checks} registry/tables))]
+                 table    (gen/elements (remove #{:mertonon.entries} registry/net-tables))]
                 (and (vector? (curr-net (tu/maybe-strip-schema table)))
                      (> (count (curr-net (tu/maybe-strip-schema table))) 0))))
 
