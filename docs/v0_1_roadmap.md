@@ -7,8 +7,11 @@
 - [ ] User impl (api)
 - [ ] Username/password auth impl (model, api)
 - [ ] Session generation, joined to user/password...
+
+- [ ] Username/password auth api)
 - [ ] Session impl
 - [ ] Total (admin) trivial authn and really really trivial authz impl (rbac for later)
+- [ ] Figure out test for above...
 
 - [ ] Property test for probabilistic semantics for norms
 - [ ] True probabilistic semantics for normalization (first axiom, not just second and third)
