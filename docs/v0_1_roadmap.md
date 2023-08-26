@@ -1,7 +1,7 @@
 - [x] User gen (no authz, just authn) - [here](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 - [x] User impl (model)
 - [x] Delineate net table vs nonnet in registry, adjust tests
-- [ ] Gradient service test hang
+- [x] Gradient service test hang
 
 - [ ] User/password auth gen, joined to user gen
 - [ ] User impl (api)
