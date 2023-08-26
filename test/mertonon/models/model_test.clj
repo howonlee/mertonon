@@ -11,6 +11,10 @@
             [mertonon.test-utils :as tu]
             [mertonon.util.registry :as reg]))
 
+;; ---
+;; Preliminaries
+;; ---
+
 (def tables-under-test
   "Order of these matters, with foreign key dependencies.
   Basically the linearized version of the DAG of them
@@ -23,28 +27,21 @@
 
 
 
-
-(defn setup! [generates]
-  (let [all-members (for [table tables-under-test]
-                      (when (tu/generates->members generates table)
-                        [table (tu/generates->members generates table)]))
-        insert-all! (doall
-                      (for [[table members] all-members]
-                        (when members
-                          (((reg/table->model table) :create-many!) (flatten [members])))))]
-    nil))
-
 (defn test-inp [table generates]
   (merge (reg/table->model table)
          {:gen-net         generates
           :model-instance  (tu/generates->member generates table)
           :model-instances (tu/generates->members generates table)
-          :setup           setup!}))
+          :setup           (tu/setup-generates! tables-under-test)}))
 
 (def table-and-generates
   (gen/let [table     (gen/elements tables-under-test)
             generates (reg/table->generator table)]
     [table generates]))
+
+;; ---
+;; Actual tests
+;; ---
 
 (defspec model-instance-singular
   100

@@ -2,7 +2,8 @@
   (:require [clojure.data :as cd]
             [clojure.string :as str]
             [next.jdbc :as jdbc]
-            [mertonon.util.db :as db]))
+            [mertonon.util.db :as db]
+            [mertonon.util.registry :as reg]))
 
 ;; ---
 ;; Transaction macro
@@ -155,3 +156,15 @@
           (first (flatten (generates->members generates stripped-table)))
           :else
           (first (generates->members generates stripped-table)))))
+
+(defn setup-generates!
+  [tables-under-test]
+  (fn [generates]
+    (let [all-members (for [table tables-under-test]
+                        (when (generates->members generates table)
+                          [table (generates->members generates table)]))
+          insert-all! (doall
+                        (for [[table members] all-members]
+                          (when members
+                            (((reg/table->model table) :create-many!) (flatten [members])))))]
+      nil)))

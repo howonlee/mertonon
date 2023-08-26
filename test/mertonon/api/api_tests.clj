@@ -13,6 +13,10 @@
             [mertonon.util.registry :as reg]
             [mertonon.util.io :as uio]))
 
+;; ---
+;; Preliminaries
+;; ---
+
 (def gen-nets
   (gen/vector aug-net-gen/net-enriched-with-entries 2 4))
 
@@ -41,12 +45,14 @@
    :mertonon.losses       "/api/v1/loss/"
    :mertonon.inputs       "/api/v1/input/"})
 
-(defn setup! [net]
+(defn setup! [generates]
   (let [all-members (for [table setup-tables]
-                      [table (tu/generates->members net table)])
-        ;; `vec` to proc the side effect
-        insert-all! (vec (for [[table members] all-members]
-                      (((reg/table->model table) :create-many!) (flatten [members]))))]
+                      (when (tu/generates->members generates table)
+                        [table (tu/generates->members net table)]))
+        insert-all! (doall
+                      (for [[table members] all-members]
+                        (when members
+                          (((reg/table->model table) :create-many!) (flatten [members])))))]
     nil))
 
 (defn encode-to-stream [inp]
@@ -100,6 +106,10 @@
      :member->row       member->row
      :row->member       row->member
      :setup             setup!}))
+
+;; ---
+;; Actual Tests
+;; ---
 
 (defspec create-and-generate-consonance
   100
