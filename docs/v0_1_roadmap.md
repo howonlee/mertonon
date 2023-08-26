@@ -7,8 +7,8 @@
 - [ ] User impl (api)
 - [ ] Username/password auth impl (model, api)
 - [ ] Session generation, joined to user/password...
+- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
 
-- [ ] Username/password auth api)
 - [ ] Session impl
 - [ ] Total (admin) trivial authn and really really trivial authz impl (rbac for later)
 - [ ] Figure out test for above...
