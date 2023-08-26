@@ -12,5 +12,15 @@
             [mertonon.util.registry :as reg]))
 
 ;; ---
-;; 
+;; User tests
 ;; ---
+
+(defspec unique-constraint some crap)
+
+(defspec canonicalized-usernames some crap)
+
+;; ---
+;; Password login tests
+;; ---
+
+(comment (run-tests))

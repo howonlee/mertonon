@@ -3,8 +3,8 @@
 - [x] Delineate net table vs nonnet in registry, adjust tests
 - [x] Gradient service test hang
 
-- [ ] User/password auth gen, joined to user gen
 - [ ] User validations
+- [ ] User/password auth gen, joined to user gen
 - [ ] User validations test
 - [ ] User impl (api)
 - [ ] Username/password auth impl (model, api)

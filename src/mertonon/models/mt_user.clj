@@ -7,9 +7,14 @@
             [mertonon.util.queries :as q]
             [tick.core :as t]))
 
+(defn canonicalize-username [{:keys [username] :as mt-user}]
+  (let [canonicalized (str/lowercase username)]
+    (assoc mt-user :canonical-username canonicalized)))
+
 (defn canonicalize-mt-user [mt-user]
   (-> (mutils/default-canonicalize mt-user)
-      (update :version io/maybe-parse-int)))
+      (update :version io/maybe-parse-int)
+      (canonicalize-username)))
 
 (defn member->row [member]
   (-> (canonicalize-mt-user member)
@@ -19,7 +24,7 @@
   (-> (canonicalize-mt-user row)
       (mutils/default-row->member)))
 
-(def columns [:uuid :version :created-at :updated-at :email :username])
+(def columns [:uuid :version :created-at :updated-at :email :username :canonical-username])
 (def table [:mertonon.mt_user])
 (def query-info {:columns     columns
                  :table       table
