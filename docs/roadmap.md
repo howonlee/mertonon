@@ -2,8 +2,10 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
+- Completely trivial authz (admin-only authz)
 - Non-quarter-assed CI/CD
 - Error screens
+- Probabilistic semantics (follow Kolmogorov's first properly)
 - Weight thing in logspace (conform to fitt's), and with a value enter thing
 - Model updates lol, going through to API and views
 
