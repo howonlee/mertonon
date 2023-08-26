@@ -7,7 +7,6 @@
 - [ ] User impl (api)
 - [ ] Username/password auth impl (model, api)
 - [ ] Session generation, joined to user/password...
-- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
 
 - [ ] Session impl
 - [ ] Total (admin) trivial authn and really really trivial authz impl (rbac for later)
@@ -17,6 +16,7 @@
 
 - [ ] Property test for probabilistic semantics for norms
 - [ ] True probabilistic semantics for normalization (first axiom, not just second and third)
+- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
 
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
 - [ ] Intro screen w/ user creation

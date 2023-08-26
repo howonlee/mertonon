@@ -14,8 +14,6 @@
    :delete (api-util/delete-models loss-model/model)
    :name   ::losses})
 
-;; TODO: inputs _and_ losses, given a grid
-
 (defn routes []
   [["/" (mass-endpoint)]
    ["/:uuid" (single-endpoint)]])
