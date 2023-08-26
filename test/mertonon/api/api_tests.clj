@@ -110,41 +110,35 @@
 
 (defspec member->row-round-trip
   100
-  (prop/for-all [net aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/member->row-round-trip (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/member->row-round-trip (test-inp table generates)))))
 
 (defspec create-and-read-consonance
   100
-  (prop/for-all [net aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-and-read-consonance (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-and-read-consonance (test-inp table generates)))))
 
 (defspec create-one-create-many-consonance
   100
-  (prop/for-all [nets gen-nets
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-one-create-many-consonance (test-inp nets table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-one-create-many-consonance (test-inp table generates)))))
 
 (defspec read-one-read-many-consonance
   100
-  (prop/for-all [nets gen-nets
-                 table (gen/elements tables-under-test)]
+  (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
-                  (tu/read-one-read-many-consonance (test-inp nets table)))))
+                  (tu/read-one-read-many-consonance (test-inp table generates)))))
 
 ;; API will not have arbitrary read-where semantics. That's a terrible idea.
 
 (defspec create-and-delete-inversion
   100
-  (prop/for-all [net aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-and-delete-inversion (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-and-delete-inversion (test-inp table generates)))))
 
 (defspec delete-one-delete-many-consonance
   100
-  (prop/for-all [nets gen-nets
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp nets table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
 
-(comment (create-and-generate-consonance))
+(comment (run-tests))
