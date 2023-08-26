@@ -18,7 +18,7 @@
 - [ ] Intro screen endpoint w/ user creation - put it behind feature flag
 
 - [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
-- [ ] "The Path to Replacing the CEO"
+- [ ] the turbulent net pic thing, lol
 
 - [ ] Dev diary
 - [ ] Changelog
