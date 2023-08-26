@@ -8,20 +8,14 @@
 - [ ] Username/password auth impl (model, api)
 - [ ] Testing - figure out properties for real for user/password
 
-- [ ] FE testing - set some FE testing up
-- [ ] User creation screen (use ordinary create state machine...)
-- [ ] User listing screen
-- [ ] User deletion screen
-- [ ] Some kind of middlingly durable settings db thing... maybe with table
-- [ ] Intro screen w/ user creation
-
-- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
-
 - [ ] Session generation, joined to user/password...
 - [ ] Session impl
-- [ ] Login state machine
-- [ ] Login screen
-- [ ] FE testing - login state somehow...
+
+- [ ] FE testing - set some FE testing up
+- [ ] Some kind of middlingly durable settings db thing... maybe with table
+- [ ] Intro screen endpoint w/ user creation - put it behind feature flag
+
+- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
 
 - [ ] Dev diary
 - [ ] Changelog
