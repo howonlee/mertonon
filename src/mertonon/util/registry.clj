@@ -59,10 +59,8 @@
    :var    ops/back-op-var})
 
 ;; ---
-;; Model registry
+;; Model / Table / Etc registry
 ;; ---
-
-;; TODO: actually unify the naming everywhere
 
 (def tables [:mertonon.grids :mertonon.layers :mertonon.cost-objects
              :mertonon.weightsets :mertonon.weights
@@ -71,6 +69,12 @@
              :mertonon.health-checks
 
              :mertonon.mt-users])
+
+(def net-tables
+  "Tables which participate in the neural net portion of Mertonon. Used for testing"
+  [:mertonon.grids :mertonon.layers :mertonon.cost-objects
+   :mertonon.weightsets :mertonon.weights
+   :mertonon.inputs :mertonon.losses :mertonon.entries])
 
 (def raw-table->table {:grid         :mertonon.grids
                        :layer        :mertonon.layers
