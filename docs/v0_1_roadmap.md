@@ -12,6 +12,7 @@
 - [ ] Session impl
 - [ ] Total (admin) trivial authn and really really trivial authz impl (rbac for later)
 - [ ] Figure out test for above...
+- [ ] Test for making sure that basically everything in routes gets covered by authn and authz test - prolly property on routes
 
 - [ ] Property test for probabilistic semantics for norms
 - [ ] True probabilistic semantics for normalization (first axiom, not just second and third)
