@@ -1,7 +1,11 @@
 (ns mertonon.util.registry
   "Bunch of global registries for stuff"
-  (:require [mertonon.autodiff.forward-ops :as forward-ops]
+  (:require [clojure.test.check.generators :as gen]
+            [mertonon.autodiff.forward-ops :as forward-ops]
             [mertonon.autodiff.reverse-ops :as ops]
+            [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.net :as net-gen]
+            [mertonon.generators.mt-user :as mt-user-gen]
             [mertonon.models.grid :as grid-model]
             [mertonon.models.layer :as layer-model]
             [mertonon.models.weightset :as weightset-model]
@@ -95,6 +99,20 @@
 
                    :mertonon.mt-users      mt-user-model/model
                    })
+
+(def table->generator
+  {:mertonon.grids        net-gen/generate-grid
+   :mertonon.layers       net-gen/generate-linear-layers
+   :mertonon.cost-objects net-gen/generate-linear-cost-objects
+   :mertonon.weightsets   net-gen/generate-dag-weightsets
+   :mertonon.weights      (gen/let [generates net-gen/generate-dag-weights]
+                            (update generates :weights flatten))
+   :mertonon.losses       net-gen/generate-dag-losses
+   :mertonon.inputs       net-gen/generate-dag-inputs
+   :mertonon.entries      (gen/let [[net entries] aug-net-gen/dag-net-and-entries]
+                            (merge net entries))
+
+   :mertonon.mt-users     mt-user-gen/generate-mt-user})
 
 ;; child-table child-table-col parent-table-col
 ;; change if we need to actually have parent table name specifically ever

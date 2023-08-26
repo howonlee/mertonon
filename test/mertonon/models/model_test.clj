@@ -21,19 +21,7 @@
 
    :mertonon.mt-users])
 
-(def tables->generates
-  {:mertonon.grids        net-gen/generate-grid
-   :mertonon.layers       net-gen/generate-linear-layers
-   :mertonon.cost-objects net-gen/generate-linear-cost-objects
-   :mertonon.weightsets   net-gen/generate-dag-weightsets
-   :mertonon.weights      (gen/let [generates net-gen/generate-dag-weights]
-                            (update generates :weights flatten))
-   :mertonon.losses       net-gen/generate-dag-losses
-   :mertonon.inputs       net-gen/generate-dag-inputs
-   :mertonon.entries      (gen/let [[net entries] aug-net-gen/dag-net-and-entries]
-                            (merge net entries))
-   
-   :mertonon.mt-users     mt-user-gen/generate-mt-user})
+
 
 
 (defn setup! [generates]
@@ -55,7 +43,7 @@
 
 (def table-and-generates
   (gen/let [table     (gen/elements tables-under-test)
-            generates (tables->generates table)]
+            generates (reg/table->generator table)]
     [table generates]))
 
 (defspec model-instance-singular
