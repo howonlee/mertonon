@@ -7,7 +7,6 @@
             [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
-            [mertonon.generators.aug-net :as aug-net-gen]
             [mertonon.server.handler :as app-handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.registry :as reg]
@@ -16,9 +15,6 @@
 ;; ---
 ;; Preliminaries
 ;; ---
-
-(def gen-nets
-  (gen/vector aug-net-gen/net-enriched-with-entries 2 4))
 
 (def setup-tables
   "Order is linearized version of DAG implied by fkeys.
