@@ -17,7 +17,8 @@
 
 (defspec unique-constraint some crap)
 
-(defspec canonicalized-usernames some crap)
+;; generate capital vs lowercase and check constraint?
+;; (defspec canonicalized-usernames some crap)
 
 ;; ---
 ;; Password login tests
