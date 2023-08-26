@@ -65,7 +65,7 @@
 (defn round-to-four
   "Rounds 'x' to 4 decimal places"
   [x]
-  (println x)
-  (->> x
-       bigdec
-       (#(.setScale % 4 java.math.RoundingMode/HALF_UP))))
+  (let [curr-val (if (Double/isNaN x) 0 x)]
+    (->> curr-val
+         bigdec
+         (#(.setScale % 4 java.math.RoundingMode/HALF_UP)))))
