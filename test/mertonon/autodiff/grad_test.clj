@@ -59,8 +59,6 @@
                         (cm/esum numerical-op))
                       1e-3))))
 
-;; TODO: test for everything staying in ratio type! everything!
-
 ;; TODO: test on matrix values. Requires a lot of fiddling with autodiff-gen because forward automatic differentiation needs that
 (defspec same-res-forward-and-reverse
   100

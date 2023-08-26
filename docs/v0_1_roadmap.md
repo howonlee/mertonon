@@ -6,14 +6,24 @@
 - [ ] User/password auth gen, joined to user gen
 - [ ] User impl (api)
 - [ ] Username/password auth impl (model, api)
+- [ ] Testing - figure out properties for real for user/password
+- [ ] User creation screen (use ordinary create state machine...)
+- [ ] User listing screen
+- [ ] User deletion screen
+
+- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
+
+- [ ] FE testing - set some FE testing up
+- [ ] FE testing - login state somehow...
+
 - [ ] Session generation, joined to user/password...
 - [ ] Session impl
-- [ ] Total (admin) trivial authn and really really trivial authz impl (rbac for later)
-
-- [ ] Property test for probabilistic semantics for norms
-- [ ] True probabilistic semantics for normalization (first axiom, not just second and third)
-
-- [ ] Prod jar detection, rip out non-auto prod option
-- [ ] Skip-authn and skip-authz for testing, make sure it never shows up in prod
-- [ ] Some kind of middling settings db thing
+- [ ] Login state machine
+- [ ] Login screen
+- [ ] Some kind of middlingly durable settings db thing... maybe with table
 - [ ] Intro screen w/ user creation
+
+- [ ] Dev diary
+- [ ] Changelog
+- [ ] Manual clicking around a bit
+- [ ] Cut release

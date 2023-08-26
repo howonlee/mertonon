@@ -2,17 +2,19 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
+- Completely trivial authz (admin-only authz)
 - Non-quarter-assed CI/CD
 - Error screens
+- Probabilistic semantics (follow Kolmogorov's first properly)
+- Weight thing in logspace (conform to fitt's), and with a value enter thing
+- Model updates lol, going through to API and views
+
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
-- Whack the test hang
 - Figure out CLA / FLA / whatever we're going to use situation
 - Whack the gotta-double-click-for-weights problem
 - Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
 - Check for sign errors harder
 - Attack flaky consonances
-- Weight thing in logspace (conform to fitt's), and with a value enter thing
-- Model updates lol, going through to API and views
 - SSL - serve SSL from builtin server
 - SSL - JDBC conn to db w/ ssl
 - Dockerize so the nice video we paid for isnt a lie lol
