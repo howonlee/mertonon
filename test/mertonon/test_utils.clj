@@ -1,6 +1,7 @@
 (ns mertonon.test-utils
   (:require [clojure.data :as cd]
             [clojure.string :as str]
+            [clojure.test.check.generators :as gen]
             [next.jdbc :as jdbc]
             [mertonon.util.db :as db]
             [mertonon.util.registry :as reg]))
@@ -132,7 +133,7 @@
     (= state-1 state-2)))
 
 ;; ---
-;; Misc
+;; Generators and dealing with generates
 ;; ---
 
 (defn maybe-strip-schema [table-name]
@@ -168,3 +169,9 @@
                           (when members
                             (((reg/table->model table) :create-many!) (flatten [members])))))]
       nil)))
+
+(defn table-and-generates
+  [tables-under-test]
+  (gen/let [table     (gen/elements tables-under-test)
+            generates (reg/table->generator table)]
+    [table generates]))

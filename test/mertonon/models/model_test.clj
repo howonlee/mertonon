@@ -25,8 +25,6 @@
 
    :mertonon.mt-users])
 
-
-
 (defn test-inp [table generates]
   (merge (reg/table->model table)
          {:gen-net         generates
@@ -34,10 +32,7 @@
           :model-instances (tu/generates->members generates table)
           :setup           (tu/setup-generates! tables-under-test)}))
 
-(def table-and-generates
-  (gen/let [table     (gen/elements tables-under-test)
-            generates (reg/table->generator table)]
-    [table generates]))
+(def table-and-generates (tu/table-and-generates tables-under-test))
 
 ;; ---
 ;; Actual tests

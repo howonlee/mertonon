@@ -45,16 +45,6 @@
    :mertonon.losses       "/api/v1/loss/"
    :mertonon.inputs       "/api/v1/input/"})
 
-(defn setup! [generates]
-  (let [all-members (for [table setup-tables]
-                      (when (tu/generates->members generates table)
-                        [table (tu/generates->members net table)]))
-        insert-all! (doall
-                      (for [[table members] all-members]
-                        (when members
-                          (((reg/table->model table) :create-many!) (flatten [members])))))]
-    nil))
-
 (defn encode-to-stream [inp]
   (io/input-stream (.getBytes (json/write-str inp))))
 
@@ -64,10 +54,10 @@
        uio/maybe-slurp
        uio/maybe-json-decode))
 
-(defn test-inp [net table]
+(defn test-inp [table generates]
   (let [app             (app-handler/app-handler)
         endpoint        (endpoints-under-test table)
-        elem            (tu/generates->member net table)
+        elem            (tu/generates->member generates table)
         indiv-endpoint  #(format "%s%s" endpoint (or (:uuid %) %))
         member->row     ((reg/table->model table) :member->row)
         row->member     ((reg/table->model table) :row->member)
@@ -93,9 +83,9 @@
                            (let [res       (app {:uri endpoint :request-method :get})
                                  processed (process-app-response res)]
                              (mapv row->member processed)))]
-    {:gen-net           net
+    {:gen-net           generates
      :model-instance    elem
-     :model-instances   (tu/generates->members net table)
+     :model-instances   (tu/generates->members generates table)
      :create-one!       api-create-one!
      :create-many!      api-create-many!
      :read-one          api-read-one
@@ -105,7 +95,9 @@
      :hard-delete-many! #(app {:uri endpoint :request-method :delete :body (encode-to-stream %)})
      :member->row       member->row
      :row->member       row->member
-     :setup             setup!}))
+     :setup             (tu/setup-generates! tables-under-test)}))
+
+(def table-and-generates (tu/table-and-generates tables-under-test))
 
 ;; ---
 ;; Actual Tests
@@ -113,9 +105,8 @@
 
 (defspec create-and-generate-consonance
   100
-  (prop/for-all [net   aug-net-gen/net-enriched-with-entries
-                 table (gen/elements tables-under-test)]
-                (tu/with-test-txn (tu/create-and-generate-consonance (test-inp net table)))))
+  (prop/for-all [[table generates] table-and-generates]
+                (tu/with-test-txn (tu/create-and-generate-consonance (test-inp table generates)))))
 
 (defspec member->row-round-trip
   100
