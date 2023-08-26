@@ -201,16 +201,19 @@
 ;; ---
 
 
+(defn learning-rate
+  "Currently only one LR..."
+  [grads]
+  (or (-> grads :grids first :hyperparams (get "lr")) default-learning-rate))
 
-
+;; TODO: This hangs occasionally only in test. Prolly could hang in actual usage somehow. Go fix that
 (defn grad->to-update
   "To-update meaning, maps to update the unfilled columns in cobj and weight which are left unfiled until and unless a grad exists
   Both activations and deltas for cobj, so forward pass info gets in here too
 
   We also will dump these into the history"
   [grads]
-  (let [learning-rate       (or (-> grads :grids first :hyperparams (get "lr")) default-learning-rate)
-        cobj-update-iter    (for [[layer-uuid [layer-var]] (:layer-uuid->vars grads)]
+  (let [cobj-update-iter    (for [[layer-uuid [layer-var]] (:layer-uuid->vars grads)]
                               (let [grad     ((:grads grads) (:uuid layer-var))
                                     cobjs    ((:layer->cobj grads) layer-uuid)
                                     ;; TODO: don't separately calculate this so weirdly
@@ -218,7 +221,7 @@
                                 (for [[i cobj] (map-indexed vector cobjs)]
                                   ;; In-out tests with postgres require rounding to 4 digits all the time
                                   [(:uuid cobj) {:activation (uio/round-to-four (nth norm-act i))
-                                                 :delta      (uio/round-to-four (* learning-rate (nth grad i)))}])))
+                                                 :delta      (uio/round-to-four (* (learning-rate grads) (nth grad i)))}])))
         cobj-update-maps    (into {} (apply concat cobj-update-iter))
         matrix-var-iter     (apply concat
                                    (for [[final-var-uuid [final-var]] (:final-vars grads)]
@@ -238,7 +241,7 @@
                                     (when (and (< row (first (cm/shape curr-mat)))
                                                (< col (second (cm/shape curr-mat))))
                                       [(first weight-label-data) {:grad (uio/round-to-four
-                                                                          (* learning-rate
+                                                                          (* (learning-rate grads)
                                                                              (cm/mget curr-mat row col)
                                                                              (cm/mget curr-grad row col)))}])))))
         weight-update-maps  (into {} (apply concat weight-update-iter))]

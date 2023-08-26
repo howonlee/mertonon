@@ -3,6 +3,9 @@
   (:require [clojure.test.check.generators :as gen]
             [mertonon.autodiff.forward-ops :as forward-ops]
             [mertonon.autodiff.reverse-ops :as ops]
+            [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.mt-user :as mt-user-gen]
+            [mertonon.generators.net :as net-gen]
             [mertonon.models.grid :as grid-model]
             [mertonon.models.layer :as layer-model]
             [mertonon.models.weightset :as weightset-model]
@@ -102,17 +105,17 @@
                    })
 
 (def table->generator
-  {:mertonon.grids        mertonon.generators.net/generate-grid
-   :mertonon.layers       mertonon.generators.net/generate-linear-layers
-   :mertonon.cost-objects mertonon.generators.net/generate-linear-cost-objects
-   :mertonon.weightsets   mertonon.generators.net/generate-dag-weightsets
-   :mertonon.weights      (gen/let [generates mertonon.generators.net/generate-dag-weights]
+  {:mertonon.grids        net-gen/generate-grid
+   :mertonon.layers       net-gen/generate-linear-layers
+   :mertonon.cost-objects net-gen/generate-linear-cost-objects
+   :mertonon.weightsets   net-gen/generate-dag-weightsets
+   :mertonon.weights      (gen/let [generates net-gen/generate-dag-weights]
                             (update generates :weights flatten))
-   :mertonon.losses       mertonon.generators.net/generate-dag-losses
-   :mertonon.inputs       mertonon.generators.net/generate-dag-inputs
-   :mertonon.entries      mertonon.generators.aug-net/merged-dag-net-and-entries
+   :mertonon.losses       net-gen/generate-dag-losses
+   :mertonon.inputs       net-gen/generate-dag-inputs
+   :mertonon.entries      aug-net-gen/merged-dag-net-and-entries
 
-   :mertonon.mt-users     mertonon.generators.mt-user/generate-mt-user})
+   :mertonon.mt-users     mt-user-gen/generate-mt-user})
 
 ;; child-table child-table-col parent-table-col
 ;; change if we need to actually have parent table name specifically ever

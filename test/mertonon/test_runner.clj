@@ -8,6 +8,8 @@
   (eftest/run-tests
     (eftest/find-tests "test/mertonon")
     {
+     ;; Look, the default one has pretty colors, the clojure.test one runs in time not-a-million-years
+     :report ct/report
      ;; Why did the eftest peeps even make multithread the default...
      :multithread?   false
      ;; It's so long because we have lots of property tests
