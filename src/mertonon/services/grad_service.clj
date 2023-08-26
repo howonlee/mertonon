@@ -220,8 +220,9 @@
                                     norm-act (:value (ops/op-norm-1d layer-var))]
                                 (for [[i cobj] (map-indexed vector cobjs)]
                                   ;; In-out tests with postgres require rounding to 4 digits all the time
-                                  [(:uuid cobj) {:activation (uio/round-to-four (nth norm-act i))
-                                                 :delta      (uio/round-to-four (* (learning-rate grads) (nth grad i)))}])))
+                                  (let [activation (uio/round-to-four (nth norm-act i))
+                                        delta      (uio/round-to-four (* (learning-rate grads) (nth grad i)))]
+                                    [(:uuid cobj) {:activation activation :delta delta}]))))
         cobj-update-maps    (into {} (apply concat cobj-update-iter))
         matrix-var-iter     (apply concat
                                    (for [[final-var-uuid [final-var]] (:final-vars grads)]
@@ -240,10 +241,11 @@
                                     ;; Guard against the cobj deletions not actually cascading to weights
                                     (when (and (< row (first (cm/shape curr-mat)))
                                                (< col (second (cm/shape curr-mat))))
-                                      [(first weight-label-data) {:grad (uio/round-to-four
-                                                                          (* (learning-rate grads)
-                                                                             (cm/mget curr-mat row col)
-                                                                             (cm/mget curr-grad row col)))}])))))
+                                      (let [grad (uio/round-to-four
+                                                   (* (learning-rate grads)
+                                                      (cm/mget curr-mat row col)
+                                                      (cm/mget curr-grad row col)))]
+                                        [(first weight-label-data) {:grad grad}]))))))
         weight-update-maps  (into {} (apply concat weight-update-iter))]
     {:cobj-updates   cobj-update-maps
      :weight-updates weight-update-maps}))

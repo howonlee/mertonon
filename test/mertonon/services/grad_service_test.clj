@@ -77,12 +77,10 @@
 ;; TODO: actually kick off the save, within a test ctx
 (defspec grad-save-completion-test
   100
-  (prop/for-all [[matrix-net patterns] (grad-net-gen/matrix-net-and-patterns aug-net-gen/dag-net-and-entries)]
-                (let [grads                            (gs/forward-pass->grad (gs/net-patterns->forward-pass matrix-net patterns))
-                      cobjs                            (:cost-objects matrix-net)
+  (prop/for-all [[matrix-net patterns forward grads cobj-updates weight-updates]
+                 (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
+                (let [cobjs                            (:cost-objects matrix-net)
                       weights                          (apply concat (:weights matrix-net))
-                      {cobj-updates :cobj-updates
-                       weight-updates :weight-updates} (gs/grad->to-update grads)
                       cobj-update-counts-match         (= (count (keys cobj-updates)) (count cobjs))
                       weight-update-counts-match       (= (count (keys weight-updates)) (count weights))
                       all-cobj-activations             (every? some? (map :activation (vals cobj-updates)))
@@ -96,4 +94,4 @@
 
 ;; TODO profit properties
 
-(comment (run-tests))
+(comment (grad-save-completion-test))

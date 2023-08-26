@@ -63,8 +63,11 @@
         int-or-str))
 
 (defn round-to-four
-  "Rounds 'x' to 4 decimal places"
+  "Rounds 'x' to 4 decimal places.
+
+  Should only be used for neural network values, because look at that scary NaN ignoring there"
   [x]
-  (->> x
-       bigdec
-       (#(.setScale % 4 java.math.RoundingMode/HALF_UP))))
+  (let [curr-val (if (Double/isNaN x) 0 x)]
+    (->> curr-val
+         bigdec
+         (#(.setScale % 4 java.math.RoundingMode/HALF_UP)))))
