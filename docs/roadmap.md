@@ -2,12 +2,11 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
-- Non-quarter-assed cicd
-- Intro screen w/ admin user creation
+- Non-quarter-assed CI/CD
+- Error screens
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
 - Whack the test hang
 - Figure out CLA / FLA / whatever we're going to use situation
-- Username and password auth
 - Whack the gotta-double-click-for-weights problem
 - Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
 - Check for sign errors harder
@@ -59,7 +58,6 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 - Theory of inequality writeup. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
 - Theory of class writeup
 - Whole grad display
-- Non-scary error stuff
 - Error handling for self-conns and non-DAGs
 - EE build separation
 - Block direct pushes to master to prep for soc2, lol
