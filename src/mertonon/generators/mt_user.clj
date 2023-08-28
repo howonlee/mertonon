@@ -19,6 +19,12 @@
 
 (defn generate-password-login*
   [{:keys [name-type] :as params}]
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;;
   nil)
 
 (def generate-password-login (generate-password-login* net-params/test-gen-params))
