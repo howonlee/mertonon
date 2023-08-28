@@ -16,7 +16,8 @@
             [mertonon.models.entry :as entry-model]
 
             [mertonon.models.health-check :as health-check-model]
-            [mertonon.models.mt-user :as mt-user-model]))
+            [mertonon.models.mt-user :as mt-user-model]
+            [mertonon.models.password-login :as password-login-model]))
 
 ;; TODO: enforce the registry having this stuff by tests
 ;; I don't like the obvious move of auto-introspecting stuff at runtime because the poor locality of it

@@ -18,7 +18,7 @@
 
 (def generate-mt-users (generate-mt-users* net-params/test-gen-params))
 
-(defn generate-password-login*
+(defn generate-password-logins*
   [{:keys [name-type] :as params}]
   (gen/let [mt-users        (generate-mt-users* params)
             orig-passwords  (gen/vector gen/string (-> mt-users :mt-users count))
@@ -34,6 +34,6 @@
              :orig-passwords  orig-passwords
              :password-logins password-logins))))
 
-(def generate-password-login (generate-password-login* net-params/test-gen-params))
+(def generate-password-logins (generate-password-logins* net-params/test-gen-params))
 
-(comment (gen/generate generate-password-login))
+(comment (gen/generate generate-password-logins))

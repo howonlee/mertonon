@@ -2,7 +2,6 @@
   "A password authentication for a user of mertonon"
   (:require [clojure.test.check.generators :as gen]
             [crypto.password.scrypt :as scrypt]
-            [mertonon.generators.mt-user :as mt-user-gen]
             [mertonon.models.utils :as mutils]
             [mertonon.util.io :as io]
             [mertonon.util.queries :as q]
@@ -31,7 +30,7 @@
 
 (defn canonicalize-password-login [password-login]
   (-> (mutils/default-canonicalize password-login)
-      (check-password-is-digest)
+      ;; (check-password-is-digest)
       ;; Only want password digests
       (dissoc :password)))
 

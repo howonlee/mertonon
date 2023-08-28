@@ -1,7 +1,6 @@
 (ns mertonon.models.mt-user
   "A user of Mertonon"
   (:require [clojure.test.check.generators :as gen]
-            [mertonon.generators.mt-user :as mt-user-gen]
             [mertonon.models.utils :as mutils]
             [mertonon.util.io :as io]
             [mertonon.util.queries :as q]
@@ -33,7 +32,8 @@
 (def model
   (q/default-model query-info))
 
-(comment (let [member (-> (gen/generate mt-user-gen/generate-grid)
+(comment (let [req    (require '[mertonon.generators.mt-user :as mt-user-gen])
+               member (-> (gen/generate mt-user-gen/generate-grid)
                           :mertonon.mt-users
                           first)]
            (row->member (member->row member))))
