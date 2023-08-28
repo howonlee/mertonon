@@ -16,18 +16,18 @@
    :email      email
    :username   username})
 
-(defn ->MtUserPassword
+(defn ->PasswordLogin
   ([uuid mt-user-uuid password-state password-digest]
-  (->MtUserPassword uuid mt-user-uuid password-digest password-digest ""))
+   (->PasswordLogin uuid mt-user-uuid password-digest password-digest ""))
   ([uuid mt-user-uuid password-state password-digest recovery-token-hash]
-  {:uuid                uuid
-   :mt-user-uuid        mt-user-uuid
-   :version             0
-   :created-at          (t/instant)
-   :updated-at          (t/instant)
-   :password-state      password-state
-   :password-digest     password-digest
-   :recovery-token-hash recovery-token-hash}))
+   {:uuid                uuid
+    :mt-user-uuid        mt-user-uuid
+    :version             0
+    :created-at          (t/instant)
+    :updated-at          (t/instant)
+    :password-state      password-state
+    :password-digest     password-digest
+    :recovery-token-hash recovery-token-hash}))
 
 ;; ---
 ;; Network models

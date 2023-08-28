@@ -4,7 +4,8 @@
             [clojure.test.check.generators :as gen]
             [mertonon.generators.data :as gen-data]
             [mertonon.generators.params :as net-params]
-            [mertonon.models.constructors :as mtc]))
+            [mertonon.models.constructors :as mtc]
+            [mertonon.models.password-login :as pwd-model]))
 
 (defn generate-mt-users*
   [{:keys [name-type] :as params}]
@@ -20,14 +21,19 @@
 (defn generate-password-login*
   [{:keys [name-type] :as params}]
   (gen/let [mt-users        (generate-mt-users* params)
-            orig-passwords  (gen/vectors gen/string (-> mt-users :mt-users count))]
-    (let [digests         (mapv some crap)
-          password-logins (vec (for [some crap]
-                                 some crap))]
+            orig-passwords  (gen/vector gen/string (-> mt-users :mt-users count))
+            uuids           (gen/vector gen/uuid (-> mt-users :mt-users count))]
+    (let [digests         (mapv pwd-model/hash-password orig-passwords)
+          password-logins (vec
+                            (for [[mt-user digest uuid] (map vector (:mt-users mt-users) digests uuids)]
+                              (mtc/->PasswordLogin uuid
+                                                   (:uuid mt-user)
+                                                   :default
+                                                   digest)))]
       (assoc mt-users
              :orig-passwords  orig-passwords
              :password-logins password-logins))))
 
 (def generate-password-login (generate-password-login* net-params/test-gen-params))
 
-(comment (gen/generate generate-mt-user))
+(comment (gen/generate generate-password-login))
