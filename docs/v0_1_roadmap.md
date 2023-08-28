@@ -11,12 +11,9 @@
 - [x] Testing - figure out properties for real for user/password
 - [x] User/password auth generation, joined to user gen
 
-- [ ] Do session table better - uuid col instead of session\_id
+- [ ] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
 - [ ] Session generation, joined to user/password...
 - [ ] User impl (api)
-- [ ] Testing - add the new tables to api tests
-- [ ] Testing - fill out the properties thought of for password
-- [ ] Testing - fill out the properties thought of for session
 
 - [ ] User/password auth validations
 - [ ] User/password auth validations test
@@ -24,8 +21,9 @@
 - [ ] Session impl
 
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
-- [ ] Intro screen endpoint w/ user creation - put it behind feature flag
-- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
+- [ ] Testing - add the new tables to api tests
+- [ ] Testing - fill out the properties thought of for password
+- [ ] Testing - fill out the properties thought of for session
 
 - [ ] Dev diary
 - [ ] Changelog

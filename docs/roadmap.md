@@ -2,6 +2,7 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
+- Less woopzoopy woopleboopy and more cutthroat politics example
 - User and login FE
 - FE testing - set some FE testing up
 - Completely trivial authz (admin-only authz)
