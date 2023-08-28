@@ -7,9 +7,9 @@
 
 - [x] User validations - caps insensitivity, uniqueness. get the test to gobble it up
 - [x] User validations test
+- [x] User/password banlist
 - [ ] User/password auth generation, joined to user gen
 - [ ] User impl (api)
-- [ ] User/password banlist
 - [ ] User/password auth validations
 - [ ] User/password auth validations test
 - [ ] Username/password auth impl (model, api)
