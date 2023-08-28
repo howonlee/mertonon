@@ -14,7 +14,7 @@
   (scrypt/encrypt unhashed-password))
 
 (defn password-check
-  [mt-user-password to-check]
+  [password-login to-check]
   ;;;;
   ;;;;
   ;;;;
@@ -23,24 +23,24 @@
 
 (defn check-password-is-digest
   "Don't actually rely on this, this is just convenience"
-  [{:keys [password-digest] :as mt-user-password}]
+  [{:keys [password-digest] :as password-login}]
   ;;;;
   ;;;;
   ;;;;
   nil)
 
-(defn canonicalize-mt-user-password [mt-user-password]
-  (-> (mutils/default-canonicalize mt-user-password)
+(defn canonicalize-password-login [password-login]
+  (-> (mutils/default-canonicalize password-login)
       (check-password-is-digest)
       ;; Only want password digests
       (dissoc :password)))
 
 (defn member->row [member]
-  (-> (canonicalize-mt-user-password member)
+  (-> (canonicalize-password-login member)
       (mutils/default-member->row)))
 
 (defn row->member [row]
-  (-> (canonicalize-mt-user-password row)
+  (-> (canonicalize-password-login row)
       (mutils/default-row->member)))
 
 (def columns [:uuid :mt-user-uuid :version :created-at :updated-at
