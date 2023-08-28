@@ -13,7 +13,6 @@
 
 (defn canonicalize-mt-user [mt-user]
   (-> (mutils/default-canonicalize mt-user)
-      (update :version io/maybe-parse-int)
       (canonicalize-username)))
 
 (defn member->row [member]
