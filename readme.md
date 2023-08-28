@@ -4,7 +4,7 @@
 
 <!-- video here when we do it -->
 
-[Mertonon](https://mertonon.com) is a neural network budget for organizations. Other budgeting tools help you make recordings of how you allocate resources in your organization. With Mertonon, you make a picture of your organization as a neural network and Mertonon itself will suggest global resource allocations based upon your local, human, political assessments of impact with respect to key performance indicators. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modernized version suitable for general use.
+[Mertonon](https://mertonon.com) is a neural network budget for organizations. Other budgeting tools help you make recordings of how you allocate resources in your organization. With Mertonon, you make a picture of your organization as a neural network and Mertonon itself will suggest global resource allocations based upon your local, human, political assessments of impact with respect to key performance indicators. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is a modernized version suitable for capitalist or noncapitalist use.
 
 [Click here for installation and setup instructions.](docs/setup.md) Be advised that Mertonon is pre-alpha software: there are material known and unknown issues and missing essential features.
 
@@ -26,7 +26,7 @@ More things:
 - You can run it on your premises or on your own cloud box, if you obey the license terms.
 - You don't need to ask any permission from anyone to set the open core portion up.
 - Managed cloud hosting is coming.
-- Non-capitalist instances coming.
+- Non-capitalist specific features coming.
 - Completely self-contained binary is coming.
 
 Underlying Mertonon is a differentiable system of allocation ("neural network") modelling the organization as a soft constraint satisfaction problem. This is just as in the managerial-accounting theory of constraints, but dealing directly and flexibly with cost nodes instead of arbitrary processes and with distributed soft representations instead of narrowly scoped and hard representations.
