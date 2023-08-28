@@ -8,18 +8,30 @@
             [mertonon.util.queries :as q]
             [tick.core :as t]))
 
-(defn digestify-password
+(defn hash-password
   "Idempotent"
-  [{:keys [password] :as mt-user-password}]
-  (if (nil? password)
-    mt-user-password
-    (-> mt-user-password
-        (assoc :password-digest (scrypt/encrypt password))
-        (dissoc :password))))
+  [unhashed-password]
+  (scrypt/encrypt unhashed-password))
+
+(defn password-check
+  [mt-user-password to-check]
+  ;;;;
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
+
+(defn check-password-is-digest
+  "Don't actually rely on this, this is just convenience"
+  [{:keys [password-digest] :as mt-user-password}]
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
 
 (defn canonicalize-mt-user-password [mt-user-password]
   (-> (mutils/default-canonicalize mt-user-password)
-      (digestify-password)))
+      (check-password-is-digest)))
 
 (defn member->row [member]
   (-> (canonicalize-mt-user-password member)
@@ -29,10 +41,8 @@
   (-> (canonicalize-mt-user-password row)
       (mutils/default-row->member)))
 
-;;;;
-;;;;
-;;;;
-(def columns [:uuid :version :created-at :updated-at :email :username :canonical-username])
+(def columns [:uuid :mt-user-uuid :version :created-at :updated-at
+              :password-state :password-digest :recovery-token-hash])
 (def table [:mertonon.mt_user_password])
 (def query-info {:columns     columns
                  :table       table
