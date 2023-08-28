@@ -17,7 +17,10 @@
 
 (def generate-mt-user (generate-mt-user* net-params/test-gen-params))
 
-;; generate-mt-user-password*
-;; generate-mt-user-password
+(defn generate-mt-user-password*
+  [{:keys [name-type] :as params}]
+  nil)
+
+(def generate-mt-user-password (generate-mt-user-password* net-params/test-gen-params))
 
 (comment (gen/generate generate-mt-user))
