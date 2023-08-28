@@ -16,10 +16,15 @@
 ;; ---
 
 (defspec hit-the-unique-constraint
-  make sure its thrown somehow)
-
-(defspec cnonicalized-usernames-hit-unique-constraint
-  make sure its thrown)
+  100
+  (prop/for-all [user-vec (gen/vector mt-user-gen/generate-mt-user 2)]
+                (let [same-username-users (vec (for [member user-vec]
+                                                 (assoc member
+                                                        :username (->> user-vec first :username)
+                                                        :canonical_username (->> user-vec first :username some canonicalization))))]
+                  (tu/with-test-txn
+                    (some crap)))))
+                  ;; (t/is (t/thrown? some crap)))))
 
 ;; ---
 ;; Password login tests
