@@ -31,7 +31,9 @@
 
 (defn canonicalize-mt-user-password [mt-user-password]
   (-> (mutils/default-canonicalize mt-user-password)
-      (check-password-is-digest)))
+      (check-password-is-digest)
+      ;; Only want password digests
+      (dissoc :password)))
 
 (defn member->row [member]
   (-> (canonicalize-mt-user-password member)

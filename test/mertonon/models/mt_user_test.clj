@@ -41,4 +41,10 @@
 ;; Password login tests
 ;; ---
 
+;; make sure the password is a digest
+
+;; check the digest checker a bunch
+
+;; log in a bunch
+
 (comment (run-tests))
