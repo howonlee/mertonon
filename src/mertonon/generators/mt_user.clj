@@ -6,7 +6,7 @@
             [mertonon.generators.params :as net-params]
             [mertonon.models.constructors :as mtc]))
 
-(defn generate-mt-user*
+(defn generate-mt-users*
   [{:keys [name-type] :as params}]
   (gen/let [mt-user-uuid     gen/uuid
             mt-user-email    (gen-data/gen-mt-user-emails name-type)
@@ -15,7 +15,7 @@
                               mt-user-email
                               mt-user-username)]}))
 
-(def generate-mt-user (generate-mt-user* net-params/test-gen-params))
+(def generate-mt-users (generate-mt-users* net-params/test-gen-params))
 
 (defn generate-password-login*
   [{:keys [name-type] :as params}]

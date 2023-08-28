@@ -17,7 +17,7 @@
 ;; ---
 
 (def user-vec-gen
-  (gen/let [multiple-users (gen/vector mt-user-gen/generate-mt-user 2 10)]
+  (gen/let [multiple-users (gen/vector mt-user-gen/generate-mt-users 2 10)]
     (vec (for [member multiple-users]
            (->> member :mt-users first)))))
 
