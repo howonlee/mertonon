@@ -32,7 +32,7 @@
                                                              first
                                                              mt-user-model/canonicalize-username
                                                              :canonical-username))))]
-                  (println user-vec)
+                  (println (mapv :canonical-username same-username-users))
                   true)))
                   ;; (t/is (t/thrown? some crap)))))
 
