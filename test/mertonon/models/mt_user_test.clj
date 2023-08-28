@@ -45,6 +45,4 @@
 
 ;; check the digest checker a bunch
 
-;; log in a bunch
-
 (comment (run-tests))

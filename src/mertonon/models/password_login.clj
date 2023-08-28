@@ -1,4 +1,4 @@
-(ns mertonon.models.mt-user-password
+(ns mertonon.models.password-login
   "A password authentication for a user of mertonon"
   (:require [clojure.test.check.generators :as gen]
             [crypto.password.scrypt :as scrypt]
@@ -45,7 +45,7 @@
 
 (def columns [:uuid :mt-user-uuid :version :created-at :updated-at
               :password-state :password-digest :recovery-token-hash])
-(def table [:mertonon.mt_user_password])
+(def table [:mertonon.password-login])
 (def query-info {:columns     columns
                  :table       table
                  :member->row member->row
