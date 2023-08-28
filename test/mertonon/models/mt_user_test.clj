@@ -16,20 +16,24 @@
 ;; User tests
 ;; ---
 
+(def user-vec-gen
+  (gen/let [multiple-users (gen/vector mt-user-gen/generate-mt-user 2 10)]
+    (vec (for [member multiple-users]
+           (->> member :mt-users first)))))
+
 (defspec hit-the-unique-constraint
   100
-  (prop/for-all [user-vec (gen/vector mt-user-gen/generate-mt-user 2)]
+  (prop/for-all [user-vec user-vec-gen]
                 (let [same-username-users
-                      (vec (for [member user-vec]
-                             (assoc member
-                                    :username (->> user-vec first :mt-users first :username)
-                                    :canonical_username (->> user-vec
-                                                             first
-                                                             :mt-users
+                      (vec (for [user user-vec]
+                             (assoc user
+                                    :username (->> user-vec first :username)
+                                    :canonical-username (->> user-vec
                                                              first
                                                              mt-user-model/canonicalize-username
-                                                             :canonical_username))))]
-                  (println same-username-users))))
+                                                             :canonical-username))))]
+                  (println user-vec)
+                  true)))
                   ;; (t/is (t/thrown? some crap)))))
 
 ;; ---

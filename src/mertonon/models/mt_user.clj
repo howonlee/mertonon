@@ -8,8 +8,7 @@
             [tick.core :as t]))
 
 (defn canonicalize-username [{:keys [username] :as mt-user}]
-  (let [canonicalized (->> username
-                           clojure.string/lower-case)]
+  (let [canonicalized (clojure.string/lower-case username)]
     (assoc mt-user :canonical-username canonicalized)))
 
 (defn canonicalize-mt-user [mt-user]
