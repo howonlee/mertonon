@@ -40,7 +40,7 @@
 
 (defn expect-thrown
   "Not a macro, just call it"
-  [expected-exception checker curr-fn & args]
+  [{:keys [checker curr-fn]} & args]
   (try
     (do
       (apply curr-fn args)
