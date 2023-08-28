@@ -2,9 +2,13 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
+- Less woopzoopy woopleboopy and more cutthroat politics example
+- User and login FE
+- FE testing - set some FE testing up
 - Completely trivial authz (admin-only authz)
 - Non-quarter-assed CI/CD
 - Error screens
+- Use banlist for password
 - Probabilistic semantics (follow Kolmogorov's first properly)
 - Weight thing in logspace (conform to fitt's), and with a value enter thing
 - Model updates lol, going through to API and views
@@ -27,6 +31,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 - Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable. Deprecate the label columns everywhere and do migration to this
 - Url endpoint refactor to make demo / nondemo basically actually transparentish
 - Less half-assed logo
+- Overall views / executive summary views / full grad views
+- Bookmarks
 - Mutation dates, faster forward pass things
 - Vendorize fontawesome - this will make things airgappable, hopefully
 - Other usage docs (explanations, hidden centers, command / participative budgeting)
@@ -48,27 +54,18 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 - Multiplicative weight updating
 - Weight painter and modal changing
 - Get the video done
-- Input view
-- Full loss views, full suggestion views
+- Full loss views, full input views
 - Other KPI's
 - Password reset
 - Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
 - Stateful action testing, lol
-- Admin options / config serde and store
 - Sidebar histories
 - Theory of value writeup
 - Theory of inequality writeup. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
 - Theory of class writeup
-- Whole grad display
-- Error handling for self-conns and non-DAGs
 - EE build separation
-- Block direct pushes to master to prep for soc2, lol
 - Editing data, lol
-- Tutorial
-- Overall views / executive summary views
-- Bookmarks
 - Crontab for adjustments
-- Actually coerce everything to rationals
 - Total SQLite backend, to be self-contained (rdbms-serverless in the SQLite style, not the AWS style)
 - Undo / redo + soft deletes (use archive tables)
 - Periodization of budget and learning system (cronjob for the gradients and some emailing, etc)
@@ -76,6 +73,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
 - Stripe integration into Mertonon(for budgeting stuff)
 - EE: Whitelabelling
+
+- Cut alpha
 
 # General Future Roadmap (not in any real order)
 

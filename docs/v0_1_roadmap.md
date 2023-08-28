@@ -3,25 +3,27 @@
 - [x] Delineate net table vs nonnet in registry, adjust tests
 - [x] Gradient service test hang
 
-- [ ] User/password auth gen, joined to user gen
-- [ ] User impl (api)
-- [ ] Username/password auth impl (model, api)
-- [ ] Testing - figure out properties for real for user/password
-- [ ] User creation screen (use ordinary create state machine...)
-- [ ] User listing screen
-- [ ] User deletion screen
+- [x] the turbulent net pic thing, lol
 
-- [ ] Make a less woopzoopy woopleboopy and more cutthroat corporate politics example
+- [x] User validations - caps insensitivity, uniqueness. get the test to gobble it up
+- [x] User validations test
+- [x] User/password banlist
+- [x] Testing - figure out properties for real for user/password
+- [x] User/password auth generation, joined to user gen
 
-- [ ] FE testing - set some FE testing up
-- [ ] FE testing - login state somehow...
-
+- [ ] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
 - [ ] Session generation, joined to user/password...
+- [ ] User impl (api)
+
+- [ ] User/password auth validations
+- [ ] User/password auth validations test
+- [ ] Username/password auth impl api (api) + session impl
 - [ ] Session impl
-- [ ] Login state machine
-- [ ] Login screen
+
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
-- [ ] Intro screen w/ user creation
+- [ ] Testing - add the new tables to api tests
+- [ ] Testing - fill out the properties thought of for password
+- [ ] Testing - fill out the properties thought of for session
 
 - [ ] Dev diary
 - [ ] Changelog

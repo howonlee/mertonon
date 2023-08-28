@@ -16,7 +16,8 @@
             [mertonon.models.entry :as entry-model]
 
             [mertonon.models.health-check :as health-check-model]
-            [mertonon.models.mt-user :as mt-user-model]))
+            [mertonon.models.mt-user :as mt-user-model]
+            [mertonon.models.password-login :as password-login-model]))
 
 ;; TODO: enforce the registry having this stuff by tests
 ;; I don't like the obvious move of auto-introspecting stuff at runtime because the poor locality of it
@@ -71,7 +72,7 @@
 
              :mertonon.health-checks
 
-             :mertonon.mt-users])
+             :mertonon.mt-users :mertonon.password-logins])
 
 (def net-tables
   "Tables which participate in the neural net portion of Mertonon. Used for testing"
@@ -79,43 +80,46 @@
    :mertonon.weightsets :mertonon.weights
    :mertonon.inputs :mertonon.losses :mertonon.entries])
 
-(def raw-table->table {:grid         :mertonon.grids
-                       :layer        :mertonon.layers
-                       :cost_object  :mertonon.cost-objects
-                       :weightset    :mertonon.weightsets
-                       :weight       :mertonon.weights
-                       :input        :mertonon.inputs
-                       :loss         :mertonon.losses
-                       :entry        :mertonon.entries
-                       :health_check :mertonon.health-checks
-                       :mt_user      :mertonon.mt-users})
+(def raw-table->table {:grid           :mertonon.grids
+                       :layer          :mertonon.layers
+                       :cost_object    :mertonon.cost-objects
+                       :weightset      :mertonon.weightsets
+                       :weight         :mertonon.weights
+                       :input          :mertonon.inputs
+                       :loss           :mertonon.losses
+                       :entry          :mertonon.entries
+                       :health_check   :mertonon.health-checks
+                       :mt_user        :mertonon.mt-users
+                       :password_login :mertonon.password-logins})
 
-(def table->model {:mertonon.grids         grid-model/model
-                   :mertonon.layers        layer-model/model
-                   :mertonon.weightsets    weightset-model/model
-                   :mertonon.cost-objects  cost-object-model/model
-                   :mertonon.weights       weight-model/model
-                   :mertonon.inputs        input-model/model
-                   :mertonon.losses        loss-model/model
-                   :mertonon.entries       entry-model/model
+(def table->model {:mertonon.grids           grid-model/model
+                   :mertonon.layers          layer-model/model
+                   :mertonon.weightsets      weightset-model/model
+                   :mertonon.cost-objects    cost-object-model/model
+                   :mertonon.weights         weight-model/model
+                   :mertonon.inputs          input-model/model
+                   :mertonon.losses          loss-model/model
+                   :mertonon.entries         entry-model/model
 
-                   :mertonon.health-checks health-check-model/model
+                   :mertonon.health-checks   health-check-model/model
 
-                   :mertonon.mt-users      mt-user-model/model
+                   :mertonon.mt-users        mt-user-model/model
+                   :mertonon.password-logins password-login-model/model
                    })
 
 (def table->generator
-  {:mertonon.grids        net-gen/generate-grid
-   :mertonon.layers       net-gen/generate-linear-layers
-   :mertonon.cost-objects net-gen/generate-linear-cost-objects
-   :mertonon.weightsets   net-gen/generate-dag-weightsets
-   :mertonon.weights      (gen/let [generates net-gen/generate-dag-weights]
-                            (update generates :weights flatten))
-   :mertonon.losses       net-gen/generate-dag-losses
-   :mertonon.inputs       net-gen/generate-dag-inputs
-   :mertonon.entries      aug-net-gen/merged-dag-net-and-entries
+  {:mertonon.grids           net-gen/generate-grid
+   :mertonon.layers          net-gen/generate-linear-layers
+   :mertonon.cost-objects    net-gen/generate-linear-cost-objects
+   :mertonon.weightsets      net-gen/generate-dag-weightsets
+   :mertonon.weights         (gen/let [generates net-gen/generate-dag-weights]
+                               (update generates :weights flatten))
+   :mertonon.losses          net-gen/generate-dag-losses
+   :mertonon.inputs          net-gen/generate-dag-inputs
+   :mertonon.entries         aug-net-gen/merged-dag-net-and-entries
 
-   :mertonon.mt-users     mt-user-gen/generate-mt-user})
+   :mertonon.mt-users        mt-user-gen/generate-mt-users
+   :mertonon.password-logins mt-user-gen/generate-password-logins})
 
 ;; child-table child-table-col parent-table-col
 ;; change if we need to actually have parent table name specifically ever
