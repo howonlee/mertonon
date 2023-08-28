@@ -9,8 +9,8 @@
 - [x] User validations test
 - [x] User/password banlist
 - [x] Testing - figure out properties for real for user/password
+- [x] User/password auth generation, joined to user gen
 
-- [ ] User/password auth generation, joined to user gen
 - [ ] Do session table better - uuid col instead of session\_id
 - [ ] Session generation, joined to user/password...
 - [ ] User impl (api)

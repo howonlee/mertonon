@@ -41,15 +41,15 @@
 ;; Password login tests
 ;; ---
 
-(defspec password-is-digest
-  20
-  (prop/for-all [nil nil]
-                nil))
-
-(defspec run-digest-maker
-  ;; The problem with pulling up scrypt for property test is that scrypt is designed-for-and-great-at-the-job-of running slow
-  20
-  (prop/for-all [nil nil]
-                nil))
+;; (defspec password-is-digest
+;;   20
+;;   (prop/for-all [nil nil]
+;;                 nil))
+;; 
+;; (defspec run-digest-maker
+;;   ;; The problem with pulling up scrypt for property test is that scrypt is designed-for-and-great-at-the-job-of running slow
+;;   20
+;;   (prop/for-all [nil nil]
+;;                 nil))
 
 (comment (run-tests))
