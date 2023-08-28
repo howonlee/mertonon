@@ -9,6 +9,7 @@
 - [x] User validations test
 - [x] User/password banlist
 - [ ] User/password auth generation, joined to user gen
+
 - [ ] User impl (api)
 - [ ] User/password auth validations
 - [ ] User/password auth validations test
