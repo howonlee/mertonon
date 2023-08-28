@@ -32,10 +32,12 @@
                                                              first
                                                              mt-user-model/canonicalize-username
                                                              :canonical-username))))]
-                  (tu/with-test-txn
-                    ((mt-user-model/model :create-many!) same-username-users))
-                  )))
-                  ;; (t/is (t/thrown? some crap)))))
+                  (try
+                    (do
+                      (tu/with-test-txn
+                        ((mt-user-model/model :create-many!) same-username-users))
+                      false)
+                    (catch Exception e (= org.postgresql.util.PSQLException (type e)))))))
 
 ;; ---
 ;; Password login tests
