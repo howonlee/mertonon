@@ -15,10 +15,11 @@
 ;; User tests
 ;; ---
 
-(defspec unique-constraint some crap)
+(defspec hit-the-unique-constraint
+  make sure its thrown somehow)
 
-;; generate capital vs lowercase and check constraint?
-;; (defspec canonicalized-usernames some crap)
+(defspec cnonicalized-usernames-hit-unique-constraint
+  make sure its thrown)
 
 ;; ---
 ;; Password login tests
