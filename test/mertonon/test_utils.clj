@@ -35,6 +35,19 @@
   `(do-with-test-txn (fn [] ~@body)))
 
 ;; ---
+;; More value-based check for throwing stuff
+;; ---
+
+(defn expect-thrown
+  "Not a macro, just call it"
+  [expected-exception checker curr-fn & args]
+  (try
+    (do
+      (apply curr-fn args)
+      false)
+    (catch Exception e (checker e))))
+
+;; ---
 ;; Generic CRUD property predicates
 ;; ---
 
