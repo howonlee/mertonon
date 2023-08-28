@@ -32,8 +32,9 @@
                                                              first
                                                              mt-user-model/canonicalize-username
                                                              :canonical-username))))]
-                  (println (mapv :canonical-username same-username-users))
-                  true)))
+                  (tu/with-test-txn
+                    ((mt-user-model/model :create-many!) same-username-users))
+                  )))
                   ;; (t/is (t/thrown? some crap)))))
 
 ;; ---
