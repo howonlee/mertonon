@@ -10,13 +10,12 @@
 - [x] User/password banlist
 - [x] Testing - figure out properties for real for user/password
 - [ ] User/password auth generation, joined to user gen
+- [ ] Session generation, joined to user/password...
 
 - [ ] User impl (api)
 - [ ] User/password auth validations
 - [ ] User/password auth validations test
-- [ ] Username/password auth impl (model, api)
-
-- [ ] Session generation, joined to user/password...
+- [ ] Username/password auth impl api (api) + session impl
 - [ ] Session impl
 
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
