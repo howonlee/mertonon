@@ -14,6 +14,7 @@
 - [ ] Do session table better - uuid col instead of session\_id
 - [ ] Session generation, joined to user/password...
 - [ ] User impl (api)
+- [ ] Testing - add the new tables to api tests
 - [ ] Testing - fill out the properties thought of for password
 - [ ] Testing - fill out the properties thought of for session
 
