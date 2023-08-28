@@ -32,12 +32,10 @@
                                                              first
                                                              mt-user-model/canonicalize-username
                                                              :canonical-username))))]
-                  (try
-                    (do
-                      (tu/with-test-txn
-                        ((mt-user-model/model :create-many!) same-username-users))
-                      false)
-                    (catch Exception e (= org.postgresql.util.PSQLException (type e)))))))
+                  (tu/expect-thrown
+                    {:curr-fn (fn [] (tu/with-test-txn
+                                       ((mt-user-model/model :create-many!) same-username-users)))
+                     :checker (fn [e] (= org.postgresql.util.PSQLException (type e)))}))))
 
 ;; ---
 ;; Password login tests

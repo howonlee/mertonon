@@ -5,8 +5,8 @@
 
 - [x] the turbulent net pic thing, lol
 
-- [ ] User validations - caps insensitivity, uniqueness. get the test to gobble it up
-- [ ] User validations test
+- [x] User validations - caps insensitivity, uniqueness. get the test to gobble it up
+- [x] User validations test
 - [ ] User/password auth generation, joined to user gen
 - [ ] User impl (api)
 - [ ] User/password banlist
