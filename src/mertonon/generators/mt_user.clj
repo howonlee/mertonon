@@ -19,13 +19,16 @@
 
 (defn generate-password-login*
   [{:keys [name-type] :as params}]
-  ;;;;;;;
-  ;;;;;;;
-  ;;;;;;;
-  ;;;;;;;
-  ;;;;;;;
-  ;;;;;;;
-  nil)
+  (gen/let [mt-users        (generate-mt-users* params)
+            ;;;;;
+            ;;;;;
+            ;;;;;
+            orig-passwords  (gen/vectors some crap)]
+    (let [digests some crap
+          password-logins some crap]
+      (assoc mt-users
+             :orig-passwords  orig-passwords
+             :password-logins password-logins))))
 
 (def generate-password-login (generate-password-login* net-params/test-gen-params))
 
