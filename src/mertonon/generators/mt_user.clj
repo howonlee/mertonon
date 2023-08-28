@@ -5,16 +5,19 @@
             [mertonon.generators.data :as gen-data]
             [mertonon.generators.params :as net-params]
             [mertonon.models.constructors :as mtc]
-            [mertonon.models.password-login :as pwd-model]))
+            [mertonon.models.mt-user :as mt-user-model]
+            [mertonon.models.password-login :as pwd-model]
+            ))
 
 (defn generate-mt-users*
   [{:keys [name-type] :as params}]
   (gen/let [mt-user-uuid     gen/uuid
             mt-user-email    (gen-data/gen-mt-user-emails name-type)
             mt-user-username (gen-data/gen-mt-user-usernames name-type)]
-    {:mt-users [(mtc/->MtUser mt-user-uuid
+    {:mt-users [(-> (mtc/->MtUser mt-user-uuid
                               mt-user-email
-                              mt-user-username)]}))
+                              mt-user-username)
+                    mt-user-model/canonicalize-username)]}))
 
 (def generate-mt-users (generate-mt-users* net-params/test-gen-params))
 

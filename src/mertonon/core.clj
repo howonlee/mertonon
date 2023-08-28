@@ -19,8 +19,6 @@
     (migratus/init migrations/config)
     (migratus/migrate migrations/config)))
 
-(migratus/create migrations/config "canonical-username")
-
 (defn- warmup!
   []
   (log :info "Warmup request sending...")
