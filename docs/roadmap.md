@@ -3,6 +3,7 @@
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
 - User and login FE
+- FE testing - set some FE testing up
 - Completely trivial authz (admin-only authz)
 - Non-quarter-assed CI/CD
 - Error screens
