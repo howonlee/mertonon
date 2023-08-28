@@ -20,12 +20,10 @@
 (defn generate-password-login*
   [{:keys [name-type] :as params}]
   (gen/let [mt-users        (generate-mt-users* params)
-            ;;;;;
-            ;;;;;
-            ;;;;;
-            orig-passwords  (gen/vectors some crap)]
-    (let [digests some crap
-          password-logins some crap]
+            orig-passwords  (gen/vectors gen/string (-> mt-users :mt-users count))]
+    (let [digests         (mapv some crap)
+          password-logins (vec (for [some crap]
+                                 some crap))]
       (assoc mt-users
              :orig-passwords  orig-passwords
              :password-logins password-logins))))
