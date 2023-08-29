@@ -44,11 +44,17 @@
   (gen/let [password-logins (generate-password-logins* params)
             uuids           (gen/vector gen/uuid (->> password-logins :mt-users count))
             ;;;; not the expires-at, the delta we add to get the expires-ats
-            expirations     (gen/vector small pos int some crap)]
-    (let [curr-time (t/instant)]
-      ;; value is mt-user hashes...
-      nil)))
+            expirations     (gen/vector gen/nat (->> password-logins :mt-users count))]
+    (let [curr-time     (t/instant)
+          mt-user->sess (fn [idx mt-user]
+                          (mtc/->MtSession
+                            (nth uuids idx)
+                            (:uuid mt-user)
+                            (t/>> curr-time (t/new-duration (nth expirations idx) :minutes))
+                            mt-user))
+          mt-sessions (vec (map-indexed mt-user->sess (:mt-users password-logins)))]
+      (assoc password-logins :mt-sessions mt-sessions))))
 
 (def generate-mt-sessions (generate-mt-sessions* net-params/test-gen-params))
 
-(comment (gen/generate generate-password-logins))
+(comment (gen/generate generate-mt-sessions))
