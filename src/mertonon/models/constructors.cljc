@@ -29,11 +29,13 @@
     :password-digest     password-digest
     :recovery-token-hash recovery-token-hash}))
 
-;;;;
-;;;;
-;;;;
-(defn ->MtSession [uuid some crap]
-  {some  crap})
+(defn ->MtSession [uuid mt-user-uuid expires-at value]
+  {:uuid         uuid
+   :mt-user-uuid mt-user-uuid
+   :version      0
+   :created-at   (t/instant)
+   :expires-at   expires-at
+   :value        value})
 
 ;; ---
 ;; Network models
