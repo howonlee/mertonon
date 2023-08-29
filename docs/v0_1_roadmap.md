@@ -14,7 +14,6 @@
 - [ ] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
 - [ ] Session generation, joined to user/password...
 - [ ] User impl (api)
-
 - [ ] User/password auth validations
 - [ ] User/password auth validations test
 - [ ] Username/password auth impl api (api) + session impl
