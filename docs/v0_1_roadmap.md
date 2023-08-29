@@ -12,12 +12,11 @@
 - [x] User/password auth generation, joined to user gen
 
 - [ ] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
+- [ ] Session model
 - [ ] Session generation, joined to user/password...
-- [ ] User impl (api)
-- [ ] User/password auth validations
-- [ ] User/password auth validations test
-- [ ] Username/password auth impl api (api) + session impl
-- [ ] Session impl
+- [ ] User api - route, endpoint, see if it's anything more than that
+- [ ] User/password api - route, endpoint, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
+- [ ] User api test, User/password api test
 
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
 - [ ] Testing - add the new tables to api tests
