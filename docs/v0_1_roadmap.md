@@ -16,6 +16,7 @@
 - [ ] Session generation, joined to user/password...
 
 - [ ] User api - route, endpoint with join creation, test, see if it's anything more than that
+- [ ] Logins - actually implement the bits we left undone
 - [ ] Login api - route, endpoint, test, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
 - [ ] Testing - fill out the properties thought of for password

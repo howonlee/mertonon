@@ -13,12 +13,8 @@
   (scrypt/encrypt unhashed-password))
 
 (defn password-check
-  [password-login to-check]
-  ;;;;
-  ;;;;
-  ;;;;
-  ;;;;
-  nil)
+  [to-check password-login]
+  (scrypt/check to-check password-login)
 
 (defn check-password-is-digest
   "Don't actually rely on this, this is just convenience"
