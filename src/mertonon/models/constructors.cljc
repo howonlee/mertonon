@@ -34,6 +34,7 @@
    :mt-user-uuid mt-user-uuid
    :version      0
    :created-at   (t/instant)
+   :updated-at (t/instant)
    :expires-at   expires-at
    :value        value})
 

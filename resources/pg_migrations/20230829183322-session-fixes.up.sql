@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS mertonon.mt_session(
   mt_user_uuid uuid REFERENCES mertonon.mt_user(uuid) ON DELETE CASCADE,
   version integer NOT NULL,
   created_at timestamptz NOT NULL,
+  updated_at timestamptz NOT NULL,
   expires_at timestamptz NOT NULL,
   value text NOT NULL
 );

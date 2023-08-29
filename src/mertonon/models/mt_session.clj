@@ -24,7 +24,7 @@
       (mutils/default-row->member)
       (update :value io/maybe-json-decode)))
 
-(def columns [:uuid :mt-user-uuid :version :created-at :expires-at :value])
+(def columns [:uuid :mt-user-uuid :version :created-at :updated-at :expires-at :value])
 (def table [:mertonon.mt_session])
 (def query-info {:columns     columns
                  :table       table
