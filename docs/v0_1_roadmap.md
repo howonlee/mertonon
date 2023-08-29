@@ -14,11 +14,10 @@
 - [ ] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
 - [ ] Session model + model test
 - [ ] Session generation, joined to user/password...
+
 - [ ] User api - route, endpoint with join creation, test, see if it's anything more than that
 - [ ] Login api - route, endpoint, test, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
-
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
-- [ ] Testing - add the new tables to api tests
 - [ ] Testing - fill out the properties thought of for password
 - [ ] Testing - fill out the properties thought of for session
 
