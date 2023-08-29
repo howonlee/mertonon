@@ -10,36 +10,36 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 - Error screens
 - Use banlist for password
 - Probabilistic semantics (follow Kolmogorov's first properly)
-- Weight thing in logspace (conform to fitt's), and with a value enter thing
 - Model updates lol, going through to API and views
 
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
 - Figure out CLA / FLA / whatever we're going to use situation
+- Weight thing in logspace (conform to fitt's), and with a value enter thing
 - Whack the gotta-double-click-for-weights problem
+- Multiplicative weight updating
+- Weight painter and modal changing
 - Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
 - Check for sign errors harder
 - Attack flaky consonances
 - SSL - serve SSL from builtin server
 - SSL - JDBC conn to db w/ ssl
+- Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
 - Dockerize so the nice video we paid for isnt a lie lol
-- Switchable server thing
 - EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
+- Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
 - Data in validation failures so you could do bounce-off-the-guardrails usage
 - RBAC and RBAC logic DSL (material portions enterprise, but materials portions also not). We may have to fight it out all the way to ABAC or ReBAC stuff too...
 - Joined complex inserts for default cobj, weight, etc to avoid blank page problems
 - True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
-- Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable. Deprecate the label columns everywhere and do migration to this
+- Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable
 - Url endpoint refactor to make demo / nondemo basically actually transparentish
 - Less half-assed logo
 - Overall views / executive summary views / full grad views
 - Bookmarks
 - Mutation dates, faster forward pass things
 - Vendorize fontawesome - this will make things airgappable, hopefully
-- Other usage docs (explanations, hidden centers, command / participative budgeting)
-- Obnoxious amount of time clicking around
 - Minimap-like thing
 - Ordinary operation DSL
-- Disturbingly general notes lang
 - Privacy policy
 - Whack the intermittent group-by-dependent-uuid compilation problem
 - Explicit and compact FE modes. Property: they always gotta have the same links, just different display
@@ -51,28 +51,19 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 - Suck teeth about sigfigs a lot properly
 - Still think at least the roberts-yaida ratio things are useful-ish... stick em in. "we got data, but its on our local machine" - lol, just lol
 - Deal with giganto-spam property tests
-- Multiplicative weight updating
-- Weight painter and modal changing
 - Get the video done
 - Full loss views, full input views
 - Other KPI's
 - Password reset
-- Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
-- Stateful action testing, lol
 - Sidebar histories
 - Theory of value writeup
 - Theory of inequality writeup. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
 - Theory of class writeup
+- Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
 - EE build separation
-- Editing data, lol
 - Crontab for adjustments
-- Total SQLite backend, to be self-contained (rdbms-serverless in the SQLite style, not the AWS style)
 - Undo / redo + soft deletes (use archive tables)
 - Periodization of budget and learning system (cronjob for the gradients and some emailing, etc)
-- Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
-- Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
-- Stripe integration into Mertonon(for budgeting stuff)
-- EE: Whitelabelling
 
 - Cut alpha
 
@@ -80,9 +71,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
+- EE: Whitelabelling
 - Search
 - Clj-kondo in CI/CD
 - Third party plugin use docs and examples
+- Total SQLite backend, to be self-contained (rdbms-serverless in the SQLite style, not the AWS style)
+- Stateful action testing, lol
 
 - Integrations with CRMs, ERPs, HR management, billing and procurement platforms. I have a gigantic list. Some will be EE.
 - Full double-entry financial accounting section above and beyond the managerial responsibility accounting. Also differentiable, but also figure out how to reconcile the differentiability with ASC 606, GAAP and SOX compliance, among others. I don't think it can be considered absorption costing, so GAAP may be off the table entirely.
