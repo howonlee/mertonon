@@ -12,7 +12,7 @@
 - [x] User/password auth generation, joined to user gen
 
 - [x] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
-- [ ] Session model + generate
+- [x] Session model + generate
 - [ ] Session model test
 - [ ] User api - route, test, see if it's anything more than that
 - [ ] Password login api - route, test, see if it's anything more than that

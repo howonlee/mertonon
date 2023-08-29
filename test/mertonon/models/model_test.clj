@@ -20,7 +20,7 @@
    :mertonon.weightsets :mertonon.weights
    :mertonon.losses :mertonon.inputs :mertonon.entries
 
-   :mertonon.mt-users :mertonon.password-logins])
+   :mertonon.mt-users :mertonon.password-logins :mertonon.mt-sessions])
 
 (defn test-inp [table generates]
   (merge (reg/table->model table)
