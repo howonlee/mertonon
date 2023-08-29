@@ -9,8 +9,7 @@
 
 (defn canonicalize-grid [grid]
   (-> (mutils/default-canonicalize grid)
-      (update :optimizer-type keyword)
-      (update :version io/maybe-parse-int)))
+      (update :optimizer-type keyword)))
 
 (defn member->row [member]
   (-> (canonicalize-grid member)

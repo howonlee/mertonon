@@ -29,7 +29,8 @@
       (maybe-update :layer-uuid uutils/uuid)
       (maybe-update :src-layer-uuid uutils/uuid)
       (maybe-update :tgt-layer-uuid uutils/uuid)
-      (maybe-update :weightset-uuid uutils/uuid)))
+      (maybe-update :weightset-uuid uutils/uuid)
+      (maybe-update :mt-user-uuid uutils/uuid)))
 
 (defn default-member->row [member]
   ;; No-op for now, will place things here when we need to
