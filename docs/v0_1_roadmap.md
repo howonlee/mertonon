@@ -14,7 +14,7 @@
 - [x] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
 - [x] Session model + generate
 - [x] Session model test
-- [ ] User api - route, test, see if it's anything more than that
+- [x] User api - route, test, see if it's anything more than that
 - [ ] Password login CRUD api (so not logging in, which creates a session, just the CRUD) - route, test, see if it's anything more than that
 - [ ] Joined creation API
 
