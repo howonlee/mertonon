@@ -7,7 +7,7 @@
             [mertonon.models.constructors :as mtc]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as pwd-model]
-            ))
+            [tick.core :as t]))
 
 (defn generate-mt-users*
   [{:keys [name-type] :as params}]
@@ -43,12 +43,11 @@
   [{:keys [name-type] :as params}]
   (gen/let [password-logins (generate-password-logins* params)
             uuids           (gen/vector gen/uuid (->> password-logins :mt-users count))
-            ;;;;
-            ;;;;
-            ;;;;
-            expires-ats     (gen/vector small pos int some crap)]
-    ;; value is mt-user hashes...
-  nil)
+            ;;;; not the expires-at, the delta we add to get the expires-ats
+            expirations     (gen/vector small pos int some crap)]
+    (let [curr-time (t/instant)]
+      ;; value is mt-user hashes...
+      nil)))
 
 (def generate-mt-sessions (generate-mt-sessions* net-params/test-gen-params))
 
