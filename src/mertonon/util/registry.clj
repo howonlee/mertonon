@@ -4,7 +4,7 @@
             [mertonon.autodiff.forward-ops :as forward-ops]
             [mertonon.autodiff.reverse-ops :as ops]
             [mertonon.generators.aug-net :as aug-net-gen]
-            [mertonon.generators.mt-user :as mt-user-gen]
+            [mertonon.generators.authn :as authn-gen]
             [mertonon.generators.net :as net-gen]
             [mertonon.models.grid :as grid-model]
             [mertonon.models.layer :as layer-model]
@@ -17,7 +17,9 @@
 
             [mertonon.models.health-check :as health-check-model]
             [mertonon.models.mt-user :as mt-user-model]
-            [mertonon.models.password-login :as password-login-model]))
+            [mertonon.models.password-login :as password-login-model]
+            [mertonon.models.mt-session :as mt-session-model]
+            ))
 
 ;; TODO: enforce the registry having this stuff by tests
 ;; I don't like the obvious move of auto-introspecting stuff at runtime because the poor locality of it
@@ -72,7 +74,7 @@
 
              :mertonon.health-checks
 
-             :mertonon.mt-users :mertonon.password-logins])
+             :mertonon.mt-users :mertonon.password-logins :mertonon.mt-sessions])
 
 (def net-tables
   "Tables which participate in the neural net portion of Mertonon. Used for testing"
@@ -90,7 +92,8 @@
                        :entry          :mertonon.entries
                        :health_check   :mertonon.health-checks
                        :mt_user        :mertonon.mt-users
-                       :password_login :mertonon.password-logins})
+                       :password_login :mertonon.password-logins
+                       :mt_session     :mertonon.mt-sessions})
 
 (def table->model {:mertonon.grids           grid-model/model
                    :mertonon.layers          layer-model/model
@@ -105,6 +108,7 @@
 
                    :mertonon.mt-users        mt-user-model/model
                    :mertonon.password-logins password-login-model/model
+                   :mertonon.mt-sessions     mt-session-model/model
                    })
 
 (def table->generator
@@ -118,8 +122,9 @@
    :mertonon.inputs          net-gen/generate-dag-inputs
    :mertonon.entries         aug-net-gen/merged-dag-net-and-entries
 
-   :mertonon.mt-users        mt-user-gen/generate-mt-users
-   :mertonon.password-logins mt-user-gen/generate-password-logins})
+   :mertonon.mt-users        authn-gen/generate-mt-users
+   :mertonon.password-logins authn-gen/generate-password-logins
+   :mertonon.mt-sessions     authn-gen/generate-mt-sessions})
 
 ;; child-table child-table-col parent-table-col
 ;; change if we need to actually have parent table name specifically ever
@@ -144,4 +149,6 @@
                  [:mertonon.entry :mertonon.entry.cobj_uuid
                   :mertonon.cost_object :mertonon.cost_object.uuid]
                  [:mertonon.password_login :mertonon.password_login.mt_user_uuid
+                  :mertonon.mt_user :mertonon.mt_user.uuid]
+                 [:mertonon.mt_session :mertonon.mt_session.mt_user_uuid
                   :mertonon.mt_user :mertonon.mt_user.uuid]])

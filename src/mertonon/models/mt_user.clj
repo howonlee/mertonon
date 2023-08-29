@@ -32,8 +32,8 @@
 (def model
   (q/default-model query-info))
 
-(comment (let [req    (require '[mertonon.generators.mt-user :as mt-user-gen])
-               member (-> (gen/generate mt-user-gen/generate-grid)
+(comment (let [req    (require '[mertonon.generators.authn :as authn-gen])
+               member (-> (gen/generate authn-gen/generate-grid)
                           :mertonon.mt-users
                           first)]
            (row->member (member->row member))))

@@ -11,20 +11,17 @@
 - [x] Testing - figure out properties for real for user/password
 - [x] User/password auth generation, joined to user gen
 
-- [ ] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
-- [ ] Session generation, joined to user/password...
-- [ ] User impl (api)
+- [x] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
+- [x] Session model + generate
+- [x] Session model test
+- [x] User api - route, test, see if it's anything more than that
+- [x] Password login CRUD api (so not logging in, which creates a session, just the CRUD) - route, test, see if it's anything more than that
 
-- [ ] User/password auth validations
-- [ ] User/password auth validations test
-- [ ] Username/password auth impl api (api) + session impl
-- [ ] Session impl
-
-- [ ] Some kind of middlingly durable settings db thing... maybe with table
-- [ ] Testing - add the new tables to api tests
+- [ ] Login post api - route, endpoint, test, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
 - [ ] Testing - fill out the properties thought of for password
 - [ ] Testing - fill out the properties thought of for session
 
+- [ ] One from the simple list
 - [ ] Dev diary
 - [ ] Changelog
 - [ ] Manual clicking around a bit

@@ -20,7 +20,9 @@
   "Order is linearized version of DAG implied by fkeys.
   Better not have cycles in our fkey dependencies!"
   [:mertonon.grids :mertonon.layers :mertonon.cost-objects :mertonon.entries
-   :mertonon.weightsets :mertonon.weights :mertonon.inputs :mertonon.losses])
+   :mertonon.weightsets :mertonon.weights :mertonon.inputs :mertonon.losses
+
+   :mertonon.mt-users :mertonon.password-logins])
 
 (def tables-under-test
   "Mess with this when you have bugs localized to one model"
@@ -32,14 +34,16 @@
   (is (= (count setup-tables) (count tables-under-test))))
 
 (def endpoints-under-test
-  {:mertonon.grids        "/api/v1/grid/"
-   :mertonon.layers       "/api/v1/layer/"
-   :mertonon.cost-objects "/api/v1/cost_object/"
-   :mertonon.entries      "/api/v1/entry/"
-   :mertonon.weightsets   "/api/v1/weightset/"
-   :mertonon.weights      "/api/v1/weight/"
-   :mertonon.losses       "/api/v1/loss/"
-   :mertonon.inputs       "/api/v1/input/"})
+  {:mertonon.grids           "/api/v1/grid/"
+   :mertonon.layers          "/api/v1/layer/"
+   :mertonon.cost-objects    "/api/v1/cost_object/"
+   :mertonon.entries         "/api/v1/entry/"
+   :mertonon.weightsets      "/api/v1/weightset/"
+   :mertonon.weights         "/api/v1/weight/"
+   :mertonon.losses          "/api/v1/loss/"
+   :mertonon.inputs          "/api/v1/input/"
+   :mertonon.mt-users        "/api/v1/mt_user/"
+   :mertonon.password-logins "/api/v1/password_login/"})
 
 (defn encode-to-stream [inp]
   (io/input-stream (.getBytes (json/write-str inp))))

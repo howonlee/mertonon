@@ -1,5 +1,5 @@
-(ns mertonon.generators.mt-user
-  "Net generation for both testing and demo purposes"
+(ns mertonon.generators.authn
+  "Mertonon user, login, other authn-related generates"
   (:require [clojure.string :as str]
             [clojure.test.check.generators :as gen]
             [mertonon.generators.data :as gen-data]
@@ -7,7 +7,7 @@
             [mertonon.models.constructors :as mtc]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as pwd-model]
-            ))
+            [tick.core :as t]))
 
 (defn generate-mt-users*
   [{:keys [name-type] :as params}]
@@ -39,4 +39,22 @@
 
 (def generate-password-logins (generate-password-logins* net-params/test-gen-params))
 
-(comment (gen/generate generate-password-logins))
+(defn generate-mt-sessions*
+  [{:keys [name-type] :as params}]
+  (gen/let [password-logins (generate-password-logins* params)
+            uuids           (gen/vector gen/uuid (->> password-logins :mt-users count))
+            ;;;; not the expires-at, the delta we add to get the expires-ats
+            expirations     (gen/vector gen/nat (->> password-logins :mt-users count))]
+    (let [curr-time     (t/instant)
+          mt-user->sess (fn [idx mt-user]
+                          (mtc/->MtSession
+                            (nth uuids idx)
+                            (:uuid mt-user)
+                            (t/>> curr-time (t/new-duration (nth expirations idx) :minutes))
+                            mt-user))
+          mt-sessions (vec (map-indexed mt-user->sess (:mt-users password-logins)))]
+      (assoc password-logins :mt-sessions mt-sessions))))
+
+(def generate-mt-sessions (generate-mt-sessions* net-params/test-gen-params))
+
+(comment (gen/generate generate-mt-sessions))

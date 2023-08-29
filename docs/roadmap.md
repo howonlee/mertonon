@@ -2,77 +2,32 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
-- Less woopzoopy woopleboopy and more cutthroat politics example
-- User and login FE
-- FE testing - set some FE testing up
-- Completely trivial authz (admin-only authz)
-- Non-quarter-assed CI/CD
-- Error screens
-- Use banlist for password
-- Probabilistic semantics (follow Kolmogorov's first properly)
-- Weight thing in logspace (conform to fitt's), and with a value enter thing
-- Model updates lol, going through to API and views
+Also look at small tasks roadmap
 
-- Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
-- Figure out CLA / FLA / whatever we're going to use situation
-- Whack the gotta-double-click-for-weights problem
-- Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
-- Check for sign errors harder
-- Attack flaky consonances
-- SSL - serve SSL from builtin server
-- SSL - JDBC conn to db w/ ssl
-- Dockerize so the nice video we paid for isnt a lie lol
-- Switchable server thing
-- EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
-- Data in validation failures so you could do bounce-off-the-guardrails usage
-- RBAC and RBAC logic DSL (material portions enterprise, but materials portions also not). We may have to fight it out all the way to ABAC or ReBAC stuff too...
-- Joined complex inserts for default cobj, weight, etc to avoid blank page problems
-- True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
-- Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable. Deprecate the label columns everywhere and do migration to this
-- Url endpoint refactor to make demo / nondemo basically actually transparentish
-- Less half-assed logo
-- Overall views / executive summary views / full grad views
-- Bookmarks
-- Mutation dates, faster forward pass things
-- Vendorize fontawesome - this will make things airgappable, hopefully
-- Other usage docs (explanations, hidden centers, command / participative budgeting)
-- Obnoxious amount of time clicking around
-- Minimap-like thing
-- Ordinary operation DSL
-- Disturbingly general notes lang
-- Privacy policy
-- Whack the intermittent group-by-dependent-uuid compilation problem
-- Explicit and compact FE modes. Property: they always gotta have the same links, just different display
-- Validation test properties... think them up. Not properties to validate, but properties to test the validation code. Quis custodiet ipsos custodes?
-- BE validations
-- Mass operations as prelude for FE testing (duplicate implementation property)
-- FE testing
-- Become nuts about currency again
-- Suck teeth about sigfigs a lot properly
-- Still think at least the roberts-yaida ratio things are useful-ish... stick em in. "we got data, but its on our local machine" - lol, just lol
-- Deal with giganto-spam property tests
-- Multiplicative weight updating
-- Weight painter and modal changing
-- Get the video done
-- Full loss views, full input views
-- Other KPI's
+- Less woopzoopy woopleboopy and more cutthroat politics example. Parody something? Excess drama?
+- Non-quarter-assed CI/CD
+- BE validations - make the authn stuff actually yell if trivial stuff doesn't hold, and test it...
+- FE testing - set some FE testing up
+- User and login FE
+- Completely trivial authz (admin-only authz)
+- Model updates lol, going through to API and views
+- Email integration (as first integration)
 - Password reset
-- Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
-- Stateful action testing, lol
-- Sidebar histories
-- Theory of value writeup
-- Theory of inequality writeup. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
-- Theory of class writeup
-- EE build separation
-- Editing data, lol
-- Crontab for adjustments
-- Total SQLite backend, to be self-contained (rdbms-serverless in the SQLite style, not the AWS style)
-- Undo / redo + soft deletes (use archive tables)
-- Periodization of budget and learning system (cronjob for the gradients and some emailing, etc)
-- Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
-- Stripe integration into Mertonon(for budgeting stuff)
-- EE: Whitelabelling
+- Bookmarks
+- Weight painter and modal changing
+- EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
+- RBAC and RBAC logic DSL (material portions enterprise, but materials portions also not). We may have to fight it out all the way to ABAC or ReBAC stuff too...
+- Mass operations in FE
+- True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
+- Overall views / executive summary views / full grad views
+- Faster forward pass so you dont have to kick off every time
+- Get the video done
+- Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
+- Install scheduler bit
+- Crontab for adjustments
+- Theory of value writeup - mark 1
+- Theory of inequality writeup - mark 1. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
 
 - Cut alpha
 
@@ -80,9 +35,27 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
+- Full loss views, full input views
+- Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
+- Data in validation failures which are currently keyword-based so you could do bounce-off-the-guardrails usage
+- Other KPI's
+- Url endpoint refactor to make demo / nondemo basically actually transparentish
+- Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable
+- Currencies
+- Explicit and compact FE modes. Property: they always gotta have the same links, just different display
+- Ordinary operation DSL
+- Deal with giganto-spam property tests
+- Undo / redo + soft deletes (use archive tables)
+- Sidebar histories
+- EE build separation
+- EE: Whitelabelling
+- Minimap-like thing
+- Theory of class writeup
 - Search
 - Clj-kondo in CI/CD
 - Third party plugin use docs and examples
+- Total SQLite backend, to be self-contained (rdbms-serverless in the SQLite style, not the AWS style)
+- Stateful action testing, lol
 
 - Integrations with CRMs, ERPs, HR management, billing and procurement platforms. I have a gigantic list. Some will be EE.
 - Full double-entry financial accounting section above and beyond the managerial responsibility accounting. Also differentiable, but also figure out how to reconcile the differentiability with ASC 606, GAAP and SOX compliance, among others. I don't think it can be considered absorption costing, so GAAP may be off the table entirely.

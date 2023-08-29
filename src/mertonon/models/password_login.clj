@@ -13,25 +13,16 @@
   (scrypt/encrypt unhashed-password))
 
 (defn password-check
-  [password-login to-check]
-  ;;;;
-  ;;;;
-  ;;;;
-  ;;;;
-  nil)
+  [to-check password-login]
+  (scrypt/check to-check password-login))
 
 (defn check-password-is-digest
   "Don't actually rely on this, this is just convenience"
   [{:keys [password-digest] :as password-login}]
-  ;;;;
-  ;;;;
-  ;;;;
-  nil)
+  (clojure.string/starts-with? password-digest "$s0$"))
 
 (defn canonicalize-password-login [password-login]
   (-> (mutils/default-canonicalize password-login)
-      ;; (check-password-is-digest)
-      ;; Only want password digests
       (dissoc :password)))
 
 (defn member->row [member]
