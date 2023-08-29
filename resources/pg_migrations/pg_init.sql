@@ -126,6 +126,7 @@ CREATE TABLE IF NOT EXISTS mertonon.mt_user (
 );
 CREATE INDEX IF NOT EXISTS mt_user_uuid ON mertonon.mt_user(uuid);
 
+---- Deprecated August 29
 CREATE TABLE IF NOT EXISTS mertonon.session_store (
   session_id VARCHAR(36) PRIMARY KEY, -- not uuid because we're using someone else's jdbc store
   idle_timeout BIGINT,

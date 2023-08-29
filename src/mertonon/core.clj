@@ -57,3 +57,6 @@
 (comment (reset-all))
 
 (comment (tn/refresh))
+
+(comment (migratus/create migrations/config "session-fixes"))
+
