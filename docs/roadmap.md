@@ -6,8 +6,8 @@ Also look at small tasks roadmap
 
 - Less woopzoopy woopleboopy and more cutthroat politics example. Parody something? Excess drama?
 - Non-quarter-assed CI/CD
+- BE validations - make the authn stuff actually yell if trivial stuff doesn't hold, and test it...
 - FE testing - set some FE testing up
-- BE validations - lots of the authn stuff
 - User and login FE
 - Completely trivial authz (admin-only authz)
 - Model updates lol, going through to API and views

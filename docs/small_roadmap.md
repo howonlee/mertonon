@@ -2,6 +2,7 @@ Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
 - Error screens
+- Some kind of middlingly durable settings db thing... maybe with table
 - Use banlist for password
 - Probabilistic semantics (follow Kolmogorov's first properly)
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
