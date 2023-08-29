@@ -43,4 +43,6 @@
   [{:keys [name-type] :as params}]
   nil)
 
+(def generate-mt-sessions (generate-mt-sessions* net-params/test-gen-params))
+
 (comment (gen/generate generate-password-logins))
