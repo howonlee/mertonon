@@ -4,7 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Less woopzoopy woopleboopy and more cutthroat politics example
+- Less woopzoopy woopleboopy and more cutthroat politics example. Parody something? Excess drama?
 - Non-quarter-assed CI/CD
 - FE testing - set some FE testing up
 - User and login FE
