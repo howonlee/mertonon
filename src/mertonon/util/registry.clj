@@ -4,7 +4,7 @@
             [mertonon.autodiff.forward-ops :as forward-ops]
             [mertonon.autodiff.reverse-ops :as ops]
             [mertonon.generators.aug-net :as aug-net-gen]
-            [mertonon.generators.mt-user :as mt-user-gen]
+            [mertonon.generators.authn :as authn-gen]
             [mertonon.generators.net :as net-gen]
             [mertonon.models.grid :as grid-model]
             [mertonon.models.layer :as layer-model]
@@ -122,9 +122,9 @@
    :mertonon.inputs          net-gen/generate-dag-inputs
    :mertonon.entries         aug-net-gen/merged-dag-net-and-entries
 
-   :mertonon.mt-users        mt-user-gen/generate-mt-users
-   :mertonon.password-logins mt-user-gen/generate-password-logins
-   :mertonon.mt-sessions     mt-user-gen/generate-mt-sessions})
+   :mertonon.mt-users        authn-gen/generate-mt-users
+   :mertonon.password-logins authn-gen/generate-password-logins
+   :mertonon.mt-sessions     authn-gen/generate-mt-sessions})
 
 ;; child-table child-table-col parent-table-col
 ;; change if we need to actually have parent table name specifically ever

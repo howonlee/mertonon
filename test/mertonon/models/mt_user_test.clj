@@ -6,7 +6,7 @@
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [mertonon.generators.aug-net :as aug-net-gen]
-            [mertonon.generators.mt-user :as mt-user-gen]
+            [mertonon.generators.authn :as authn-gen]
             [mertonon.generators.net :as net-gen]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.test-utils :as tu]
@@ -17,7 +17,7 @@
 ;; ---
 
 (def user-vec-gen
-  (gen/let [multiple-users (gen/vector mt-user-gen/generate-mt-users 2 10)]
+  (gen/let [multiple-users (gen/vector authn-gen/generate-mt-users 2 10)]
     (vec (for [member multiple-users]
            (->> member :mt-users first)))))
 

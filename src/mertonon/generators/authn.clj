@@ -1,4 +1,4 @@
-(ns mertonon.generators.mt-user
+(ns mertonon.generators.authn
   "Mertonon user, login, other authn-related generates"
   (:require [clojure.string :as str]
             [clojure.test.check.generators :as gen]

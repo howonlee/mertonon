@@ -14,8 +14,9 @@
 - [x] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
 - [ ] Session model + generate
 - [ ] Session model test
-- [ ] User api - route, endpoint with join creation, test, see if it's anything more than that
-- [ ] Password login api - route, endpoint with join creation, test, see if it's anything more than that
+- [ ] User api - route, test, see if it's anything more than that
+- [ ] Password login api - route, test, see if it's anything more than that
+- [ ] Joined creation API
 
 - [ ] Cryptorandom creation of uuids for session
 - [ ] Login post api - route, endpoint, test, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
