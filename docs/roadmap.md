@@ -7,6 +7,7 @@ Also look at small tasks roadmap
 - Less woopzoopy woopleboopy and more cutthroat politics example. Parody something? Excess drama?
 - Non-quarter-assed CI/CD
 - FE testing - set some FE testing up
+- BE validations - lots of the authn stuff
 - User and login FE
 - Completely trivial authz (admin-only authz)
 - Model updates lol, going through to API and views
@@ -34,7 +35,6 @@ Also look at small tasks roadmap
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
-- BE validations
 - Full loss views, full input views
 - Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
 - Data in validation failures which are currently keyword-based so you could do bounce-off-the-guardrails usage
