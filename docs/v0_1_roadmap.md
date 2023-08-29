@@ -21,6 +21,7 @@
 - [ ] Testing - fill out the properties thought of for password
 - [ ] Testing - fill out the properties thought of for session
 
+- [ ] One from the simple list
 - [ ] Dev diary
 - [ ] Changelog
 - [ ] Manual clicking around a bit
