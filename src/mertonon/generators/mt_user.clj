@@ -41,6 +41,13 @@
 
 (defn generate-mt-sessions*
   [{:keys [name-type] :as params}]
+  (gen/let [password-logins (generate-password-logins* params)
+            uuids           (gen/vector gen/uuid (->> password-logins :mt-users count))
+            ;;;;
+            ;;;;
+            ;;;;
+            expires-ats     (gen/vector small pos int some crap)]
+    ;; value is mt-user hashes...
   nil)
 
 (def generate-mt-sessions (generate-mt-sessions* net-params/test-gen-params))
