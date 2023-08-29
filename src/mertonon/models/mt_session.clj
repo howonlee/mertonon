@@ -7,6 +7,7 @@
   Don't use FE uuid's for this one, folks"
   (:require [clojure.test.check.generators :as gen]
             [mertonon.models.utils :as mutils]
+            [mertonon.models.mt-user :as mt-user-model]
             [mertonon.util.io :as io]
             [mertonon.util.queries :as q]
             [tick.core :as t]))
@@ -22,7 +23,8 @@
 (defn row->member [row]
   (-> (canonicalize-mt-session row)
       (mutils/default-row->member)
-      (update :value io/maybe-json-decode)))
+      (update :value io/maybe-json-decode)
+      (update :value mt-user-model/row->member)))
 
 (def columns [:uuid :mt-user-uuid :version :created-at :updated-at :expires-at :value])
 (def table [:mertonon.mt_session])
