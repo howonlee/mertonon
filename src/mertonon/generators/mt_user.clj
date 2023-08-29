@@ -1,5 +1,5 @@
 (ns mertonon.generators.mt-user
-  "Net generation for both testing and demo purposes"
+  "Mertonon user, login, other authn-related generates"
   (:require [clojure.string :as str]
             [clojure.test.check.generators :as gen]
             [mertonon.generators.data :as gen-data]
@@ -41,5 +41,6 @@
 
 (defn generate-mt-sessions*
   [{:keys [name-type] :as params}]
+  nil)
 
 (comment (gen/generate generate-password-logins))

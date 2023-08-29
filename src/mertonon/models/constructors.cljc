@@ -29,6 +29,12 @@
     :password-digest     password-digest
     :recovery-token-hash recovery-token-hash}))
 
+;;;;
+;;;;
+;;;;
+(defn ->MtSession [uuid some crap]
+  {some  crap})
+
 ;; ---
 ;; Network models
 ;; ---

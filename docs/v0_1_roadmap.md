@@ -12,8 +12,8 @@
 - [x] User/password auth generation, joined to user gen
 
 - [x] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
-- [ ] Session model + model test
-- [ ] Session generation, joined to user/password...
+- [ ] Session model + generate
+- [ ] Session model test
 - [ ] User api - route, endpoint with join creation, test, see if it's anything more than that
 - [ ] Password login api - route, endpoint with join creation, test, see if it's anything more than that
 
