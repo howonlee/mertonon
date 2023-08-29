@@ -15,10 +15,9 @@
 - [x] Session model + generate
 - [x] Session model test
 - [ ] User api - route, test, see if it's anything more than that
-- [ ] Password login api - route, test, see if it's anything more than that
+- [ ] Password login CRUD api (so not logging in, which creates a session, just the CRUD) - route, test, see if it's anything more than that
 - [ ] Joined creation API
 
-- [ ] Cryptorandom creation of uuids for session
 - [ ] Login post api - route, endpoint, test, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
 - [ ] Testing - fill out the properties thought of for password
