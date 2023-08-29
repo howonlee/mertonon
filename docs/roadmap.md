@@ -10,42 +10,29 @@ Also look at small tasks roadmap
 - Completely trivial authz (admin-only authz)
 - Non-quarter-assed CI/CD
 - Model updates lol, going through to API and views
+- Email integration (as first integration)
+- Password reset
 
-- Weight painter and modal changing
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
+- Weight painter and modal changing
 - EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
 - Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
 - Data in validation failures so you could do bounce-off-the-guardrails usage
 - RBAC and RBAC logic DSL (material portions enterprise, but materials portions also not). We may have to fight it out all the way to ABAC or ReBAC stuff too...
 - True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
-- Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable
-- Url endpoint refactor to make demo / nondemo basically actually transparentish
 - Overall views / executive summary views / full grad views
 - Bookmarks
 - Faster forward pass so you dont have to kick off every time
-- Minimap-like thing
-- Ordinary operation DSL
-- Explicit and compact FE modes. Property: they always gotta have the same links, just different display
 - BE validations
-- Mass operations as prelude for FE testing (duplicate implementation property)
-- FE testing
-- Become nuts about currency again
-- Suck teeth about sigfigs a lot properly
-- Still think at least the roberts-yaida ratio things are useful-ish... stick em in. "we got data, but its on our local machine" - lol, just lol
-- Deal with giganto-spam property tests
+- Mass operations in FE
 - Get the video done
 - Full loss views, full input views
 - Other KPI's
-- Password reset
-- Sidebar histories
 - Theory of value writeup
 - Theory of inequality writeup. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
-- Theory of class writeup
 - Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
-- EE build separation
+- Install scheduler bit
 - Crontab for adjustments
-- Undo / redo + soft deletes (use archive tables)
-- Periodization of budget and learning system (cronjob for the gradients and some emailing, etc)
 
 - Cut alpha
 
@@ -53,7 +40,18 @@ Also look at small tasks roadmap
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
+- Url endpoint refactor to make demo / nondemo basically actually transparentish
+- Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable
+- Currencies
+- Explicit and compact FE modes. Property: they always gotta have the same links, just different display
+- Ordinary operation DSL
+- Deal with giganto-spam property tests
+- Undo / redo + soft deletes (use archive tables)
+- Sidebar histories
+- EE build separation
 - EE: Whitelabelling
+- Minimap-like thing
+- Theory of class writeup
 - Search
 - Clj-kondo in CI/CD
 - Third party plugin use docs and examples
