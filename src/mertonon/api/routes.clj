@@ -10,6 +10,7 @@
             [mertonon.api.layer :as api-layer]
             [mertonon.api.loss :as api-loss]
             [mertonon.api.mt-user :as api-mt-user]
+            [mertonon.api.password-login :as api-password-login]
             [mertonon.api.weight :as api-weight]
             [mertonon.api.weightset :as api-weightset]
             ))
@@ -26,5 +27,6 @@
    (into ["/layer"] (api-layer/routes))
    (into ["/loss"] (api-loss/routes))
    (into ["/mt_user"] (api-mt-user/routes))
+   (into ["/password_login"] (api-password-login/routes))
    (into ["/weightset"] (api-weightset/routes))
    (into ["/weight"] (api-weight/routes))])
