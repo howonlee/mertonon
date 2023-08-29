@@ -39,4 +39,7 @@
 
 (def generate-password-logins (generate-password-logins* net-params/test-gen-params))
 
+(defn generate-mt-sessions*
+  [{:keys [name-type] :as params}]
+
 (comment (gen/generate generate-password-logins))

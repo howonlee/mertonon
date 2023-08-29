@@ -1,6 +1,10 @@
 (ns mertonon.models.mt-session
   "A login session of Mertonon
-  There are gonna be pretty slow until we have redis integration"
+  There are gonna be pretty slow until we have redis integration
+
+  UUID pkey being useful for session id depends upon Java implementation detail
+  where java.util.UUID/randomUUID() generates from CSPRNG.
+  Don't use FE uuid's for this one, folks"
   (:require [clojure.test.check.generators :as gen]
             [mertonon.models.utils :as mutils]
             [mertonon.util.io :as io]

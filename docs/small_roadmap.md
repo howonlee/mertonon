@@ -13,6 +13,7 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
 - Check for sign errors harder
 - Attack flaky consonances
+- Registry accuracy enforcement with tests
 - SSL - serve SSL from builtin server
 - SSL - JDBC conn to db w/ ssl
 - Dockerize so the nice video we paid for isnt a lie lol

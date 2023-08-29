@@ -17,6 +17,7 @@
 - [ ] User api - route, endpoint with join creation, test, see if it's anything more than that
 - [ ] Password login api - route, endpoint with join creation, test, see if it's anything more than that
 
+- [ ] Cryptorandom creation of uuids for session
 - [ ] Login post api - route, endpoint, test, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
 - [ ] Some kind of middlingly durable settings db thing... maybe with table
 - [ ] Testing - fill out the properties thought of for password
