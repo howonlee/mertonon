@@ -2,48 +2,30 @@
 
 Community edition unless noted otherwise or we have a fit of pique or something. The vast majority will be CE, is what I'm saying, basically.
 
+Also look at small tasks roadmap
+
 - Less woopzoopy woopleboopy and more cutthroat politics example
 - FE testing - set some FE testing up
 - User and login FE
 - Completely trivial authz (admin-only authz)
 - Non-quarter-assed CI/CD
-- Error screens
-- Use banlist for password
-- Probabilistic semantics (follow Kolmogorov's first properly)
 - Model updates lol, going through to API and views
 
-- Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
-- Figure out CLA / FLA / whatever we're going to use situation
-- Weight thing in logspace (conform to fitt's), and with a value enter thing
-- Whack the gotta-double-click-for-weights problem
-- Multiplicative weight updating
 - Weight painter and modal changing
-- Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
-- Check for sign errors harder
-- Attack flaky consonances
-- SSL - serve SSL from builtin server
-- SSL - JDBC conn to db w/ ssl
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
-- Dockerize so the nice video we paid for isnt a lie lol
 - EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
 - Cobj and weight histories, maybe intertwined with the general auditing, maybe not. With generates and all...
 - Data in validation failures so you could do bounce-off-the-guardrails usage
 - RBAC and RBAC logic DSL (material portions enterprise, but materials portions also not). We may have to fight it out all the way to ABAC or ReBAC stuff too...
-- Joined complex inserts for default cobj, weight, etc to avoid blank page problems
 - True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
 - Admit the tyranny of the notes thing and do a notes / documents / form state machine DSL that's like, queryable
 - Url endpoint refactor to make demo / nondemo basically actually transparentish
-- Less half-assed logo
 - Overall views / executive summary views / full grad views
 - Bookmarks
-- Mutation dates, faster forward pass things
-- Vendorize fontawesome - this will make things airgappable, hopefully
+- Faster forward pass so you dont have to kick off every time
 - Minimap-like thing
 - Ordinary operation DSL
-- Privacy policy
-- Whack the intermittent group-by-dependent-uuid compilation problem
 - Explicit and compact FE modes. Property: they always gotta have the same links, just different display
-- Validation test properties... think them up. Not properties to validate, but properties to test the validation code. Quis custodiet ipsos custodes?
 - BE validations
 - Mass operations as prelude for FE testing (duplicate implementation property)
 - FE testing

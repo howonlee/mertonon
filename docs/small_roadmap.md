@@ -1,0 +1,23 @@
+Small tasks roadmap ("I could colorably do this in one day only")
+---
+
+- Error screens
+- Use banlist for password
+- Probabilistic semantics (follow Kolmogorov's first properly)
+- Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
+- Figure out CLA / FLA / whatever we're going to use situation
+- Weight thing in logspace (conform to fitt's), and with a value enter thing
+- Whack the gotta-double-click-for-weights problem
+- Multiplicative weight updating
+- Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
+- Check for sign errors harder
+- Attack flaky consonances
+- SSL - serve SSL from builtin server
+- SSL - JDBC conn to db w/ ssl
+- Dockerize so the nice video we paid for isnt a lie lol
+- Joined complex inserts for default cobj, weight, etc to avoid blank page problems
+- Less half-assed logo
+- Vendorize fontawesome - this will make things airgappable, hopefully
+- Privacy policy
+- Whack the intermittent group-by-dependent-uuid compilation problem
+- Validation test properties... think them up. Not properties to validate, but properties to test the validation code. Quis custodiet ipsos custodes?
