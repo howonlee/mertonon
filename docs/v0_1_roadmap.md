@@ -11,7 +11,7 @@
 - [x] Testing - figure out properties for real for user/password
 - [x] User/password auth generation, joined to user gen
 
-- [ ] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
+- [x] Do session table better - uuid col instead of session\_id, maybe a text col for session thing in preparation for cachingier bit
 - [ ] Session model + model test
 - [ ] Session generation, joined to user/password...
 
