@@ -17,8 +17,8 @@
 - [x] User api - route, test, see if it's anything more than that
 - [x] Password login CRUD api (so not logging in, which creates a session, just the CRUD) - route, test, see if it's anything more than that
 
-- [ ] Login post api - route, endpoint, creation endpoint, creates sessions, check the password with join - doesnt want to be w the other api tests because we create only
-- [ ] Login post tests
+- [ ] Session creation api - route, endpoint, creation endpoint, creates sessions, check the password with join - doesnt want to be w the other api tests because we create only
+- [ ] Session creation tests
 - [ ] Testing - fill out the properties thought of for password
 - [ ] One from the simple list
 
