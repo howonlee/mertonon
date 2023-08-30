@@ -13,8 +13,6 @@
 (defn do-login [m]
   ;; TODO: login attempt limits
   (let [body      (-> m :body-params uio/maybe-slurp uio/maybe-json-decode walk/keywordize-keys)
-
-        ;; check sql injection?
         user      ((mt-user-model/model :read-where-joined)
                    {:join-tables      [:mertonon.password_login]
                     :join-col-edges   [[:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]]
@@ -23,8 +21,8 @@
                                                                          :canonical-username)]
                     :raw-table->table registry/raw-table->table
                     :table->model     registry/table->model})
-        is-valid? (and (seq (:mertonon.mt-users user))
-                       (seq (:mertonon.password-logins user))
+        is-valid? (and (= (count (:mertonon.mt-users user)) 1)
+                       (= (count (:mertonon.password-logins user)) 1)
                        (password-login-model/password-check (:password body) (->> user :mertonon.password-logins first :password-digest)))]
     (if (not is-valid?)
       {:status 401 :body {:message "Login invalid somehow. Check the username and password."}}
