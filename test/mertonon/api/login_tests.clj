@@ -24,5 +24,10 @@
     []
     nil))
 
-(comment (let [curr-app (app-handler/app-handler)]
-           (post-login! {:username "bob dobbs" :password "flehblehwhleh"} curr-app)))
+(comment
+  (require '[mertonon.models.mt-user :as mt-user-model])
+  (require '[mertonon.models.constructors :as mtc])
+  (require '[mertonon.util.uuid :as uuuid])
+  ((mt-user-model/model :create-one!) (mtc/->MtUser some crap))
+  (let [curr-app (app-handler/app-handler)]
+    (post-login! {:username "bob dobbs" :password "flehblehwhleh"} curr-app)))

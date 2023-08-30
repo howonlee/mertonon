@@ -11,7 +11,6 @@
             [tick.core :as t]))
 
 (defn hash-password
-  "Idempotent"
   [unhashed-password]
   (scrypt/encrypt unhashed-password))
 
