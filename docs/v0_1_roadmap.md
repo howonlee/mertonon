@@ -21,6 +21,7 @@
 - [ ] Session creation tests
 - [ ] Testing - fill out the properties thought of for password
 - [ ] Whack the double-click-for-weight problem
+- [ ] Sketch out what to do wrt BE validations
 
 - [ ] Contact list
 - [ ] Dev diary

@@ -8,8 +8,8 @@ Also look at small tasks roadmap
 - Non-quarter-assed CI/CD
 - BE validations - make the authn stuff actually yell if trivial stuff doesn't hold, and test it...
 - FE testing - set some FE testing up
-- User and login FE
 - Completely trivial authz (admin-only authz)
+- User and login FE
 - Model updates lol, going through to API and views
 - Email integration (as first integration)
 - Password reset
