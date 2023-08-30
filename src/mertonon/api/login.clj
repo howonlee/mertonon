@@ -5,7 +5,7 @@
             [mertonon.util.uuid :as uutils]))
 
 (defn do-login [m]
-  (println (keys m))
+  (println (:body-params m))
   nil)
 
 (defn login-endpoint []
