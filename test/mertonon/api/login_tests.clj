@@ -14,9 +14,8 @@
 
 (defn post-login! [member curr-app]
   (let [endpoint    "/api/v1/login/"
-        res         (curr-app {:uri endpoint :request-method :post :body-params member})
-        processed   (api-tests/process-app-response res)]
-    processed))
+        res         (curr-app {:uri endpoint :request-method :post :body-params member})]
+    (api-tests/process-app-response res)))
 
 (defspec just-login-a-bunch
   100
