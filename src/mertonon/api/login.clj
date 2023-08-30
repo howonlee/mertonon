@@ -7,9 +7,13 @@
             [mertonon.util.uuid :as uutils]))
 
 (defn do-login [m]
-  (let [body   (-> m :body-params uio/maybe-slurp uio/maybe-json-decode walk/keywordize-keys)
-        printo (println body)]
-    nil))
+  (let [body      (-> m :body-params uio/maybe-slurp uio/maybe-json-decode walk/keywordize-keys)
+        user      (get where joined)
+        is-valid? some crap]
+    (if (not is-valid?)
+      some crap
+      (let [session-res create the session!]
+        {:status 200 :body {:session-uuid session-res}}))))
 
 (defn login-endpoint []
   {:post do-login

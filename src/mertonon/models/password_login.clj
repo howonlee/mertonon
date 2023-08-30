@@ -1,5 +1,7 @@
 (ns mertonon.models.password-login
-  "A password authentication for a user of mertonon"
+  "A password authentication for a user of mertonon.
+
+  Session-based password auth only at this time, we will suck our teeth a moderate amount if we get asked for JWT's"
   (:require [clojure.test.check.generators :as gen]
             [crypto.password.scrypt :as scrypt]
             [mertonon.models.utils :as mutils]
