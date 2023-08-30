@@ -33,7 +33,7 @@
         pwd-uuid     (uutils/uuid)
         pwd          "bleh mleh fleh"
         digest       (password-login-model/hash-password pwd)]
-    ((mt-user-model/model :create-one!) (mtc/->MtUser mt-user-uuid "bob@dobbs.com" "bob dobbs 2"))
+    ((mt-user-model/model :create-one!) (mtc/->MtUser mt-user-uuid ";DROP mt_user;--" ";drop mt_user;--"))
     ((password-login-model/model :create-one!) (mtc/->PasswordLogin pwd-uuid mt-user-uuid :default digest)))
   (let [curr-app (app-handler/app-handler)]
-    (post-login! {:username "bob dobbs 2" :password "bleh mleh fleh"} curr-app)))
+    (post-login! {:username ";DRop mt_user;--" :password "bleh mleh fleh"} curr-app)))

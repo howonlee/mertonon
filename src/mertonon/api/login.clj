@@ -18,10 +18,11 @@
         user      ((mt-user-model/model :read-where-joined)
                    {:join-tables      [:mertonon.password_login]
                     :join-col-edges   [[:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]]
-                    :where-clause     [:= :mertonon.mt_user.username (:username body)]
+                    :where-clause     [:= :mertonon.mt_user.username (-> body
+                                                                         mt-user-model/canonicalize-username
+                                                                         :canonical-username)]
                     :raw-table->table registry/raw-table->table
                     :table->model     registry/table->model})
-        printo    (println (seq (:mertonon.password-logins user)))
         is-valid? (and (seq (:mertonon.mt-users user))
                        (seq (:mertonon.password-logins user))
                        (password-login-model/password-check (:password body) (->> user :mertonon.password-logins first :password-digest)))]
