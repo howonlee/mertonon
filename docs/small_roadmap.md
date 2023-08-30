@@ -8,8 +8,8 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
 - Figure out CLA / FLA / whatever we're going to use situation
 - Weight thing in logspace (conform to fitt's), and with a value enter thing
-- Whack the gotta-double-click-for-weights problem
-- DB property: have a final\_state.sql that is propertied to agree with the migration list that is never used by migrations lol
+-
+DB property: have a final\_state.sql that is propertied to agree with the migration list that is never used by migrations lol
 - Multiplicative weight updating
 - Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
 - Check for sign errors harder

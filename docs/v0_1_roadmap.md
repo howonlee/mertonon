@@ -20,7 +20,7 @@
 - [ ] Session creation api - route, endpoint, creation endpoint, creates sessions, check the password with join - doesnt want to be w the other api tests because we create only
 - [ ] Session creation tests
 - [ ] Testing - fill out the properties thought of for password
-- [ ] One from the simple list
+- [ ] Whack the double-click-for-weight problem
 
 - [ ] Contact list
 - [ ] Dev diary
