@@ -1,7 +1,8 @@
 (ns mertonon.models.password-login
   "A password authentication for a user of mertonon.
 
-  Session-based password auth only at this time, we will suck our teeth a moderate amount if we get asked for JWT's"
+  Session-based password auth only at this time, we will suck our teeth a moderate amount if we get asked for JWT's.
+  Getting JWT to actually be secure is a pretty baroque exercise, is the problem"
   (:require [clojure.test.check.generators :as gen]
             [crypto.password.scrypt :as scrypt]
             [mertonon.models.utils :as mutils]
