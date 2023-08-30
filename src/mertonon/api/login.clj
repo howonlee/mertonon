@@ -7,11 +7,13 @@
             [mertonon.util.uuid :as uutils]))
 
 (defn do-login [m]
+  ;; TODO: login attempt limits
   (let [body      (-> m :body-params uio/maybe-slurp uio/maybe-json-decode walk/keywordize-keys)
         user      (get where joined)
         is-valid? some crap]
     (if (not is-valid?)
-      some crap
+      (let [wait! some crap]
+        nil)
       (let [session-res create the session!]
         {:status 200 :body {:session-uuid session-res}}))))
 
