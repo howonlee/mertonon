@@ -20,8 +20,13 @@
 (defspec just-login-a-bunch
   100
   (prop/for-all
-    []
-    nil))
+    [{:some crap} authn-gen/password-logins
+     some fake shit]
+    (tu/with-test-txn
+      (insert all that crap)
+      (post-login! good login)
+      (post-login! bad login 1)
+      (post-login! bad login 2))))
 
 (comment
   (require '[mertonon.models.mt-user :as mt-user-model])
