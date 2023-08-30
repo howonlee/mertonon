@@ -4,6 +4,10 @@
             [mertonon.api.util :as api-util]
             [mertonon.util.uuid :as uutils]))
 
+(defn do-login [m]
+  (println (keys m))
+  nil)
+
 (defn login-endpoint []
   {:post do-login
    :name ::login})

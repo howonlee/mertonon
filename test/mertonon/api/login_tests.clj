@@ -14,5 +14,7 @@
 (defspec just-login-a-bunch
   100
   (prop/for-all
-    [some crap]
+    []
     nil))
+
+(comment some crap)
