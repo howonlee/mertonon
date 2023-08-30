@@ -21,6 +21,7 @@
                     :where-clause     [:= :mertonon.mt_user.username (:username body)]
                     :raw-table->table registry/raw-table->table
                     :table->model     registry/table->model})
+        printo    (println user)
         is-valid? (password-login-model/password-check (:password body) (:password-digest user))]
     (if (not is-valid?)
       {:status 401 :body {:message "Login invalid somehow. Check the username and password."}}
