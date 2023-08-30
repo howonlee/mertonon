@@ -4,7 +4,7 @@
 
 <!-- video here when we do it -->
 
-[Mertonon](https://mertonon.com) is a neural network budget for organizations. Other budgeting tools help you make recordings of how you allocate resources in your organization. With Mertonon, you make a picture of your organization as a neural network and Mertonon itself will suggest global resource allocations based upon your local, human, political assessments of impact with respect to key performance indicators. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modern version suitable for capitalist or noncapitalist use by ordinary people.
+[Mertonon](https://mertonon.com) is a neural network economic planner for organizations. Budgeting tools help you make recordings of how you allocate resources in your organization. With Mertonon, you make a picture of your organization as a neural network and Mertonon itself will suggest global resource allocations based upon your local, human, political assessments of impact with respect to key performance indicators. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modern version suitable for capitalist or noncapitalist use by ordinary people.
 
 [Click here for installation and setup instructions.](docs/setup.md) Be advised that Mertonon is pre-alpha software: there are material known and unknown issues and missing essential features.
 
