@@ -7,9 +7,16 @@
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [clojure.walk :as walk]
+            [mertonon.api.api-tests :as api-tests]
             [mertonon.generators.authn :as authn-gen]
             [mertonon.server.handler :as app-handler]
             [mertonon.test-utils :as tu]))
+
+(defn post-login! [member curr-app]
+  (let [endpoint    "/api/v1/login/"
+        res         (curr-app {:uri endpoint :request-method :post :body-params member})
+        processed   (api-tests/process-app-response res)]
+    processed))
 
 (defspec just-login-a-bunch
   100
@@ -17,4 +24,5 @@
     []
     nil))
 
-(comment some crap)
+(comment (let [curr-app (app-handler/app-handler)]
+           (post-login! {} curr-app)))
