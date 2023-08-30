@@ -18,10 +18,8 @@
 - [x] Password login CRUD api (so not logging in, which creates a session, just the CRUD) - route, test, see if it's anything more than that
 
 - [ ] Session creation api - route, endpoint, creation endpoint, creates sessions, check the password with join - doesnt want to be w the other api tests because we create only
-- [ ] Yakshave ring session until it does something
 - [ ] Session creation tests - not the ordinary API tests
 - [ ] Sketch out what to do wrt BE validations
-- [ ] Session ring tests somehow - put forth the validation on/off test idea
 - [ ] Testing - fill out the properties thought of for password
 - [ ] Whack the double-click-for-weight problem
 
