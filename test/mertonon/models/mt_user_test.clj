@@ -9,6 +9,7 @@
             [mertonon.generators.authn :as authn-gen]
             [mertonon.generators.net :as net-gen]
             [mertonon.models.mt-user :as mt-user-model]
+            [mertonon.models.password-login :as password-login-model]
             [mertonon.test-utils :as tu]
             [mertonon.util.registry :as reg]))
 
@@ -38,9 +39,11 @@
 ;; Password login tests
 ;; ---
 
-;; (defspec password-is-digest
-;;   20
-;;   (prop/for-all [nil nil]
-;;                 nil))
+(defspec password-is-digest
+  ;; The problem with running scrypt in property tests is that scrypt is designed to be slow
+  3
+  (prop/for-all [password-login-gen authn-gen/generate-password-logins]
+                (let [{password-logins :password-logins} password-login-gen]
+                  (every? password-login-model/is-digest? password-logins))))
 
 (comment (run-tests))
