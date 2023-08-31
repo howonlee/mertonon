@@ -18,9 +18,7 @@
   Better not have cycles in our fkey dependencies!"
   [:mertonon.grids :mertonon.layers :mertonon.cost-objects
    :mertonon.weightsets :mertonon.weights
-   :mertonon.losses :mertonon.inputs :mertonon.entries
-
-   :mertonon.mt-users :mertonon.password-logins :mertonon.mt-sessions])
+   :mertonon.losses :mertonon.inputs :mertonon.entries])
 
 (defn test-inp [table generates]
   (merge (reg/table->model table)

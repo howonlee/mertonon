@@ -19,7 +19,7 @@
   (scrypt/check to-check password-login))
 
 (defn is-digest?
-  "Don't actually rely on this, this is just convenience"
+  "Don't actually rely on this, this is just convenience and for testing"
   [{:keys [password-digest] :as password-login}]
   (clojure.string/starts-with? password-digest "$s0$"))
 
