@@ -21,9 +21,10 @@
         user-q    ((mt-user-model/model :read-where-joined)
                    {:join-tables      [:mertonon.password_login]
                     :join-col-edges   [[:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]]
-                    :where-clause     [:= :mertonon.mt_user.username (-> body
-                                                                         mt-user-model/canonicalize-username
-                                                                         :canonical-username)]
+                    :where-clause     [:= :mertonon.mt_user.canonical_username
+                                       (-> body
+                                           mt-user-model/canonicalize-username
+                                           :canonical-username)]
                     :raw-table->table registry/raw-table->table
                     :table->model     registry/table->model})
         is-valid? (and (= (count (:mertonon.mt-users user-q)) 1)

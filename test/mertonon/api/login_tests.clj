@@ -32,9 +32,9 @@
             curr-app                          (app-handler/app-handler)
             payload                           {:username (-> mt-users first :canonical-username)
                                                :password (-> orig-passwords first)}
-            printo                            (clojure.pprint/pprint generated)
-            printo                            (println payload)
             good-login-res                    (post-login! payload curr-app)
+            printo                            (clojure.pprint/pprint payload)
+            printo                            (clojure.pprint/pprint good-login-res)
             ]
         ;; bad-password-res        (post-login! {:username (-> mt-users first :canonical_username)
         ;;                                       :password bad-password} curr-app)

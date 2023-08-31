@@ -28,7 +28,9 @@
 (defn generate-password-logins*
   [{:keys [name-type] :as params}]
   (gen/let [mt-users        (generate-mt-users* params)
-            orig-passwords  (gen/vector gen/string (-> mt-users :mt-users count))
+            orig-passwords  (gen/vector
+                              (gen/fmap clojure.string/join (gen/vector gen/char 1 20))
+                              (-> mt-users :mt-users count))
             uuids           (gen/vector gen/uuid (-> mt-users :mt-users count))]
     (let [digests         (mapv pwd-model/hash-password orig-passwords)
           password-logins (vec
@@ -61,4 +63,4 @@
 
 (def generate-mt-sessions (generate-mt-sessions* net-params/test-gen-params))
 
-(comment (gen/generate generate-mt-sessions))
+(comment (gen/generate generate-password-logins))
