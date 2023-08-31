@@ -22,7 +22,7 @@
 
 - [x] Session creation tests - not the ordinary API tests
 - [x] Testing - fill out the properties thought of for password
-- [ ] Whack the double-click-for-weight problem
+- [x] Whack the double-click-for-weight problem
 - [ ] Contact list
 - [ ] Dev diary
 - [ ] Changelog
