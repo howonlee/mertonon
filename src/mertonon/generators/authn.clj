@@ -11,17 +11,17 @@
 
 (defn generate-mt-users*
   [{:keys [name-type] :as params}]
-  (gen/let [mt-user-uuid     gen/uuid
-            mt-user-email    (gen-data/gen-mt-user-emails name-type)
-            mt-user-username (gen-data/gen-mt-user-usernames name-type)]
-    ;;;; vectors...
-    ;;;; vectors...
-    ;;;; vectors...
-    ;;;; vectors...
-    {:mt-users [(-> (mtc/->MtUser mt-user-uuid
-                              mt-user-email
-                              mt-user-username)
-                    mt-user-model/canonicalize-username)]}))
+  (gen/let [num-entries       (gen/choose 1 5)
+            mt-user-uuids     (gen/vector gen/uuid num-entries)
+            mt-user-emails    (gen/vector (gen-data/gen-mt-user-emails name-type) num-entries)
+            mt-user-usernames (gen/vector (gen-data/gen-mt-user-usernames name-type) num-entries)]
+    (let [vecs (map vector mt-user-uuids mt-user-emails mt-user-usernames)]
+      {:mt-users (mapv (fn [[mt-user-uuid mt-user-email mt-user-username]]
+                         (-> (mtc/->MtUser mt-user-uuid
+                                           mt-user-email
+                                           mt-user-username)
+                             (mt-user-model/canonicalize-username)))
+                       vecs)})))
 
 (def generate-mt-users (generate-mt-users* net-params/test-gen-params))
 
