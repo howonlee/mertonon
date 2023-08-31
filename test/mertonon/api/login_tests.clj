@@ -30,14 +30,16 @@
             insert-mt-users!                  ((mt-user-model/model :create-many!) mt-users)
             insert-password-logins!           ((password-login-model/model :create-many!) password-logins)
             curr-app                          (app-handler/app-handler)
-            good-login-res                    (post-login! {:username (-> mt-users first :canonical_username)
-                                                            :password (-> orig-passwords first)} curr-app)
-            printo                            (println good-login-res)]
+            payload                           {:username (-> mt-users first :canonical-username)
+                                               :password (-> orig-passwords first)}
+            printo                            (clojure.pprint/pprint generated)
+            printo                            (println payload)
+            good-login-res                    (post-login! payload curr-app)
+            ]
         ;; bad-password-res        (post-login! {:username (-> mt-users first :canonical_username)
         ;;                                       :password bad-password} curr-app)
         ;; wrong-user-res          (post-login! {:username (-> mt-users first :canonical_username)
         ;;                                       :password (-> orig-passwords second)} curr-app)]
         false))))
 
-(comment
-  (run-tests))
+(comment (run-tests))
