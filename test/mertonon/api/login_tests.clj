@@ -12,17 +12,21 @@
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
             [mertonon.server.handler :as app-handler]
-            [mertonon.test-utils :as tu]))
+            [mertonon.test-utils :as tu]
+            [mertonon.util.io :as uio]))
 
 (defn post-login! [member curr-app]
   (let [endpoint    "/api/v1/login/"
-        res         (curr-app {:uri endpoint :request-method :post :body-params member})]
-    (api-tests/process-app-response res)))
+        res         (curr-app {:uri endpoint :request-method :post :body-params member})
+        slurped     (update res :body (comp uio/maybe-slurp uio/maybe-json-decode))]
+    slurped))
 
 (defspec just-login-a-bunch
-  20
+  10
   (prop/for-all
-    [generated authn-gen/generate-password-logins]
+    [generated    authn-gen/generate-password-logins
+     ;; bad by dint of being too long
+     bad-password (gen/fmap clojure.string/join (gen/vector gen/char 100))]
     (tu/with-test-txn
       (let [{mt-users        :mt-users
              password-logins :password-logins
@@ -30,16 +34,14 @@
             insert-mt-users!                  ((mt-user-model/model :create-many!) mt-users)
             insert-password-logins!           ((password-login-model/model :create-many!) password-logins)
             curr-app                          (app-handler/app-handler)
-            payload                           {:username (-> mt-users first :canonical-username)
-                                               :password (-> orig-passwords first)}
-            good-login-res                    (post-login! payload curr-app)
-            printo                            (clojure.pprint/pprint payload)
-            printo                            (clojure.pprint/pprint good-login-res)
-            ]
-        ;; bad-password-res        (post-login! {:username (-> mt-users first :canonical_username)
-        ;;                                       :password bad-password} curr-app)
-        ;; wrong-user-res          (post-login! {:username (-> mt-users first :canonical_username)
-        ;;                                       :password (-> orig-passwords second)} curr-app)]
-        false))))
+            good-login-res                    (post-login!  {:username (-> mt-users first :canonical-username)
+                                                             :password (-> orig-passwords first)} curr-app)
+            wrong-user-res                    (post-login! {:username (-> mt-users first :canonical_username)
+                                                            :password (-> orig-passwords second)} curr-app)
+            bad-password-res                  (post-login! {:username (-> mt-users first :canonical_username)
+                                                            :password bad-password} curr-app)]
+        (and (= 200 (:status good-login-res))
+             (= 401 (:status wrong-user-res))
+             (= 401 (:status bad-password-res)))))))
 
 (comment (run-tests))
