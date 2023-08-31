@@ -169,12 +169,6 @@
     (sel/swap-if-changed! ws-uuid
                           sidebar-state
                           [:curr-create-params :weightset-uuid])
-    (sel/swap-if-changed! src-cobj-uuid
-                          sidebar-state
-                          [:curr-create-params :src-cobj-uuid])
-    (sel/swap-if-changed! tgt-cobj-uuid
-                          sidebar-state
-                          [:curr-create-params :tgt-cobj-uuid])
     ;; always reset state because otherwise mutations from layers mucking don't show up on ws
     ;; TODO: fix this, maybe by sticking like a second prop system on there,
     ;; maybe by converting everything else to hooks and suffering,
@@ -188,6 +182,8 @@
                                  [:alloc-cue])
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     (fn [m]
+      (swap! sidebar-state assoc-in [:curr-create-params :src-cobj-uuid] src-cobj-uuid)
+      (swap! sidebar-state assoc-in [:curr-create-params :tgt-cobj-uuid] tgt-cobj-uuid)
       [weight-create-sidebar-render m])))
 
 (defn weight-delete-sidebar [m]
