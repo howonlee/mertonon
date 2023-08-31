@@ -25,9 +25,10 @@
 
 (def generate-mt-users (generate-mt-users* net-params/test-gen-params))
 
-;; scrypt is designed to be slow, so expect slowness in all tests with this one
-
 (defn generate-password-logins*
+  "Scrypt is designed to be slow, so expect slowness in all tests with this one.
+
+  So don't put it in willy-nilly everywhere"
   [{:keys [name-type] :as params}]
   (gen/let [mt-users        (generate-mt-users* params)
             orig-passwords  (gen/vector-distinct
