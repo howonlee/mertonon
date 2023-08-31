@@ -11,7 +11,7 @@
 
 (defn generate-mt-users*
   [{:keys [name-type] :as params}]
-  (gen/let [num-entries       (gen/choose 1 5)
+  (gen/let [num-entries       (gen/choose 2 5)
             mt-user-uuids     (gen/vector gen/uuid num-entries)
             mt-user-emails    (gen/vector-distinct (gen-data/gen-mt-user-emails name-type) {:num-elements num-entries})
             mt-user-usernames (gen/vector-distinct (gen-data/gen-mt-user-usernames name-type) {:num-elements num-entries})]

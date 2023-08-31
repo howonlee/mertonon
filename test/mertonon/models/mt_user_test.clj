@@ -16,15 +16,12 @@
 ;; User tests
 ;; ---
 
-(def user-vec-gen
-  (gen/let [multiple-users (gen/vector authn-gen/generate-mt-users 2 10)]
-    (vec (for [member multiple-users]
-           (->> member :mt-users first)))))
-
 (defspec hit-the-unique-constraint
   100
-  (prop/for-all [user-vec user-vec-gen]
-                (let [same-username-users
+  (prop/for-all [users-gen authn-gen/generate-mt-users]
+                (let [user-vec
+                      (:mt-users users-gen)
+                      same-username-users
                       (vec (for [user user-vec]
                              (assoc user
                                     :username (->> user-vec first :username)
@@ -42,12 +39,6 @@
 ;; ---
 
 ;; (defspec password-is-digest
-;;   20
-;;   (prop/for-all [nil nil]
-;;                 nil))
-;; 
-;; (defspec run-digest-maker
-;;   ;; The problem with pulling up scrypt for property test is that scrypt is designed-for-and-great-at-the-job-of running slow
 ;;   20
 ;;   (prop/for-all [nil nil]
 ;;                 nil))
