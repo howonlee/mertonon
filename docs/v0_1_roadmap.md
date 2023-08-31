@@ -23,8 +23,6 @@
 - [x] Session creation tests - not the ordinary API tests
 - [x] Testing - fill out the properties thought of for password
 - [x] Whack the double-click-for-weight problem
-- [ ] Contact list
-- [ ] Dev diary
-- [ ] Changelog
-- [ ] Manual clicking around a bit
-- [ ] Cut release
+- [x] Changelog
+- [x] Manual clicking around a bit
+- [x] Cut release
