@@ -1,0 +1,18 @@
+name: Mertonon CI
+run-name: ${{ github.actor }} is running the Mertonon CI
+on: [push]
+jobs:
+  Mertonon-CI
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "triggered by a ${{ github.event_name }} event"
+      - run: echo "branch name ${{ github.ref }}, repo name ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "${{ github.repository }} repo cloned to runner."
+      - run: echo "workflow ready to test code on runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "job status is ${{ job.status }}."
+
