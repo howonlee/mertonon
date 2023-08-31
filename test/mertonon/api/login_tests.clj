@@ -18,15 +18,22 @@
     (api-tests/process-app-response res)))
 
 (defspec just-login-a-bunch
-  100
+  20
   (prop/for-all
-    [{:some crap} authn-gen/password-logins
-     some fake shit]
+    [{mt-users        :mt-users
+      password-logins :password-logins
+      orig-passwords  :orig-passwords} authn-gen/password-logins
+     bad-password     (gen/such-that
+                        (fn [bad-password]
+                          (not (some #(= bad-password %) orig-passwords)))
+                        gen/string)]
     (tu/with-test-txn
-      (insert all that crap)
-      (post-login! good login)
-      (post-login! bad login 1)
-      (post-login! bad login 2))))
+      (let [insert-mt-users!        some crap
+            insert-password-logins! some other crap
+            good-login-res          more crap
+            bad-login-res           more crap]
+        (and (uuid? (uutils/some crap))
+             (400? some crap w bad login res))))))
 
 (comment
   (require '[mertonon.models.mt-user :as mt-user-model])
