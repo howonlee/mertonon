@@ -11,3 +11,5 @@ CREATE TABLE IF NOT EXISTS mertonon.mt_session(
 );
 --;;
 CREATE INDEX IF NOT EXISTS mt_session_uuid ON mertonon.mt_session(uuid);
+--;;
+CREATE INDEX IF NOT EXISTS mt_user_canonical_username ON mertonon.mt_user(canonical_username);

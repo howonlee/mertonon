@@ -17,12 +17,12 @@
 - [x] User api - route, test, see if it's anything more than that
 - [x] Password login CRUD api (so not logging in, which creates a session, just the CRUD) - route, test, see if it's anything more than that
 
-- [ ] Login post api - route, endpoint, test, see if it's anything more than that. creation endpoint, creates sessions, check the password with join
-- [ ] Testing - fill out the properties thought of for password
-- [ ] Testing - fill out the properties thought of for session
+- [x] Sketch out what to do wrt BE validations
+- [x] Session creation api - route, endpoint, creation endpoint, creates sessions, check the password with join - doesnt want to be w the other api tests because we create only
 
-- [ ] One from the simple list
-- [ ] Dev diary
-- [ ] Changelog
-- [ ] Manual clicking around a bit
-- [ ] Cut release
+- [x] Session creation tests - not the ordinary API tests
+- [x] Testing - fill out the properties thought of for password
+- [x] Whack the double-click-for-weight problem
+- [x] Changelog
+- [x] Manual clicking around a bit
+- [x] Cut release

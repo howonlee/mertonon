@@ -1,5 +1,7 @@
 (ns mertonon.api.password-login
-  "API for the separate table for the mertonon password auths corresponding to users."
+  "API for the separate table for the mertonon password auths corresponding to users.
+
+  Not for directly logging, but for doing CRUD for password logins"
   (:require [clojure.data.json :as json]
             [mertonon.api.util :as api-util]
             [mertonon.models.password-login :as password-login-model]

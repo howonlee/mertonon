@@ -20,7 +20,7 @@
    :mertonon.weightsets :mertonon.weights
    :mertonon.losses :mertonon.inputs :mertonon.entries
 
-   :mertonon.mt-users :mertonon.password-logins :mertonon.mt-sessions])
+   :mertonon.mt-users])
 
 (defn test-inp [table generates]
   (merge (reg/table->model table)
@@ -62,7 +62,7 @@
 
 (defspec update-then-update-back
   100
-  (prop/for-all [[table generates] table-and-generates]
+  (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
                 (tu/with-test-txn (tu/update-then-update-back (test-inp table generates)))))
 
 (defspec read-one-read-many-consonance

@@ -9,6 +9,7 @@
             [mertonon.generators.authn :as authn-gen]
             [mertonon.generators.net :as net-gen]
             [mertonon.models.mt-user :as mt-user-model]
+            [mertonon.models.password-login :as password-login-model]
             [mertonon.test-utils :as tu]
             [mertonon.util.registry :as reg]))
 
@@ -16,15 +17,12 @@
 ;; User tests
 ;; ---
 
-(def user-vec-gen
-  (gen/let [multiple-users (gen/vector authn-gen/generate-mt-users 2 10)]
-    (vec (for [member multiple-users]
-           (->> member :mt-users first)))))
-
 (defspec hit-the-unique-constraint
   100
-  (prop/for-all [user-vec user-vec-gen]
-                (let [same-username-users
+  (prop/for-all [users-gen authn-gen/generate-mt-users]
+                (let [user-vec
+                      (:mt-users users-gen)
+                      same-username-users
                       (vec (for [user user-vec]
                              (assoc user
                                     :username (->> user-vec first :username)
@@ -41,15 +39,11 @@
 ;; Password login tests
 ;; ---
 
-;; (defspec password-is-digest
-;;   20
-;;   (prop/for-all [nil nil]
-;;                 nil))
-;; 
-;; (defspec run-digest-maker
-;;   ;; The problem with pulling up scrypt for property test is that scrypt is designed-for-and-great-at-the-job-of running slow
-;;   20
-;;   (prop/for-all [nil nil]
-;;                 nil))
+(defspec password-is-digest
+  ;; The problem with running scrypt in property tests is that scrypt is designed to be slow
+  3
+  (prop/for-all [password-login-gen authn-gen/generate-password-logins]
+                (let [{password-logins :password-logins} password-login-gen]
+                  (every? password-login-model/is-digest? password-logins))))
 
 (comment (run-tests))

@@ -22,7 +22,7 @@
   [:mertonon.grids :mertonon.layers :mertonon.cost-objects :mertonon.entries
    :mertonon.weightsets :mertonon.weights :mertonon.inputs :mertonon.losses
 
-   :mertonon.mt-users :mertonon.password-logins])
+   :mertonon.mt-users])
 
 (def tables-under-test
   "Mess with this when you have bugs localized to one model"

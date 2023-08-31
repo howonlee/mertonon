@@ -184,7 +184,10 @@
       nil)))
 
 (defn table-and-generates
-  [tables-under-test]
-  (gen/let [table     (gen/elements tables-under-test)
-            generates (reg/table->generator table)]
-    [table generates]))
+  [tables-under-test & [banset]]
+  (let [curr-banset (or banset #{})]
+        (gen/let [table     (gen/such-that
+                              #(not (contains? banset %))
+                              (gen/elements tables-under-test))
+                  generates (reg/table->generator table)]
+          [table generates])))

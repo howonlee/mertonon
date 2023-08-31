@@ -2,6 +2,7 @@
  ;; Keep this alphabetical, put a reason in the comment
  {
   aysylu/loom                       {:mvn/version "1.0.2"}   ;; Graph libraries
+  buddy/buddy-auth                  {:mvn/version "3.0.323"} ;; Authn and authz framework
   clj-http/clj-http                 {:mvn/version "3.12.3"}  ;; HTTP client
   com.fzakaria/slf4j-timbre         {:mvn/version "0.3.21"}  ;; Prereq for migratus, for some reason
   com.github.seancorfield/honeysql  {:mvn/version "2.4.947"} ;; SQL dsl

@@ -13,13 +13,13 @@
 
 ;; Proper ci/cd coming when it's coming
 (def lib 'com.github.howonlee/mertonon)
-(defn- the-version [patch] (format "0.0.%s" patch))
+(defn- the-version [patch] (format "0.1.%s" patch))
 (def version (the-version (b/git-count-revs nil)))
 (def build-folder "target")
 (def class-dir (str build-folder "/classes"))
 
 (def basis (b/create-basis {:project "deps.edn"}))
-(def uber-file-name (format "%s/%s-mertonon-standalone.jar" build-folder version))
+(def uber-file-name (format "%s/%s-mertonon-prealpha-standalone.jar" build-folder version))
 
 (def uber-file-opts
   {:lib       lib
@@ -55,12 +55,3 @@
   (b/uber uber-file-opts)
 
   (println (format "Uber file created: \"%s\"" uber-file-name)))
-
-;; to run: env CLOJARS_USERNAME=username CLOJARS_PASSWORD=clojars-token clj -X:deploy
-;; and put in secrets there
-(defn deploy
-  "Deploy to clojars only"
-  [_]
-  (let [{:keys [uber-file] :as curr-opts} uber-file-opts]
-    (dd/deploy {:installer :remote :artifact (b/resolve-path uber-file)
-                :pom-file (b/pom-path (select-keys curr-opts [:lib :class-dir]))})))

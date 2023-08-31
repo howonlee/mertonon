@@ -11,20 +11,29 @@
 
 (defn generate-mt-users*
   [{:keys [name-type] :as params}]
-  (gen/let [mt-user-uuid     gen/uuid
-            mt-user-email    (gen-data/gen-mt-user-emails name-type)
-            mt-user-username (gen-data/gen-mt-user-usernames name-type)]
-    {:mt-users [(-> (mtc/->MtUser mt-user-uuid
-                              mt-user-email
-                              mt-user-username)
-                    mt-user-model/canonicalize-username)]}))
+  (gen/let [num-entries       (gen/choose 2 5)
+            mt-user-uuids     (gen/vector gen/uuid num-entries)
+            mt-user-emails    (gen/vector-distinct (gen-data/gen-mt-user-emails name-type) {:num-elements num-entries})
+            mt-user-usernames (gen/vector-distinct (gen-data/gen-mt-user-usernames name-type) {:num-elements num-entries})]
+    (let [vecs (map vector mt-user-uuids mt-user-emails mt-user-usernames)]
+      {:mt-users (mapv (fn [[mt-user-uuid mt-user-email mt-user-username]]
+                         (-> (mtc/->MtUser mt-user-uuid
+                                           mt-user-email
+                                           mt-user-username)
+                             (mt-user-model/canonicalize-username)))
+                       vecs)})))
 
 (def generate-mt-users (generate-mt-users* net-params/test-gen-params))
 
 (defn generate-password-logins*
+  "Scrypt is designed to be slow, so expect slowness in all tests with this one.
+
+  So don't put it in willy-nilly everywhere"
   [{:keys [name-type] :as params}]
   (gen/let [mt-users        (generate-mt-users* params)
-            orig-passwords  (gen/vector gen/string (-> mt-users :mt-users count))
+            orig-passwords  (gen/vector-distinct
+                              (gen/fmap clojure.string/join (gen/vector gen/char 1 20))
+                              {:num-elements (-> mt-users :mt-users count)})
             uuids           (gen/vector gen/uuid (-> mt-users :mt-users count))]
     (let [digests         (mapv pwd-model/hash-password orig-passwords)
           password-logins (vec
@@ -57,4 +66,4 @@
 
 (def generate-mt-sessions (generate-mt-sessions* net-params/test-gen-params))
 
-(comment (gen/generate generate-mt-sessions))
+(comment (gen/generate generate-password-logins))

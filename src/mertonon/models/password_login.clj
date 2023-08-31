@@ -1,5 +1,8 @@
 (ns mertonon.models.password-login
-  "A password authentication for a user of mertonon"
+  "A password authentication for a user of mertonon.
+
+  Session-based password auth only at this time, we will suck our teeth a moderate amount if we get asked for JWT's.
+  Getting JWT to actually be secure is a pretty baroque exercise, is the problem"
   (:require [clojure.test.check.generators :as gen]
             [crypto.password.scrypt :as scrypt]
             [mertonon.models.utils :as mutils]
@@ -8,7 +11,6 @@
             [tick.core :as t]))
 
 (defn hash-password
-  "Idempotent"
   [unhashed-password]
   (scrypt/encrypt unhashed-password))
 
@@ -16,8 +18,8 @@
   [to-check password-login]
   (scrypt/check to-check password-login))
 
-(defn check-password-is-digest
-  "Don't actually rely on this, this is just convenience"
+(defn is-digest?
+  "Don't actually rely on this, this is just convenience and for testing"
   [{:keys [password-digest] :as password-login}]
   (clojure.string/starts-with? password-digest "$s0$"))
 
