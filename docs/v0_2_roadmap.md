@@ -6,9 +6,9 @@
 - [ ] Change stuff for site.clj in other repo (manual-like)
 - [ ] Just uploader for site.clj in other repo
 
-- [ ] Setup github actions to print literally nothing
-- [ ] Setup github actions to build the thing
+- [x] Setup github actions to print literally nothing
 - [ ] Setup github actions to test the thing
+- [ ] Setup github actions to build the thing
 - [ ] Setup github actions to run ci on PR's
 
 - [ ] Write the general BE validation wrapper thing
