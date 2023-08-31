@@ -2,7 +2,7 @@ name: Mertonon CI
 run-name: ${{ github.actor }} is running the Mertonon CI
 on: [push]
 jobs:
-  Mertonon-CI
+  Mertonon-CI:
     runs-on: ubuntu-latest
     steps:
       - run: echo "triggered by a ${{ github.event_name }} event"
