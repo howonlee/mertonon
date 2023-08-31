@@ -9,6 +9,8 @@
             [clojure.walk :as walk]
             [mertonon.api.api-tests :as api-tests]
             [mertonon.generators.authn :as authn-gen]
+            [mertonon.models.mt-user :as mt-user-model]
+            [mertonon.models.password-login :as password-login-model]
             [mertonon.server.handler :as app-handler]
             [mertonon.test-utils :as tu]))
 
@@ -20,31 +22,22 @@
 (defspec just-login-a-bunch
   20
   (prop/for-all
-    [{mt-users        :mt-users
-      password-logins :password-logins
-      orig-passwords  :orig-passwords} authn-gen/password-logins
-     bad-password     (gen/such-that
-                        (fn [bad-password]
-                          (not (some #(= bad-password %) orig-passwords)))
-                        gen/string)]
+    [generated authn-gen/generate-password-logins]
     (tu/with-test-txn
-      (let [insert-mt-users!        some crap
-            insert-password-logins! some other crap
-            good-login-res          more crap
-            bad-login-res           more crap]
-        (and (uuid? (uutils/some crap))
-             (400? some crap w bad login res))))))
+      (let [{mt-users        :mt-users
+             password-logins :password-logins
+             orig-passwords  :orig-passwords} generated
+            insert-mt-users!                  ((mt-user-model/model :create-many!) mt-users)
+            insert-password-logins!           ((password-login-model/model :create-many!) password-logins)
+            curr-app                          (app-handler/app-handler)
+            good-login-res                    (post-login! {:username (-> mt-users first :canonical_username)
+                                                            :password (-> orig-passwords first)} curr-app)
+            printo                            (println good-login-res)]
+        ;; bad-password-res        (post-login! {:username (-> mt-users first :canonical_username)
+        ;;                                       :password bad-password} curr-app)
+        ;; wrong-user-res          (post-login! {:username (-> mt-users first :canonical_username)
+        ;;                                       :password (-> orig-passwords second)} curr-app)]
+        false))))
 
 (comment
-  (require '[mertonon.models.mt-user :as mt-user-model])
-  (require '[mertonon.models.password-login :as password-login-model])
-  (require '[mertonon.models.constructors :as mtc])
-  (require '[mertonon.util.uuid :as uutils])
-  (let [mt-user-uuid (uutils/uuid)
-        pwd-uuid     (uutils/uuid)
-        pwd          "bleh mleh fleh"
-        digest       (password-login-model/hash-password pwd)]
-    ((mt-user-model/model :create-one!) (mtc/->MtUser mt-user-uuid ";DROP mt_user;--" ";drop mt_user;--"))
-    ((password-login-model/model :create-one!) (mtc/->PasswordLogin pwd-uuid mt-user-uuid :default digest)))
-  (let [curr-app (app-handler/app-handler)]
-    (post-login! {:username ";DRop mt_user;--" :password "bleh mleh fleh"} curr-app)))
+  (run-tests))
