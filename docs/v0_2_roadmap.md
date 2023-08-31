@@ -10,7 +10,26 @@
 - [ ] Setup github actions to test the thing
 - [ ] Setup github actions to run ci on PR's
 
-- BE validations - make the authn stuff actually yell if trivial stuff doesn't hold, and test it...
-- FE testing - set some FE testing up
-- Completely trivial authz (admin-only authz)
-- User and login FE
+- [ ] Write the general BE validation wrapper thing
+- [ ] Trivial BE validation - think up of a really trivial one, setup the janitoring for it
+- [ ] Trivial BE authz for purposes of starting up authn
+- [ ] BE validation tester of some kind
+- [ ] Authn via BE validation? Or by the buddy ordinary wrapper?
+- [ ] Authn validation test
+
+- [ ] FE testing yakshave
+- [ ] FE testing - trivial test
+- [ ] FE testing - authn test
+- [ ] User view FE
+- [ ] User crud FE
+- [ ] Password crud FE
+- [ ] Authn FE
+
+- [ ] SSL - JDBC conn to db w/ ssl
+- [ ] SSL - serve with SSL
+- [ ] Shove everything else in the OWASP checklist into roadmap
+
+- [ ] Run CICD one last time
+- [ ] Changelog
+- [ ] Clicking around a bit
+- [ ] Cut release

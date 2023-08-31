@@ -8,15 +8,12 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
 - Figure out CLA / FLA / whatever we're going to use situation
 - Weight thing in logspace (conform to fitt's), and with a value enter thing
--
-DB property: have a final\_state.sql that is propertied to agree with the migration list that is never used by migrations lol
+- DB property: have a final\_state.sql that is propertied to agree with the migration list that is never used by migrations lol
 - Multiplicative weight updating
 - Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
 - Check for sign errors harder
 - Attack flaky consonances
 - Registry accuracy enforcement with tests
-- SSL - serve SSL from builtin server
-- SSL - JDBC conn to db w/ ssl
 - Dockerize so the nice video we paid for isnt a lie lol
 - Joined complex inserts for default cobj, weight, etc to avoid blank page problems
 - Less half-assed logo
