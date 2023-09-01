@@ -3,7 +3,8 @@
 - [ ] Doohickey dealios example usage thing. Increase derangedness, I think
 - [ ] Woopzoop example usage thing
 - [ ] Meepmoop example usage thing
-
+- [ ] Email them peeps
+- [ ] Yakshave crm thingy
 - [ ] Change stuff for site.clj in other repo (manual-like)
 - [ ] Just uploader for site.clj in other repo
 
