@@ -19,7 +19,9 @@
                   :port     port
                   :user     username
                   :password password
-                  :dbname   db-name}]
+                  :dbname   db-name
+                  ;; This prolly shouldn't be configurable
+                  :ssl      true}]
     res))
 
 (defn db-url
