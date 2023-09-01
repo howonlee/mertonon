@@ -5,6 +5,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 Also look at small tasks roadmap
 
 - Model updates lol, going through to API and views
+- Sorting / Pagination
+- Be weird about the data tables
 - Email integration (as first integration)
 - Password reset
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
