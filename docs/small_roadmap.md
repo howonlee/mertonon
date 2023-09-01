@@ -14,7 +14,6 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Check for sign errors harder
 - Attack flaky consonances
 - Registry accuracy enforcement with tests
-- Dockerize so the nice video we paid for isnt a lie lol
 - Joined complex inserts for default cobj, weight, etc to avoid blank page problems
 - Less half-assed logo
 - Vendorize fontawesome - this will make things airgappable, hopefully

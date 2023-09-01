@@ -1,12 +1,13 @@
-- [ ] Doohickey dealios example usage thing
+- [x] Setup github actions to print literally nothing
 
+- [ ] Doohickey dealios example usage thing. Increase derangedness, I think
 - [ ] Woopzoop example usage thing
 - [ ] Meepmoop example usage thing
 
 - [ ] Change stuff for site.clj in other repo (manual-like)
 - [ ] Just uploader for site.clj in other repo
 
-- [x] Setup github actions to print literally nothing
+- [ ] Yakshave until Docker works
 - [ ] Setup github actions to test the thing
 - [ ] Setup github actions to build the thing
 - [ ] Setup github actions to run ci on PR's
