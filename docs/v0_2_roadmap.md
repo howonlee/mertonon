@@ -28,7 +28,7 @@
 - [ ] Password crud FE
 - [ ] Authn FE
 
-- [x] SSL - JDBC conn to db w/ ssl - eat crow at learning ssl is default lol
+- [ ] SSL - JDBC conn to db w/ ssl - put in instructions and trivial config instead i guess
 - [ ] SSL - serve with SSL
 - [ ] Shove everything else in the OWASP checklist into roadmap
 
