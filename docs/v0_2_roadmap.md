@@ -1,14 +1,12 @@
 - [x] Setup github actions to print literally nothing
 
+- [ ] Yakshave until Docker works
 - [ ] Email them peeps
-- [ ] Doohickey dealios example usage thing. Increase derangedness, I think
-- [ ] Woopzoop example usage thing
-- [ ] Meepmoop example usage thing
+- [ ] Redo usage only, whack it into softwareland
 - [ ] Yakshave crm thingy
 - [ ] Change stuff for site.clj in other repo (manual-like)
 - [ ] Just uploader for site.clj in other repo
 
-- [ ] Yakshave until Docker works
 - [ ] Setup github actions to test the thing
 - [ ] Setup github actions to build the thing
 - [ ] Setup github actions to run ci on PR's

@@ -1,0 +1,2 @@
+name: Mertonon Build
+run-name: ${{ github.actor }} is building Mertonon
