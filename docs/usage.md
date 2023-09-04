@@ -8,7 +8,7 @@ Therefore it is not paradoxical to say that Mertonon is a neural network system 
 
 ---
 
-## Using Mertonon
+# Using Mertonon
 
 You have setup Mertonon as detailed in [these instructions](setup.md). You go to the home page.
 
