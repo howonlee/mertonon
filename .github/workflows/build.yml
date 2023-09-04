@@ -1,2 +1,8 @@
 name: Mertonon Build
 run-name: ${{ github.actor }} is building Mertonon
+on: [push]
+jobs:
+  Mertonon-Build:
+    runs-on: ubuntu-latest
+    steps:
+      run: echo "put the build here when we do it"

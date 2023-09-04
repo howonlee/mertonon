@@ -1,6 +1,7 @@
 - [x] Setup github actions to print literally nothing
 
 - [x] Yakshave until Docker works
+- [ ] Redo usage only, whack it into softwareland
 - [ ] Write the general BE validation wrapper thing
 - [ ] Trivial BE validation - think up of a really trivial one, setup the janitoring for it
 - [ ] Trivial BE authz for purposes of starting up authn
@@ -9,7 +10,6 @@
 - [ ] Authn validation test
 - [ ] Email them peeps - 0 / 33, copy to next day
 
-- [ ] Redo usage only, whack it into softwareland
 - [ ] Yakshave crm thingy
 - [ ] Change stuff for site.clj in other repo (manual-like)
 - [ ] Just uploader for site.clj in other repo
