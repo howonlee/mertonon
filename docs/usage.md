@@ -10,11 +10,15 @@ From the outside, organizations look like imposing edifices, united as one in on
 
 But you know better, don't you? From the inside, I myself have found every organization without exception riven by systems of homage, of fealty, of personal politics - and of feud. Sometimes the overall melange works - and in working, turns invisible - sometimes it does not. This is the invisible organization which Mertonon seeks to make legible and align towares the ostensible goal of the organization.
 
-This is what we mean by the allocation of resources. Mertonon is software for doing politics with its own internal politics, inasmuch as use of Mertonon constitutes writing down your current political situation in Mertonon as the structure of a neural network and having Mertonon guide you towards overall predetermined goals.
+This is what we mean by the allocation of resources. Mertonon is software for doing politics with its own internal politics, inasmuch as use of Mertonon constitutes:
 
-Here is how.
+1. Writing down your current political situation in Mertonon as the structure of a neural network
+2. Determining the goals of the overal organization and fiddling with the settings a bit (when we have them)
+3. Having Mertonon guide you towards overall predetermined goals. Including normative statements about the path your political situation should go.
 
-You are an organization person in Foocorp. Like many others in this alienated modern economy you are steps removed from anyone who directly sees a customer.
+Consider the three steps as you read the story of Bob Tobbs.
+
+Consider Bob Tobbs, an organization man in Foocorp. Like many others in this alienated modern economy he is steps removed from anyone who directly sees a customer.
 
 You have setup Mertonon as detailed in [these instructions](setup.md). You go to the home page.
 
