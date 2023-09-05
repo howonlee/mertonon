@@ -2,21 +2,19 @@ Accounting is the act of recording economic facts pertaining to organizations. T
 
 Be advised that Mertonon is not financial reporting as of this time, Mertonon is only a managerial accounting system at this time. Read [all the other disclaimers](disclaimers.md) before using.
 
-Mertonon differs from most accounting systems because there is a computationally enabled allocation portion. That is, given a picture of the organization as you enter it and the local judgements you give it, Mertonon will suggest allocations of resources within your organization via neural network backpropagation.
-
-Therefore it is not paradoxical to say that Mertonon is a neural network system but not an AI system. There is a [neural differentiation bit stuck in there](../src/mertonon/autodiff/grad.clj), but the weights are materially determined by human beings like yourself.
-
 ---
 
 # Using Mertonon
 
 From the outside, organizations look like imposing edifices, united as one in one purpose towards producing hammocks or safeguarding fish or writing software or what-have-you.
 
-But you know better, don't you? From the inside, I have found almost every organization riven by systems of homage, of fealty, of personal politics - and of feud. This is the invisible organization which Mertonon seeks to make legible and align towares the ostensible goal of the organization.
+But you know better, don't you? From the inside, I myself have found every organization without exception riven by systems of homage, of fealty, of personal politics - and of feud. Sometimes the overall melange works - and in working, turns invisible - sometimes it does not. This is the invisible organization which Mertonon seeks to make legible and align towares the ostensible goal of the organization.
 
-This is what we mean by the allocation of resources. Mertonon is software for doing politics, inasmuch as use of Mertonon constitutes writing down your current political situation in Mertonon as the structure of a neural network and having Mertonon guide you towards overall predetermined goals.
+This is what we mean by the allocation of resources. Mertonon is software for doing politics with its own internal politics, inasmuch as use of Mertonon constitutes writing down your current political situation in Mertonon as the structure of a neural network and having Mertonon guide you towards overall predetermined goals.
 
 Here is how.
+
+You are an organization person in Foocorp. Like many others in this alienated modern economy you are steps removed from anyone who directly sees a customer.
 
 You have setup Mertonon as detailed in [these instructions](setup.md). You go to the home page.
 
