@@ -10,6 +10,10 @@ Therefore it is not paradoxical to say that Mertonon is a neural network system 
 
 # Using Mertonon
 
+From the outside, organizations look like imposing edifices, united as one in one purpose towards producing hammocks or safeguarding fish or writing software or what-have-you.
+
+But you know better, don't you? From the inside, I have found almost every organization riven by systems of homage, of fealty, vassalage - and of feud. This is the invisible organization which Mertonon seeks to make legible and align towares the ostensible goal of the organization.
+
 You have setup Mertonon as detailed in [these instructions](setup.md). You go to the home page.
 
 ![](https://mertonon.com/assets/homepage.png)
