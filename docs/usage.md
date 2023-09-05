@@ -14,6 +14,8 @@ From the outside, organizations look like imposing edifices, united as one in on
 
 But you know better, don't you? From the inside, I have found almost every organization riven by systems of homage, of fealty, vassalage - and of feud. This is the invisible organization which Mertonon seeks to make legible and align towares the ostensible goal of the organization.
 
+This is what we mean by the allocation of resources. Mertonon is political software, inasmuch as use of Mertonon constitutes writing down your current political situation in Mertonon as the structure of a neural network and having Mertonon guide you towards overall predetermined goals.
+
 You have setup Mertonon as detailed in [these instructions](setup.md). You go to the home page.
 
 ![](https://mertonon.com/assets/homepage.png)
