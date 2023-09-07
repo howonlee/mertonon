@@ -10,7 +10,7 @@ From the outside, organizations look like imposing edifices, united as one in on
 
 But you know better, don't you? From the inside, I myself have found every organization without exception riven by systems of homage, of fealty, of personal politics - and of feud. Sometimes the overall melange works - and in working, turns invisible - sometimes it does not. This is the invisible organization which Mertonon seeks to make legible and align towares the ostensible goal of the organization.
 
-This is what we mean by the allocation of resources. Mertonon is software for doing politics with its own internal politics, inasmuch as use of Mertonon constitutes:
+This is what we mean by the allocation of resources. Mertonon is software for doing politics with an organization's own internal politics, inasmuch as use of Mertonon constitutes:
 
 1. Writing down your current political situation in Mertonon as the structure of a neural network
 2. Determining the goals of the overal organization and fiddling with the settings a bit (when we have them)
@@ -26,14 +26,7 @@ Bob has setup Mertonon as detailed in [these instructions](setup.md). He goes to
 
 ---
 
-He sees the demo, which he can look at at his leisure. He looks at the listing of _grids_. A _grid_ delimits a coherent singular cost flow which may impinge upon multiple Mertonon-style responsibility centers.
-
-Bob looks at me and starts threatening me with violence this stick he has on him until I speak in plain fucking English.
-
-;;;;;
-;;;;;
-;;;;;
-;;;;;
+He sees the demo, which he can look at at his leisure. He looks at the listing of _grids_. A _grid_ is a political picture of an organization or a small section of an organization that still is big enough to have divisions of labor within it. That picture is in the form of a neural network.
 
 Create a grid.
 
