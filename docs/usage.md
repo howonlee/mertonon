@@ -26,7 +26,7 @@ You see the demo, which you can look at at your leisure. You look at the listing
 
 That picture is in the form of a neural network. Most usages of neural networks are for getting them to represent a function, which gets then used for whatever, but here we _represent your organization_ with a neural network.
 
-You create a grid.
+You create a grid. DealioCorp is a small firm, the political world which it encompasses has one current overall goal, so it probably fits in one grid.
 
 ![](https://mertonon.com/assets/grid_create.gif)
 
