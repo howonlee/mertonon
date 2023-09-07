@@ -20,13 +20,22 @@ Consider the three steps as you read the story of Bob Tobbs.
 
 Consider Bob Tobbs, an organization man in Foocorp. Like many others in this alienated modern economy he is steps removed from anyone who directly sees a customer. Like in other white-collar work, the political situation he lives in with respect to the organization dominates other concerns as to his position - his productivity only exists as one of many political considerations.
 
-You have setup Mertonon as detailed in [these instructions](setup.md). You go to the home page.
+Bob has setup Mertonon as detailed in [these instructions](setup.md). He goes to the home page.
 
 ![](https://mertonon.com/assets/homepage.png)
 
 ---
 
-You see the demo, which you can look at at your leisure. Look at the listing of _grids_. A _grid_ delimits a coherent singular cost flow which may impinge upon multiple Mertonon-style responsibility centers. Create a grid.
+He sees the demo, which he can look at at his leisure. He looks at the listing of _grids_. A _grid_ delimits a coherent singular cost flow which may impinge upon multiple Mertonon-style responsibility centers.
+
+Bob looks at me and starts threatening me with violence this stick he has on him until I speak in plain fucking English.
+
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+
+Create a grid.
 
 ![](https://mertonon.com/assets/grid_create.gif)
 
