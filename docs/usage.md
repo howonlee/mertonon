@@ -8,9 +8,9 @@ Be advised that Mertonon is not financial reporting as of this time, Mertonon is
 
 From the outside, organizations look like imposing edifices, united as one in one purpose towards producing hammocks or safeguarding fish or writing software or what-have-you.
 
-But you know better, don't you? From the inside, I myself have found every organization without exception riven by systems of homage, of fealty, of personal politics - and of feud. Sometimes the overall melange works - and in working, turns invisible - sometimes it does not. This is the invisible organization which Mertonon seeks to make legible and align towares the ostensible goal of the organization.
+But you know better, don't you? From the inside, I myself have found every organization without exception riven by systems of homage, of fealty, of personal politics - and of feud. Sometimes the overall melange works - and in working, turns invisible - sometimes it does not. This is the invisible organization which Mertonon seeks to make legible and align towards the ostensible goal of the organization.
 
-This is what we mean by the allocation of resources. Mertonon is software for doing politics with an organization's own internal politics, inasmuch as use of Mertonon constitutes:
+This is what we mean by the allocation of resources. Mertonon is software for doing politics with regards to an organization's own internal politics, inasmuch as use of Mertonon constitutes:
 
 1. Writing down your current political situation in Mertonon as the structure of a neural network
 2. Determining the goals of the overal organization and fiddling with the settings a bit (when we have them)
@@ -26,7 +26,7 @@ You see the demo, which you can look at at your leisure. You look at the listing
 
 That picture is in the form of a neural network. Most usages of neural networks are for getting them to represent a function, which gets then used for whatever, but here we _represent your organization_ with a neural network.
 
-You create a grid. DealioCorp is a small firm, the political world which it encompasses has one current overall goal, so it probably fits in one grid.
+You create a grid. You work at DealioCorp - it's a small firm, the political world which it encompasses has one current overall goal, so it probably fits in one grid.
 
 ![](https://mertonon.com/assets/grid_create.gif)
 
