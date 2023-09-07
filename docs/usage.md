@@ -16,56 +16,42 @@ This is what we mean by the allocation of resources. Mertonon is software for do
 2. Determining the goals of the overal organization and fiddling with the settings a bit (when we have them)
 3. Having Mertonon guide you towards overall predetermined goals. Including normative statements about the path your political situation should go.
 
-Consider the three steps as you read the story of Bob Tobbs.
-
-Consider Bob Tobbs, an organization man in Foocorp. Like many others in this alienated modern economy he is steps removed from anyone who directly sees a customer. Like in other white-collar work, the political situation he lives in with respect to the organization dominates other concerns as to his position - his productivity only exists as one of many political considerations.
-
-Bob has setup Mertonon as detailed in [these instructions](setup.md). He goes to the home page.
+You have setup Mertonon as detailed in [these instructions](setup.md). Go to the home page.
 
 ![](https://mertonon.com/assets/homepage.png)
 
 ---
 
-He sees the demo, which he can look at at his leisure. He looks at the listing of _grids_. A _grid_ is a political picture of an organization or a small section of an organization that still is big enough to have divisions of labor within it. That picture is in the form of a neural network.
+You see the demo, which you can look at at your leisure. You look at the listing of _grids_. A _grid_ is a political picture of an organization or a small section of an organization that still is big enough to have divisions of labor within it and overall goals - and political structures within them, formal or informal.
 
-He creates a grid.
+That picture is in the form of a neural network. Most usages of neural networks are for getting them to represent a function, which gets then used for whatever, but here we _represent your organization_ with a neural network.
+
+You create a grid.
 
 ![](https://mertonon.com/assets/grid_create.gif)
 
 ---
 
-Usually the notion of responsibility center encompasses a business unit which has its own goals and such, so the Mertonon conception of responsibility centers, which may be pretty alienated from an end goal but still have its local contributions attributed to the end goal, may not mesh with your organization's idea of responsibility centers. In which case, call them layers, because that's what they are in neural network lingo. You note a few - Mertonon will start working with only a few.
-
 ![](https://mertonon.com/assets/layer_create.gif)
 
 ---
 
-A cost node is like a cost object, but because of the political nature of Mertonon we also want them to correspond to individuals in addition to ordinary cost objects. A complete picture is not necessary, although of course it helps quite a bit, especially if there is to be argumentation, which there probably will be.
-
 ![](https://mertonon.com/assets/cobj_create.gif)
 
 ---
-
-A weightset is a grouping of weights. Weights are like in neural networks - a weighting of how a cost node impinges upon another cost node. Weights are currently arbitrary at this time and there always has to be an arbitrary fallback as response to gaming. We anticipate that much of the constraints and politics in organizations can be written down in terms of weight structures. Create some weightsets and have all each of the individual people who own the cost objects put weights in them.
 
 ![](https://mertonon.com/assets/weightset_create.gif)
 ![](https://mertonon.com/assets/weight_create.gif)
 
 ---
 
-Inputs and goals are annotations on layers (responsibility centers) indicating that they correspond to costs (inputs) and resulting outputs (goals). Only these layers have journal entries in them, the internal layers have cost nodes and weights impinging upon them only.
-
 ![](https://mertonon.com/assets/input_create.gif)
 
 ---
 
-Entries are journal entries, which are entered with respect to a cost object within an input or a goal layer. Currently journal entries in single entry with abstract notions of value are the only type supported at this time. Invoicing, actual currency, double entry, financial reporting, audit stuff, and lots of other stuff is coming.
-
 ![](https://mertonon.com/assets/entry_create.gif)
 
 ---
-
-So, with the general picture of the organization as a neural net concluded, you can kick off the gradient and current allocations for the budget period are calculated. If there's any stuff missing and we thought of it it'll tell you.
 
 ![](https://mertonon.com/assets/kickoff.gif)
 
