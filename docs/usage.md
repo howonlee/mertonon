@@ -28,7 +28,7 @@ Bob has setup Mertonon as detailed in [these instructions](setup.md). He goes to
 
 He sees the demo, which he can look at at his leisure. He looks at the listing of _grids_. A _grid_ is a political picture of an organization or a small section of an organization that still is big enough to have divisions of labor within it. That picture is in the form of a neural network.
 
-Create a grid.
+He creates a grid.
 
 ![](https://mertonon.com/assets/grid_create.gif)
 
