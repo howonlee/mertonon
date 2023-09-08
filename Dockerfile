@@ -17,9 +17,9 @@ RUN clojure -T:build uberjar
 ###################
 # RUNNER
 ###################
-
-EXPOSE 5036
-
+#
+# EXPOSE 5036
+#
 ## envvars...
-
-ENTRYPOINT ["/some crap"]
+#
+# ENTRYPOINT ["/some crap"]
