@@ -32,20 +32,19 @@ You create a grid. You work at DealioCorp - it's a small software firm, the poli
 
 ---
 
-One of the inevitabilities of life in the modern organization is the heights of alienation that one can get up to. The salesperson talks directly to the customer - but you aren't the salesperson. You aren't even the person who talks to the salesperson to find out what the customer wants. You are the person who talks to the person who talks to the person who talks to.... the person who talks to the salepserson. Procurement folks talk directly to vendors, too, but you aren't one of them.
+One of the inevitabilities of life in the modern organization is the heights of alienation that one can get up to. At companies, the salesperson talks directly to the customer - but you aren't the salesperson. You aren't even the person who talks to the salesperson to find out what the customer wants. You are the person who talks to the person who talks to the person who talks to.... the person who talks to the salepserson. Procurement folks talk directly to vendors, too, but you aren't one of them.
 
 Sometimes the accountants formalize this structure of alienation by putting people in functional responsibility centers. The salesperson belongs in the Sales responsibility center - they talk to the Product responsibility center. Those Product folks then in turn talk to the Design (and the Design folks don't talk to Sales directly). Many times responsibility centers mean something different, many times organizations are sliced up in different ways, but in Mertonon they always mean this, so we also call them layers, because if you know neural net lingo they are also layers in the neural net.
 
 You don't do sales. You don't do procurement, neither. You just deal with Dealios all day. (What are Dealios? No, you would need to have a 25-minute explanation to actually tell people what Dealios are, you always say at parties you Work In Software and people nod solemnly and the conversation passes to other things...)
 
+So that's why there has to be a Dealio _layer_. Create one.
+
 ![](https://mertonon.com/assets/layer_create.gif)
 
 ---
 
-whats a cobj
-heres an example
-link to why we give a shit
-why we give a shit
+But you don't deal with all the Dealios at DealioCorp, do you? You do Doohickey Dealios. You're the one in the company everyone talks to when they think about Doohickey Dealios. You take care of other things (other cost nodes, in our lingo) in other layers sometimes but Doohickey Dealios is what you're concerned about today, so you need to be able to allocate resources to them - which is why you create a cost node. Gotta think about those Doohickey Dealios - the necessity for them, their relation to other necessary things in the organization.
 
 ![](https://mertonon.com/assets/cobj_create.gif)
 
@@ -84,9 +83,7 @@ why we give a shit
 
 ![](https://mertonon.com/assets/kickoff.gif)
 
----
-
-Then you reify the budget allocations by working differently with people based upon the weight allocation suggestions and then changing the weights if you manage to actually do so.
+Given such a political point of view, after kicking off the gradient, Mertonon will suggest allocations for cost nodes like Doohickey Dealios and new points of view on the weightings everyone should have.
 
 ---
 
