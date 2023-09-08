@@ -7,13 +7,14 @@
 ;; 2. Incr app version in this file
 ;; 3. Incr app version package.json
 ;; 4. Futz with changelog
-;; 5. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
-;; 6. Build this with `clj -T:build-ce uberjar`
-;; 7. Release
+;; 5. Land change PR
+;; 6. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
+;; 7. Build this with `clj -T:build-ce uberjar`
+;; 8. Release
 
 ;; Proper ci/cd coming when it's coming
 (def lib 'com.github.howonlee/mertonon)
-(defn- the-version [patch] (format "0.1.%s" patch))
+(defn- the-version [patch] (format "0.2.%s" patch))
 (def version (the-version (b/git-count-revs nil)))
 (def build-folder "target")
 (def class-dir (str build-folder "/classes"))
