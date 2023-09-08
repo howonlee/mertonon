@@ -4,8 +4,6 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- CI/CD
-- BE validation throughgoing
 - BE authn and trivial authz
 - FE testing
 - FE username and password dealing
