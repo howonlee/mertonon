@@ -26,32 +26,60 @@ You see the demo, which you can look at at your leisure. You look at the listing
 
 That picture is in the form of a neural network. Most usages of neural networks are for getting them to represent a function, which gets then used for whatever, but here we _represent your organization_ with a neural network.
 
-You create a grid. You work at DealioCorp - it's a small firm, the political world which it encompasses has one current overall goal, so it probably fits in one grid.
+You create a grid. You work at DealioCorp - it's a small software firm, the political world which it encompasses has one current overall goal, so it probably fits in one grid.
 
 ![](https://mertonon.com/assets/grid_create.gif)
 
 ---
 
+whats a layer
+heres an example
+link to why we give a shit
+why we give a shit
+
 ![](https://mertonon.com/assets/layer_create.gif)
 
 ---
 
+whats a cobj
+heres an example
+link to why we give a shit
+why we give a shit
+
 ![](https://mertonon.com/assets/cobj_create.gif)
 
 ---
+
+whats a weight
+heres an example
+link to why we give a shit
+why we give a shit
 
 ![](https://mertonon.com/assets/weightset_create.gif)
 ![](https://mertonon.com/assets/weight_create.gif)
 
 ---
 
+whats an input, loss
+heres an example
+link to why we give a shit
+why we give a shit
+
 ![](https://mertonon.com/assets/input_create.gif)
 
 ---
 
+whats an entry
+heres an example
+link to why we give a shit
+why we give a shit
+
 ![](https://mertonon.com/assets/entry_create.gif)
 
 ---
+
+whats the kickoff
+why we give a shit
 
 ![](https://mertonon.com/assets/kickoff.gif)
 
