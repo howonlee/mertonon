@@ -52,12 +52,19 @@ But you don't deal with all the Dealios at DealioCorp, do you? You do Doohickey 
 
 And now we come to the actual political meat of things. The weights.
 
-Doohickey Dealios do need the Wibbles. After negotiation with the owner of the Wibbles node, you agreed that this is a fact, and decide to put that fact in Mertonon so folks can see it - and Mertonon can see it, and factor it into the allocations. This is a soft linkage - the stronger the necessity, the higher the value entered (Mertonon constrains the weight values to be positive currently).
+Doohickey Dealios do need the Wibbles. After negotiation with the owner of the Wibbles node, you agreed that this is a fact, and decide to put that fact in Mertonon so folks can see it - and Mertonon can see it, and factor it into the allocations. This is a soft linkage - the stronger the necessity, the higher the value entered (Mertonon constrains the weight values to be positive currently). Mertonon will normalize the weights to sum to 100%.
 
 ![](https://mertonon.com/assets/weightset_create.gif)
 ![](https://mertonon.com/assets/weight_create.gif)
 
 ---
+
+Currently Mertonon can only aim for overall grid goals which formally correspond to competitiveness (viz., reduction of profit for corporate market share). We will have others in time.
+
+;;;;;
+;;;;;
+;;;;;
+;;;;;
 
 whats an input, loss
 heres an example
@@ -77,8 +84,7 @@ why we give a shit
 
 ---
 
-whats the kickoff
-why we give a shit
+Mertonon does not make gradient and contribution determinations after every operation at this time. You have to kick them off manually. Here is how to kick them off.
 
 ![](https://mertonon.com/assets/kickoff.gif)
 
