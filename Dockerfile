@@ -2,14 +2,18 @@
 # BUILDER
 ###################
 
-FROM clojure:temurin-20-tools-deps-jammy AS builder
+FROM theasp/clojurescript-nodejs:shadow-cljs-alpine
+
+WORKDIR some crap
+RUN the fucking yarn build
+
+FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
+
 RUN mkdir -p /build
 WORKDIR /build
+COPY THAT JS SHIT TO THE NEW BUILD DEALIO
 COPY deps.edn /build/
 
-## yarn install somewhere here
-## yarn build
-## yarn release somewhere here...
 RUN the yarn build to be honest
 
 RUN clojure -T:build uberjar
