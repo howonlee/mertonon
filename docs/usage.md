@@ -50,6 +50,8 @@ But you don't deal with all the Dealios at DealioCorp, do you? You do Doohickey 
 
 ---
 
+Weights constitute political determinations of the relations of these cost nodes to one another.
+
 whats a weight
 heres an example
 link to why we give a shit
