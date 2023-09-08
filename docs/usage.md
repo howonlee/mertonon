@@ -50,12 +50,9 @@ But you don't deal with all the Dealios at DealioCorp, do you? You do Doohickey 
 
 ---
 
-Weights constitute political determinations of the relations of these cost nodes to one another.
+And now we come to the actual political meat of things. The weights.
 
-whats a weight
-heres an example
-link to why we give a shit
-why we give a shit
+Doohickey Dealios do need the Wibbles. After negotiation with the owner of the Wibbles node, you agreed that this is a fact, and decide to put that fact in Mertonon so folks can see it - and Mertonon can see it, and factor it into the allocations. This is a soft linkage - the stronger the necessity, the higher the value entered (Mertonon constrains the weight values to be positive currently).
 
 ![](https://mertonon.com/assets/weightset_create.gif)
 ![](https://mertonon.com/assets/weight_create.gif)
