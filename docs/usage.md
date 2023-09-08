@@ -59,26 +59,15 @@ Doohickey Dealios do need the Wibbles. After negotiation with the owner of the W
 
 ---
 
-Currently Mertonon can only aim for overall grid goals which formally correspond to competitiveness (viz., reduction of profit for corporate market share). We will have others in time.
+Currently Mertonon can only aim for overall grid goals which formally correspond to competitiveness (formally speaking., reduction of profit for corporate market share). We will have others in time.
 
-;;;;;
-;;;;;
-;;;;;
-;;;;;
-
-whats an input, loss
-heres an example
-link to why we give a shit
-why we give a shit
+To get recommendations from Mertonon, you have to point out to it one layer that corresponds to inputs to the organization's value flow (cost flow) and one layer that corresponds to outputs or goals.
 
 ![](https://mertonon.com/assets/input_create.gif)
 
 ---
 
-whats an entry
-heres an example
-link to why we give a shit
-why we give a shit
+To get recommendations from Mertonon, you also have to put down accounting general ledger journal entries (single entry only at this time), listing the transactions ascribed to the cost nodes corresponding to inputs and goals of the organization. Put down the transactions corresponding to sales, materials purchases, and so on. Mertonon will then attribute value to the intermediate layers in the value flow.
 
 ![](https://mertonon.com/assets/entry_create.gif)
 
