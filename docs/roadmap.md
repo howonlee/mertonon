@@ -4,6 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- CI/CD
+- BE validation throughgoing
+- BE authn and trivial authz
+- FE testing
+- FE username and password dealing
+- FE authn and authz
 - Model updates lol, going through to API and views
 - Sorting / Pagination
 - Be weird about the data tables

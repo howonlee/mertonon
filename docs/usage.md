@@ -2,64 +2,82 @@ Accounting is the act of recording economic facts pertaining to organizations. T
 
 Be advised that Mertonon is not financial reporting as of this time, Mertonon is only a managerial accounting system at this time. Read [all the other disclaimers](disclaimers.md) before using.
 
-Mertonon differs from most accounting systems because there is a computationally enabled allocation portion. That is, given a picture of the organization as you enter it and the local judgements you give it, Mertonon will suggest allocations of resources within your organization via neural network backpropagation.
-
-Therefore it is not paradoxical to say that Mertonon is a neural network system but not an AI system. There is a [neural differentiation bit stuck in there](../src/mertonon/autodiff/grad.clj), but the weights are materially determined by human beings like yourself.
-
 ---
 
-## Using Mertonon
+# Using Mertonon
 
-You have setup Mertonon as detailed in [these instructions](setup.md). You go to the home page.
+From the outside, organizations look like imposing edifices, united as one in one purpose towards producing hammocks or safeguarding fish or writing software or what-have-you.
+
+But you know better, don't you? From the inside, I myself have found every organization without exception riven by systems of homage, of fealty, of personal politics - and of feud. Sometimes the overall melange works - and in working, turns invisible - sometimes it does not. This is the invisible organization which Mertonon seeks to make legible and align towards the ostensible goal of the organization.
+
+This is what we mean by the allocation of resources. Mertonon is software for doing politics with regards to an organization's own internal politics, inasmuch as use of Mertonon constitutes:
+
+1. Writing down your current political situation in Mertonon as the structure of a neural network
+2. Determining the goals of the overal organization and fiddling with the settings a bit (when we have them)
+3. Having Mertonon guide you towards overall predetermined goals. Including normative statements about the path your political situation should go.
+
+You have setup Mertonon as detailed in [these instructions](setup.md). Go to the home page.
 
 ![](https://mertonon.com/assets/homepage.png)
 
 ---
 
-You see the demo, which you can look at at your leisure. Look at the listing of _grids_. A _grid_ delimits a coherent singular cost flow which may impinge upon multiple Mertonon-style responsibility centers. Create a grid.
+You see the demo, which you can look at at your leisure. You look at the listing of _grids_. A _grid_ is a political picture of an organization or a small section of an organization that still is big enough to have divisions of labor within it and overall goals - and political structures within them, formal or informal.
+
+That picture is in the form of a neural network. Most usages of neural networks are for getting them to represent a function, which gets then used for whatever, but here we _represent your organization_ with a neural network.
+
+You create a grid. You work at DealioCorp - it's a small software firm, the political world which it encompasses has one current overall goal, so it probably fits in one grid.
 
 ![](https://mertonon.com/assets/grid_create.gif)
 
 ---
 
-Usually the notion of responsibility center encompasses a business unit which has its own goals and such, so the Mertonon conception of responsibility centers, which may be pretty alienated from an end goal but still have its local contributions attributed to the end goal, may not mesh with your organization's idea of responsibility centers. In which case, call them layers, because that's what they are in neural network lingo. You note a few - Mertonon will start working with only a few.
+One of the inevitabilities of life in the modern organization is the heights of alienation that one can get up to. At companies, the salesperson talks directly to the customer - but you aren't the salesperson. You aren't even the person who talks to the salesperson to find out what the customer wants. You are the person who talks to the person who talks to the person who talks to.... the person who talks to the salepserson. Procurement folks talk directly to vendors, too, but you aren't one of them.
+
+Sometimes the accountants formalize this structure of alienation by putting people in functional responsibility centers. The salesperson belongs in the Sales responsibility center - they talk to the Product responsibility center. Those Product folks then in turn talk to the Design (and the Design folks don't talk to Sales directly). Many times responsibility centers mean something different, many times organizations are sliced up in different ways, but in Mertonon they always mean this, so we also call them layers, because if you know neural net lingo they are also layers in the neural net.
+
+You don't do sales. You don't do procurement, neither. You just deal with Dealios all day. (What are Dealios? No, you would need to have a 25-minute explanation to actually tell people what Dealios are, you always say at parties you Work In Software and people nod solemnly and the conversation passes to other things...)
+
+So that's why there has to be a Dealio _layer_. Create one.
 
 ![](https://mertonon.com/assets/layer_create.gif)
 
 ---
 
-A cost node is like a cost object, but because of the political nature of Mertonon we also want them to correspond to individuals in addition to ordinary cost objects. A complete picture is not necessary, although of course it helps quite a bit, especially if there is to be argumentation, which there probably will be.
+But you don't deal with all the Dealios at DealioCorp, do you? You do Doohickey Dealios. You're the one in the company everyone talks to when they think about Doohickey Dealios. You take care of other things (other cost nodes, in our lingo) in other layers sometimes but Doohickey Dealios is what you're concerned about today, so you need to be able to allocate resources to them - which is why you create a cost node. Gotta think about those Doohickey Dealios - the necessity for them, their relation to other necessary things in the organization.
 
 ![](https://mertonon.com/assets/cobj_create.gif)
 
 ---
 
-A weightset is a grouping of weights. Weights are like in neural networks - a weighting of how a cost node impinges upon another cost node. Weights are currently arbitrary at this time and there always has to be an arbitrary fallback as response to gaming. We anticipate that much of the constraints and politics in organizations can be written down in terms of weight structures. Create some weightsets and have all each of the individual people who own the cost objects put weights in them.
+And now we come to the actual political meat of things. The weights.
+
+Doohickey Dealios do need the Wibbles. After negotiation with the owner of the Wibbles node, you agreed that this is a fact, and decide to put that fact in Mertonon so folks can see it - and Mertonon can see it, and factor it into the allocations. This is a soft linkage - the stronger the necessity, the higher the value entered (Mertonon constrains the weight values to be positive currently). Mertonon will normalize the weights to sum to 100%.
 
 ![](https://mertonon.com/assets/weightset_create.gif)
 ![](https://mertonon.com/assets/weight_create.gif)
 
 ---
 
-Inputs and goals are annotations on layers (responsibility centers) indicating that they correspond to costs (inputs) and resulting outputs (goals). Only these layers have journal entries in them, the internal layers have cost nodes and weights impinging upon them only.
+Currently Mertonon can only aim for overall grid goals which formally correspond to competitiveness (formally speaking., reduction of profit for corporate market share). We will have others in time.
+
+To get recommendations from Mertonon, you have to point out to it one layer that corresponds to inputs to the organization's value flow (cost flow) and one layer that corresponds to outputs or goals.
 
 ![](https://mertonon.com/assets/input_create.gif)
 
 ---
 
-Entries are journal entries, which are entered with respect to a cost object within an input or a goal layer. Currently journal entries in single entry with abstract notions of value are the only type supported at this time. Invoicing, actual currency, double entry, financial reporting, audit stuff, and lots of other stuff is coming.
+To get recommendations from Mertonon, you also have to put down accounting general ledger journal entries (single entry only at this time), listing the transactions ascribed to the cost nodes corresponding to inputs and goals of the organization. Put down the transactions corresponding to sales, materials purchases, and so on. Mertonon will then attribute value to the intermediate layers in the value flow.
 
 ![](https://mertonon.com/assets/entry_create.gif)
 
 ---
 
-So, with the general picture of the organization as a neural net concluded, you can kick off the gradient and current allocations for the budget period are calculated. If there's any stuff missing and we thought of it it'll tell you.
+Mertonon does not make gradient and contribution determinations after every operation at this time. You have to kick them off manually. Here is how to kick them off.
 
 ![](https://mertonon.com/assets/kickoff.gif)
 
----
-
-Then you reify the budget allocations by working differently with people based upon the weight allocation suggestions and then changing the weights if you manage to actually do so.
+Given such a political point of view, after kicking off the gradient, Mertonon will suggest allocations for cost nodes like Doohickey Dealios and new points of view on the weightings everyone should have.
 
 ---
 
