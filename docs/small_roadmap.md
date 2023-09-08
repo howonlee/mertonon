@@ -20,3 +20,5 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Privacy policy
 - Whack the intermittent group-by-dependent-uuid compilation problem
 - Validation test properties... think them up. Not properties to validate, but properties to test the validation code. Quis custodiet ipsos custodes?
+- SSL - JDBC conn to db w/ ssl - put in instructions and trivial config instead i guess
+- SSL - serve with SSL
