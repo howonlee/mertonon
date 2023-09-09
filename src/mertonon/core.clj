@@ -1,5 +1,7 @@
 (ns mertonon.core
   (:require [clojure.tools.namespace.repl :as tn]
+            [mertonon.server :refer [server]]
+            [mertonon.setup :as setup :refer [db-migration warmup generate]]
             [mount.core :as mount :refer [defstate]]
             [taoensso.timbre :as timbre :refer [log]])
   ;; Meaning, this is entry point for uberjar
@@ -9,8 +11,6 @@
  "Launch Mertonon with args"
   [& [cmd & args]]
   (log :info "Mertonon initialization beginning...")
-  (require '[mertonon.server :refer [server]])
-  (require '[mertonon.setup :as setup :refer [db-migration warmup generate]])
   (mount/start)
   (log :info "Mertonon initialization finished!"))
 
