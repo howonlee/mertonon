@@ -1,4 +1,5 @@
-- [ ] Shave Docker yak properly
+- [x] Shave Docker yak properly
+- [ ] No DB requirement to build...
 - [ ] Shave yak until the github actions stops complaining
 - [ ] Shave yak until the github actions actually builds things
 
