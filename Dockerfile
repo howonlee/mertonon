@@ -8,7 +8,10 @@ FROM node:latest AS node-builder
 
 RUN mkdir -p /fe_build
 WORKDIR /fe_build
-COPY ./ /fe_build
+COPY package.json /fe_build
+COPY shadow-cljs.edn /fe_build
+COPY yarn.lock /fe_build
+COPY src /fe_build/src
 
 RUN apt-get update && apt-get install -y default-jre
 
@@ -18,15 +21,15 @@ RUN yarn shadow-cljs release frontend
 
 # BE build
 
-FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
-
-RUN mkdir -p /be_build/resources/public/cljs
-WORKDIR /be_build
-COPY ./ /be_build
-
-COPY --from=node-builder /fe_build/resources/public/cljs /be_build/resources/public/cljs
-
-RUN clojure -T:build uberjar
+# FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
+# 
+# RUN mkdir -p /be_build/resources/public/cljs
+# WORKDIR /be_build
+# COPY ./ /be_build
+# 
+# COPY --from=node-builder /fe_build/resources/public/cljs /be_build/resources/public/cljs
+# 
+# RUN clojure -T:build uberjar
 
 ###
 # RUNNER
