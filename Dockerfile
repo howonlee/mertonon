@@ -21,15 +21,19 @@ RUN yarn shadow-cljs release frontend
 
 # BE build
 
-# FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
-# 
-# RUN mkdir -p /be_build/resources/public/cljs
-# WORKDIR /be_build
-# COPY ./ /be_build
-# 
-# COPY --from=node-builder /fe_build/resources/public/cljs /be_build/resources/public/cljs
-# 
-# RUN clojure -T:build uberjar
+FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
+
+RUN mkdir -p /be_build/resources/public/cljs
+WORKDIR /be_build
+COPY deps.edn /be_build
+COPY build.clj /be_build
+COPY test /be_build/test
+COPY resources /be_build/resources
+COPY src /be_build/src
+
+COPY --from=node-builder /fe_build/resources/public/cljs /be_build/resources/public/cljs
+
+RUN clojure -T:build uberjar
 
 ###
 # RUNNER
