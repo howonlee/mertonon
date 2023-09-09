@@ -33,7 +33,7 @@ COPY src /be_build/src
 
 COPY --from=node-builder /fe_build/resources/public/cljs /be_build/resources/public/cljs
 
-RUN clojure -T:build uberjar
+RUN clojure -T:build-ce uberjar
 
 ###
 # RUNNER
