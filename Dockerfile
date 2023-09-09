@@ -1,6 +1,8 @@
-###################
+###
 # BUILDER
-###################
+###
+
+# FE build
 
 FROM node:latest AS node-builder
 
@@ -16,15 +18,16 @@ RUN yarn install
 
 RUN yarn shadow-cljs release frontend
 
-# FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
+# BE build
 
-# RUN mkdir -p /build
-# WORKDIR /build
-# COPY THAT JS SHIT TO THE NEW BUILD DEALIO
-# COPY deps.edn /build/
-# 
-# RUN the yarn build to be honest
-# 
+FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
+
+RUN mkdir -p /be_build
+WORKDIR /be_build
+COPY ./ /be_build
+
+# copy from FE
+
 # RUN clojure -T:build uberjar
 
 ###################
