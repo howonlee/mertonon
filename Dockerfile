@@ -2,9 +2,21 @@
 # BUILDER
 ###################
 
-FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
+FROM node:latest AS node-builder
 
-# apt-get install node shadow cljs and other crap
+RUN mkdir -p /fe_build
+
+WORKDIR /fe_build
+
+COPY ./ /fe_build
+
+RUN apt-get update && apt-get install -y default-jre
+
+RUN yarn install
+
+RUN yarn shadow-cljs release frontend
+
+# FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
 
 # RUN mkdir -p /build
 # WORKDIR /build
@@ -18,6 +30,8 @@ FROM clojure:temurin-20-tools-deps-jammy AS clj-builder
 ###################
 # RUNNER
 ###################
+
+# FROM scratch AS runner
 #
 # EXPOSE 5036
 #
