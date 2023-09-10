@@ -3,15 +3,13 @@
 - [x] Docker runner thing
 - [x] Shave yak until the github actions stops complaining
 
-- [ ] BE validation throughgoing thoughts
 - [ ] scream-if-jar middleware, then make test handlers that are wrapped in it
-- [ ] FF BE authn/authz
+- [ ] shave yaks to get ring session working w Mertonon session store
+- [ ] Hooking up ring session setup to buddy authn
+- [ ] FF backed BE authn/authz
 
-- [ ] Hooking up to buddy authn
-- [ ] Trivial authz
-
-- [ ] Get BE validation for authn / trivial authz working behind FF
 - [ ] Testing - just run it for authn/authz
+- [ ] BE validation throughgoing thoughts
 
 - [ ] Shave yak until the github actions actually builds things
 - [ ] Docker test runner
