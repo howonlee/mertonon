@@ -13,7 +13,6 @@ Also look at small tasks roadmap
 - Be weird about the data tables
 - Email integration (as first integration)
 - Password reset
-- Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
 - Fold in total FE state with pretty baroque pathing, actually
 - Bookmarks
 - Weight painter and modal changing
@@ -23,10 +22,11 @@ Also look at small tasks roadmap
 - True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
 - Overall views / executive summary views / full grad views
 - Faster forward pass so you dont have to kick off every time
-- Get the video done
-- Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
 - Install scheduler bit
 - Crontab for adjustments
+- Get the video done
+- Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
+- Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
 - Theory of value writeup - mark 1
 - Theory of inequality writeup - mark 1. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
 
