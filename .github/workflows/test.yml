@@ -5,4 +5,4 @@ jobs:
   Mertonon-Test:
     runs-on: ubuntu-latest
     steps:
-      run: echo "put the test here when we do it"
+      - run: echo "put the test here when we do it"
