@@ -14,6 +14,7 @@ Also look at small tasks roadmap
 - Email integration (as first integration)
 - Password reset
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
+- Fold in total FE state with pretty baroque pathing, actually
 - Bookmarks
 - Weight painter and modal changing
 - EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
