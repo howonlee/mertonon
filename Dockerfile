@@ -27,6 +27,8 @@ RUN mkdir -p /be_build/resources/public/cljs
 WORKDIR /be_build
 COPY deps.edn /be_build
 COPY build.clj /be_build
+# The name of the jar file has number of git commits in it, which is why
+COPY .git /be_build/.git
 COPY test /be_build/test
 COPY resources /be_build/resources
 COPY src /be_build/src
@@ -40,14 +42,12 @@ ENV MT_DB_HOST=host.docker.internal
 
 RUN clojure -T:build-ce uberjar
 
+COPY target/*mertonon-prealpha-standalone.jar /be_build/curr-standalone.jar
+
 ###
 # RUNNER
 ###
 
-# FROM scratch AS runner
-#
-# EXPOSE 5036
-#
-## envvars...
-#
-# ENTRYPOINT ["/some crap"]
+EXPOSE 5036
+
+ENTRYPOINT ["java", "-jar", "curr-standalone.jar"]
