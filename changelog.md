@@ -17,3 +17,9 @@ v0.2.commits - September 7 2023
 ----
 
 - Stared at the usage readme a lot and I'm not really satisfied with it. Multiple bad iterations
+
+v0.3.commits - September 14 2023
+----
+
+- Dockerfile doesn't not exist anymore
+

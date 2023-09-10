@@ -1,6 +1,7 @@
 - [x] Shave Docker yak properly
 - [x] Shove in the DB requirement to build into dockerfile, punt on making it not a requirement I guess
-- [ ] Docker runner thing
+- [x] Docker runner thing
+
 - [ ] Docker test runner
 - [ ] Shave yak until the github actions stops complaining
 - [ ] Shave yak until the github actions actually builds things
