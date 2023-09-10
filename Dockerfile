@@ -33,6 +33,11 @@ COPY src /be_build/src
 
 COPY --from=node-builder /fe_build/resources/public/cljs /be_build/resources/public/cljs
 
+# Needs a Postgres instance in the host env...
+# TODO: dont do this lol
+
+ENV MT_DB_HOST=host.docker.internal
+
 RUN clojure -T:build-ce uberjar
 
 ###
