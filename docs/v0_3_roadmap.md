@@ -3,6 +3,7 @@
 - [x] Docker runner thing
 - [x] Shave yak until the github actions stops complaining
 
+- [ ] Key to contacting peeps is staring at them a bit
 - [ ] scream-if-jar middleware, then make test handlers that are wrapped in it (so no authn authz for ordinary tests)
 - [ ] shave yaks to get ring session working w Mertonon session store
 - [ ] hooking up ring session setup to buddy authn
