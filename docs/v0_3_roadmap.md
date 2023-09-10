@@ -4,6 +4,7 @@
 - [x] Shave yak until the github actions stops complaining
 
 - [ ] BE validation throughgoing thoughts
+- [ ] scream-if-production, then make test handlers that are wrapped in it
 - [ ] FF BE authn/authz
 
 - [ ] Hooking up to buddy authn
