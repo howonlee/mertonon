@@ -8,10 +8,14 @@
             [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.test-utils :as tu]))
 
-(defspec random thing needs session
+(defspec endpoint-needs-session
   100
-  (prop/for-all [some crap]
-                ;; plain exercise on grid getter with created mt session?
-                ;; and do testutil crud things on it?
-                (let [some crap]
-                  (= some crap))))
+  (prop/for-all []
+                (let [handler app-handler some crap]
+                  ;; random non-login endpoint
+                  ;; make the session
+                  ;; make the request
+                  ;; make sure it fails
+                  ;; make a sessioned request
+                  ;; make sure it succeeds
+                  (request some crap))))
