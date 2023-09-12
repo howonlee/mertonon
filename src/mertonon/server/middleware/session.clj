@@ -1,4 +1,4 @@
-(ns mertonon.server.middlewares.session
+(ns mertonon.server.middleware.session
   "Want everything to be authn'ed except for the login endpoint itself, basically
 
   This is allowlisting (whitelisting), which it really doesn't feel like. But it is."
@@ -12,7 +12,8 @@
    (let [options (#'ring-session/session-options options)]
      (fn ([request]
           ;;;; if login whitelist something
-          (let [request (ring-session/session-request request options)]
+          (let [printo  (println request)
+                request (ring-session/session-request request options)]
             (-> (handler request)
                 (ring-session/session-response request options))))))))
 
