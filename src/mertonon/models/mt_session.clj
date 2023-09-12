@@ -10,6 +10,7 @@
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.util.io :as io]
             [mertonon.util.queries :as q]
+            [ring.middleware.session.store :refer [SessionStore]]
             [tick.core :as t]))
 
 (defn canonicalize-mt-session [mt-session]
@@ -35,5 +36,25 @@
 
 (def model
   (q/default-model query-info))
+
+(deftype MtSessionStore [curr-model]
+  SessionStore
+  (read-session [_ curr-key]
+    ;;;;
+    ;;;;
+    ;;;;
+    nil)
+  (write-session [_ curr-key data]
+    ;;;;
+    ;;;;
+    nil)
+  (delete-session [_ curr-key data]
+    ;;;;
+    ;;;;
+    nil))
+
+(defn mt-session-ring-session-store
+  []
+  (MtSessionStore. model))
 
 (comment)
