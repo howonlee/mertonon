@@ -41,8 +41,8 @@
   SessionStore
   (read-session [_ curr-key]
     ((curr-model :read-one) curr-key))
-  (write-session [_ _ data]
-    ((curr-model :create-one!) data))
+  (write-session [_ curr-key data]
+    ((curr-model :update-one!) curr-key data))
   (delete-session [_ curr-key]
     ((curr-model :hard-delete-one!) curr-key)
     nil))
