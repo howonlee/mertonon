@@ -21,9 +21,9 @@
 (defn- warmup!
   []
   (log :info "Warmup request sending...")
-  ((handler/prod-handler) {:uri            "/api/v1/health_check"
-                           :request-method :post
-                           :body-params    (mc/->HealthCheck (uutils/uuid))})
+  ((handler/app-handler) {:uri            "/api/v1/health_check"
+                          :request-method :post
+                          :body-params    (mc/->HealthCheck (uutils/uuid))})
   (uio/load-array-impl!)
   (log :info "Finished sending warmup request."))
 

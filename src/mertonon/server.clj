@@ -21,7 +21,7 @@
   (let [curr-config (mt-config/config)
         curr-server (#'ring-jetty/create-server {:port   (curr-config :mt-port)
                                                  :join?  true})
-        _           (.setHandler curr-server (#'ring-jetty/proxy-handler (handler/prod-handler)))
+        _           (.setHandler curr-server (#'ring-jetty/proxy-handler (handler/app-handler)))
         _           (.start curr-server)]
     curr-server))
 

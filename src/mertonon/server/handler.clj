@@ -27,10 +27,7 @@
    coercion/coerce-response-middleware])
 
 (defn- prod-router-middlewares []
-  ;;;;
-  ;;;;
-  ;;;;
-  nil)
+  (base-router-middlewares))
 
 (defn- test-router-middlewares []
   ;;;;
@@ -46,7 +43,7 @@
      :router r/trie-router}))
 
 (defn- prod-router []
-  (router (routes/routes) (base-router-middlewares)))
+  (router (routes/routes) (prod-router-middlewares)))
 
 (defn- test-router []
   ;;;;
@@ -58,12 +55,23 @@
 ;; Handling
 ;; ---
 
-(defn- prod-handler []
+(defn app-handler
+  "Production handler."
+  []
   (rr/ring-handler
-    (base-router)
+    (prod-router)
     (rr/redirect-trailing-slash-handler)
     (rr/create-default-handler)))
 
-(defn test-handler [] nil)
+(defn test-handler
+  "Unsecured handler in order to not eat huge slowdowns in testing.
+  Do not use in production.
 
-(comment (prod-handler))
+  TODO: enforce not using in production"
+  []
+  (rr/ring-handler
+    (test-router)
+    (rr/redirect-trailing-slash-handler)
+    (rr/create-default-handler)))
+
+(comment (app-handler))
