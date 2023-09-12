@@ -18,7 +18,7 @@
             [mertonon.generators.aug-net :as aug-net-gen]
             [mertonon.generators.grad-net :as grad-net-gen]
             [mertonon.models.entry :as entry-model]
-            [mertonon.server.handler :as app-handler]
+            [mertonon.server.handler :as handler]
             [mertonon.services.coarse-serde-service :as coarse-serde]
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]
@@ -47,7 +47,7 @@
              :body-params    data})
        :body uio/maybe-slurp uio/maybe-json-decode strip-updated-at))
 
-(def test-app (app-handler/app-handler))
+(def test-app (handler/test-handler))
 
 (defspec grid-dump-consonance-test
   3

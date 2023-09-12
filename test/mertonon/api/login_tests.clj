@@ -11,7 +11,7 @@
             [mertonon.generators.authn :as authn-gen]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
-            [mertonon.server.handler :as app-handler]
+            [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
 
@@ -33,7 +33,7 @@
              orig-passwords  :orig-passwords} generated
             insert-mt-users!                  ((mt-user-model/model :create-many!) mt-users)
             insert-password-logins!           ((password-login-model/model :create-many!) password-logins)
-            curr-app                          (app-handler/app-handler)
+            curr-app                          (handler/app-handler)
             good-login-res                    (post-login!  {:username (-> mt-users first :canonical-username)
                                                              :password (-> orig-passwords first)} curr-app)
             wrong-user-res                    (post-login! {:username (-> mt-users first :canonical_username)

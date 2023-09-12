@@ -30,10 +30,7 @@
   (base-router-middlewares))
 
 (defn- test-router-middlewares []
-  ;;;;
-  ;;;;
-  ;;;;
-  nil)
+  (base-router-middlewares))
 
 (defn- router [curr-routes curr-middlewares]
   (rr/router
@@ -46,10 +43,7 @@
   (router (routes/routes) (prod-router-middlewares)))
 
 (defn- test-router []
-  ;;;;
-  ;;;;
-  ;;;;
-  nil)
+  (router (routes/routes) (test-router-middlewares)))
 
 ;; ---
 ;; Handling

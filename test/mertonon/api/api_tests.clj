@@ -7,7 +7,7 @@
             [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
-            [mertonon.server.handler :as app-handler]
+            [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.registry :as reg]
             [mertonon.util.io :as uio]))
@@ -55,7 +55,7 @@
        uio/maybe-json-decode))
 
 (defn test-inp [table generates]
-  (let [app             (app-handler/app-handler)
+  (let [app             (handler/test-handler)
         endpoint        (endpoints-under-test table)
         elem            (tu/generates->member generates table)
         indiv-endpoint  #(format "%s%s" endpoint (or (:uuid %) %))
