@@ -26,6 +26,18 @@
    coercion/coerce-request-middleware
    coercion/coerce-response-middleware])
 
+(defn- prod-router-middlewares []
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
+
+(defn- test-router-middlewares []
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
+
 (defn- router [curr-routes curr-middlewares]
   (rr/router
     [curr-routes]
@@ -33,21 +45,25 @@
             :middleware curr-middlewares}
      :router r/trie-router}))
 
-(defn- base-router []
+(defn- prod-router []
   (router (routes/routes) (base-router-middlewares)))
+
+(defn- test-router []
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
 
 ;; ---
 ;; Handling
 ;; ---
 
-(defn- base-handler []
+(defn- prod-handler []
   (rr/ring-handler
     (base-router)
     (rr/redirect-trailing-slash-handler)
     (rr/create-default-handler)))
 
-(defn app-handler [] (base-handler))
-
 (defn test-handler [] nil)
 
-(comment (base-router))
+(comment (prod-handler))
