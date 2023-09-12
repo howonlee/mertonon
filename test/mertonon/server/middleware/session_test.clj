@@ -11,8 +11,7 @@
 (defspec random thing needs session
   100
   (prop/for-all [some crap]
+                ;; plain exercise on grid getter with created mt session?
+                ;; and do testutil crud things on it?
                 (let [some crap]
                   (= some crap))))
-
-(deftest login-is-exempted
-  nil)
