@@ -8,4 +8,11 @@
             [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.test-utils :as tu]))
 
-(defspec some crap)
+(defspec random thing needs session
+  100
+  (prop/for-all [some crap]
+                (let [some crap]
+                  (= some crap))))
+
+(deftest login-is-exempted
+  nil)
