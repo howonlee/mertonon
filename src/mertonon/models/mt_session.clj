@@ -40,21 +40,15 @@
 (deftype MtSessionStore [curr-model]
   SessionStore
   (read-session [_ curr-key]
-    ;;;;
-    ;;;;
-    ;;;;
-    nil)
-  (write-session [_ curr-key data]
-    ;;;;
-    ;;;;
-    nil)
-  (delete-session [_ curr-key data]
-    ;;;;
-    ;;;;
+    ((curr-model :read-one) curr-key))
+  (write-session [_ _ data]
+    ((curr-model :create-one!) data))
+  (delete-session [_ curr-key]
+    ((curr-model :hard-delete-one!) curr-key)
     nil))
 
 (defn mt-session-ring-session-store
   []
   (MtSessionStore. model))
 
-(comment)
+(comment (mt-session-ring-session-store))
