@@ -12,10 +12,6 @@
 - [ ] testing - just run it for authn/authz
 - [ ] BE validation throughgoing thoughts
 
-- [ ] shave yak until the github actions actually builds things
-- [ ] docker test runner
-- [ ] shave yak until the github actions actually tests things
-
 - [ ] changelog
 - [ ] clicking around a bit
 - [ ] cut release
