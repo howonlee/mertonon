@@ -1,5 +1,6 @@
 (ns mertonon.server.handler
-  (:require [mertonon.server.middleware.session :as mt-session-middleware]
+  (:require [mertonon.server.middleware.auth :as mt-auth-middleware]
+            [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.server.routes :as routes]
             [mertonon.util.i18n :refer [trs]]
             [mount.core :as mount :refer [defstate]]
@@ -31,7 +32,8 @@
 
 (defn- prod-router-middlewares []
   (into (base-router-middlewares)
-        [mt-session-middleware/wrap-mertonon-session]))
+        [mt-session-middleware/wrap-mertonon-session
+         mt-auth-middleware/wrap-mertonon-auth]))
 
 (defn- test-router-middlewares []
   (base-router-middlewares))

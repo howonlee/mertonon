@@ -8,6 +8,7 @@
 - [x] Write session sketch
 
 - [x] Write session test
+- [ ] Get auth middleware just to get session test to actually work lol
 - [ ] Get session test to actually work lol
 
 - [ ] Make sessions exclude the logins, no need for separate test for this, existing login test covers
