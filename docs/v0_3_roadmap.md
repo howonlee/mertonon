@@ -7,7 +7,7 @@
 
 - [x] Write session sketch
 - [ ] Write session test and get it to work
-- [ ] Make sessions exclude the logins
+- [ ] Make sessions exclude the logins, shove in a test for that
 - [ ] Make a session in the warmup
 - [ ] Put it all behind the FF
 

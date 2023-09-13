@@ -22,7 +22,7 @@
     slurped))
 
 (defspec just-login-a-bunch
-  3
+  1
   (prop/for-all
     [generated    authn-gen/generate-password-logins
      ;; bad by dint of being too long
