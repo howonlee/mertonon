@@ -5,11 +5,13 @@
 
 - [x] Key to contacting peeps is own mental state lol
 
-- [ ] shave yaks to get ring session working w Mertonon session store
-- [ ] FF backed BE authn/trivial authz (decided not to do buddy because non-supported and need rbac)
+- [x] Write session sketch
+- [ ] Write session test and get it to work
+- [ ] Make sessions exclude the logins
+- [ ] Make a session in the warmup
+- [ ] Put it all behind the FF
 
-- [ ] testing - just run it for authn/authz
-- [ ] BE validation throughgoing thoughts
+- [ ] BE validation - make the first one
 
 - [ ] changelog
 - [ ] clicking around a bit
