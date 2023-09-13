@@ -11,7 +11,7 @@
 Some examples of things you could say if you had a Mertonon instance:
 
 - "There's this silo between the Moopy department and the Zoopy department, and all our dependencies in Zoopy projects for Moopy people are being stonewalled at every turn - Mertonon says we need to bury our differences for the overall good of the company (or: Mertonon says we need to figure out a way to be less dependent upon one another). Will you do this?"
-- "Hey, Mertonon says if we increase the budget for Doohickey Dealios, competitiveness of firm on market goes up [making profit go up on the roadmap, arbitrary KPI's on the roadmap] - by the influence on our ability to make Fizzwoopers, then Bob Lobbs can do their job better, and there's your competitiveness."
+- "We aren't really a cost center, even though we're evidently not a profit center - we're a hidden center, or an indirect profit center. Here it is, laid out on the Mertonon instance - we're integral to the working of the Loopzoop org, and they then deal with the Woopzoop people who then deal with sales. So you see how we're essential to the profit flow of the org here."
 - "Look, Part Meepmoop #22 really seems like some random unimportant doodad but the quality advantage we have for it is structurally responsible for our org's success and the whole department knows it - here it is on Mertonon - so cost-cutting is probably a bad idea. You'll probably make enemies of Cobb, Dobbs and Hob specifically if you cut it hard without their consent - see here. Unintuitive, eh?"
 
 More things:
