@@ -11,6 +11,7 @@
             [mertonon.server.handler :as handler]
             [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.test-utils :as tu]
+            [mertonon.util.config :as mt-config]
             [mertonon.util.io :as uio]))
 
 (defn get-app! [curr-app session]
@@ -36,7 +37,9 @@
           no-session-req! (get-app! curr-app nil)
           session-req!    (get-app! curr-app curr-session)]
       (and
-        (= (no-session-req! :status) 401)
+        (if ((mt-config/feature-flags) :auth)
+          (= (no-session-req! :status) 401)
+          true)
         (= (session-req! :status) 200)
         (vector? (session-req! :body)))))))
 

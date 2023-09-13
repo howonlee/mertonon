@@ -2,7 +2,8 @@
   "Middlewares for authing.
 
   Don't use buddy because it's based on ACL and we want RBAC"
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            [mertonon.util.config :as mt-config]))
 
 (def auth-exception-endpoints
   #{"/"
@@ -22,4 +23,5 @@
        (seq (:session request))
        (handler request)
        :else
-       {:status 401 :body {:message "Unauthorized"}}))))
+       (if ((mt-config/feature-flags) :auth)
+         {:status 401 :body {:message "Unauthorized"}})))))
