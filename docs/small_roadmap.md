@@ -5,6 +5,7 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - More skeumorphism in button
 - Some kind of middlingly durable settings db thing... maybe with table
 - Use banlist for password
+- Make sessions actually expire
 - Avoid the denial-of-service possibility of the health check endpoint
 - Stick in more shenanigans in the warmup request, yell about the mertonon user being given stuff
 - Probabilistic semantics (follow Kolmogorov's first properly)
