@@ -6,15 +6,16 @@
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [mertonon.generators.authn :as authn-gen]
+            [mertonon.models.mt-session :as mt-session-model]
             [mertonon.server.handler :as handler]
             [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.test-utils :as tu]))
 
-(defn post-app! [member curr-app session]
+(defn get-app! [curr-app session]
   (let [endpoint    "/api/v1/grid/"
-        req         {:uri endpoint :request-method :post :body-params member}
+        req         {:uri endpoint :request-method :get}
         req         (if (some? session)
-                      (assoc-in req [:cookes "ring-session"] (:uuid session))
+                      (assoc-in req [:cookies "ring-session"] (:uuid session))
                       req)
         res         (curr-app req)
         slurped     (update res :body (comp uio/maybe-slurp uio/maybe-json-decode))]
@@ -23,23 +24,19 @@
 (defspec endpoint-needs-session-test
   1
   (prop/for-all
-    [generated authn-gen/generate-password-logins]
-    (let [app-handler    (handler/app-handler)
-          session!       (some crap)
-          no-session-req some crap
-          session-req    some crap]
+    [generated authn-gen/generate-mt-sessions]
+    (let [curr-app        (handler/app-handler)
+          session!        ((mt-session-model/model :create-one!)
+                           (first (:mt-sessions generated)))
+          no-session-req! (get-app! curr-app nil)
+          printo          (println no-session-req!)
+          session-req!    (get-app! curr-app session!)
+          printo          (println session-req!)]
+      ;;;;;;
+      ;;;;;;
+      ;;;;;;
+      ;;;;;;
       nil
       )))
-
-(defproc endpoint-needs-session
-  (let [app-handler (handler/app-handler)
-        endpoint    "some crap"
-        session     some crap]
-    ;; make the session
-    ;; make the unsessioned request
-    ;; make sure it fails
-    ;; make a sessioned request
-    ;; make sure it succeeds
-    ))
 
 (comment (run-tests))
