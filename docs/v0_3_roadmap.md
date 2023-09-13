@@ -13,7 +13,7 @@
 - [x] Make sessions exclude the logins, no need for separate test for this, existing login test covers
 
 - [x] ~~Make a session in the warmup~~ make the warmup not need session
-- [ ] Put trivial authz behind the FF
+- [x] Put trivial authz behind the FF
 - [ ] FE tests. Just start on generates
 
 - [ ] changelog

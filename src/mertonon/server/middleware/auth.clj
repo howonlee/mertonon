@@ -24,4 +24,5 @@
        (handler request)
        :else
        (if ((mt-config/feature-flags) :auth)
-         {:status 401 :body {:message "Unauthorized"}})))))
+         {:status 401 :body {:message "Unauthorized"}}
+         (handler request))))))
