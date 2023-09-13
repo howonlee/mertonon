@@ -1,20 +1,21 @@
 - [x] Shave Docker yak properly
 - [x] Shove in the DB requirement to build into dockerfile, punt on making it not a requirement I guess
 - [x] Docker runner thing
+- [x] Shave yak until the github actions stops complaining
 
-- [ ] Docker test runner
-- [ ] Shave yak until the github actions stops complaining
-- [ ] Shave yak until the github actions actually builds things
+- [x] Key to contacting peeps is own mental state lol
 
-- [ ] BE validation throughgoing thoughts
-- [ ] FF BE authn/authz
+- [x] Write session sketch
 
-- [ ] Hooking up to buddy authn
-- [ ] Trivial authz
+- [x] Write session test
+- [x] Get auth middleware just to get session test to actually work lol
+- [x] Get session test to actually work lol
+- [x] Make sessions exclude the logins, no need for separate test for this, existing login test covers
 
-- [ ] Get BE validation for authn / trivial authz working behind FF
-- [ ] Testing - just run it for authn/authz
+- [x] ~~Make a session in the warmup~~ make the warmup not need session
+- [x] Put trivial authz behind the FF
+- [ ] FE tests. Just start on generates
 
-- [ ] Changelog
-- [ ] Clicking around a bit
-- [ ] Cut release
+- [ ] changelog
+- [ ] clicking around a bit
+- [ ] cut release

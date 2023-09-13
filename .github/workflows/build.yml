@@ -5,4 +5,4 @@ jobs:
   Mertonon-Build:
     runs-on: ubuntu-latest
     steps:
-      run: echo "put the build here when we do it"
+      - run: echo "put the build here when we do it"

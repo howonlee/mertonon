@@ -10,11 +10,11 @@
             [mertonon.api.api-tests :as api-tests]
             [mertonon.generators.health-check :as hc-gen]
             [mertonon.models.health-check :as hc-model]
-            [mertonon.server.handler :as app-handler]
+            [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]))
 
 (defn post-to-health-check! [member]
-  (let [app         (app-handler/app-handler)
+  (let [app         (handler/test-handler)
         endpoint    "/api/v1/health_check/"
         row->member (hc-model/model :row->member)
         res         (app {:uri endpoint :request-method :post :body-params member})

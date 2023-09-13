@@ -13,8 +13,12 @@
   [{:keys [name-type] :as params}]
   (gen/let [num-entries       (gen/choose 2 5)
             mt-user-uuids     (gen/vector gen/uuid num-entries)
-            mt-user-emails    (gen/vector-distinct (gen-data/gen-mt-user-emails name-type) {:num-elements num-entries})
-            mt-user-usernames (gen/vector-distinct (gen-data/gen-mt-user-usernames name-type) {:num-elements num-entries})]
+            mt-user-emails    (gen/vector-distinct-by
+                                clojure.string/lower-case
+                                (gen-data/gen-mt-user-emails name-type) {:num-elements num-entries})
+            mt-user-usernames (gen/vector-distinct-by
+                                clojure.string/lower-case
+                                (gen-data/gen-mt-user-usernames name-type) {:num-elements num-entries})]
     (let [vecs (map vector mt-user-uuids mt-user-emails mt-user-usernames)]
       {:mt-users (mapv (fn [[mt-user-uuid mt-user-email mt-user-username]]
                          (-> (mtc/->MtUser mt-user-uuid
