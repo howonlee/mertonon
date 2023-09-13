@@ -6,10 +6,11 @@
 - [x] Key to contacting peeps is own mental state lol
 
 - [x] Write session sketch
+
 - [ ] Write session test and get it to work
+
 - [ ] Make sessions exclude the logins, no need for separate test for this, existing login test covers
 - [ ] Make a session in the warmup
-
 - [ ] Trivial authz
 - [ ] Put trivial authz behind the FF
 

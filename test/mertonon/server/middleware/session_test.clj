@@ -7,6 +7,7 @@
             [clojure.test.check.properties :as prop]
             [mertonon.generators.authn :as authn-gen]
             [mertonon.models.mt-session :as mt-session-model]
+            [mertonon.models.mt-user :as mt-user-model]
             [mertonon.server.handler :as handler]
             [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.test-utils :as tu]
@@ -26,18 +27,20 @@
   1
   (prop/for-all
     [generated authn-gen/generate-mt-sessions]
+    (tu/with-test-txn
     (let [curr-app        (handler/app-handler)
+          user!           ((mt-user-model/model :create-one!)
+                           (first (:mt-users generated)))
           session!        ((mt-session-model/model :create-one!)
                            (first (:mt-sessions generated)))
           no-session-req! (get-app! curr-app nil)
-          printo          (println no-session-req!)
+          printo          (println (= no-session-req! {}))
           session-req!    (get-app! curr-app session!)
-          printo          (println session-req!)]
-      ;;;;;;
-      ;;;;;;
-      ;;;;;;
-      ;;;;;;
-      nil
-      )))
+          printo          (println (= (session-req! :status) 200))
+          printo          (println (vector? (session-req! :body)))]
+      (and
+        (= no-session-req! {})
+        (= (session-req! :status) 200)
+        (vector? (session-req! :body)))))))
 
 (comment (run-tests))
