@@ -12,8 +12,8 @@
    (let [options (#'ring-session/session-options options)]
      (fn ([request]
           ;;;; if login whitelist something
-          (let [printo  (println (keys request))
-                request (ring-session/session-request request options)]
-            (-> (handler request)
-                (ring-session/session-response request options))))))))
+          (let [wrapped-request (ring-session/session-request request options)
+                printo          (println (:session wrapped-request))]
+            (-> (handler wrapped-request)
+                (ring-session/session-response wrapped-request options))))))))
 

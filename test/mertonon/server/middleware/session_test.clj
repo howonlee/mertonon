@@ -15,7 +15,7 @@
 (defn get-app! [curr-app session]
   (let [endpoint    "/api/v1/grid/"
         req         {:uri endpoint :request-method :get}
-        req         (if (some? session)
+        req         (if (seq session)
                       (assoc-in req [:cookies "ring-session"] (:uuid session))
                       req)
         res         (curr-app req)
