@@ -41,7 +41,9 @@
 (deftype MtSessionStore [curr-model]
   SessionStore
   (read-session [_ curr-key]
-    ((curr-model :read-one) (uutils/uuid curr-key)))
+    (if (seq curr-key)
+      ((curr-model :read-one) (uutils/uuid curr-key))
+      {}))
   (write-session [_ curr-key data]
     ((curr-model :update-one!) (uutils/uuid curr-key) data))
   (delete-session [_ curr-key]
