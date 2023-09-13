@@ -5,8 +5,9 @@
   (:require [clojure.string :as str]))
 
 (def auth-exception-endpoints
-  #{"/api/v1/login/"
-    "/"})
+  #{"/"
+    "/api/v1/login/"
+    "/api/v1/health_check/"})
 
 (defn wrap-mertonon-auth
   ([handler]

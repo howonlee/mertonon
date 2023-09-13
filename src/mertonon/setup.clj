@@ -21,19 +21,10 @@
 (defn- warmup!
   []
   (log :info "Warmup request sending...")
-  ;;;;;;;;;
-  ;;;;;;;;;
-  ;;;;;;;;;
-  ;;;;;;;;;
-  (let [new-session  (mc/->MtSession nil)
-        new-session! (session some crap)
-        res          ((handler/app-handler)
-                      {:uri            "/api/v1/health_check/"
-                       :request-method :post
-                       ;;;;;
-                       :headers        some crap
-                       :body-params    (mc/->HealthCheck (uutils/uuid))})
-        printo (println res)]
+  (let [res ((handler/app-handler)
+             {:uri            "/api/v1/health_check/"
+              :request-method :post
+              :body-params    (mc/->HealthCheck (uutils/uuid))})]
     (log :info "Warmup request result")
     (log :info res)
     (log :info "Finished sending warmup request.")))
