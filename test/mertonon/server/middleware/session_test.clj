@@ -39,8 +39,7 @@
           session!        ((mt-session-model/model :create-one!) curr-session)
           ;; no-session-req! (get-app! curr-app nil)
           session-req!    (get-app! curr-app curr-session)
-          printo          (println (= (session-req! :status) 200))
-          printo          (println (vector? (session-req! :body)))]
+          printo          (println session-req!)]
       (and
         (= (session-req! :status) 200)
         (vector? (session-req! :body)))))))
