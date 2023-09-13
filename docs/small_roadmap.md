@@ -5,6 +5,7 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - More skeumorphism in button
 - Some kind of middlingly durable settings db thing... maybe with table
 - Use banlist for password
+- Stick in more shenanigans in the warmup request, yell about the mertonon user being given stuff
 - Probabilistic semantics (follow Kolmogorov's first properly)
 - Cobj deletion gotta cascade to weight, with affordance for undeletion implementation later - add this to generate too
 - Figure out CLA / FLA / whatever we're going to use situation
