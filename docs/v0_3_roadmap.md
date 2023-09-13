@@ -12,7 +12,7 @@
 - [x] Get session test to actually work lol
 - [x] Make sessions exclude the logins, no need for separate test for this, existing login test covers
 
-- [ ] Make a session in the warmup
+- [x] ~~Make a session in the warmup~~ make the warmup not need session
 - [ ] Put trivial authz behind the FF
 
 - [ ] BE validation - make the first one
