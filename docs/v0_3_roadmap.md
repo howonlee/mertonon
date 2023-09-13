@@ -7,9 +7,11 @@
 
 - [x] Write session sketch
 - [ ] Write session test and get it to work
-- [ ] Make sessions exclude the logins, shove in a test for that
+- [ ] Make sessions exclude the logins, no need for separate test for this, existing login test covers
 - [ ] Make a session in the warmup
-- [ ] Put it all behind the FF
+
+- [ ] Trivial authz
+- [ ] Put trivial authz behind the FF
 
 - [ ] BE validation - make the first one
 
