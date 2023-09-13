@@ -8,6 +8,7 @@
             [reitit.ring :as rr]
             [reitit.ring.coercion :as coercion]
             [reitit.ring.middleware.muuntaja :as muuntaja]
+            [ring.middleware.cookies :refer [wrap-cookies]]
             [ring.middleware.cors :refer [wrap-cors]]
             [ring.middleware.params :as params]
             [reitit.ring.middleware.exception :as rr-exceptions]
@@ -22,8 +23,10 @@
    muuntaja/format-middleware
    ;; Note order matters.
    ;; TODO: Tighten up origins
-   [wrap-cors :access-control-allow-origin [#".*"]
-    :access-control-allow-methods [:get :post]]
+   [wrap-cors
+    :access-control-allow-origin [#".*"]
+    :access-control-allow-methods [:get :post :put]]
+   wrap-cookies
    coercion/coerce-request-middleware
    coercion/coerce-response-middleware])
 

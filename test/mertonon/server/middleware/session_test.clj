@@ -34,7 +34,6 @@
     (let [curr-app        (handler/app-handler)
           curr-user       (first (:mt-users generated))
           curr-session    (first (:mt-sessions generated))
-          printo          (println curr-session)
           user!           ((mt-user-model/model :create-one!) curr-user)
           session!        ((mt-session-model/model :create-one!) curr-session)
           ;; no-session-req! (get-app! curr-app nil)
