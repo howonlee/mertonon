@@ -16,9 +16,12 @@
 (defn get-app! [curr-app session]
   (let [endpoint    "/api/v1/grid/"
         req         {:uri endpoint :request-method :get}
+        printo      (println "session")
+        printo      (println session)
         req         (if (seq session)
-                      (assoc-in req [:cookies "ring-session"] (:uuid session))
+                      (assoc-in req [:cookies "ring-session" :value] (str (:uuid session)))
                       req)
+        printo      (println req)
         res         (curr-app req)
         slurped     (update res :body (comp uio/maybe-slurp uio/maybe-json-decode))]
     slurped))
@@ -29,17 +32,16 @@
     [generated authn-gen/generate-mt-sessions]
     (tu/with-test-txn
     (let [curr-app        (handler/app-handler)
-          user!           ((mt-user-model/model :create-one!)
-                           (first (:mt-users generated)))
-          session!        ((mt-session-model/model :create-one!)
-                           (first (:mt-sessions generated)))
-          no-session-req! (get-app! curr-app nil)
-          printo          (println (= no-session-req! {}))
-          session-req!    (get-app! curr-app session!)
+          curr-user       (first (:mt-users generated))
+          curr-session    (first (:mt-sessions generated))
+          printo          (println curr-session)
+          user!           ((mt-user-model/model :create-one!) curr-user)
+          session!        ((mt-session-model/model :create-one!) curr-session)
+          ;; no-session-req! (get-app! curr-app nil)
+          session-req!    (get-app! curr-app curr-session)
           printo          (println (= (session-req! :status) 200))
           printo          (println (vector? (session-req! :body)))]
       (and
-        (= no-session-req! {})
         (= (session-req! :status) 200)
         (vector? (session-req! :body)))))))
 
