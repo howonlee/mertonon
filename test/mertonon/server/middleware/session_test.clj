@@ -16,12 +16,9 @@
 (defn get-app! [curr-app session]
   (let [endpoint    "/api/v1/grid/"
         req         {:uri endpoint :request-method :get}
-        printo      (println "session")
-        printo      (println session)
         req         (if (seq session)
                       (assoc-in req [:cookies "ring-session" :value] (str (:uuid session)))
                       req)
-        printo      (println req)
         res         (curr-app req)
         slurped     (update res :body (comp uio/maybe-slurp uio/maybe-json-decode))]
     slurped))
@@ -36,10 +33,10 @@
           curr-session    (first (:mt-sessions generated))
           user!           ((mt-user-model/model :create-one!) curr-user)
           session!        ((mt-session-model/model :create-one!) curr-session)
-          ;; no-session-req! (get-app! curr-app nil)
-          session-req!    (get-app! curr-app curr-session)
-          printo          (println session-req!)]
+          no-session-req! (get-app! curr-app nil)
+          session-req!    (get-app! curr-app curr-session)]
       (and
+        (= (no-session-req! :status) 401)
         (= (session-req! :status) 200)
         (vector? (session-req! :body)))))))
 
