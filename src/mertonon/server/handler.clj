@@ -26,7 +26,6 @@
    [wrap-cors
     :access-control-allow-origin [#".*"]
     :access-control-allow-methods [:get :post :put]]
-   wrap-cookies
    coercion/coerce-request-middleware
    coercion/coerce-response-middleware])
 

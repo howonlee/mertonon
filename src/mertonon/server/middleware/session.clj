@@ -12,7 +12,7 @@
   ([handler options]
    (let [curr-store (mt-session-model/mt-session-ring-session-store)
          options    (#'ring-session/session-options (assoc options :store curr-store))]
-     (fn ([request]
+     (fn [request]
           ;;;; if login whitelist something
           (let [printo          (println "session key")
                 printo          (println (get-in request [:cookies "ring-session"]))
@@ -20,4 +20,4 @@
                 printo          (println "session theoretically gotten")
                 printo          (println (:session wrapped-request))]
             (-> (handler wrapped-request)
-                (ring-session/session-response wrapped-request options))))))))
+                (ring-session/session-response wrapped-request options)))))))
