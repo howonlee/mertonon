@@ -14,7 +14,7 @@
 
 - [x] ~~Make a session in the warmup~~ make the warmup not need session
 - [x] Put trivial authz behind the FF
-- [ ] FE tests. Just start on generates
+- [ ] FE thinking about the initial frontpage
 
 - [ ] changelog
 - [ ] clicking around a bit
