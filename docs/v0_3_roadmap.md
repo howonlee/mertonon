@@ -4,10 +4,9 @@
 - [x] Shave yak until the github actions stops complaining
 
 - [x] Key to contacting peeps is own mental state lol
-- [ ] shave yaks to get ring session working w Mertonon session store
 
-- [ ] hooking up ring session setup to buddy authn
-- [ ] FF backed BE authn/authz
+- [ ] shave yaks to get ring session working w Mertonon session store
+- [ ] FF backed BE authn/trivial authz (decided not to do buddy because non-supported and need rbac)
 
 - [ ] testing - just run it for authn/authz
 - [ ] BE validation throughgoing thoughts
