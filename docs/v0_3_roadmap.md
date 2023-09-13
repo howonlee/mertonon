@@ -7,7 +7,8 @@
 
 - [x] Write session sketch
 
-- [ ] Write session test and get it to work
+- [x] Write session test
+- [ ] Get session test to actually work lol
 
 - [ ] Make sessions exclude the logins, no need for separate test for this, existing login test covers
 - [ ] Make a session in the warmup
