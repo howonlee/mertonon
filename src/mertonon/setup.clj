@@ -21,6 +21,11 @@
 (defn- warmup!
   []
   (log :info "Warmup request sending...")
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;; make the session here too
+  ;;;;;;;
+  ;;;;;;;
   ((handler/app-handler) {:uri            "/api/v1/health_check"
                           :request-method :post
                           :body-params    (mc/->HealthCheck (uutils/uuid))})
