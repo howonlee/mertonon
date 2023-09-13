@@ -9,7 +9,8 @@
             [mertonon.models.mt-session :as mt-session-model]
             [mertonon.server.handler :as handler]
             [mertonon.server.middleware.session :as mt-session-middleware]
-            [mertonon.test-utils :as tu]))
+            [mertonon.test-utils :as tu]
+            [mertonon.util.io :as uio]))
 
 (defn get-app! [curr-app session]
   (let [endpoint    "/api/v1/grid/"

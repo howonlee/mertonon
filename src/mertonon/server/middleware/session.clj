@@ -12,7 +12,7 @@
    (let [options (#'ring-session/session-options options)]
      (fn ([request]
           ;;;; if login whitelist something
-          (let [printo  (println request)
+          (let [printo  (println (keys request))
                 request (ring-session/session-request request options)]
             (-> (handler request)
                 (ring-session/session-response request options))))))))

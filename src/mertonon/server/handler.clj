@@ -1,5 +1,6 @@
 (ns mertonon.server.handler
-  (:require [mertonon.server.routes :as routes]
+  (:require [mertonon.server.middleware.session :as mt-session-middleware]
+            [mertonon.server.routes :as routes]
             [mertonon.util.i18n :refer [trs]]
             [mount.core :as mount :refer [defstate]]
             [muuntaja.core :as m]
@@ -27,7 +28,8 @@
    coercion/coerce-response-middleware])
 
 (defn- prod-router-middlewares []
-  (base-router-middlewares))
+  (into (base-router-middlewares)
+        [mt-session-middleware/wrap-mertonon-session]))
 
 (defn- test-router-middlewares []
   (base-router-middlewares))
