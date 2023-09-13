@@ -13,7 +13,6 @@
 - [x] Make sessions exclude the logins, no need for separate test for this, existing login test covers
 
 - [ ] Make a session in the warmup
-- [ ] Trivial authz
 - [ ] Put trivial authz behind the FF
 
 - [ ] BE validation - make the first one
