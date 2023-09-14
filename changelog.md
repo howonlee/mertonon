@@ -22,4 +22,4 @@ v0.3.commits - September 14 2023
 ----
 
 - Dockerfile doesn't not exist anymore
-
+- Authn and authz exists and works for backend iff you turn the feature flag :auth on. Not usable at this time. Utterly trivial authz only. Username-password authn only.
