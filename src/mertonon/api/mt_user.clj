@@ -5,6 +5,8 @@
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.util.uuid :as uutils]))
 
+;; TODO: create-user-with-password
+
 (defn single-user-endpoint []
   {:get    (api-util/get-model mt-user-model/model)
    :delete (api-util/delete-model mt-user-model/model)
