@@ -4,8 +4,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- FE user crud, username/password crud
-- FE authn and authz
+- FE testing
+- FE user crud, username/password crud, initial frontpage, authn and authz
 - Github actions CI
 - RBAC BE
 - RBAC FE
