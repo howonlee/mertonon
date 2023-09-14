@@ -1,4 +1,6 @@
-# Towards a Pure-Computational Theory of Value - Mark I, pre-alpha
+# Towards a Pure-Computational Theory of Value - version 0.0.1-pre-alpha
+
+(nb: versioning in the essays is not the versioning of the program)
 
 Outline
 
