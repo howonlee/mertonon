@@ -14,8 +14,8 @@
 
 - [x] ~~Make a session in the warmup~~ make the warmup not need session
 - [x] Put trivial authz behind the FF
-- [ ] FE thinking about the initial frontpage
+- [x] FE thinking about the initial frontpage
 
-- [ ] changelog
-- [ ] clicking around a bit
-- [ ] cut release
+- [x] changelog
+- [x] clicking around a bit
+- [x] cut release
