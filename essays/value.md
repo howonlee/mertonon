@@ -12,8 +12,9 @@ Outline
 - I am therefore less interested in looking at AI from an economic point of view than in looking at economics from an AI point of view.
 
 - Unlike most CSP instances, economic systems are required to be anytime, highly available, algorithmically online, legible to even the illiterate, distributed and durable even towards war, systematic attack and disaster. They also have to be durable to poor problem-posing - they have to elicit their own problem statements - and incomplete knowledge.
-- This is why the signature data structure of the economic CSP is the _set of prices_.
-- Our contention is that prices are a data structure with respect to the variables in the world and the constraints upon those variables.
+- This is why the signature datatype of the economic CSP is the _set of prices_.
+- A set of prices is easily seen to be an abstract datatype - one can query a price from the set, one can bid and ask to adjust prices, etc.
+- Our contention is that realized prices are a data structure forming a distributed connectionist-like (neural network-like) representation with respect to the variables in the world and the constraints upon those variables.
 
 - A theory of value is a theory of why prices exist and how they are determined.
 - We do not respect the _coloring_ of variables like other previous theories of value - this is one formal way to put Sutton's bitter lesson, which is entirely empirical in nature.
@@ -31,7 +32,7 @@ Outline
 - In order to deal with the internal representations, you need the chain rule and caching (reverse autodiff).
 - The iceberg of the price is in the internal representation of the vast chain of other prices that it takes to get to that individual price - from the commodities to the widget to the labor, these are all internal representations, not external ones.
 
-- Given that prices are a _data structure_, and given an adjustment algorithm for it, we claim that's all that is needed for a theory of value.
+- Given that prices are a data structure, and given an adjustment algorithm for it, we claim that's all that is needed for a theory of value, and that detailed discussion of algorithms, on computational or meat substrate, should be the subject of discussion.
 - This is because adjustment algorithms (learning algorithms) determine the data structures they work upon.
 
 - Renormalization group analysis of inequality and class is coming.
