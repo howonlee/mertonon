@@ -32,6 +32,6 @@ Outline
 - The iceberg of the price is in the internal representation of the vast chain of other prices that it takes to get to that individual price - from the commodities to the widget to the labor, these are all internal representations, not external ones.
 
 - Given that prices are a _data structure_, and given an adjustment algorithm for it, we claim that's all that is needed for a theory of value.
-- This is because adjustment lgorithms (learning algorithms) determine the data structures they work upon.
+- This is because adjustment algorithms (learning algorithms) determine the data structures they work upon.
 
 - Renormalization group analysis of inequality and class is coming.
