@@ -4,20 +4,18 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- FE username and password dealing
 - FE user crud, username/password crud
 - FE authn and authz
+- Github actions CI
 - RBAC BE
 - RBAC FE
-- Github actions CI
-- Model updates lol, going through to API and views
+- Model updates, what's necessary of BE
+- Model updates FE
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Email integration (as first integration)
 - Full grad view (exec summary view)
 - Email digesting
-- Weight painter and modal changing
-- Mass operations in FE
 - True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
 - Kick off forward passes every time we change anything
 - Crontab for adjustments
@@ -28,6 +26,8 @@ Also look at small tasks roadmap
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
+- Weight painter and modal changing
+- Mass operations in FE
 - Bookmarks BE
 - Bookmarks FE
 - Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
