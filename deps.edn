@@ -10,6 +10,7 @@
   com.taoensso/timbre               {:mvn/version "6.0.1"}   ;; Logging
   crypto-password/crypto-password   {:mvn/version "0.3.0"}   ;; Cryptography algorithms
   eftest/eftest                     {:mvn/version "0.5.9"}   ;; Test rig
+  jarohen/chime                     {:mvn/version "0.3.3"}   ;; Scheduler
   net.mikera/core.matrix            {:mvn/version "0.63.0"}  ;; Matrix math
   medley/medley                     {:mvn/version "1.4.0"}   ;; Useful misc pure clojure fns
   metosin/muuntaja                  {:mvn/version "0.6.8"}   ;; Formatting and other middlewares for reitit
