@@ -1,8 +1,8 @@
-- [ ] Validations middleware
-- [ ] Validations middleware testing
-- [ ] Some whacking around with the norm nonlinearity
+- [x] Validations middleware
 
+- [ ] Validations middleware testing and whacking-with-the-working
 - [ ] Intro BE and validation and test
+
 - [ ] FE hero display
 
 - [ ] FE testing yakshave
@@ -18,6 +18,7 @@
 - [ ] Github actions CI - tester
 - [ ] Github actions CI - new build action
 
+- [ ] Some whacking around with the norm nonlinearity
 - [ ] Changelog
 - [ ] Futz around a bit
 - [ ] Deploy with new build action
