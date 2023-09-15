@@ -2,7 +2,7 @@
   "Takes a bunch of validations with their own semantics and applies them all to a request"
   (:require [reitit.core :as r]))
 
-(defn do-validations!
+(defn do-validations
   "Can also be called directly"
   [request validations]
   (let [reses  (vec (for [curr-validation validations]
@@ -17,12 +17,13 @@
         errors (apply (partial merge-with into) reses)]
     errors))
 
-(defn mt-validation-middleware
+(defn wrap-mertonon-validations
   "You never have just the one, so we get a seq of them"
-  [request validations]
-  (fn [request]
-    ;;;;
-    ;;;;
-    ;;;;
-    (do-validations! state validations)))
-
+  ([handler]
+   (wrap-mertonon-validations handler []))
+  ([handler validations]
+   (fn [request]
+     (let [error-results (do-validations request validations)]
+       (if (seq error-results)
+         {:status 400 :body error-results}
+         (handler wrapped-request))))))
