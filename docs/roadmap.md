@@ -4,9 +4,6 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- FE testing
-- FE user crud, username/password crud, initial frontpage, authn and authz
-- Github actions CI
 - RBAC BE
 - RBAC FE
 - True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
