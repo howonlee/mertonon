@@ -4,16 +4,16 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
+- True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property. Also do true norm
 - Kick off forward passes every time we change anything
 - Model updates, what's necessary of BE
 - Model updates FE
 - EE plugin making
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
-- EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
+- RBAC FE
+- EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
 - License making
 - License dealing
-- RBAC FE
 - Email integration (as first integration)
 - Full grad view (exec summary view)
 - Crontab for adjustments

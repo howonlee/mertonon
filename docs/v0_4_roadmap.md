@@ -1,3 +1,4 @@
+- [ ] Intro BE
 - [ ] FE hero display
 
 - [ ] FE testing yakshave
@@ -7,6 +8,7 @@
 - [ ] FE user crud testing
 
 - [ ] FE authn and authz
+- [ ] Error screens
 - [ ] FE authn and authz testing
 
 - [ ] Github actions CI - tester
