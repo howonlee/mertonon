@@ -1,5 +1,6 @@
 - [ ] Validations middleware
 - [ ] Validations middleware testing
+- [ ] Some whacking around with the norm nonlinearity
 
 - [ ] Intro BE and validation and test
 - [ ] FE hero display
