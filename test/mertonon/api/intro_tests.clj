@@ -18,7 +18,11 @@
 (defspec intro-not-idempotent
   1
   (prop/for-all
-    [generated    authn-gen/generate-password-logins]
+    [fst-generated authn-gen/generate-password-logins
+     snd-generated authn-gen/generate-password-logins]
     (tu/with-test-txn
+      ;; post into the intro
+      ;; post into the intro again
+      ;; make sure first post is 200, second is 400
       nil
       )))
