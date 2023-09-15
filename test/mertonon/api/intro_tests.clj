@@ -15,6 +15,12 @@
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
 
+(defn post-login! [member curr-app]
+  (let [endpoint    "/api/v1/intro/"
+        res         (curr-app {:uri endpoint :request-method :post :body-params member})
+        slurped     (update res :body (comp uio/maybe-slurp uio/maybe-json-decode))]
+    slurped))
+
 (defspec intro-not-idempotent
   1
   (prop/for-all

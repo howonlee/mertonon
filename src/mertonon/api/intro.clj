@@ -7,6 +7,9 @@
 
 (defn intro-endpoint []
   {:post (fn [m]
+           ;; just username
+           ;; just password
+           ;; create the rest basically
            nil)
    :name ::intro})
 
