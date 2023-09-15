@@ -1,5 +1,7 @@
 - [ ] Validations middleware
-- [ ] Intro BE
+- [ ] Validations middleware testing
+
+- [ ] Intro BE and validation and test
 - [ ] FE hero display
 
 - [ ] FE testing yakshave
