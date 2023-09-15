@@ -1,3 +1,4 @@
+- [ ] Validations middleware
 - [ ] Intro BE
 - [ ] FE hero display
 
