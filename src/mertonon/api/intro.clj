@@ -18,7 +18,9 @@
 
 (defn intro-endpoint []
   {:post do-intro
-   :name ::intro})
+   :name ::intro
+   :data {:middlewares
+          [:some-crap]}})
 
 (defn routes []
   [["/" (intro-endpoint)]])
