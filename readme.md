@@ -112,6 +112,6 @@ Robert K. Merton coined (although, as he notes, did not collect the data for) th
 
 Our hypothesis for why it seems a universal phenomenon in cost allocation is based upon formal similarities to the second-order phase transition of resource allocation as a problem qua physical graph model, which is definitely not within the remit of Merton's field. But we like reading him anyways. He also coined the terms "self-fulfilling prophecy" and "role model", and popularized the notion of _unintended consequences_.
 
-Mertonon is not affiliated with the estate of RK Merton. We are also not interested in the work of RC Merton (RK Merton's son), who won the Rijksbank prize in economics, because RC Merton's stuff is about markets, not about organizations.
+Mertonon is not affiliated with the estate of RK Merton. We are also not interested in the work of RC Merton (RK Merton's son), who won the Rijksbank prize in economics, because RC Merton's stuff is about markets, not about organizations. We also don't have much to do with T Merton, the monk and theologian.
 
 We also don't have anything to do with Mastodon, if you're confused about that.
