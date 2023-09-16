@@ -7,6 +7,7 @@
             [mertonon.api.grid :as api-grid]
             [mertonon.api.health-check :as health-check]
             [mertonon.api.input :as api-input]
+            [mertonon.api.intro :as api-intro]
             [mertonon.api.layer :as api-layer]
             [mertonon.api.login :as api-login]
             [mertonon.api.loss :as api-loss]
@@ -25,6 +26,7 @@
    (into ["/grid"] (api-grid/routes))
    (into ["/health_check"] (health-check/health-check-routes))
    (into ["/input"] (api-input/routes))
+   (into ["/intro"] (api-intro/routes))
    (into ["/layer"] (api-layer/routes))
    (into ["/login"] (api-login/routes))
    (into ["/loss"] (api-loss/routes))

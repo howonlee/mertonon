@@ -5,9 +5,17 @@
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.util.uuid :as uutils]))
 
+(defn- do-intro [m]
+  (let [body     (-> m :body-params
+                     uio/maybe-slurp
+                     uio/maybe-json-decode
+                     walk/keywordize-keys)
+        username nil
+        password nil]
+    nil))
+
 (defn intro-endpoint []
-  {:post (fn [m]
-           nil)
+  {:post do-intro
    :name ::intro})
 
 (defn routes []

@@ -215,6 +215,7 @@
                                                     :table->model     table->model)))
    :read-many         (fn [uuids] (select-many (assoc query-info :uuids uuids)))
    :read-all          (fn [] (select-all query-info))
+   ;; :count             (fn [] (count-all query-info))
    :update-one!       (fn [uuid member] (update-one (assoc query-info :uuid uuid :member member)))
    :hard-delete-one!  (fn [uuid] (hard-delete-one (assoc query-info :uuid uuid)))
    :hard-delete-many! (fn [uuids] (hard-delete-many (assoc query-info :uuids uuids)))

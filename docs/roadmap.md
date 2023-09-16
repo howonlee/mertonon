@@ -4,19 +4,20 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- FE testing
-- FE user crud, username/password crud, initial frontpage, authn and authz
-- Github actions CI
-- RBAC BE
-- RBAC FE
-- True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property
+- True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property. Also do true norm
+- Kick off forward passes every time we change anything
 - Model updates, what's necessary of BE
 - Model updates FE
+- EE plugin making
+- RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
+- RBAC FE
+- EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
+- License making
+- License dealing
 - Email integration (as first integration)
 - Full grad view (exec summary view)
 - Crontab for adjustments
 - Email digesting on the crontab
-- Kick off forward passes every time we change anything
 
 - Cut alpha
 
@@ -24,7 +25,6 @@ Also look at small tasks roadmap
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
-- EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Weight painter and modal changing
