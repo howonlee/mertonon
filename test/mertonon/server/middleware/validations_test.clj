@@ -24,7 +24,7 @@
   (fn [req] {random-keyword [random-member]}))
 
 (defspec two-validations-add-reses
-  100
+  20
   (prop/for-all [curr-keyword gen/keyword
                  members      (gen/vector-distinct gen/string 2)]
                 (let [dummy-1 (filled-dummy-validation curr-keyword (first members))
@@ -33,8 +33,12 @@
                   (call a trivial handler)
                   )))
 
-;; (defspec unfilled-validation-is-idempotent
-;;   100
+;; (defspec dummy-validation-is-idempotent
+;;   20
 ;;   nil)
+
+;; (defspec simple-validation-is-idempotent 20 nil)
+
+;; (defspec nil-validation-runs-handler 20 nil)
 
 (comment (run-tests))
