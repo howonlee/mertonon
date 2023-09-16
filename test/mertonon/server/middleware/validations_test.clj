@@ -14,10 +14,16 @@
             [mertonon.util.config :as mt-config]
             [mertonon.util.io :as uio]))
 
-;; dummy validation
+(defn dummy-validation [req random-keyword]
+  {random-keyword []})
 
-;; exercise to proc
+(defn filled-dummy-validation [req random-keyword random-member]
+  {random-keyword [random-member]})
 
-;; make sure two dummy validations add to two validation res thingies
+(defspec two-dummy-validations-add-to-two-validation-res-thingies
+  100
+  nil)
 
-;; make sure individual dummy validation is idempotent
+(defspec individual-dummy-validation-is-idempotent
+  100
+  nil)
