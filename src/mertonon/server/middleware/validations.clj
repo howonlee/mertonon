@@ -26,4 +26,4 @@
      (let [error-results (do-validations request validations)]
        (if (seq error-results)
          {:status 400 :body error-results}
-         (handler wrapped-request))))))
+         (handler request))))))

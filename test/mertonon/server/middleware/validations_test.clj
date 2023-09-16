@@ -9,7 +9,7 @@
             [mertonon.models.mt-session :as mt-session-model]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.server.handler :as handler]
-            [mertonon.server.middleware.validations :as mt-validations-middleware]
+            [mertonon.server.middleware.validations :as val-mw]
             [mertonon.test-utils :as tu]
             [mertonon.util.config :as mt-config]
             [mertonon.util.io :as uio]))
@@ -26,19 +26,41 @@
 (defspec two-validations-add-reses
   20
   (prop/for-all [curr-keyword gen/keyword
-                 members      (gen/vector-distinct gen/string 2)]
+                 members      (gen/vector-distinct gen/string {:num-elements 2})]
                 (let [dummy-1 (filled-dummy-validation curr-keyword (first members))
-                      dummy-2 (filled-dummy-validation curr-keyword (second members))]
-                  (middleware do the thing)
-                  (call a trivial handler)
-                  )))
+                      dummy-2 (filled-dummy-validation curr-keyword (second members))
+                      ;; Makes sure that they're a vec, not a set
+                      dummy-3 (filled-dummy-validation curr-keyword (first members))
+                      handler (fn [req] "handled")
+                      resp    ((val-mw/wrap-mertonon-validations
+                                 handler
+                                 [dummy-1 dummy-2 dummy-3]) {})]
+                  (and
+                    (= (:status resp) 400)
+                    (= (get-in resp [:body curr-keyword])
+                       [(first members)
+                        (second members)
+                        (first members)])))))
 
-;; (defspec dummy-validation-is-idempotent
-;;   20
-;;   nil)
 
-;; (defspec simple-validation-is-idempotent 20 nil)
-
-;; (defspec nil-validation-runs-handler 20 nil)
+(defspec mix-simple-and-nonsimple-validation
+  20
+  (prop/for-all [[fst-keyword snd-keyword] (gen/vector-distinct gen/keyword {:num-elements 2})]
+                (let [dummy        (dummy-validation fst-keyword)
+                      simple-dummy (simple-dummy-validation snd-keyword)
+                      nil-dummy    (simple-dummy-validation nil)
+                      handler      (fn [req] "handled")
+                      resp         ((val-mw/wrap-mertonon-validations
+                                      handler
+                                      ;; Double them to make sure idempotent
+                                      [dummy
+                                       simple-dummy
+                                       nil-dummy
+                                       dummy
+                                       simple-dummy
+                                       nil-dummy]) {})]
+                  (and
+                    (= (:status resp) 400)
+                    (= (->> resp :body keys count) 2)))))
 
 (comment (run-tests))
