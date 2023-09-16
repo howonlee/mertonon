@@ -20,7 +20,7 @@
 (defn filled-dummy-validation [random-keyword random-member]
   (fn [req] {random-keyword [random-member]}))
 
-(defspec two-dummy-validations-add-to-two-validation-res-thingies
+(defspec two-validations-add-reses
   100
   (prop/for-all [keyword thingy
                  member thingy]
@@ -30,6 +30,6 @@
                   (call a trivial handler)
                   )))
 
-(defspec unfilled-dummy-is-idempotent
+(defspec unfilled-validation-is-idempotent
   100
   nil)
