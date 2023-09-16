@@ -14,16 +14,22 @@
             [mertonon.util.config :as mt-config]
             [mertonon.util.io :as uio]))
 
-(defn dummy-validation [req random-keyword]
-  {random-keyword []})
+(defn dummy-validation [random-keyword]
+  (fn [req] {random-keyword []}))
 
-(defn filled-dummy-validation [req random-keyword random-member]
-  {random-keyword [random-member]})
+(defn filled-dummy-validation [random-keyword random-member]
+  (fn [req] {random-keyword [random-member]}))
 
 (defspec two-dummy-validations-add-to-two-validation-res-thingies
   100
-  nil)
+  (prop/for-all [keyword thingy
+                 member thingy]
+                (let [dummy-1 (filled-dummy-validation some crap)
+                      dummy-2 (filled-dummy-validation some crap)]
+                  (middleware do the thing)
+                  (call a trivial handler)
+                  )))
 
-(defspec individual-dummy-validation-is-idempotent
+(defspec unfilled-dummy-is-idempotent
   100
   nil)
