@@ -1,6 +1,6 @@
 - [x] Validations middleware
 
-- [ ] Validations middleware testing and whacking-with-the-working
+- [x] Validations middleware testing and whacking-with-the-working
 - [ ] Intro BE and validation and test
 
 - [ ] FE hero display
