@@ -7,20 +7,25 @@
             [taoensso.timbre :as timbre :refer [log]]
             [tick.core :as t]))
 
-(defn body-params [match]
+(defn body-params
+  [match]
   (-> match
       :body-params
       uio/maybe-slurp
       uio/maybe-json-decode
       walk/keywordize-keys))
 
-(defn path-uuid [match]
+(defn path-uuid
+  "Lots of times we have an endpoint that has one path-param,
+  which is a uuid for something. Get that path-param as uuid"
+  [match]
   (-> match
       :path-params
       :uuid
       uutils/uuid))
 
-(defn body-uuids [match]
+(defn body-uuids
+  [match]
   (->> match
        :body
        uio/maybe-slurp
