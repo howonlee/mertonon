@@ -23,7 +23,7 @@
 (defn layer-view-get
   "Denormalized view of layer"
   [match]
-  (let [layer-uuid         (uutils/uuid (-> match :path-params :uuid))
+  (let [layer-uuid         (api-util/path-uuid match)
         layer              ((layer-model/model :read-one) layer-uuid)
         ;; src-weightsets: weightsets which are upstream from layer
         src-weightsets     ((weightset-model/model :read-where) [:= :tgt-layer-uuid layer-uuid])

@@ -17,7 +17,7 @@
 
 (defn do-login [m]
   ;; TODO: login attempt limits
-  (let [body      (-> m :body-params uio/maybe-slurp uio/maybe-json-decode walk/keywordize-keys)
+  (let [body      (api-util/body-params m)
         user-q    ((mt-user-model/model :read-where-joined)
                    {:join-tables      [:mertonon.password_login]
                     :join-col-edges   [[:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]]

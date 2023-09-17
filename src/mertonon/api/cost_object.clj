@@ -22,7 +22,7 @@
    :name   ::cost-objects})
 
 (defn cost-object-view-get [match]
-  (let [cobj-uuid          (uutils/uuid (-> match :path-params :uuid))
+  (let [cobj-uuid          (api-util/path-uuid match)
         cost-object        ((cost-object-model/model :read-one) cobj-uuid)
         layer              ((layer-model/model :read-one) (:layer-uuid cost-object))
         layer-inputs       (if (nil? layer) []
