@@ -8,12 +8,11 @@
             [mertonon.util.uuid :as uutils]))
 
 (defn- do-intro [m]
-  (let [body     (-> m :body-params
-                     uio/maybe-slurp
-                     uio/maybe-json-decode
-                     walk/keywordize-keys)
-        username nil
-        password nil]
+  (let [body            (api-util/body-params m)
+        username        nil
+        mt-user!        nil
+        password        nil
+        password-login! nil]
     nil))
 
 (defn intro-endpoint []
