@@ -7,10 +7,29 @@
             [taoensso.timbre :as timbre :refer [log]]
             [tick.core :as t]))
 
+(defn body-params [match]
+  (-> match
+      :body-params
+      uio/maybe-slurp
+      uio/maybe-json-decode
+      walk/keywordize-keys))
+
+(defn path-uuid [match]
+  (-> match
+      :path-params
+      :uuid
+      uutils/uuid))
+
+(defn body-uuids [match]
+  (->> match
+       :body
+       uio/maybe-slurp
+       uio/maybe-json-decode
+       (mapv uutils/uuid)))
+
 (defn create-model [curr-model]
   (fn [match]
-    (let [body            (-> match :body-params uio/maybe-slurp)
-          model-or-models (-> body uio/maybe-json-decode walk/keywordize-keys)
+    (let [model-or-models (body-params match)
           ;; TODO: sanitize or do something so I can log stuff willy-nilly
           res             (if (map? model-or-models)
                             ((curr-model :create-one!) model-or-models)
@@ -19,7 +38,7 @@
 
 (defn get-models [curr-model]
   (fn [match]
-    (let [uuid-list (mapv uutils/uuid (-> match :body uio/maybe-slurp uio/maybe-json-decode))
+    (let [uuid-list (body-uuids match)
           res       (if (empty? uuid-list)
                       ((curr-model :read-all))
                       ((curr-model :read-many) uuid-list))]
@@ -27,7 +46,7 @@
 
 (defn get-model [curr-model]
   (fn [match]
-    (let [curr-uuid (uutils/uuid (-> match :path-params :uuid))]
+    (let [curr-uuid (path-uuid match)]
       {:status 200 :body (json/write-str
                            ((curr-model :read-one) curr-uuid))})))
 
@@ -35,12 +54,12 @@
 
 (defn delete-model [curr-model]
   (fn [match]
-    (let [curr-uuid (uutils/uuid (-> match :path-params :uuid))]
+    (let [curr-uuid (path-uuid match)]
       {:status 200 :body (json/write-str
                            ((curr-model :hard-delete-one!) curr-uuid))})))
 
 (defn delete-models [curr-model]
   (fn [match]
-    (let [curr-uuids (mapv uutils/uuid (-> match :body uio/maybe-slurp uio/maybe-json-decode))]
+    (let [curr-uuids (body-uuids match)]
       {:status 200 :body (json/write-str
                            ((curr-model :hard-delete-many!) curr-uuids))})))
