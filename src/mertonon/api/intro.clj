@@ -19,7 +19,7 @@
   {:post do-intro
    :name ::intro
    :data {:middlewares
-          [:some-crap]}})
+          [:validation-that-this-thing-doesnt-already-have-mt-user]}})
 
 (defn routes []
   [["/" (intro-endpoint)]])
