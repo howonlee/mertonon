@@ -27,6 +27,7 @@
     [fst-generated authn-gen/generate-password-logins
      snd-generated authn-gen/generate-password-logins]
     (tu/with-test-txn
+      ;; delete all users
       ;; post into the intro
       ;; post into the intro again
       ;; make sure first post is 200, second is 400

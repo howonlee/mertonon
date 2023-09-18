@@ -12,6 +12,7 @@
 
 (defn- do-intro [m]
   (let [body            (api-util/body-params m)
+        ;; TODO: make this in a transaction for real
         username        (:username body)
         printo          (println username)
         ;;;;
