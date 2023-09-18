@@ -78,7 +78,7 @@
   (let [params      (-> match :query-params walk/keywordize-keys)
         start-date  (-> params :start-date t/instant)
         end-date    (-> params :end-date t/instant)
-        grid-uuid   (-> match :path-params :uuid uutils/uuid)
+        grid-uuid   (api-util/path-uuid match)
         entry-res   ((grid-model/model :read-where-joined)
                      {:join-tables      [:mertonon.layer :mertonon.cost_object :mertonon.entry]
                       :join-col-edges   [[:mertonon.grid.uuid :mertonon.layer.grid_uuid]
@@ -102,7 +102,7 @@
 (defn grid-graph-get
   "Denormalized view of grid"
   [match]
-  (let [grid-uuid    (-> match :path-params :uuid uutils/uuid)
+  (let [grid-uuid    (api-util/path-uuid match)
         grid         ((grid-model/model :read-one) grid-uuid)
         layers       ((layer-model/model :read-where) [:= :grid-uuid grid-uuid])
         weightsets   (if (empty? layers) [] ((weightset-model/model :read-where) [:in :tgt-layer-uuid (mapv :uuid layers)]))
@@ -120,7 +120,7 @@
   {:get grid-graph-get :name ::grid-graph})
 
 (defn grid-view-get [match]
-  (let [grid-uuid    (-> match :path-params :uuid uutils/uuid)
+  (let [grid-uuid    (api-util/path-uuid match)
         grid         ((grid-model/model :read-one) grid-uuid)
         layers       ((layer-model/model :read-where) [:= :grid-uuid grid-uuid])
         inputs       (if (empty? layers) []

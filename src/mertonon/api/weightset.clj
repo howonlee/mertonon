@@ -20,7 +20,7 @@
    :name   ::weightsets})
 
  (defn weightset-view-get [match]
-   (let [ws-uuid   (uutils/uuid (-> match :path-params :uuid))
+   (let [ws-uuid   (api-util/path-uuid match)
          weightset ((weightset-model/model :read-one) ws-uuid)
          src-layer ((layer-model/model :read-one) (:src-layer-uuid weightset))
          tgt-layer ((layer-model/model :read-one) (:tgt-layer-uuid weightset))

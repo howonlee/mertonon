@@ -19,7 +19,7 @@
    :name   ::weights})
 
 (defn weight-view-get [match]
-  (let [weight-uuid (uutils/uuid (-> match :path-params :uuid))
+  (let [weight-uuid (api-util/path-uuid match)
         weight      ((weight-model/model :read-one) weight-uuid)
         src-cobj    ((cost-object-model/model :read-one) (:src-cobj-uuid weight))
         tgt-cobj    ((cost-object-model/model :read-one) (:tgt-cobj-uuid weight))

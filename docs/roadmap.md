@@ -4,7 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- True conservation of credit allocation - currently doubling weightset cardinalities = doubling the credit flow... along with property. Also do true norm
+- Staring at credit allocation semantics both in docs and program. True conservations, along with property.
 - Kick off forward passes every time we change anything
 - Model updates, what's necessary of BE
 - Model updates FE

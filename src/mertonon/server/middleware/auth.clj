@@ -1,7 +1,8 @@
 (ns mertonon.server.middleware.auth
   "Middlewares for authing.
 
-  Don't use buddy because it's based on ACL and we want RBAC"
+  Don't use buddy because it's based on ACL and we want RBAC
+  Don't use the validation middleware because we want to complicate it a fair bit"
   (:require [clojure.string :as str]
             [mertonon.util.config :as mt-config]))
 
