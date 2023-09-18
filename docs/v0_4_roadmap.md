@@ -2,7 +2,7 @@
 
 - [x] Validations middleware testing and whacking-with-the-working
 
-- [ ] Intro BE and validation and test
+- [ ] Intro validation and BE and test
 - [ ] Github actions CI - tester
 
 - [ ] FE hero display
