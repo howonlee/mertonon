@@ -3,10 +3,8 @@
   (:require nil))
 
 (defn table-count-equals
-  [table-model pred-count]
+  [table-model pred-count curr-keyword]
   (fn [req] 
-    ;;;;
-    ;;;;
-    ;;;;
-    ;;;;
-    nil)
+    (if (= ((table-model :count)) pred-count)
+      nil
+      {curr-keyword []})))
