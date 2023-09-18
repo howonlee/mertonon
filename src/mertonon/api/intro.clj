@@ -12,11 +12,23 @@
 
 (defn- do-intro [m]
   (let [body            (api-util/body-params m)
-        username        nil
+        username        (:username body)
+        ;;;;
+        ;;;;
+        ;;;;
         mt-user!        nil
-        password        nil
-        password-login! nil]
-    nil))
+        password        (:password body)
+        ;; don't keep it
+        ;;;;
+        ;;;;
+        ;;;;
+        password-login! nil
+        ;;;;
+        ;;;;
+        ;;;;
+        session!        nil]
+    {:mt-user mt-user!
+     :session session!}))
 
 (defn intro-endpoint []
   {:post do-intro
