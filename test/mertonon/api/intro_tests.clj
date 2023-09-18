@@ -1,5 +1,5 @@
-(ns mertonon.api.login-tests
-  "Logging in tests"
+(ns mertonon.api.intro-tests
+  "Intro tests"
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
@@ -15,7 +15,7 @@
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
 
-(defn post-login! [member curr-app]
+(defn post-intro! [member curr-app]
   (let [endpoint    "/api/v1/intro/"
         res         (curr-app {:uri endpoint :request-method :post :body-params member})
         slurped     (update res :body (comp uio/maybe-slurp uio/maybe-json-decode))]

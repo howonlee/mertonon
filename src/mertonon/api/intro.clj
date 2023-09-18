@@ -13,6 +13,7 @@
 (defn- do-intro [m]
   (let [body            (api-util/body-params m)
         username        (:username body)
+        printo          (println username)
         ;;;;
         ;;;;
         ;;;;

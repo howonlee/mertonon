@@ -1,5 +1,5 @@
 (ns mertonon.api.api-tests
-  "Consolidated API tests"
+  "Consolidated API tests for API endpoints that are just CRUD on tables"
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.test :refer :all]
