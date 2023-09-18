@@ -8,14 +8,15 @@
 - [ ] FE hero display
 - [ ] Github actions CI - new build action
 - [ ] FE testing yakshave
-
 - [ ] FE hero tests
 - [ ] FE user crud. everyones admin for now lol
 - [ ] FE user crud testing
+
 - [ ] FE authn and authz
+- [ ] FE authn and authz testing
 
 - [ ] Error screens
-- [ ] FE authn and authz testing
+- [ ] Kill the authn feature flag
 - [ ] Some whacking around with the norm nonlinearity
 - [ ] Changelog
 - [ ] Futz around a bit
