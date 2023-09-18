@@ -30,7 +30,7 @@
         ;;;;
         session!        nil]
     {:mt-user mt-user!
-     :session session!}))
+     :session (:uuid session!)}))
 
 (defn intro-endpoint []
   {:post do-intro
