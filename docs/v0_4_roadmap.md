@@ -2,7 +2,11 @@
 
 - [x] Validations middleware testing and whacking-with-the-working
 
-- [ ] Intro validation and BE and test
+- [x] Intro validation
+- [ ] Intro BE
+- [ ] Intro test, get it to work
+- [ ] Fold login validation into validation set
+- [ ] Fold other API validation thingies into validations
 - [ ] Github actions CI - tester
 
 - [ ] FE hero display
