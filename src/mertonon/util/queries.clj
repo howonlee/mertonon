@@ -111,6 +111,12 @@
 (defn select-all [{:keys [columns table row->member]}]
   (->> (select-all-q columns table) (db/query) (mapv row->member)))
 
+(defn count-all-q [table]
+  {:select :%count.* :from table})
+
+(defn count-all [{:keys [table]}]
+  (->> (count-all-q table) (db/query) first :count))
+
 (defn select-many-q [columns table uuids]
   {:select (preprocess-columns columns) :from table :where [:in :uuid uuids]})
 
@@ -215,7 +221,7 @@
                                                     :table->model     table->model)))
    :read-many         (fn [uuids] (select-many (assoc query-info :uuids uuids)))
    :read-all          (fn [] (select-all query-info))
-   ;; :count             (fn [] (count-all query-info))
+   :count             (fn [] (count-all query-info))
    :update-one!       (fn [uuid member] (update-one (assoc query-info :uuid uuid :member member)))
    :hard-delete-one!  (fn [uuid] (hard-delete-one (assoc query-info :uuid uuid)))
    :hard-delete-many! (fn [uuids] (hard-delete-many (assoc query-info :uuids uuids)))
