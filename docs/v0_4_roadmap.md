@@ -3,9 +3,9 @@
 - [x] Validations middleware testing and whacking-with-the-working
 
 - [ ] Intro BE and validation and test
+- [ ] Github actions CI - tester
 
 - [ ] FE hero display
-- [ ] Github actions CI - tester
 - [ ] Github actions CI - new build action
 - [ ] FE testing yakshave
 
