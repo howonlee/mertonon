@@ -4,6 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- FE user crud, not just admin account anymore
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Kick off forward passes every time we change anything
 - Model updates, what's necessary of BE
