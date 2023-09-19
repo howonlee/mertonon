@@ -8,4 +8,4 @@
   (fn [req] 
     (if (= ((table-model :count)) pred-count)
       nil
-      {curr-keyword []})))
+      curr-keyword)))

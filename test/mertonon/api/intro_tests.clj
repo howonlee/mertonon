@@ -11,6 +11,7 @@
             [mertonon.generators.authn :as authn-gen]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
+            [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
 
@@ -23,14 +24,20 @@
 (defspec intro-not-idempotent
   1
   (prop/for-all
-    [[fst-generated snd-generated]
-     ;;;;;
-     ;;;;;
-     ;;;;;
-     (authn-gen/generate-password-logins some crap)]
+    [generates authn-gen/generate-password-logins]
     (tu/with-test-txn
-      (let [deletion!  ((mt-user-model/model :delete-all))
-            fst-intro! (post-intro! fst-generated curr-app)
-            snd-intro! (post-intro! snd-generated curr-app)]
+      (let [fst-generated (first (:mt-users generates))
+            snd-generated (second (:mt-users generates))
+            all-users     ((mt-user-model/model :read-all))
+            deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
+            curr-app      (handler/app-handler)
+            ;;;; actually conform to endpoint
+            ;;;; actually conform to endpoint
+            ;;;; actually conform to endpoint
+            ;;;; actually conform to endpoint
+            fst-intro!    (post-intro! fst-generated curr-app)
+            snd-intro!    (post-intro! snd-generated curr-app)]
         (and (= 200 (:status fst-intro!))
              (= 400 (:status snd-intro!)))))))
+
+(comment (run-tests))

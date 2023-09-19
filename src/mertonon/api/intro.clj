@@ -29,8 +29,9 @@
         ;;;;
         ;;;;
         session!        nil]
-    {:mt-user mt-user!
-     :session (:uuid session!)}))
+    {:status 200
+     :body {:mt-user mt-user!
+            :session (:uuid session!)}}))
 
 (defn intro-endpoint []
   {:post do-intro
