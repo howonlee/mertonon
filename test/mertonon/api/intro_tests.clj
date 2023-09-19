@@ -24,21 +24,19 @@
 (defspec intro-not-idempotent
   1
   (prop/for-all
-    [generates authn-gen/generate-password-logins]
+    [usernames  vector-distinct-by lowercase of strings
+     emails     some crap
+     passwords  vector-distinct-by of strings
     (tu/with-test-txn
-      (let [fst-generated (first (:mt-users generates))
-            snd-generated (second (:mt-users generates))
-            fst-password  some crap
-            snd-password  some crap
-            fst-body      some crap
-            snd-body      some crap
+      (let [[fst-user snd-user]   usernames
+            [fst-email snd-email] emails
+            [fst-pass snd-pass]   passwords
+            curr-app      (handler/app-handler)
+            fst-body      {:username fst-user :password fst-pass :email fst-email}
+            snd-body      {:username snd-user :password snd-pass :email snd-email}
+
             all-users     ((mt-user-model/model :read-all))
             deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
-            curr-app      (handler/app-handler)
-            ;;;; actually conform to endpoint
-            ;;;; actually conform to endpoint
-            ;;;; actually conform to endpoint
-            ;;;; actually conform to endpoint
             fst-intro!    (post-intro! fst-body curr-app)
             snd-intro!    (post-intro! snd-body curr-app)
             printo        (println fst-intro!)
