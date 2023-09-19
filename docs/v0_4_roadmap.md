@@ -5,6 +5,7 @@
 - [x] Intro validation
 
 - [x] Intro BE
+- [ ] Test txn macro state - get it to work with the test handler somehow
 - [ ] Intro test, get it to work
 - [ ] Fold login validation into validation set
 - [ ] Fold other API validation thingies into validations
@@ -19,7 +20,6 @@
 - [ ] FE authn and authz testing
 - [ ] Error screens
 - [ ] Kill the authn feature flag
-- [ ] Some whacking around with the norm nonlinearity
 - [ ] Changelog
 - [ ] Futz around a bit
 - [ ] Deploy with new build action
