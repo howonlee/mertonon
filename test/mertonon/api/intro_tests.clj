@@ -33,7 +33,7 @@
       (let [[fst-user snd-user]   usernames
             [fst-email snd-email] emails
             [fst-pass snd-pass]   passwords
-            curr-app      (handler/app-handler)
+            curr-app      (handler/test-handler)
             fst-body      {:username fst-user :password fst-pass :email fst-email}
             snd-body      {:username snd-user :password snd-pass :email snd-email}
 
@@ -42,6 +42,8 @@
             curr-count    ((mt-user-model/model :count))
             printo        (println "=====")
             printo        (println curr-count)
+            ;;;; get the app handler with some kind of with-test-transaction thing.
+            ;;;; print out current state fuckery
             fst-intro!    (post-intro! fst-body curr-app)
             snd-intro!    (post-intro! snd-body curr-app)
             printo        (println "=====")
