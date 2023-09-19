@@ -10,6 +10,8 @@
             [mertonon.test-utils :as tu]
             [mertonon.util.queries :as queries]))
 
+;; TODO: make the coverage less awful
+
 (defspec exercise-select-where-single-joined-query
   100
   (prop/for-all [joined-query query-gen/generate-single-joined-query]

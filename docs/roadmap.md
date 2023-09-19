@@ -4,11 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Staring at credit allocation semantics both in docs and program. True conservations, along with property.
+- FE user crud, not just admin account anymore
+- Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Kick off forward passes every time we change anything
 - Model updates, what's necessary of BE
 - Model updates FE
-- EE plugin making
+- EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too

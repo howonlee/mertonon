@@ -2,21 +2,25 @@
 
 - [x] Validations middleware testing and whacking-with-the-working
 
-- [ ] Intro BE and validation and test
-- [ ] Github actions CI - tester
+- [x] Intro validation
 
+- [x] Intro BE
+- [ ] Test txn macro state - get it to work with the test handler somehow
+- [ ] Intro test, get it to work
+- [ ] Fold login validation into validation set
+- [ ] Fold other API validation thingies into validations
 - [ ] FE hero display
+
+- [ ] Github actions CI - tester
 - [ ] Github actions CI - new build action
 - [ ] FE testing yakshave
+- [ ] FE hero tests, incl. switching things
 
-- [ ] FE hero tests
-- [ ] FE user crud. everyones admin for now lol
-- [ ] FE user crud testing
 - [ ] FE authn and authz
-
-- [ ] Error screens
 - [ ] FE authn and authz testing
-- [ ] Some whacking around with the norm nonlinearity
+- [ ] Error screens
+- [ ] Kill the authn feature flag
+- [ ] Change usage docs
 - [ ] Changelog
 - [ ] Futz around a bit
 - [ ] Deploy with new build action
