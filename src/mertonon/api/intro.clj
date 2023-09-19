@@ -27,7 +27,7 @@
         password-login! ((password-login-model/model :create-one!) new-password)
         new-session     (mtc/->MtSession (uutils/uuid) (:uuid new-user)
                                          ;; we don't actually have non-jank session expiration now, so just say they're infinite
-                                         (t/>> (t/instant) (t/new-duration 100 :years))
+                                         (t/>> (t/instant) (t/new-duration 400 :days))
                                          new-user)
         session!        ((mt-session-model/model :create-one!) new-session)]
     {:status 200

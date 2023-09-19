@@ -26,9 +26,9 @@
 (defspec intro-not-idempotent
   1
   (prop/for-all
-    [usernames  (gen/vector-distinct-by str/lower-case (gen-data/gen-mt-user-usernames :line-noise) {some crap})
-     emails     (gen/vector-distinct (gen-data/gen-mt-user-emails :line-noise) {some crap})
-     passwords  (gen/vector-distinct-by str/lower-case gen/string) {some crap}]
+    [usernames  (gen/vector-distinct-by str/lower-case (gen-data/gen-mt-user-usernames :line-noise) {:num-elements 2})
+     emails     (gen/vector-distinct (gen-data/gen-mt-user-emails :line-noise) {:num-elements 2})
+     passwords  (gen/vector-distinct (gen-data/gen-passwords :line-noise) {:num-elements 2})]
     (tu/with-test-txn
       (let [[fst-user snd-user]   usernames
             [fst-email snd-email] emails
@@ -41,6 +41,7 @@
             deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
             fst-intro!    (post-intro! fst-body curr-app)
             snd-intro!    (post-intro! snd-body curr-app)
+            printo        (println "=====")
             printo        (println fst-intro!)
             printo        (println snd-intro!)]
         (and (= 200 (:status fst-intro!))

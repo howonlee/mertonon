@@ -36,7 +36,7 @@
   [{:keys [name-type] :as params}]
   (gen/let [mt-users        (generate-mt-users* params)
             orig-passwords  (gen/vector-distinct
-                              (gen/fmap clojure.string/join (gen/vector gen/char 1 20))
+                              (gen-data/gen-passwords name-type)
                               {:num-elements (-> mt-users :mt-users count)})
             uuids           (gen/vector gen/uuid (-> mt-users :mt-users count))]
     (let [digests         (mapv pwd-model/hash-password orig-passwords)
