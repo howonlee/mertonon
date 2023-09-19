@@ -20,6 +20,7 @@
 - [ ] FE authn and authz testing
 - [ ] Error screens
 - [ ] Kill the authn feature flag
+- [ ] Change usage docs
 - [ ] Changelog
 - [ ] Futz around a bit
 - [ ] Deploy with new build action
