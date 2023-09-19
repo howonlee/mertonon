@@ -9,10 +9,8 @@
 - [ ] Intro test, get it to work
 - [ ] Fold login validation into validation set
 - [ ] Fold other API validation thingies into validations
-- [ ] FE hero display
 
-- [ ] Github actions CI - tester
-- [ ] Github actions CI - new build action
+- [ ] FE hero display
 - [ ] FE testing yakshave
 - [ ] FE hero tests, incl. switching things
 
