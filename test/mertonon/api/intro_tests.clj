@@ -28,6 +28,10 @@
     (tu/with-test-txn
       (let [fst-generated (first (:mt-users generates))
             snd-generated (second (:mt-users generates))
+            fst-password  some crap
+            snd-password  some crap
+            fst-body      some crap
+            snd-body      some crap
             all-users     ((mt-user-model/model :read-all))
             deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
             curr-app      (handler/app-handler)
@@ -35,9 +39,13 @@
             ;;;; actually conform to endpoint
             ;;;; actually conform to endpoint
             ;;;; actually conform to endpoint
-            fst-intro!    (post-intro! fst-generated curr-app)
-            snd-intro!    (post-intro! snd-generated curr-app)]
+            fst-intro!    (post-intro! fst-body curr-app)
+            snd-intro!    (post-intro! snd-body curr-app)
+            printo        (println fst-intro!)
+            printo        (println snd-intro!)]
         (and (= 200 (:status fst-intro!))
+             (= some crap (-> fst-intro! :body :username))
+             (nil? (-> fst-intro! :body :password))
              (= 400 (:status snd-intro!)))))))
 
 (comment (run-tests))
