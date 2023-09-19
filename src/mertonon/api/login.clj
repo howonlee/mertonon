@@ -13,7 +13,7 @@
             [tick.core :as t]))
 
 ;; TODO: setting
-(def session-length-mins 480)
+(def session-length-years 10)
 
 (defn do-login [m]
   ;; TODO: login attempt limits
@@ -36,7 +36,7 @@
       {:status 401 :body {:message "Login invalid somehow. Check the username and password."}}
       (let [curr-user   (->> user-q :mertonon.mt-users first)
             curr-time   (t/instant)
-            expiration  (t/>> curr-time (t/new-duration session-length-mins :minutes))
+            expiration  (t/>> curr-time (t/new-duration session-length-years :years))
             session-res ((mt-session-model/model :create-one!) (mtc/->MtSession
                                                                  (uutils/uuid)
                                                                  (curr-user :uuid)
