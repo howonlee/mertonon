@@ -4,7 +4,7 @@
 
 - [x] Intro validation
 
-- [ ] Intro BE
+- [x] Intro BE
 - [ ] Intro test, get it to work
 - [ ] Fold login validation into validation set
 - [ ] Fold other API validation thingies into validations
