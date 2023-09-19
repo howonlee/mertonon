@@ -37,9 +37,8 @@
 (defn intro-endpoint []
   {:post do-intro
    :name ::intro
-   :data {:middleware
-          [val-mw/wrap-mertonon-validations
-           [(uvals/table-count-check mt-user-model/model 0 :already-introed)]]}})
+   :middleware [val-mw/wrap-mertonon-validations
+                [(uvals/table-count-check mt-user-model/model 0 :already-introed)]]})
 
 (defn routes []
   [["/" (intro-endpoint)]])

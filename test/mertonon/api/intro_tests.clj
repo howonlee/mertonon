@@ -39,6 +39,9 @@
 
             all-users     ((mt-user-model/model :read-all))
             deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
+            curr-count    ((mt-user-model/model :count))
+            printo        (println "=====")
+            printo        (println curr-count)
             fst-intro!    (post-intro! fst-body curr-app)
             snd-intro!    (post-intro! snd-body curr-app)
             printo        (println "=====")
