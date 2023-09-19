@@ -1,6 +1,7 @@
 (ns mertonon.api.intro-tests
   "Intro tests"
   (:require [clojure.data :as cd]
+            [clojure.string :as str]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
             [clojure.test.check.clojure-test :refer :all]
@@ -9,6 +10,7 @@
             [clojure.walk :as walk]
             [mertonon.api.api-tests :as api-tests]
             [mertonon.generators.authn :as authn-gen]
+            [mertonon.generators.data :as gen-data]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
             [mertonon.server.handler :as handler]
@@ -24,9 +26,9 @@
 (defspec intro-not-idempotent
   1
   (prop/for-all
-    [usernames  vector-distinct-by lowercase of strings
-     emails     some crap
-     passwords  vector-distinct-by of strings
+    [usernames  (gen/vector-distinct-by str/lower-case (gen-data/gen-mt-user-usernames :line-noise) {some crap})
+     emails     (gen/vector-distinct (gen-data/gen-mt-user-emails :line-noise) {some crap})
+     passwords  (gen/vector-distinct-by str/lower-case gen/string) {some crap}]
     (tu/with-test-txn
       (let [[fst-user snd-user]   usernames
             [fst-email snd-email] emails
@@ -42,7 +44,7 @@
             printo        (println fst-intro!)
             printo        (println snd-intro!)]
         (and (= 200 (:status fst-intro!))
-             (= some crap (-> fst-intro! :body :username))
+             (= fst-user (-> fst-intro! :body :mt-user :username))
              (nil? (-> fst-intro! :body :password))
              (= 400 (:status snd-intro!)))))))
 
