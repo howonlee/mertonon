@@ -14,7 +14,7 @@
 - [ ] Github actions CI - tester
 - [ ] Github actions CI - new build action
 - [ ] FE testing yakshave
-- [ ] FE hero tests
+- [ ] FE hero tests, incl. switching things
 
 - [ ] FE authn and authz
 - [ ] FE authn and authz testing
