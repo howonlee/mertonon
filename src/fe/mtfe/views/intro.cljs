@@ -18,8 +18,7 @@
 ;; ---
 
 (defn init-create-params []
-  {:uuid     (str (random-uuid))
-   :email    ""
+  {:email    ""
    :username ""
    :password ""})
 
@@ -45,10 +44,13 @@
                                 ;;;;;;;;;;
                                 ;;;;;;;;;;
                                 ;;;;;;;;;;
-                                :action-fn     (sc-handlers/creation-handler api/entryApi
+                                :action-fn     (sc-handlers/creation-handler api/introApi
                                                                              create-sc-state
-                                                                             mc/->Entry
-                                                                             [:uuid :cobj-uuid :name :label :type :value :date])
+                                                                             ;;;;;
+                                                                             ;;;;;
+                                                                             ;;;;;
+                                                                             dict some crap
+                                                                             [:cobj-uuid :name :label :type :value :date])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (mt-statechart/init-sc! :mt-user-create create-sc-state create-sc)
