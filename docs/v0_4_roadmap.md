@@ -5,7 +5,7 @@
 - [x] Intro validation
 
 - [x] Intro BE
-- [ ] FE hero display
+- [ ] FE intro hero display
 
 - [ ] Fold login validation into validation set
 - [ ] Fold other API validation thingies into validations
