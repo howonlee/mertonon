@@ -62,16 +62,14 @@
 (defn intro-render [m]
   [:<>
    [:h1 "Welcome to Mertonon"]
-     [sc-components/validation-popover sidebar-state :name-blank "Journal Entry Name is blank"
-      [sc-components/state-text-input create-sc-state "Journal Entry Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/validation-popover sidebar-state :value-not-int "Value is not an integer"
-      [sc-components/validation-popover sidebar-state :value-blank "Value is blank"
-       [sc-components/state-text-input create-sc-state "Value" [:curr-create-params :value]]]]
-     [sc/border-region
-      [sc/form-label "Entry Date"]
-      [sc-components/state-datepicker create-sc-state sidebar-state [:curr-create-params :date]]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
+   [:p "Make the administrator account for this Mertonon instance."]
+   [sc-components/validation-popover sidebar-state :username-blank "Username is blank"
+    [sc-components/state-text-input create-sc-state "Username" [:curr-create-params :username]]]
+   [sc-components/validation-popover sidebar-state :email-blank "Email is blank"
+    [sc-components/state-text-input create-sc-state "Email" [:curr-create-params :email]]]
+   [sc-components/validation-popover sidebar-state :password-blank "Password is blank"
+    [sc-components/state-text-input create-sc-state "Password" [:curr-create-params :password]]]
+   [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; ---
 ;; Top-level render
