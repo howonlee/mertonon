@@ -5,17 +5,17 @@
 - [x] Intro validation
 
 - [x] Intro BE
-- [ ] FE intro hero display
+- [x] FE intro hero display - get it to exist
 
-- [ ] Fold login validation into validation set
-- [ ] Fold other API validation thingies into validations
+- [ ] FE intro hero manual testing, manual gettingittowork
 - [ ] Login
 - [ ] Logout
 - [ ] Test txn macro state - get it to work with the test handler somehow
-- [ ] Intro test, get it to work
+- [ ] Intro BE test, get it to work
 - [ ] FE testing yakshave
-- [ ] FE hero tests, incl. switching things
 
+- [ ] Fold login validation into validation set
+- [ ] Fold other API validation thingies into validations
 - [ ] FE authn and authz
 - [ ] FE authn and authz testing
 - [ ] Error screens
