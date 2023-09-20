@@ -1,9 +1,11 @@
 (ns mertonon.util.validations
-  "Bunch of generic validations and validation templates"
-  ;; (:require nil)
-  )
+  "Bunch of generic validations and validation templates")
 
-(defn do-validations
+;; ---
+;; Doing the validations
+;; ---
+
+(defn validate
   [inp validations]
   (let [reses  (vec (for [curr-validation validations]
                       (let [validation-res (curr-validation inp)]
@@ -16,6 +18,10 @@
                           {}))))
         errors (apply (partial merge-with into) reses)]
     errors))
+
+;; ---
+;; Validations
+;; ---
 
 (defn table-count-check
   [table-model pred-count curr-keyword]
