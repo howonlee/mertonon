@@ -12,12 +12,12 @@
 - [x] Intro validations - avoid the middleware i guess, make another wrapping thing? error out of some kind?
 - [x] Check intro FE manually again
 - [x] Check login manually
-- [ ] Hook login to sessions
+- [ ] Hook login to cookies
 - [ ] FE authn and authz hookup after login
 - [ ] Intro, login redirection semantics
+
 - [ ] Error screens for non logged in stuff
 - [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
-
 - [ ] Exception handler that returns 400 instead of 500
 - [ ] Build CI
 - [ ] Change usage docs
