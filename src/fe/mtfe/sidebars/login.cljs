@@ -1,5 +1,5 @@
-(ns mtfe.sidebars.intro
-  "Introduction sidebar - shown before user creation, gets you to create admin user"
+(ns mtfe.sidebars.login
+  "Login sidebar - shown as bit where you log in"
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
@@ -18,8 +18,7 @@
 ;; ---
 
 (defn init-create-params []
-  {:email    ""
-   :username ""
+  {:username ""
    :password ""})
 
 (defonce sidebar-state (r/atom {:curr-create-params (init-create-params)}))
@@ -32,29 +31,23 @@
    (r/atom nil))
 
 (def validation-list
-  [(sc-validation/non-blank [:curr-create-params :email] :email-blank)
-   (sc-validation/non-blank [:curr-create-params :username] :username-blank)
-   (sc-validation/non-blank [:curr-create-params :password] :password-blank)
-   (sc-validation/two-members-equal
-     [:curr-create-params :password]
-     [:curr-create-params :password-repeat]
-     :password-not-match)])
+  [(sc-validation/non-blank [:curr-create-params :username] :username-blank)
+   (sc-validation/non-blank [:curr-create-params :password] :password-blank)])
 
 (def create-sc
-  (mt-statechart/simple-create :intro-create
+  (mt-statechart/simple-create :mt-session-create
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/introApi
+                                :action-fn     (sc-handlers/creation-handler api/loginApi
                                                                              create-sc-state
-                                                                             (fn [username email password]
+                                                                             (fn [username password]
                                                                                {:username username
-                                                                                :email    email
                                                                                 :password password})
-                                                                             [:username :email :password])
+                                                                             [:username :password])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(mt-statechart/init-sc! :intro-create create-sc-state create-sc)
+(mt-statechart/init-sc! :mt-session-create create-sc-state create-sc)
 
 ;; ---
 ;; Creation
@@ -62,17 +55,12 @@
 
 (defn intro-render [m]
   [:<>
-   [:h1 "Welcome to Mertonon"]
-   [:p "Make the administrator account for this Mertonon instance."]
+   [:h1 "Mertonon Login"]
    [sc/border-region
    [sc-components/validation-popover sidebar-state :username-blank "Username is blank"
     [sc-components/state-text-input create-sc-state "Username" [:curr-create-params :username]]]
-   [sc-components/validation-popover sidebar-state :email-blank "Email is blank"
-    [sc-components/state-text-input create-sc-state "Email" [:curr-create-params :email]]]
    [sc-components/validation-popover sidebar-state :password-blank "Password is blank"
-    [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]
-   [sc-components/validation-popover sidebar-state :password-not-match "Passwords do not match"
-    [sc-components/state-password-input create-sc-state "Password Again" [:curr-create-params :password-repeat]]]]
+    [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]]
    [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; ---
