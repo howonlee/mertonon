@@ -53,7 +53,9 @@
   [sc/whole-page
    [nav]
    (if @util/core-match
-     (let [view (with-meta (:view (:data @util/core-match)) {:query-params (:query-params @util/core-match)})]
+     (let [view (with-meta
+                  (:view (:data @util/core-match))
+                  {:query-params (:query-params @util/core-match)})]
        [sc/main-section-container
         [view @util/core-match]]))
    [sidebar/sidebar]])
