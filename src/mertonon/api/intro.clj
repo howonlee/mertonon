@@ -31,10 +31,11 @@
                                          ;; we don't actually have non-jank session expiration now, so just say they're infinite
                                          (t/>> (t/instant) (t/new-duration 400 :days))
                                          new-user)
-        session!        ((mt-session-model/model :create-one!) new-session)]
+        session!        ((mt-session-model/model :create-one!) new-session)
+        res             {:mt-user mt-user!
+                         :session (:uuid session!)}]
     {:status 200
-     :body {:mt-user mt-user!
-            :session (:uuid session!)}}))
+     :body (json/write-str res)}))
 
 (defn intro-endpoint []
   {:post do-intro
