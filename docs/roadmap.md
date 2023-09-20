@@ -4,6 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Lots more FE testing manually, I'm afraid
 - Logout
 - FE testing
 - FE user crud, not just admin account anymore
