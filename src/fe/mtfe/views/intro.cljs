@@ -18,8 +18,7 @@
 ;; ---
 
 (defn init-create-params []
-  {:uuid     (str (random-uuid))
-   :email    ""
+  {:email    ""
    :username ""
    :password ""})
 
@@ -42,13 +41,13 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                ;;;;;;;;;;
-                                ;;;;;;;;;;
-                                ;;;;;;;;;;
-                                :action-fn     (sc-handlers/creation-handler api/entryApi
+                                :action-fn     (sc-handlers/creation-handler api/introApi
                                                                              create-sc-state
-                                                                             mc/->Entry
-                                                                             [:uuid :cobj-uuid :name :label :type :value :date])
+                                                                             (fn [username email password]
+                                                                               {:username username
+                                                                                :email    email
+                                                                                :password password})
+                                                                             [:username :email :password])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (mt-statechart/init-sc! :mt-user-create create-sc-state create-sc)
@@ -58,31 +57,23 @@
 ;; ---
 
 (defn intro-render [m]
-  (let [cobj-uuid (->> m :path-params :uuid)]
-    [:<>]))
-     ;; [:h1 [sc/entry-icon] " Add Journal Entry"]
-     ;; [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-     ;; [:div.mb2 [sc/cobj-icon] " Cost Node UUID - " (->> cobj-uuid str)]
-     ;; [:p "Values currently have to be an arbitrary integer only right now."]
-     ;; [:p "Currency and lots of other stuff is coming."]
-     ;; [sc-components/validation-popover sidebar-state :name-blank "Journal Entry Name is blank"
-     ;;  [sc-components/state-text-input create-sc-state "Journal Entry Name" [:curr-create-params :name]]]
-     ;; [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     ;; [sc-components/validation-popover sidebar-state :value-not-int "Value is not an integer"
-     ;;  [sc-components/validation-popover sidebar-state :value-blank "Value is blank"
-     ;;   [sc-components/state-text-input create-sc-state "Value" [:curr-create-params :value]]]]
-     ;; [sc/border-region
-     ;;  [sc/form-label "Entry Date"]
-     ;;  [sc-components/state-datepicker create-sc-state sidebar-state [:curr-create-params :date]]]
-     ;; [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
+  [:<>
+   [:h1 "Welcome to Mertonon"]
+   [:p "Make the administrator account for this Mertonon instance."]
+   [sc/border-region
+   [sc-components/validation-popover sidebar-state :username-blank "Username is blank"
+    [sc-components/state-text-input create-sc-state "Username" [:curr-create-params :username]]]
+   [sc-components/validation-popover sidebar-state :email-blank "Email is blank"
+    [sc-components/state-text-input create-sc-state "Email" [:curr-create-params :email]]]
+   [sc-components/validation-popover sidebar-state :password-blank "Password is blank"
+    [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]
+   [sc-components/state-password-input create-sc-state "Password Again" [:curr-create-params :password-repeat]]]
+   [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; ---
 ;; Top-level render
 ;; ---
 
 (defn intro-page [m]
-  (sel/swap-if-changed! (->> m :path-params :uuid str)
-                         sidebar-state
-                         [:curr-create-params :cobj-uuid])
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [intro-render m])

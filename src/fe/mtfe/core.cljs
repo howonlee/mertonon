@@ -5,6 +5,7 @@
             [mtfe.views.cost-object :as cost-object]
             [mtfe.views.grid :as grid]
             [mtfe.views.grid-selector :as grid-selector]
+            [mtfe.views.intro :as intro]
             [mtfe.views.layer :as layer]
             [mtfe.views.weightset :as weightset]
             [mtfe.views.weight :as weight]
@@ -28,6 +29,7 @@
 (def main-routes
   "Main browser URL (fragment) routes, as opposed to the separate sidebar routes, or the action routes"
   [["/"                  {:name ::home :view grid-selector/grid-selector}]
+   ["/intro"             {:name ::intro :view intro/intro-page}]
    ["/admin"             {:name ::admin :view admin-page}]
    ["/user"              {:name ::user :view user-page}]
    ["/grid/:uuid"        {:name ::grid :view grid/grid-page}]

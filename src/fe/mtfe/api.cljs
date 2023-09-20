@@ -29,6 +29,8 @@
 (defn gridDumpApi [uuid] (gstring/format "%s/api/v1/grid/%s/dump" host uuid))
 (defn gridGraphApi [uuid] (gstring/format "%s/api/v1/grid/%s/graph" host uuid))
 
+(defn introApi [] (gstring/format "%s/api/v1/intro/" host))
+
 (defn layerApi [] (gstring/format "%s/api/v1/layer" host))
 (defn layerMemberApi [uuid] (gstring/format "%s/api/v1/layer/%s" host uuid))
 (defn layerViewApi [uuid] (gstring/format "%s/api/v1/layer/%s/view" host uuid))

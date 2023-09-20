@@ -5,14 +5,14 @@
 - [x] Intro validation
 
 - [x] Intro BE
-- [ ] Test txn macro state - get it to work with the test handler somehow
-- [ ] Intro test, get it to work
+- [ ] FE intro hero display
+
 - [ ] Fold login validation into validation set
 - [ ] Fold other API validation thingies into validations
-- [ ] FE hero display
-
-- [ ] Github actions CI - tester
-- [ ] Github actions CI - new build action
+- [ ] Login
+- [ ] Logout
+- [ ] Test txn macro state - get it to work with the test handler somehow
+- [ ] Intro test, get it to work
 - [ ] FE testing yakshave
 - [ ] FE hero tests, incl. switching things
 
