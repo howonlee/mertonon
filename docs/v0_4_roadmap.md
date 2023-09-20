@@ -10,7 +10,6 @@
 
 - [ ] FE intro hero manual testing, manual gettingittowork
 - [ ] Whack away at cookie sessions if necessary
-- [ ] Logout
 - [ ] Test txn macro state - get it to work with the test handler somehow
 - [ ] Intro BE test, get it to work
 - [ ] FE testing yakshave
