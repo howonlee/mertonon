@@ -36,10 +36,11 @@
             :session (:uuid session!)}}))
 
 (defn intro-endpoint []
-  {:post do-intro
-   :name ::intro
-   :middleware [val-mw/wrap-mertonon-validations
-                [(uvals/table-count-check mt-user-model/model 0 :already-introed)]]})
+  {:post {:handler do-intro
+          :middleware [val-mw/wrap-mertonon-validations
+                       []]}
+;; (uvals/table-count-check mt-user-model/model 0 :already-introed)
+   :name ::intro})
 
 (defn routes []
   [["/" (intro-endpoint)]])
