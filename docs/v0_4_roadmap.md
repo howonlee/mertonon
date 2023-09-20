@@ -6,9 +6,10 @@
 
 - [x] Intro BE
 - [x] FE intro hero display - get it to exist
-- [ ] Login, no sessions just make the thing
+- [x] Login, no sessions just make the thing
 
 - [ ] Login hooked to sessions
+- [ ] Intro, login redirection semantics
 - [ ] FE intro hero manual testing, manual gettingittowork
 - [ ] Whack away at cookie sessions if necessary
 - [ ] Test txn macro state - get it to work with the test handler somehow
