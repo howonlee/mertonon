@@ -14,10 +14,10 @@
 - [ ] Check login manually
 - [ ] Hook login to sessions
 - [ ] FE authn and authz hookup after login
-- [ ] Get intro BE test to work by hooking it harder to macro somehow
 - [ ] Intro, login redirection semantics
 - [ ] Error screens for non logged in stuff
 
+- [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
 - [ ] Build CI
 - [ ] Change usage docs
 - [ ] Changelog
