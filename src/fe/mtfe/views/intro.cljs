@@ -68,7 +68,7 @@
    [sc-components/validation-popover sidebar-state :email-blank "Email is blank"
     [sc-components/state-text-input create-sc-state "Email" [:curr-create-params :email]]]
    [sc-components/validation-popover sidebar-state :password-blank "Password is blank"
-    [sc-components/state-text-input create-sc-state "Password" [:curr-create-params :password]]]
+    [sc-components/state-password-input create-sc-state [:curr-create-params :password]]]
    [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; ---
