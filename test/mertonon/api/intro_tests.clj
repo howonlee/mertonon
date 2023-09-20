@@ -55,3 +55,7 @@
              (= 400 (:status snd-intro!)))))))
 
 (comment (run-tests))
+
+(comment (let [all-users     ((mt-user-model/model :read-all))
+               deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))]
+           ((mt-user-model/model :count))))
