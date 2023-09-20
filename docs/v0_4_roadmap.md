@@ -8,16 +8,15 @@
 - [x] FE intro hero display - get it to exist
 - [x] Login, no sessions just make the thing
 
-- [ ] Login hooked to sessions
-- [ ] FE intro hero manual testing, manual gettingittowork
-- [ ] Whack away at cookie sessions if necessary
-- [ ] Test txn macro state - get it to work with the test handler somehow
-- [ ] Intro BE test, get it to work
+- [ ] Check intro FE manually
+- [ ] Check login manually
+- [ ] Hook login to sessions
+- [ ] FE authn and authz hookup after login
 - [ ] FE testing yakshave
-- [ ] Intro, login redirection semantics
-- [ ] FE authn and authz
 - [ ] FE authn and authz testing
-- [ ] Error screens
+- [ ] Get intro BE test to work by hooking it harder to macro somehow
+- [ ] Intro, login redirection semantics
+- [ ] Error screens for non logged in stuff
 - [ ] Kill the authn feature flag
 
 - [ ] Change usage docs
