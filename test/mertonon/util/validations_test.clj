@@ -1,4 +1,4 @@
-(ns mertonon.server.middleware.validations-test
+(ns mertonon.util.validations-test
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
