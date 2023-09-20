@@ -53,7 +53,7 @@
 ;; Creation
 ;; ---
 
-(defn intro-render [m]
+(defn login-render [m]
   [:<>
    [:h1 "Mertonon Login"]
    [sc/border-region
@@ -67,6 +67,6 @@
 ;; Top-level render
 ;; ---
 
-(defn intro-sidebar [m]
+(defn login-sidebar [m]
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  [intro-render m])
+  [login-render m])
