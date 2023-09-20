@@ -60,12 +60,14 @@
   [:<>
    [:h1 "Welcome to Mertonon"]
    [:p "Make the administrator account for this Mertonon instance."]
+   [sc/border-region
    [sc-components/validation-popover sidebar-state :username-blank "Username is blank"
     [sc-components/state-text-input create-sc-state "Username" [:curr-create-params :username]]]
    [sc-components/validation-popover sidebar-state :email-blank "Email is blank"
     [sc-components/state-text-input create-sc-state "Email" [:curr-create-params :email]]]
    [sc-components/validation-popover sidebar-state :password-blank "Password is blank"
-    [sc-components/state-password-input create-sc-state [:curr-create-params :password]]]
+    [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]
+   [sc-components/state-password-input create-sc-state "Password Again" [:curr-create-params :password-repeat]]]
    [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; ---

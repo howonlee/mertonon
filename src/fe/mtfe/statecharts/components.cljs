@@ -65,8 +65,9 @@
              :placeholder placeholder
              :on-change   (mt-statechart/mutate-from-dom-event-handler state path)}])
 
-(defn state-password-input [state path]
+(defn state-password-input [state placeholder path]
   [sc/input {:type        "password"
+             :placeholder placeholder
              :on-change   (mt-statechart/mutate-from-dom-event-handler state path)}])
 
 (defn state-select-input [sc-state state choices path]
