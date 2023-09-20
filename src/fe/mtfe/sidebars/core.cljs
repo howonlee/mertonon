@@ -47,6 +47,7 @@
 
 (def sidebar-routes
   [["/"                               {:name ::home-sidebar :view home-sidebar}]
+   ["/intro"                          {:name ::intro-sidebar :view home-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin-sidebar}]
    ["/user"                           {:name ::user-sidebar :view user-sidebar}]
 
