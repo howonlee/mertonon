@@ -7,14 +7,16 @@
             [mertonon.models.mt-session :as mt-session-model]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
-            [mertonon.server.middleware.validations :as val-mw]
             [mertonon.util.io :as uio]
             [mertonon.util.uuid :as uutils]
             [mertonon.util.validations :as uvals]
             [tick.core :as t]))
 
+(def validations [(uvals/table-count-check mt-user-model/model 0 :already-introed)])
+
 (defn- do-intro [m]
-  (let [body            (api-util/body-params m)
+  (let [check!          (uvals/throw-if-invalid! m validations)
+        body            (api-util/body-params m)
         ;; TODO: make this in a transaction for real.
         ;; Need compatibility with test txn. Means that our wrapper needs to be with respect to savepoints or something
         username        (:username body)
@@ -36,9 +38,7 @@
 
 (defn intro-endpoint []
   {:post do-intro
-   :name ::intro
-   :middleware [val-mw/wrap-mertonon-validations
-                [(uvals/table-count-check mt-user-model/model 0 :already-introed)]]})
+   :name ::intro})
 
 (defn routes []
   [["/" (intro-endpoint)]])

@@ -19,7 +19,7 @@
 (defn generatorGradApi [] (gstring/format "%s/api/v1/generators/grad" host))
 
 ;; ---
-;; Ordinary CRUD APIs
+;; Ordinary network CRUD APIs
 ;; ---
 
 (defn gridApi [] (gstring/format "%s/api/v1/grid/" host))
@@ -28,8 +28,6 @@
 (defn gridViewApi [uuid] (gstring/format "%s/api/v1/grid/%s/view" host uuid))
 (defn gridDumpApi [uuid] (gstring/format "%s/api/v1/grid/%s/dump" host uuid))
 (defn gridGraphApi [uuid] (gstring/format "%s/api/v1/grid/%s/graph" host uuid))
-
-(defn introApi [] (gstring/format "%s/api/v1/intro/" host))
 
 (defn layerApi [] (gstring/format "%s/api/v1/layer" host))
 (defn layerMemberApi [uuid] (gstring/format "%s/api/v1/layer/%s" host uuid))
@@ -60,3 +58,11 @@
 (defn lossViewApi [uuid] (gstring/format "%s/api/v1/loss/%s/view" host uuid))
 
 (defn allocationCueApi [] (gstring/format "%s/api/v1/allocation_cue" host))
+
+;; ---
+;; Non-net CRUD APIs
+;; ---
+
+(defn introApi [] (gstring/format "%s/api/v1/intro/" host))
+
+(defn loginApi [] (gstring/format "%s/api/v1/login/" host))

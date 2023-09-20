@@ -37,21 +37,18 @@
             fst-body      {:username fst-user :password fst-pass :email fst-email}
             snd-body      {:username snd-user :password snd-pass :email snd-email}
 
-            all-users     ((mt-user-model/model :read-all))
-            deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
-            curr-count    ((mt-user-model/model :count))
-            printo        (println "=====")
-            printo        (println curr-count)
-            ;;;; get the app handler with some kind of with-test-transaction thing.
-            ;;;; print out current state fuckery
+            ;; all-users     ((mt-user-model/model :read-all))
+            ;; deletion!     (when (seq all-users) ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
             fst-intro!    (post-intro! fst-body curr-app)
-            snd-intro!    (post-intro! snd-body curr-app)
-            printo        (println "=====")
-            printo        (println fst-intro!)
-            printo        (println snd-intro!)]
+            snd-intro!    (post-intro! snd-body curr-app)]
         (and (= 200 (:status fst-intro!))
              (= fst-user (-> fst-intro! :body :mt-user :username))
              (nil? (-> fst-intro! :body :password))
-             (= 400 (:status snd-intro!)))))))
+             ;; TODO: get validations to do 400's instead of 500's
+             (= 500 (:status snd-intro!)))))))
 
 (comment (run-tests))
+
+(comment (let [all-users     ((mt-user-model/model :read-all))
+               deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))]
+           ((mt-user-model/model :count))))

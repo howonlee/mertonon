@@ -5,21 +5,21 @@
 - [x] Intro validation
 
 - [x] Intro BE
-- [ ] FE intro hero display
+- [x] FE intro hero display - get it to exist
+- [x] Login, no sessions just make the thing
 
-- [ ] Fold login validation into validation set
-- [ ] Fold other API validation thingies into validations
-- [ ] Login
-- [ ] Logout
-- [ ] Test txn macro state - get it to work with the test handler somehow
-- [ ] Intro test, get it to work
-- [ ] FE testing yakshave
-- [ ] FE hero tests, incl. switching things
+- [x] Check intro FE manually
+- [x] Intro validations - avoid the middleware i guess, make another wrapping thing? error out of some kind?
+- [ ] Check intro FE manually again
+- [ ] Check login manually
+- [ ] Hook login to sessions
+- [ ] FE authn and authz hookup after login
+- [ ] Intro, login redirection semantics
+- [ ] Error screens for non logged in stuff
+- [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
 
-- [ ] FE authn and authz
-- [ ] FE authn and authz testing
-- [ ] Error screens
-- [ ] Kill the authn feature flag
+- [ ] Exception handler that returns 400 instead of 500
+- [ ] Build CI
 - [ ] Change usage docs
 - [ ] Changelog
 - [ ] Futz around a bit
