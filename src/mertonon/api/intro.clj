@@ -14,7 +14,8 @@
             [tick.core :as t]))
 
 (defn- do-intro [m]
-  (let [body            (api-util/body-params m)
+  (let [printo          (println m)
+        body            (api-util/body-params m)
         ;; TODO: make this in a transaction for real.
         ;; Need compatibility with test txn. Means that our wrapper needs to be with respect to savepoints or something
         username        (:username body)

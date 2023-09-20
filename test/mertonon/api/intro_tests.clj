@@ -37,8 +37,8 @@
             fst-body      {:username fst-user :password fst-pass :email fst-email}
             snd-body      {:username snd-user :password snd-pass :email snd-email}
 
-            all-users     ((mt-user-model/model :read-all))
-            deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
+            ;; all-users     ((mt-user-model/model :read-all))
+            ;; deletion!     ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users))
             curr-count    ((mt-user-model/model :count))
             printo        (println "=====")
             printo        (println curr-count)
