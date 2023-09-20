@@ -34,7 +34,10 @@
 (def validation-list
   [(sc-validation/non-blank [:curr-create-params :email] :email-blank)
    (sc-validation/non-blank [:curr-create-params :username] :username-blank)
-   (sc-validation/non-blank [:curr-create-params :password] :password-blank)])
+   (sc-validation/non-blank [:curr-create-params :password] :password-blank)
+   (sc-validation/two-members-equal [:curr-create-params :password]
+                       [:curr-create-params :password-repeat]
+                       :password-not-match)])
 
 (def create-sc
   (mt-statechart/simple-create :mt-user-create
@@ -67,7 +70,8 @@
     [sc-components/state-text-input create-sc-state "Email" [:curr-create-params :email]]]
    [sc-components/validation-popover sidebar-state :password-blank "Password is blank"
     [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]
-   [sc-components/state-password-input create-sc-state "Password Again" [:curr-create-params :password-repeat]]]
+   [sc-components/validation-popover sidebar-state :password-not-match "Passwords do not match"
+    [sc-components/state-password-input create-sc-state "Password Again" [:curr-create-params :password-repeat]]]]
    [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; ---

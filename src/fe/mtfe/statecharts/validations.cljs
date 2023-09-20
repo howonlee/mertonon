@@ -94,6 +94,15 @@
         curr-keyword
         nil))))
 
+(defn two-members-equal
+  [fst-member-path snd-member-path curr-keyword]
+  (fn [curr-state]
+    (let [fst (get-in curr-state fst-member-path)
+          snd (get-in curr-state snd-member-path)]
+      (if (= fst snd)
+        nil
+        curr-keyword))))
+
 ;; ---
 ;; Logical operators of predicates
 ;; ---
