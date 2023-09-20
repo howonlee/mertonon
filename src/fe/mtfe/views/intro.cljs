@@ -41,16 +41,13 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                ;;;;;;;;;;
-                                ;;;;;;;;;;
-                                ;;;;;;;;;;
                                 :action-fn     (sc-handlers/creation-handler api/introApi
                                                                              create-sc-state
-                                                                             ;;;;;
-                                                                             ;;;;;
-                                                                             ;;;;;
-                                                                             dict some crap
-                                                                             [:cobj-uuid :name :label :type :value :date])
+                                                                             (fn [username email password]
+                                                                               {:username username
+                                                                                :email    email
+                                                                                :password password})
+                                                                             [:username :email :password])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (mt-statechart/init-sc! :mt-user-create create-sc-state create-sc)
