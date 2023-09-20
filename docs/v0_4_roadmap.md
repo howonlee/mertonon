@@ -11,7 +11,7 @@
 - [x] Check intro FE manually
 - [x] Intro validations - avoid the middleware i guess, make another wrapping thing? error out of some kind?
 - [x] Check intro FE manually again
-- [ ] Check login manually
+- [x] Check login manually
 - [ ] Hook login to sessions
 - [ ] FE authn and authz hookup after login
 - [ ] Intro, login redirection semantics
