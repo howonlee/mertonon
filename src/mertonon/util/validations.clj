@@ -19,6 +19,13 @@
         errors (apply (partial merge-with into) reses)]
     errors))
 
+(defn throw-if-invalid!
+  [inp validations]
+  (let [res (validate inp validations)]
+    (if (seq res)
+      (throw (Exception. res))
+      nil)))
+
 ;; ---
 ;; Validations
 ;; ---
