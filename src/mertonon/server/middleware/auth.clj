@@ -11,6 +11,8 @@
     "/api/v1/login/"
     "/api/v1/health_check/"})
 
+;; TODO: rbac
+
 (defn wrap-mertonon-auth
   ([handler]
    (wrap-mertonon-auth handler {}))
