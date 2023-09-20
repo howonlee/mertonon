@@ -6,9 +6,10 @@
 
 - [x] Intro BE
 - [x] FE intro hero display - get it to exist
+- [ ] Login
 
 - [ ] FE intro hero manual testing, manual gettingittowork
-- [ ] Login
+- [ ] Whack away at cookie sessions if necessary
 - [ ] Logout
 - [ ] Test txn macro state - get it to work with the test handler somehow
 - [ ] Intro BE test, get it to work

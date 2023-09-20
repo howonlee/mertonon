@@ -8,6 +8,7 @@
             [mtfe.sidebars.grid :as grid]
             [mtfe.sidebars.grid-select :as grid-select]
             [mtfe.sidebars.input :as input]
+            [mtfe.sidebars.intro :as intro]
             [mtfe.sidebars.layer :as layer]
             [mtfe.sidebars.loss :as loss]
             [mtfe.sidebars.weight :as weight]
@@ -47,7 +48,7 @@
 
 (def sidebar-routes
   [["/"                               {:name ::home-sidebar :view home-sidebar}]
-   ["/intro"                          {:name ::intro-sidebar :view home-sidebar}]
+   ["/intro"                          {:name ::intro-sidebar :view intro/intro-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin-sidebar}]
    ["/user"                           {:name ::user-sidebar :view user-sidebar}]
 
