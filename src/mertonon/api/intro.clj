@@ -7,7 +7,6 @@
             [mertonon.models.mt-session :as mt-session-model]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
-            [mertonon.server.middleware.validations :as val-mw]
             [mertonon.util.io :as uio]
             [mertonon.util.uuid :as uutils]
             [mertonon.util.validations :as uvals]

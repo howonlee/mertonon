@@ -23,7 +23,7 @@
   [inp validations]
   (let [res (validate inp validations)]
     (if (seq res)
-      (throw (Exception. res))
+      (throw (ex-info "Validations failed." res))
       nil)))
 
 ;; ---
