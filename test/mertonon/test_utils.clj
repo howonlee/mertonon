@@ -34,6 +34,10 @@
   [& body]
   `(do-with-test-txn (fn [] ~@body)))
 
+(defn test-txn-middleware [handler]
+  (fn [req]
+    nil))
+
 (defn app-with-test-txn [app-handler]
   ;;;;
   ;;;;
