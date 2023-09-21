@@ -4,15 +4,6 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- FE authn and authz hookup after login and session established
-- Intro, login redirect semantics if not authed
-- Error screens
-- Login & intro button statemachine that doesn't just hardcode to say create and stuff
-- Lots more FE testing manually, I'm afraid
-- Logout
-- Change usage docs
-- Call authn deployed
-
 - FE only generation - state machine dealing
 - FE only generation - form state dealing
 - FE testing with generation
