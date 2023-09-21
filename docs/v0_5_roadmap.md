@@ -17,6 +17,7 @@
 - [ ] FE user crud, not just sole admin account anymore (but every account admin account so far...)
 
 - [ ] Remove running postgres instance requirement for build, this is ridiculous
+- [ ] Build github action
 - [ ] Change usage docs
 - [ ] Call authn deployed
 
