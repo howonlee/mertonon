@@ -42,9 +42,8 @@
         [mt-session-middleware/wrap-mertonon-session
          mt-auth-middleware/wrap-mertonon-auth]))
 
-(defn- test-router-middlewares []
-  ;;; test middleware for txn...
-  (base-router-middlewares))
+(defn- test-router-middlewares [middlewares]
+  (into (base-router-middlewares) middlewares))
 
 (defn- router [curr-routes curr-middlewares]
   (rr/router
@@ -56,8 +55,8 @@
 (defn- prod-router []
   (router (routes/routes) (prod-router-middlewares)))
 
-(defn- test-router []
-  (router (routes/routes) (test-router-middlewares)))
+(defn- test-router [middlewares]
+  (router (routes/routes) (test-router-middlewares middlewares)))
 
 ;; ---
 ;; Handling
@@ -76,9 +75,9 @@
   Do not use in production.
 
   TODO: enforce not using in production"
-  []
+  [middlewares]
   (rr/ring-handler
-    (test-router)
+    (test-router middlewares)
     (rr/redirect-trailing-slash-handler)
     (rr/create-default-handler)))
 
