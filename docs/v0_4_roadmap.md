@@ -12,7 +12,8 @@
 - [x] Intro validations - avoid the middleware i guess, make another wrapping thing? error out of some kind?
 - [x] Check intro FE manually again
 - [x] Check login manually
-- [ ] Hook login to cookies
+- [x] Hook login to cookies
+
 - [ ] FE authn and authz hookup after login
 - [ ] Intro, login redirection semantics
 - [ ] Error screens for non logged in stuff
