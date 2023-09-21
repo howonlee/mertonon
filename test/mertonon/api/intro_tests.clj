@@ -44,7 +44,6 @@
         (and (= 200 (:status fst-intro!))
              (= fst-user (-> fst-intro! :body :mt-user :username))
              (nil? (-> fst-intro! :body :password))
-             ;; TODO: get validations to do 400's instead of 500's
              (= 500 (:status snd-intro!)))))))
 
 (comment (run-tests))

@@ -1,7 +1,6 @@
 (ns mertonon.api.cost-object
   "API for cost objects"
-  (:require [clojure.data.json :as json]
-            [mertonon.api.util :as api-util]
+  (:require [mertonon.api.util :as api-util]
             [mertonon.models.cost-object :as cost-object-model]
             [mertonon.models.entry :as entry-model]
             [mertonon.models.input :as input-model]
@@ -41,7 +40,7 @@
                             :entries        (sort-by :uuid entries)
                             :src-weightsets src-weightsets
                             :tgt-weightsets tgt-weightsets}]
-    {:status 200 :body (json/write-str body-res)}))
+    {:status 200 :body body-res}))
 
 (defn view-endpoint []
   {:get cost-object-view-get :name ::cost-object-view})

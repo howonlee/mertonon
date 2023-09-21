@@ -1,7 +1,6 @@
 (ns mertonon.api.entry
   "API for entries"
-  (:require [clojure.data.json :as json]
-            [mertonon.api.util :as api-util]
+  (:require [mertonon.api.util :as api-util]
             [mertonon.models.entry :as entry-model]
             [mertonon.util.uuid :as uutils]))
 

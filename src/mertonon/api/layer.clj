@@ -1,7 +1,6 @@
 (ns mertonon.api.layer
   "API for layers"
-  (:require [clojure.data.json :as json]
-            [mertonon.api.util :as api-util]
+  (:require [mertonon.api.util :as api-util]
             [mertonon.models.layer :as layer-model]
             [mertonon.models.weightset :as weightset-model]
             [mertonon.models.cost-object :as cost-object-model]
@@ -35,7 +34,7 @@
                             :src-weightsets src-weightsets
                             :tgt-weightsets tgt-weightsets
                             :cost-objects   cost-objects}]
-     {:status 200 :body (json/write-str body-res)}))
+     {:status 200 :body body-res}))
 
 (defn view-endpoint []
   {:get layer-view-get :name ::layer-view})

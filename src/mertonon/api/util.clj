@@ -1,7 +1,6 @@
 (ns mertonon.api.util
   "API utilities"
-  (:require [clojure.data.json :as json]
-            [clojure.walk :as walk]
+  (:require [clojure.walk :as walk]
             [mertonon.util.io :as uio]
             [mertonon.util.uuid :as uutils]
             [taoensso.timbre :as timbre :refer [log]]
@@ -39,7 +38,7 @@
           res             (if (map? model-or-models)
                             ((curr-model :create-one!) model-or-models)
                             ((curr-model :create-many!) model-or-models))]
-      {:status 200 :body (json/write-str res)})))
+      {:status 200 :body res})))
 
 (defn get-models [curr-model]
   (fn [match]
@@ -47,24 +46,21 @@
           res       (if (empty? uuid-list)
                       ((curr-model :read-all))
                       ((curr-model :read-many) uuid-list))]
-      {:status 200 :body (json/write-str res)})))
+      {:status 200 :body res})))
 
 (defn get-model [curr-model]
   (fn [match]
     (let [curr-uuid (path-uuid match)]
-      {:status 200 :body (json/write-str
-                           ((curr-model :read-one) curr-uuid))})))
+      {:status 200 :body ((curr-model :read-one) curr-uuid)})))
 
 ;; TODO: update percolated up to API
 
 (defn delete-model [curr-model]
   (fn [match]
     (let [curr-uuid (path-uuid match)]
-      {:status 200 :body (json/write-str
-                           ((curr-model :hard-delete-one!) curr-uuid))})))
+      {:status 200 :body ((curr-model :hard-delete-one!) curr-uuid)})))
 
 (defn delete-models [curr-model]
   (fn [match]
     (let [curr-uuids (body-uuids match)]
-      {:status 200 :body (json/write-str
-                           ((curr-model :hard-delete-many!) curr-uuids))})))
+      {:status 200 :body ((curr-model :hard-delete-many!) curr-uuids)})))

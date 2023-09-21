@@ -1,7 +1,6 @@
 (ns mertonon.api.intro
   "API for introduction to mertonon. After successful intro, should disable itself"
-  (:require [clojure.data.json :as json]
-            [clojure.walk :as walk]
+  (:require [clojure.walk :as walk]
             [mertonon.api.util :as api-util]
             [mertonon.models.constructors :as mtc]
             [mertonon.models.mt-session :as mt-session-model]
@@ -35,7 +34,7 @@
         res             {:mt-user mt-user!
                          :session (:uuid session!)}]
     {:status 200
-     :body (json/write-str res)}))
+     :body   res}))
 
 (defn intro-endpoint []
   {:post do-intro

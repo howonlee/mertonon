@@ -12,7 +12,7 @@ Also look at small tasks roadmap
 - Change usage docs and call authn deployed
 
 - FE testing
-- FE user crud, not just admin account anymore
+- FE user crud, not just sole admin account anymore (but every account admin account so far...)
 - More GH actions CI
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Kick off forward passes every time we change anything

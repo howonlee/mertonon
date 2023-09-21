@@ -1,3 +1,5 @@
 Mertonon uses MAJOR.WEEKLY.COMMITS where MAJOR is not semantic versioning but just a vague indication of size of changes. WEEKLY is incremented every week, reset to 0 upon new MAJOR version. COMMITS is total number of commits on repo, with each commit being a squashed PR. COMMITS is not to be reset to 0 ever.
 
+In the package.json for the yarn frontend build the build is given as MAJOR.WEEKLY.commits where _commits_ is literally just the string commits instead of the number of commits. This is because we are lazy and do not wish to update package.json separately except for the weekly and major versions.
+
 We will deploy every business Thursday, no exceptions. Whether that's a major or weekly version will depend upon our coffee supply, number of sunspots, the phase of the moon, the flight of birds, the omens written in the entrails, the path of the smoke as it escapes the thurible, etc etc. We may even literally crank out a weekly version with no actual changes, for the hell of it and to exercise the ol' CI/CD. We may speed up the deploy cadence but not slow it down.

@@ -1,5 +1,6 @@
 (ns mertonon.server.handler
   (:require [mertonon.server.middleware.auth :as mt-auth-middleware]
+            [mertonon.server.middleware.json :as mt-json-middleware]
             [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.server.routes :as routes]
             [mertonon.util.i18n :refer [trs]]
@@ -23,7 +24,10 @@
 (defn- base-router-middlewares []
   [params/wrap-params
    wrap-cookies
+   ;; muuntaja makes everything a wibbley wobbley binary stream so
+   ;; shove anything dealing with plain request response after it
    muuntaja/format-middleware
+   mt-json-middleware/wrap-json
    ;; Note order matters.
    ;; TODO: Tighten up origins
    [wrap-cors

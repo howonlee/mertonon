@@ -3,7 +3,6 @@
   Do not use for FE testing, there's a `mertonon.api.fe-test-generators`
   for that which will give you multiple generates"
   (:require [clojure.core.matrix :as cm]
-            [clojure.data.json :as json]
             [clojure.test.check.generators :as gen]
             [loom.graph :as graph]
             [mertonon.generators.net :as net-gen]
@@ -73,7 +72,7 @@
   (let [[net patterns & _] @generated-net-atom
         entry-net          (assoc net :entries (sort-by :uuid (:entries patterns)))
         no-matrix-net      (dissoc entry-net :matrices)]
-    {:status 200 :body (json/write-str no-matrix-net)}))
+    {:status 200 :body no-matrix-net}))
 
 (def generated-net-endpoint
   {:get generated-net-get :name ::generated-net})
@@ -91,11 +90,11 @@
         grids      (:grids net)
         weightsets (:weightsets net)
         layers     (:layers net)]
-    {:status 200 :body (json/write-str {:grids      grids
-                                        :nodes      nodes
-                                        :edges      edges
-                                        :weightsets weightsets
-                                        :layers     layers})}))
+    {:status 200 :body {:grids      grids
+                        :nodes      nodes
+                        :edges      edges
+                        :weightsets weightsets
+                        :layers     layers}}))
 
 (def generated-net-graph-endpoint
   {:get generated-net-graph-get :name ::generated-net-graph})
@@ -118,7 +117,7 @@
                                          :src-weightsets src-weightsets
                                          :tgt-weightsets tgt-weightsets
                                          :cost-objects   cost-objects-with-grads}]
-     {:status 200 :body (json/write-str body-res)}))
+     {:status 200 :body body-res}))
 
 (def generated-net-layer-endpoint
   {:get generated-net-layer-get :name ::generated-net-layer})
@@ -145,7 +144,7 @@
                                          :entries        (or (sort-by :uuid ((:cobj->entries patterns) curr-uuid)) [])
                                          :src-weightsets src-weightsets
                                          :tgt-weightsets tgt-weightsets}]
-    {:status 200 :body (json/write-str body-res)}))
+    {:status 200 :body body-res}))
 
 (def generated-net-cost-object-endpoint
   {:get generated-net-cost-object-get :name ::generated-net-cost-object})
@@ -174,7 +173,7 @@
                       :weights   grad-weights
                       :src-cobjs src-cobjs
                       :tgt-cobjs tgt-cobjs}]
-    {:status 200 :body (json/write-str body-res)}))
+    {:status 200 :body body-res}))
 
 (def generated-net-weightset-endpoint
   {:get generated-net-weightset-get :name ::generated-net-weightset})
@@ -198,7 +197,7 @@
                    :src-cobj  src-cobj
                    :tgt-cobj  tgt-cobj
                    :weightset weightset}]
-    {:status 200 :body (json/write-str body-res)}))
+    {:status 200 :body body-res}))
 
 (def generated-net-weight-endpoint
   {:get generated-net-weight-get :name ::generated-net-weight})
@@ -215,7 +214,7 @@
         body-res  {:grids  grid
                    :losses losses
                    :inputs inputs}]
-    {:status 200 :body (json/write-str body-res)}))
+    {:status 200 :body body-res}))
 
 (def generated-net-grid-endpoint
   {:get generated-net-grid-get :name ::generated-net-grid})
@@ -226,7 +225,7 @@
 
 (defn generated-net-forward-get [_]
   (let [[_ _ forward & _] @generated-net-atom]
-    {:status 200 :body (json/write-str forward)}))
+    {:status 200 :body forward}))
 
 (def generated-net-forward-endpoint
   {:get generated-net-forward-get :name ::generated-net-forward})
@@ -237,7 +236,7 @@
 
 (defn generated-net-grad-get [_]
   (let [[_ patterns _ grad & _]   @generated-net-atom]
-    {:status 200 :body (json/write-str grad)}))
+    {:status 200 :body grad}))
 
 (def generated-net-grad-endpoint
   {:get generated-net-grad-get :name ::generated-net-grad})
