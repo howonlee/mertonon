@@ -5,7 +5,7 @@
 ;; Build checklist
 ;; 1. Run tests, make sure they're green
 ;; 2. Incr app version in this file
-;; 3. Incr app version package.json
+;; 3. Incr app version in package.json
 ;; 4. Futz with changelog
 ;; 5. Land change PR
 ;; 6. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
