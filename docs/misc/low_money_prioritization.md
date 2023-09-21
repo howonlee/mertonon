@@ -2,6 +2,8 @@ We recognize that people might not even have the small amount of money for the p
 
 To reconcile those facts, we give a low-money but very-high-effort way to get prioritization of your feature. I hope that if you're a moneyed enterprise you might agree that you might want to just pay the money. To be absolutely clear, this is merely an option: the other option is to buy licenses and get prioritization without going through this rigamarole. This is for prioritization of features and bugfixes only. Buy the software if you want the professional edition or enterprise edition features.
 
+We will have a self-instance of Mertonon we also do prioritizations on when the authn and authz is finished and whacked at a bit, but we will always keep this method for those who do not want to deal with the self-instance.
+
 # Instructions
 
 Keep a fire extinguisher handy at all times. Do the burning outside in a non-flammable setting. If your jurisdiction has a no-burn notice, you should not do this. If there is permitting for burning, get a permit. If your jurisdiction has poor air quality, you should not do this. Generally, follow the laws of your jurisdiction.
