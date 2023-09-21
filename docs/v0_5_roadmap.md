@@ -6,6 +6,8 @@
 - [ ] Login & intro button statemachine that doesn't just hardcode to say create and stuff
 - [ ] Lots more FE testing manually, I'm afraid
 - [ ] Logout
+- [ ] Remove running postgres instance requirement for build, this is ridiculous
+- [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
 - [ ] Change usage docs
 - [ ] Call authn deployed
 
