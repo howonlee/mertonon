@@ -11,10 +11,10 @@ We will also have a self-instance of Mertonon that we also use to do prioritizat
 Keep a fire extinguisher handy at all times. Do the burning outside in a non-flammable setting. If your jurisdiction has a no-burn notice, you should not do this. If there is permitting for burning, get a permit. If your jurisdiction has poor air quality, you should not do this. Generally, follow the laws of your jurisdiction.
 
 1. Actually file the issue on Github.
-2. Take some montage videos of you making a miniature papier-mâché dumpster about the size of a purse out of flammable materials. Quality of dumpster can be poor, this is not an art contest. Has to be papier-mâché. If you wish to stay anonymous, wear a mask or something.
+2. Take some montage cellphone videos of you making a miniature papier-mâché dumpster about the size of a purse out of flammable materials. Quality of dumpster can be poor, this is not an art contest. Has to be papier-mâché. If you wish to stay anonymous, wear a mask or something.
 3. After making the miniature dumpster, wait for it to be bone dry. Usually takes a day.
 4. Write down the current date, "Mertonon" and the Github issue number of your feature request on a piece of paper.
-5. Start recording video.
+5. Start recording cellphone video again.
 6. Show the piece of paper with the current date and Github issue number and "Mertonon" in the video, making sure it can be read clearly in the video.
 7. Crumple up the piece of paper.
 8. Insert the piece of paper into the miniature dumpster.
