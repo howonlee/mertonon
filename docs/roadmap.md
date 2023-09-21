@@ -13,7 +13,9 @@ Also look at small tasks roadmap
 - Change usage docs
 - Call authn deployed
 
-- FE testing
+- FE only generation - state machine dealing
+- FE only generation - form state dealing
+- FE testing with generation
 - FE user crud, not just sole admin account anymore (but every account admin account so far...)
 - More GH actions CI
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
