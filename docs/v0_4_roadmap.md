@@ -18,6 +18,7 @@
 - [ ] Error screens for non logged in stuff
 - [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
+- [ ] Sick and tired of manual jsonning of endpoints, figure out the middleware
 
 - [ ] Build CI
 - [ ] Change usage docs
