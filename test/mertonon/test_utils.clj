@@ -34,6 +34,13 @@
   [& body]
   `(do-with-test-txn (fn [] ~@body)))
 
+(defn app-with-test-txn [app-handler]
+  ;;;;
+  ;;;;
+  ;;;;
+  (println app-handler))
+
+
 ;; ---
 ;; More value-based check for throwing stuff
 ;; ---
