@@ -1,5 +1,8 @@
+- [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
+
 - [ ] Graph consonance test is being persnickety again, whack it until it stays still
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
+- [ ] Figure out the session not actually establishing...
 - [ ] FE authn and authz hookup after login and session established
 - [ ] Intro, login redirect semantics if not authed
 
@@ -14,7 +17,6 @@
 - [ ] FE user crud, not just sole admin account anymore (but every account admin account so far...)
 
 - [ ] Remove running postgres instance requirement for build, this is ridiculous
-- [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
 - [ ] Change usage docs
 - [ ] Call authn deployed
 

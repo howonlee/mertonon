@@ -34,11 +34,6 @@
   [& body]
   `(do-with-test-txn (fn [] ~@body)))
 
-(defn test-txn-middleware
-  [handler]
-  (fn [req]
-    nil))
-
 ;; ---
 ;; More value-based check for throwing stuff
 ;; ---
