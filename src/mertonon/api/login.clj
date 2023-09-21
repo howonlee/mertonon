@@ -42,7 +42,11 @@
                                                                  (curr-user :uuid)
                                                                  expiration
                                                                  curr-user))]
-        {:status 200 :body (json/write-str {:session (:uuid session-res)})}))))
+        {:status 200
+         ;;;;;
+         ;;;;;
+         ;;;;;
+         :body (json/write-str {:session (:uuid session-res)})}))))
 
 (defn login-endpoint []
   {:post do-login
