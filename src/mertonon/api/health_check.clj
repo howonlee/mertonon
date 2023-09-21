@@ -6,8 +6,7 @@
   Monitoring and QA are not fundamentally different things. Machine learning and testing are not formally different things.
 
   This poses authn and authz difficulties, but you would need to deal with those in any good faith testing anyways."
-  (:require [clojure.data.json :as json]
-            [mertonon.api.util :as api-util]
+  (:require [mertonon.api.util :as api-util]
             [mertonon.models.health-check :as hc-model]
             [mertonon.util.uuid :as uutils]))
 

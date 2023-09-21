@@ -1,7 +1,6 @@
 (ns mertonon.api.grid
   "API for grids"
-  (:require [clojure.data.json :as json]
-            [clojure.walk :as walk]
+  (:require [clojure.walk :as walk]
             [loom.graph :as graph]
             [mertonon.api.util :as api-util]
             [mertonon.models.entry :as entry-model]
@@ -67,7 +66,7 @@
         grad                        (grad-service/forward-pass->grad forward-res)
         to-update                   (grad-service/grad->to-update grad)
         _                           (grad-service/update-grad-fields! to-update)]
-    {:status 200 :body (json/write-str (merge grad to-update))}))
+    {:status 200 :body (merge grad to-update)}))
 
 (defn grad-endpoint []
   {:post grad-create! :name ::grad-create})
@@ -92,9 +91,9 @@
                       :table->model     registry/table->model})
         entry-res   (->> entry-res :mertonon.entries (sort-by :uuid))
         net-res     (coarse-serde-service/db->net grid-uuid)]
-    {:status 200 :body (json/write-str (assoc net-res
-                                              :entries entry-res
-                                              :query params))}))
+    {:status 200 :body (assoc net-res
+                              :entries entry-res
+                              :query params)}))
 
 (defn dump-endpoint []
   {:get grid-dump-get :name ::grad-dump})
@@ -110,11 +109,11 @@
         net-graph    (graph-service/net->graph layers weightsets)
         nodes        (graph/nodes net-graph)
         edges        (graph/edges net-graph)]
-    {:status 200 :body (json/write-str {:grids      [grid]
-                                        :nodes      nodes
-                                        :layers     layers
-                                        :edges      edges
-                                        :weightsets weightsets})}))
+    {:status 200 :body {:grids      [grid]
+                        :nodes      nodes
+                        :layers     layers
+                        :edges      edges
+                        :weightsets weightsets}}))
 
 (defn graph-endpoint []
   {:get grid-graph-get :name ::grid-graph})
@@ -127,9 +126,9 @@
                        ((input-model/model :read-where) [:in :layer-uuid (mapv :uuid layers)]))
         losses       (if (empty? layers) []
                        ((loss-model/model :read-where) [:in :layer-uuid (mapv :uuid layers)]))]
-    {:status 200 :body (json/write-str {:grids  [grid]
-                                        :losses (sort-by :uuid losses)
-                                        :inputs (sort-by :uuid inputs)})}))
+    {:status 200 :body {:grids  [grid]
+                        :losses (sort-by :uuid losses)
+                        :inputs (sort-by :uuid inputs)}}))
 
 (defn view-endpoint []
   {:get grid-view-get :name ::grid-view})

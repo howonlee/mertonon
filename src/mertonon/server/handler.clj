@@ -1,5 +1,6 @@
 (ns mertonon.server.handler
   (:require [mertonon.server.middleware.auth :as mt-auth-middleware]
+            [mertonon.server.middleware.json :as mt-json-middleware]
             [mertonon.server.middleware.session :as mt-session-middleware]
             [mertonon.server.routes :as routes]
             [mertonon.util.i18n :refer [trs]]
@@ -24,6 +25,7 @@
   [params/wrap-params
    wrap-cookies
    muuntaja/format-middleware
+   mt-json-middleware/wrap-json
    ;; Note order matters.
    ;; TODO: Tighten up origins
    [wrap-cors

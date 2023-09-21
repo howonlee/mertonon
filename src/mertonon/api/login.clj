@@ -1,7 +1,6 @@
 (ns mertonon.api.login
   "API for logging in. Not to be confused with password-login"
-  (:require [clojure.data.json :as json]
-            [clojure.walk :as walk]
+  (:require [clojure.walk :as walk]
             [mertonon.api.util :as api-util]
             [mertonon.models.constructors :as mtc]
             [mertonon.models.mt-user :as mt-user-model]
@@ -33,8 +32,7 @@
                          (:password body)
                          (->> user-q :mertonon.password-logins first :password-digest)))]
     (if (not is-valid?)
-      {:status 401 :body (json/write-str
-                           {:message "Login invalid somehow. Check the username and password."})}
+      {:status 401 :body {:message "Login invalid somehow. Check the username and password."}}
       (let [curr-user   (->> user-q :mertonon.mt-users first)
             curr-time   (t/instant)
             expiration  (t/>> curr-time (t/new-duration session-length-days :days))
@@ -47,7 +45,7 @@
          :cookies {:ring-session
                    {:value     (str (:uuid session-res))
                     :http-only true}}
-         :body    (json/write-str {})}))))
+         :body    {}}))))
 
 (defn login-endpoint []
   {:post do-login

@@ -1,7 +1,6 @@
 (ns mertonon.api.weight
   "API for weights"
-  (:require [clojure.data.json :as json]
-            [mertonon.api.util :as api-util]
+  (:require [mertonon.api.util :as api-util]
             [mertonon.models.cost-object :as cost-object-model]
             [mertonon.models.weight :as weight-model]
             [mertonon.models.weightset :as weightset-model]
@@ -28,7 +27,7 @@
                      :src-cobj  src-cobj
                      :tgt-cobj  tgt-cobj
                      :weightset weightset}]
-    {:status 200 :body (json/write-str body-res)}))
+    {:status 200 :body body-res}))
 
 (defn view-endpoint []
   {:get weight-view-get :name ::weight-view})
