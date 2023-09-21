@@ -24,6 +24,8 @@
 (defn- base-router-middlewares []
   [params/wrap-params
    wrap-cookies
+   ;; muuntaja makes everything a wibbley wobbley binary stream so
+   ;; shove anything dealing with plain request response after it
    muuntaja/format-middleware
    mt-json-middleware/wrap-json
    ;; Note order matters.
