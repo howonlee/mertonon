@@ -7,9 +7,11 @@ Also look at small tasks roadmap
 - FE authn and authz hookup after login and session established
 - Intro, login redirect semantics if not authed
 - Error screens
+- Login & intro button statemachine that doesn't just hardcode to say create and stuff
 - Lots more FE testing manually, I'm afraid
 - Logout
-- Change usage docs and call authn deployed
+- Change usage docs
+- Call authn deployed
 
 - FE testing
 - FE user crud, not just sole admin account anymore (but every account admin account so far...)
