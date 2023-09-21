@@ -35,3 +35,6 @@ v0.4.commits - September 21 2023
 - Logins work to create sessions
 - Authz does not actually work yet so you cannot colorably say that auth works in any way yet still
 - JSON middleware, which to be hipster (actually for serialization reasons) we do differently from the common ring.json middleware
+
+v0.5.commits - September 28 2023
+----
