@@ -6,6 +6,15 @@ To reconcile those facts, we give a low-money but very-high-effort way to get pr
 
 We will also have a self-instance of Mertonon that we also use to do prioritization on, whenever we get the authn and authz to a decently working state, but we will always keep this method for those who do not want to deal with the self-instance.
 
+## Materials
+
+1. Cell phone. Presumably you have one already
+2. Bunch of waste paper
+3. Glue to make papier-mâché
+4. Some way of making fire
+5. Some place outside where you can make a fire
+6. Fire extinguisher. You'd better have one already
+
 ## Instructions
 
 Keep a fire extinguisher handy at all times. Do the burning outside in a non-flammable setting. If your jurisdiction has a no-burn notice, you should not do this. If there is permitting for burning, get a permit. If your jurisdiction has poor air quality, you should not do this. Generally, follow the laws of your jurisdiction.
