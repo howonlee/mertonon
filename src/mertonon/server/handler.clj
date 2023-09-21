@@ -22,6 +22,7 @@
 
 (defn- base-router-middlewares []
   [params/wrap-params
+   wrap-cookies
    muuntaja/format-middleware
    ;; Note order matters.
    ;; TODO: Tighten up origins

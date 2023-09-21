@@ -4,8 +4,13 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- FE authn and authz hookup after login and session established
+- Intro, login redirect semantics if not authed
+- Error screens
 - Lots more FE testing manually, I'm afraid
 - Logout
+- Change usage docs and call authn deployed
+
 - FE testing
 - FE user crud, not just admin account anymore
 - More GH actions CI

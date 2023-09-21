@@ -20,7 +20,7 @@
 (defn post-intro! [member curr-app]
   (let [endpoint    "/api/v1/intro/"
         res         (curr-app {:uri endpoint :request-method :post :body-params member})
-        slurped     (update res :body (comp uio/maybe-slurp uio/maybe-json-decode))]
+        slurped     (update res :body (comp walk/keywordize-keys uio/maybe-slurp uio/maybe-json-decode))]
     slurped))
 
 (defspec intro-not-idempotent
