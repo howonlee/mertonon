@@ -33,7 +33,8 @@
                          (:password body)
                          (->> user-q :mertonon.password-logins first :password-digest)))]
     (if (not is-valid?)
-      {:status 401 :body {:message "Login invalid somehow. Check the username and password."}}
+      {:status 401 :body (json/write-str
+                           {:message "Login invalid somehow. Check the username and password."})}
       (let [curr-user   (->> user-q :mertonon.mt-users first)
             curr-time   (t/instant)
             expiration  (t/>> curr-time (t/new-duration session-length-days :days))
@@ -42,11 +43,11 @@
                                                                  (curr-user :uuid)
                                                                  expiration
                                                                  curr-user))]
-        {:status 200
-         ;;;;;
-         ;;;;;
-         ;;;;;
-         :body (json/write-str {:session (:uuid session-res)})}))))
+        {:status  200
+         :cookies {:ring-session
+                   {:value     {:whleh :bleh}
+                    :http-only true}}
+         :body    (json/write-str {})}))))
 
 (defn login-endpoint []
   {:post do-login
