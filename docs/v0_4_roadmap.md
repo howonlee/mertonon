@@ -15,10 +15,6 @@
 - [x] Hook login to cookies
 - [x] Sick and tired of manual jsonning of endpoints, figure out the middleware
 
-- [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
-- [ ] Graph consonance test is being persnickety again, whack it until it stays still
-- [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
-- [ ] Build CI (no test, test on my box for now)
-- [ ] Changelog
+- [x] Changelog
 - [ ] Futz around a bit
-- [ ] Deploy with new build action
+- [ ] Deploy manually lol

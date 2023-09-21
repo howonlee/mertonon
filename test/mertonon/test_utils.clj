@@ -7,7 +7,7 @@
             [mertonon.util.registry :as reg]))
 
 ;; ---
-;; Transaction macro
+;; Test transaction macro and middleware
 ;; ---
 
 (def ^:dynamic ^:private *in-test-txn?* false)
@@ -33,6 +33,11 @@
   busts out of the transaction"
   [& body]
   `(do-with-test-txn (fn [] ~@body)))
+
+(defn test-txn-middleware
+  [handler]
+  (fn [req]
+    nil))
 
 ;; ---
 ;; More value-based check for throwing stuff

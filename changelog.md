@@ -29,4 +29,9 @@ v0.3.commits - September 14 2023
 v0.4.commits - September 21 2023
 ----
 
-
+- Validations in the backend now
+- Intro backend endpoint now actually works
+- Intro frontend? also actually works to create a user w/ password
+- Logins work to create sessions
+- Authz does not actually work yet so you cannot colorably say that auth works in any way yet still
+- JSON middleware, which to be hipster (actually for serialization reasons) we do differently from the common ring.json middleware
