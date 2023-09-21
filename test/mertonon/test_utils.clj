@@ -35,6 +35,7 @@
   `(do-with-test-txn (fn [] ~@body)))
 
 (defn test-txn-middleware [handler]
+  ;; closure should have the test txn state, not within the middlware handler
   (fn [req]
     nil))
 
