@@ -13,11 +13,11 @@ We will also have a self-instance of Mertonon that we also use to do prioritizat
 3. Glue to make papier-mâché
 4. Some way of making fire
 5. Some place outside where you can make a fire
-6. Fire extinguisher. You'd better have one already
+6. Some way of extinguishing the fire
 
 ## Instructions
 
-Keep a fire extinguisher handy at all times. Do the burning outside in a non-flammable setting. If your jurisdiction has a no-burn notice, you should not do this. If there is permitting for burning, get a permit. If your jurisdiction has poor air quality, you should not do this. Generally, follow the laws of your jurisdiction.
+Keep a way to extinguish fire handy at all times. Do the burning outside in a non-flammable setting. If your jurisdiction has a no-burn notice, you should not do this. If there is permitting for burning, get a permit. If your jurisdiction has poor air quality, you should not do this. Generally, follow the laws of your jurisdiction.
 
 1. Actually file the issue on Github.
 2. Take some montage cellphone videos of you making a miniature papier-mâché dumpster about the size of a purse out of flammable materials. Quality of dumpster can be poor, this is not an art contest. Has to be papier-mâché. If you wish to stay anonymous, wear a mask or something.
