@@ -45,7 +45,7 @@
                                                                  curr-user))]
         {:status  200
          :cookies {:ring-session
-                   {:value     {:whleh :bleh}
+                   {:value     (str (:uuid session-res))
                     :http-only true}}
          :body    (json/write-str {})}))))
 
