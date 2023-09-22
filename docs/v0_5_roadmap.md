@@ -6,6 +6,7 @@
 - [ ] FE authn and authz hookup after login and session established
 - [ ] Intro, login redirect semantics if not authed
 
+- [ ] Refresh mertonon.com
 - [ ] Error screens
 - [ ] Login & intro button statemachine that doesn't just hardcode to say create and stuff
 - [ ] Lots more FE testing manually, I'm afraid
