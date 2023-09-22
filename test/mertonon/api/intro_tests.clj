@@ -35,7 +35,7 @@
             [fst-email snd-email] emails
             [fst-pass snd-pass]   passwords
             curr-app      handler/test-handler
-            printo        (println (r/reflect curr-app))
+            printo        (clojure.pprint/pprint (r/reflect (curr-app)))
             ]
         true))))
             ;; fst-body      {:username fst-user :password fst-pass :email fst-email}
