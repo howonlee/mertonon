@@ -4,7 +4,8 @@
 - [x] Logout fe
 - [x] Logout be
 - [ ] Logout be test
-- [ ] Intro, login redirect semantics if not authed
+- [ ] I need to refactor the notion of the view. It sucks. It's got huge bugs. Had them continously for a while. etc.
+- [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 
 - [ ] Refresh mertonon.com
