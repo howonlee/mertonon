@@ -39,8 +39,8 @@
   ;; middleware closure should have the test txn state,
   ;; _not_ within the middlware handler
   ;; because we want the state to be shared between different requests
-  (with-test-txn
-    (fn [req]
+  (fn [req]
+    (with-test-txn
       (handler req))))
 
 (defn app-with-test-txn
