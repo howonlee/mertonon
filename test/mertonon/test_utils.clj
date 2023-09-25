@@ -43,7 +43,10 @@
     (fn [req]
       (handler req))))
 
-(defn app-with-test-txn []
+(defn app-with-test-txn
+  "Try not to use this in tandem with the with-test-txn macro by itself,
+  because it can get real confusing that way"
+  []
   (handlers/test-handler [test-txn-middleware]))
 
 ;; ---
