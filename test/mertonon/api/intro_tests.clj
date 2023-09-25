@@ -1,6 +1,7 @@
 (ns mertonon.api.intro-tests
   "Intro tests"
   (:require [clojure.data :as cd]
+            [clojure.reflect :as r]
             [clojure.string :as str]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
@@ -13,8 +14,8 @@
             [mertonon.generators.data :as gen-data]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
-            [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
+            [mertonon.util.db :as db]
             [mertonon.util.io :as uio]))
 
 (defn post-intro! [member curr-app]
@@ -33,12 +34,12 @@
       (let [[fst-user snd-user]   usernames
             [fst-email snd-email] emails
             [fst-pass snd-pass]   passwords
-            curr-app      (handler/test-handler)
+            curr-app      (tu/app-with-test-txn db/*defined-connection*)
             fst-body      {:username fst-user :password fst-pass :email fst-email}
             snd-body      {:username snd-user :password snd-pass :email snd-email}
-
-            ;; all-users     ((mt-user-model/model :read-all))
-            ;; deletion!     (when (seq all-users) ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
+            all-users     ((mt-user-model/model :read-all))
+            deletion!     (when (seq all-users)
+                            ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
             fst-intro!    (post-intro! fst-body curr-app)
             snd-intro!    (post-intro! snd-body curr-app)]
         (and (= 200 (:status fst-intro!))

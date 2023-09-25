@@ -21,6 +21,7 @@
             [mertonon.server.handler :as handler]
             [mertonon.services.coarse-serde-service :as coarse-serde]
             [mertonon.test-utils :as tu]
+            [mertonon.util.db :as db]
             [mertonon.util.io :as uio]
             [tick.core :as t]))
 
@@ -47,8 +48,6 @@
              :body-params    data})
        :body uio/maybe-slurp uio/maybe-json-decode strip-updated-at))
 
-(def test-app (handler/test-handler))
-
 (defspec grid-dump-consonance-test
   3
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
@@ -66,6 +65,7 @@
                           dump-endpoint        (format "/api/v1/grid/%s/dump" grid-uuid)
                           query-data           {:start-date before :end-date after :grid-uuid grid-uuid}
                           demo-dump-endpoint   "/api/v1/generators/dump"
+                          test-app             (tu/app-with-test-txn db/*defined-connection*)
                           demo-dump-res        (app-get test-app demo-dump-endpoint)
                           dump-res             (dissoc (app-get test-app dump-endpoint query-data) "query")]
                       (= dump-res demo-dump-res))))))
@@ -79,6 +79,7 @@
                     (coarse-serde/net->db (first net-and-backprop-and-updates))
                     (let [[net & _]          net-and-backprop-and-updates
                           grid-endpoint      (format "/api/v1/grid/%s/graph" (str (first-uuid net :grids)))
+                          test-app           (tu/app-with-test-txn db/*defined-connection*)
                           grid-res           (app-get test-app grid-endpoint)
                           demo-grid-endpoint "/api/v1/generators/graph"
                           demo-grid-res      (app-get test-app demo-grid-endpoint)]
@@ -93,6 +94,7 @@
                     (coarse-serde/net->db (first net-and-backprop-and-updates))
                     (let [[net & _]          net-and-backprop-and-updates
                           grid-endpoint      (format "/api/v1/grid/%s/view" (str (first-uuid net :grids)))
+                          test-app           (tu/app-with-test-txn db/*defined-connection*)
                           grid-res           (app-get test-app grid-endpoint)
                           demo-grid-endpoint "/api/v1/generators/grids"
                           demo-grid-res      (app-get test-app demo-grid-endpoint)]
@@ -111,6 +113,7 @@
                     (coarse-serde/cobj-changes->db (nth net-and-backprop-and-updates 4))
                     (let [[net & _]           net-and-backprop-and-updates
                           layer-endpoint      (format "/api/v1/layer/%s/view" (str (first-uuid net :layers)))
+                          test-app            (tu/app-with-test-txn db/*defined-connection*)
                           layer-res           (dissoc (app-get test-app layer-endpoint) "patterns")
                           demo-layer-endpoint (format "/api/v1/generators/layers/%s" (str (first-uuid net :layers)))
                           demo-layer-res      (dissoc (app-get test-app demo-layer-endpoint) "patterns")]
@@ -127,6 +130,7 @@
                     (coarse-serde/weight-changes->db (nth net-and-backprop-and-updates 5))
                     (let [[net & _]               net-and-backprop-and-updates
                           weightset-endpoint      (format "/api/v1/weightset/%s/view" (str (first-uuid net :weightsets)))
+                          test-app                (tu/app-with-test-txn db/*defined-connection*)
                           weightset-res           (app-get test-app weightset-endpoint)
                           demo-weightset-endpoint (format "/api/v1/generators/weightsets/%s" (str (first-uuid net :weightsets)))
                           demo-weightset-res      (app-get test-app demo-weightset-endpoint)]
@@ -144,6 +148,7 @@
                     (let [[net patterns & _]        net-and-backprop-and-updates
                           _                         ((entry-model/model :create-many!) (:entries patterns))
                           cost-object-endpoint      (format "/api/v1/cost_object/%s/view" (str (first-uuid net :cost-objects)))
+                          test-app                  (tu/app-with-test-txn db/*defined-connection*)
                           cost-object-res           (app-get test-app cost-object-endpoint)
                           demo-cost-object-endpoint (format "/api/v1/generators/cost_objects/%s" (str (first-uuid net :cost-objects)))
                           demo-cost-object-res      (app-get test-app demo-cost-object-endpoint)]
@@ -160,6 +165,7 @@
                     (coarse-serde/weight-changes->db (nth net-and-backprop-and-updates 5))
                     (let [[net & _]            net-and-backprop-and-updates
                           weight-endpoint      (format "/api/v1/weight/%s/view" (str (first-uuid net :weights)))
+                          test-app             (tu/app-with-test-txn db/*defined-connection*)
                           weight-res           (app-get test-app weight-endpoint)
                           demo-weight-endpoint (format "/api/v1/generators/weights/%s" (str (first-uuid net :weights)))
                           demo-weight-res      (app-get test-app demo-weight-endpoint)]
@@ -185,6 +191,7 @@
                           grad-endpoint        "/api/v1/grid/_/grad"
                           post-data            {:start-date before :end-date after :grid-uuid grid-uuid}
                           demo-grad-endpoint   "/api/v1/generators/grad"
+                          test-app             (tu/app-with-test-txn db/*defined-connection*)
                           demo-grad-res        (app-get test-app demo-grad-endpoint)
                           ;; Vars are generated a la minute, therefore summarize grads to compare them
                           demo-grad-rollup     (->> (demo-grad-res "grads") vals (map cm/esum) sort)

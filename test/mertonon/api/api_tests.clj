@@ -9,6 +9,7 @@
             [clojure.test.check.properties :as prop]
             [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
+            [mertonon.util.db :as db]
             [mertonon.util.registry :as reg]
             [mertonon.util.io :as uio]))
 
@@ -54,8 +55,9 @@
        uio/maybe-slurp
        uio/maybe-json-decode))
 
-(defn test-inp [table generates]
-  (let [app             (handler/test-handler)
+(defn test-inp
+  [table generates curr-db-txn]
+  (let [app             (tu/app-with-test-txn curr-db-txn)
         endpoint        (endpoints-under-test table)
         elem            (tu/generates->member generates table)
         indiv-endpoint  #(format "%s%s" endpoint (or (:uuid %) %))
@@ -106,39 +108,46 @@
 (defspec create-and-generate-consonance
   100
   (prop/for-all [[table generates] table-and-generates]
-                (tu/with-test-txn (tu/create-and-generate-consonance (test-inp table generates)))))
+                (tu/with-test-txn (tu/create-and-generate-consonance
+                                    (test-inp table generates db/*defined-connection*)))))
 
 (defspec member->row-round-trip
   100
   (prop/for-all [[table generates] table-and-generates]
-                (tu/with-test-txn (tu/member->row-round-trip (test-inp table generates)))))
+                (tu/with-test-txn (tu/member->row-round-trip
+                                    (test-inp table generates db/*defined-connection*)))))
 
 (defspec create-and-read-consonance
   100
   (prop/for-all [[table generates] table-and-generates]
-                (tu/with-test-txn (tu/create-and-read-consonance (test-inp table generates)))))
+                (tu/with-test-txn (tu/create-and-read-consonance
+                                    (test-inp table generates db/*defined-connection*)))))
 
 (defspec create-one-create-many-consonance
   100
   (prop/for-all [[table generates] table-and-generates]
-                (tu/with-test-txn (tu/create-one-create-many-consonance (test-inp table generates)))))
+                (tu/with-test-txn (tu/create-one-create-many-consonance
+                                    (test-inp table generates db/*defined-connection*)))))
 
 (defspec read-one-read-many-consonance
   100
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
-                  (tu/read-one-read-many-consonance (test-inp table generates)))))
+                  (tu/read-one-read-many-consonance
+                    (test-inp table generates db/*defined-connection*)))))
 
 ;; API will not have arbitrary read-where semantics. That's a terrible idea.
 
 (defspec create-and-delete-inversion
   100
   (prop/for-all [[table generates] table-and-generates]
-                (tu/with-test-txn (tu/create-and-delete-inversion (test-inp table generates)))))
+                (tu/with-test-txn (tu/create-and-delete-inversion
+                                    (test-inp table generates db/*defined-connection*)))))
 
 (defspec delete-one-delete-many-consonance
   100
   (prop/for-all [[table generates] table-and-generates]
-                (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
+                (tu/with-test-txn (tu/delete-one-delete-many-consonance
+                                    (test-inp table generates db/*defined-connection*)))))
 
 (comment (run-tests))

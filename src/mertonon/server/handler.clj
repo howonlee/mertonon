@@ -26,6 +26,9 @@
    wrap-cookies
    ;; muuntaja makes everything a wibbley wobbley binary stream so
    ;; shove anything dealing with plain request response after it
+   ;; I understand this kind of wrecks the superfast promises but I don't care yet.
+   ;; Will care someday.
+   ;; TODO: care
    muuntaja/format-middleware
    mt-json-middleware/wrap-json
    ;; Note order matters.
@@ -42,9 +45,8 @@
         [mt-session-middleware/wrap-mertonon-session
          mt-auth-middleware/wrap-mertonon-auth]))
 
-(defn- test-router-middlewares []
-  ;;; test middleware for txn...
-  (base-router-middlewares))
+(defn- test-router-middlewares [middlewares]
+  (into (base-router-middlewares) middlewares))
 
 (defn- router [curr-routes curr-middlewares]
   (rr/router
@@ -56,8 +58,8 @@
 (defn- prod-router []
   (router (routes/routes) (prod-router-middlewares)))
 
-(defn- test-router []
-  (router (routes/routes) (test-router-middlewares)))
+(defn- test-router [middlewares]
+  (router (routes/routes) (test-router-middlewares middlewares)))
 
 ;; ---
 ;; Handling
@@ -74,11 +76,12 @@
 (defn test-handler
   "Unsecured handler in order to not eat huge slowdowns in testing.
   Do not use in production.
+  If you are using this in production something terrible has happened to your life
 
   TODO: enforce not using in production"
-  []
+  [middlewares]
   (rr/ring-handler
-    (test-router)
+    (test-router middlewares)
     (rr/redirect-trailing-slash-handler)
     (rr/create-default-handler)))
 
