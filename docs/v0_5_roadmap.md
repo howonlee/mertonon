@@ -1,7 +1,5 @@
 - [x] Get intro BE test to work in any db state by hooking it harder to macro somehow
-- [ ] Get other test app using BE tests to whack in the db state
-
-- [ ] Graph consonance test is being persnickety again, whack it until it stays still
+- [x] Get other test app using BE tests to whack in the db state
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 - [ ] Figure out the session not actually establishing...
 - [ ] FE authn and authz hookup after login and session established
@@ -12,6 +10,7 @@
 - [ ] Login & intro button statemachine that doesn't just hardcode to say create and stuff
 - [ ] Lots more FE testing manually, I'm afraid
 - [ ] Logout
+- [ ] Graph consonance test is being persnickety again, whack it until it stays still
 
 - [ ] FE only generation - state machine dealing
 - [ ] FE only generation - form state dealing
