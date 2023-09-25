@@ -14,7 +14,6 @@
             [mertonon.generators.data :as gen-data]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
-            [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
 
@@ -30,21 +29,20 @@
     [usernames  (gen/vector-distinct-by str/lower-case (gen-data/gen-mt-user-usernames :line-noise) {:num-elements 2})
      emails     (gen/vector-distinct (gen-data/gen-mt-user-emails :line-noise) {:num-elements 2})
      passwords  (gen/vector-distinct (gen-data/gen-passwords :line-noise) {:num-elements 2})]
-    (tu/with-test-txn
       (let [[fst-user snd-user]   usernames
             [fst-email snd-email] emails
             [fst-pass snd-pass]   passwords
-            curr-app      handler/test-handler
-            printo        (clojure.pprint/pprint (r/reflect (curr-app)))
-            ]
-        true))))
-            ;; fst-body      {:username fst-user :password fst-pass :email fst-email}
-            ;; snd-body      {:username snd-user :password snd-pass :email snd-email}
+            curr-app      (tu/app-with-test-txn)
+            fst-body      {:username fst-user :password fst-pass :email fst-email}
+            snd-body      {:username snd-user :password snd-pass :email snd-email}
+            all-users     ((mt-user-model/model :read-all))
+            ;; call the deletion...
+            ;; deletion!     (when (seq all-users)
+            ;;                 ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
+            fst-intro!    (post-intro! fst-body curr-app)
+            snd-intro!    (post-intro! snd-body curr-app)]
+        true)))
 
-            ;; ;; all-users     ((mt-user-model/model :read-all))
-            ;; ;; deletion!     (when (seq all-users) ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
-            ;; fst-intro!    (post-intro! fst-body curr-app)
-            ;; snd-intro!    (post-intro! snd-body curr-app)]
         ;; (and (= 200 (:status fst-intro!))
         ;;      (= fst-user (-> fst-intro! :body :mt-user :username))
         ;;      (nil? (-> fst-intro! :body :password))

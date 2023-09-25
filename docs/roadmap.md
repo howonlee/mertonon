@@ -19,7 +19,7 @@ Also look at small tasks roadmap
 - Email digesting on the crontab
 - License design, then task out for after alpha
 
-- Cut alpha
+- Cut alpha, think of future
 
 # General Future Roadmap (not in any real order)
 
