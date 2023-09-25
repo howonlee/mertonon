@@ -35,7 +35,7 @@
   [& body]
   `(do-with-test-txn (fn [] ~@body)))
 
-(defn test-txn-middleware [handler]
+(defn test-txn-middleware [txn handler]
   ;; middleware closure should have the test txn state,
   ;; _not_ within the middlware handler
   ;; because we want the state to be shared between different requests
