@@ -11,10 +11,11 @@
             [mertonon.generators.health-check :as hc-gen]
             [mertonon.models.health-check :as hc-model]
             [mertonon.server.handler :as handler]
+            [mertonon.util.db :as db]
             [mertonon.test-utils :as tu]))
 
-(defn post-to-health-check! [member]
-  (let [app         (handler/test-handler)
+(defn post-to-health-check! [member curr-txn]
+  (let [app         (tu/app-with-test-txn curr-txn)
         endpoint    "/api/v1/health_check/"
         row->member (hc-model/model :row->member)
         res         (app {:uri endpoint :request-method :post :body-params member})
@@ -26,6 +27,6 @@
   100
   (prop/for-all [hc (hc-gen/generate-health-check)]
                 (tu/with-test-txn
-                  (some? (:uuid (post-to-health-check! hc))))))
+                  (some? (:uuid (post-to-health-check! hc db/*defined-connection*))))))
 
 (comment (run-tests))
