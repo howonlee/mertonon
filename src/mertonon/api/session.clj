@@ -54,7 +54,9 @@
          :body    {}}))))
 
 (defn do-logout [m]
-  nil)
+  (let [printo (println m)]
+    {:status 200
+     :body {}}))
 
 (defn session-endpoint []
   {:post   do-login
