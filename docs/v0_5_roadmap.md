@@ -9,6 +9,7 @@
 
 - [ ] Refresh mertonon.com
 - [ ] Non-default blurbs for intro, login, logout button statemachine
+- [ ] Error screens
 - [ ] Lots more FE testing manually, I'm afraid
 - [ ] Graph consonance test is being persnickety again, whack it until it stays still
 
