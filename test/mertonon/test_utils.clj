@@ -3,6 +3,7 @@
             [clojure.string :as str]
             [clojure.test.check.generators :as gen]
             [next.jdbc :as jdbc]
+            [mertonon.server.handler :as handlers]
             [mertonon.util.db :as db]
             [mertonon.util.registry :as reg]))
 
@@ -35,18 +36,15 @@
   `(do-with-test-txn (fn [] ~@body)))
 
 (defn test-txn-middleware [handler]
-  ;; closure should have the test txn state, not within the middlware handler
+  ;; middleware closure should have the test txn state,
+  ;; _not_ within the middlware handler
   ;; because we want the state to be shared between different requests
   (with-test-txn
     (fn [req]
       (handler req))))
 
 (defn app-with-test-txn []
-  ;;;;;
-  ;;;;;
-  ;;;;;
-  ;;;;;
-  (some crap))
+  (handlers/test-handler [test-txn-middleware]))
 
 ;; ---
 ;; More value-based check for throwing stuff
