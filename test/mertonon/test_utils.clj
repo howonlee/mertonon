@@ -36,15 +36,17 @@
 
 (defn test-txn-middleware [handler]
   ;; closure should have the test txn state, not within the middlware handler
-  (fn [req]
-    nil))
+  ;; because we want the state to be shared between different requests
+  (with-test-txn
+    (fn [req]
+      (handler req))))
 
-(defn app-with-test-txn [app-handler]
-  ;;;;
-  ;;;;
-  ;;;;
-  (println app-handler))
-
+(defn app-with-test-txn []
+  ;;;;;
+  ;;;;;
+  ;;;;;
+  ;;;;;
+  (some crap))
 
 ;; ---
 ;; More value-based check for throwing stuff
