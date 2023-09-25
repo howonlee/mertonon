@@ -1,5 +1,5 @@
-(ns mertonon.api.login-tests
-  "Logging in tests"
+(ns mertonon.api.session-tests
+  "Logging in, logging out tests"
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
@@ -43,5 +43,9 @@
         (and (= 200 (:status good-login-res))
              (= 401 (:status wrong-user-res))
              (= 401 (:status bad-password-res)))))))
+
+(defspec login-logout
+  1
+  nil)
 
 (comment (run-tests))

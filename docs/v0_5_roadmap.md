@@ -1,13 +1,13 @@
 - [x] Get intro BE test to work in any db state by hooking it harder to macro somehow
 - [x] Get other test app using BE tests to whack in the db state
 - [x] Permanent session only, does anyone not do that, also the session path
-- [ ] Logout fe
+- [x] Logout fe
 - [ ] Logout be
 - [ ] Intro, login redirect semantics if not authed
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 
 - [ ] Refresh mertonon.com
-- [ ] Non-default blurbs for intro, login button statemachine
+- [ ] Non-default blurbs for intro, login, logout button statemachine
 - [ ] Lots more FE testing manually, I'm afraid
 - [ ] Graph consonance test is being persnickety again, whack it until it stays still
 

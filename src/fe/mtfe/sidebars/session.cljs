@@ -71,19 +71,11 @@
     [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]]
    [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
-(defn logout-render [delete-sc-state]
+(defn logout-render [m]
   [:<>
    [:h1 "Log out from Mertonon"]
    [:p "Log out from Mertonon?"]
-   [delete-button @delete-sc-state delete-sc-state {}]])
-
-(defn logout-sidebar [m]
-  (let [curr-match-uuid (->> m :path-params :uuid)
-        curr-state-uuid (->> @sidebar-state :selection :uuid)
-        _               (mt-statechart/send-reset-event-if-finished! delete-sc-state)]
-    (if (not= curr-match-uuid curr-state-uuid)
-      (sel/set-selection! sidebar-state api/sessionApi curr-match-uuid))
-    [logout-render delete-sc-state]))
+   [sc-components/delete-button @delete-sc-state delete-sc-state {}]])
 
 ;; ---
 ;; Top-level render
@@ -92,3 +84,12 @@
 (defn login-sidebar [m]
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [login-render m])
+
+(defn logout-sidebar [m]
+  (let [curr-match-uuid (->> m :path-params :uuid)
+        curr-state-uuid (->> @sidebar-state :selection :uuid)
+        _               (mt-statechart/send-reset-event-if-finished! delete-sc-state)]
+    (if (not= curr-match-uuid curr-state-uuid)
+      (sel/set-selection! sidebar-state api/sessionApi curr-match-uuid))
+    [logout-render m]))
+

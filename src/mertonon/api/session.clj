@@ -54,8 +54,14 @@
          :body    {}}))))
 
 (defn do-logout [m]
-  (let [printo (println m)]
+  (let [curr-config (config/config)]
     {:status 200
+     :cookies {:ring-session {:value     "nil"
+                              :http-only true
+                              :max-age   0
+                              :same-site :strict
+                              :path      "/"
+                              :domain    (curr-config :mt-host)}}
      :body {}}))
 
 (defn session-endpoint []
