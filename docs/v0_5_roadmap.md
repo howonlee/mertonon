@@ -1,9 +1,9 @@
 - [x] Get intro BE test to work in any db state by hooking it harder to macro somehow
 - [x] Get other test app using BE tests to whack in the db state
-- [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 - [ ] Figure out the session not actually establishing...
 - [ ] FE authn and authz hookup after login and session established
 - [ ] Intro, login redirect semantics if not authed
+- [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 
 - [ ] Refresh mertonon.com
 - [ ] Error screens
