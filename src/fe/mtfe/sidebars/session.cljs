@@ -1,5 +1,5 @@
-(ns mtfe.sidebars.login
-  "Login sidebar - shown as bit where you log in"
+(ns mtfe.sidebars.session
+  "Login and logout sidebar (session management)"
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
@@ -29,6 +29,8 @@
 
 (defonce create-sc-state
    (r/atom nil))
+(defonce delete-sc-state
+   (r/atom nil))
 
 (def validation-list
   [(sc-validation/non-blank [:curr-create-params :username] :username-blank)
@@ -39,7 +41,7 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/loginApi
+                                :action-fn     (sc-handlers/creation-handler api/sessionApi
                                                                              create-sc-state
                                                                              (fn [username password]
                                                                                {:username username
@@ -47,7 +49,13 @@
                                                                              [:username :password])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
+(def delete-sc
+  (mt-statechart/simple-delete :mt-session-delete
+                               {:action-fn   (sc-handlers/deletion-handler api/sessionApi delete-sc-state)
+                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
+
 (mt-statechart/init-sc! :mt-session-create create-sc-state create-sc)
+(mt-statechart/init-sc! :mt-session-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
@@ -63,6 +71,12 @@
     [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]]
    [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
+(defn logout-render [m]
+  [:<>
+   [:h1 "Log out from Mertonon"]
+   [:p "Log out from Mertonon?"]
+   [sc-components/delete-button @delete-sc-state delete-sc-state {}]])
+
 ;; ---
 ;; Top-level render
 ;; ---
@@ -70,3 +84,12 @@
 (defn login-sidebar [m]
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [login-render m])
+
+(defn logout-sidebar [m]
+  (let [curr-match-uuid (->> m :path-params :uuid)
+        curr-state-uuid (->> @sidebar-state :selection :uuid)
+        _               (mt-statechart/send-reset-event-if-finished! delete-sc-state)]
+    (if (not= curr-match-uuid curr-state-uuid)
+      (sel/set-selection! sidebar-state api/sessionApi curr-match-uuid))
+    [logout-render m]))
+

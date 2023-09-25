@@ -1,7 +1,7 @@
-(ns mtfe.views.login
+(ns mtfe.views.session
   "Login view to look at while you fill out deets in the login sidebar")
 
-(defn login-page-render []
+(defn session-page-render []
   [:div
    [:h1 "🥞 Mertonon"]
    [:h2 "Open Pre-Alpha"]
@@ -11,5 +11,5 @@
        centers, for an overall P&L. More than one P&L, targets besides competitiveness, and other KPI's forthcoming."]
    [:p "In computing terms, Mertonon is a neural network model of your organization."]])
 
-(defn login-page [m]
-  [login-page-render])
+(defn session-page [m]
+  [session-page-render])

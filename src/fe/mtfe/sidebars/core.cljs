@@ -10,8 +10,8 @@
             [mtfe.sidebars.input :as input]
             [mtfe.sidebars.intro :as intro]
             [mtfe.sidebars.layer :as layer]
-            [mtfe.sidebars.login :as login]
             [mtfe.sidebars.loss :as loss]
+            [mtfe.sidebars.session :as session]
             [mtfe.sidebars.weight :as weight]
             [mtfe.sidebars.weightset :as weightset]
             [mtfe.stylecomps :as sc]
@@ -50,7 +50,8 @@
 (def sidebar-routes
   [["/"                               {:name ::home-sidebar :view home-sidebar}]
    ["/intro"                          {:name ::intro-sidebar :view intro/intro-sidebar}]
-   ["/login"                          {:name ::login-sidebar :view login/login-sidebar}]
+   ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
+   ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin-sidebar}]
    ["/user"                           {:name ::user-sidebar :view user-sidebar}]
 

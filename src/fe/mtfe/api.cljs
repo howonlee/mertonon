@@ -65,4 +65,4 @@
 
 (defn introApi [] (gstring/format "%s/api/v1/intro/" host))
 
-(defn loginApi [] (gstring/format "%s/api/v1/login/" host))
+(defn sessionApi [] (gstring/format "%s/api/v1/session/" host))

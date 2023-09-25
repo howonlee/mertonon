@@ -1,5 +1,5 @@
-(ns mertonon.api.login-tests
-  "Logging in tests"
+(ns mertonon.api.session-tests
+  "Logging in, logging out tests"
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
@@ -16,7 +16,7 @@
             [mertonon.util.io :as uio]))
 
 (defn post-login! [member curr-app]
-  (let [endpoint    "/api/v1/login/"
+  (let [endpoint    "/api/v1/session/"
         res         (curr-app {:uri endpoint :request-method :post :body-params member})
         slurped     (update res :body (comp walk/keywordize-keys uio/maybe-slurp uio/maybe-json-decode))]
     slurped))
@@ -43,5 +43,9 @@
         (and (= 200 (:status good-login-res))
              (= 401 (:status wrong-user-res))
              (= 401 (:status bad-password-res)))))))
+
+;; (defspec login-logout
+;;   1
+;;   nil)
 
 (comment (run-tests))

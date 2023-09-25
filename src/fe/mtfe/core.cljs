@@ -7,7 +7,7 @@
             [mtfe.views.grid-selector :as grid-selector]
             [mtfe.views.intro :as intro]
             [mtfe.views.layer :as layer]
-            [mtfe.views.login :as login]
+            [mtfe.views.session :as session]
             [mtfe.views.weightset :as weightset]
             [mtfe.views.weight :as weight]
             [mtfe.util :as util]
@@ -31,7 +31,8 @@
   "Main browser URL (fragment) routes, as opposed to the separate sidebar routes, or the action routes"
   [["/"                  {:name ::home :view grid-selector/grid-selector}]
    ["/intro"             {:name ::intro :view intro/intro-page}]
-   ["/login"             {:name ::login :view login/login-page}]
+   ["/login"             {:name ::login :view session/session-page}]
+   ["/logout"            {:name ::logout :view session/session-page}]
    ["/admin"             {:name ::admin :view admin-page}]
    ["/user"              {:name ::user :view user-page}]
    ["/grid/:uuid"        {:name ::grid :view grid/grid-page}]
