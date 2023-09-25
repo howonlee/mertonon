@@ -3,12 +3,12 @@
 - [x] Permanent session only, does anyone not do that, also the session path
 - [x] Logout fe
 - [x] Logout be
-- [ ] I need to refactor the notion of the view. It sucks. It's got huge bugs. Had them continously for a while. etc.
+- [ ] I was wrong need to go back to re-frame... not gonna be straightforward
+- [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise
 - [ ] Error screens for 500s
 - [ ] Non-default blurbs for intro, login, logout button statemachine
 
 - [ ] Logout be test
-- [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 - [ ] Refresh mertonon.com
 - [ ] Lots more FE testing manually, I'm afraid
