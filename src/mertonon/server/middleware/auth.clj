@@ -1,7 +1,12 @@
 (ns mertonon.server.middleware.auth
   "Middlewares for authing.
 
-  Don't use buddy because it's based on ACL and we want RBAC
+  Don't use buddy because it's based on ACL and we want RBAC only no ACL
+
+  Why? we want some normal person pushing buttons to do authz -
+  ACL is a far more grognardy technology, overall.
+  enterpriseland is RBAC-land. or ABAC-land, really.
+
   Don't use the validation middleware because we want to complicate it a fair bit"
   (:require [clojure.string :as str]
             [mertonon.util.config :as mt-config]))
@@ -26,6 +31,4 @@
        (seq (:session request))
        (handler request)
        :else
-       (if ((mt-config/feature-flags) :auth)
-         {:status 401 :body {:message "Unauthorized"}}
-         (handler request))))))
+       {:status 401 :body {:message "Unauthorized"}}))))

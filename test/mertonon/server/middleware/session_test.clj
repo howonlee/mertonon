@@ -37,9 +37,7 @@
           no-session-req! (get-app! curr-app nil)
           session-req!    (get-app! curr-app curr-session)]
       (and
-        (if ((mt-config/feature-flags) :auth)
-          (= (no-session-req! :status) 401)
-          true)
+        (= (no-session-req! :status) 401)
         (= (session-req! :status) 200)
         (vector? (session-req! :body)))))))
 
