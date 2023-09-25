@@ -2,7 +2,8 @@
 - [x] Get other test app using BE tests to whack in the db state
 - [x] Permanent session only, does anyone not do that, also the session path
 - [x] Logout fe
-- [ ] Logout be
+- [x] Logout be
+- [ ] Logout be test
 - [ ] Intro, login redirect semantics if not authed
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 
