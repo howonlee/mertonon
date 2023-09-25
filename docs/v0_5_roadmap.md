@@ -1,4 +1,6 @@
-- [ ] Get intro BE test to work in any db state by hooking it harder to macro somehow
+- [x] Get intro BE test to work in any db state by hooking it harder to macro somehow
+- [ ] Get other test app using BE tests to whack in the db state
+
 - [ ] Graph consonance test is being persnickety again, whack it until it stays still
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 - [ ] Figure out the session not actually establishing...
