@@ -9,6 +9,6 @@
 (defn wrap-json
   [handler]
   (fn [request]
-    (if (some #(str/includes? % json-endpoints) (:uri request))
+    (if (str/includes? (:uri request) json-endpoints)
       (update-in (handler request) [:body] json/write-str)
       (handler request))))
