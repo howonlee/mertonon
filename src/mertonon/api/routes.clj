@@ -9,7 +9,7 @@
             [mertonon.api.input :as api-input]
             [mertonon.api.intro :as api-intro]
             [mertonon.api.layer :as api-layer]
-            [mertonon.api.login :as api-login]
+            [mertonon.api.session :as api-session]
             [mertonon.api.loss :as api-loss]
             [mertonon.api.mt-user :as api-mt-user]
             [mertonon.api.password-login :as api-password-login]
@@ -28,9 +28,9 @@
    (into ["/input"] (api-input/routes))
    (into ["/intro"] (api-intro/routes))
    (into ["/layer"] (api-layer/routes))
-   (into ["/login"] (api-login/routes))
    (into ["/loss"] (api-loss/routes))
    (into ["/mt_user"] (api-mt-user/routes))
    (into ["/password_login"] (api-password-login/routes))
+   (into ["/session"] (api-session/routes))
    (into ["/weightset"] (api-weightset/routes))
    (into ["/weight"] (api-weight/routes))])

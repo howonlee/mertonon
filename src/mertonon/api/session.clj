@@ -1,5 +1,5 @@
-(ns mertonon.api.login
-  "API for logging in. Not to be confused with password-login"
+(ns mertonon.api.session
+  "API for logging in and out. Not to be confused with password-login"
   (:require [clojure.walk :as walk]
             [mertonon.api.util :as api-util]
             [mertonon.models.constructors :as mtc]
@@ -53,9 +53,13 @@
                     :domain    (curr-config :mt-host)}}
          :body    {}}))))
 
-(defn login-endpoint []
-  {:post do-login
-   :name ::login})
+(defn do-logout [m]
+  nil)
+
+(defn session-endpoint []
+  {:post   do-login
+   :delete do-logout
+   :name   ::session})
 
 (defn routes []
-  [["/" (login-endpoint)]])
+  [["/" (session-endpoint)]])
