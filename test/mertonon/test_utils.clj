@@ -40,14 +40,14 @@
   ;; _not_ within the middlware handler
   ;; because we want the state to be shared between different requests
   (fn [req]
-    (with-test-txn
+    (binding [db/*defined-connection* txn]
       (handler req))))
 
 (defn app-with-test-txn
   "Try not to use this in tandem with the with-test-txn macro by itself,
   because it can get real confusing that way"
-  []
-  (handlers/test-handler [test-txn-middleware]))
+  [txn]
+  (handlers/test-handler [(partial test-txn-middleware txn)]))
 
 ;; ---
 ;; More value-based check for throwing stuff
