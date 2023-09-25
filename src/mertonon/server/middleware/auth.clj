@@ -26,6 +26,4 @@
        (seq (:session request))
        (handler request)
        :else
-       (if ((mt-config/feature-flags) :auth)
-         {:status 401 :body {:message "Unauthorized"}}
-         (handler request))))))
+       {:status 401 :body {:message "Unauthorized"}}))))
