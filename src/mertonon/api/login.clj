@@ -6,6 +6,7 @@
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
             [mertonon.models.mt-session :as mt-session-model]
+            [mertonon.util.config :as config]
             [mertonon.util.io :as uio]
             [mertonon.util.registry :as registry]
             [mertonon.util.uuid :as uutils]
@@ -40,11 +41,16 @@
                                                                  (uutils/uuid)
                                                                  (curr-user :uuid)
                                                                  expiration
-                                                                 curr-user))]
+                                                                 curr-user))
+            curr-config      (config/config)]
         {:status  200
          :cookies {:ring-session
                    {:value     (str (:uuid session-res))
-                    :http-only true}}
+                    :http-only true
+                    :max-age   (* 24 60 60 session-length-days)
+                    :same-site :strict
+                    :path      "/"
+                    :domain    (curr-config :mt-host)}}
          :body    {}}))))
 
 (defn login-endpoint []
