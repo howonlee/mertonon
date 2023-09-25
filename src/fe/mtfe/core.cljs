@@ -68,14 +68,16 @@
     (rdom/unmount-component-at-node app-elem)
     (rdom/render [current-page] app-elem)))
 
-(defn init! []
+(defn reframe-init! []
   (println "bleh"))
-  ;; (rfe/start!
-  ;;   (rf/router main-routes)
-  ;;   (fn [m]
-  ;;     (do
-  ;;       (reset! util/core-match m)
-  ;;       (util/nav-to-sidebar-for-current-main-view!)))
-  ;;   {:use-fragment true})
-  ;; (sidebar/init! @util/core-match)
-  ;; (main-mount!))
+
+(defn init! []
+  (rfe/start!
+    (rf/router main-routes)
+    (fn [m]
+      (do
+        (reset! util/core-match m)
+        (util/nav-to-sidebar-for-current-main-view!)))
+    {:use-fragment true})
+  (sidebar/init! @util/core-match)
+  (main-mount!))
