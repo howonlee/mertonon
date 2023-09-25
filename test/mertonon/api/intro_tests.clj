@@ -29,16 +29,23 @@
     [usernames  (gen/vector-distinct-by str/lower-case (gen-data/gen-mt-user-usernames :line-noise) {:num-elements 2})
      emails     (gen/vector-distinct (gen-data/gen-mt-user-emails :line-noise) {:num-elements 2})
      passwords  (gen/vector-distinct (gen-data/gen-passwords :line-noise) {:num-elements 2})]
+    ;;;;;;
+    ;;;;;;
+    ;;;;;;
+    (tu/with some crap
       (let [[fst-user snd-user]   usernames
             [fst-email snd-email] emails
             [fst-pass snd-pass]   passwords
-            curr-app      (tu/app-with-test-txn)
+            ;;;;;;
+            ;;;;;;
+            ;;;;;;
+            ;;;;;;
+            curr-app      (tu/app-with-test-txn db/some crap)
             fst-body      {:username fst-user :password fst-pass :email fst-email}
             snd-body      {:username snd-user :password snd-pass :email snd-email}
             all-users     ((mt-user-model/model :read-all))
-            ;; call the deletion...
-            ;; deletion!     (when (seq all-users)
-            ;;                 ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
+            deletion!     (when (seq all-users)
+                            ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
             fst-intro!    (post-intro! fst-body curr-app)
             snd-intro!    (post-intro! snd-body curr-app)
             printo        (println fst-intro!)
