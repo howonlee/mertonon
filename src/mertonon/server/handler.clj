@@ -26,6 +26,9 @@
    wrap-cookies
    ;; muuntaja makes everything a wibbley wobbley binary stream so
    ;; shove anything dealing with plain request response after it
+   ;; I understand this kind of wrecks the superfast promises but I don't care yet.
+   ;; Will care someday.
+   ;; TODO: care
    muuntaja/format-middleware
    mt-json-middleware/wrap-json
    ;; Note order matters.
@@ -73,6 +76,7 @@
 (defn test-handler
   "Unsecured handler in order to not eat huge slowdowns in testing.
   Do not use in production.
+  If you are using this in production something terrible has happened to your life
 
   TODO: enforce not using in production"
   [middlewares]
