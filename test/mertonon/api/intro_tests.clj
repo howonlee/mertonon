@@ -40,7 +40,10 @@
             ;; deletion!     (when (seq all-users)
             ;;                 ((mt-user-model/model :hard-delete-many!) (mapv :uuid all-users)))
             fst-intro!    (post-intro! fst-body curr-app)
-            snd-intro!    (post-intro! snd-body curr-app)]
+            snd-intro!    (post-intro! snd-body curr-app)
+            printo        (println fst-intro!)
+            printo        (println snd-intro!)
+            ]
         true)))
 
         ;; (and (= 200 (:status fst-intro!))
