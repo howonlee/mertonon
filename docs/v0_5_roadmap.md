@@ -6,6 +6,7 @@
 - [x] I was wrong need to go back to re-frame... not gonna be straightforward
 - [x] Ordinary page routing in re-frame
 - [x] Ordinary sidebar routing in re-frame
+- [x] Intro needed thing
 - [ ] Logout BE test
 
 - [ ] Grid selection in re-frame

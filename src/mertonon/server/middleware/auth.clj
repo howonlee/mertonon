@@ -13,6 +13,7 @@
 
 (def auth-exception-endpoints
   #{"/"
+    "/api/v1/intro/"
     "/api/v1/session/"
     "/api/v1/health_check/"})
 
