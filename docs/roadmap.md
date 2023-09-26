@@ -59,7 +59,6 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - Search
 - Clj-kondo in CI/CD
 - Third party plugin use docs and examples
-- Total SQLite backend, to be self-contained (rdbms-serverless in the SQLite style, not the AWS style)
 - Stateful action testing, lol
 
 - Integrations with CRMs, ERPs, HR management, billing and procurement platforms. I have a gigantic list. Some will be EE.
