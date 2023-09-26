@@ -10,3 +10,8 @@
   :curr-sidebar-match
   (fn [db _]
     (:curr-sidebar-match db)))
+
+(reg-sub
+  :grid-selection
+  (fn [db _]
+    (:grid-selection db)))
