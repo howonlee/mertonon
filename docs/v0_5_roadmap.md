@@ -3,7 +3,9 @@
 - [x] Permanent session only, does anyone not do that, also the session path
 - [x] Logout fe
 - [x] Logout be
-- [ ] I was wrong need to go back to re-frame... not gonna be straightforward
+- [x] I was wrong need to go back to re-frame... not gonna be straightforward
+- [ ] Ordinary page routing in re-frame
+- [ ] Ordinary sidebar routing in re-frame
 
 - [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise
 - [ ] Error screens for 500s
