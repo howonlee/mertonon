@@ -6,14 +6,14 @@
 - [x] I was wrong need to go back to re-frame... not gonna be straightforward
 - [x] Ordinary page routing in re-frame
 - [x] Ordinary sidebar routing in re-frame
+- [ ] Logout BE test
 
 - [ ] Grid selection in re-frame
 - [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
 - [ ] Error screens for 500s for re-frame
-
 - [ ] Non-default blurbs for intro, login, logout button statemachine
-- [ ] Logout be test
-- [ ] Grid view in re-frame
+- [ ] Grid view in re-frame, including the redirect semantics
+- [ ] Other views in re-frame, including the redirect semantics
 
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 - [ ] Refresh mertonon.com

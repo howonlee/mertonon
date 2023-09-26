@@ -45,7 +45,16 @@
              (= 401 (:status bad-password-res)))))))
 
 ;; (defspec login-logout
-;;   1
-;;   nil)
+;;    1
+;;    (prop/for-all
+;;      [generated some crap
+;;       some other crap]
+;;      (tu/with-test-txn
+;;        (let [curr-app (handler/app-handler)]
+;;          ;;; login
+;;          ;;; logout
+;;          ;;; one last res
+;;          ;;; make sure 200 then 200 then 401
+;;          nil))))
 
 (comment (run-tests))
