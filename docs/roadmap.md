@@ -4,7 +4,9 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Refactor to be more re-framey
 - GH test CI
+- FE user crud, not just sole admin account anymore (but every account admin account so far...)
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Kick off forward passes every time we change anything
 - Model updates, what's necessary of BE
