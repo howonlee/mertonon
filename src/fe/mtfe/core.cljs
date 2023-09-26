@@ -53,28 +53,17 @@
    [:span.w-1.pa2 (util/fsl "#/admin" "/admin" [:i.fa-solid.fa-gear])]
    [:span.w-1.pa2 (util/fsl "#/user" "/user" [:i.fa-solid.fa-user])]])
 
-(defn current-page []
-  [sc/whole-page
-   [nav]
-   (if @util/core-match
-     (let [view (with-meta
-                  (:view (:data @util/core-match))
-                  {:query-params (:query-params @util/core-match)})]
-       [sc/main-section-container
-        [view @util/core-match]]))
-   [sidebar/sidebar]])
-
 (defn mertonon-app
   []
-  (let [curr-page-match   @(subscribe [:curr-page-match])
-        curr-view         @(subscribe [:curr-view])
-        curr-query-params @(subscribe [:curr-query-params])]
+  (let [curr-page-match   @(subscribe [:curr-page-match])]
     [sc/whole-page
      [nav]
-     (let [view (with-meta curr-view {:query-params curr-query-params})]
-      [sc/main-section-container
-       (when (not (nil? view))
-         [view curr-page-match])])]))
+     (when curr-page-match
+       (let [view (with-meta (-> curr-page-match :data :view)
+                             {:query-params (-> curr-page-match :query-params)})]
+         [sc/main-section-container
+          [view curr-page-match]]))
+     [sidebar/sidebar]]))
 
 (defn main-mount!
   "Mounts the main page. Can also just be called to refresh app"
@@ -87,7 +76,7 @@
   (rfe/start!
     (rf/router main-routes)
     (fn [m]
-      (dispatch [:nav-page m])
-      (dispatch [:nav-sidebar m]))
+      (dispatch [:nav-page m]))
     {:use-fragment true})
-  (main-mount!))
+  (main-mount!)
+  (sidebar/init!))

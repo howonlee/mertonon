@@ -17,6 +17,7 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]
             [reitit.frontend :as rf]
             [reitit.core :as re]))
 
@@ -89,18 +90,24 @@
    ["/loss/:uuid/delete"              {:name ::loss-delete-sidebar :view loss/loss-delete-sidebar}]])
 
 (defn sidebar []
-  [sc/main-sidebar-container
-   (if @sidebar-match
-     ;; Having the metadata procs refreshes if we have different query params
-     (let [view (with-meta (:view (:data @sidebar-match)) {:query-params (:query-params @sidebar-match)})]
-       [view @sidebar-match]))])
+  (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])]
+    [sc/main-sidebar-container
+     (if curr-sidebar-match
+       ;; Having the metadata procs refreshes if we have different query params
+       (let [view (with-meta (-> curr-sidebar-match :data :view)
+                             {:query-params (-> curr-sidebar-match :query-params)})]
+         [view curr-sidebar-match]))]))
 
 ;; TODO: sidebar histories
 
-(defn init! [curr-main-match]
-  (util/custom-route-start!
-    (rf/router sidebar-routes)
-    "sidebar-change"
-    (fn [m] (reset! sidebar-match m))
-    ;; TODO: be more sophisticated about the default grid match...
-    (or (:path curr-main-match) "/")))
+(defn init! []
+  (let [curr-page-match @(subscribe [:curr-page-match])]
+    (util/custom-route-start!
+      (rf/router sidebar-routes)
+      "sidebar-change"
+      (fn [m] 
+        (do
+          (println m)
+          (dispatch [:nav-sidebar m])))
+      ;; TODO: be more sophisticated about the default grid match...
+      (or (:path curr-page-match) "/"))))
