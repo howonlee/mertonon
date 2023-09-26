@@ -22,7 +22,7 @@
   {:target     :browser
    :output-dir "resources/public/cljs"
    :asset-path "resources/public/cljs"
-   :modules    {:main {:init-fn mtfe.core/reframe-init!}}}
+   :modules    {:main {:init-fn mtfe.core/init!}}}
   :test
   {:target    :browser-test
    :test-dir  "build/test"

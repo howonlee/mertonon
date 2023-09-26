@@ -1,6 +1,7 @@
 (ns mtfe.core
   "Mertonon Frontend"
   (:require [mtfe.events.core]
+            [mtfe.subs.core]
             [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]
             [mtfe.views.cost-object :as cost-object]
@@ -14,7 +15,7 @@
             [mtfe.util :as util]
             [reagent.core :as r]
             [reagent.dom :as rdom]
-            [re-frame.core :refer [dispatch-sync subscribe]]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]
             [reitit.frontend :as rf]
             [reitit.frontend.easy :as rfe]
             [reitit.frontend.controllers :as rfc]))
@@ -63,31 +64,26 @@
         [view @util/core-match]]))
    [sidebar/sidebar]])
 
-(defn main-mount!
-  "Mounts the main page. Can also just be called to refresh app"
-  []
-  (let [app-elem (.getElementById js/document "app")]
-    (rdom/unmount-component-at-node app-elem)
-    (rdom/render [current-page] app-elem)))
-
 (defn mertonon-app
   []
   (let [curr-page @(subscribe [:curr-page])]
     [:div
      (str curr-page)]))
 
-(defn reframe-init! []
-  (dispatch-sync [:initialize-db])
-  (r/render [mertonon-app]
-            (.getElementById js/document "app")))
+(defn main-mount!
+  "Mounts the main page. Can also just be called to refresh app"
+  []
+  (let [app-elem (.getElementById js/document "app")]
+    (rdom/unmount-component-at-node app-elem)
+    (rdom/render [mertonon-app] app-elem)))
 
 (defn init! []
+  (dispatch-sync [:initialize-db])
   (rfe/start!
     (rf/router main-routes)
     (fn [m]
-      (do
-        (reset! util/core-match m)
-        (util/nav-to-sidebar-for-current-main-view!)))
+      (dispatch [:nav-page m])
+      (dispatch [:nav-sidebar m]))
     {:use-fragment true})
-  (sidebar/init! @util/core-match)
+  ;; (sidebar/init! @util/core-match)
   (main-mount!))
