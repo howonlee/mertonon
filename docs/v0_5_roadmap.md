@@ -8,6 +8,7 @@
 - [x] Ordinary sidebar routing in re-frame
 - [x] Intro needed thing
 
+- [x] Vendorize fontawesome - this will make things airgappable, hopefully
 - [ ] Logout BE test
 - [ ] Grid selection in re-frame
 - [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame

@@ -20,7 +20,6 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Registry accuracy enforcement with tests
 - Joined complex inserts for default cobj, weight, etc to avoid blank page problems
 - Less half-assed logo
-- Vendorize fontawesome - this will make things airgappable, hopefully
 - Privacy policy
 - Whack the intermittent group-by-dependent-uuid compilation problem
 - Validation test properties... think them up. Not properties to validate, but properties to test the validation code. Quis custodiet ipsos custodes?
