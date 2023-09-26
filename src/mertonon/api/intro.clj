@@ -13,6 +13,11 @@
 
 (def validations [(uvals/table-count-check mt-user-model/model 0 :already-introed)])
 
+(defn- need-intro? [m]
+  (let [check! (uvals/throw-if-invalid! m validations)]
+    {:status 200
+     :body {:message true}}))
+
 (defn- do-intro [m]
   (let [check!          (uvals/throw-if-invalid! m validations)
         body            (api-util/body-params m)
@@ -37,7 +42,8 @@
      :body   res}))
 
 (defn intro-endpoint []
-  {:post do-intro
+  {:get  need-intro?
+   :post do-intro
    :name ::intro})
 
 (defn routes []

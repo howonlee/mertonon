@@ -1,7 +1,7 @@
 Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
-- Elicit email in intro screen
+- Cookie staleness gets nullpointerexception, make a less awful error
 - More skeumorphism in button
 - Some kind of middlingly durable settings db thing... maybe with table
 - Use banlist for password
@@ -20,7 +20,6 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Registry accuracy enforcement with tests
 - Joined complex inserts for default cobj, weight, etc to avoid blank page problems
 - Less half-assed logo
-- Vendorize fontawesome - this will make things airgappable, hopefully
 - Privacy policy
 - Whack the intermittent group-by-dependent-uuid compilation problem
 - Validation test properties... think them up. Not properties to validate, but properties to test the validation code. Quis custodiet ipsos custodes?
