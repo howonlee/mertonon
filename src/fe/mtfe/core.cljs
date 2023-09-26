@@ -1,6 +1,8 @@
 (ns mtfe.core
   "Mertonon Frontend"
-  (:require [mtfe.sidebars.core :as sidebar]
+  (:require [mtfe.events.core]
+            [mtfe.subs.core]
+            [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]
             [mtfe.views.cost-object :as cost-object]
             [mtfe.views.grid :as grid]
@@ -13,6 +15,7 @@
             [mtfe.util :as util]
             [reagent.core :as r]
             [reagent.dom :as rdom]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]
             [reitit.frontend :as rf]
             [reitit.frontend.easy :as rfe]
             [reitit.frontend.controllers :as rfc]))
@@ -50,31 +53,30 @@
    [:span.w-1.pa2 (util/fsl "#/admin" "/admin" [:i.fa-solid.fa-gear])]
    [:span.w-1.pa2 (util/fsl "#/user" "/user" [:i.fa-solid.fa-user])]])
 
-(defn current-page []
-  [sc/whole-page
-   [nav]
-   (if @util/core-match
-     (let [view (with-meta
-                  (:view (:data @util/core-match))
-                  {:query-params (:query-params @util/core-match)})]
-       [sc/main-section-container
-        [view @util/core-match]]))
-   [sidebar/sidebar]])
+(defn mertonon-app
+  []
+  (let [curr-page-match   @(subscribe [:curr-page-match])]
+    [sc/whole-page
+     [nav]
+     (when curr-page-match
+       (let [view (with-meta (-> curr-page-match :data :view)
+                             {:query-params (-> curr-page-match :query-params)})]
+         [sc/main-section-container
+          [view curr-page-match]]))
+     [sidebar/sidebar]]))
 
 (defn main-mount!
   "Mounts the main page. Can also just be called to refresh app"
   []
   (let [app-elem (.getElementById js/document "app")]
     (rdom/unmount-component-at-node app-elem)
-    (rdom/render [current-page] app-elem)))
+    (rdom/render [mertonon-app] app-elem)))
 
 (defn init! []
   (rfe/start!
     (rf/router main-routes)
     (fn [m]
-      (do
-        (reset! util/core-match m)
-        (util/nav-to-sidebar-for-current-main-view!)))
+      (dispatch [:nav-page m]))
     {:use-fragment true})
-  (sidebar/init! @util/core-match)
-  (main-mount!))
+  (main-mount!)
+  (sidebar/init!))

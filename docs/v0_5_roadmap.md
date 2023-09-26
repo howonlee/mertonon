@@ -3,21 +3,26 @@
 - [x] Permanent session only, does anyone not do that, also the session path
 - [x] Logout fe
 - [x] Logout be
-- [ ] Logout be test
-- [ ] Intro, login redirect semantics if not authed
-- [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
+- [x] I was wrong need to go back to re-frame... not gonna be straightforward
+- [x] Ordinary page routing in re-frame
+- [x] Ordinary sidebar routing in re-frame
 
-- [ ] Refresh mertonon.com
+- [ ] Grid selection in re-frame
+- [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
+- [ ] Error screens for 500s for re-frame
+
 - [ ] Non-default blurbs for intro, login, logout button statemachine
-- [ ] Error screens
+- [ ] Logout be test
+- [ ] Grid view in re-frame
+
+- [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
+- [ ] Refresh mertonon.com
 - [ ] Lots more FE testing manually, I'm afraid
-- [ ] Graph consonance test is being persnickety again, whack it until it stays still
 
-- [ ] FE only generation - state machine dealing
-- [ ] FE only generation - form state dealing
+- [ ] FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
 - [ ] FE testing with generation
-- [ ] FE user crud, not just sole admin account anymore (but every account admin account so far...)
 
+- [ ] Graph consonance test is being persnickety again, whack it until it stays still
 - [ ] "Pathway towards AI and the executive" - turn outline into essay
 - [ ] Remove running postgres instance requirement for build, this is ridiculous
 - [ ] Build github action
