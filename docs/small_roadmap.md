@@ -1,7 +1,7 @@
 Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
-- Elicit email in intro screen
+- Cookie staleness gets nullpointerexception, make a less awful error
 - More skeumorphism in button
 - Some kind of middlingly durable settings db thing... maybe with table
 - Use banlist for password
