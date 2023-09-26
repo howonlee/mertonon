@@ -19,6 +19,7 @@ Also look at small tasks roadmap
 - Full grad view (exec summary view)
 - Crontab for adjustments
 - Email digesting on the crontab
+- Get SQLite compatibility and bundle with SQLite so you just download and play.
 - License design, then task out for after alpha
 
 - Cut alpha, think of future
