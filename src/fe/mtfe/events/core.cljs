@@ -9,15 +9,12 @@
    {:db {:curr-page    :home
          :curr-sidebar :home}}))
 
-(reg-event-fx
+(reg-event-db
  :nav-page
- []
- (fn [{:keys [db]} [_ {:keys [page] :as m}]]
-   (println m)
-   {:db (assoc db :curr-page page)}))
+ (fn [db [_ m]]
+   (assoc db :curr-page (get-in m [:data :name]))))
 
-(reg-event-fx
- :nav-page
- []
- (fn [{:keys [db]} [_ {:keys [sidebar]}]]
-   {:db (assoc db :curr-sidebar sidebar)}))
+(reg-event-db
+ :nav-sidebar
+ (fn [db [_ m]]
+   (assoc db :curr-sidebar (get-in m [:data :name]))))

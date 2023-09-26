@@ -67,8 +67,10 @@
 (defn mertonon-app
   []
   (let [curr-page @(subscribe [:curr-page])]
-    [:div
-     (str curr-page)]))
+    [sc/whole-page
+     [nav]
+     [:div
+      (str curr-page)]]))
 
 (defn main-mount!
   "Mounts the main page. Can also just be called to refresh app"
@@ -85,5 +87,4 @@
       (dispatch [:nav-page m])
       (dispatch [:nav-sidebar m]))
     {:use-fragment true})
-  ;; (sidebar/init! @util/core-match)
   (main-mount!))
