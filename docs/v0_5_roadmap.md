@@ -9,7 +9,6 @@
 - [x] Intro needed thing
 
 - [x] Vendorize fontawesome - this will make things airgappable, hopefully
-- [ ] Logout BE test
 - [ ] Grid selection in re-frame
 - [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
 - [ ] Error screens for 500s for re-frame
@@ -17,6 +16,7 @@
 - [ ] Grid view in re-frame, including the redirect semantics
 - [ ] Other views in re-frame, including the redirect semantics
 
+- [ ] Logout BE test
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 - [ ] Refresh mertonon.com
 - [ ] FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
