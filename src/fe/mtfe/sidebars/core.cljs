@@ -105,9 +105,7 @@
     (util/custom-route-start!
       (rf/router sidebar-routes)
       "sidebar-change"
-      (fn [m] 
-        (do
-          (println m)
-          (dispatch [:nav-sidebar m])))
+      (fn [m]
+        (dispatch [:nav-sidebar m]))
       ;; TODO: be more sophisticated about the default grid match...
       (or (:path curr-page-match) "/"))))
