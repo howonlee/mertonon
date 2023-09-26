@@ -4,7 +4,7 @@
 - [x] Logout fe
 - [x] Logout be
 - [x] I was wrong need to go back to re-frame... not gonna be straightforward
-- [ ] Ordinary page routing in re-frame
+- [x] Ordinary page routing in re-frame
 - [ ] Ordinary sidebar routing in re-frame
 
 - [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise
