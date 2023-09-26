@@ -19,6 +19,8 @@
 - [ ] Logout BE test
 - [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
 - [ ] Refresh mertonon.com
+- [ ] Grid sidebar state machine into re-frame
+- [ ] Other sidebar state machines into re-frame
 - [ ] FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
 - [ ] FE testing with generation
 - [ ] Graph consonance test is being persnickety again, whack it until it stays still
