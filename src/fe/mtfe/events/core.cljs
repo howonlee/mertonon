@@ -6,7 +6,7 @@
  :initialize-db
  []
  (fn [_ _]
-   {:db {}}))
+   {:db {:curr-page-match {}}}))
 
 (reg-event-db
  :nav-page

@@ -66,11 +66,15 @@
 
 (defn mertonon-app
   []
-  (let [curr-page-match @(subscribe [:curr-page-match])]
+  (let [curr-page-match   @(subscribe [:curr-page-match])
+        curr-view         @(subscribe [:curr-view])
+        curr-query-params @(subscribe [:curr-query-params])]
     [sc/whole-page
      [nav]
-     [:div
-      (str curr-page-match)]]))
+     (let [view (with-meta curr-view {:query-params curr-query-params})]
+      [sc/main-section-container
+       (when (not (nil? view))
+         [view curr-page-match])])]))
 
 (defn main-mount!
   "Mounts the main page. Can also just be called to refresh app"
@@ -80,7 +84,6 @@
     (rdom/render [mertonon-app] app-elem)))
 
 (defn init! []
-  (dispatch-sync [:initialize-db])
   (rfe/start!
     (rf/router main-routes)
     (fn [m]
