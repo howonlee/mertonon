@@ -6,15 +6,14 @@
  :initialize-db
  []
  (fn [_ _]
-   {:db {:curr-page    :home
-         :curr-sidebar :home}}))
+   {:db {}}))
 
 (reg-event-db
  :nav-page
  (fn [db [_ m]]
-   (assoc db :curr-page (get-in m [:data :name]))))
+   (assoc db :curr-page-match m)))
 
 (reg-event-db
  :nav-sidebar
  (fn [db [_ m]]
-   (assoc db :curr-sidebar (get-in m [:data :name]))))
+   (assoc db :curr-sidebar-match m)))

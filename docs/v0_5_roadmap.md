@@ -4,6 +4,7 @@
 - [x] Logout fe
 - [x] Logout be
 - [ ] I was wrong need to go back to re-frame... not gonna be straightforward
+
 - [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise
 - [ ] Error screens for 500s
 - [ ] Non-default blurbs for intro, login, logout button statemachine

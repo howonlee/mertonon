@@ -2,11 +2,11 @@
   (:require [re-frame.core :refer [reg-sub]]))
 
 (reg-sub
-  :curr-page
+  :curr-page-match
   (fn [db _]
-    (:curr-page db)))
+    (:curr-page-match db)))
 
 (reg-sub
-  :curr-sidebar
+  :curr-sidebar-match
   (fn [db _]
-    (:curr-sidebar db)))
+    (:curr-sidebar-match db)))

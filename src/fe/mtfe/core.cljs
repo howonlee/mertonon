@@ -66,11 +66,11 @@
 
 (defn mertonon-app
   []
-  (let [curr-page @(subscribe [:curr-page])]
+  (let [curr-page-match @(subscribe [:curr-page-match])]
     [sc/whole-page
      [nav]
      [:div
-      (str curr-page)]]))
+      (str curr-page-match)]]))
 
 (defn main-mount!
   "Mounts the main page. Can also just be called to refresh app"
