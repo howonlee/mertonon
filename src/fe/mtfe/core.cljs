@@ -1,6 +1,7 @@
 (ns mtfe.core
   "Mertonon Frontend"
-  (:require [mtfe.sidebars.core :as sidebar]
+  (:require [mtfe.events.core]
+            [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]
             [mtfe.views.cost-object :as cost-object]
             [mtfe.views.grid :as grid]
@@ -13,6 +14,7 @@
             [mtfe.util :as util]
             [reagent.core :as r]
             [reagent.dom :as rdom]
+            [re-frame.core :refer [dispatch-sync subscribe]]
             [reitit.frontend :as rf]
             [reitit.frontend.easy :as rfe]
             [reitit.frontend.controllers :as rfc]))
@@ -68,8 +70,16 @@
     (rdom/unmount-component-at-node app-elem)
     (rdom/render [current-page] app-elem)))
 
+(defn mertonon-app
+  []
+  (let [curr-page @(subscribe [:curr-page])]
+    [:div
+     (str curr-page)]))
+
 (defn reframe-init! []
-  (println "bleh"))
+  (dispatch-sync [:initialize-db])
+  (r/render [mertonon-app]
+            (.getElementById js/document "app")))
 
 (defn init! []
   (rfe/start!
