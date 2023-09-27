@@ -55,7 +55,7 @@
 
 (defn mertonon-app
   []
-  (let [curr-page-match   @(subscribe [:curr-page-match])]
+  (let [curr-page-match @(subscribe [:curr-page-match])]
     [sc/whole-page
      [nav]
      (when curr-page-match
