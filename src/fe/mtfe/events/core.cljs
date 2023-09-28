@@ -17,3 +17,7 @@
  :nav-sidebar
  (fn [db [_ m]]
    (assoc db :curr-sidebar-match m)))
+
+;; (reg-event-db :grid-selection (fn [db [_ some-crap]]) nil)
+
+;; (reg-event-db :intro-check (fn [db [_ some-crap]] nil)
