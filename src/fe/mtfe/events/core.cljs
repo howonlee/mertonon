@@ -2,11 +2,19 @@
   (:require [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]
             [day8.re-frame.http-fx]))
 
+;; ---
+;; Initializations
+;; ---
+
 (reg-event-fx
  :initialize-db
  []
  (fn [_ _]
    {:db {:curr-page-match {}}}))
+
+;; ---
+;; Navigation
+;; ---
 
 (reg-event-db
  :nav-page
@@ -18,6 +26,18 @@
  (fn [db [_ m]]
    (assoc db :curr-sidebar-match m)))
 
-;; (reg-event-db :grid-selection (fn [db [_ some-crap]]) nil)
+;; ---
+;; Selection
+;; ---
+
+;; (reg-event-db :selection (fn [db [_ some-crap]]) nil)
 
 ;; (reg-event-db :intro-check (fn [db [_ some-crap]] nil)
+
+;; ---
+;; Create
+;; ---
+
+;; ---
+;; Delete
+;; ---
