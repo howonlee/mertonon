@@ -78,7 +78,9 @@
   (rfe/start!
     (rf/router main-routes)
     (fn [m]
-      (dispatch [:nav-page m]))
+      (do
+        (dispatch [:nav-page m])
+        (util/to-router-path! "sidebar-change" (:path m))))
     {:use-fragment true})
   (main-mount!)
   (sidebar/init!))

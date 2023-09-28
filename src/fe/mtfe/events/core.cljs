@@ -27,10 +27,10 @@
                      db-res)]
      total-res)))
 
-(reg-event-db
+(reg-event-fx
  :nav-sidebar
- (fn [db [_ m]]
-   (assoc db :curr-sidebar-match m)))
+ (fn [{:keys [db]} [_ m]]
+   {:db (assoc db :curr-sidebar-match m)}))
 
 ;; ---
 ;; Selection

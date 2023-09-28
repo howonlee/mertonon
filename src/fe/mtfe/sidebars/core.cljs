@@ -96,16 +96,15 @@
        ;; Having the metadata procs refreshes if we have different query params
        (let [view (with-meta (-> curr-sidebar-match :data :view)
                              {:query-params (-> curr-sidebar-match :query-params)})]
-         [view curr-sidebar-match]))]))
+         [view curr-sidebar-match])
+       ;; Default to home seems pretty jank but we're doing it initially
+       [home-sidebar])]))
 
 ;; TODO: sidebar histories
 
 (defn init! []
-  (let [curr-page-match @(subscribe [:curr-page-match])]
-    (util/custom-route-start!
-      (rf/router sidebar-routes)
-      "sidebar-change"
-      (fn [m]
-        (dispatch [:nav-sidebar m]))
-      ;; TODO: be more sophisticated about the default grid match...
-      (or (:path curr-page-match) "/"))))
+  (util/custom-route-start!
+    (rf/router sidebar-routes)
+    "sidebar-change"
+    (fn [m]
+      (dispatch [:nav-sidebar m]))))

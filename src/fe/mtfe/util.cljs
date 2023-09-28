@@ -56,10 +56,9 @@
   We don't want sidebar semantics to be in history, but we do want a router for sidebar.
 
   Doing an alternate start! that's not the reitit.frontend.easy start! is the way to avoid this."
-  [router event-id on-match init-path]
+  [router event-id on-match]
   (let [handler  (fn [e] (on-match (rf/match-by-path router (.. e -detail -path))))]
-    (.addEventListener js/window event-id handler)
-    (to-router-path! event-id init-path)))
+    (.addEventListener js/window event-id handler)))
 
 ;; Best not to use this resolve stuff too much, but the monstrosity required to avoid circular dep was too much
 (defn refresh!
