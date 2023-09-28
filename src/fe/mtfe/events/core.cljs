@@ -19,7 +19,7 @@
 ;; ---
 
 (reg-event-fx
- :nav-page
+ :nav-page-match
  (fn [{:keys [db]} [_ m]]
    (let [db-res    {:db (assoc db :curr-page-match m)}
          total-res (if (-> m :data :before-events)
@@ -28,7 +28,7 @@
      total-res)))
 
 (reg-event-fx
- :nav-sidebar
+ :nav-sidebar-match
  (fn [{:keys [db]} [_ m]]
    {:db (assoc db :curr-sidebar-match m)}))
 

@@ -107,4 +107,4 @@
     (rf/router sidebar-routes)
     "sidebar-change"
     (fn [m]
-      (dispatch [:nav-sidebar m]))))
+      (dispatch [:nav-sidebar-match m]))))

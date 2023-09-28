@@ -79,7 +79,7 @@
     (rf/router main-routes)
     (fn [m]
       (do
-        (dispatch [:nav-page m])
+        (dispatch [:nav-page-match m])
         (util/to-router-path! "sidebar-change" (:path m))))
     {:use-fragment true})
   (main-mount!)
