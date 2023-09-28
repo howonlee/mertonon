@@ -32,7 +32,9 @@
 
 (def main-routes
   "Main browser URL (fragment) routes, as opposed to the separate sidebar routes, or the action routes"
-  [["/"                  {:name ::home :view grid-selector/grid-selector}]
+  [["/"                  {:name ::home
+                          :view grid-selector/grid-selector
+                          :before-events grid-selector/before-events}]
    ["/intro"             {:name ::intro :view intro/intro-page}]
    ["/login"             {:name ::login :view session/session-page}]
    ["/logout"            {:name ::logout :view session/session-page}]

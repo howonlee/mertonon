@@ -7,7 +7,9 @@
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
-;; (def grid-event-procs or some thing I dunno)
+(defn before-events [m]
+  [[:intro-check m]
+   [:selection m]])
 
 (defn grid-selector [m]
   (let [curr-grid-members @(subscribe [:grid-selection])]

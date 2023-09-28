@@ -16,10 +16,12 @@
 ;; Navigation
 ;; ---
 
-(reg-event-db
+(reg-event-fx
  :nav-page
+ []
  (fn [db [_ m]]
-   (assoc db :curr-page-match m)))
+   {:db         (assoc db :curr-page-match m)
+    :dispatch-n ((-> m :data :before-events) m)}))
 
 (reg-event-db
  :nav-sidebar
@@ -30,9 +32,13 @@
 ;; Selection
 ;; ---
 
-;; (reg-event-db :selection (fn [db [_ some-crap]]) nil)
+(reg-event-db :selection (fn [db [_ m]]
+                           (println "selection proccing")
+                           (assoc db :selection nil)))
 
-;; (reg-event-db :intro-check (fn [db [_ some-crap]] nil)
+(reg-event-db :intro-check (fn [db [_ m]]
+                             (println "intro check proccing")
+                             (assoc db :intro-check nil)))
 
 ;; ---
 ;; Create
