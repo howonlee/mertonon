@@ -12,6 +12,6 @@
     (:curr-sidebar-match db)))
 
 (reg-sub
-  :grid-selection
-  (fn [db _]
-    (:grid-selection db)))
+  :curr-selection
+  (fn [db [evt resource]]
+    (-> db :selections resource)))

@@ -55,7 +55,7 @@
 (reg-event-fx
   :selection-success
   (fn [{:keys [db]} [evt resource res]]
-    (println res)))
+    {:db (-> db (assoc-in [:selections resource] res))}))
 
 
 ;; ---
