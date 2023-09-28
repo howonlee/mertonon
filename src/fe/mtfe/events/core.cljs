@@ -1,6 +1,8 @@
 (ns mtfe.events.core
-  (:require [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]
-            [day8.re-frame.http-fx]))
+  (:require [ajax.core :refer [json-request-format json-response-format]]
+            [day8.re-frame.http-fx]
+            [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]
+            ))
 
 ;; ---
 ;; Initializations
@@ -18,8 +20,7 @@
 
 (reg-event-fx
  :nav-page
- []
- (fn [db [_ m]]
+ (fn [{:keys [db]} [_ m]]
    (let [db-res    {:db (assoc db :curr-page-match m)}
          total-res (if (-> m :data :before-events)
                      (assoc db-res :dispatch-n ((-> m :data :before-events) m))
@@ -35,9 +36,17 @@
 ;; Selection
 ;; ---
 
-(reg-event-db :selection (fn [db [_ m]]
-                           (println "selection proccing")
-                           (assoc db :selection nil)))
+(reg-event-fx
+ :selection
+ (fn [{:keys [db]} [evt resource endpoint params]]  ;; params = {:limit 10 :tag "tag-name" ...}
+   {:http-xhrio {:method          :get
+                 :uri             endpoint
+                 :params          params
+                 :response-format (json-response-format {:keywords? true})
+                 :on-success      [:selection-success]
+                 :on-failure      [:api-request-error evt resource]}
+    :db          (-> db
+                     (assoc-in [:loading resource] true))}))
 
 (reg-event-db :intro-check (fn [db [_ m]]
                              (println "intro check proccing")
