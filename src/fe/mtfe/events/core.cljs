@@ -38,12 +38,12 @@
 
 (reg-event-fx
  :selection
- (fn [{:keys [db]} [evt resource endpoint params]]  ;; params = {:limit 10 :tag "tag-name" ...}
+ (fn [{:keys [db]} [evt resource endpoint params]]
    {:http-xhrio {:method          :get
                  :uri             endpoint
                  :params          params
                  :response-format (json-response-format {:keywords? true})
-                 :on-success      [:selection-success]
+                 :on-success      [:selection-success resource]
                  :on-failure      [:api-request-error evt resource]}
     :db          (-> db
                      (assoc-in [:loading resource] true))}))
@@ -52,6 +52,12 @@
                              (println "intro check proccing")
                              (assoc db :intro-check nil)))
 
+(reg-event-fx
+  :selection-success
+  (fn [{:keys [db]} [evt resource res]]
+    (println res)))
+
+
 ;; ---
 ;; Create
 ;; ---
@@ -59,3 +65,12 @@
 ;; ---
 ;; Delete
 ;; ---
+
+;; ---
+;; Misc
+;; ---
+
+(reg-event-fx
+  :api-request-error
+  (fn [{:keys [db]} [evt erroring-evt erroring-resource]]
+    {}))

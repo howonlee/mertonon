@@ -9,7 +9,7 @@
 
 (defn before-events [m]
   [[:intro-check m]
-   [:selection m]])
+   [:selection :grids (api/gridApi) {}]])
 
 (defn grid-selector [m]
   (let [curr-grid-members @(subscribe [:grid-selection])]

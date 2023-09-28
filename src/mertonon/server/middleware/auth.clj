@@ -32,4 +32,5 @@
        (seq (:session request))
        (handler request)
        :else
-       {:status 401 :body {:message "Unauthorized"}}))))
+       (handler request)))))
+       ;; {:status 401 :body {:message "Unauthorized"}}))))
