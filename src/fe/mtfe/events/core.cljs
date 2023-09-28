@@ -20,8 +20,11 @@
  :nav-page
  []
  (fn [db [_ m]]
-   {:db         (assoc db :curr-page-match m)
-    :dispatch-n ((-> m :data :before-events) m)}))
+   (let [db-res    {:db (assoc db :curr-page-match m)}
+         total-res (if (-> m :data :before-events)
+                     (assoc db-res :dispatch-n ((-> m :data :before-events) m))
+                     db-res)]
+     total-res)))
 
 (reg-event-db
  :nav-sidebar
