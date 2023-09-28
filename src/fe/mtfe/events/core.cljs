@@ -70,7 +70,8 @@
 
 (reg-event-fx
   :api-request-error
-  (fn [{:keys [db]} [evt erroring-evt erroring-resource]]
+  (fn [{:keys [db]} [evt erroring-evt erroring-resource error-res]]
+    (println evt erroring-evt erroring-resource error-res)
     ;; if 401 then we proc the login thing
     {}))
 
