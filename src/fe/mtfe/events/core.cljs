@@ -48,14 +48,12 @@
     :db          (-> db
                      (assoc-in [:loading resource] true))}))
 
-(reg-event-db :intro-check (fn [db [_ m]]
-                             (println "intro check proccing")
-                             (assoc db :intro-check nil)))
-
 (reg-event-fx
   :selection-success
   (fn [{:keys [db]} [evt resource res]]
-    {:db (-> db (assoc-in [:selections resource] res))}))
+    {:db (-> db
+             (assoc-in [:selections resource] res)
+             (assoc-in [:loading resource] false))}))
 
 
 ;; ---
@@ -73,4 +71,9 @@
 (reg-event-fx
   :api-request-error
   (fn [{:keys [db]} [evt erroring-evt erroring-resource]]
+    ;; if 401 then we proc the login thing
     {}))
+
+(reg-event-db :intro-check (fn [db [_ m]]
+                             (println "intro check proccing")
+                             (assoc db :intro-check nil)))

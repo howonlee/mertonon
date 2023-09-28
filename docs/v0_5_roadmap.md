@@ -9,7 +9,7 @@
 - [x] Intro needed thing
 
 - [x] Vendorize fontawesome - this will make things airgappable, hopefully
-- [ ] Grid selection in re-frame
+- [x] Grid selection in re-frame
 - [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
 - [ ] Error screens for 500s for re-frame
 - [ ] Non-default blurbs for intro, login, logout button statemachine
