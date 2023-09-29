@@ -2,8 +2,7 @@
 - [x] Links via dispatch, so side effects shoved into fx
 - [ ] self user view
 - [ ] all users view
-
-- [ ] users CRUD - i think do this a new way?
+- [ ] users CRUD - i think do this the new way? we can keep the validation semantics, call it through event i guess
 
 - [ ] Grid view reframe
 - [ ] Other views reframe

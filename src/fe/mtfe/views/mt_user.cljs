@@ -13,5 +13,7 @@
 
 (defn mt-user-page [m]
   [sc/main-section
-   (let [curr-user @(subscribe [:selection :curr-mt-user])]
+   (let [curr-user @(subscribe [:selection :curr-mt-user])
+         ;;;; destructure
+         ]
      [:pre (with-out-str (cljs.pprint/pprint curr-user))])])
