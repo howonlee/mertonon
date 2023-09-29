@@ -83,12 +83,12 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/weightsetApi create-sc-state mc/->Weightset [:uuid :src-layer-uuid :tgt-layer-uuid :name :label])
+                                :action-fn     (sc-handlers/creation-handler api/weightset create-sc-state mc/->Weightset [:uuid :src-layer-uuid :tgt-layer-uuid :name :label])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (def delete-sc
   (mt-statechart/simple-delete :weightset-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/weightsetMemberApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/weightset-member delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :weightset-create create-sc-state create-sc)
@@ -179,7 +179,7 @@
   [weightset-create-sidebar-render m])
 
 (defn weightset-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/weightsetMemberApi delete-sc-state "Weightset" m])
+  [sc-components/delete-model-sidebar sidebar-state api/weightset-member delete-sc-state "Weightset" m])
 
 (defn weightset-sidebar [m]
   (let [curr-ws-state @ws-view/ws-state

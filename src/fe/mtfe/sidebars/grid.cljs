@@ -118,7 +118,7 @@
      (->> @sidebar-state :selection :inputs)]))
 
 (defn grid-demo-sidebar [m]
-  (sel/set-selection! sidebar-state api/generatorGridApi)
+  (sel/set-selection! sidebar-state api/generator-grid)
   (fn [m]
     [grid-demo-sidebar-render
      (->> @sidebar-state :selection :grids first)

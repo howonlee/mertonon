@@ -67,12 +67,12 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/weightApi create-sc-state mc/->Weight [:uuid :weightset-uuid :src-cobj-uuid :tgt-cobj-uuid :label :type :value])
+                                :action-fn     (sc-handlers/creation-handler api/weight create-sc-state mc/->Weight [:uuid :weightset-uuid :src-cobj-uuid :tgt-cobj-uuid :label :type :value])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (def delete-sc
   (mt-statechart/simple-delete :weight-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/weightMemberApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/weight-member delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :weight-create create-sc-state create-sc)
@@ -174,7 +174,7 @@
     ;; maybe by converting everything else to hooks and suffering,
     ;; maybe in a less monstrous way
     (sel/set-state-with-results! sidebar-state
-                                 api/weightsetViewApi
+                                 api/weightset-view
                                  [:ws-selection]
                                  ws-uuid)
     (sel/set-state-with-results! sidebar-state
@@ -187,7 +187,7 @@
       [weight-create-sidebar-render m])))
 
 (defn weight-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/weightMemberApi delete-sc-state "Weight" m])
+  [sc-components/delete-model-sidebar sidebar-state api/weight-member delete-sc-state "Weight" m])
 
 (defn weight-sidebar [m]
   (let [is-demo?    @grid-view/demo-state
@@ -201,8 +201,8 @@
   (let [is-demo?    @grid-view/demo-state
         weight-uuid (->> m :path-params :uuid str)
         weight-api  (if is-demo?
-                      api/generatorWeightApi
-                      api/weightViewApi)
+                      api/generator-weight
+                      api/weight-view)
         _           (sel/set-state-with-results! sidebar-state weight-api [:selection] weight-uuid)]
     [:<>
      [header-partial]

@@ -49,7 +49,7 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/entryApi
+                                :action-fn     (sc-handlers/creation-handler api/entry
                                                                              create-sc-state
                                                                              mc/->Entry
                                                                              [:uuid :cobj-uuid :name :label :type :value :date])
@@ -57,7 +57,7 @@
 
 (def delete-sc
   (mt-statechart/simple-delete :entry-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/entryMemberApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/entry-member delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :entry-create create-sc-state create-sc)
@@ -98,4 +98,4 @@
   [entry-create-sidebar-render m])
 
 (defn entry-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/entryMemberApi delete-sc-state "Journal Entry" m])
+  [sc-components/delete-model-sidebar sidebar-state api/entry-member delete-sc-state "Journal Entry" m])
