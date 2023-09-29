@@ -47,7 +47,9 @@
    ["/logout"            {:name ::logout :view session/session-page}]
    ["/error"             {:name ::error :view error-page}]
    ["/admin"             {:name ::admin :view admin-page}]
-   ["/user"              {:name ::user :view mt-user/mt-user-page}]
+   ["/user"              {:name ::user
+                          :view mt-user/mt-user-page
+                          :before-fx mt-user/before-fx}]
    ["/grid/:uuid"        {:name ::grid :view grid/grid-page}]
    ["/grid_demo"         {:name ::grid-demo :view grid/grid-demo-page}]
    ["/cost_object/:uuid" {:name ::cost-object :view cost-object/cost-object-page}]
@@ -88,7 +90,7 @@
     (fn [m]
       (do
         (dispatch [:nav-page-match m])
-        (util/to-router-path! "sidebar-change" (:path m))))
+        (dispatch [:nav-route "sidebar-change" (:path m)])))
     {:use-fragment true})
   (main-mount!)
   (sidebar/init!))

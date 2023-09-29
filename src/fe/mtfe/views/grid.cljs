@@ -6,6 +6,7 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]
+            [re-frame.core :refer [dispatch]]
             ["reactflow"
              :refer [MiniMap
                      Controls
@@ -55,35 +56,35 @@
 
 (defn on-pane-single-click [evt]
   (let [stop-prop!    (. evt stopPropagation)
-        sidebar-path! (util/nav-to-sidebar-for-current-main-view!)]
+        sidebar-path! (dispatch [:nav-to-sidebar-for-current-main-view])]
     :default))
 
 (defn on-node-single-click [evt node]
   (let [stop-prop!    (. evt stopPropagation)
         sidebar-path  (util/path ["layer_selection" (j/get node :id)])
-        sidebar-path! (util/to-router-path! "sidebar-change" sidebar-path)]
+        sidebar-path! (dispatch [:nav-route "sidebar-change" sidebar-path])]
     :default))
 
 (defn on-node-double-click [evt node]
   (let [stop-prop!    (. evt stopPropagation)
         sidebar-path  (util/path ["layer" (j/get node :id)])
-        sidebar-path! (util/to-router-path! "sidebar-change" sidebar-path)
+        sidebar-path! (dispatch [:nav-route "sidebar-change" sidebar-path])
         path          (util/hash-path ["layer" (j/get node :id)])
-        path!         (util/to-main-path! path)]
+        path!         (dispatch [:nav-page path])]
     :default))
 
 (defn on-edge-single-click [evt edge]
   (let [stop-prop!    (. evt stopPropagation)
         sidebar-path  (util/path ["weightset_selection" (j/get edge :id)])
-        sidebar-path! (util/to-router-path! "sidebar-change" sidebar-path)]
+        sidebar-path! (dispatch [:nav-route "sidebar-change" sidebar-path])]
     :default))
 
 (defn on-edge-double-click [evt edge]
   (let [stop-prop!    (. evt stopPropagation)
         sidebar-path  (util/path ["weightset" (j/get edge :id)])
-        sidebar-path! (util/to-router-path! "sidebar-change" sidebar-path)
+        sidebar-path! (dispatch [:nav-route "sidebar-change" sidebar-path])
         path          (util/hash-path ["weightset" (j/get edge :id)])
-        path!         (util/to-main-path! path)]
+        path!         (dispatch [:nav-page path])]
     :default))
 
 ;; ---

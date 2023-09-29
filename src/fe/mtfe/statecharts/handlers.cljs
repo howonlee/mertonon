@@ -5,7 +5,9 @@
   (:require [clojure.set :as cset]
             [mtfe.util :as util]
             [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.sideeffects :as sc-se]))
+            [mtfe.statecharts.sideeffects :as sc-se]
+            [re-frame.core :refer [dispatch]]
+            ))
 
 ;; ---
 ;; Non-validation handlers
@@ -13,7 +15,7 @@
 
 (defn refresh-handler [sc-state]
   (fn [env evt]
-    (util/nav-to-sidebar-for-current-main-view!)
+    (dispatch [:nav-to-sidebar-for-current-main-view])
     (util/refresh!)))
 
 (defn reset-handler

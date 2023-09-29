@@ -41,9 +41,9 @@
  (fn [{:keys [db]} [_ m]]
    {:db (assoc db :curr-sidebar-match m)}))
 
-;; Given a sidebar path, nav to it
+;; Given a non-page route path, like sidebars, nav to it
 (reg-event-fx
-  :nav-sidebar
+  :nav-route
   (fn [_ [_ event-id path]]
     {:non-main-path [event-id path]}))
 
