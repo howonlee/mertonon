@@ -1,3 +1,5 @@
+- [x] current\_user endpoint
+
 - [ ] Links via dispatch, so side effects shoved into fx
 
 - [ ] Grid view reframe
@@ -8,7 +10,6 @@
 - [ ] Redirect after login, logout, intro...
 - [ ] Update mertonon.com
 
-- [ ] current\_user endpoint
 - [ ] Users view
 - [ ] Users CRUD
 

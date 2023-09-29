@@ -16,8 +16,7 @@
    :name   ::mt-users})
 
 (defn curr-user [m]
-  (println m)
-  {:status 200 :body {}})
+  {:status 200 :body (-> m :session :value)})
 
 (defn curr-user-endpoint []
   {:get curr-user
