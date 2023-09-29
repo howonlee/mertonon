@@ -4,6 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Users view
 - Refactor everything to be re-frame
 - FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
 - FE testing with generation

@@ -12,9 +12,8 @@
 - [x] Grid selection in re-frame
 - [x] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
 - [x] Error screens for 500s for re-frame
-- [ ] Users view
-- [ ] Logout button in users
-- [ ] Redirect after login...
+- [x] Logout button in users
+- [ ] Redirect after login, logout, intro...
 - [ ] Grid view in re-frame, including the redirect semantics
 - [ ] Refresh mertonon.com
 

@@ -10,6 +10,7 @@
             [mtfe.views.grid-selector :as grid-selector]
             [mtfe.views.intro :as intro]
             [mtfe.views.layer :as layer]
+            [mtfe.views.mt-user :as mt-user]
             [mtfe.views.session :as session]
             [mtfe.views.weightset :as weightset]
             [mtfe.views.weight :as weight]
@@ -25,11 +26,6 @@
   [sc/main-section
    [:h1 "Admin"]
    [:p "We don't have an admin screen yet. Placeholder for admin screen here."]])
-
-(defn user-page []
-  [sc/main-section
-   [:h1 "User"]
-   [:p "We don't have user accounts yet. They're coming, along with AD and SAML and OAUTH for authz and RBAC and ABAC for authn and the rest of that whole menagerie. Placeholder for user screen here."]])
 
 (defn error-page []
   (let [curr-error @(subscribe [:curr-error])
@@ -51,7 +47,7 @@
    ["/logout"            {:name ::logout :view session/session-page}]
    ["/error"             {:name ::error :view error-page}]
    ["/admin"             {:name ::admin :view admin-page}]
-   ["/user"              {:name ::user :view user-page}]
+   ["/user"              {:name ::user :view mt-user/mt-user-page}]
    ["/grid/:uuid"        {:name ::grid :view grid/grid-page}]
    ["/grid_demo"         {:name ::grid-demo :view grid/grid-demo-page}]
    ["/cost_object/:uuid" {:name ::cost-object :view cost-object/cost-object-page}]

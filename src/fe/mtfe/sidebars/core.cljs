@@ -11,6 +11,7 @@
             [mtfe.sidebars.intro :as intro]
             [mtfe.sidebars.layer :as layer]
             [mtfe.sidebars.loss :as loss]
+            [mtfe.sidebars.mt-user :as mt-user]
             [mtfe.sidebars.session :as session]
             [mtfe.sidebars.weight :as weight]
             [mtfe.sidebars.weightset :as weightset]
@@ -41,11 +42,6 @@
    [:h1 "Mertonon"]
    [:p "Placeholder for admin panel stuff"]])
 
-(defn user-sidebar []
-  [:div
-   [:h1 "Mertonon"]
-   [:p "Placeholder for user panel stuff"]])
-
 ;; It's not restful or hateoas, deal with it for now
 
 (def sidebar-routes
@@ -54,7 +50,7 @@
    ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
    ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin-sidebar}]
-   ["/user"                           {:name ::user-sidebar :view user-sidebar}]
+   ["/user"                           {:name ::user-sidebar :view mt-user/mt-user-sidebar}]
 
    ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
 
