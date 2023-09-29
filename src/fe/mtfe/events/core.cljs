@@ -19,7 +19,7 @@
 ;; Navigation
 ;; ---
 
-;; Given a page _route match_, nav to it
+;; Given a page _route match_, nav to it and run before-fx fx's
 (reg-event-fx
  :nav-page-match
  (fn [{:keys [db]} [_ m]]
