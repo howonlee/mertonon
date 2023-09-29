@@ -1,8 +1,8 @@
 (ns mtfe.events.core
   (:require [ajax.core :refer [json-request-format json-response-format]]
             [day8.re-frame.http-fx]
-            [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]
-            ))
+            [mtfe.util :as util]
+            [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]))
 
 ;; ---
 ;; Initializations
@@ -73,10 +73,11 @@
   (fn [{:keys [db]} [evt erroring-evt erroring-resource error-res]]
     (let [status-res (:status error-res)]
     (case status-res
-      401 {}
+      ;; proc the intro check actually
+      401 {:fx [:dispatch [:intro-check]]}
       403 {}
       500 {}))))
 
-(reg-event-db :intro-check (fn [db [_ m]]
+(reg-event-db :intro-check (fn [db _]
                              (println "intro check proccing")
                              (assoc db :intro-check nil)))

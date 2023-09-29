@@ -8,8 +8,7 @@
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 (defn before-fx [m]
-  [[:dispatch [:intro-check m]]
-   [:dispatch [:selection :grids (api/gridApi) {}]]])
+  [[:dispatch [:selection :grids (api/gridApi) {}]]])
 
 (defn grid-selector [m]
   (let [curr-grid-members @(subscribe [:curr-selection :grids])]
