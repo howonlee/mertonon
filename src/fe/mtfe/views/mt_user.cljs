@@ -5,12 +5,13 @@
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch subscribe]]))
 
 (defn before-fx [m]
-  [[:dispatch [:selection :curr-mt-user (api/curr-mt-user) {}]]])
+  [[:dispatch [:selection :curr-mt-user (api/currMtUserApi) {}]]])
 
 (defn mt-user-page [m]
   [sc/main-section
-   ;; (let some crap
-   "some crap here"])
+   (let [curr-user @(subscribe [:selection :curr-mt-user])]
+     [:pre (with-out-str (cljs.pprint/pprint curr-user))])])

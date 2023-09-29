@@ -12,7 +12,7 @@
     (:curr-sidebar-match db)))
 
 (reg-sub
-  :curr-selection
+  :selection
   (fn [db [evt resource]]
     (-> db :selections resource)))
 
