@@ -7,6 +7,9 @@
             [mtfe.util :as util]
             [reagent.core :as r]))
 
-(defn mt-user-page []
+(defn before-fx [m]
+  [[:dispatch [:selection :curr-mt-user (some-crap-here) {}]]])
+
+(defn mt-user [m]
   [sc/main-section
-   [:p "AD and SAML and OAUTH for authz and RBAC and ABAC for authn and the rest of that whole menagerie is coming."]])
+   some crap here])
