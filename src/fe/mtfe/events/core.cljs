@@ -93,12 +93,11 @@
       403 {}
       500 {}))))
 
-(reg-event-db
+(reg-event-fx
   :intro-check
   (fn [db _]
     ;; http xhrio. if success, nav to intro. if fail, nav to login
-    (println "intro check proccing")
-    {:httpx-xhrio {:method :get
+    {:http-xhrio {:method :get
                    :uri (api/introApi)
                    :params {}
                    :response-format (json-response-format {:keywords? true})
