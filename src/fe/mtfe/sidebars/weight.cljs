@@ -178,7 +178,7 @@
                                  [:ws-selection]
                                  ws-uuid)
     (sel/set-state-with-results! sidebar-state
-                                 api/allocationCueApi
+                                 api/allocation-cue
                                  [:alloc-cue])
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     (fn [m]

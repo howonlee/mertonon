@@ -112,7 +112,7 @@
   :intro-check
   (fn [db _]
     {:http-xhrio {:method :get
-                   :uri (api/introApi)
+                   :uri (api/intro)
                    :params {}
                    :response-format (json-response-format {:keywords? true})
                    :on-success [:nav-page "#/intro"]

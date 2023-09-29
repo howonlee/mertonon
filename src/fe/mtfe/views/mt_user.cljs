@@ -9,7 +9,7 @@
             [re-frame.core :refer [dispatch subscribe]]))
 
 (defn before-fx [m]
-  [[:dispatch [:selection :curr-mt-user (api/currMtUserApi) {}]]])
+  [[:dispatch [:selection :curr-mt-user (api/curr-mt-user) {}]]])
 
 (defn mt-user-page [m]
   [sc/main-section

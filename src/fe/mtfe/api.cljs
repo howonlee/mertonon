@@ -53,18 +53,18 @@
 (defn inputMemberApi [uuid] (gstring/format "%s/api/v1/input/%s" host uuid))
 (defn inputViewApi [uuid] (gstring/format "%s/api/v1/input/%s/view" host uuid))
 
-(defn lossApi [] (gstring/format "%s/api/v1/loss" host))
-(defn lossMemberApi [uuid] (gstring/format "%s/api/v1/loss/%s" host uuid))
-(defn lossViewApi [uuid] (gstring/format "%s/api/v1/loss/%s/view" host uuid))
+(defn loss [] (gstring/format "%s/api/v1/loss" host))
+(defn loss-member [uuid] (gstring/format "%s/api/v1/loss/%s" host uuid))
+(defn loss-view [uuid] (gstring/format "%s/api/v1/loss/%s/view" host uuid))
 
-(defn allocationCueApi [] (gstring/format "%s/api/v1/allocation_cue" host))
+(defn allocation-cue [] (gstring/format "%s/api/v1/allocation_cue" host))
 
 ;; ---
 ;; Non-net CRUD APIs
 ;; ---
 
-(defn introApi [] (gstring/format "%s/api/v1/intro/" host))
+(defn intro [] (gstring/format "%s/api/v1/intro/" host))
 
-(defn currMtUserApi [] (gstring/format "%s/api/v1/mt_user/_/me" host))
+(defn curr-mt-user [] (gstring/format "%s/api/v1/mt_user/_/me" host))
 
-(defn sessionApi [] (gstring/format "%s/api/v1/session/" host))
+(defn session [] (gstring/format "%s/api/v1/session/" host))
