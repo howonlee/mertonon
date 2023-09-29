@@ -47,6 +47,15 @@
   (fn [_ [_ event-id path]]
     {:non-main-path [event-id path]}))
 
+;; Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
+(reg-event-fx
+  :nav-to-sidebar-for-current-main-view
+  (fn [_ _]
+    (let [pathname (subs (.-hash (.-location js/window)) 1)]
+      (if (clojure.string/blank? pathname)
+        {:non-main-path ["sidebar-change" "/"]}
+        {:non-main-path ["sidebar-change" pathname]}))))
+
 ;; ---
 ;; Selection
 ;; ---
