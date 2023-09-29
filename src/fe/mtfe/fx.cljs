@@ -9,7 +9,7 @@
 
 (reg-fx
   :non-main-path
-  (fn [[event-id path body]]
+  (fn [[event-id path]]
     (let [evt-obj  {:detail {:path path}}
           evt-obj  (clj->js evt-obj)
           evt      (new (.-CustomEvent js/window) event-id evt-obj)]
