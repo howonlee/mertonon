@@ -1,6 +1,7 @@
 (ns mtfe.events.core
   (:require [ajax.core :refer [json-request-format json-response-format]]
             [day8.re-frame.http-fx]
+            [mtfe.api :as api]
             [mtfe.util :as util]
             [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]))
 
@@ -88,7 +89,7 @@
     (let [status-res (:status error-res)]
     (case status-res
       ;; proc the intro check actually
-      401 {:fx [:dispatch [:intro-check]]}
+      401 {:fx [[:dispatch [:intro-check]]]}
       403 {}
       500 {}))))
 
@@ -97,4 +98,9 @@
   (fn [db _]
     ;; http xhrio. if success, nav to intro. if fail, nav to login
     (println "intro check proccing")
-    (assoc db :intro-check nil)))
+    {:httpx-xhrio {:method :get
+                   :uri (api/introApi)
+                   :params {}
+                   :response-format (json-response-format {:keywords? true})
+                   :on-success [:nav-page "#/intro"]
+                   :on-failure [:nav-page "#/login"]}}))

@@ -81,7 +81,7 @@
     (fn [m]
       (do
         (dispatch [:nav-page-match m])
-        (dispatch [:nav-sidebar (:path m)])
+        (dispatch [:nav-sidebar (:path m)])))
     {:use-fragment true})
   (main-mount!)
   (sidebar/init!))
