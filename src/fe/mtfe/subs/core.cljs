@@ -15,3 +15,8 @@
   :curr-selection
   (fn [db [evt resource]]
     (-> db :selections resource)))
+
+(reg-sub
+  :curr-error
+  (fn [db _]
+    (:curr-error db)))

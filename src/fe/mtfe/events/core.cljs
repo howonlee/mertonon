@@ -80,26 +80,34 @@
 ;; ---
 
 ;; ---
-;; Misc
+;; Error-Handling
 ;; ---
+
+(reg-event-fx
+  :error
+  (fn [{:keys [db]} [evt error-res]]
+    {:fx [[:dispatch [:nav-page "#/error"]]]
+     :db (assoc db :curr-error error-res)}))
 
 (reg-event-fx
   :api-request-error
   (fn [{:keys [db]} [evt erroring-evt erroring-resource error-res]]
     (let [status-res (:status error-res)]
-    (case status-res
-      ;; proc the intro check actually
-      401 {:fx [[:dispatch [:intro-check]]]}
-      403 {}
-      500 {}))))
+      (case status-res
+        401 {:fx [[:dispatch [:intro-check]]]}
+        403 {:fx [[:dispatch [:error error-res]]]}
+        500 {:fx [[:dispatch [:error error-res]]]}))))
 
 (reg-event-fx
   :intro-check
   (fn [db _]
-    ;; http xhrio. if success, nav to intro. if fail, nav to login
     {:http-xhrio {:method :get
                    :uri (api/introApi)
                    :params {}
                    :response-format (json-response-format {:keywords? true})
                    :on-success [:nav-page "#/intro"]
                    :on-failure [:nav-page "#/login"]}}))
+
+;; ---
+;; Misc
+;; ---

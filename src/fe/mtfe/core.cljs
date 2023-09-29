@@ -31,6 +31,16 @@
    [:h1 "User"]
    [:p "We don't have user accounts yet. They're coming, along with AD and SAML and OAUTH for authz and RBAC and ABAC for authn and the rest of that whole menagerie. Placeholder for user screen here."]])
 
+(defn error-page []
+  (let [curr-error @(subscribe [:curr-error])
+        printo     (println (with-out-str (cljs.pprint/pprint curr-error)))]
+    [sc/main-section
+     [:h1 "Error"]
+     [:p "Something went wrong with Mertonon. File an issue on the "
+      [:a {:href "https://github.com/howonlee/mertonon/issues"} "Mertonon issue tracker."]]
+     [:p "Include this error message in the issue."]
+     [:pre (with-out-str (cljs.pprint/pprint curr-error))]]))
+
 (def main-routes
   "Main browser URL (fragment) routes, as opposed to the separate sidebar routes, or the action routes"
   [["/"                  {:name ::home
@@ -39,6 +49,7 @@
    ["/intro"             {:name ::intro :view intro/intro-page}]
    ["/login"             {:name ::login :view session/session-page}]
    ["/logout"            {:name ::logout :view session/session-page}]
+   ["/error"             {:name ::error :view error-page}]
    ["/admin"             {:name ::admin :view admin-page}]
    ["/user"              {:name ::user :view user-page}]
    ["/grid/:uuid"        {:name ::grid :view grid/grid-page}]
