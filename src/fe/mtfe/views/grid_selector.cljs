@@ -7,7 +7,7 @@
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
-(defn before-events [m]
+(defn before-fx [m]
   [[:dispatch [:intro-check m]]
    [:dispatch [:selection :grids (api/gridApi) {}]]])
 

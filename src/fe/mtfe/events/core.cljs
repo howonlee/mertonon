@@ -22,8 +22,8 @@
  :nav-page-match
  (fn [{:keys [db]} [_ m]]
    (let [db-res    {:db (assoc db :curr-page-match m)}
-         total-res (if (-> m :data :before-events)
-                     (assoc db-res :fx ((-> m :data :before-events) m))
+         total-res (if (-> m :data :before-fx)
+                     (assoc db-res :fx ((-> m :data :before-fx) m))
                      db-res)]
      total-res)))
 
