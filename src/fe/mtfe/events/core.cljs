@@ -28,9 +28,23 @@
      total-res)))
 
 (reg-event-fx
+  :nav-page
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
+
+(reg-event-fx
  :nav-sidebar-match
  (fn [{:keys [db]} [_ m]]
    {:db (assoc db :curr-sidebar-match m)}))
+
+(reg-event-fx
+  :nav-sidebar
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
 
 ;; ---
 ;; Selection
@@ -78,6 +92,9 @@
       403 {}
       500 {}))))
 
-(reg-event-db :intro-check (fn [db _]
-                             (println "intro check proccing")
-                             (assoc db :intro-check nil)))
+(reg-event-db
+  :intro-check
+  (fn [db _]
+    ;; http xhrio. if success, nav to intro. if fail, nav to login
+    (println "intro check proccing")
+    (assoc db :intro-check nil)))
