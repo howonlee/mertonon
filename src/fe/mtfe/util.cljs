@@ -13,13 +13,6 @@
             [reitit.frontend.controllers :as rfc]))
 
 ;; ---
-;; Core Route Match
-;; ---
-;; (Defined here instead of mtfe.core to allow us to stick refresh and mutation things here)
-
-(defonce core-match (r/atom nil))
-
-;; ---
 ;; Non-URL (non-fragment) router handling
 ;; ---
 
@@ -39,7 +32,8 @@
     (.dispatchEvent js/window evt)))
 
 (defn to-main-path!
-  "Path to the main-router path"
+  "Path to the main-router path
+  DEPRECATED: use the re-frame fx instead"
   [path]
   (.assign (.-location js/window) path))
 
@@ -56,10 +50,9 @@
   We don't want sidebar semantics to be in history, but we do want a router for sidebar.
 
   Doing an alternate start! that's not the reitit.frontend.easy start! is the way to avoid this."
-  [router event-id on-match init-path]
+  [router event-id on-match]
   (let [handler  (fn [e] (on-match (rf/match-by-path router (.. e -detail -path))))]
-    (.addEventListener js/window event-id handler)
-    (to-router-path! event-id init-path)))
+    (.addEventListener js/window event-id handler)))
 
 ;; Best not to use this resolve stuff too much, but the monstrosity required to avoid circular dep was too much
 (defn refresh!
@@ -109,6 +102,8 @@
 ;; ---
 ;; Different links in different routers
 ;; ---
+
+;; TODO: do this with re-frame dispatches
 
 (defn fl
   "Fragment-only link"

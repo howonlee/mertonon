@@ -18,6 +18,14 @@ This is what we mean by the allocation of resources. Mertonon is software for do
 
 You have setup Mertonon as detailed in [these instructions](setup.md). Go to the home page.
 
+Mertonon will prompt you to create an account. This is the initial admin account, choose a good password. We will have other authentication and authorization things.
+
+![](https://mertonon.com/assets/intro.gif)
+
+---
+
+Having created an account, go to the homepage.
+
 ![](https://mertonon.com/assets/homepage.png)
 
 ---

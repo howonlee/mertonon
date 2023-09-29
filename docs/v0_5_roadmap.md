@@ -9,25 +9,13 @@
 - [x] Intro needed thing
 
 - [x] Vendorize fontawesome - this will make things airgappable, hopefully
-- [ ] Grid selection in re-frame
-- [ ] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
-- [ ] Error screens for 500s for re-frame
-- [ ] Non-default blurbs for intro, login, logout button statemachine
-- [ ] Grid view in re-frame, including the redirect semantics
-- [ ] Other views in re-frame, including the redirect semantics
+- [x] Grid selection in re-frame
+- [x] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
+- [x] Error screens for 500s for re-frame
+- [x] Logout button in users
+- [x] Changelog
 
-- [ ] Logout BE test
-- [ ] Exception handler that returns 400 instead of 500 if it eats something from validations
-- [ ] Refresh mertonon.com
-- [ ] FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
-- [ ] FE testing with generation
-- [ ] Graph consonance test is being persnickety again, whack it until it stays still
-- [ ] "Pathway towards AI and the executive" - turn outline into essay
-- [ ] Remove running postgres instance requirement for build, this is ridiculous
-- [ ] Build github action
-
-- [ ] Change usage docs
-- [ ] Call authn deployed
-- [ ] Changelog
-- [ ] Futz around a bit
-- [ ] Deploy
+- [x] Change usage docs
+- [x] Call authn deployed
+- [x] Futz around a bit
+- [x] Deploy

@@ -4,7 +4,14 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Refactor to be more re-framey
+- Redirect after login, logout, intro...
+- Users view
+- Refactor everything to be re-frame
+- FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
+- FE testing with generation
+- Logout BE test
+- Remove postgres requirement for build
+- GH build CI
 - GH test CI
 - FE user crud, not just sole admin account anymore (but every account admin account so far...)
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
@@ -19,6 +26,7 @@ Also look at small tasks roadmap
 - Full grad view (exec summary view)
 - Crontab for adjustments
 - Email digesting on the crontab
+- Get SQLite compatibility and bundle with SQLite so you just download and play.
 - License design, then task out for after alpha
 
 - Cut alpha, think of future
@@ -58,7 +66,6 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - Search
 - Clj-kondo in CI/CD
 - Third party plugin use docs and examples
-- Total SQLite backend, to be self-contained (rdbms-serverless in the SQLite style, not the AWS style)
 - Stateful action testing, lol
 
 - Integrations with CRMs, ERPs, HR management, billing and procurement platforms. I have a gigantic list. Some will be EE.

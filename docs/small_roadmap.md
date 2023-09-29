@@ -1,6 +1,9 @@
 Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
+- Exception handler that returns 400 instead of 500 if it eats something from validations
+- Graph consonance test is being persnickety again, whack it until it stays still
+- "Pathway towards AI and the executive" - turn outline into essay
 - Cookie staleness gets nullpointerexception, make a less awful error
 - More skeumorphism in button
 - Some kind of middlingly durable settings db thing... maybe with table
