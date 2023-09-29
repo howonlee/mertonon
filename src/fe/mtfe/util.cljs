@@ -32,7 +32,8 @@
     (.dispatchEvent js/window evt)))
 
 (defn to-main-path!
-  "Path to the main-router path"
+  "Path to the main-router path
+  DEPRECATED: use the re-frame fx instead"
   [path]
   (.assign (.-location js/window) path))
 
