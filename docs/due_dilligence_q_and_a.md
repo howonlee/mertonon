@@ -16,7 +16,7 @@ Everything contractually enforcible will be negotiable for the enterprise redlin
 
 ## How do you protect your data? Is encryption used? Is industry standard encryption used (AES 128 or AES 256)? Is it proprietary encryption?
 
-Currently there exists no authentication and no authorization solution. We're going to change that real soon but we plan to do all significant authentication methods, explictly including username/password, SSO with significant providers, LDAP, AD, Oauth, lots of other stuff and a RBAC-based authorization solution.
+Currently there exists no authorization solution and only a minimal authentication solution. We're going to change that real soon but we plan to do all significant authentication methods, explictly including SSO with significant providers, LDAP, AD, Oauth, lots of other stuff and a RBAC-based authorization solution.
 
 The data is in a Postgres DB controlled by customer, on premise, at this time. Therefore, it's customer's right and responsibility to choose how to encrypt their data at rest. See the [official Postgres docs](https://www.postgresql.org/docs/current/encryption-options.html) for options. Mertonon is not affiliated with the Postgres Foundation in any way, shape or form. We will implement SSL connection to the DB when we do it.
 
@@ -30,7 +30,7 @@ We do not operate a data center at this time. We will eventually, whereupon we w
 
 ## How do you ensure that only authorized personnel have access to your data?
 
-Currently there exists no authentication and no authorization solution. We're going to change that real soon but we plan to do all significant authentication methods, explictly including username/password, SSO with significant providers, LDAP, AD, Oauth, lots of other stuff and a RBAC-based authorization solution.
+Currently there exists no authorization solution and only a minimal authentication solution. We're going to change that real soon but we plan to do all significant authentication methods, explictly including SSO with significant providers, LDAP, AD, Oauth, lots of other stuff and a RBAC-based authorization solution.
 
 ## Do you have a business continuity plan? How are you supported in case of an outage?
 
