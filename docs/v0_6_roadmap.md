@@ -1,6 +1,5 @@
 - [x] current\_user endpoint
-
-- [ ] Links via dispatch, so side effects shoved into fx
+- [x] Links via dispatch, so side effects shoved into fx
 
 - [ ] Grid view reframe
 - [ ] Other views reframe
