@@ -13,12 +13,9 @@
 - [x] Intro, login redirect semantics if not authed - intro if no users, login otherwise. In grid-selection only, through re-frame
 - [x] Error screens for 500s for re-frame
 - [x] Logout button in users
-- [ ] Redirect after login, logout, intro...
-- [ ] Grid view in re-frame, including the redirect semantics
-- [ ] Refresh mertonon.com
+- [x] Changelog
 
-- [ ] Change usage docs
-- [ ] Call authn deployed
-- [ ] Changelog
-- [ ] Futz around a bit
-- [ ] Deploy
+- [x] Change usage docs
+- [x] Call authn deployed
+- [x] Futz around a bit
+- [x] Deploy

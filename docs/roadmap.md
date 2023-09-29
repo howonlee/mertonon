@@ -4,6 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Redirect after login, logout, intro...
 - Users view
 - Refactor everything to be re-frame
 - FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)

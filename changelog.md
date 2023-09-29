@@ -38,3 +38,10 @@ v0.4.commits - September 21 2023
 
 v0.5.commits - September 28 2023
 ----
+
+- Vendorized fontawesome.
+- Get app state in tests to be within the test transaction that I use to avoid spilling db state in tests
+- Logging out
+- Authn exists now. No authz. One admin account only.
+- Begin the journey back to re-frame
+- Error screen exists now
