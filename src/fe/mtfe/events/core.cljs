@@ -103,9 +103,10 @@
   (fn [{:keys [db]} [evt erroring-evt erroring-resource error-res]]
     (let [status-res (:status error-res)]
       (case status-res
-        401 {:fx [[:dispatch [:intro-check]]]}
-        403 {:fx [[:dispatch [:error error-res]]]}
-        500 {:fx [[:dispatch [:error error-res]]]}))))
+        401   {:fx [[:dispatch [:intro-check]]]}
+        403   {:fx [[:dispatch [:error error-res]]]}
+        500   {:fx [[:dispatch [:error error-res]]]}
+        {:fx [[:dispatch [:error error-res]]]}))))
 
 (reg-event-fx
   :intro-check

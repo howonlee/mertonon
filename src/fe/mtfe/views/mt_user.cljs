@@ -8,8 +8,9 @@
             [reagent.core :as r]))
 
 (defn before-fx [m]
-  [[:dispatch [:selection :curr-mt-user :some-crap-here {}]]])
+  [[:dispatch [:selection :curr-mt-user (api/curr-mt-user) {}]]])
 
 (defn mt-user-page [m]
   [sc/main-section
+   ;; (let some crap
    "some crap here"])
