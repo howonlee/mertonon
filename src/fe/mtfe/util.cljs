@@ -13,13 +13,6 @@
             [reitit.frontend.controllers :as rfc]))
 
 ;; ---
-;; Core Route Match
-;; ---
-;; (Defined here instead of mtfe.core to allow us to stick refresh and mutation things here)
-
-(defonce core-match (r/atom nil))
-
-;; ---
 ;; Non-URL (non-fragment) router handling
 ;; ---
 
@@ -108,6 +101,8 @@
 ;; ---
 ;; Different links in different routers
 ;; ---
+
+;; TODO: do this with re-frame dispatches
 
 (defn fl
   "Fragment-only link"

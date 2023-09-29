@@ -23,7 +23,7 @@
  (fn [{:keys [db]} [_ m]]
    (let [db-res    {:db (assoc db :curr-page-match m)}
          total-res (if (-> m :data :before-events)
-                     (assoc db-res :dispatch-n ((-> m :data :before-events) m))
+                     (assoc db-res :fx ((-> m :data :before-events) m))
                      db-res)]
      total-res)))
 
@@ -71,9 +71,11 @@
 (reg-event-fx
   :api-request-error
   (fn [{:keys [db]} [evt erroring-evt erroring-resource error-res]]
-    (println evt erroring-evt erroring-resource error-res)
-    ;; if 401 then we proc the login thing
-    {}))
+    (let [status-res (:status error-res)]
+    (case status-res
+      401 {}
+      403 {}
+      500 {}))))
 
 (reg-event-db :intro-check (fn [db [_ m]]
                              (println "intro check proccing")
