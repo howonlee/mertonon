@@ -5,6 +5,7 @@
 - [ ] Other views reframe
 
 - [ ] Grid CRUD sidebars reframe
+- [ ] See if it was easy enough that we might do it all this week and kill statecharts. if not, no biggie
 
 - [ ] Redirect after login, logout, intro...
 - [ ] Update mertonon.com

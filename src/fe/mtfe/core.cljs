@@ -28,8 +28,7 @@
    [:p "We don't have an admin screen yet. Placeholder for admin screen here."]])
 
 (defn error-page []
-  (let [curr-error @(subscribe [:curr-error])
-        printo     (println (with-out-str (cljs.pprint/pprint curr-error)))]
+  (let [curr-error @(subscribe [:curr-error])]
     [sc/main-section
      [:h1 "Error"]
      [:p "Something went wrong with Mertonon. File an issue on the "
@@ -40,7 +39,7 @@
 (def main-routes
   "Main browser URL (fragment) routes, as opposed to the separate sidebar routes, or the action routes"
   [["/"                  {:name ::home
-                          :view grid-selector/grid-selector
+                          :view      grid-selector/grid-selector
                           :before-fx grid-selector/before-fx}]
    ["/intro"             {:name ::intro :view intro/intro-page}]
    ["/login"             {:name ::login :view session/session-page}]
@@ -48,10 +47,14 @@
    ["/error"             {:name ::error :view error-page}]
    ["/admin"             {:name ::admin :view admin-page}]
    ["/user"              {:name ::user
-                          :view mt-user/mt-user-page
+                          :view      mt-user/mt-user-page
                           :before-fx mt-user/before-fx}]
-   ["/grid/:uuid"        {:name ::grid :view grid/grid-page}]
-   ["/grid_demo"         {:name ::grid-demo :view grid/grid-demo-page}]
+   ["/grid/:uuid"        {:name ::grid
+                          :view      grid/grid-page
+                          :before-fx grid/before-fx}]
+   ["/grid_demo"         {:name ::grid-demo
+                          :view      grid/grid-demo-page
+                          :before-fx grid/demo-before-fx}]
    ["/cost_object/:uuid" {:name ::cost-object :view cost-object/cost-object-page}]
    ["/layer/:uuid"       {:name ::layer :view layer/layer-page}]
    ["/weightset/:uuid"   {:name ::weightset :view weightset/weightset-page}]

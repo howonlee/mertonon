@@ -27,6 +27,13 @@
 (def background (r/adapt-react-class Background))
 
 ;; ---
+;; Pre-effects
+;; ---
+
+(def before-fx nil)
+(def demo-before-fx nil)
+
+;; ---
 ;; Constants
 ;; ---
 
