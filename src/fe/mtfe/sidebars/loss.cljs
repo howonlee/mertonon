@@ -108,12 +108,12 @@
 (defn loss-create-sidebar [m]
   (let [grid-uuid (->> m :path-params :uuid str)]
     (sel/set-state-if-changed! sidebar-state
-                               api/gridGraphApi
+                               api/grid-graph
                                grid-uuid
                                [:grid-graph-selection :grids 0 :uuid]
                                [:grid-graph-selection])
     (sel/set-state-if-changed! sidebar-state
-                               api/gridViewApi
+                               api/grid-view
                                grid-uuid
                                [:grid-view-selection :grids 0 :uuid]
                                [:grid-view-selection])

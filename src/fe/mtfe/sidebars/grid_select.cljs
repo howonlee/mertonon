@@ -54,7 +54,7 @@
 
 (def delete-sc
   (mt-statechart/simple-delete :grid-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/gridMemberApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/grid-member delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :grid-create create-sc-state create-sc)
@@ -89,4 +89,4 @@
   [grid-create-sidebar-render create-sc-state])
 
 (defn grid-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/gridMemberApi delete-sc-state "Grid" m])
+  [sc-components/delete-model-sidebar sidebar-state api/grid-member delete-sc-state "Grid" m])

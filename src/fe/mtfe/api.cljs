@@ -9,8 +9,8 @@
 ;; Generator APIs
 ;; ---
 
-(defn generatorNetApi [] (gstring/format "%s/api/v1/generators/net" host))
-(defn generatorGraphApi [] (gstring/format "%s/api/v1/generators/graph" host))
+(defn generator-net [] (gstring/format "%s/api/v1/generators/net" host))
+(defn generator-graph [] (gstring/format "%s/api/v1/generators/graph" host))
 (defn generatorLayerApi [uuid] (gstring/format "%s/api/v1/generators/layers/%s" host uuid))
 (defn generatorWeightsetApi [uuid] (gstring/format "%s/api/v1/generators/weightsets/%s" host uuid))
 (defn generatorWeightApi [uuid] (gstring/format "%s/api/v1/generators/weights/%s" host uuid))
@@ -23,11 +23,11 @@
 ;; ---
 
 (defn grid [] (gstring/format "%s/api/v1/grid/" host))
-(defn gridGradApi [] (gstring/format "%s/api/v1/grid/_/grad" host))
-(defn gridMemberApi [uuid] (gstring/format "%s/api/v1/grid/%s" host uuid))
-(defn gridViewApi [uuid] (gstring/format "%s/api/v1/grid/%s/view" host uuid))
-(defn gridDumpApi [uuid] (gstring/format "%s/api/v1/grid/%s/dump" host uuid))
-(defn gridGraphApi [uuid] (gstring/format "%s/api/v1/grid/%s/graph" host uuid))
+(defn grid-grad [] (gstring/format "%s/api/v1/grid/_/grad" host))
+(defn grid-member [uuid] (gstring/format "%s/api/v1/grid/%s" host uuid))
+(defn grid-view [uuid] (gstring/format "%s/api/v1/grid/%s/view" host uuid))
+(defn grid-dump [uuid] (gstring/format "%s/api/v1/grid/%s/dump" host uuid))
+(defn grid-graph [uuid] (gstring/format "%s/api/v1/grid/%s/graph" host uuid))
 
 (defn layerApi [] (gstring/format "%s/api/v1/layer" host))
 (defn layerMemberApi [uuid] (gstring/format "%s/api/v1/layer/%s" host uuid))
@@ -49,9 +49,9 @@
 (defn weightMemberApi [uuid] (gstring/format "%s/api/v1/weight/%s" host uuid))
 (defn weightViewApi [uuid] (gstring/format "%s/api/v1/weight/%s/view" host uuid))
 
-(defn inputApi [] (gstring/format "%s/api/v1/input" host))
-(defn inputMemberApi [uuid] (gstring/format "%s/api/v1/input/%s" host uuid))
-(defn inputViewApi [uuid] (gstring/format "%s/api/v1/input/%s/view" host uuid))
+(defn input [] (gstring/format "%s/api/v1/input" host))
+(defn input-member [uuid] (gstring/format "%s/api/v1/input/%s" host uuid))
+(defn input-view [uuid] (gstring/format "%s/api/v1/input/%s/view" host uuid))
 
 (defn loss [] (gstring/format "%s/api/v1/loss" host))
 (defn loss-member [uuid] (gstring/format "%s/api/v1/loss/%s" host uuid))

@@ -171,7 +171,7 @@
 
 (defn weightset-create-sidebar [m]
   (sel/set-state-if-changed! sidebar-state
-                             api/gridGraphApi
+                             api/grid-graph
                              (->> m :path-params :uuid str)
                              [:grid-graph-selection :grids 0 :uuid]
                              [:grid-graph-selection])

@@ -185,7 +185,7 @@
 (defn grid-page [{:keys [path-params] :as match}]
   (let [uuid (:uuid path-params)]
     (r/create-class
-      {:component-did-mount    (fn [_] (GET (api/gridGraphApi uuid)
+      {:component-did-mount    (fn [_] (GET (api/grid-graph uuid)
                                             {:handler (fn [resp]
                                                         (do
                                                           (reset! grid-graph-state (util/json-parse resp))
@@ -198,7 +198,7 @@
 
 (defn grid-demo-page []
   (r/create-class
-    {:component-did-mount    (fn [_] (GET (api/generatorGraphApi)
+    {:component-did-mount    (fn [_] (GET (api/generator-graph)
                                           {:handler (fn [resp]
                                                       (do
                                                         (reset! grid-graph-state (util/json-parse resp))

@@ -106,7 +106,7 @@
 (defn grid-sidebar [m]
   (sel/set-selection-if-changed!
     sidebar-state
-    api/gridViewApi
+    api/grid-view
     (->> m :path-params :uuid)
     [:uuid])
   (fn [m]
