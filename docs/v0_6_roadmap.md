@@ -1,11 +1,22 @@
-- Refactor everything to be re-frame
+- [ ] Links via dispatch, so side effects shoved into fx
 
-- Update mertonon.com
-- Redirect after login, logout, intro...
+- [ ] Grid view reframe
+- [ ] Other views reframe
 
-- Users view
-- FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
-- FE testing with generation
-- Logout BE test
-- Remove postgres requirement for build
-- FE user crud, not just sole admin account anymore (but every account admin account so far...)
+- [ ] Grid CRUD sidebars reframe
+
+- [ ] Redirect after login, logout, intro...
+- [ ] Update mertonon.com
+
+- [ ] current\_user endpoint
+- [ ] Users view
+- [ ] Users CRUD
+
+- [ ] FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
+- [ ] FE testing with generation
+- [ ] Logout BE test
+- [ ] Remove postgres requirement for build
+
+- [ ] Changelog
+- [ ] Clicking around a bit
+- [ ] Cut release
