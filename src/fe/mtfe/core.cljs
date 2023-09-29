@@ -1,6 +1,7 @@
 (ns mtfe.core
   "Mertonon Frontend"
   (:require [mtfe.events.core]
+            [mtfe.fx]
             [mtfe.subs.core]
             [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]

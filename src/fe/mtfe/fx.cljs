@@ -4,7 +4,7 @@
 (reg-fx
   :main-path
   ;; Main path will bring sidebar path along for the ride
-  (fn [path-value]
+  (fn [path]
     (.assign (.-location js/window) path)))
 
 (reg-fx
