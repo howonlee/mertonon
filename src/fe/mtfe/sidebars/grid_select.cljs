@@ -48,7 +48,7 @@
                                 :validation-fn (sc-handlers/validation-handler
                                                  sidebar-state
                                                  [(sc-validation/non-blank [:curr-create-params :name] :name-blank)])
-                                :action-fn     (sc-handlers/creation-handler api/gridApi create-sc-state mc/->Grid
+                                :action-fn     (sc-handlers/creation-handler api/grid create-sc-state mc/->Grid
                                                                              [:uuid :name :label :optimizer-type :hyperparams])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 

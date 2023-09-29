@@ -22,7 +22,7 @@
 ;; Ordinary network CRUD APIs
 ;; ---
 
-(defn gridApi [] (gstring/format "%s/api/v1/grid/" host))
+(defn grid [] (gstring/format "%s/api/v1/grid/" host))
 (defn gridGradApi [] (gstring/format "%s/api/v1/grid/_/grad" host))
 (defn gridMemberApi [uuid] (gstring/format "%s/api/v1/grid/%s" host uuid))
 (defn gridViewApi [uuid] (gstring/format "%s/api/v1/grid/%s/view" host uuid))
