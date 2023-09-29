@@ -30,8 +30,8 @@
 ;; Pre-effects
 ;; ---
 
-(def before-fx nil)
-(def demo-before-fx nil)
+(def before-fx [])
+(def demo-before-fx [])
 
 ;; ---
 ;; Constants
