@@ -8,6 +8,7 @@
             [mtfe.statecharts.core :as mt-statechart]
             [reagent.core :as r]
             [reagent.dom :as rdom]
+            [re-frame.core :refer [dispatch dispatch-sync]]
             [reitit.frontend :as rf]
             [reitit.frontend.easy :as rfe]
             [reitit.frontend.controllers :as rfc]))
@@ -22,28 +23,6 @@
 ;; It might seem weird and pointless to do a router without actually having a uri displayed to user,
 ;; but a routing thing is a really programmer-accessible tool to get locality back, at least in code.
 ;; Overall, the goal is something like CGI through a glass, darkly
-
-(defn to-router-path!
-  "For sidebar or action or whatever router, path to it"
-  [event-id path & [body]]
-  (let [evt-obj  {:detail {:path path}}
-        evt-obj  (clj->js evt-obj)
-        evt      (new (.-CustomEvent js/window) event-id evt-obj)]
-    (.dispatchEvent js/window evt)))
-
-(defn to-main-path!
-  "Path to the main-router path
-  DEPRECATED: use the re-frame fx instead"
-  [path]
-  (.assign (.-location js/window) path))
-
-(defn nav-to-sidebar-for-current-main-view!
-  "Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
-  []
-  (let [pathname (subs (.-hash (.-location js/window)) 1)]
-    (if (clojure.string/blank? pathname)
-      (to-router-path! "sidebar-change" "/")
-      (to-router-path! "sidebar-change" pathname))))
 
 (defn custom-route-start!
   "reitit.frontend.easy is supposed to hijack your html5 history.
@@ -114,7 +93,7 @@
   "Sidebar-only link"
   [sidebar-path content]
   [:span.white.underline.hover-gray.pointer
-   {:on-click #(to-router-path! "sidebar-change" sidebar-path)}
+   {:on-click #(dispatch [:nav-route "sidebar-change" sidebar-path])}
    content])
 
 (defn stl
@@ -131,7 +110,7 @@
   [fragment-path sidebar-path content]
   [:a.white.underline.hover-gray.pointer
    {:href     fragment-path
-    :on-click #(to-router-path! "sidebar-change" sidebar-path)}
+    :on-click #(dispatch [:nav-route "sidebar-change" sidebar-path])}
    content])
 
 (defn path-fsl
@@ -139,7 +118,7 @@
   [path-vec content]
   [:a.white.underline.hover-gray.pointer
    {:href     (hash-path path-vec)
-    :on-click #(to-router-path! "sidebar-change" (path path-vec))}
+    :on-click #(dispatch [:nav-route "sidebar-change" (path path-vec)])}
    content])
 
 (defn staged-fsl
@@ -148,6 +127,6 @@
   As opposed to ordinary fsl, wherein one single click is both sidebar and fragment link."
   [fragment-path sidebar-path content]
   [:div.white.underline.hover-gray.pointer
-   {:on-click        #(to-router-path! "sidebar-change" sidebar-path)
-    :on-double-click #(to-main-path! fragment-path)}
+   {:on-click        #(dispatch [:nav-route "sidebar-change" sidebar-path])
+    :on-double-click #(dispatch [:nav-page fragment-path])}
    content])

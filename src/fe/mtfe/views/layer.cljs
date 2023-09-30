@@ -88,8 +88,8 @@
 (defn layer-page [m]
   (let [is-demo?        @grid-view/demo-state
         layer-endpoint  (fn [uuid] (if is-demo?
-                                     (api/generatorLayerApi uuid)
-                                     (api/layerViewApi uuid)))
+                                     (api/generator-layer uuid)
+                                     (api/layer-view uuid)))
         curr-match-uuid (->> m :path-params :uuid)]
     (sel/set-selection-if-changed! layer-state layer-endpoint curr-match-uuid [:selection :uuid])
     (fn [m]

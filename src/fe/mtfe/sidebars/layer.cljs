@@ -44,12 +44,12 @@
                                 :validation-fn (sc-handlers/validation-handler
                                                  sidebar-state
                                                  [(sc-validation/non-blank [:curr-create-params :name] :name-blank)])
-                                :action-fn     (sc-handlers/creation-handler api/layerApi create-sc-state mc/->Layer [:uuid :grid-uuid :name :label])
+                                :action-fn     (sc-handlers/creation-handler api/layer create-sc-state mc/->Layer [:uuid :grid-uuid :name :label])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (def delete-sc
   (mt-statechart/simple-delete :layer-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/layerMemberApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/layer-member delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :layer-create create-sc-state create-sc)
@@ -108,7 +108,7 @@
     [layer-create-sidebar-render m]))
 
 (defn layer-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/layerMemberApi delete-sc-state "Layer" m])
+  [sc-components/delete-model-sidebar sidebar-state api/layer-member delete-sc-state "Layer" m])
 
 (defn layer-sidebar [{:keys [data] :as req}]
   (let [curr-layer-state @layer-view/layer-state

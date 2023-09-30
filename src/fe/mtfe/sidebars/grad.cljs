@@ -104,7 +104,7 @@
 
 (def action-sc
   (mt-statechart/simple-action :grad-kickoff
-                               {:action-fn     (sc-handlers/action-handler api/gridGradApi action-sc-state)
+                               {:action-fn     (sc-handlers/action-handler api/grid-grad action-sc-state)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
                                 :finalize-fn   (sc-handlers/refresh-handler action-sc-state)}))
@@ -154,17 +154,17 @@
   (let [grid-uuid (->> m :path-params :uuid str)]
     (sel/swap-if-changed! grid-uuid sidebar-state [:curr-action-params :grid-uuid])
     (sel/set-state-if-changed! sidebar-state
-                               api/gridGraphApi
+                               api/grid-graph
                                grid-uuid
                                [:grid-graph-selection :grids 0 :uuid]
                                [:grid-graph-selection])
     (sel/set-state-if-changed! sidebar-state
-                               api/gridViewApi
+                               api/grid-view
                                grid-uuid
                                [:grid-view-selection :grids 0 :uuid]
                                [:grid-view-selection])
     (sel/set-query-state-if-changed! sidebar-state
-                                     api/gridDumpApi
+                                     api/grid-dump
                                      grid-uuid
                                      (@sidebar-state :curr-action-params)
                                      [:grid-dump-selection :grids 0 :uuid]

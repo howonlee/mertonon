@@ -43,12 +43,12 @@
                                 :validation-fn (sc-handlers/validation-handler
                                                  sidebar-state
                                                  [(sc-validation/non-blank [:curr-create-params :name] :name-blank)])
-                                :action-fn     (sc-handlers/creation-handler api/costObjectApi create-sc-state mc/->CostObject [:uuid :layer-uuid :name :label])
+                                :action-fn     (sc-handlers/creation-handler api/cost-object create-sc-state mc/->CostObject [:uuid :layer-uuid :name :label])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (def delete-sc
   (mt-statechart/simple-delete :cobj-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/costObjectMemberApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/cost-object-member delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :cobj-create create-sc-state create-sc)
@@ -92,14 +92,14 @@
   [cobj-create-sidebar-render m])
 
 (defn cost-object-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/costObjectMemberApi delete-sc-state "Cost Node" m])
+  [sc-components/delete-model-sidebar sidebar-state api/cost-object-member delete-sc-state "Cost Node" m])
 
 (defn cost-object-sidebar [m]
   (let [is-demo?        @grid-view/demo-state
         cobj-uuid       (->> m :path-params :uuid)
         cobj-endpoint   (if is-demo?
-                          api/generatorCostObjectApi
-                          api/costObjectViewApi)]
+                          api/generator-cost-object
+                          api/cost-object-view)]
     (sel/set-state-if-changed! sidebar-state
                                cobj-endpoint
                                cobj-uuid

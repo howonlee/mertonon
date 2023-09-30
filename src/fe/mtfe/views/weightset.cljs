@@ -87,8 +87,8 @@
 (defn weightset-page [m]
   (let [is-demo?           @grid-view/demo-state
         weightset-endpoint (fn [uuid] (if is-demo?
-                                        (api/generatorWeightsetApi uuid)
-                                        (api/weightsetViewApi uuid)))
+                                        (api/generator-weightset uuid)
+                                        (api/weightset-view uuid)))
         curr-match-uuid    (->> m :path-params :uuid)]
     (sel/set-selection-if-changed! ws-state weightset-endpoint curr-match-uuid [:selection :uuid])
     (fn [m]

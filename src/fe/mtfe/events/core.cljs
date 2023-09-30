@@ -19,7 +19,7 @@
 ;; Navigation
 ;; ---
 
-;; Given a page _route match_, nav to it
+;; Given a page _route match_, nav to it and run before-fx fx's
 (reg-event-fx
  :nav-page-match
  (fn [{:keys [db]} [_ m]]
@@ -41,11 +41,20 @@
  (fn [{:keys [db]} [_ m]]
    {:db (assoc db :curr-sidebar-match m)}))
 
-;; Given a sidebar path, nav to it
+;; Given a non-page route path, like sidebars, nav to it
 (reg-event-fx
-  :nav-sidebar
+  :nav-route
   (fn [_ [_ event-id path]]
     {:non-main-path [event-id path]}))
+
+;; Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
+(reg-event-fx
+  :nav-to-sidebar-for-current-main-view
+  (fn [_ _]
+    (let [pathname (subs (.-hash (.-location js/window)) 1)]
+      (if (clojure.string/blank? pathname)
+        {:non-main-path ["sidebar-change" "/"]}
+        {:non-main-path ["sidebar-change" pathname]}))))
 
 ;; ---
 ;; Selection
@@ -94,15 +103,16 @@
   (fn [{:keys [db]} [evt erroring-evt erroring-resource error-res]]
     (let [status-res (:status error-res)]
       (case status-res
-        401 {:fx [[:dispatch [:intro-check]]]}
-        403 {:fx [[:dispatch [:error error-res]]]}
-        500 {:fx [[:dispatch [:error error-res]]]}))))
+        401   {:fx [[:dispatch [:intro-check]]]}
+        403   {:fx [[:dispatch [:error error-res]]]}
+        500   {:fx [[:dispatch [:error error-res]]]}
+        {:fx [[:dispatch [:error error-res]]]}))))
 
 (reg-event-fx
   :intro-check
   (fn [db _]
     {:http-xhrio {:method :get
-                   :uri (api/introApi)
+                   :uri (api/intro)
                    :params {}
                    :response-format (json-response-format {:keywords? true})
                    :on-success [:nav-page "#/intro"]

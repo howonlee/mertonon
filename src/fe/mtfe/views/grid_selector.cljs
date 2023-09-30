@@ -8,10 +8,10 @@
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 (defn before-fx [m]
-  [[:dispatch [:selection :grids (api/gridApi) {}]]])
+  [[:dispatch [:selection :grids (api/grid) {}]]])
 
 (defn grid-selector [m]
-  (let [curr-grid-members @(subscribe [:curr-selection :grids])]
+  (let [curr-grid-members @(subscribe [:selection :grids])]
     [:div
      [:h2 "Welcome to Mertonon"]
      [sc/flexwrap-container

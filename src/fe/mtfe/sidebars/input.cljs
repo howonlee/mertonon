@@ -60,12 +60,12 @@
                                                     loss-layer-uuid-set-getter
                                                     curr-layer-uuid-member-getter
                                                     :also-a-loss)])
-                                :action-fn     (sc-handlers/creation-handler api/inputApi create-sc-state mc/->Input [:uuid :layer-uuid :name :label :type])
+                                :action-fn     (sc-handlers/creation-handler api/input create-sc-state mc/->Input [:uuid :layer-uuid :name :label :type])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (def delete-sc
   (mt-statechart/simple-delete :input-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/inputMemberApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/input-member delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :input-create create-sc-state create-sc)
@@ -108,12 +108,12 @@
 (defn input-create-sidebar [m]
   (let [grid-uuid (->> m :path-params :uuid str)]
     (sel/set-state-if-changed! sidebar-state
-                               api/gridGraphApi
+                               api/grid-graph
                                grid-uuid
                                [:grid-graph-selection :grids 0 :uuid]
                                [:grid-graph-selection])
     (sel/set-state-if-changed! sidebar-state
-                               api/gridViewApi
+                               api/grid-view
                                grid-uuid
                                [:grid-view-selection :grids 0 :uuid]
                                [:grid-view-selection])
@@ -121,4 +121,4 @@
     [input-create-sidebar-render m]))
 
 (defn input-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/inputMemberApi delete-sc-state "Input" m])
+  [sc-components/delete-model-sidebar sidebar-state api/input-member delete-sc-state "Input" m])

@@ -41,7 +41,7 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/sessionApi
+                                :action-fn     (sc-handlers/creation-handler api/session
                                                                              create-sc-state
                                                                              (fn [username password]
                                                                                {:username username
@@ -51,7 +51,7 @@
 
 (def delete-sc
   (mt-statechart/simple-delete :mt-session-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/sessionApi delete-sc-state)
+                               {:action-fn   (sc-handlers/deletion-handler api/session delete-sc-state)
                                 :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
 
 (mt-statechart/init-sc! :mt-session-create create-sc-state create-sc)
@@ -90,6 +90,6 @@
         curr-state-uuid (->> @sidebar-state :selection :uuid)
         _               (mt-statechart/send-reset-event-if-finished! delete-sc-state)]
     (if (not= curr-match-uuid curr-state-uuid)
-      (sel/set-selection! sidebar-state api/sessionApi curr-match-uuid))
+      (sel/set-selection! sidebar-state api/session curr-match-uuid))
     [logout-render m]))
 

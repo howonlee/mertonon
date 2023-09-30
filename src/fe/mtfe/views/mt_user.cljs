@@ -5,8 +5,15 @@
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch subscribe]]))
 
-(defn mt-user-page []
+(defn before-fx [m]
+  [[:dispatch [:selection :curr-mt-user (api/curr-mt-user) {}]]])
+
+(defn mt-user-page [m]
   [sc/main-section
-   [:p "AD and SAML and OAUTH for authz and RBAC and ABAC for authn and the rest of that whole menagerie is coming."]])
+   (let [curr-user @(subscribe [:selection :curr-mt-user])
+         ;;;; destructure
+         ]
+     [:pre (with-out-str (cljs.pprint/pprint curr-user))])])

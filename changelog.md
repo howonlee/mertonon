@@ -45,3 +45,6 @@ v0.5.commits - September 28 2023
 - Authn exists now. No authz. One admin account only.
 - Begin the journey back to re-frame
 - Error screen exists now
+
+v0.6.commits - October 5 2023
+---

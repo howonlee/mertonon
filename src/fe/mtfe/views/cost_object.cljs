@@ -77,8 +77,8 @@
 (defn cost-object-page [m]
   (let [is-demo?        @grid-view/demo-state
         cobj-endpoint   (fn [uuid] (if is-demo?
-                                     (api/generatorCostObjectApi uuid)
-                                     (api/costObjectViewApi uuid)))
+                                     (api/generator-cost-object uuid)
+                                     (api/cost-object-view uuid)))
         curr-match-uuid (->> m :path-params :uuid)]
     (sel/set-selection-if-changed! cobj-state cobj-endpoint curr-match-uuid [:selection :uuid])
     (fn [m]

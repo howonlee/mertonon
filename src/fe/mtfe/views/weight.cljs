@@ -30,8 +30,8 @@
 (defn weight-page [m]
   (let [is-demo?        @grid-view/demo-state
         weight-endpoint (fn [uuid] (if is-demo?
-                                     (api/generatorWeightApi uuid)
-                                     (api/weightViewApi uuid)))
+                                     (api/generator-weight uuid)
+                                     (api/weight-view uuid)))
         curr-match-uuid (->> m :path-params :uuid)]
     (sel/set-selection-if-changed! weight-state weight-endpoint curr-match-uuid [:selection :uuid])
     (fn [m]

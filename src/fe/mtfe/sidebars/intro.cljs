@@ -45,7 +45,7 @@
                                {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
                                 :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
                                 :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/introApi
+                                :action-fn     (sc-handlers/creation-handler api/intro
                                                                              create-sc-state
                                                                              (fn [username email password]
                                                                                {:username username
