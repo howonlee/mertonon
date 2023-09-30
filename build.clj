@@ -6,7 +6,7 @@
 ;; 1. Run tests, make sure they're green
 ;; 2. Incr app version in this file
 ;; 3. Incr app version in package.json
-;; 4. Iff you futzed with the readme, hit it with the Flesch-Kincaid (using `style` and keep it under 8)
+;; 4. Iff you futzed with the readme, hit it with the Flesch-Kincaid (using `style` and keep it under 8 for first 20 lines)
 ;; 5. Futz with changelog
 ;; 6. Land change PR
 ;; 7. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
