@@ -1,9 +1,10 @@
 - [x] current\_user endpoint
 - [x] Links via dispatch, so side effects shoved into fx
 - [x] kebab-case API namespace because it annoys me
+
+- [ ] Users CRUD - i think do this the new way? we can keep the validation semantics, call it through event i guess
 - [ ] Self user view
 - [ ] All users view
-- [ ] Users CRUD - i think do this the new way? we can keep the validation semantics, call it through event i guess
 - [ ] Grid view reframe
 - [ ] Other views reframe
 
