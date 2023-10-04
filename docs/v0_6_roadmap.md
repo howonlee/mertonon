@@ -10,7 +10,6 @@
 
 - [ ] Users create in admin, new way
 - [ ] Users delete in admin, new way
-- [ ] Re-frameize sidebar reads
 - [ ] Redirect after login, logout, intro...
 - [ ] Logout BE test
 - [ ] Update mertonon.com
