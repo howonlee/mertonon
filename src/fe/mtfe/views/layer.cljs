@@ -8,11 +8,20 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch subscribe]]))
 
 ;; ---
-;; State
+;; Before-fx
 ;; ---
+
+(defn before-fx [m]
+  (let [is-demo? @(subscribe [:is-demo?])
+        uuid     (->> m :path-params :uuid)
+        layer-endpoint (if is-demo?
+                         (api/generator-layer uuid)
+                         (api/layer-view uuid))]
+    [[:dispatch [:selection :curr-layer layer-endpoint {}]]]))
 
 (defonce layer-state (r/atom {:selection {}}))
 
@@ -42,8 +51,10 @@
 ;; Main view
 ;; ---
 
-(defn layer-page-render [layer-state is-demo?]
-  (let [grid-path (if is-demo?  ["grid_demo"] ["grid" (->> layer-state :layer :grid-uuid)])]
+(defn layer-page [_]
+  (let [layer-state @(subscribe [:selection :curr-layer])
+        is-demo?    @(subscribe [:is-demo?])
+        grid-path   (if is-demo?  ["grid_demo"] ["grid" (->> layer-state :layer :grid-uuid)])]
     [:div.fl.pa2
      [:h1 [sc/layer-icon] " Responsibility Center " [:strong (str (->> layer-state :layer :name))]]
      [:h2 [util/path-fsl grid-path [:p [sc/grid-icon] " Back to Grid"]]]
@@ -80,17 +91,3 @@
           [util/sl (util/path ["layer" (->> layer-state :layer :uuid) "cost_object_create"])
            [sc/button
             [sc/plus-icon]]]])]]]))
-
-;; ---
-;; Top-level render
-;; ---
-
-(defn layer-page [m]
-  (let [is-demo?        @grid-view/demo-state
-        layer-endpoint  (fn [uuid] (if is-demo?
-                                     (api/generator-layer uuid)
-                                     (api/layer-view uuid)))
-        curr-match-uuid (->> m :path-params :uuid)]
-    (sel/set-selection-if-changed! layer-state layer-endpoint curr-match-uuid [:selection :uuid])
-    (fn [m]
-        [layer-page-render (->> @layer-state :selection) is-demo?])))

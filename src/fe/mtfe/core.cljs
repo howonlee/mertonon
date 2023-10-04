@@ -39,27 +39,29 @@
 
 (def main-routes
   "Main browser URL (fragment) routes, as opposed to the separate sidebar routes, or the action routes"
-  [["/"                  {:name ::home
+  [["/"                  {:name      ::home
                           :view      grid-selector/grid-selector
                           :before-fx grid-selector/before-fx}]
    ["/intro"             {:name ::intro :view intro/intro-page}]
    ["/login"             {:name ::login :view session/session-page}]
    ["/logout"            {:name ::logout :view session/session-page}]
    ["/error"             {:name ::error :view error-page}]
-   ["/admin"             {:name ::admin
+   ["/admin"             {:name      ::admin
                           :view      admin/admin-page
                           :before-fx admin/before-fx}]
-   ["/user"              {:name ::user
+   ["/user"              {:name      ::user
                           :view      mt-user/mt-user-page
                           :before-fx mt-user/before-fx}]
-   ["/grid/:uuid"        {:name ::grid
+   ["/grid/:uuid"        {:name      ::grid
                           :view      grid/grid-page
                           :before-fx grid/before-fx}]
-   ["/grid_demo"         {:name ::grid-demo
+   ["/grid_demo"         {:name      ::grid-demo
                           :view      grid/grid-page
                           :before-fx grid/demo-before-fx}]
    ["/cost_object/:uuid" {:name ::cost-object :view cost-object/cost-object-page}]
-   ["/layer/:uuid"       {:name ::layer :view layer/layer-page}]
+   ["/layer/:uuid"       {:name      ::layer
+                          :view      layer/layer-page
+                          :before-fx layer/before-fx}]
    ["/weightset/:uuid"   {:name ::weightset :view weightset/weightset-page}]
    ["/weight/:uuid"      {:name ::weight :view weight/weight-page}]])
 

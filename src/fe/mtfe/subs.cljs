@@ -18,6 +18,11 @@
     (get-in db (into [:selection] path))))
 
 (reg-sub
+  :is-demo?
+  (fn [db _]
+    (:is-demo? db)))
+
+(reg-sub
   :curr-error
   (fn [db _]
     (:curr-error db)))

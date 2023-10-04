@@ -6,7 +6,7 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]
-            [re-frame.core :refer [dispatch reg-event-db reg-event-fx]]
+            [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]
             ["reactflow"
              :refer [MiniMap
                      Controls
@@ -14,8 +14,7 @@
                      ReactFlowProvider
                      addEdge]
              :default ReactFlow]
-            ["d3-dag" :refer [dagConnect decrossOpt sugiyama]]
-            [re-frame.core :refer [dispatch dispatch-sync reg-event-db subscribe]]))
+            ["d3-dag" :refer [dagConnect decrossOpt sugiyama]]))
 
 ;; ---
 ;; React class adapters
@@ -28,7 +27,7 @@
 (def background (r/adapt-react-class Background))
 
 ;; ---
-;; Surrounding fx
+;; Before-fx
 ;; ---
 
 (defn before-fx [m]
