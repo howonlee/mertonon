@@ -4,6 +4,13 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- FE only generation
+- FE testing with generation
+- Remove postgres requirement for build
+- Re-frame all the things
+- Make the buttons say more sensible stuff when we log in or out or whatever
+- Outline essay for real
+
 - Other CRUD sidebars, refactor to reframe
 - Kill the statecharts
 - GH build CI
