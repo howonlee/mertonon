@@ -86,7 +86,7 @@
   :selection-success
   (fn [{:keys [db]} [evt resource res]]
     {:db (-> db
-             (assoc-in [:selections resource] res)
+             (assoc-in [:selection resource] res)
              (assoc-in [:loading resource] false))}))
 
 (reg-event-fx
