@@ -31,17 +31,17 @@
 ;; Surrounding fx
 ;; ---
 
-;;;;
-;;;;
-;;;;
-(defn before-fx [m] [[:dispatch
-                      [:some crap :curr-grid (api/grid) {}]
-                      ]])
+(defn before-fx [m]
+  (let [uuid (->> m :path-params :uuid)]
+    [[:dispatch [:select-with-custom-success :curr-grid (api/grid-graph uuid) {} :set-grid-state]]]))
+
 (defn demo-before-fx [m] [[:dispatch
-                      [:some crap :curr-grid (api/grid) {}]
+                      [:some-crap :curr-grid (api/grid) {}]
                            ]])
 
-(defn after-fx [m] [[:dispatch [:some crap]]])
+(defn after-fx [m] [[:dispatch [:some-crap]]])
+
+(defonce demo-state (r/atom false))
 
 ;; ---
 ;; Constants
@@ -181,23 +181,21 @@
 
 (reg-event-db :reset-grid-state
               ;; Do not reset demo state
-              (fn [db _]
+              (fn [db _ _]
                 (-> db
-                    (assoc-in [:selections :curr-grid :graph] {})
-                    (assoc-in [:selections :curr-grid :flow] {}))))
+                    (assoc-in [:selection :curr-grid :graph] {})
+                    (assoc-in [:selection :curr-grid :flow] {}))))
 
-(reg-event-fx :set-grid-state
-              (fn [db [event resource]]
-                {:db
-                 (-> db
-                     (assoc-in [:selections :curr-grid :graph] resource)
-                     (assoc-in [:selections :curr-grid :flow] (layout! resource))
-                     (assoc-in [:is-demo?] false))}))
+(reg-event-db :set-grid-state
+              (fn [db [event resource res]]
+                (-> db
+                    (assoc-in [:selection :curr-grid :graph] res)
+                    (assoc-in [:selection :curr-grid :flow] (layout! res))
+                    (assoc-in [:is-demo?] false))))
 
-(reg-event-fx :set-grid-state-demo
-              (fn [db [event resource]]
-                {:db
-                 (-> db
-                     (assoc-in [:selections :curr-grid :graph] resource)
-                     (assoc-in [:selections :curr-grid :flow] (layout! resource))
-                     (assoc-in [:is-demo?] true))}))
+(reg-event-db :set-grid-state-demo
+              (fn [db [event resource res]]
+                (-> db
+                    (assoc-in [:selection :curr-grid :graph] res)
+                    (assoc-in [:selection :curr-grid :flow] (layout! res))
+                    (assoc-in [:is-demo?] true))))
