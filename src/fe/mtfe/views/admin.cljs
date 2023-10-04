@@ -11,5 +11,6 @@
 (defn admin-page [m]
   [sc/main-section
    (let [mt-users @(subscribe [:selection :mt-users])]
-     [:<>]
-     )])
+     [:<>
+      (for [mt-user mt-users] ^{:key (:uuid mt-user)}
+        [:pre (with-out-str (cljs.pprint/pprint mt-user))])])])

@@ -5,6 +5,7 @@
             [mtfe.subs.core]
             [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]
+            [mtfe.views.admin :as admin]
             [mtfe.views.cost-object :as cost-object]
             [mtfe.views.grid :as grid]
             [mtfe.views.grid-selector :as grid-selector]
@@ -45,7 +46,9 @@
    ["/login"             {:name ::login :view session/session-page}]
    ["/logout"            {:name ::logout :view session/session-page}]
    ["/error"             {:name ::error :view error-page}]
-   ["/admin"             {:name ::admin :view admin-page}]
+   ["/admin"             {:name ::admin
+                          :view      admin/admin-page
+                          :before-fx admin/before-fx}]
    ["/user"              {:name ::user
                           :view      mt-user/mt-user-page
                           :before-fx mt-user/before-fx}]
