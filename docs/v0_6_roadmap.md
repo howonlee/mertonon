@@ -5,6 +5,7 @@
 - [x] Self user view
 - [x] All users view - admin
 - [ ] Re-frameize other views
+- [ ] Re-frameize sidebar reads
 
 - [ ] Users create in admin, new way
 - [ ] Users delete in admin, new way
