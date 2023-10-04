@@ -14,7 +14,8 @@
                      ReactFlowProvider
                      addEdge]
              :default ReactFlow]
-            ["d3-dag" :refer [dagConnect decrossOpt sugiyama]]))
+            ["d3-dag" :refer [dagConnect decrossOpt sugiyama]]
+            [re-frame.core :refer [dispatch dispatch-sync reg-event-db subscribe]]))
 
 ;; ---
 ;; React class adapters
@@ -30,11 +31,14 @@
 ;; Idiosyncratic events
 ;; ---
 
+(reg-event-db :reset-grid-state
+              nil)
+
 ;;;;;;;
 ;;;;;;;
 ;;;;;;;
 ;;;;;;;
-(reg-event-fx :some-crap
+(reg-event-db :set-grid-state
               nil)
 
 ;; ---
