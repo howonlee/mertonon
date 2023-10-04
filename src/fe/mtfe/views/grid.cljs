@@ -27,6 +27,17 @@
 (def background (r/adapt-react-class Background))
 
 ;; ---
+;; Idiosyncratic events
+;; ---
+
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+(reg-event-fx :some-crap
+              nil)
+
+;; ---
 ;; Pre-effects
 ;; ---
 
