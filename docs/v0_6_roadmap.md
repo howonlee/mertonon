@@ -6,9 +6,7 @@
 - [x] All users view - admin
 - [x] Re-frameize grid view
 - [x] Re-frameize layer view
-- [ ] Re-frameize cobj view
-- [ ] Re-frameize weightset view
-- [ ] Re-frameize weight view
+- [ ] Re-frameize the rest (cobj, ws, weight)
 
 - [ ] Setup stuff for re-framizing sidebar reads
 - [ ] Re-frameize sidebar reads
