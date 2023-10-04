@@ -33,16 +33,16 @@
 
 (defn before-fx [m]
   (let [uuid (->> m :path-params :uuid)]
-    [[:dispatch
-      [:select-with-custom-success :curr-grid
-       (api/grid-graph uuid) {} :set-grid-state]]]))
+    [[:dispatch-n
+      [[:reset-grid-state]
+       [:select-with-custom-success :curr-grid
+        (api/grid-graph uuid) {} :set-grid-state]]]]))
 
 (defn demo-before-fx [_]
-  [[:dispatch
-    [:select-with-custom-success :curr-grid
-     (api/generator-graph) {} :set-grid-state-demo]]])
-
-(defn after-fx [_] [[:dispatch [:reset-grid-state]]])
+  [[:dispatch-n
+    [[:reset-grid-state]
+     [:select-with-custom-success :curr-grid
+      (api/generator-graph) {} :set-grid-state-demo]]]])
 
 (defonce demo-state (r/atom false))
 

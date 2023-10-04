@@ -54,12 +54,10 @@
                           :before-fx mt-user/before-fx}]
    ["/grid/:uuid"        {:name ::grid
                           :view      grid/grid-page
-                          :before-fx grid/before-fx
-                          :after-fx  grid/after-fx}]
+                          :before-fx grid/before-fx}]
    ["/grid_demo"         {:name ::grid-demo
                           :view      grid/grid-page
-                          :before-fx grid/demo-before-fx
-                          :after-fx  grid/after-fx}]
+                          :before-fx grid/demo-before-fx}]
    ["/cost_object/:uuid" {:name ::cost-object :view cost-object/cost-object-page}]
    ["/layer/:uuid"       {:name ::layer :view layer/layer-page}]
    ["/weightset/:uuid"   {:name ::weightset :view weightset/weightset-page}]
