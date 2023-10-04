@@ -4,8 +4,10 @@
 
 - [x] Self user view
 - [x] All users view - admin
-- [ ] Users CRUD in admin - i think do this the new way? we can keep the validation semantics, call it through event i guess
+- [ ] Re-frameize other views
 
+- [ ] Users create in admin, new way
+- [ ] Users delete in admin, new way
 - [ ] Logout BE test
 - [ ] Redirect after login, logout, intro...
 - [ ] Update mertonon.com
