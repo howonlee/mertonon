@@ -14,11 +14,11 @@
 ;; Initializations
 ;; ---
 
-(reg-event-fx
+(reg-event-db
  :initialize-db
  []
- (fn [_ _]
-   {:db {:curr-page-match {}}}))
+ (fn [db _]
+   {:curr-page-match {}}))
 
 ;; ---
 ;; Navigation

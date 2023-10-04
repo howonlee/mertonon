@@ -28,25 +28,13 @@
 (def background (r/adapt-react-class Background))
 
 ;; ---
-;; Idiosyncratic events
-;; ---
-
-(reg-event-db :reset-grid-state
-              nil)
-
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-(reg-event-db :set-grid-state
-              nil)
-
-;; ---
-;; Pre-effects
+;; Surrounding fx
 ;; ---
 
 (def before-fx [nil])
 (def demo-before-fx [nil])
+
+(def after-fx [nil])
 
 ;; ---
 ;; Constants
@@ -67,7 +55,7 @@
 (defonce demo-state (r/atom false))
 
 (defn reset-state! []
-  ;; demo-state is used outisde of this view, basically as global state
+  ;; demo-state is used outside of this view, basically as global state
   (do
     (reset! grid-graph-state {})
     (reset! grid-flow-state {})))
@@ -189,6 +177,27 @@
                              :markerEnd    {:type "arrow"}}))
                         vec)]
     {:curr-nodes curr-nodes :curr-edges curr-edges}))
+
+
+;; ---
+;; Idiosyncratic events
+;; ---
+
+(reg-event-db :reset-grid-state
+              (fn [db _]
+                (-> db
+                    (assoc-in [:selection :curr-grid :graph] {})
+                    (assoc-in [:selection :curr-grid :flow] {}))))
+
+(reg-event-db :set-grid-state
+              (fn [db [event resource]]
+                (-> db
+                    (assoc-in [:selection :curr-grid :graph] resource)
+                    (assoc-in [:selection :curr-grid :flow] (layout! resource)))))
+
+(reg-event-db :set-demo-state
+              (fn [db [_ new-demo-state]]
+                (assoc-in db [:is-demo?] new-demo-state)))
 
 ;; ---
 ;; Top-level Render
