@@ -28,11 +28,16 @@
 (reg-event-fx
  :nav-page-match
  (fn [{:keys [db]} [_ m]]
-   (let [db-res    {:db (assoc db :curr-page-match m)}
-         total-res (if (-> m :data :before-fx)
-                     (assoc db-res :fx ((-> m :data :before-fx) m))
-                     db-res)]
-     total-res)))
+   (let [curr-match (-> db :curr-page-match)
+         res (if (get-in curr-match [:data :after-fx])
+               {:fx ((-> curr-match :data :after-fx) curr-match)}
+               {})
+         res (assoc res :db (assoc db :curr-page-match m))
+         res (if (-> m :data :before-fx)
+               (assoc res :fx (into (or (:fx res) [])
+                                    ((-> m :data :before-fx) m)))
+               res)]
+     res)))
 
 ;; Given a page _path_, nav to it
 (reg-event-fx

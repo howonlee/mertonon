@@ -31,10 +31,10 @@
 ;; Surrounding fx
 ;; ---
 
-(def before-fx [nil])
-(def demo-before-fx [nil])
+(defn before-fx [m] [[:dispatch []]])
+(defn demo-before-fx [m] [[:dispatch []]])
 
-(def after-fx [nil])
+(defn after-fx [m] [nil])
 
 ;; ---
 ;; Constants
@@ -106,27 +106,28 @@
    [:h1 "Welcome to Mertonon!"]
    [:div "Add a responsibility center from the sidebar to begin"]])
 
-(defn grid-page-render [curr-nodes curr-edges]
-  ;;;; subscribe here
-  (if (and (empty? curr-nodes) (empty? curr-edges))
-    [sc/main-section
-     [empty-render]]
-    [sc/main-section
-     [:div {:style {:height "85vh" :width "55vw" :float "left"}}
-      [react-flow
-       {:default-nodes        curr-nodes
-        :default-edges        curr-edges
-        :style                {:height "100%" :width "100%"}
-        :on-pane-click        on-pane-single-click
-        :on-node-click        on-node-single-click
-        :on-edge-click        on-edge-single-click
-        :on-node-double-click on-node-double-click
-        :on-edge-double-click on-edge-double-click
-        :snap-to-grid         true
-        :fit-view             true}
-       [minimap]
-       [controls]
-       [background]]]]))
+(defn grid-page [m]
+  (let [curr-nodes @(subscribe [:selection :curr-grid :flow :curr-nodes])
+        curr-edges @(subscribe [:selection :curr-grid :flow :curr-edges])]
+    (if (and (empty? curr-nodes) (empty? curr-edges))
+      [sc/main-section
+       [empty-render]]
+      [sc/main-section
+       [:div {:style {:height "85vh" :width "55vw" :float "left"}}
+        [react-flow
+         {:default-nodes        curr-nodes
+          :default-edges        curr-edges
+          :style                {:height "100%" :width "100%"}
+          :on-pane-click        on-pane-single-click
+          :on-node-click        on-node-single-click
+          :on-edge-click        on-edge-single-click
+          :on-node-double-click on-node-double-click
+          :on-edge-double-click on-edge-double-click
+          :snap-to-grid         true
+          :fit-view             true}
+         [minimap]
+         [controls]
+         [background]]]])))
 
 ;; ---
 ;; Layouting algorithm call
@@ -187,51 +188,17 @@
 (reg-event-db :reset-grid-state
               (fn [db _]
                 (-> db
-                    (assoc-in [:selection :curr-grid :graph] {})
-                    (assoc-in [:selection :curr-grid :flow] {}))))
+                    (assoc-in [:selections :curr-grid :graph] {})
+                    (assoc-in [:selections :curr-grid :flow] {}))))
 
 (reg-event-fx :set-grid-state
               (fn [db [event resource new-demo-state]]
                 {:db
                  (-> db
-                     (assoc-in [:selection :curr-grid :graph] resource)
-                     (assoc-in [:selection :curr-grid :flow] (layout! resource)))
+                     (assoc-in [:selections :curr-grid :graph] resource)
+                     (assoc-in [:selections :curr-grid :flow] (layout! resource)))
                  :dispatch [:set-demo-state new-demo-state]}))
 
 (reg-event-db :set-demo-state
               (fn [db [_ new-demo-state]]
                 (assoc-in db [:is-demo?] new-demo-state)))
-
-;; ---
-;; Top-level Render
-;; ---
-
-;; Need to do reagent form 3's because of interop with react flow
-;; see here: https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
-
-(defn grid-page [{:keys [path-params] :as match}]
-  (let [uuid (:uuid path-params)]
-    (r/create-class
-      {:component-did-mount    (fn [_] (GET (api/grid-graph uuid)
-                                            {:handler (fn [resp]
-                                                        (do
-                                                          (reset! grid-graph-state (util/json-parse resp))
-                                                          (reset! grid-flow-state (layout! @grid-graph-state))
-                                                          (reset! demo-state false)))}))
-       :component-will-unmount reset-state!
-       :reagent-render         (fn [] [grid-page-render
-                                       (:curr-nodes @grid-flow-state)
-                                       (:curr-edges @grid-flow-state)])})))
-
-(defn grid-demo-page []
-  (r/create-class
-    {:component-did-mount    (fn [_] (GET (api/generator-graph)
-                                          {:handler (fn [resp]
-                                                      (do
-                                                        (reset! grid-graph-state (util/json-parse resp))
-                                                        (reset! grid-flow-state (layout! @grid-graph-state))
-                                                        (reset! demo-state true)))}))
-     :component-will-unmount reset-state!
-     :reagent-render         (fn [] [grid-page-render
-                                     (:curr-nodes @grid-flow-state)
-                                     (:curr-edges @grid-flow-state)])}))

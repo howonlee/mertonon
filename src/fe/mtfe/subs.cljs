@@ -14,8 +14,8 @@
 
 (reg-sub
   :selection
-  (fn [db [evt resource]]
-    (-> db :selections resource)))
+  (fn [db [evt & path]]
+    (get-in db (into [:selections] path))))
 
 (reg-sub
   :curr-error
