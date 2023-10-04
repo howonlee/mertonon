@@ -7,13 +7,12 @@
 - [x] Re-frameize grid view
 - [x] Re-frameize layer view
 - [x] Re-frameize the rest (cobj, ws, weight)
-- [ ] Setup stuff for re-framizing sidebar reads
-- [ ] Re-frameize sidebar reads
 
 - [ ] Users create in admin, new way
 - [ ] Users delete in admin, new way
-- [ ] Logout BE test
+- [ ] Re-frameize sidebar reads
 - [ ] Redirect after login, logout, intro...
+- [ ] Logout BE test
 - [ ] Update mertonon.com
 
 - [ ] Changelog

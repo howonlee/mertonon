@@ -6,3 +6,9 @@
             [reagent.core :as r]))
 ;; create user
 ;; delete user
+
+(defn admin-sidebar
+  [m]
+  [:<>
+   [:h1 "Admin Sidebar"]
+   [:p "Placeholder for admin sidebar"]])

@@ -2,7 +2,8 @@
   "State and router for sidebar, which is itself a separate browsing environment, basically.
 
   Most things that would become a modal in normal sites go in sidebar"
-  (:require [mtfe.sidebars.cost-object :as cost-object]
+  (:require [mtfe.sidebars.admin :as admin]
+            [mtfe.sidebars.cost-object :as cost-object]
             [mtfe.sidebars.entry :as entry]
             [mtfe.sidebars.grad :as grad]
             [mtfe.sidebars.grid :as grid]
@@ -22,8 +23,6 @@
             [reitit.frontend :as rf]
             [reitit.core :as re]))
 
-(defonce sidebar-match (r/atom nil))
-
 (defn home-sidebar []
   [:div
    [:h1 "🥞 Mertonon"]
@@ -37,19 +36,12 @@
    [:p "Click on the Demo button to see a demo, click an existing grid to see
         that grid, or click the + button to create a new grid."]])
 
-(defn admin-sidebar []
-  [:div
-   [:h1 "Mertonon"]
-   [:p "Placeholder for admin panel stuff"]])
-
-;; It's not restful or hateoas, deal with it for now
-
 (def sidebar-routes
   [["/"                               {:name ::home-sidebar :view home-sidebar}]
    ["/intro"                          {:name ::intro-sidebar :view intro/intro-sidebar}]
    ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
    ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
-   ["/admin"                          {:name ::admin-sidebar :view admin-sidebar}]
+   ["/admin"                          {:name ::admin-sidebar :view admin/admin-sidebar}]
    ["/user"                           {:name ::user-sidebar :view mt-user/mt-user-sidebar}]
 
    ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
