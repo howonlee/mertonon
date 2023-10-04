@@ -3,7 +3,7 @@
 - [x] kebab-case API namespace because it annoys me
 
 - [x] Self user view
-- [ ] All users view - admin
+- [x] All users view - admin
 - [ ] Users CRUD in admin - i think do this the new way? we can keep the validation semantics, call it through event i guess
 
 - [ ] Logout BE test
