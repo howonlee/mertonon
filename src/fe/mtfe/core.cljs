@@ -58,7 +58,9 @@
    ["/grid_demo"         {:name      ::grid-demo
                           :view      grid/grid-page
                           :before-fx grid/demo-before-fx}]
-   ["/cost_object/:uuid" {:name ::cost-object :view cost-object/cost-object-page}]
+   ["/cost_object/:uuid" {:name      ::cost-object
+                          :view      cost-object/cost-object-page
+                          :before-fx cost-object/before-fx}]
    ["/layer/:uuid"       {:name      ::layer
                           :view      layer/layer-page
                           :before-fx layer/before-fx}]

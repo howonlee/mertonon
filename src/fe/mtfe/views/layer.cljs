@@ -7,7 +7,6 @@
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch subscribe]]))
 
@@ -16,12 +15,12 @@
 ;; ---
 
 (defn before-fx [m]
-  (let [is-demo? @(subscribe [:is-demo?])
-        uuid     (->> m :path-params :uuid)
+  (let [is-demo?       @(subscribe [:is-demo?])
+        uuid           (->> m :path-params :uuid)
         layer-endpoint (if is-demo?
                          (api/generator-layer uuid)
                          (api/layer-view uuid))]
-    [[:dispatch [:selection :curr-layer layer-endpoint {}]]]))
+    [[:dispatch [:selection :layer-view layer-endpoint {}]]]))
 
 (defonce layer-state (r/atom {:selection {}}))
 
@@ -52,7 +51,7 @@
 ;; ---
 
 (defn layer-page [_]
-  (let [layer-state @(subscribe [:selection :curr-layer])
+  (let [layer-state @(subscribe [:selection :layer-view])
         is-demo?    @(subscribe [:is-demo?])
         grid-path   (if is-demo?  ["grid_demo"] ["grid" (->> layer-state :layer :grid-uuid)])]
     [:div.fl.pa2
