@@ -79,6 +79,15 @@
              (assoc-in [:selections resource] res)
              (assoc-in [:loading resource] false))}))
 
+(reg-event-fx
+  :select-with-handler
+  (fn [{:keys [db]} [evt resource endpoint params]]
+    nil))
+
+(reg-event-fx
+  :selection-success-with-handler
+  nil)
+
 
 ;; ---
 ;; Create

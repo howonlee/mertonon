@@ -4,6 +4,7 @@
 
 - [x] Self user view
 - [x] All users view - admin
+- [ ] Re-frameize grid view
 - [ ] Re-frameize other views
 - [ ] Re-frameize sidebar reads
 
