@@ -54,19 +54,6 @@
 ;; State
 ;; ---
 
-(defonce grid-graph-state (r/atom {}))
-(defonce grid-flow-state (r/atom {}))
-
-;; De facto per-grid state to determine whether demo or not
-;; Use as broadly-scoped state
-(defonce demo-state (r/atom false))
-
-(defn reset-state! []
-  ;; demo-state is used outside of this view, basically as global state
-  (do
-    (reset! grid-graph-state {})
-    (reset! grid-flow-state {})))
-
 ;; ---
 ;; Event handlers
 ;; ---
@@ -193,19 +180,24 @@
 ;; ---
 
 (reg-event-db :reset-grid-state
+              ;; Do not reset demo state
               (fn [db _]
                 (-> db
                     (assoc-in [:selections :curr-grid :graph] {})
                     (assoc-in [:selections :curr-grid :flow] {}))))
 
 (reg-event-fx :set-grid-state
-              (fn [db [event resource new-demo-state]]
+              (fn [db [event resource]]
                 {:db
                  (-> db
                      (assoc-in [:selections :curr-grid :graph] resource)
-                     (assoc-in [:selections :curr-grid :flow] (layout! resource)))
-                 :dispatch [:set-demo-state new-demo-state]}))
+                     (assoc-in [:selections :curr-grid :flow] (layout! resource))
+                     (assoc-in [:is-demo?] false))}))
 
-(reg-event-db :set-demo-state
-              (fn [db [_ new-demo-state]]
-                (assoc-in db [:is-demo?] new-demo-state)))
+(reg-event-fx :set-grid-state-demo
+              (fn [db [event resource]]
+                {:db
+                 (-> db
+                     (assoc-in [:selections :curr-grid :graph] resource)
+                     (assoc-in [:selections :curr-grid :flow] (layout! resource))
+                     (assoc-in [:is-demo?] true))}))
