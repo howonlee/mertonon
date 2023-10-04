@@ -1,12 +1,8 @@
 (ns mtfe.views.mt-user
   "Mertonon User view"
-  (:require [ajax.core :refer [GET POST]]
-            [applied-science.js-interop :as j]
-            [goog.string :as gstring]
+  (:require [goog.string :as gstring]
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
-            [mtfe.util :as util]
-            [reagent.core :as r]
             [re-frame.core :refer [dispatch subscribe]]))
 
 (defn before-fx [m]
