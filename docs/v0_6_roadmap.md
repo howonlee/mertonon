@@ -5,7 +5,12 @@
 - [x] Self user view
 - [x] All users view - admin
 - [x] Re-frameize grid view
-- [ ] Re-frameize other views
+- [x] Re-frameize layer view
+- [ ] Re-frameize cobj view
+- [ ] Re-frameize weightset view
+- [ ] Re-frameize weight view
+
+- [ ] Setup stuff for re-framizing sidebar reads
 - [ ] Re-frameize sidebar reads
 
 - [ ] Users create in admin, new way

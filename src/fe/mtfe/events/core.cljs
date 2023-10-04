@@ -30,8 +30,7 @@
  (fn [{:keys [db]} [_ m]]
    (let [res {:db (assoc db :curr-page-match m)}
          res (if (-> m :data :before-fx)
-               (assoc res :fx (into (or (:fx res) [])
-                                    ((-> m :data :before-fx) m)))
+               (assoc res :fx ((-> m :data :before-fx) m))
                res)]
      res)))
 
@@ -45,7 +44,11 @@
 (reg-event-fx
  :nav-sidebar-match
  (fn [{:keys [db]} [_ m]]
-   {:db (assoc db :curr-sidebar-match m)}))
+   (let [res {:db (assoc db :curr-sidebar-match m)}
+         res (if (-> m :data :before-fx)
+               (assoc res :fx ((-> m :data :before-fx) m))
+               res)]
+     res)))
 
 ;; Given a non-page route path, like sidebars, nav to it
 (reg-event-fx
