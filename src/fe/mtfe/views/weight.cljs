@@ -8,11 +8,25 @@
             [mtfe.views.grid :as grid-view]
             [mtfe.views.layer :as layer-view]
             [mtfe.util :as util]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch subscribe]]))
+;; ---
+;; Before-fx
+;; ---
 
-(defonce weight-state (r/atom {:selection {}}))
+(defn before-fx [m]
+  (let [is-demo?        @(subscribe [:is-demo?])
+        uuid            (->> m :path-params :uuid)
+        weight-endpoint (if is-demo?
+                          (api/generator-weight uuid)
+                          (api/weight-view uuid))]
+    [[:dispatch [:selection :weight-view weight-endpoint {}]]]))
 
-(defn weight-page-render [{:keys [weight src-cobj tgt-cobj weightset] :as weight-state}]
+(defn weight-page [_]
+  (let [{weight :weight
+         src-cobj :src-cobj
+         tgt-cobj :tgt-cobj
+         weightset :weightset} @(subscribe [:selection :weight-view])]
   [:<>
    [:h1 [sc/weight-icon] " Weight " [:strong (str (:uuid weight))]]
    [:h2 (:label weight)]
@@ -25,14 +39,4 @@
    [:h5 "Value"]
    [:p (str (:value weight))]
    [:h5 "Gradient"]
-   [:p (str (:grad weight))]])
-
-(defn weight-page [m]
-  (let [is-demo?        @grid-view/demo-state
-        weight-endpoint (fn [uuid] (if is-demo?
-                                     (api/generator-weight uuid)
-                                     (api/weight-view uuid)))
-        curr-match-uuid (->> m :path-params :uuid)]
-    (sel/set-selection-if-changed! weight-state weight-endpoint curr-match-uuid [:selection :uuid])
-    (fn [m]
-      [weight-page-render (->> @weight-state :selection)])))
+   [:p (str (:grad weight))]]))

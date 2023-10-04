@@ -64,8 +64,12 @@
    ["/layer/:uuid"       {:name      ::layer
                           :view      layer/layer-page
                           :before-fx layer/before-fx}]
-   ["/weightset/:uuid"   {:name ::weightset :view weightset/weightset-page}]
-   ["/weight/:uuid"      {:name ::weight :view weight/weight-page}]])
+   ["/weightset/:uuid"   {:name      ::weightset
+                          :view      weightset/weightset-page
+                          :before-fx weightset/before-fx}]
+   ["/weight/:uuid"      {:name      ::weight
+                          :view      weight/weight-page
+                          :before-fx weight/before-fx}]])
 
 
 (defn nav []

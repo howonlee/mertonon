@@ -8,7 +8,20 @@
             [mtfe.stylecomps :as sc]
             [mtfe.views.grid :as grid-view]
             [mtfe.util :as util]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch subscribe]]))
+
+;; ---
+;; Before-fx
+;; ---
+
+(defn before-fx [m]
+  (let [is-demo?      @(subscribe [:is-demo?])
+        uuid          (->> m :path-params :uuid)
+        cobj-endpoint (if is-demo?
+                        (api/generator-cost-object uuid)
+                        (api/cost-object-view uuid))]
+    [[:dispatch [:selection :cobj-view cobj-endpoint {}]]]))
 
 (defonce ws-state (r/atom {:selection {}}))
 (defonce curr-matrix (r/atom {}))
