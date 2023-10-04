@@ -31,10 +31,17 @@
 ;; Surrounding fx
 ;; ---
 
-(defn before-fx [m] [[:dispatch []]])
-(defn demo-before-fx [m] [[:dispatch []]])
+;;;;
+;;;;
+;;;;
+(defn before-fx [m] [[:dispatch
+                      [:some crap :curr-grid (api/grid) {}]
+                      ]])
+(defn demo-before-fx [m] [[:dispatch
+                      [:some crap :curr-grid (api/grid) {}]
+                           ]])
 
-(defn after-fx [m] [nil])
+(defn after-fx [m] [[:dispatch [:some crap]]])
 
 ;; ---
 ;; Constants
