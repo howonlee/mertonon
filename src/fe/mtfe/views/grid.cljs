@@ -6,7 +6,7 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]
-            [re-frame.core :refer [dispatch]]
+            [re-frame.core :refer [dispatch reg-event-db reg-event-fx]]
             ["reactflow"
              :refer [MiniMap
                      Controls
@@ -107,6 +107,7 @@
    [:div "Add a responsibility center from the sidebar to begin"]])
 
 (defn grid-page-render [curr-nodes curr-edges]
+  ;;;; subscribe here
   (if (and (empty? curr-nodes) (empty? curr-edges))
     [sc/main-section
      [empty-render]]
@@ -189,11 +190,13 @@
                     (assoc-in [:selection :curr-grid :graph] {})
                     (assoc-in [:selection :curr-grid :flow] {}))))
 
-(reg-event-db :set-grid-state
-              (fn [db [event resource]]
-                (-> db
-                    (assoc-in [:selection :curr-grid :graph] resource)
-                    (assoc-in [:selection :curr-grid :flow] (layout! resource)))))
+(reg-event-fx :set-grid-state
+              (fn [db [event resource new-demo-state]]
+                {:db
+                 (-> db
+                     (assoc-in [:selection :curr-grid :graph] resource)
+                     (assoc-in [:selection :curr-grid :flow] (layout! resource)))
+                 :dispatch [:set-demo-state new-demo-state]}))
 
 (reg-event-db :set-demo-state
               (fn [db [_ new-demo-state]]
