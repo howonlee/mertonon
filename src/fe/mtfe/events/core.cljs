@@ -1,4 +1,9 @@
 (ns mtfe.events.core
+  "Registry of general Mertonon events
+
+  There may be idiosyncratic events stuck in individual views, etc.
+
+  If they blast out of their scope move them here"
   (:require [ajax.core :refer [json-request-format json-response-format]]
             [day8.re-frame.http-fx]
             [mtfe.api :as api]
@@ -80,14 +85,16 @@
              (assoc-in [:loading resource] false))}))
 
 (reg-event-fx
-  :select-with-handler
-  (fn [{:keys [db]} [evt resource endpoint params]]
-    nil))
-
-(reg-event-fx
-  :selection-success-with-handler
-  nil)
-
+  :select-with-custom-success
+ (fn [{:keys [db]} [evt resource endpoint params success-event]]
+   {:http-xhrio {:method          :get
+                 :uri             endpoint
+                 :params          params
+                 :response-format (json-response-format {:keywords? true})
+                 :on-success      [success-event resource]
+                 :on-failure      [:api-request-error evt resource]}
+    :db          (-> db
+                     (assoc-in [:loading resource] true))}))
 
 ;; ---
 ;; Create
