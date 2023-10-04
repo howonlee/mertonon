@@ -1,4 +1,5 @@
-(ns mtfe.subs.core
+(ns mtfe.subs
+  "DB subscriptions for re-frame in Mertonon"
   (:require [re-frame.core :refer [reg-sub]]))
 
 (reg-sub

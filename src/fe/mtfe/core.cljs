@@ -2,9 +2,9 @@
   "Mertonon Frontend"
   (:require [mtfe.events.core]
             [mtfe.fx]
-            [mtfe.subs.core]
             [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]
+            [mtfe.subs]
             [mtfe.views.admin :as admin]
             [mtfe.views.cost-object :as cost-object]
             [mtfe.views.grid :as grid]
