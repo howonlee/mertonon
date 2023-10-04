@@ -8,7 +8,20 @@
             [mtfe.stylecomps :as sc]
             [mtfe.views.grid :as grid-view]
             [mtfe.util :as util]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch subscribe]]))
+
+;; ---
+;; Before-fx
+;; ---
+
+(defn before-fx [m]
+  (let [is-demo?    @(subscribe [:is-demo?])
+        uuid        (->> m :path-params :uuid)
+        ws-endpoint (if is-demo?
+                        (api/generator-weightset uuid)
+                        (api/weightset-view uuid))]
+    [[:dispatch [:selection :ws-view ws-endpoint {}]]]))
 
 (defonce ws-state (r/atom {:selection {}}))
 (defonce curr-matrix (r/atom {}))
@@ -38,27 +51,6 @@
              [sc/button
               [sc/plus-icon]])))
 
-(defn weightset-page-render [{:keys [src-cobjs tgt-cobjs weightset] :as ws-state} curr-matrix is-demo?]
-  [:div.fl.pa2
-   [:h1 [sc/ws-icon] " Weightset " [:strong (->> weightset :name str)]]
-   [:p (->> weightset :label str)]
-   [sc/weightset-table
-    [:tbody
-     (for [curr-row (range (:rows curr-matrix))] ^{:key (str curr-row)}
-       [:tr
-        (for [curr-col (range (:cols curr-matrix))] ^{:key (str curr-col)}
-          [:td
-           (if (or 
-                 (some? (curr-matrix [curr-row curr-col]))
-                 (and (= curr-row 0) (= curr-col 0)))
-             (curr-matrix [curr-row curr-col])
-             (if is-demo?
-               ""
-               (to-create-member
-                 (nth src-cobjs (- curr-row 1))
-                 (nth tgt-cobjs (- curr-col 1))
-                 (->> weightset :uuid))))])])]]])
-
 (defn display-matrix
   "Ad hoc DOK thing to have other stuff in there eventually"
   [{:keys [src-cobjs tgt-cobjs weights] :as ws-state} ws-mode]
@@ -84,13 +76,29 @@
                                        (weight-member member max-weight-val ws-mode)]) weights))]
     filled-weights))
 
-(defn weightset-page [m]
-  (let [is-demo?           @grid-view/demo-state
-        weightset-endpoint (fn [uuid] (if is-demo?
-                                        (api/generator-weightset uuid)
-                                        (api/weightset-view uuid)))
-        curr-match-uuid    (->> m :path-params :uuid)]
-    (sel/set-selection-if-changed! ws-state weightset-endpoint curr-match-uuid [:selection :uuid])
-    (fn [m]
-      (let [curr-ws (->> @ws-state :selection)]
-        [weightset-page-render curr-ws (display-matrix curr-ws @ws-mode) is-demo?]))))
+(defn weightset-page [_]
+  (let [ws-view                @(subscribe [:selection :ws-view])
+        {src-cobjs :src-cobjs
+         tgt-cobjs :tgt-cobjs
+         weightset :weightset} ws-view
+        curr-matrix            (display-matrix ws-view @ws-mode)
+        is-demo?               @(subscribe [:is-demo?])]
+    [:div.fl.pa2
+     [:h1 [sc/ws-icon] " Weightset " [:strong (->> weightset :name str)]]
+     [:p (->> weightset :label str)]
+     [sc/weightset-table
+      [:tbody
+       (for [curr-row (range (:rows curr-matrix))] ^{:key (str curr-row)}
+         [:tr
+          (for [curr-col (range (:cols curr-matrix))] ^{:key (str curr-col)}
+            [:td
+             (if (or
+                   (some? (curr-matrix [curr-row curr-col]))
+                   (and (= curr-row 0) (= curr-col 0)))
+               (curr-matrix [curr-row curr-col])
+               (if is-demo?
+                 ""
+                 (to-create-member
+                   (nth src-cobjs (- curr-row 1))
+                   (nth tgt-cobjs (- curr-col 1))
+                   (->> weightset :uuid))))])])]]]))

@@ -1,7 +1,7 @@
 (ns mtfe.views.intro
   "Introduction view to look at while you fill out deets in the intro sidebar")
 
-(defn intro-page-render []
+(defn intro-page [_]
   [:div
    [:h1 "🥞 Mertonon"]
    [:h2 "Open Pre-Alpha"]
@@ -11,6 +11,3 @@
        centers, for an overall P&L. More than one P&L, targets besides competitiveness, and other KPI's forthcoming."]
    [:p "In computing terms, Mertonon is a neural network model of your organization."]
    [:p "Create an administrator account from the sidebar."]])
-
-(defn intro-page [m]
-  [intro-page-render])

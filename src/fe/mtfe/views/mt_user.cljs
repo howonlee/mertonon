@@ -1,11 +1,8 @@
 (ns mtfe.views.mt-user
   "Mertonon User view"
-  (:require [ajax.core :refer [GET POST]]
-            [applied-science.js-interop :as j]
+  (:require [goog.string :as gstring]
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
-            [mtfe.util :as util]
-            [reagent.core :as r]
             [re-frame.core :refer [dispatch subscribe]]))
 
 (defn before-fx [m]
@@ -13,7 +10,11 @@
 
 (defn mt-user-page [m]
   [sc/main-section
-   (let [curr-user @(subscribe [:selection :curr-mt-user])
-         ;;;; destructure
-         ]
-     [:pre (with-out-str (cljs.pprint/pprint curr-user))])])
+   (let [{username   :username
+          email      :email
+          created-at :created-at
+          updated-at :updated-at} @(subscribe [:selection :curr-mt-user])]
+     [:<>
+      [:h1 (str username)]
+      [:h4 (str email)]
+      [:p (str "User created at : " created-at)]])])

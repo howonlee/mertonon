@@ -1,4 +1,5 @@
-(ns mtfe.subs.core
+(ns mtfe.subs
+  "DB subscriptions for re-frame in Mertonon"
   (:require [re-frame.core :refer [reg-sub]]))
 
 (reg-sub
@@ -13,8 +14,13 @@
 
 (reg-sub
   :selection
-  (fn [db [evt resource]]
-    (-> db :selections resource)))
+  (fn [db [evt & path]]
+    (get-in db (into [:selection] path))))
+
+(reg-sub
+  :is-demo?
+  (fn [db _]
+    (:is-demo? db)))
 
 (reg-sub
   :curr-error

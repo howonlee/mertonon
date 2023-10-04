@@ -1,4 +1,9 @@
 (ns mtfe.events.core
+  "Registry of general Mertonon events
+
+  There may be idiosyncratic events stuck in individual views, etc.
+
+  If they blast out of their scope move them here"
   (:require [ajax.core :refer [json-request-format json-response-format]]
             [day8.re-frame.http-fx]
             [mtfe.api :as api]
@@ -9,11 +14,11 @@
 ;; Initializations
 ;; ---
 
-(reg-event-fx
+(reg-event-db
  :initialize-db
  []
- (fn [_ _]
-   {:db {:curr-page-match {}}}))
+ (fn [db _]
+   {:curr-page-match {}}))
 
 ;; ---
 ;; Navigation
@@ -23,11 +28,11 @@
 (reg-event-fx
  :nav-page-match
  (fn [{:keys [db]} [_ m]]
-   (let [db-res    {:db (assoc db :curr-page-match m)}
-         total-res (if (-> m :data :before-fx)
-                     (assoc db-res :fx ((-> m :data :before-fx) m))
-                     db-res)]
-     total-res)))
+   (let [res {:db (assoc db :curr-page-match m)}
+         res (if (-> m :data :before-fx)
+               (assoc res :fx ((-> m :data :before-fx) m))
+               res)]
+     res)))
 
 ;; Given a page _path_, nav to it
 (reg-event-fx
@@ -39,7 +44,11 @@
 (reg-event-fx
  :nav-sidebar-match
  (fn [{:keys [db]} [_ m]]
-   {:db (assoc db :curr-sidebar-match m)}))
+   (let [res {:db (assoc db :curr-sidebar-match m)}
+         res (if (-> m :data :before-fx)
+               (assoc res :fx ((-> m :data :before-fx) m))
+               res)]
+     res)))
 
 ;; Given a non-page route path, like sidebars, nav to it
 (reg-event-fx
@@ -76,9 +85,20 @@
   :selection-success
   (fn [{:keys [db]} [evt resource res]]
     {:db (-> db
-             (assoc-in [:selections resource] res)
+             (assoc-in [:selection resource] res)
              (assoc-in [:loading resource] false))}))
 
+(reg-event-fx
+  :select-with-custom-success
+ (fn [{:keys [db]} [evt resource endpoint params success-event]]
+   {:http-xhrio {:method          :get
+                 :uri             endpoint
+                 :params          params
+                 :response-format (json-response-format {:keywords? true})
+                 :on-success      [success-event resource]
+                 :on-failure      [:api-request-error evt resource]}
+    :db          (-> db
+                     (assoc-in [:loading resource] true))}))
 
 ;; ---
 ;; Create

@@ -1,22 +1,17 @@
 - [x] current\_user endpoint
 - [x] Links via dispatch, so side effects shoved into fx
 - [x] kebab-case API namespace because it annoys me
-- [ ] Self user view
-- [ ] All users view
-- [ ] Users CRUD - i think do this the new way? we can keep the validation semantics, call it through event i guess
-- [ ] Grid view reframe
-- [ ] Other views reframe
 
-- [ ] FE only generation - db generation. re-frame will make this easier (re-frame will make this practicable lol)
-- [ ] FE testing with generation
-- [ ] Logout BE test
-- [ ] Remove postgres requirement for build
+- [x] Self user view
+- [x] All users view - admin
+- [x] Re-frameize grid view
+- [x] Re-frameize layer view
+- [x] Re-frameize the rest (cobj, ws, weight)
 
-- [ ] Grid CRUD sidebars reframe
-- [ ] See if it was easy enough that we might do it all this week and kill statecharts. if not, no biggie
+- [ ] Users create in admin, new way
+- [ ] Users delete in admin, new way
 - [ ] Redirect after login, logout, intro...
-- [ ] Make the buttons say more sensible stuff when we log in or out or whatever
-- [ ] Outline the essay for real
+- [ ] Logout BE test
 - [ ] Update mertonon.com
 
 - [ ] Changelog

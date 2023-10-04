@@ -6,7 +6,7 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]
-            [re-frame.core :refer [dispatch]]
+            [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]
             ["reactflow"
              :refer [MiniMap
                      Controls
@@ -27,11 +27,23 @@
 (def background (r/adapt-react-class Background))
 
 ;; ---
-;; Pre-effects
+;; Before-fx
 ;; ---
 
-(def before-fx [nil])
-(def demo-before-fx [nil])
+(defn before-fx [m]
+  (let [uuid (->> m :path-params :uuid)]
+    [[:dispatch-n
+      [[:reset-grid-state]
+       [:select-with-custom-success :curr-grid
+        (api/grid-graph uuid) {} :set-grid-state]]]]))
+
+(defn demo-before-fx [_]
+  [[:dispatch-n
+    [[:reset-grid-state]
+     [:select-with-custom-success :curr-grid
+      (api/generator-graph) {} :set-grid-state-demo]]]])
+
+(defonce demo-state (r/atom false))
 
 ;; ---
 ;; Constants
@@ -43,19 +55,6 @@
 ;; ---
 ;; State
 ;; ---
-
-(defonce grid-graph-state (r/atom {}))
-(defonce grid-flow-state (r/atom {}))
-
-;; De facto per-grid state to determine whether demo or not
-;; Use as broadly-scoped state
-(defonce demo-state (r/atom false))
-
-(defn reset-state! []
-  ;; demo-state is used outisde of this view, basically as global state
-  (do
-    (reset! grid-graph-state {})
-    (reset! grid-flow-state {})))
 
 ;; ---
 ;; Event handlers
@@ -103,26 +102,28 @@
    [:h1 "Welcome to Mertonon!"]
    [:div "Add a responsibility center from the sidebar to begin"]])
 
-(defn grid-page-render [curr-nodes curr-edges]
-  (if (and (empty? curr-nodes) (empty? curr-edges))
-    [sc/main-section
-     [empty-render]]
-    [sc/main-section
-     [:div {:style {:height "85vh" :width "55vw" :float "left"}}
-      [react-flow
-       {:default-nodes        curr-nodes
-        :default-edges        curr-edges
-        :style                {:height "100%" :width "100%"}
-        :on-pane-click        on-pane-single-click
-        :on-node-click        on-node-single-click
-        :on-edge-click        on-edge-single-click
-        :on-node-double-click on-node-double-click
-        :on-edge-double-click on-edge-double-click
-        :snap-to-grid         true
-        :fit-view             true}
-       [minimap]
-       [controls]
-       [background]]]]))
+(defn grid-page [m]
+  (let [curr-nodes @(subscribe [:selection :curr-grid :flow :curr-nodes])
+        curr-edges @(subscribe [:selection :curr-grid :flow :curr-edges])]
+    (if (and (empty? curr-nodes) (empty? curr-edges))
+      [sc/main-section
+       [empty-render]]
+      [sc/main-section
+       [:div {:style {:height "85vh" :width "55vw" :float "left"}}
+        [react-flow
+         {:default-nodes        curr-nodes
+          :default-edges        curr-edges
+          :style                {:height "100%" :width "100%"}
+          :on-pane-click        on-pane-single-click
+          :on-node-click        on-node-single-click
+          :on-edge-click        on-edge-single-click
+          :on-node-double-click on-node-double-click
+          :on-edge-double-click on-edge-double-click
+          :snap-to-grid         true
+          :fit-view             true}
+         [minimap]
+         [controls]
+         [background]]]])))
 
 ;; ---
 ;; Layouting algorithm call
@@ -175,36 +176,28 @@
                         vec)]
     {:curr-nodes curr-nodes :curr-edges curr-edges}))
 
+
 ;; ---
-;; Top-level Render
+;; Idiosyncratic events
 ;; ---
 
-;; Need to do reagent form 3's because of interop with react flow
-;; see here: https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
+(reg-event-db :reset-grid-state
+              ;; Do not reset demo state
+              (fn [db _]
+                (-> db
+                    (assoc-in [:selection :curr-grid :graph] {})
+                    (assoc-in [:selection :curr-grid :flow] {}))))
 
-(defn grid-page [{:keys [path-params] :as match}]
-  (let [uuid (:uuid path-params)]
-    (r/create-class
-      {:component-did-mount    (fn [_] (GET (api/grid-graph uuid)
-                                            {:handler (fn [resp]
-                                                        (do
-                                                          (reset! grid-graph-state (util/json-parse resp))
-                                                          (reset! grid-flow-state (layout! @grid-graph-state))
-                                                          (reset! demo-state false)))}))
-       :component-will-unmount reset-state!
-       :reagent-render         (fn [] [grid-page-render
-                                       (:curr-nodes @grid-flow-state)
-                                       (:curr-edges @grid-flow-state)])})))
+(reg-event-db :set-grid-state
+              (fn [db [event resource res]]
+                (-> db
+                    (assoc-in [:selection :curr-grid :graph] res)
+                    (assoc-in [:selection :curr-grid :flow] (layout! res))
+                    (assoc-in [:is-demo?] false))))
 
-(defn grid-demo-page []
-  (r/create-class
-    {:component-did-mount    (fn [_] (GET (api/generator-graph)
-                                          {:handler (fn [resp]
-                                                      (do
-                                                        (reset! grid-graph-state (util/json-parse resp))
-                                                        (reset! grid-flow-state (layout! @grid-graph-state))
-                                                        (reset! demo-state true)))}))
-     :component-will-unmount reset-state!
-     :reagent-render         (fn [] [grid-page-render
-                                     (:curr-nodes @grid-flow-state)
-                                     (:curr-edges @grid-flow-state)])}))
+(reg-event-db :set-grid-state-demo
+              (fn [db [event resource res]]
+                (-> db
+                    (assoc-in [:selection :curr-grid :graph] res)
+                    (assoc-in [:selection :curr-grid :flow] (layout! res))
+                    (assoc-in [:is-demo?] true))))
