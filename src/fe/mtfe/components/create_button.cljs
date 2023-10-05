@@ -1,32 +1,42 @@
 (ns mtfe.components.create-button
   "Create buttons. Because of the nature of mt sessions we can use them as login buttons too"
-  (:require []))
+  (:require [some crap reframe]))
 
-(def default-blurbs
-  {:blank    "Enter data."
+(def default-labels
+  {
+   ;; State labels
+   :blank    "Enter data."
    :filled   "Press Create button to create."
    :creating "Creating..."
    :success  "Successfully created"
    :failure  "Failed to create."
-   :finished "Finished!"})
+   :finished "Finished!"
 
-(defn create-button [sidebar-state-path button-state-path blurbs]
-  [sc/border-region
-   [:div.pa2
-    (blurbs curr-state)]
-   [:div
-    (if (and (empty? (->> @sidebar-state :validation-errors))
-             (->> curr-create-state ::fsc/configuration :filled))
-      [util/stl create-sc-state :submit
-       [sc/button "Create"]
-       (->> @sidebar-state :curr-create-params)]
-      [sc/disabled-button "Create"])
-    [:span.pa2
-     (if (->> curr-create-state ::fsc/configuration :creating)
-       [sc/spinny-icon]
-       [sc/blank-icon])]]
-   [:div
-    (if (seq (clojure.set/intersection #{:success :failure} (->> curr-create-state ::fsc/configuration)))
-      [util/stl create-sc-state :finish
-       [sc/button "Finish"]]
-      [sc/disabled-button "Finish"])]])
+   ;; Button labels
+   :submit   "Submit"
+   :finish   "Finish"
+   })
+
+(defn create-button [sidebar-state-path button-state-path labels]
+  (let [curr-sidebar-state @(subscribe (into [:some crap] sidebar-state-path))
+        curr-button-state  @(subscribe (into [:some crap] button-state-path))
+        curr-create-state  some crap]
+    [sc/border-region
+     [:div.pa2
+      (labels curr-state)]
+     [:div
+      (if (and (empty? (->> curr-sidebar-state :validation-errors))
+               (= curr-create-state :filled))
+        [util/stl create-sc-state :submit
+         [sc/button (labels :submit)]
+         (->> @sidebar-state :curr-create-params)]
+        [sc/disabled-button (labels :submit)])
+      [:span.pa2
+       (if (= curr-create-state :creating)
+         [sc/spinny-icon]
+         [sc/blank-icon])]]
+     [:div
+      (if (contains? #{:success :failure} curr-create-state)
+        [util/stl create-sc-state :finish
+         [sc/button (labels :finish)]]
+        [sc/disabled-button (labels :finish)])]]))
