@@ -3,6 +3,7 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
@@ -12,7 +13,16 @@
 ;; Creation
 ;; ---
 
+(defn mt-user-create-before-fx [m]
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
+
 (defn mt-user-create-sidebar [m]
+  ;;;;
+  ;;;;
+  ;;;;
   nil)
 
 ;; ---

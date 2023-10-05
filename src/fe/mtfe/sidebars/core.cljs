@@ -43,6 +43,9 @@
    ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
    ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin/admin-sidebar}]
+   ["/admin/mt_user_create"           {:name      ::mt-user-create-sidebar
+                                       :view      mt-user/mt-user-create-sidebar
+                                       :before-fx mt-user/mt-user-create-before-fx}]
    ["/mt_user"                        {:name ::mt-user-sidebar :view mt-user/mt-user-sidebar}]
    ["/mt_user/:uuid/delete"           {:name      ::mt-user-delete-sidebar
                                        :view      mt-user/mt-user-delete-sidebar

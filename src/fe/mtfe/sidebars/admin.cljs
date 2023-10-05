@@ -9,4 +9,4 @@
   [m]
   [:<>
    [:h1 "Admin Sidebar"]
-   [:p "Placeholder for admin sidebar"]])
+   [util/sl (util/path ["admin" "mt_user_create"]) [sc/button "New User"]]])
