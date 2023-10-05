@@ -17,6 +17,14 @@
    :finish   "Finish"
    })
 
+;; ---
+;; Events
+;; ---
+
+;; ---
+;; Component
+;; ---
+
 (defn create-button [sidebar-state-path button-state-path & [labels]]
   (let [curr-sidebar-state @(subscribe (into [:some crap] sidebar-state-path))
         curr-button-state  @(subscribe (into [:some crap] button-state-path))
