@@ -54,4 +54,4 @@ v0.6.commits - October 5 2023
 - Refactor views to re-frame
 - All links are by re-frame event dispatches
 - Kebab-casefy API namespace
-- Start on create and delete refactor to re-frame
+- Start on create and delete refactor to re-frame. This entails some regression on validation to be fixed asap

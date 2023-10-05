@@ -32,7 +32,7 @@
 (defn grid-create-before-fx [m]
   (cr/before-fx create-config m))
 
-(defn grid-create-sidebar-render [m]
+(defn grid-create-sidebar [m]
   [:<>
    [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
@@ -43,9 +43,6 @@
    [:div.mb2 "Hyperparameters"
     [:div "Adjustment Rate - 0.025"]]
    [cr/create-button create-config]])
-
-(defn grid-create-sidebar [m]
-  [grid-create-sidebar-render m])
 
 ;; ---
 ;; Deletion

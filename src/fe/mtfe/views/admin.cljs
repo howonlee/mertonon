@@ -7,7 +7,10 @@
             [re-frame.core :refer [dispatch subscribe]]))
 
 (defn before-fx [m]
-  [[:dispatch [:selection :mt-users (api/mt-user) {}]]])
+  [[:dispatch-n [[:selection :mt-users (api/mt-user) {}]
+                 ]]])
+
+;; [:selection :password-logins (api/password-login) {}]
 
 (defn admin-page [m]
   (let [mt-users @(subscribe [:selection :mt-users])]
