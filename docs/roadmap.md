@@ -5,11 +5,10 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 Also look at small tasks roadmap
 
 - Splice in validations again
-- Create with login, logout, intro, entering in the nav-to by the by
+- Other CRUD sidebars, refactor to reframe, enter in nav-tos
 - Make the buttons say more sensible stuff when we log in or out or whatever
-- Re-frame all the things
 - Kill the statecharts
-- Other CRUD sidebars, refactor to reframe
+- Kill the selectors
 
 - Logout BE test
 - Update mertonon.com
