@@ -43,6 +43,9 @@
   (fn [db [evt state-path param-path evt-content]]
     (let [total-path (into (sidebar-path state-path) param-path)
           key-path   (into (sidebar-path state-path) [:create-state])]
+      ;;;;;;;
+      ;;;;;;; dispatch a validation from here too willyah
+      ;;;;;;;
       (-> db
           (assoc-in total-path evt-content)
           (assoc-in key-path :filled)))))
