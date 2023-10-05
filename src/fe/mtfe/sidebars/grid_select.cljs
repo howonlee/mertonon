@@ -93,17 +93,22 @@
 ;; Deletion
 ;; ---
 
-(def delete-state-path [:sidebar-state :grid :delete])
+(def delete-state-path [:grid :delete])
+(def resource :curr-grid)
 
 (defn grid-delete-before-fx [m]
   (let [uuid (->> m :path-params :uuid)]
-    (del/before-fx-gen (api/grid-member uuid) delete-state-path m)))
+    (del/before-fx {:resource   resource
+                    :endpoint   (api/grid-member uuid)
+                    :state-path delete-state-path}
+                   m)))
 
 (defn grid-delete-sidebar [m]
   (let [uuid (->> m :path-params :uuid)]
     [del/delete-model-sidebar 
      {:endpoint   (api/grid-member uuid)
       :state-path delete-state-path
+      :resource   resource
       :model-name "Grid"
       :nav-to     "/"}
      m]))

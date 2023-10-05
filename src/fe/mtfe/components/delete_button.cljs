@@ -22,25 +22,42 @@
 ;; Events
 ;; ---
 
-(reg-event-db :reset-delete
-              ;;;;;;
-              ;;;;;;
-              ;;;;;;
-              ;; reset path to some crap
-              nil)
+(reg-event-db
+  :reset-delete-state
+  (fn [db [_ state-path]]
+    (assoc-in db (into [:sidebar-state] state-path)
+              {:delete-state :initial
+               :error        nil})))
 
 (reg-event-fx :submit-delete
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
               ;; path of create, whack in the http. on success succeed-create on fail do fail
               nil)
 
 (reg-event-db :succeed-delete
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
               ;; change state
               nil)
+
 (reg-event-db :fail-delete
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
               ;; change state
               nil)
 
 (reg-event-fx :finish-delete
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
               ;; pop a nav to the place we're going after
               nil)
 
@@ -82,14 +99,12 @@
 ;; Before-fx
 ;; ---
 
-(defn before-fx-gen [endpoint state-path m]
-  (fn [m]
-    ;;;;;;;
-    ;;;;;;;
-    ;;;;;;;
-    ;;;;;;;
-    [[:dispatch-n [[:reset-the-thing]
-                   [:get-the-thing]]]]))
+(defn before-fx [config m]
+  (let [{resource   :resource
+         endpoint   :endpoint
+         state-path :state-path} config]
+    [[:dispatch-n [[:selection resource endpoint {}]
+                   [:reset-delete-state state-path]]]]))
 
 ;; ---
 ;; Sidebar
@@ -97,18 +112,16 @@
 
 (defn delete-model-sidebar [config m]
   (let [{endpoint   :endpoint 
+         resource   :resource
          state-path :state-path
          model-name :model-name
-         nav-to     :nav-to}     config
-        ;;;;;
-        ;;;;;
-        ;;;;;
-        member                   nil];; @(subscribe [:some-crap])]
+         nav-to     :nav-to}     config]
     (fn [m]
-      [:<>
-       [:h1 "Delete " model-name]
-       [:p "Delete " [:strong ]] ;; (comment (->> member :name))
-       [:p "UUID " [:strong ]] ;;(comment (str (->> member :uuid)))
-       [:p "?"]
-       ;; [delete-button state-path member config]
-       ])))
+      (let [member @(subscribe [:selection resource])]
+        [:<>
+         [:h1 "Delete " model-name]
+         [:p "Delete " [:strong (->> member :name)]]
+         [:p "UUID " [:strong (str (->> member :uuid))]]
+         [:p "?"]
+         [delete-button state-path member config]
+         ]))))
