@@ -4,7 +4,6 @@
             [applied-science.js-interop :as j]
             [goog.color :as gcolor]
             [mtfe.api :as api]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.views.grid :as grid-view]
             [mtfe.util :as util]

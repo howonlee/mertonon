@@ -1,7 +1,6 @@
 (ns mtfe.views.grid-selector
   "Grid selector view, for front page nav"
   (:require [mtfe.api :as api]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]

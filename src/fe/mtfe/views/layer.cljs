@@ -4,7 +4,6 @@
             [applied-science.js-interop :as j]
             [goog.string :as gstring]
             [mtfe.api :as api]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]

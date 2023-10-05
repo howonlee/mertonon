@@ -4,12 +4,6 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Splice in validations again
-- Other CRUD sidebars, refactor to reframe, enter in nav-tos
-- Make the buttons say more sensible stuff when we log in or out or whatever
-- Kill the statecharts
-- Kill the selectors
-
 - Logout BE test
 - Update mertonon.com
 - FE only generation
