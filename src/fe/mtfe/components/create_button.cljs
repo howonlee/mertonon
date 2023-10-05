@@ -1,6 +1,8 @@
 (ns mtfe.components.create-button
   "Create buttons. Because of the nature of mt sessions we can use them as login buttons too"
-  (:require [mtfe.stylecomps :as sc]
+  (:require [ajax.core :refer [json-request-format json-response-format]]
+            [day8.re-frame.http-fx]
+            [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
 
@@ -18,6 +20,11 @@
    :submit   "Submit"
    :finish   "Finish"
    })
+
+(defn create-state-path [state-path]
+  (-> [:sidebar-state]
+      (into state-path)
+      (into [:create-state])))
 
 ;; ---
 ;; Events
