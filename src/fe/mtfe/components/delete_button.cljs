@@ -22,9 +22,6 @@
 
 (defn before-fx [api-endpoint m]
   (fn [m]
-    ;;;;
-    ;;;;
-    ;;;;
     [[:dispatch-n [[:reset-the-thing]
                    [:get-the-thing]]]]))
 
@@ -98,13 +95,6 @@
    [:p "?"]
    [delete-button @delete-sc-state delete-sc-state member]])
 
-(defn delete-model-sidebar [sidebar-state api-endpoint delete-sc-state model-name m]
-  (let [curr-match-uuid (->> m :path-params :uuid)
-        curr-state-uuid (->> @sidebar-state :selection :uuid)
-        _               (mt-statechart/send-reset-event-if-finished! delete-sc-state)]
-    (if (not= curr-match-uuid curr-state-uuid)
-      (sel/set-selection! sidebar-state api-endpoint curr-match-uuid))
-    [delete-model-render
-     model-name
-     (:selection @sidebar-state)
-     delete-sc-state]))
+(defn delete-model-sidebar [m]
+  [:<>
+   [:h1 "Delete stuff here"]])
