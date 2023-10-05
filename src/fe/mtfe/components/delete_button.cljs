@@ -39,7 +39,7 @@
 
 (reg-event-fx
   :submit-delete
-  (fn [{:keys [db]} [_ resource endpoint state-path member]]
+  (fn [{:keys [db]} [_ {:keys [resource endpoint state-path member]}]]
     {:http-xhrio {:method          :delete
                   :uri             endpoint
                   :params          {}
@@ -70,14 +70,15 @@
 ;; Component
 ;; ---
 
-(defn delete-button [sidebar-state-path member config & [labels]]
-  (let [curr-sidebar-state  @(subscribe (into [:sidebar-state] sidebar-state-path))
-        curr-delete-state   (curr-sidebar-state :delete-state)
-        curr-error          (curr-sidebar-state :error)
-        {resource :resource
-         endpoint :endpoint
-         nav-to   :nav-to}  config
-        curr-labels         (if (seq labels) labels default-labels)]
+(defn delete-button [config member & [labels]]
+  (let [{state-path :state-path
+         resource   :resource
+         endpoint   :endpoint
+         nav-to     :nav-to}    config
+        curr-sidebar-state      @(subscribe (into [:sidebar-state] state-path))
+        curr-delete-state       (curr-sidebar-state :delete-state)
+        curr-error              (curr-sidebar-state :error)
+        curr-labels             (if (seq labels) labels default-labels)]
     [sc/border-region
      [:div.pa2
       (curr-labels curr-delete-state)]
@@ -86,10 +87,7 @@
       (if (= curr-delete-state :initial)
         [util/evl :submit-delete
          [sc/button (curr-labels :delete)]
-         resource
-         endpoint
-         sidebar-state-path
-         member]
+         (assoc config :member member)]
         [sc/disabled-button (curr-labels :delete)])
       [:span.pa2
        (if (= curr-delete-state :deleting)
@@ -109,7 +107,7 @@
 ;; Before-fx
 ;; ---
 
-(defn before-fx [config m]
+(defn before-fx [config _]
   (let [{resource   :resource
          endpoint   :endpoint
          state-path :state-path} config]
@@ -134,4 +132,4 @@
                                     (->> member :username))]]
          [:p "UUID " [:strong (str (->> member :uuid))]]
          [:p "?"]
-         [delete-button state-path member config]]))))
+         [delete-button config member]]))))

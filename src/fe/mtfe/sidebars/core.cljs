@@ -43,6 +43,9 @@
    ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
    ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin/admin-sidebar}]
+   ["/admin/mt_user_create"           {:name      ::mt-user-create-sidebar
+                                       :view      mt-user/mt-user-create-sidebar
+                                       :before-fx mt-user/mt-user-create-before-fx}]
    ["/mt_user"                        {:name ::mt-user-sidebar :view mt-user/mt-user-sidebar}]
    ["/mt_user/:uuid/delete"           {:name      ::mt-user-delete-sidebar
                                        :view      mt-user/mt-user-delete-sidebar
@@ -50,7 +53,9 @@
 
    ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
 
-   ["/grid_create"                    {:name ::grid-create-sidebar :view grid-select/grid-create-sidebar}]
+   ["/grid_create"                    {:name      ::grid-create-sidebar
+                                       :view      grid-select/grid-create-sidebar
+                                       :before-fx grid-select/grid-create-before-fx}]
    ["/grid/:uuid/delete"              {:name      ::grid-delete-sidebar
                                        :view      grid-select/grid-delete-sidebar
                                        :before-fx grid-select/grid-delete-before-fx}]

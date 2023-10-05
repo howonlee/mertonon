@@ -4,18 +4,19 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Splice in validations again
+- Other CRUD sidebars, refactor to reframe, enter in nav-tos
+- Make the buttons say more sensible stuff when we log in or out or whatever
+- Kill the statecharts
+- Kill the selectors
+
 - Logout BE test
 - Update mertonon.com
-- Create with login, logout, intro, entering in the nav-to by the by
-- Re-frame all the things
 - FE only generation
 - FE testing with generation
 - Remove postgres requirement for build
-- Make the buttons say more sensible stuff when we log in or out or whatever
 - Outline essay for real
 
-- Other CRUD sidebars, refactor to reframe
-- Kill the statecharts
 - GH build CI
 - GH test CI
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
