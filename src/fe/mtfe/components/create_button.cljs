@@ -3,12 +3,17 @@
   (:require []))
 
 (def default-blurbs
-  {})
+  {:blank    "Enter data."
+   :filled   "Press Create button to create."
+   :creating "Creating..."
+   :success  "Successfully created"
+   :failure  "Failed to create."
+   :finished "Finished!"})
 
 (defn create-button [sidebar-state-path button-state-path blurbs]
   [sc/border-region
    [:div.pa2
-    (create-state-blurb (->> curr-create-state ::fsc/configuration))]
+    (blurbs curr-state)]
    [:div
     (if (and (empty? (->> @sidebar-state :validation-errors))
              (->> curr-create-state ::fsc/configuration :filled))
