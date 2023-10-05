@@ -21,14 +21,27 @@
 ;; Events
 ;; ---
 
-(reg-event-fx :mutate-create nil)
-(reg-event-fx :submit-create nil)
+(reg-event-db :mutate-create
+              ;; path new-val db
+              ;; if not filled then fill
+              nil)
+(reg-event-fx :submit-create 
+              ;; path of create, whack in the http. on success succeed-create on fail do fail
+              nil)
 
-(reg-event-fx :reset-create nil)
-(reg-event-fx :succeed-create nil)
-(reg-event-fx :fail-create nil)
+(reg-event-db :reset-create
+              ;; reset path to some crap
+              nil)
+(reg-event-db :succeed-create
+              ;; change state
+              nil)
+(reg-event-db :fail-create
+              ;; change state
+              nil)
 
-(reg-event-fx :finish-create nil)
+(reg-event-fx :finish-create
+              ;; pop a nav to the place we're going after
+              nil)
 
 ;; ---
 ;; Component
