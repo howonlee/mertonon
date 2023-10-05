@@ -9,7 +9,7 @@
    :filled   "Press Create button to create."
    :creating "Creating..."
    :success  "Successfully created"
-   :failure  "Failed to create."
+   :failure  "Failed to create. See error."
    :finished "Finished!"
 
    ;; Button labels
@@ -25,6 +25,9 @@
               ;; path new-val db
               ;; if not filled then fill
               nil)
+(reg-event-db :validate-create
+              nil)
+
 (reg-event-fx :submit-create 
               ;; path of create, whack in the http. on success succeed-create on fail do fail
               nil)
@@ -54,7 +57,8 @@
         {endpoint   :endpoint
          ctr        :ctr
          param-list :param-list} config
-        curr-labels              (if (seq labels) labels default-labels)]
+        curr-labels              (if (seq labels) labels default-labels)
+        curr-error               (curr-sidebar-state :create-error)]
     [sc/border-region
      [:div.pa2
       (labels curr-state)]
@@ -76,6 +80,6 @@
         [util/evl :finish-create
          [sc/button (labels :finish)]]
         [sc/disabled-button (labels :finish)])]
-     ;; (when the curr sidebar state has failures
-     ;;   print em here. with pre and whitespace stuff and whatever
-     ]))
+     [:div
+      (if (= :failure curr-create-state)
+        [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
