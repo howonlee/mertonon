@@ -21,10 +21,12 @@
 ;; Events
 ;; ---
 
+(reg-event-fx :mutate-create nil)
 (reg-event-fx :submit-create nil)
 
-(reg-event-fx :succeed-at-submit nil)
-(reg-event-fx :fail-at-submit nil)
+(reg-event-fx :reset-create nil)
+(reg-event-fx :succeed-create nil)
+(reg-event-fx :fail-create nil)
 
 (reg-event-fx :finish-create nil)
 
