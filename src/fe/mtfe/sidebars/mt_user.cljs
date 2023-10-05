@@ -8,8 +8,16 @@
             [mtfe.util :as util]
             [reagent.core :as r]))
 
+;; ---
+;; Creation
+;; ---
+
 (defn mt-user-create-sidebar [m]
   nil)
+
+;; ---
+;; Reading
+;; ---
 
 (defn mt-user-sidebar
   [m]
