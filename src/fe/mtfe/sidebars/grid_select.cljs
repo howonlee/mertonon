@@ -85,6 +85,7 @@
   [:<>
    [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
+   [fi/state-text-input (create-config :state-path) "bleh"]
    ])
    ;; [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
    ;; [sc-components/validation-popover sidebar-state :name-blank "Grid Name is blank"
