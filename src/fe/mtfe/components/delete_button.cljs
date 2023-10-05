@@ -17,19 +17,32 @@
    :finish   "Finish"})
 
 ;; ---
+;; Before-fx
+;; ---
+
+(defn before-fx [api-endpoint m]
+  (fn [m]
+    ;;;;
+    ;;;;
+    ;;;;
+    [[:dispatch-n [[:reset-the-thing]
+                   [:get-the-thing]]]]))
+
+;; ---
 ;; Events
 ;; ---
 
-;; TODO: actually fill these in
-
+(reg-event-db :reset-delete
+              ;;;;;;
+              ;;;;;;
+              ;;;;;;
+              ;; reset path to some crap
+              nil)
 
 (reg-event-fx :submit-delete
               ;; path of create, whack in the http. on success succeed-create on fail do fail
               nil)
 
-(reg-event-db :reset-delete
-              ;; reset path to some crap
-              nil)
 (reg-event-db :succeed-delete
               ;; change state
               nil)
