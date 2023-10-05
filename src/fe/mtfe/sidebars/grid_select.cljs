@@ -89,5 +89,8 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [grid-create-sidebar-render create-sc-state])
 
+(defn grid-delete-before-fx [m]
+  (del/before-fx-gen some crap))
+
 (defn grid-delete-sidebar [m]
-  [del/delete-model-sidebar m])
+  [del/delete-model-sidebar some crap m])

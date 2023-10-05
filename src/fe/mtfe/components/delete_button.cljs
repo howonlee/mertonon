@@ -1,5 +1,7 @@
 (ns mtfe.components.delete-button
-  "Delete buttons. Because of the nature of mt sessions we can use them as logout buttons too"
+  "Delete buttons. Because of the nature of mt sessions we can use them as logout buttons too.
+
+  They're all the same so we just stick the sidebar semantics here"
   (:require [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))

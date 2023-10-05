@@ -50,7 +50,7 @@
    ["/grid_create"                    {:name ::grid-create-sidebar :view grid-select/grid-create-sidebar}]
    ["/grid/:uuid/delete"              {:name      ::grid-delete-sidebar
                                        :view      grid-select/grid-delete-sidebar
-                                       :before-fx nil}]
+                                       :before-fx grid-select/grid-delete-before-fx}]
    ["/grid/:uuid"                     {:name ::grid-sidebar :view grid/grid-sidebar}]
    ["/grid/:uuid/layer_create"        {:name ::layer-create-sidebar :view layer/layer-create-sidebar}]
    ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]
