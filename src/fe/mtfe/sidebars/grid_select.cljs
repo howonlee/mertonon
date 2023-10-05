@@ -6,6 +6,7 @@
             [com.fulcrologic.statecharts.simple :as simple]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.statecharts.components :as sc-components]
             [mtfe.statecharts.core :as mt-statechart]
@@ -65,7 +66,22 @@
 ;; Creation
 ;; ---
 
-(defn grid-create-sidebar-render [create-sc-state]
+(def create-config
+  {:resource    curr-grid
+   :endpoint    (apid/grid)
+   :state-path  [:grid :create]
+   :init-params {:uuid           (str (random-uuid))
+                 :name           ""
+                 :label          ""
+                 :optimizer-type :sgd
+                 ;; TODO: get some recursive semantics
+                 :hyperparams    (.stringify js/JSON (clj->js {:lr 0.025}))}
+   :nav-to      "#/"})
+
+(defn grid-create-sidebar-render [m]
+  ;; subscriptions and stuff
+  ;; subscriptions and stuff
+  ;; subscriptions and stuff
   [:<>
    [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
@@ -80,14 +96,12 @@
     [:div "Adjustment Rate - 0.025"]]
    [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
-
-;; ---
-;; Creation
-;; ---
+;; (defn grid-create-sidebar [m]
+;;   (mt-statechart/send-reset-event-if-finished! create-sc-state)
+;;   [grid-create-sidebar-render create-sc-state])
 
 (defn grid-create-sidebar [m]
-  (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  [grid-create-sidebar-render create-sc-state])
+  [grid-create-sidebar-render m])
 
 ;; ---
 ;; Deletion
