@@ -1,5 +1,5 @@
-(ns mtfe.components.create-button
-  "Create buttons. Because of the nature of mt sessions we can use them as login buttons too"
+(ns mtfe.components.delete-button
+  "Delete buttons. Because of the nature of mt sessions we can use them as logout buttons too"
   (:require [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
@@ -72,3 +72,26 @@
      [:div
       (if (= :failure curr-create-state)
         [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
+
+;; ---
+;; Sidebar
+;; ---
+
+(defn delete-model-render [model-name member delete-sc-state]
+  [:<>
+   [:h1 "Delete " model-name]
+   [:p "Delete " [:strong (->> member :name)]]
+   [:p "UUID " [:strong (str (->> member :uuid))]]
+   [:p "?"]
+   [delete-button @delete-sc-state delete-sc-state member]])
+
+(defn delete-model-sidebar [sidebar-state api-endpoint delete-sc-state model-name m]
+  (let [curr-match-uuid (->> m :path-params :uuid)
+        curr-state-uuid (->> @sidebar-state :selection :uuid)
+        _               (mt-statechart/send-reset-event-if-finished! delete-sc-state)]
+    (if (not= curr-match-uuid curr-state-uuid)
+      (sel/set-selection! sidebar-state api-endpoint curr-match-uuid))
+    [delete-model-render
+     model-name
+     (:selection @sidebar-state)
+     delete-sc-state]))
