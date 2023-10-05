@@ -48,9 +48,13 @@
 ;; ---
 
 (defn create-button [sidebar-state-path config & [labels]]
-  (let [curr-sidebar-state @(subscribe (into [:sidebar-state] sidebar-state-path))
-        curr-create-state  (curr-sidebar-state :curr-create-state)
-        curr-labels        (if (seq labels) labels default-labels)]
+  (let [curr-sidebar-state       @(subscribe (into [:sidebar-state] sidebar-state-path))
+        curr-create-state        (curr-sidebar-state :create-state)
+        curr-create-params       (curr-sidebar-state :create-params)
+        {endpoint   :endpoint
+         ctr        :ctr
+         param-list :param-list} config
+        curr-labels              (if (seq labels) labels default-labels)]
     [sc/border-region
      [:div.pa2
       (labels curr-state)]
@@ -59,7 +63,9 @@
                (= curr-create-state :filled))
         [util/evl :submit-create
          [sc/button (labels :submit)]
-         (->> curr-sidebar-state :create-params)]
+         curr-create-params
+         ;; other shit
+         ]
         [sc/disabled-button (labels :submit)])
       [:span.pa2
        (if (= curr-create-state :creating)
