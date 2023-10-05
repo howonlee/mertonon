@@ -3,6 +3,7 @@
 
   They're all the same so we just stick the sidebar semantics here"
   (:require [ajax.core :refer [json-request-format json-response-format]]
+            [day8.re-frame.http-fx]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
@@ -39,11 +40,13 @@
 (reg-event-fx
   :submit-delete
   (fn [{:keys [db]} [_ resource endpoint state-path member]]
-    {:http-xhrio {:method :delete
-                  :uri endpoint
+    {:http-xhrio {:method          :delete
+                  :uri             endpoint
+                  :params          {}
+                  :format          (json-request-format)
                   :response-format (json-response-format {:keywords? true})
-                  :on-success [:succeed-delete state-path]
-                  :on-failure [:fail-delete state-path]}
+                  :on-success      [:succeed-delete state-path]
+                  :on-failure      [:fail-delete state-path]}
      :db          (assoc-in db
                             (delete-state-path state-path)
                             :deleting)}))

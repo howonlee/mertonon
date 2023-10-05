@@ -110,5 +110,5 @@
       :state-path delete-state-path
       :resource   resource
       :model-name "Grid"
-      :nav-to     "/"}
+      :nav-to     "#/"}
      m]))
