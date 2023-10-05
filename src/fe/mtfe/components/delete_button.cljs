@@ -42,29 +42,32 @@
     ;;;;;
      :db         (-> db nil)}))
 
-(reg-event-db :succeed-delete
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;; change state
-              nil)
+(reg-event-db
+  :succeed-delete
+  (fn [db _]
+    ;;;;
+    ;;;;
+    ;;;;
+    ;;;;
+    db))
 
-(reg-event-db :fail-delete
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;; change state
-              nil)
+(reg-event-db
+  :fail-delete
+  (fn [db _]
+    ;;;;
+    ;;;;
+    ;;;;
+    db))
 
-(reg-event-fx :finish-delete
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;; pop a nav to the place we're going after
-              nil)
+(reg-event-fx
+  :finish-delete
+  (fn [cofx _]
+    ;; pop a nav to the place we're going after
+    ;;;;;
+    ;;;;;
+    ;;;;;
+    ;;;;;
+    {}))
 
 ;; ---
 ;; Component
@@ -128,5 +131,4 @@
          [:p "Delete " [:strong (->> member :name)]]
          [:p "UUID " [:strong (str (->> member :uuid))]]
          [:p "?"]
-         [delete-button state-path member config]
-         ]))))
+         [delete-button state-path member config]]))))
