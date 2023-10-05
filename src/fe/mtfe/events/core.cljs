@@ -2,6 +2,7 @@
   "Registry of general Mertonon events
 
   There may be idiosyncratic events stuck in individual views, etc.
+  Component-specific events specifically are idiosyncratic and are stuck with the components
 
   If they blast out of their scope move them here"
   (:require [ajax.core :refer [json-request-format json-response-format]]
