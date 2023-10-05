@@ -50,10 +50,11 @@
        (if (= curr-create-state :creating)
          [sc/spinny-icon]
          [sc/blank-icon])]]
-     ;; (when the curr sidebar state has failures
-     ;;   print em here)
      [:div
       (if (contains? #{:success :failure} curr-create-state)
         [util/evl :finish-create
          [sc/button (labels :finish)]]
-        [sc/disabled-button (labels :finish)])]]))
+        [sc/disabled-button (labels :finish)])]
+     ;; (when the curr sidebar state has failures
+     ;;   print em here. with pre and whitespace stuff and whatever
+     ]))
