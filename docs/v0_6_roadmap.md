@@ -10,6 +10,7 @@
 
 - [x] Grid delete refactor, new way
 - [x] Users delete in admin, new way
+- [x] Grid create new way
 - [ ] Users create in admin, new way
 
 - [x] Changelog
