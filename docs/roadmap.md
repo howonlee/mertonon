@@ -15,8 +15,6 @@ Also look at small tasks roadmap
 - GH test CI
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Kick off forward passes every time we change anything
-- Model updates, what's necessary of BE
-- Model updates FE
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
