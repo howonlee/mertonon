@@ -130,7 +130,8 @@
       (let [member @(subscribe [:selection resource])]
         [:<>
          [:h1 "Delete " model-name]
-         [:p "Delete " [:strong (->> member :name)]]
+         [:p "Delete " [:strong (or (->> member :name)
+                                    (->> member :username))]]
          [:p "UUID " [:strong (str (->> member :uuid))]]
          [:p "?"]
          [delete-button state-path member config]]))))

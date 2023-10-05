@@ -33,5 +33,3 @@
 
 (defn mt-user-delete-sidebar [m]
   [del/delete-model-sidebar (delete-config m) m])
-
-

@@ -9,7 +9,7 @@
 - [x] Re-frameize the rest (cobj, ws, weight)
 
 - [x] Grid delete refactor, new way
-- [ ] Users delete in admin, new way
+- [x] Users delete in admin, new way
 - [ ] Users create in admin, new way
 
 - [x] Changelog
