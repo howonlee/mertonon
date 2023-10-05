@@ -65,13 +65,14 @@
 ;; Component
 ;; ---
 
-(defn create-button [sidebar-state-path config & [labels]]
-  (let [curr-sidebar-state       @(subscribe (into [:sidebar-state] sidebar-state-path))
-        curr-create-state        (curr-sidebar-state :create-state)
-        curr-create-params       (curr-sidebar-state :create-params)
-        {endpoint   :endpoint
+(defn create-button [config & [labels]]
+  (let [{state-path :state-path
+         endpoint   :endpoint
          ctr        :ctr
          param-list :param-list} config
+        curr-sidebar-state       @(subscribe (into [:sidebar-state] state-path))
+        curr-create-state        (curr-sidebar-state :create-state)
+        curr-create-params       (curr-sidebar-state :create-params)
         curr-labels              (if (seq labels) labels default-labels)
         curr-error               (curr-sidebar-state :create-error)]
     [sc/border-region
@@ -83,6 +84,9 @@
         [util/evl :submit-create
          [sc/button (curr-labels :submit)]
          curr-create-params
+         ;; other shit
+         ;; other shit
+         ;; other shit
          ;; other shit
          ]
         [sc/disabled-button (curr-labels :submit)])

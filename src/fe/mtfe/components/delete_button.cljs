@@ -70,14 +70,15 @@
 ;; Component
 ;; ---
 
-(defn delete-button [sidebar-state-path member config & [labels]]
-  (let [curr-sidebar-state  @(subscribe (into [:sidebar-state] sidebar-state-path))
-        curr-delete-state   (curr-sidebar-state :delete-state)
-        curr-error          (curr-sidebar-state :error)
-        {resource :resource
-         endpoint :endpoint
-         nav-to   :nav-to}  config
-        curr-labels         (if (seq labels) labels default-labels)]
+(defn delete-button [config member & [labels]]
+  (let [{state-path :state-path
+         resource   :resource
+         endpoint   :endpoint
+         nav-to     :nav-to}    config
+        curr-sidebar-state      @(subscribe (into [:sidebar-state] state-path))
+        curr-delete-state       (curr-sidebar-state :delete-state)
+        curr-error              (curr-sidebar-state :error)
+        curr-labels             (if (seq labels) labels default-labels)]
     [sc/border-region
      [:div.pa2
       (curr-labels curr-delete-state)]
@@ -88,7 +89,7 @@
          [sc/button (curr-labels :delete)]
          resource
          endpoint
-         sidebar-state-path
+         state-path
          member]
         [sc/disabled-button (curr-labels :delete)])
       [:span.pa2
@@ -134,4 +135,4 @@
                                     (->> member :username))]]
          [:p "UUID " [:strong (str (->> member :uuid))]]
          [:p "?"]
-         [delete-button state-path member config]]))))
+         [delete-button config member]]))))
