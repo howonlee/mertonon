@@ -30,12 +30,12 @@
 ;; Events
 ;; ---
 
-;; TODO: actually fill these in
+(reg-event-db
+  :mutate-create-state
+  (fn [db [evt evt-body & path]]
+    (println evt-body)
+    (assoc-in db (create-state-path path) evt-body)))
 
-(reg-event-db :mutate-create
-              ;; path new-val db
-              ;; if not filled then fill
-              nil)
 (reg-event-db :validate-create
               nil)
 

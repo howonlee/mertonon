@@ -101,9 +101,7 @@
     :db          (-> db
                      (assoc-in [:loading resource] true))}))
 
-;; ---
-;; Create
-;; ---
+
 
 ;; ---
 ;; Delete

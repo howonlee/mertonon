@@ -67,8 +67,8 @@
 ;; ---
 
 (def create-config
-  {:resource    curr-grid
-   :endpoint    (apid/grid)
+  {:resource    :curr-grid
+   :endpoint    (api/grid)
    :state-path  [:grid :create]
    :init-params {:uuid           (str (random-uuid))
                  :name           ""
