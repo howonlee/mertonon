@@ -49,7 +49,7 @@
    ["/admin"             {:name      ::admin
                           :view      admin/admin-page
                           :before-fx admin/before-fx}]
-   ["/user"              {:name      ::user
+   ["/mt_user"           {:name      ::mt-user
                           :view      mt-user/mt-user-page
                           :before-fx mt-user/before-fx}]
    ["/grid/:uuid"        {:name      ::grid
@@ -77,7 +77,7 @@
    [:span.w-20.pa2 (util/fsl "#/" "/" "🥞 Mertonon")]
    [:span.w-80.pa2]
    [:span.w-1.pa2 (util/fsl "#/admin" "/admin" [:i.fa-solid.fa-gear])]
-   [:span.w-1.pa2 (util/fsl "#/user" "/user" [:i.fa-solid.fa-user])]])
+   [:span.w-1.pa2 (util/fsl "#/mt_user" "/mt_user" [:i.fa-solid.fa-user])]])
 
 (defn mertonon-app
   []

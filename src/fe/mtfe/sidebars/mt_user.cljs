@@ -3,19 +3,33 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
-            [mtfe.selectors :as sel]
+            [mtfe.components.delete-button :as del]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.layer :as layer-view]
-            [mtfe.views.grid :as grid-view]
             [reagent.core :as r]))
+
+(defn mt-user-create-sidebar [m]
+  nil)
 
 (defn mt-user-sidebar
   [m]
   [:<>
    [util/sl (util/path ["logout"]) [sc/button "Logout"]]])
+
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid (->> m :path-params :uuid)]
+    {:resource   :curr-mt-user
+     :endpoint   (api/mt-user-member uuid)
+     :state-path [:mt-user :delete]
+     :model-name "Mertonon User"
+     :nav-to     "#/admin"}))
+
+(defn mt-user-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
+(defn mt-user-delete-sidebar [m]
+  [del/delete-model-sidebar (delete-config m) m])

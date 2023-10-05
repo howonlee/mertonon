@@ -2,7 +2,8 @@
   "State and router for sidebar, which is itself a separate browsing environment, basically.
 
   Most things that would become a modal in normal sites go in sidebar"
-  (:require [mtfe.sidebars.admin :as admin]
+  (:require [mtfe.api :as api]
+            [mtfe.sidebars.admin :as admin]
             [mtfe.sidebars.cost-object :as cost-object]
             [mtfe.sidebars.entry :as entry]
             [mtfe.sidebars.grad :as grad]
@@ -42,12 +43,17 @@
    ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
    ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin/admin-sidebar}]
-   ["/user"                           {:name ::user-sidebar :view mt-user/mt-user-sidebar}]
+   ["/mt_user"                        {:name ::mt-user-sidebar :view mt-user/mt-user-sidebar}]
+   ["/mt_user/:uuid/delete"           {:name      ::mt-user-delete-sidebar
+                                       :view      mt-user/mt-user-delete-sidebar
+                                       :before-fx mt-user/mt-user-delete-before-fx}]
 
    ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
 
    ["/grid_create"                    {:name ::grid-create-sidebar :view grid-select/grid-create-sidebar}]
-   ["/grid/:uuid/delete"              {:name ::grid-delete-sidebar :view grid-select/grid-delete-sidebar}]
+   ["/grid/:uuid/delete"              {:name      ::grid-delete-sidebar
+                                       :view      grid-select/grid-delete-sidebar
+                                       :before-fx grid-select/grid-delete-before-fx}]
    ["/grid/:uuid"                     {:name ::grid-sidebar :view grid/grid-sidebar}]
    ["/grid/:uuid/layer_create"        {:name ::layer-create-sidebar :view layer/layer-create-sidebar}]
    ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]

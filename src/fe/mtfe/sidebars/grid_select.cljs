@@ -6,6 +6,7 @@
             [com.fulcrologic.statecharts.simple :as simple]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.delete-button :as del]
             [mtfe.statecharts.components :as sc-components]
             [mtfe.statecharts.core :as mt-statechart]
             [mtfe.statecharts.handlers :as sc-handlers]
@@ -81,12 +82,27 @@
 
 
 ;; ---
-;; Entry
+;; Creation
 ;; ---
 
 (defn grid-create-sidebar [m]
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [grid-create-sidebar-render create-sc-state])
 
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid (->> m :path-params :uuid)]
+    {:resource   :curr-grid
+     :endpoint   (api/grid-member uuid)
+     :state-path [:grid :delete]
+     :model-name "Grid"
+     :nav-to     "#/"}))
+
+(defn grid-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
 (defn grid-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/grid-member delete-sc-state "Grid" m])
+  [del/delete-model-sidebar (delete-config m) m])
