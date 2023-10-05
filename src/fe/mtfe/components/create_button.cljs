@@ -32,9 +32,10 @@
 
 (reg-event-db
   :mutate-create-state
-  (fn [db [evt evt-body & path]]
-    (println evt-body)
-    (assoc-in db (create-state-path path) evt-body)))
+  (fn [db [evt evt-content state-path param-path]]
+    (let [total-path (into (create-state-path state-path) param-path)]
+      (println db)
+      (assoc-in db total-path evt-content))))
 
 (reg-event-db :validate-create
               nil)

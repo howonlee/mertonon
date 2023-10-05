@@ -17,18 +17,30 @@
 (def popover (r/adapt-react-class Popover))
 
 ;; ---
+;; Utils
+;; ---
+
+(defn evt->val [synthetic-evt]
+  (.. synthetic-evt
+      -nativeEvent
+      -srcElement
+      -value))
+
+;; ---
 ;; Inputs and Form Stuff
 ;; ---
 
-(defn state-text-input [state-path placeholder]
+;; TODO: be less idiosyncratic to create
+
+(defn state-text-input [state-path param-path placeholder]
   [sc/input {:type        "text"
              :placeholder placeholder
-             :on-change   #(dispatch (into [:mutate-create-state %] state-path))}])
+             :on-change   #(dispatch [:mutate-create-state (evt->val %) state-path param-path])}])
 
-;; (defn state-password-input [state-path placeholder]
-;;   [sc/input {:type        "password"
-;;              :placeholder placeholder
-;;              :on-change   (mt-statechart/mutate-from-dom-event-handler state path)}])
+(defn state-password-input [state-path param-path placeholder]
+  [sc/input {:type        "password"
+             :placeholder placeholder
+             :on-change   #(dispatch [:mutate-create-state (evt->val %) state-path param-path])}])
 ;; 
 ;; (defn state-select-input [state-path choices path]
 ;;   [sc/select {:on-change (mt-statechart/mutate-from-dom-event-handler sc-state path)
