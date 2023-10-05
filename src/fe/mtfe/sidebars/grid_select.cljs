@@ -89,8 +89,21 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [grid-create-sidebar-render create-sc-state])
 
+;; ---
+;; Deletion
+;; ---
+
+(def delete-state-path [:sidebar-state :grid :delete])
+
 (defn grid-delete-before-fx [m]
-  (del/before-fx-gen some crap))
+  (let [uuid (->> m :path-params :uuid)]
+    (del/before-fx-gen (api/grid-member uuid) delete-state-path m)))
 
 (defn grid-delete-sidebar [m]
-  [del/delete-model-sidebar some crap m])
+  (let [uuid (->> m :path-params :uuid)]
+    [del/delete-model-sidebar 
+     {:endpoint   (api/grid-member uuid)
+      :state-path delete-state-path
+      :model-name "Grid"
+      :nav-to     "/"}
+     m]))

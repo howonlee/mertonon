@@ -103,12 +103,12 @@
         ;;;;;
         ;;;;;
         ;;;;;
-        member                   @(subscribe [:some-crap])]
+        member                   nil];; @(subscribe [:some-crap])]
     (fn [m]
       [:<>
        [:h1 "Delete " model-name]
-       [:p "Delete " [:strong (->> member :name)]]
-       [:p "UUID " [:strong (str (->> member :uuid))]]
+       [:p "Delete " [:strong ]] ;; (comment (->> member :name))
+       [:p "UUID " [:strong ]] ;;(comment (str (->> member :uuid)))
        [:p "?"]
        ;; [delete-button state-path member config]
        ])))
