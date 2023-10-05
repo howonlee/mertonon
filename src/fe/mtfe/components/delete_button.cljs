@@ -101,7 +101,7 @@
         ;;;;;
         ;;;;;
         ;;;;;
-        member                   @(subscribe [:some crap])]
+        member                   @(subscribe [:some-crap])]
     (fn [m]
       [:<>
        [:h1 "Delete " model-name]
