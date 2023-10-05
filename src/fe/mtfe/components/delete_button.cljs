@@ -39,7 +39,7 @@
 
 (reg-event-fx
   :submit-delete
-  (fn [{:keys [db]} [_ resource endpoint state-path member]]
+  (fn [{:keys [db]} [_ {:keys [resource endpoint state-path member]}]]
     {:http-xhrio {:method          :delete
                   :uri             endpoint
                   :params          {}
@@ -87,10 +87,7 @@
       (if (= curr-delete-state :initial)
         [util/evl :submit-delete
          [sc/button (curr-labels :delete)]
-         resource
-         endpoint
-         state-path
-         member]
+         (assoc config :member member)]
         [sc/disabled-button (curr-labels :delete)])
       [:span.pa2
        (if (= curr-delete-state :deleting)
