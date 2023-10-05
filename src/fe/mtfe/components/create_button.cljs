@@ -72,7 +72,7 @@
         curr-error               (curr-sidebar-state :create-error)]
     [sc/border-region
      [:div.pa2
-      (curr-labels curr-state)]
+      (curr-labels curr-create-state)]
      [:div
       (if (and (empty? (->> curr-sidebar-state :validation-errors))
                (= curr-create-state :filled))

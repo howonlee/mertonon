@@ -23,7 +23,7 @@
 (defn state-text-input [state-path placeholder]
   [sc/input {:type        "text"
              :placeholder placeholder
-             :on-change   #(dispatch % (into [:mutate-create-state] state-path))}])
+             :on-change   #(dispatch (into [:mutate-create-state %] state-path))}])
 
 ;; (defn state-password-input [state-path placeholder]
 ;;   [sc/input {:type        "password"

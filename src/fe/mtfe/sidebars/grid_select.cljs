@@ -8,7 +8,7 @@
             [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
-            [mtfe.statecharts.components :as sc-components]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.statecharts.core :as mt-statechart]
             [mtfe.statecharts.handlers :as sc-handlers]
             [mtfe.statecharts.sideeffects :as sc-se]
@@ -85,16 +85,17 @@
   [:<>
    [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
-   [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-   [sc-components/validation-popover sidebar-state :name-blank "Grid Name is blank"
-    [sc-components/state-text-input create-sc-state "Grid Name" [:curr-create-params :name]]]
-   
-   [sc-components/state-text-input create-sc-state "Grid Label" [:curr-create-params :label]]
-   ;; TODO: let these change, lol
-   [:div.mb2 "Optimization Type - SGD"]
-   [:div.mb2 "Hyperparameters"
-    [:div "Adjustment Rate - 0.025"]]
-   [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
+   ])
+   ;; [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
+   ;; [sc-components/validation-popover sidebar-state :name-blank "Grid Name is blank"
+   ;;  [sc-components/state-text-input create-sc-state "Grid Name" [:curr-create-params :name]]]
+   ;; 
+   ;; [sc-components/state-text-input create-sc-state "Grid Label" [:curr-create-params :label]]
+   ;; ;; TODO: let these change, lol
+   ;; [:div.mb2 "Optimization Type - SGD"]
+   ;; [:div.mb2 "Hyperparameters"
+   ;;  [:div "Adjustment Rate - 0.025"]]
+   ;; [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; (defn grid-create-sidebar [m]
 ;;   (mt-statechart/send-reset-event-if-finished! create-sc-state)
