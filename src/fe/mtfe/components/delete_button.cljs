@@ -29,13 +29,18 @@
               {:delete-state :initial
                :error        nil})))
 
-(reg-event-fx :submit-delete
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;; path of create, whack in the http. on success succeed-create on fail do fail
-              nil)
+(reg-event-fx
+  :submit-delete
+  (fn [{:keys [db]} [_ resource endpoint state-path member]]
+    ;;;;;
+    ;;;;;
+    ;;;;;
+    {:http-xhrio {}
+    ;;;;;
+    ;;;;;
+    ;;;;;
+    ;;;;;
+     :db         (-> db nil)}))
 
 (reg-event-db :succeed-delete
               ;;;;;;;
