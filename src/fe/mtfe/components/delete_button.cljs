@@ -17,15 +17,6 @@
    :finish   "Finish"})
 
 ;; ---
-;; Before-fx
-;; ---
-
-(defn before-fx [api-endpoint m]
-  (fn [m]
-    [[:dispatch-n [[:reset-the-thing]
-                   [:get-the-thing]]]]))
-
-;; ---
 ;; Events
 ;; ---
 
@@ -56,10 +47,12 @@
 ;; ---
 
 (defn delete-button [sidebar-state-path member config & [labels]]
-  (let [curr-sidebar-state   @(subscribe (into [:sidebar-state] sidebar-state-path))
-        curr-delete-state    (curr-sidebar-state :delete-state)
-        {endpoint :endpoint} config
-        curr-labels          (if (seq labels) labels default-labels)]
+  (let [curr-sidebar-state  @(subscribe (into [:sidebar-state] sidebar-state-path))
+        curr-delete-state   (curr-sidebar-state :delete-state)
+        curr-error          (curr-sidebar-state :error)
+        {endpoint :endpoint
+         nav-to   :nav-to}  config
+        curr-labels         (if (seq labels) labels default-labels)]
     [sc/border-region
      [:div.pa2
       (curr-labels curr-delete-state)]
@@ -80,21 +73,40 @@
          [sc/button (curr-labels :finish)]]
         [sc/disabled-button (curr-labels :finish)])]
      [:div
-      (if (= :failure curr-create-state)
+      (if (= :failure curr-delete-state)
         [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
+
+;; ---
+;; Before-fx
+;; ---
+
+(defn before-fx-gen [endpoint state-path m]
+  (fn [m]
+    ;;;;;;;
+    ;;;;;;;
+    ;;;;;;;
+    ;;;;;;;
+    [[:dispatch-n [[:reset-the-thing]
+                   [:get-the-thing]]]]))
 
 ;; ---
 ;; Sidebar
 ;; ---
 
-(defn delete-model-render [model-name member delete-sc-state]
-  [:<>
-   [:h1 "Delete " model-name]
-   [:p "Delete " [:strong (->> member :name)]]
-   [:p "UUID " [:strong (str (->> member :uuid))]]
-   [:p "?"]
-   [delete-button @delete-sc-state delete-sc-state member]])
-
-(defn delete-model-sidebar [m]
-  [:<>
-   [:h1 "Delete stuff here"]])
+(defn delete-model-sidebar [config m]
+  (let [{endpoint   :endpoint 
+         state-path :state-path
+         model-name :model-name
+         nav-to     :nav-to}     config
+        ;;;;;
+        ;;;;;
+        ;;;;;
+        member                   @(subscribe [:some crap])]
+    (fn [m]
+      [:<>
+       [:h1 "Delete " model-name]
+       [:p "Delete " [:strong (->> member :name)]]
+       [:p "UUID " [:strong (str (->> member :uuid))]]
+       [:p "?"]
+       ;; [delete-button state-path member config]
+       ])))

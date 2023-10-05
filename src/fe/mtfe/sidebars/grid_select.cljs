@@ -6,6 +6,7 @@
             [com.fulcrologic.statecharts.simple :as simple]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.delete-button :as del]
             [mtfe.statecharts.components :as sc-components]
             [mtfe.statecharts.core :as mt-statechart]
             [mtfe.statecharts.handlers :as sc-handlers]
@@ -89,4 +90,4 @@
   [grid-create-sidebar-render create-sc-state])
 
 (defn grid-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/grid-member delete-sc-state "Grid" m])
+  [del/delete-model-sidebar m])
