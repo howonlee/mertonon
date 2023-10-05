@@ -65,16 +65,16 @@
         curr-error               (curr-sidebar-state :create-error)]
     [sc/border-region
      [:div.pa2
-      (labels curr-state)]
+      (curr-labels curr-state)]
      [:div
       (if (and (empty? (->> curr-sidebar-state :validation-errors))
                (= curr-create-state :filled))
         [util/evl :submit-create
-         [sc/button (labels :submit)]
+         [sc/button (curr-labels :submit)]
          curr-create-params
          ;; other shit
          ]
-        [sc/disabled-button (labels :submit)])
+        [sc/disabled-button (curr-labels :submit)])
       [:span.pa2
        (if (= curr-create-state :creating)
          [sc/spinny-icon]
@@ -82,8 +82,8 @@
      [:div
       (if (contains? #{:success :failure} curr-create-state)
         [util/evl :finish-create
-         [sc/button (labels :finish)]]
-        [sc/disabled-button (labels :finish)])]
+         [sc/button (curr-labels :finish)]]
+        [sc/disabled-button (curr-labels :finish)])]
      [:div
       (if (= :failure curr-create-state)
         [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
