@@ -18,6 +18,11 @@
     (get-in db (into [:selection] path))))
 
 (reg-sub
+  :sidebar-state
+  (fn [db [evt & path]]
+    (get-in db (into [:sidebar-state] path))))
+
+(reg-sub
   :is-demo?
   (fn [db _]
     (:is-demo? db)))
