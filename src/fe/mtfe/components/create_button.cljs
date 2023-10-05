@@ -31,10 +31,15 @@
 ;; ---
 
 (reg-event-db
+  :reset-create-state
+  (fn [db [evt state-path init-state]]
+    (let [total-path (into (create-state-path state-path) [:curr-create-params])]
+      (assoc-in db total-path init-state))))
+
+(reg-event-db
   :mutate-create-state
-  (fn [db [evt evt-content state-path param-path]]
+  (fn [db [evt state-path param-path evt-content]]
     (let [total-path (into (create-state-path state-path) param-path)]
-      (println db)
       (assoc-in db total-path evt-content))))
 
 (reg-event-db :validate-create
@@ -44,9 +49,7 @@
               ;; path of create, whack in the http. on success succeed-create on fail do fail
               nil)
 
-(reg-event-db :reset-create
-              ;; reset path to some crap
-              nil)
+
 (reg-event-db :succeed-create
               ;; change state
               nil)
@@ -95,3 +98,12 @@
      [:div
       (if (= :failure curr-create-state)
         [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
+
+;; ---
+;; Before-fx
+;; ---
+
+(defn before-fx [config _]
+  (let [{init-params :init-params
+         state-path  :state-path} config]
+    [[:dispatch [:reset-create-state state-path init-params]]]))

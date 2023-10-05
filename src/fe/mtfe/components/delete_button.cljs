@@ -109,7 +109,7 @@
 ;; Before-fx
 ;; ---
 
-(defn before-fx [config m]
+(defn before-fx [config _]
   (let [{resource   :resource
          endpoint   :endpoint
          state-path :state-path} config]

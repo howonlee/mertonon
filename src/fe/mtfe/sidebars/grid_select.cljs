@@ -76,26 +76,30 @@
                  :optimizer-type :sgd
                  ;; TODO: get some recursive semantics
                  :hyperparams    (.stringify js/JSON (clj->js {:lr 0.025}))}
+
+   ;;; ctr
+   ;;; param-list
+
    :nav-to      "#/"})
 
+(defn grid-create-before-fx [m]
+  (cr/before-fx create-config m))
+
 (defn grid-create-sidebar-render [m]
-  ;; subscriptions and stuff
-  ;; subscriptions and stuff
-  ;; subscriptions and stuff
   [:<>
    [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
-   [fi/state-text-input (create-config :state-path) [:name] "bleh"]
+   [fi/state-text-input (create-config :state-path) [:curr-create-params :name] "Grid Name"]
+   [fi/state-text-input (create-config :state-path) [:curr-create-params :label] "Grid Label"]
+   ;; TODO: let these change, lol
+   [:div.mb2 "Optimization Type - SGD"]
+   [:div.mb2 "Hyperparameters"
+    [:div "Adjustment Rate - 0.025"]]
    ])
    ;; [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
    ;; [sc-components/validation-popover sidebar-state :name-blank "Grid Name is blank"
    ;;  [sc-components/state-text-input create-sc-state "Grid Name" [:curr-create-params :name]]]
    ;; 
-   ;; [sc-components/state-text-input create-sc-state "Grid Label" [:curr-create-params :label]]
-   ;; ;; TODO: let these change, lol
-   ;; [:div.mb2 "Optimization Type - SGD"]
-   ;; [:div.mb2 "Hyperparameters"
-   ;;  [:div "Adjustment Rate - 0.025"]]
    ;; [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
 
 ;; (defn grid-create-sidebar [m]

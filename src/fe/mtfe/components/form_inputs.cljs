@@ -35,13 +35,13 @@
 (defn state-text-input [state-path param-path placeholder]
   [sc/input {:type        "text"
              :placeholder placeholder
-             :on-change   #(dispatch [:mutate-create-state (evt->val %) state-path param-path])}])
+             :on-change   #(dispatch [:mutate-create-state state-path param-path (evt->val %)])}])
 
 (defn state-password-input [state-path param-path placeholder]
   [sc/input {:type        "password"
              :placeholder placeholder
-             :on-change   #(dispatch [:mutate-create-state (evt->val %) state-path param-path])}])
-;; 
+             :on-change   #(dispatch [:mutate-create-state state-path param-path (evt->val %)])}])
+
 ;; (defn state-select-input [state-path choices path]
 ;;   [sc/select {:on-change (mt-statechart/mutate-from-dom-event-handler sc-state path)
 ;;               :value     (get-in @state path)}

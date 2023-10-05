@@ -50,7 +50,9 @@
 
    ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
 
-   ["/grid_create"                    {:name ::grid-create-sidebar :view grid-select/grid-create-sidebar}]
+   ["/grid_create"                    {:name      ::grid-create-sidebar
+                                       :view      grid-select/grid-create-sidebar
+                                       :before-fx grid-select/grid-create-before-fx}]
    ["/grid/:uuid/delete"              {:name      ::grid-delete-sidebar
                                        :view      grid-select/grid-delete-sidebar
                                        :before-fx grid-select/grid-delete-before-fx}]
