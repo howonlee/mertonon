@@ -48,3 +48,10 @@ v0.5.commits - September 28 2023
 
 v0.6.commits - October 5 2023
 ---
+
+- Current user view in the navbar
+- Admin view in the navbar, the changes might be jank
+- Refactor views to re-frame
+- All links are by re-frame event dispatches
+- Kebab-casefy API namespace
+- Start on create and delete refactor to re-frame

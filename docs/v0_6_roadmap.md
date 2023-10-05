@@ -11,9 +11,7 @@
 - [x] Grid delete refactor, new way
 - [ ] Users delete in admin, new way
 - [ ] Users create in admin, new way
-- [ ] Logout BE test
-- [ ] Update mertonon.com
 
-- [ ] Changelog
+- [x] Changelog
 - [ ] Clicking around a bit
 - [ ] Cut release

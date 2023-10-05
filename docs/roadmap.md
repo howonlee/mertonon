@@ -4,6 +4,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Logout BE test
+- Update mertonon.com
 - Create with login, logout, intro, entering in the nav-to by the by
 - Re-frame all the things
 - FE only generation
