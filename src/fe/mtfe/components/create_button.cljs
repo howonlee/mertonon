@@ -47,9 +47,12 @@
           (assoc-in total-path evt-content)
           (assoc-in key-path :filled)))))
 
-;; TODO: validation again
-(reg-event-db :validate-create
-              nil)
+(reg-event-db
+  :validate-create-state
+  (fn [db [evt state-path validations]]
+    ;;; get the state
+    ;;; validate that state
+    nil))
 
 (reg-event-fx
   :submit-create
