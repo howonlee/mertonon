@@ -4,8 +4,6 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]))
-;; create user
-;; delete user
 
 (defn admin-sidebar
   [m]
