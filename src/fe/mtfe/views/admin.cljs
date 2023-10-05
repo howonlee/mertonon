@@ -34,5 +34,5 @@
              [sc/table-member (str (:email mt-user))]
              [sc/table-member (str (:created-at mt-user))]
              [sc/table-member (str (:updated-at mt-user))]
-             [sc/table-member [util/sl (util/path ["mt_user" (:uuid mt-user) "delete"])
+             [sc/table-member [util/sl (util/path ["mt_user" (str (:uuid mt-user)) "delete"])
                                [sc/trash-icon]]]])]]])]))

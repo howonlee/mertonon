@@ -43,7 +43,10 @@
    ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
    ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
    ["/admin"                          {:name ::admin-sidebar :view admin/admin-sidebar}]
-   ["/user"                           {:name ::user-sidebar :view mt-user/mt-user-sidebar}]
+   ["/mt_user"                        {:name ::mt-user-sidebar :view mt-user/mt-user-sidebar}]
+   ["/mt_user/:uuid/delete"           {:name      ::mt-user-delete-sidebar
+                                       :view      mt-user/mt-user-delete-sidebar
+                                       :before-fx mt-user/mt-user-delete-before-fx}]
 
    ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
 

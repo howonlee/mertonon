@@ -82,7 +82,7 @@
 
 
 ;; ---
-;; Entry
+;; Creation
 ;; ---
 
 (defn grid-create-sidebar [m]
