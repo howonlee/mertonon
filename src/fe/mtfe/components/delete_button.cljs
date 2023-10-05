@@ -2,7 +2,8 @@
   "Delete buttons. Because of the nature of mt sessions we can use them as logout buttons too.
 
   They're all the same so we just stick the sidebar semantics here"
-  (:require [mtfe.stylecomps :as sc]
+  (:require [ajax.core :refer [json-request-format json-response-format]]
+            [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
 
@@ -18,6 +19,12 @@
    :delete   "Delete"
    :finish   "Finish"})
 
+(defn delete-state-path [state-path]
+  (-> [:sidebar-state]
+      (into state-path)
+      (into [:delete-state])))
+
+
 ;; ---
 ;; Events
 ;; ---
@@ -32,42 +39,29 @@
 (reg-event-fx
   :submit-delete
   (fn [{:keys [db]} [_ resource endpoint state-path member]]
-    ;;;;;
-    ;;;;;
-    ;;;;;
-    {:http-xhrio {}
-    ;;;;;
-    ;;;;;
-    ;;;;;
-    ;;;;;
-     :db         (-> db nil)}))
+    {:http-xhrio {:method :delete
+                  :uri endpoint
+                  :response-format (json-response-format {:keywords? true})
+                  :on-success [:succeed-delete state-path]
+                  :on-failure [:fail-delete state-path]}
+     :db          (assoc-in db
+                            (delete-state-path state-path)
+                            :deleting)}))
 
 (reg-event-db
   :succeed-delete
-  (fn [db _]
-    ;;;;
-    ;;;;
-    ;;;;
-    ;;;;
-    db))
+  (fn [db [_ state-path]]
+    (assoc-in db (delete-state-path state-path) :success)))
 
 (reg-event-db
   :fail-delete
-  (fn [db _]
-    ;;;;
-    ;;;;
-    ;;;;
-    db))
+  (fn [db [_ state-path]]
+    (assoc-in db (delete-state-path state-path) :failure)))
 
 (reg-event-fx
   :finish-delete
-  (fn [cofx _]
-    ;; pop a nav to the place we're going after
-    ;;;;;
-    ;;;;;
-    ;;;;;
-    ;;;;;
-    {}))
+  (fn [cofx [_ nav-to]]
+    {:dispatch [:nav-page nav-to]}))
 
 ;; ---
 ;; Component
@@ -77,7 +71,8 @@
   (let [curr-sidebar-state  @(subscribe (into [:sidebar-state] sidebar-state-path))
         curr-delete-state   (curr-sidebar-state :delete-state)
         curr-error          (curr-sidebar-state :error)
-        {endpoint :endpoint
+        {resource :resource
+         endpoint :endpoint
          nav-to   :nav-to}  config
         curr-labels         (if (seq labels) labels default-labels)]
     [sc/border-region
@@ -88,6 +83,9 @@
       (if (= curr-delete-state :initial)
         [util/evl :submit-delete
          [sc/button (curr-labels :delete)]
+         resource
+         endpoint
+         sidebar-state-path
          member]
         [sc/disabled-button (curr-labels :delete)])
       [:span.pa2
@@ -97,7 +95,8 @@
      [:div
       (if (contains? #{:success :failure} curr-delete-state)
         [util/evl :finish-delete
-         [sc/button (curr-labels :finish)]]
+         [sc/button (curr-labels :finish)]
+         nav-to]
         [sc/disabled-button (curr-labels :finish)])]
      [:div
       (if (= :failure curr-delete-state)
