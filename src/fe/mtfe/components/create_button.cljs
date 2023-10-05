@@ -1,6 +1,6 @@
 (ns mtfe.components.create-button
   "Create buttons. Because of the nature of mt sessions we can use them as login buttons too"
-  (:require [some crap reframe]))
+  (:require [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
 
 (def default-labels
   {
@@ -17,10 +17,11 @@
    :finish   "Finish"
    })
 
-(defn create-button [sidebar-state-path button-state-path labels]
+(defn create-button [sidebar-state-path button-state-path & [labels]]
   (let [curr-sidebar-state @(subscribe (into [:some crap] sidebar-state-path))
         curr-button-state  @(subscribe (into [:some crap] button-state-path))
-        curr-create-state  some crap]
+        curr-create-state  nil
+        curr-labels        (if (seq labels) labels default-labels)]
     [sc/border-region
      [:div.pa2
       (labels curr-state)]

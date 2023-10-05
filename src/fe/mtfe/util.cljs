@@ -97,11 +97,23 @@
    content])
 
 (defn stl
-  "Statechart state transition link"
+  "Statechart state transition link
+
+  TODO: kill everywhere"
   [sc-state event-key content & [data]]
   [:a.white.underline.hover-gray.pointer
    {:on-click #(mt-statechart/send-event-and-reset! sc-state event-key data)}
    content])
+
+(defn evl
+  "Event dispatch link"
+  [event-key content & data-members]
+  [:a.white.underline.hover-gray.pointer
+   {:on-click #(if (seq data-members)
+                 (dispatch (into [event-key] data-members))
+                 (dispatch [event-key]))}
+   content])
+
 
 ;; TODO: get the ones that combine w/ fragment to actually work properly with html5 history state
 
