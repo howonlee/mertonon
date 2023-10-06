@@ -104,10 +104,10 @@
          param-list :param-list
          nav-to     :nav-to}     config
         curr-sidebar-state       @(subscribe (sidebar-path state-path))
-        curr-create-state        (curr-sidebar-state :create-state)
-        curr-create-params       (curr-sidebar-state :create-params)
+        curr-create-state        (get curr-sidebar-state :create-state :invalid)
+        curr-create-params       (get curr-sidebar-state :create-params {})
         curr-labels              (if (seq labels) labels default-labels)
-        curr-error               (curr-sidebar-state :create-error)]
+        curr-error               (get curr-sidebar-state :create-error nil)]
     [sc/border-region
      [:div.pa2
       (curr-labels curr-create-state)]
