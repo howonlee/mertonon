@@ -1,5 +1,6 @@
+- [ ] Deletion sidebars, get them all done
+
 - [ ] Splice in validations again
-- [ ] Deletion sidebars
 - [ ] Creation sidebars
 - [ ] Action sidebar, redo it for grad kickoff
 - [ ] Make the buttons say more sensible stuff for intro, login, logout
@@ -7,6 +8,7 @@
 
 - [ ] Kill the statecharts
 - [ ] Kill the selectors
+- [ ] Consider the re-frame bit done
 
 - [ ] Model updates, genericized endpoints in BE
 - [ ] Model updates component

@@ -3,6 +3,9 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
+            [mtfe.components.delete-button :as del]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -13,7 +16,8 @@
             [mtfe.util :as util]
             [mtfe.views.layer :as layer-view]
             [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [subscribe]]))
 
 ;; ---
 ;; State
@@ -111,9 +115,9 @@
   [sc-components/delete-model-sidebar sidebar-state api/layer-member delete-sc-state "Layer" m])
 
 (defn layer-sidebar [{:keys [data] :as req}]
-  (let [curr-layer-state @layer-view/layer-state
-        is-demo?         @grid-view/demo-state
-        layer-uuid       (->> curr-layer-state :selection :layer :uuid)]
+  (let [curr-layer-state @(subscribe [:selection :layer-view])
+        is-demo?         @(subscribe [:is-demo?])
+        layer-uuid       (->> curr-layer-state :layer :uuid)]
     [:<>
      [header-partial]
      (if (not is-demo?)
@@ -124,7 +128,7 @@
 (defn layer-selection-sidebar
   "For when a layer is selected in a grid or something"
   [m]
-  (let [is-demo?         @grid-view/demo-state
+  (let [is-demo?         @(subscribe [:is-demo?])
         layer-uuid       (->> m :path-params :uuid)]
     [:<>
      [header-partial]
