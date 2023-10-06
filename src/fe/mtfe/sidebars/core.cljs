@@ -76,7 +76,9 @@
    ["/cost_object/:uuid/delete"       {:name      ::cost-object-delete-sidebar
                                        :view      cost-object/cost-object-delete-sidebar
                                        :before-fx cost-object/cost-object-delete-before-fx}]
-   ["/entry/:uuid/delete"             {:name ::entry-delete-sidebar :view entry/entry-delete-sidebar}]
+   ["/entry/:uuid/delete"             {:name      ::entry-delete-sidebar
+                                       :view      entry/entry-delete-sidebar
+                                       :before-fx entry/entry-delete-before-fx}]
 
    ["/weightset/:uuid"                {:name ::weightset-sidebar :view weightset/weightset-sidebar}]
    ["/weightset_selection/:uuid"      {:name ::weightset-selection-sidebar :view weightset/weightset-selection-sidebar}]

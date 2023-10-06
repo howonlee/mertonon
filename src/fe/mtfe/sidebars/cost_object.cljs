@@ -115,8 +115,7 @@
 ;; ---
 
 (defn delete-config [m]
-  (let [uuid (->> m :path-params :uuid)
-        printo (println m)]
+  (let [uuid (->> m :path-params :uuid)]
     {:resource   :curr-cobj
      :endpoint   (api/cost-object-member uuid)
      :state-path [:cobj :delete]

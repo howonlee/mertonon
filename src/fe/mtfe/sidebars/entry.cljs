@@ -100,5 +100,20 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [entry-create-sidebar-render m])
 
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid (->> m :path-params :uuid)]
+    {:resource   :curr-entry
+     :endpoint   (api/entry-member uuid)
+     :state-path [:entry :delete]
+     :model-name "Journal Entry"
+     :nav-to     "#/"}))
+
+(defn entry-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
 (defn entry-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/entry-member delete-sc-state "Journal Entry" m])
+  [del/delete-model-sidebar (delete-config m) m])
