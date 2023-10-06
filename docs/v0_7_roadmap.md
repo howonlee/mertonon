@@ -2,8 +2,8 @@
 - [x] Deletion sidebars, get them all done except for session
 - [x] Logout sidebar w/ deletion button
 - [x] Sensible messages for logout
-
 - [ ] Splice in validations again for creation
+
 - [ ] Login, intro sidebars, w/ custom labels
 - [ ] Creation sidebars: the normal ones. Gotta see if validations can be c&p
 
