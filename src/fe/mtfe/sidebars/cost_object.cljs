@@ -36,8 +36,6 @@
 
 (defonce create-sc-state
    (r/atom nil))
-(defonce delete-sc-state
-   (r/atom nil))
 
 (def create-sc
   (mt-statechart/simple-create :cobj-create
@@ -49,13 +47,7 @@
                                 :action-fn     (sc-handlers/creation-handler api/cost-object create-sc-state mc/->CostObject [:uuid :layer-uuid :name :label])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(def delete-sc
-  (mt-statechart/simple-delete :cobj-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/cost-object-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
 (mt-statechart/init-sc! :cobj-create create-sc-state create-sc)
-(mt-statechart/init-sc! :cobj-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
@@ -123,7 +115,8 @@
 ;; ---
 
 (defn delete-config [m]
-  (let [uuid (->> m :path-params :uuid)]
+  (let [uuid (->> m :path-params :uuid)
+        printo (println m)]
     {:resource   :curr-cobj
      :endpoint   (api/cost-object-member uuid)
      :state-path [:cobj :delete]
