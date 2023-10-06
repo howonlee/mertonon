@@ -89,7 +89,9 @@
 
    ["/weight/:uuid"                   {:name ::weight-sidebar :view weight/weight-sidebar}]
    ["/weight_selection/:uuid"         {:name ::weight-selection-sidebar :view weight/weight-selection-sidebar}]
-   ["/weight/:uuid/delete"            {:name ::weight-delete-sidebar :view weight/weight-delete-sidebar}]
+   ["/weight/:uuid/delete"            {:name      ::weight-delete-sidebar
+                                       :view      weight/weight-delete-sidebar
+                                       :before-fx weight/weight-delete-before-fx}]
    
    ["/input/:uuid/delete"             {:name      ::input-delete-sidebar
                                        :view      input/input-delete-sidebar
