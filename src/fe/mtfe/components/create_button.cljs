@@ -44,9 +44,7 @@
   :mutate-create-state
   (fn [{:keys [db]} [evt state-path param-path evt-content]]
     (let [total-path (into (sidebar-path state-path) param-path)
-          key-path   (into (sidebar-path state-path) [:create-state])
-          printo     (println "before mutatin...")
-          printo     (println (db :sidebar-state))]
+          key-path   (into (sidebar-path state-path) [:create-state])]
       {:dispatch [:validate-create-state state-path]
        :db       (-> db
                      (assoc-in total-path evt-content)
@@ -57,7 +55,6 @@
   (fn [db [evt state-path]]
     (let [path         (sidebar-path state-path)
           create-state (get-in db path)
-          printo       (println create-state)
           validations  (create-state :validations)]
       (update-in db path #(validations/do-validations! % validations)))))
 

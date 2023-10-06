@@ -16,20 +16,20 @@
 ;; ---
 
 (def create-config
-  {:resource    :curr-grid
-   :endpoint    (api/grid)
-   :state-path  [:grid :create]
-   :init-params (fn []
-                  {:uuid           (str (random-uuid))
-                   :name           ""
-                   :label          ""
-                   :optimizer-type :sgd
-                   ;; TODO: get some recursive semantics
-                   :hyperparams    (.stringify js/JSON (clj->js {:lr 0.025}))})
-   :validations [(validations/non-blank [:create-params :name] :name-blank)]
-   :ctr         mc/->Grid
-   :ctr-params  [:uuid :name :label :optimizer-type :hyperparams]
-   :nav-to      "#/"})
+  {:resource      :curr-grid
+   :endpoint      (api/grid)
+   :state-path    [:grid :create]
+   :init-state-fn (fn []
+                    {:uuid           (str (random-uuid))
+                     :name           ""
+                     :label          ""
+                     :optimizer-type :sgd
+                     ;; TODO: get some recursive semantics
+                     :hyperparams    (.stringify js/JSON (clj->js {:lr 0.025}))})
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)]
+   :ctr           mc/->Grid
+   :ctr-params    [:uuid :name :label :optimizer-type :hyperparams]
+   :nav-to        "#/"})
 
 (defn grid-create-before-fx [m]
   (cr/before-fx create-config m))
