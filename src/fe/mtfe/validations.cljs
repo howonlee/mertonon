@@ -10,6 +10,25 @@
 ;; and therefore will be stuck there
 
 ;; ---
+;; Doing validations
+;; ---
+
+(defn do-validations!
+  "Call directly"
+  [state validations]
+  (let [reses  (vec (for [curr-validation validations]
+                      (let [validation-res (curr-validation @state)]
+                        (cond
+                          (and (some? validation-res) (map? validation-res))
+                          validation-res
+                          (and (some? validation-res) (keyword? validation-res))
+                          {validation-res []}
+                          :else
+                          {}))))
+        errors (apply (partial merge-with into) reses)]
+    (swap! state assoc-in [:validation-errors] errors)))
+
+;; ---
 ;; Simple Validations
 ;; ---
 
