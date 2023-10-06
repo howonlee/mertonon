@@ -44,7 +44,7 @@
 (reg-event-fx
   :refresh
   (fn [_ _]
-    {:main-path (.-pathname (.-location js/window))}))
+    {:main-path (.-hash (.-location js/window))}))
 
 ;; Given a sidebar _route match_, nav to it
 (reg-event-fx
