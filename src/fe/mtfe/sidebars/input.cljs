@@ -115,7 +115,6 @@
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [input-create-sidebar-render m]))
 
-
 ;; ---
 ;; Deletion
 ;; ---

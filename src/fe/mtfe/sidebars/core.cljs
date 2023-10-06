@@ -92,7 +92,9 @@
    ["/input/:uuid/delete"             {:name      ::input-delete-sidebar
                                        :view      input/input-delete-sidebar
                                        :before-fx input/input-delete-before-fx}]
-   ["/loss/:uuid/delete"              {:name ::loss-delete-sidebar :view loss/loss-delete-sidebar}]])
+   ["/loss/:uuid/delete"              {:name      ::loss-delete-sidebar
+                                       :view      loss/loss-delete-sidebar
+                                       :before-fx loss/loss-delete-before-fx}]])
 
 (defn sidebar []
   (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])]
