@@ -97,8 +97,20 @@
   (let [cfg (delete-config m)]
     [[:dispatch [:reset-delete-state (:state-path cfg)]]]))
 
+(def logout-labels
+  {;; State labels
+   :initial  "Press Log out button to log out"
+   :deleting "Logging out..."
+   :success  "Successfully logged out."
+   :failure  "Failed to log out"
+   :finished "Finished."
+
+   ;; Button labels
+   :delete   "Log out"
+   :finish   "Finish"})
+
 (defn logout-sidebar [m]
   [:<>
    [:h1 "Log out from Mertonon"]
    [:p "Log out from Mertonon?"]
-   [del/delete-button (delete-config m)]])
+   [del/delete-button (delete-config m) logout-labels]])
