@@ -111,17 +111,6 @@
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [layer-create-sidebar-render m]))
 
-;;;;;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-
-(defn layer-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/layer-member delete-sc-state "Layer" m])
-
 (defn layer-sidebar [{:keys [data] :as req}]
   (let [curr-layer-state @(subscribe [:selection :layer-view])
         is-demo?         @(subscribe [:is-demo?])
@@ -143,3 +132,22 @@
      [:h2 "Double-Click to Dive In"]
      (if (not is-demo?)
        [util/sl (util/path ["layer" layer-uuid "delete"]) [sc/button "Delete"]])]))
+
+
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid   (->> m :path-params :uuid)]
+    {:resource   :curr-layer
+     :endpoint   (api/layer-member uuid)
+     :state-path [:layer :delete]
+     :model-name "Responsibility Center (Layer)"
+     :nav-to     :reload}))
+
+(defn layer-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
+(defn layer-delete-sidebar [m]
+  [del/delete-model-sidebar (delete-config m) m])
