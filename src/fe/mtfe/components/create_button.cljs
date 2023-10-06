@@ -32,7 +32,7 @@
 (reg-event-db
   :reset-create-state
   (fn [db [evt {:keys [state-path init-state-fn validations]}]]
-    (let [path (sidebar-path state-path)]
+    (let [path   (sidebar-path state-path)]
       (assoc-in db path
                 {:create-params    (init-state-fn)
                  :create-state     :blank
@@ -44,7 +44,9 @@
   :mutate-create-state
   (fn [{:keys [db]} [evt state-path param-path evt-content]]
     (let [total-path (into (sidebar-path state-path) param-path)
-          key-path   (into (sidebar-path state-path) [:create-state])]
+          key-path   (into (sidebar-path state-path) [:create-state])
+          printo     (println "before mutatin...")
+          printo     (println (db :sidebar-state))]
       {:dispatch [:validate-create-state state-path]
        :db       (-> db
                      (assoc-in total-path evt-content)
@@ -53,15 +55,11 @@
 (reg-event-db
   :validate-create-state
   (fn [db [evt state-path]]
-    (let [path (sidebar-path state-path)
+    (let [path         (sidebar-path state-path)
           create-state (get-in db path)
+          printo       (println create-state)
           validations  (create-state :validations)]
-      ;;;;
-      ;;;;
-      ;;;;
-      ;;;;
-      db
-      )))
+      (update-in db path #(validations/do-validations! % validations)))))
 
 (reg-event-fx
   :submit-create

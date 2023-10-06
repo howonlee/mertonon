@@ -38,6 +38,7 @@
   [:<>
    [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
+   ;; TODO: get the validations back in
    [fi/state-text-input (create-config :state-path) [:create-params :name] "Grid Name"]
    [fi/state-text-input (create-config :state-path) [:create-params :label] "Grid Label"]
    ;; TODO: let these change, lol
