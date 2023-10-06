@@ -39,8 +39,6 @@
 
 (defonce create-sc-state
    (r/atom nil))
-(defonce delete-sc-state
-   (r/atom nil))
 
 (def validation-list
   [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
@@ -58,13 +56,7 @@
                                                                              [:uuid :cobj-uuid :name :label :type :value :date])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(def delete-sc
-  (mt-statechart/simple-delete :entry-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/entry-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
 (mt-statechart/init-sc! :entry-create create-sc-state create-sc)
-(mt-statechart/init-sc! :entry-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
