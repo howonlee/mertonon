@@ -3,6 +3,9 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
+            [mtfe.components.delete-button :as del]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -13,7 +16,8 @@
             [mtfe.util :as util]
             [mtfe.views.layer :as layer-view]
             [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [subscribe]]))
 
 ;; ---
 ;; State
@@ -107,13 +111,10 @@
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [layer-create-sidebar-render m]))
 
-(defn layer-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/layer-member delete-sc-state "Layer" m])
-
 (defn layer-sidebar [{:keys [data] :as req}]
-  (let [curr-layer-state @layer-view/layer-state
-        is-demo?         @grid-view/demo-state
-        layer-uuid       (->> curr-layer-state :selection :layer :uuid)]
+  (let [curr-layer-state @(subscribe [:selection :layer-view])
+        is-demo?         @(subscribe [:is-demo?])
+        layer-uuid       (->> curr-layer-state :layer :uuid)]
     [:<>
      [header-partial]
      (if (not is-demo?)
@@ -124,10 +125,29 @@
 (defn layer-selection-sidebar
   "For when a layer is selected in a grid or something"
   [m]
-  (let [is-demo?         @grid-view/demo-state
+  (let [is-demo?         @(subscribe [:is-demo?])
         layer-uuid       (->> m :path-params :uuid)]
     [:<>
      [header-partial]
      [:h2 "Double-Click to Dive In"]
      (if (not is-demo?)
        [util/sl (util/path ["layer" layer-uuid "delete"]) [sc/button "Delete"]])]))
+
+
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid   (->> m :path-params :uuid)]
+    {:resource   :curr-layer
+     :endpoint   (api/layer-member uuid)
+     :state-path [:layer :delete]
+     :model-name "Responsibility Center (Layer)"
+     :nav-to     :reload}))
+
+(defn layer-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
+(defn layer-delete-sidebar [m]
+  [del/delete-model-sidebar (delete-config m) m])

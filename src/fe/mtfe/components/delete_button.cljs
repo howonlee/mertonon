@@ -39,7 +39,7 @@
 
 (reg-event-fx
   :submit-delete
-  (fn [{:keys [db]} [_ {:keys [resource endpoint state-path member]}]]
+  (fn [{:keys [db]} [_ {:keys [resource endpoint state-path]}]]
     {:http-xhrio {:method          :delete
                   :uri             endpoint
                   :params          {}
@@ -61,23 +61,18 @@
   (fn [db [_ state-path]]
     (assoc-in db (delete-state-path state-path) :failure)))
 
-(reg-event-fx
-  :finish-delete
-  (fn [cofx [_ nav-to]]
-    {:dispatch [:nav-page nav-to]}))
-
 ;; ---
 ;; Component
 ;; ---
 
-(defn delete-button [config member & [labels]]
+(defn delete-button [config & [labels]]
   (let [{state-path :state-path
          resource   :resource
          endpoint   :endpoint
          nav-to     :nav-to}    config
         curr-sidebar-state      @(subscribe (into [:sidebar-state] state-path))
-        curr-delete-state       (curr-sidebar-state :delete-state)
-        curr-error              (curr-sidebar-state :error)
+        curr-delete-state       (get curr-sidebar-state :delete-state :invalid)
+        curr-error              (get curr-sidebar-state :error nil)
         curr-labels             (if (seq labels) labels default-labels)]
     [sc/border-region
      [:div.pa2
@@ -87,7 +82,7 @@
       (if (= curr-delete-state :initial)
         [util/evl :submit-delete
          [sc/button (curr-labels :delete)]
-         (assoc config :member member)]
+         config]
         [sc/disabled-button (curr-labels :delete)])
       [:span.pa2
        (if (= curr-delete-state :deleting)
@@ -95,7 +90,7 @@
          [sc/blank-icon])]]
      [:div
       (if (contains? #{:success :failure} curr-delete-state)
-        [util/evl :finish-delete
+        [util/evl :finish-and-nav
          [sc/button (curr-labels :finish)]
          nav-to]
         [sc/disabled-button (curr-labels :finish)])]
@@ -132,4 +127,4 @@
                                     (->> member :username))]]
          [:p "UUID " [:strong (str (->> member :uuid))]]
          [:p "?"]
-         [delete-button config member]]))))
+         [delete-button config]]))))

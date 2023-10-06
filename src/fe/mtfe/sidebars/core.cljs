@@ -68,25 +68,39 @@
 
    ["/layer/:uuid"                    {:name ::layer-sidebar :view layer/layer-sidebar}]
    ["/layer_selection/:uuid"          {:name ::layer-selection-sidebar :view layer/layer-selection-sidebar}]
-   ["/layer/:uuid/delete"             {:name ::layer-delete-sidebar :view layer/layer-delete-sidebar}]
+   ["/layer/:uuid/delete"             {:name      ::layer-delete-sidebar
+                                       :view      layer/layer-delete-sidebar
+                                       :before-fx layer/layer-delete-before-fx}]
    ["/layer/:uuid/cost_object_create" {:name ::cost-object-create-sidebar :view cost-object/cost-object-create-sidebar}]
 
    ["/cost_object/:uuid"              {:name ::cost-object-sidebar :view cost-object/cost-object-sidebar}]
    ["/cost_object/:uuid/entry_create" {:name ::entry-create-sidebar :view entry/entry-create-sidebar}]
-   ["/cost_object/:uuid/delete"       {:name ::cost-object-delete-sidebar :view cost-object/cost-object-delete-sidebar}]
-   ["/entry/:uuid/delete"             {:name ::entry-delete-sidebar :view entry/entry-delete-sidebar}]
+   ["/cost_object/:uuid/delete"       {:name      ::cost-object-delete-sidebar
+                                       :view      cost-object/cost-object-delete-sidebar
+                                       :before-fx cost-object/cost-object-delete-before-fx}]
+   ["/entry/:uuid/delete"             {:name      ::entry-delete-sidebar
+                                       :view      entry/entry-delete-sidebar
+                                       :before-fx entry/entry-delete-before-fx}]
 
    ["/weightset/:uuid"                {:name ::weightset-sidebar :view weightset/weightset-sidebar}]
    ["/weightset_selection/:uuid"      {:name ::weightset-selection-sidebar :view weightset/weightset-selection-sidebar}]
-   ["/weightset/:uuid/delete"         {:name ::weightset-delete-sidebar :view weightset/weightset-delete-sidebar}]
+   ["/weightset/:uuid/delete"         {:name      ::weightset-delete-sidebar
+                                       :view      weightset/weightset-delete-sidebar
+                                       :before-fx weightset/weightset-delete-before-fx}]
    ["/weightset/:uuid/weight_create"  {:name ::weight-create-sidebar :view weight/weight-create-sidebar}]
 
    ["/weight/:uuid"                   {:name ::weight-sidebar :view weight/weight-sidebar}]
    ["/weight_selection/:uuid"         {:name ::weight-selection-sidebar :view weight/weight-selection-sidebar}]
-   ["/weight/:uuid/delete"            {:name ::weight-delete-sidebar :view weight/weight-delete-sidebar}]
+   ["/weight/:uuid/delete"            {:name      ::weight-delete-sidebar
+                                       :view      weight/weight-delete-sidebar
+                                       :before-fx weight/weight-delete-before-fx}]
    
-   ["/input/:uuid/delete"             {:name ::input-delete-sidebar :view input/input-delete-sidebar}]
-   ["/loss/:uuid/delete"              {:name ::loss-delete-sidebar :view loss/loss-delete-sidebar}]])
+   ["/input/:uuid/delete"             {:name      ::input-delete-sidebar
+                                       :view      input/input-delete-sidebar
+                                       :before-fx input/input-delete-before-fx}]
+   ["/loss/:uuid/delete"              {:name      ::loss-delete-sidebar
+                                       :view      loss/loss-delete-sidebar
+                                       :before-fx loss/loss-delete-before-fx}]])
 
 (defn sidebar []
   (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])]

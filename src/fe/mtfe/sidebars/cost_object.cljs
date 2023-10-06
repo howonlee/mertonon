@@ -3,6 +3,9 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
+            [mtfe.components.delete-button :as del]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -33,8 +36,6 @@
 
 (defonce create-sc-state
    (r/atom nil))
-(defonce delete-sc-state
-   (r/atom nil))
 
 (def create-sc
   (mt-statechart/simple-create :cobj-create
@@ -46,13 +47,7 @@
                                 :action-fn     (sc-handlers/creation-handler api/cost-object create-sc-state mc/->CostObject [:uuid :layer-uuid :name :label])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(def delete-sc
-  (mt-statechart/simple-delete :cobj-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/cost-object-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
 (mt-statechart/init-sc! :cobj-create create-sc-state create-sc)
-(mt-statechart/init-sc! :cobj-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
@@ -91,9 +86,6 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [cobj-create-sidebar-render m])
 
-(defn cost-object-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/cost-object-member delete-sc-state "Cost Node" m])
-
 (defn cost-object-sidebar [m]
   (let [is-demo?        @grid-view/demo-state
         cobj-uuid       (->> m :path-params :uuid)
@@ -117,3 +109,21 @@
         [sc-components/validation-toast sidebar-state :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]
         [sc-components/validated-link sidebar-state :not-input-or-loss "Create Journal Entry"
          [util/sl (util/path ["cost_object" cobj-uuid "entry_create"]) [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
+
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid (->> m :path-params :uuid)]
+    {:resource   :curr-cobj
+     :endpoint   (api/cost-object-member uuid)
+     :state-path [:cobj :delete]
+     :model-name "Cost Object"
+     :nav-to     :reload}))
+
+(defn cost-object-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
+(defn cost-object-delete-sidebar [m]
+  [del/delete-model-sidebar (delete-config m) m])

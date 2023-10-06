@@ -3,6 +3,9 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
+            [mtfe.components.delete-button :as del]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -45,8 +48,6 @@
 
 (defonce create-sc-state
   (r/atom nil))
-(defonce delete-sc-state
-  (r/atom nil))
 
 (def create-sc
   (mt-statechart/simple-create :input-create
@@ -63,13 +64,7 @@
                                 :action-fn     (sc-handlers/creation-handler api/input create-sc-state mc/->Input [:uuid :layer-uuid :name :label :type])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(def delete-sc
-  (mt-statechart/simple-delete :input-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/input-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
 (mt-statechart/init-sc! :input-create create-sc-state create-sc)
-(mt-statechart/init-sc! :input-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
@@ -120,5 +115,20 @@
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [input-create-sidebar-render m]))
 
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid   (->> m :path-params :uuid)]
+    {:resource   :curr-input
+     :endpoint   (api/input-member uuid)
+     :state-path [:input :delete]
+     :model-name "Input Annotation"
+     :nav-to     :reload}))
+
+(defn input-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
 (defn input-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/input-member delete-sc-state "Input" m])
+  [del/delete-model-sidebar (delete-config m) m])

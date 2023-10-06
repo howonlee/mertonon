@@ -41,6 +41,11 @@
   (fn [_ [_ path-target]]
     {:main-path path-target}))
 
+(reg-event-fx
+  :refresh
+  (fn [_ _]
+    {:main-path (.-hash (.-location js/window))}))
+
 ;; Given a sidebar _route match_, nav to it
 (reg-event-fx
  :nav-sidebar-match
@@ -140,3 +145,10 @@
 ;; ---
 ;; Misc
 ;; ---
+
+(reg-event-fx
+  :finish-and-nav
+  (fn [cofx [_ nav-to]]
+    (if (contains? #{:refresh :reload} nav-to)
+      {:dispatch [:refresh]}
+      {:dispatch [:nav-page nav-to]})))

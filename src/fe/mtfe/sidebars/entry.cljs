@@ -3,6 +3,9 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
+            [mtfe.components.delete-button :as del]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -36,8 +39,6 @@
 
 (defonce create-sc-state
    (r/atom nil))
-(defonce delete-sc-state
-   (r/atom nil))
 
 (def validation-list
   [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
@@ -55,13 +56,7 @@
                                                                              [:uuid :cobj-uuid :name :label :type :value :date])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(def delete-sc
-  (mt-statechart/simple-delete :entry-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/entry-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
 (mt-statechart/init-sc! :entry-create create-sc-state create-sc)
-(mt-statechart/init-sc! :entry-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
@@ -97,5 +92,20 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [entry-create-sidebar-render m])
 
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid (->> m :path-params :uuid)]
+    {:resource   :curr-entry
+     :endpoint   (api/entry-member uuid)
+     :state-path [:entry :delete]
+     :model-name "Journal Entry"
+     :nav-to     :reload}))
+
+(defn entry-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
 (defn entry-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/entry-member delete-sc-state "Journal Entry" m])
+  [del/delete-model-sidebar (delete-config m) m])

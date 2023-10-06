@@ -43,13 +43,19 @@
   (fn [db [evt state-path param-path evt-content]]
     (let [total-path (into (sidebar-path state-path) param-path)
           key-path   (into (sidebar-path state-path) [:create-state])]
+      ;;;;;;;
+      ;;;;;;; dispatch a validation from here too willyah
+      ;;;;;;;
       (-> db
           (assoc-in total-path evt-content)
           (assoc-in key-path :filled)))))
 
-;; TODO: validation again
-(reg-event-db :validate-create
-              nil)
+(reg-event-db
+  :validate-create-state
+  (fn [db [evt state-path validations]]
+    ;;; get the state
+    ;;; validate that state
+    nil))
 
 (reg-event-fx
   :submit-create
@@ -57,9 +63,7 @@
        [_ {:keys [create-params resource endpoint state-path ctr ctr-params]}]]
     (let [param-list (vec (for [member-param ctr-params]
                             (create-params member-param)))
-          new-member (apply ctr param-list)
-          printo     (println ctr-params)
-          printo     (println new-member)]
+          new-member (apply ctr param-list)]
     {:http-xhrio {:method          :post
                   :uri             endpoint
                   :params          new-member
@@ -81,12 +85,6 @@
   (fn [db [_ state-path]]
     (assoc-in db (into (sidebar-path state-path) [:create-state]) :failure)))
 
-(reg-event-fx
-  :finish-create
-  (fn [cofx [_ nav-to]]
-    (println nav-to)
-    {:dispatch [:nav-page nav-to]}))
-
 ;; ---
 ;; Component
 ;; ---
@@ -98,10 +96,10 @@
          param-list :param-list
          nav-to     :nav-to}     config
         curr-sidebar-state       @(subscribe (sidebar-path state-path))
-        curr-create-state        (curr-sidebar-state :create-state)
-        curr-create-params       (curr-sidebar-state :create-params)
+        curr-create-state        (get curr-sidebar-state :create-state :invalid)
+        curr-create-params       (get curr-sidebar-state :create-params {})
         curr-labels              (if (seq labels) labels default-labels)
-        curr-error               (curr-sidebar-state :create-error)]
+        curr-error               (get curr-sidebar-state :create-error nil)]
     [sc/border-region
      [:div.pa2
       (curr-labels curr-create-state)]
@@ -118,7 +116,7 @@
          [sc/blank-icon])]]
      [:div
       (if (contains? #{:success :failure} curr-create-state)
-        [util/evl :finish-create
+        [util/evl :finish-and-nav
          [sc/button (curr-labels :finish)]
          nav-to]
         [sc/disabled-button (curr-labels :finish)])]

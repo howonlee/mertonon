@@ -3,6 +3,9 @@
   (:require [ajax.core :refer [GET POST]]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
+            [mtfe.components.delete-button :as del]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -84,6 +87,12 @@
 (defn login-sidebar [m]
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [login-render m])
+
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
 
 (defn logout-sidebar [m]
   (let [curr-match-uuid (->> m :path-params :uuid)

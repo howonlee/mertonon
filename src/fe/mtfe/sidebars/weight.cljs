@@ -2,6 +2,9 @@
   "Sidebar for weight"
   (:require [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
+            [mtfe.components.create-button :as cr]
+            [mtfe.components.delete-button :as del]
+            [mtfe.components.form-inputs :as fi]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -48,8 +51,6 @@
 
 (defonce create-sc-state
    (r/atom nil))
-(defonce delete-sc-state
-   (r/atom nil))
 
 (def validation-list
   [(sc-validation/non-blank [:curr-create-params :src-cobj-uuid] :src-cobj-blank)
@@ -70,13 +71,7 @@
                                 :action-fn     (sc-handlers/creation-handler api/weight create-sc-state mc/->Weight [:uuid :weightset-uuid :src-cobj-uuid :tgt-cobj-uuid :label :type :value])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(def delete-sc
-  (mt-statechart/simple-delete :weight-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/weight-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
 (mt-statechart/init-sc! :weight-create create-sc-state create-sc)
-(mt-statechart/init-sc! :weight-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
@@ -186,9 +181,6 @@
       (swap! sidebar-state assoc-in [:curr-create-params :tgt-cobj-uuid] tgt-cobj-uuid)
       [weight-create-sidebar-render m])))
 
-(defn weight-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/weight-member delete-sc-state "Weight" m])
-
 (defn weight-sidebar [m]
   (let [is-demo?    @grid-view/demo-state
         weight-uuid (->> m :path-params :uuid)]
@@ -209,3 +201,21 @@
      [weight-data-partial (->> @sidebar-state :selection)]
      (if (not is-demo?)
        [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]])]))
+
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid   (->> m :path-params :uuid)]
+    {:resource   :curr-weight
+     :endpoint   (api/weight-member uuid)
+     :state-path [:weight :delete]
+     :model-name "Weight"
+     :nav-to     :reload}))
+
+(defn weight-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
+(defn weight-delete-sidebar [m]
+  [del/delete-model-sidebar (delete-config m) m])
