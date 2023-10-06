@@ -87,12 +87,6 @@
   (fn [db [_ state-path]]
     (assoc-in db (into (sidebar-path state-path) [:create-state]) :failure)))
 
-(reg-event-fx
-  :finish-create
-  (fn [cofx [_ nav-to]]
-    (println nav-to)
-    {:dispatch [:nav-page nav-to]}))
-
 ;; ---
 ;; Component
 ;; ---
@@ -124,7 +118,7 @@
          [sc/blank-icon])]]
      [:div
       (if (contains? #{:success :failure} curr-create-state)
-        [util/evl :finish-create
+        [util/evl :finish-and-nav
          [sc/button (curr-labels :finish)]
          nav-to]
         [sc/disabled-button (curr-labels :finish)])]

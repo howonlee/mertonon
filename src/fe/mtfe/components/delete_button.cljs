@@ -61,11 +61,6 @@
   (fn [db [_ state-path]]
     (assoc-in db (delete-state-path state-path) :failure)))
 
-(reg-event-fx
-  :finish-delete
-  (fn [cofx [_ nav-to]]
-    {:dispatch [:nav-page nav-to]}))
-
 ;; ---
 ;; Component
 ;; ---
@@ -95,7 +90,7 @@
          [sc/blank-icon])]]
      [:div
       (if (contains? #{:success :failure} curr-delete-state)
-        [util/evl :finish-delete
+        [util/evl :finish-and-nav
          [sc/button (curr-labels :finish)]
          nav-to]
         [sc/disabled-button (curr-labels :finish)])]
