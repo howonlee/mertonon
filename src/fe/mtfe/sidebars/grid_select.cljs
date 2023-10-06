@@ -8,6 +8,7 @@
             [mtfe.components.form-inputs :as fi]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
+            [mtfe.validations :as validations]
             [reagent.core :as r]))
 
 ;; ---
@@ -25,6 +26,7 @@
                    :optimizer-type :sgd
                    ;; TODO: get some recursive semantics
                    :hyperparams    (.stringify js/JSON (clj->js {:lr 0.025}))})
+   :validations [(validations/non-blank [:create-params :name] :name-blank)]
    :ctr         mc/->Grid
    :ctr-params  [:uuid :name :label :optimizer-type :hyperparams]
    :nav-to      "#/"})

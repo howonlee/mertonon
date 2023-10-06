@@ -1,4 +1,4 @@
-(ns mtfe.statecharts.validations
+(ns mtfe.validations
   "Validations.
 
   They emit a keyword, which fills up a :validation-errors key in the curr state.
