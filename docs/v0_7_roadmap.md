@@ -3,14 +3,13 @@
 - [x] Logout sidebar w/ deletion button
 - [x] Sensible messages for logout
 - [x] Splice in validations again for creation
+
 - [ ] Validation popups, etc again
 - [ ] Login, intro sidebars, w/ custom labels
-
 - [ ] Rest of the form inputs, make em re-framey
 - [ ] Creation sidebars: the normal ones. Gotta see if validations can be c&p
 
 - [ ] Action sidebar, redo it for grad kickoff. Test all the way to grad kickoff again
-
 - [ ] Create and delete for password logins separately with selector lol
 
 - [ ] Selection views - have a single click to dive in thing
