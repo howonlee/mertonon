@@ -5,7 +5,9 @@
   :main-path
   ;; Main path will bring sidebar path along for the ride
   (fn [path]
-    (.assign (.-location js/window) path)))
+    (if (contains? #{:reload :refresh} path)
+      (.reload (.-location js/window))
+      (.assign (.-location js/window) path))))
 
 (reg-fx
   :non-main-path

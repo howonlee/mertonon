@@ -6,6 +6,10 @@
             [taoensso.timbre :as timbre :refer [log]]
             [tick.core :as t]))
 
+;; ---
+;; Match munging
+;; ---
+
 (defn body-params
   [match]
   (-> match
@@ -30,6 +34,10 @@
        uio/maybe-slurp
        uio/maybe-json-decode
        (mapv uutils/uuid)))
+
+;; ---
+;; Generic endpoints
+;; ---
 
 (defn create-model [curr-model]
   (fn [match]

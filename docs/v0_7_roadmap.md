@@ -1,4 +1,5 @@
 - [ ] Deletion sidebars, get them all done
+- [ ] Get the nav-tos to be more friendly...
 
 - [ ] Splice in validations again
 - [ ] Creation sidebars

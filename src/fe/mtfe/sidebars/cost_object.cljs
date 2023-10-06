@@ -120,7 +120,7 @@
      :endpoint   (api/cost-object-member uuid)
      :state-path [:cobj :delete]
      :model-name "Cost Object"
-     :nav-to     "#/"}))
+     :nav-to     :reload}))
 
 (defn cost-object-delete-before-fx [m]
   (del/before-fx (delete-config m) m))
