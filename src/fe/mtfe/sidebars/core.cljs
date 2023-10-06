@@ -41,7 +41,9 @@
   [["/"                               {:name ::home-sidebar :view home-sidebar}]
    ["/intro"                          {:name ::intro-sidebar :view intro/intro-sidebar}]
    ["/login"                          {:name ::login-sidebar :view session/login-sidebar}]
-   ["/logout"                         {:name ::logout-sidebar :view session/logout-sidebar}]
+   ["/logout"                         {:name      ::logout-sidebar
+                                       :view      session/logout-sidebar
+                                       :before-fx session/logout-before-fx}]
    ["/admin"                          {:name ::admin-sidebar :view admin/admin-sidebar}]
    ["/admin/mt_user_create"           {:name      ::mt-user-create-sidebar
                                        :view      mt-user/mt-user-create-sidebar
