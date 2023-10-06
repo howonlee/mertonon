@@ -70,8 +70,6 @@
 
 (defonce create-sc-state
    (r/atom nil))
-(defonce delete-sc-state
-   (r/atom nil))
 
 (def validation-list
   [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
@@ -89,13 +87,7 @@
                                 :action-fn     (sc-handlers/creation-handler api/weightset create-sc-state mc/->Weightset [:uuid :src-layer-uuid :tgt-layer-uuid :name :label])
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
-(def delete-sc
-  (mt-statechart/simple-delete :weightset-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/weightset-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
 (mt-statechart/init-sc! :weightset-create create-sc-state create-sc)
-(mt-statechart/init-sc! :weightset-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Creation
@@ -181,14 +173,6 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [weightset-create-sidebar-render m])
 
-;;;;;;;;
-;;;;;;;;
-;;;;;;;;
-;;;;;;;;
-;;;;;;;;
-
-(defn weightset-delete-sidebar [m]
-  [sc-components/delete-model-sidebar sidebar-state api/weightset-member delete-sc-state "Weightset" m])
 
 (defn weightset-sidebar [m]
   (let [curr-ws-state @ws-view/ws-state
@@ -210,3 +194,22 @@
      [:h2 "Double-Click to Dive In"]
      (if (not is-demo?)
        [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]])]))
+
+
+;; ---
+;; Deletion
+;; ---
+
+(defn delete-config [m]
+  (let [uuid   (->> m :path-params :uuid)]
+    {:resource   :curr-weightset
+     :endpoint   (api/weightset-member uuid)
+     :state-path [:weightset :delete]
+     :model-name "Weightset"
+     :nav-to     :reload}))
+
+(defn weightset-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
+(defn weightset-delete-sidebar [m]
+  [del/delete-model-sidebar (delete-config m) m])

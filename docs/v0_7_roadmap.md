@@ -7,6 +7,7 @@
 - [ ] Make the buttons say more sensible stuff for intro, login, logout
 - [ ] Create and delete for password logins separately with selector lol
 
+- [ ] Selection views - have a single click to dive in thing
 - [ ] Kill the statecharts
 - [ ] Kill the selectors
 - [ ] Consider the re-frame bit done

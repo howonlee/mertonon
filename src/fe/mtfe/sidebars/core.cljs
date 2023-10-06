@@ -84,7 +84,9 @@
 
    ["/weightset/:uuid"                {:name ::weightset-sidebar :view weightset/weightset-sidebar}]
    ["/weightset_selection/:uuid"      {:name ::weightset-selection-sidebar :view weightset/weightset-selection-sidebar}]
-   ["/weightset/:uuid/delete"         {:name ::weightset-delete-sidebar :view weightset/weightset-delete-sidebar}]
+   ["/weightset/:uuid/delete"         {:name      ::weightset-delete-sidebar
+                                       :view      weightset/weightset-delete-sidebar
+                                       :before-fx weightset/weightset-delete-before-fx}]
    ["/weightset/:uuid/weight_create"  {:name ::weight-create-sidebar :view weight/weight-create-sidebar}]
 
    ["/weight/:uuid"                   {:name ::weight-sidebar :view weight/weight-sidebar}]
