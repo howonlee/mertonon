@@ -110,7 +110,7 @@
      :endpoint   (api/entry-member uuid)
      :state-path [:entry :delete]
      :model-name "Journal Entry"
-     :nav-to     "#/"}))
+     :nav-to     :reload}))
 
 (defn entry-delete-before-fx [m]
   (del/before-fx (delete-config m) m))
