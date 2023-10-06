@@ -1,10 +1,11 @@
 - [x] Get the nav-tos to be more friendly...
 - [x] Deletion sidebars, get them all done except for session
 - [x] Logout sidebar w/ deletion button
-- [ ] Sensible messages for login, intro, logout
-- [ ] Splice in validations again
+- [x] Sensible messages for logout
 
-- [ ] Creation sidebars
+- [ ] Splice in validations again for creation
+- [ ] Login, intro sidebars, w/ custom labels
+- [ ] Creation sidebars: the normal ones. Gotta see if validations can be c&p
 
 - [ ] Action sidebar, redo it for grad kickoff
 - [ ] Create and delete for password logins separately with selector lol
