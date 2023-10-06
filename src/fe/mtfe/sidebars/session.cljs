@@ -88,6 +88,12 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [login-render m])
 
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+
 (defn logout-sidebar [m]
   (let [curr-match-uuid (->> m :path-params :uuid)
         curr-state-uuid (->> @sidebar-state :selection :uuid)

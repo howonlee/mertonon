@@ -123,5 +123,11 @@
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [loss-create-sidebar-render m]))
 
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+
 (defn loss-delete-sidebar [m]
   [sc-components/delete-model-sidebar sidebar-state api/loss-member delete-sc-state "Goal" m])

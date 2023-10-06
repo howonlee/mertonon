@@ -111,6 +111,14 @@
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [layer-create-sidebar-render m]))
 
+;;;;;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+
 (defn layer-delete-sidebar [m]
   [sc-components/delete-model-sidebar sidebar-state api/layer-member delete-sc-state "Layer" m])
 

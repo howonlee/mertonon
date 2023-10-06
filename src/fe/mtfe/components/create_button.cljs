@@ -63,9 +63,7 @@
        [_ {:keys [create-params resource endpoint state-path ctr ctr-params]}]]
     (let [param-list (vec (for [member-param ctr-params]
                             (create-params member-param)))
-          new-member (apply ctr param-list)
-          printo     (println ctr-params)
-          printo     (println new-member)]
+          new-member (apply ctr param-list)]
     {:http-xhrio {:method          :post
                   :uri             endpoint
                   :params          new-member

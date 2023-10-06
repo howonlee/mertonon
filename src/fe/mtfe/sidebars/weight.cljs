@@ -189,6 +189,13 @@
       (swap! sidebar-state assoc-in [:curr-create-params :tgt-cobj-uuid] tgt-cobj-uuid)
       [weight-create-sidebar-render m])))
 
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+
 (defn weight-delete-sidebar [m]
   [sc-components/delete-model-sidebar sidebar-state api/weight-member delete-sc-state "Weight" m])
 

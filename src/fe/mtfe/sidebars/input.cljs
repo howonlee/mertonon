@@ -123,5 +123,12 @@
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [input-create-sidebar-render m]))
 
+
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+
 (defn input-delete-sidebar [m]
   [sc-components/delete-model-sidebar sidebar-state api/input-member delete-sc-state "Input" m])
