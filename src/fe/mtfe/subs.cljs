@@ -2,6 +2,10 @@
   "DB subscriptions for re-frame in Mertonon"
   (:require [re-frame.core :refer [reg-sub]]))
 
+;; ---
+;; Matches
+;; ---
+
 (reg-sub
   :curr-page-match
   (fn [db _]
@@ -11,6 +15,10 @@
   :curr-sidebar-match
   (fn [db _]
     (:curr-sidebar-match db)))
+
+;; ---
+;; View and sidebar state
+;; ---
 
 (reg-sub
   :selection
@@ -26,6 +34,26 @@
   :is-demo?
   (fn [db _]
     (:is-demo? db)))
+
+;; ---
+;; Validation and other errors
+;; ---
+
+(reg-sub
+  :validation-procced?
+  (fn [db [_ state-path validation-key]]
+    (let [total-path (-> [:sidebar-state]
+                         (into state-path)
+                         (into [:validation-errors]))]
+      (-> db (get-in total-path) (contains? validation-key)))))
+
+(reg-sub
+  :validation-contents
+  (fn [db [_ state-path validation-key]]
+    (let [total-path (-> [:sidebar-state]
+                         (into state-path)
+                         (into [:validation-errors validation-key]))]
+      (get-in db total-path))))
 
 (reg-sub
   :curr-error
