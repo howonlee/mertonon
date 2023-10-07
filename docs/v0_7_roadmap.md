@@ -4,9 +4,9 @@
 - [x] Sensible messages for logout
 - [x] Splice in validations again for creation
 
-- [ ] Validation popups, etc again
-- [ ] Login, intro sidebars, w/ custom labels
+- [x] Validation popups, etc again
 - [ ] Rest of the form inputs, make em re-framey
+- [ ] Login, intro sidebars, w/ custom labels
 - [ ] Creation sidebars: the normal ones. Gotta see if validations can be c&p
 
 - [ ] Action sidebar, redo it for grad kickoff. Test all the way to grad kickoff again
