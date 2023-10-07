@@ -16,10 +16,8 @@
 (defn do-validations!
   "Call directly"
   [state validations]
-  (let [printo (println validations)
-        reses  (vec (for [curr-validation validations]
-                      (let [validation-res (curr-validation state)
-                            printo         (println validation-res)]
+  (let [reses  (vec (for [curr-validation validations]
+                      (let [validation-res (curr-validation state)]
                         (cond
                           (and (some? validation-res) (map? validation-res))
                           validation-res
@@ -27,9 +25,7 @@
                           {validation-res []}
                           :else
                           {}))))
-        errors (apply (partial merge-with into) reses)
-        printo (println state)
-        printo (println errors)]
+        errors (apply (partial merge-with into) reses)]
     (assoc-in state [:validation-errors] errors)))
 
 ;; ---
