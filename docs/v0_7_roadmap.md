@@ -6,7 +6,7 @@
 
 - [x] Validation popups, etc again
 - [x] Rest of the form inputs, make em re-framey
-- [ ] Login, intro sidebars, w/ custom labels
+- [x] Login, intro sidebars, w/ custom labels
 
 - [ ] Creation sidebars: the normal ones. Gotta see if validations can be c&p
 - [ ] Action sidebar, redo it for grad kickoff. Test all the way to grad kickoff again
