@@ -6,6 +6,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
@@ -35,17 +36,18 @@
   (cr/before-fx create-config m))
 
 (defn grid-create-sidebar [m]
-  [:<>
-   [:h1 "New Grid"]
-   [:p "More optimization types and ability to change hyperparameters are coming."]
-   ;; TODO: get the validations back in
-   [fi/state-text-input (create-config :state-path) [:create-params :name] "Grid Name"]
-   [fi/state-text-input (create-config :state-path) [:create-params :label] "Grid Label"]
-   ;; TODO: let these change, lol
-   [:div.mb2 "Optimization Type - SGD"]
-   [:div.mb2 "Hyperparameters"
-    [:div "Adjustment Rate - 0.025"]]
-   [cr/create-button create-config]])
+  (let [state-path (create-config :state-path)]
+    [:<>
+     [:h1 "New Grid"]
+     [:p "More optimization types and ability to change hyperparameters are coming."]
+     [vblurbs/validation-popover state-path :name-blank "Grid Name is blank"
+      [fi/state-text-input state-path [:create-params :name] "Grid Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Grid Label"]
+     ;; TODO: let these change, lol
+     [:div.mb2 "Optimization Type - SGD"]
+     [:div.mb2 "Hyperparameters"
+      [:div "Adjustment Rate - 0.025"]]
+     [cr/create-button create-config]]))
 
 ;; ---
 ;; Deletion

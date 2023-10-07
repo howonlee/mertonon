@@ -9,6 +9,12 @@
             ["react-tiny-popover" :refer [Popover]]))
 
 ;; ---
+;; React class adapters
+;; ---
+
+(def popover (r/adapt-react-class Popover))
+
+;; ---
 ;; Validation failure displays
 ;; ---
 
