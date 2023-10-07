@@ -12,36 +12,32 @@
 ;; Validation failure displays
 ;; ---
 
-(defn validation-procced? [state validation-key]
-  (-> @state :validation-errors (contains? validation-key)))
-
-(defn validation-contents [state validation-key]
-  (-> @state :validation-errors validation-key))
-
-(defn curr-blurb [state validation-key blurb]
-  (if (and (validation-procced? state validation-key) (fn? blurb))
-    (blurb (validation-contents state validation-key))
-    blurb))
+(defn curr-blurb [state-path validation-key blurb]
+  (let [procced  @(subscribe [:validation-procced? state-path validation-key])
+        contents @(subscribe [:validation-contents state-path validation-key])]
+    (if (and procced (fn? blurb))
+      (blurb contents)
+      blurb)))
 
 (defn validated-link
   "Don't use this if you should be using a whole state machine.
 
   Doesn't work with function blurbs"
-  [state validation-key disabled-name contents]
-  (if (validation-procced? state validation-key)
+  [state-path validation-key disabled-name contents]
+  (if @(subscribe [:validation-procced? state-path validation-key])
     [sc/disabled-button disabled-name]
     contents))
 
 ;; Rule of thumb: if user _just_ did something, do popover.
 ;; If user did something like 15 minutes ago and need to continuously annoy, use toast
 
-(defn validation-toast [state validation-key blurb]
-  (if (validation-procced? state validation-key)
-    [sc/validation-toast (curr-blurb state validation-key blurb)]
+(defn validation-toast [state-path validation-key blurb]
+  (if @(subscribe [:validation-procced? state-path validation-key])
+    [sc/validation-toast (curr-blurb state-path validation-key blurb)]
     [:span]))
 
-(defn validation-popover [state validation-key blurb content]
-  [popover {:isOpen (validation-procced? state validation-key)
+(defn validation-popover [state-path validation-key blurb content]
+  [popover {:isOpen @(subscribe [:validation-procced? state-path validation-key])
             :positions #js ["left"]
-            :content (r/as-element [sc/popper (curr-blurb state validation-key blurb)])}
+            :content (r/as-element [sc/popper (curr-blurb state-path validation-key blurb)])}
    [:span content]])
