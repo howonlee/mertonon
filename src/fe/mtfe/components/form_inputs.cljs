@@ -6,15 +6,13 @@
             [mtfe.util :as util]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]
-            ["react-datepicker" :default DatePicker]
-            ["react-tiny-popover" :refer [Popover]]))
+            ["react-datepicker" :default DatePicker]))
 
 ;; ---
 ;; React class adapters
 ;; ---
 
 (def date-picker (r/adapt-react-class DatePicker))
-(def popover (r/adapt-react-class Popover))
 
 ;; ---
 ;; Utils
@@ -42,25 +40,26 @@
              :placeholder placeholder
              :on-change   #(dispatch [:mutate-create-state state-path param-path (evt->val %)])}])
 
-;; (defn state-select-input [state-path choices path]
-;;   [sc/select {:on-change (mt-statechart/mutate-from-dom-event-handler sc-state path)
-;;               :value     (get-in @state path)}
-;;    [sc/select-option {:value ""} "---"]
-;;    (for [member choices] ^{:key (:uuid member)}
-;;      [sc/select-option {:value (:uuid member)} (:name member)])])
-;; 
-;; (defn state-range-input
-;;   ([state-path]
-;;   (state-range-input state-path 0 1000 5))
-;;   ([state-path _min _max step]
-;;    [sc/input {:type     "range"
-;;               :on-input (mt-statechart/mutate-from-dom-event-handler sc-state path)
-;;               :value    (get-in @state path)
-;;               :min      _min
-;;               :max      _max
-;;               :step     step}]))
-;; 
-;; (defn state-datepicker [state-path]
-;;   [date-picker {:popper-placement "left"
-;;                 :selected         (get-in @state path)
-;;                 :on-select        (mt-statechart/mutate-from-plain-function-handler sc-state path)}])
+(defn state-select-input [state-path param-path choices]
+  [sc/select {:on-change #(dispatch [:mutate-create-state state-path param-path (evt->val %)])
+              :value     @(subscribe (-> [:sidebar-path] (into state-path) (into param-path)))}
+   [sc/select-option {:value ""} "---"]
+   (for [member choices] ^{:key (:uuid member)}
+      [sc/select-option {:value (:uuid member)} (:name member)])])
+
+;; TODO: get it to be logspace!!!!
+(defn state-range-input
+  ([state-path param-path]
+  (state-range-input state-path param-path 0 1000 5))
+  ([state-path param-path _min _max step]
+   [sc/input {:type     "range"
+              :on-input #(dispatch [:mutate-create-state state-path param-path (evt->val %)])
+              :value    @(subscribe (-> [:sidebar-path] (into state-path) (into param-path)))
+              :min      _min
+              :max      _max
+              :step     step}]))
+
+(defn state-datepicker [state-path param-path]
+  [date-picker {:popper-placement "left"
+                :selected         @(subscribe (-> [:sidebar-path] (into state-path) (into param-path)))
+                :on-select        #(dispatch [:mutate-create-state state-path param-path (evt->val %)])}])
