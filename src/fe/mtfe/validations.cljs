@@ -53,7 +53,7 @@
 (defn is-integer
   "Procs if that path in curr-state is _not_ an integer"
   [path curr-keyword]
-  (fn [curr-state] 
+  (fn [curr-state]
     (let [curr-member (get-in curr-state path)]
       (cond
         (not (string? curr-member))
