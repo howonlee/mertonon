@@ -4,6 +4,7 @@
             [day8.re-frame.http-fx]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
+            [mtfe.validations :as validations]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
 
 (def default-labels
@@ -30,32 +31,32 @@
 
 (reg-event-db
   :reset-create-state
-  (fn [db [evt state-path init-state-fn]]
-    (let [path (sidebar-path state-path)]
+  (fn [db [evt {:keys [state-path init-state-fn validations]}]]
+    (let [path   (sidebar-path state-path)]
       (assoc-in db path
                 {:create-params    (init-state-fn)
                  :create-state     :blank
                  :error            nil
-                 :validation-error {}}))))
+                 :validation-error {}
+                 :validations      (or validations [])}))))
 
-(reg-event-db
+(reg-event-fx
   :mutate-create-state
-  (fn [db [evt state-path param-path evt-content]]
+  (fn [{:keys [db]} [evt state-path param-path evt-content]]
     (let [total-path (into (sidebar-path state-path) param-path)
           key-path   (into (sidebar-path state-path) [:create-state])]
-      ;;;;;;;
-      ;;;;;;; dispatch a validation from here too willyah
-      ;;;;;;;
-      (-> db
-          (assoc-in total-path evt-content)
-          (assoc-in key-path :filled)))))
+      {:dispatch [:validate-create-state state-path]
+       :db       (-> db
+                     (assoc-in total-path evt-content)
+                     (assoc-in key-path :filled))})))
 
 (reg-event-db
   :validate-create-state
-  (fn [db [evt state-path validations]]
-    ;;; get the state
-    ;;; validate that state
-    nil))
+  (fn [db [evt state-path]]
+    (let [path         (sidebar-path state-path)
+          create-state (get-in db path)
+          validations  (create-state :validations)]
+      (update-in db path #(validations/do-validations! % validations)))))
 
 (reg-event-fx
   :submit-create
@@ -129,6 +130,4 @@
 ;; ---
 
 (defn before-fx [config _]
-  (let [{init-params :init-params
-         state-path  :state-path} config]
-    [[:dispatch [:reset-create-state state-path init-params]]]))
+  [[:dispatch [:reset-create-state config]]])

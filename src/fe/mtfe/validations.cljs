@@ -1,4 +1,4 @@
-(ns mtfe.statecharts.validations
+(ns mtfe.validations
   "Validations.
 
   They emit a keyword, which fills up a :validation-errors key in the curr state.
@@ -8,6 +8,29 @@
 
 ;; Most complex validations will be idiosyncratic to one sidebar or one view or something,
 ;; and therefore will be stuck there
+
+;; ---
+;; Doing validations
+;; ---
+
+(defn do-validations!
+  "Call directly"
+  [state validations]
+  (let [printo (println validations)
+        reses  (vec (for [curr-validation validations]
+                      (let [validation-res (curr-validation state)
+                            printo         (println validation-res)]
+                        (cond
+                          (and (some? validation-res) (map? validation-res))
+                          validation-res
+                          (and (some? validation-res) (keyword? validation-res))
+                          {validation-res []}
+                          :else
+                          {}))))
+        errors (apply (partial merge-with into) reses)
+        printo (println state)
+        printo (println errors)]
+    (assoc-in state [:validation-errors] errors)))
 
 ;; ---
 ;; Simple Validations
@@ -30,7 +53,7 @@
 (defn is-integer
   "Procs if that path in curr-state is _not_ an integer"
   [path curr-keyword]
-  (fn [curr-state] 
+  (fn [curr-state]
     (let [curr-member (get-in curr-state path)]
       (cond
         (not (string? curr-member))
