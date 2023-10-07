@@ -54,7 +54,7 @@
       [vblurbs/validation-popover state-path :username-blank "Username is blank"
        [fi/state-text-input state-path [:create-params :username] "Username"]]
       [vblurbs/validation-popover state-path :password-blank "Password is blank"
-       [fi/state-text-input state-path [:create-params :password] "Password"]]]
+       [fi/state-password-input state-path [:create-params :password] "Password"]]]
      [cr/create-button create-config login-labels]]))
 
 ;; ---
