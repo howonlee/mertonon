@@ -6,15 +6,13 @@
             [mtfe.util :as util]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]
-            ["react-datepicker" :default DatePicker]
-            ["react-tiny-popover" :refer [Popover]]))
+            ["react-datepicker" :default DatePicker]))
 
 ;; ---
 ;; React class adapters
 ;; ---
 
 (def date-picker (r/adapt-react-class DatePicker))
-(def popover (r/adapt-react-class Popover))
 
 ;; ---
 ;; Utils
