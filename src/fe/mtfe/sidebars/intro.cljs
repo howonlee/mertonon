@@ -1,86 +1,69 @@
 (ns mtfe.sidebars.intro
   "Introduction sidebar - shown before user creation, gets you to create admin user"
-  (:require [ajax.core :refer [GET POST]]
-            [mertonon.models.constructors :as mc]
-            [mtfe.api :as api]
+  (:require [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
+            [mtfe.validations :as validations]
             [reagent.core :as r]))
-
-;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:email    ""
-   :username ""
-   :password ""})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)}))
-
-;; ---
-;; Statecharts
-;; ---
-
-(defonce create-sc-state
-   (r/atom nil))
-
-(def validation-list
-  [(sc-validation/non-blank [:curr-create-params :email] :email-blank)
-   (sc-validation/non-blank [:curr-create-params :username] :username-blank)
-   (sc-validation/non-blank [:curr-create-params :password] :password-blank)
-   (sc-validation/two-members-equal
-     [:curr-create-params :password]
-     [:curr-create-params :password-repeat]
-     :password-not-match)])
-
-(def create-sc
-  (mt-statechart/simple-create :intro-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/intro
-                                                                             create-sc-state
-                                                                             (fn [username email password]
-                                                                               {:username username
-                                                                                :email    email
-                                                                                :password password})
-                                                                             [:username :email :password])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(mt-statechart/init-sc! :intro-create create-sc-state create-sc)
 
 ;; ---
 ;; Creation
 ;; ---
 
-(defn intro-render [m]
-  [:<>
-   [:h1 "Welcome to Mertonon"]
-   [:p "Make the administrator account for this Mertonon instance."]
-   [sc/border-region
-   [sc-components/validation-popover sidebar-state :username-blank "Username is blank"
-    [sc-components/state-text-input create-sc-state "Username" [:curr-create-params :username]]]
-   [sc-components/validation-popover sidebar-state :email-blank "Email is blank"
-    [sc-components/state-text-input create-sc-state "Email" [:curr-create-params :email]]]
-   [sc-components/validation-popover sidebar-state :password-blank "Password is blank"
-    [sc-components/state-password-input create-sc-state "Password" [:curr-create-params :password]]]
-   [sc-components/validation-popover sidebar-state :password-not-match "Passwords do not match"
-    [sc-components/state-password-input create-sc-state "Password Again" [:curr-create-params :password-repeat]]]]
-   [sc-components/create-button @create-sc-state create-sc-state sidebar-state]])
+(def create-config
+  {:resource      :curr-intro
+   :endpoint      (api/intro)
+   :state-path    [:intro-user :create]
+   :init-state-fn (fn []
+                    {:username ""
+                     :email    ""
+                     :password ""})
+   :validations   [(validations/non-blank [:create-params :email] :email-blank)
+                   (validations/non-blank [:create-params :username] :username-blank)
+                   (validations/non-blank [:create-params :password] :password-blank)
+                   (validations/two-members-equal
+                     [:create-params :password]
+                     [:create-params :password-repeat]
+                     :password-not-match)]
+   :ctr           (fn [username email password]
+                    {:username username
+                     :email    email
+                     :password password})
+   :ctr-params    [:username :email :password]
+   :nav-to        "#/"})
 
-;; ---
-;; Top-level render
-;; ---
+(defn intro-before-fx [m]
+  (cr/before-fx create-config m))
+
+(def intro-labels
+  {;; State labels
+   :blank    "Enter username, email password for admin account"
+   :filled   "Press Create button to create admin account."
+   :creating "Creating admin account..."
+   :success  "Successfully created admin account"
+   :failure  "Failed to create admin account. See error."
+   :finished "Finished!"
+
+   ;; Button labels
+   :submit   "Create Admin"
+   :finish   "Finish"})
 
 (defn intro-sidebar [m]
-  (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  [intro-render m])
+  (let [state-path (create-config :state-path)]
+    [:<>
+     [:h1 "Welcome to Mertonon"]
+     [:p "Make the administrator account for this Mertonon instance."]
+     [sc/border-region
+      [vblurbs/validation-popover state-path :username-blank "Username is blank"
+       [fi/state-text-input state-path [:create-params :username] "Username" ]]
+      [vblurbs/validation-popover state-path :email-blank "Email is blank"
+       [fi/state-text-input state-path [:create-params :email] "Email"]]
+      [vblurbs/validation-popover state-path :password-blank "Password is blank"
+       [fi/state-password-input state-path [:create-params :password] "Password"]]
+      [vblurbs/validation-popover state-path :password-not-match "Passwords do not match"
+       [fi/state-password-input state-path [:create-params :password-repeat] "Password Again"]]]
+     [cr/create-button create-config intro-labels]]))

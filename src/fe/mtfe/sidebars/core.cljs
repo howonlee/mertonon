@@ -39,7 +39,9 @@
 
 (def sidebar-routes
   [["/"                               {:name ::home-sidebar :view home-sidebar}]
-   ["/intro"                          {:name ::intro-sidebar :view intro/intro-sidebar}]
+   ["/intro"                          {:name      ::intro-sidebar
+                                       :view      intro/intro-sidebar
+                                       :before-fx intro/intro-before-fx}]
    ["/login"                          {:name      ::login-sidebar
                                        :view      session/login-sidebar
                                        :before-fx session/login-before-fx}]
