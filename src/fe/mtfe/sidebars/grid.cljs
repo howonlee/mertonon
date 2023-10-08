@@ -90,8 +90,7 @@
   (let [val-path   [:grid-sidebar]
         grid       @(subscribe [:sidebar-state :grid-sidebar :grids 0])
         losses     @(subscribe [:sidebar-state :grid-sidebar :losses])
-        inputs     @(subscribe [:sidebar-state :grid-sidebar :inputs])
-        printo     (println @(subscribe [:sidebar-state :grid-sidebar]))]
+        inputs     @(subscribe [:sidebar-state :grid-sidebar :inputs])]
     [:<>
      [grid-display-partial grid]
      (when (not @(subscribe [:is-demo?]))
