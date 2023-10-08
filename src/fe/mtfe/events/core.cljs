@@ -150,18 +150,3 @@
                    :response-format (json-response-format {:keywords? true})
                    :on-success [:nav-page "#/intro"]
                    :on-failure [:nav-page "#/login"]}}))
-
-;; ---
-;; Misc
-;; ---
-
-(reg-event-db
-  :copy
-  (fn [db [_ from to]]
-    (assoc-in db to (get-in db from))))
-
-(reg-event-db
-  :print
-  (fn [db [_ path]]
-    (println "printing...")
-    (println (get-in db path))))
