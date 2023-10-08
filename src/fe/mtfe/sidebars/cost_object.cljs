@@ -15,8 +15,8 @@
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
             [mtfe.views.cost-object :as cobj-view]
-            [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; State
@@ -87,7 +87,7 @@
   [cobj-create-sidebar-render m])
 
 (defn cost-object-sidebar [m]
-  (let [is-demo?        @grid-view/demo-state
+  (let [is-demo?        @(subscribe [:is-demo?])
         cobj-uuid       (->> m :path-params :uuid)
         cobj-endpoint   (if is-demo?
                           api/generator-cost-object

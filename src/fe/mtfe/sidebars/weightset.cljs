@@ -16,9 +16,9 @@
             [mtfe.statecharts.sideeffects :as sc-se]
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
             [mtfe.views.weightset :as ws-view]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; State
@@ -153,6 +153,10 @@
 (defn adjustment-checkbox-partial []
   [:div.ba.pa2.b--white-20
    [sc/checkbox {:type "checkbox"
+                 ;;;;;;
+                 ;;;;;;
+                 ;;;;;;
+                 ;;;;;;
                  :on-click #(reset! ws-view/ws-mode
                                     (if (= @ws-view/ws-mode :default)
                                       :grad
@@ -176,7 +180,7 @@
 
 (defn weightset-sidebar [m]
   (let [curr-ws-state @ws-view/ws-state
-        is-demo?      @grid-view/demo-state
+        is-demo?      @(subscribe [:is-demo?])
         ws-uuid       (->> curr-ws-state :selection :weightset :uuid)]
     [:<>
      [header-partial]
@@ -187,7 +191,7 @@
      [tgt-layer-partial curr-ws-state]]))
 
 (defn weightset-selection-sidebar [m]
-  (let [is-demo? @grid-view/demo-state
+  (let [is-demo? @(subscribe [:is-demo?])
         ws-uuid  (->> m :path-params :uuid)]
     [:<>
      [header-partial]

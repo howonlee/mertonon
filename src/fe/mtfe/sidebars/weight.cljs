@@ -13,9 +13,9 @@
             [mtfe.statecharts.sideeffects :as sc-se]
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
             [mtfe.views.weight :as weight-view]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; State
@@ -182,7 +182,7 @@
       [weight-create-sidebar-render m])))
 
 (defn weight-sidebar [m]
-  (let [is-demo?    @grid-view/demo-state
+  (let [is-demo?    @(subscribe [:is-demo?])
         weight-uuid (->> m :path-params :uuid)]
     [:<>
      [header-partial]
@@ -190,7 +190,7 @@
        [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]])]))
 
 (defn weight-selection-sidebar [m]
-  (let [is-demo?    @grid-view/demo-state
+  (let [is-demo?    @(subscribe [:is-demo?])
         weight-uuid (->> m :path-params :uuid str)
         weight-api  (if is-demo?
                       api/generator-weight
