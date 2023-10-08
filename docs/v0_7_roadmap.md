@@ -8,7 +8,7 @@
 - [x] Rest of the form inputs, make em re-framey
 - [x] Login, intro sidebars, w/ custom labels
 
-- [ ] Grid view sidebar - re-frameify
+- [x] Grid view sidebar - re-frameify
 - [ ] Other view sidebars - re-frameify
 - [ ] Selection views - have a single click to dive in thing
 - [ ] Kill selection.cljs
