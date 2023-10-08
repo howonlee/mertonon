@@ -85,23 +85,25 @@
    [grid-display-partial grid]
    [goal-display-partial losses inputs]])
 
-(defn grid-sidebar-render [grid losses inputs]
+(defn grid-sidebar [m]
   (let [state-path [:selection :grid-sidebar]]
     [:<>
      [grid-display-partial grid]
-     [:p [util/sl (util/path ["grid" (:uuid grid) "layer_create"]) [sc/button [sc/layer-icon] " Add New Responsibility Center (Layer)"]]]
-     [:p [util/sl (util/path ["grid" (:uuid grid) "weightset_create"]) [sc/button [sc/ws-icon] " Add New Weightset"]]]
-     [:p
-      [vblurbs/validation-toast state-path :has-input "Currently we only support one input per grid"]]
-     [:p
-      [vblurbs/validated-link state-path :has-input "Add New Input Annotation"
-       [util/sl (util/path ["grid" (:uuid grid) "input_create"]) [sc/button "Add New Input Annotation"]]]]
-     [:p
-      [vblurbs/validation-toast state-path :has-loss "Currently we only support one goal per grid"]]
-     [:p
-      [vblurbs/validated-link state-path :has-loss "Add New Goal Annotation"
-       [util/sl (util/path ["grid" (:uuid grid) "loss_create"]) [sc/button "Add New Goal Annotation"]]]]
-     [:p [util/sl (util/path ["grid" (:uuid grid) "grad_kickoff"]) [sc/button "Kickoff Gradient Calculations"]]]
+     (when (not @(subscribe [:is-demo?]))
+       [:<>
+        [:p [util/sl (util/path ["grid" (:uuid grid) "layer_create"]) [sc/button [sc/layer-icon] " Add New Responsibility Center (Layer)"]]]
+        [:p [util/sl (util/path ["grid" (:uuid grid) "weightset_create"]) [sc/button [sc/ws-icon] " Add New Weightset"]]]
+        [:p
+         [vblurbs/validation-toast state-path :has-input "Currently we only support one input per grid"]]
+        [:p
+         [vblurbs/validated-link state-path :has-input "Add New Input Annotation"
+          [util/sl (util/path ["grid" (:uuid grid) "input_create"]) [sc/button "Add New Input Annotation"]]]]
+        [:p
+         [vblurbs/validation-toast state-path :has-loss "Currently we only support one goal per grid"]]
+        [:p
+         [vblurbs/validated-link state-path :has-loss "Add New Goal Annotation"
+          [util/sl (util/path ["grid" (:uuid grid) "loss_create"]) [sc/button "Add New Goal Annotation"]]]]
+        [:p [util/sl (util/path ["grid" (:uuid grid) "grad_kickoff"]) [sc/button "Kickoff Gradient Calculations"]]]])
      [goal-display-partial losses inputs]]))
 
 ;; ---

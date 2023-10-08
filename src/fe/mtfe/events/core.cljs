@@ -110,13 +110,14 @@
 ;; Error-Handling and Validations
 ;; ---
 
-(reg-event-fx
+(reg-event-db
   :validate
-  ;;;;
-  ;;;;
-  ;;;;
-  ;;;;
-  (fn [_ _] nil))
+  (fn [db [evt state-path validations]]
+    ;;;;
+    ;;;;
+    ;;;;
+    ;;;;
+    nil))
 
 (reg-event-fx
   :error
