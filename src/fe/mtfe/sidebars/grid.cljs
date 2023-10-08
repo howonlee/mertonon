@@ -5,7 +5,6 @@
             [mtfe.api :as api]
             [mtfe.selectors :as sel]
             [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
             [mtfe.statecharts.handlers :as sc-handlers]
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.stylecomps :as sc]
@@ -103,7 +102,17 @@
 ;; Class
 ;; ---
 
+(defn grid-sidebar-before-fx [m]
+  nil)
+
 (defn grid-sidebar [m]
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;; re-frameify
+  ;;;;;;;
+  ;;;;;;;
+  ;;;;;;;
   (sel/set-selection-if-changed!
     sidebar-state
     api/grid-view
@@ -116,6 +125,9 @@
      (->> @sidebar-state :selection :grids first)
      (->> @sidebar-state :selection :losses)
      (->> @sidebar-state :selection :inputs)]))
+
+(defn grid-demo-sidebar-before-fx [m]
+  nil)
 
 (defn grid-demo-sidebar [m]
   (sel/set-selection! sidebar-state api/generator-grid)

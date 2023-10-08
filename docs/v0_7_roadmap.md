@@ -8,15 +8,18 @@
 - [x] Rest of the form inputs, make em re-framey
 - [x] Login, intro sidebars, w/ custom labels
 
+- [ ] Grid view sidebar - re-frameify
+- [ ] Other view sidebars - re-frameify
 - [ ] Creation sidebars: the normal ones. Gotta see if validations can be c&p
 - [ ] Action sidebar, redo it for grad kickoff. Test all the way to grad kickoff again
-- [ ] Create and delete for password logins separately with selector lol
 
 - [ ] Selection views - have a single click to dive in thing
+- [ ] Kill selection.cljs
 - [ ] Purge then kill the statecharts
 - [ ] Purge then kill the selectors
 - [ ] Consider the re-frame bit done
 
+- [ ] Create and delete for password logins separately with selector lol
 - [ ] Model updates, genericized endpoints in BE
 - [ ] Model updates component
 - [ ] Model updates FE
