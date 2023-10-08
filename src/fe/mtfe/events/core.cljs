@@ -106,15 +106,17 @@
     :db          (-> db
                      (assoc-in [:loading resource] true))}))
 
-
-
 ;; ---
-;; Delete
+;; Error-Handling and Validations
 ;; ---
 
-;; ---
-;; Error-Handling
-;; ---
+(reg-event-fx
+  :validate
+  ;;;;
+  ;;;;
+  ;;;;
+  ;;;;
+  (fn [_ _] nil))
 
 (reg-event-fx
   :error
