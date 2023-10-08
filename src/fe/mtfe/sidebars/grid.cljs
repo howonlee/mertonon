@@ -68,13 +68,14 @@
 (defn before-fx [m]
   (let [uuid (->> m :path-params :uuid)]
     [[:dispatch
-      [:select-with-custom-success :grid-sidebar
-       (api/grid-view uuid) {} :sidebar-selection-success]]]))
-
-;; [:validate
-;;         [:sidebar-state :grid-sidebar]
-;;         [(validations/max-num-elems [:sidebar-state :grid-sidebar :losses] 1 :has-loss)
-;;          (validations/max-num-elems [:sidebar-state :grid-sidebar :inputs] 1 :has-input)]]
+      [:select-with-custom-success
+       :grid-sidebar
+       (api/grid-view uuid)
+       {}
+       :sidebar-selection-and-validate
+       {:validations
+        [(validations/max-num-elems [:losses] 1 :has-loss)
+         (validations/max-num-elems [:inputs] 1 :has-input)]}]]]))
 
 (defn demo-before-fx [_]
   [[:dispatch

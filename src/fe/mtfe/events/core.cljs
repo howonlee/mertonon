@@ -104,12 +104,14 @@
 
 (reg-event-fx
   :select-with-custom-success
- (fn [{:keys [db]} [evt resource endpoint params success-event]]
+ (fn [{:keys [db]} [evt resource endpoint params success-event & [success-params]]]
    {:http-xhrio {:method          :get
                  :uri             endpoint
                  :params          params
                  :response-format (json-response-format {:keywords? true})
-                 :on-success      [success-event resource]
+                 :on-success      (if (some? success-params)
+                                    [success-event resource success-params]
+                                    [success-event resource])
                  :on-failure      [:api-request-error evt resource]}
     :db          (-> db
                      (assoc-in [:loading resource] true))}))
@@ -121,6 +123,15 @@
              (assoc-in [:sidebar-state resource] res)
              (assoc-in [:loading resource] false))}))
 
+(reg-event-fx
+  :sidebar-selection-and-validate
+  ;; Include validations in success-params
+  (fn [{:keys [db]} [evt resource {:keys [validations]} res]]
+    {:db       (-> db
+                   (assoc-in [:sidebar-state resource] res)
+                   (assoc-in [:loading resource] false))
+     :dispatch [:validate [:sidebar-state resource] validations]}))
+
 ;; ---
 ;; Error-Handling and Validations
 ;; ---
@@ -129,8 +140,7 @@
   ;; Mostly use validate-state in components only, this is for more idiosyncratic validations
   :validate
   (fn [db [evt db-path validations]]
-    (let [curr-state   (get-in db db-path)]
-      (update-in db db-path #(validations/do-validations! % validations)))))
+    (update-in db db-path #(validations/do-validations! % validations))))
 
 (reg-event-fx
   :error
