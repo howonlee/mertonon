@@ -72,6 +72,13 @@
         {:non-main-path ["sidebar-change" "/"]}
         {:non-main-path ["sidebar-change" pathname]}))))
 
+(reg-event-fx
+  :finish-and-nav
+  (fn [cofx [_ nav-to]]
+    (if (contains? #{:refresh :reload} nav-to)
+      {:dispatch [:refresh]}
+      {:dispatch [:nav-page nav-to]})))
+
 ;; ---
 ;; Selection
 ;; ---
@@ -148,9 +155,13 @@
 ;; Misc
 ;; ---
 
-(reg-event-fx
-  :finish-and-nav
-  (fn [cofx [_ nav-to]]
-    (if (contains? #{:refresh :reload} nav-to)
-      {:dispatch [:refresh]}
-      {:dispatch [:nav-page nav-to]})))
+(reg-event-db
+  :copy
+  (fn [db [_ from to]]
+    (assoc-in db to (get-in db from))))
+
+(reg-event-db
+  :print
+  (fn [db [_ path]]
+    (println "printing...")
+    (println (get-in db path))))
