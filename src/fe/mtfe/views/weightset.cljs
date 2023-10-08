@@ -22,8 +22,6 @@
                         (api/weightset-view uuid))]
     [[:dispatch [:selection :ws-view ws-endpoint {}]]]))
 
-(defonce ws-state (r/atom {:selection {}}))
-(defonce curr-matrix (r/atom {}))
 (defonce ws-mode (r/atom :default))
 
 (defn cost-object-member [cost-object]

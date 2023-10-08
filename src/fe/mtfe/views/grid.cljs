@@ -43,8 +43,6 @@
      [:select-with-custom-success :curr-grid
       (api/generator-graph) {} :set-grid-state-demo]]]])
 
-(defonce demo-state (r/atom false))
-
 ;; ---
 ;; Constants
 ;; ---

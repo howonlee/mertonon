@@ -1,16 +1,13 @@
 (ns mtfe.sidebars.grid
   "Sidebar for grid"
-  (:require [applied-science.js-interop :as j]
-            [mertonon.models.constructors :as mc]
-            [mtfe.api :as api]
+  (:require [mtfe.api :as api]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
+            [mtfe.validations :as validations]
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; States
@@ -31,7 +28,7 @@
    [:p (->> loss :label str)]
    [:div "Matching Layer UUID: " (str (:layer-uuid loss))]
    [:div "Type: Competitiveness"]
-   (if (not @grid-view/demo-state)
+   (if (not @(subscribe [:is-demo?]))
      [:div [util/sl (util/path ["loss" (:uuid loss) "delete"]) [sc/button "Delete Annotation"]]])
    [:hr]]) ;; TODO: get these to actually react to loss types
 
@@ -43,7 +40,7 @@
    [:p (->> input :label str)]
    [:div "Matching Layer UUID: " (str (:layer-uuid input))]
    [:div "Type: Competitiveness"]
-   (if (not @grid-view/demo-state)
+   (if (not @(subscribe [:is-demo?]))
      [:div [util/sl (util/path ["input" (:uuid input) "delete"]) [sc/button "Delete Annotation"]]])
    [:hr]]) ;; TODO: differentiate from loss and different types
 
@@ -72,7 +69,7 @@
    [:p "(We have designed Mertonon goals to be dynamical eventually, but currently they're hardcoded to be competitiveness)"]])
 
 ;; ---
-;; Top-level rendering
+;; Sidebar View
 ;; ---
 
 (defn grid-demo-sidebar-render [grid losses inputs]
