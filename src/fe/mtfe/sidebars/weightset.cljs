@@ -195,9 +195,12 @@
         ws-uuid  (->> m :path-params :uuid)]
     [:<>
      [header-partial]
-     [:h2 "Double-Click to Dive In"]
+     [:h2 "Double-Click or click \"Dive In\" to Dive In"]
+     [:div [util/path-fsl
+            ["weightset" ws-uuid]
+            [sc/button "Dive In"]]]
      (if (not is-demo?)
-       [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]])]))
+       [:div [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]]])]))
 
 
 ;; ---

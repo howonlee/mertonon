@@ -76,7 +76,9 @@
                                        :view      grid/grid-sidebar
                                        :before-fx grid/demo-before-fx}]
 
-   ["/layer/:uuid"                    {:name ::layer-sidebar :view layer/layer-sidebar}]
+   ["/layer/:uuid"                    {:name      ::layer-sidebar
+                                       :view      layer/layer-sidebar
+                                       :before-fx layer/layer-sidebar-before-fx}]
    ["/layer_selection/:uuid"          {:name ::layer-selection-sidebar :view layer/layer-selection-sidebar}]
    ["/layer/:uuid/delete"             {:name      ::layer-delete-sidebar
                                        :view      layer/layer-delete-sidebar

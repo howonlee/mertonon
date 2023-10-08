@@ -100,7 +100,7 @@
          [util/path-fsl ["weightset" (:uuid tgt-weightset)] [sc/link (str (:name tgt-weightset))]])]))
 
 ;; ---
-;; Top-level render
+;; Create
 ;; ---
 
 (defn layer-create-sidebar [m]
@@ -110,6 +110,22 @@
                           [:curr-create-params :grid-uuid])
     (mt-statechart/send-reset-event-if-finished! create-sc-state)
     [layer-create-sidebar-render m]))
+
+;; ---
+;; View Before-fx
+;; ---
+
+(defn layer-sidebar-before-fx [m]
+  (let [is-demo?       @(subscribe [:is-demo?])
+        uuid           (->> m :path-params :uuid)
+        layer-endpoint (if is-demo?
+                         (api/generator-layer uuid)
+                         (api/layer-view uuid))]
+    [[:dispatch [:selection :layer-view layer-endpoint {}]]]))
+
+;; ---
+;; Sidebar Views
+;; ---
 
 (defn layer-sidebar [{:keys [data] :as req}]
   (let [curr-layer-state @(subscribe [:selection :layer-view])
