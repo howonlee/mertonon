@@ -65,12 +65,16 @@
    ["/grid/:uuid/delete"              {:name      ::grid-delete-sidebar
                                        :view      grid-select/grid-delete-sidebar
                                        :before-fx grid-select/grid-delete-before-fx}]
-   ["/grid/:uuid"                     {:name ::grid-sidebar :view grid/grid-sidebar}]
+   ["/grid/:uuid"                     {:name      ::grid-sidebar
+                                       :view      grid/grid-sidebar
+                                       :before-fx grid/before-fx}]
    ["/grid/:uuid/layer_create"        {:name ::layer-create-sidebar :view layer/layer-create-sidebar}]
    ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]
    ["/grid/:uuid/input_create"        {:name ::input-create-sidebar :view input/input-create-sidebar}]
    ["/grid/:uuid/loss_create"         {:name ::loss-create-sidebar :view loss/loss-create-sidebar}]
-   ["/grid_demo"                      {:name ::grid-demo-sidebar :view grid/grid-demo-sidebar}]
+   ["/grid_demo"                      {:name      ::grid-demo-sidebar
+                                       :view      grid/grid-sidebar
+                                       :before-fx grid/demo-before-fx}]
 
    ["/layer/:uuid"                    {:name ::layer-sidebar :view layer/layer-sidebar}]
    ["/layer_selection/:uuid"          {:name ::layer-selection-sidebar :view layer/layer-selection-sidebar}]

@@ -16,7 +16,6 @@
             [mtfe.statecharts.sideeffects :as sc-se]
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.weightset :as ws-view]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
@@ -157,10 +156,11 @@
                  ;;;;;;
                  ;;;;;;
                  ;;;;;;
-                 :on-click #(reset! ws-view/ws-mode
-                                    (if (= @ws-view/ws-mode :default)
-                                      :grad
-                                      :default))}]
+                 :on-click identity}]
+                             ;; reset! ws-view/ws-mode
+                             ;;        (if (= @ws-view/ws-mode :default)
+                             ;;          :grad
+                             ;;          :default))}]
    [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
 
 
@@ -179,7 +179,7 @@
 
 
 (defn weightset-sidebar [m]
-  (let [curr-ws-state @ws-view/ws-state
+  (let [curr-ws-state {}
         is-demo?      @(subscribe [:is-demo?])
         ws-uuid       (->> curr-ws-state :selection :weightset :uuid)]
     [:<>

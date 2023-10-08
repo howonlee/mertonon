@@ -68,25 +68,27 @@
 (defn before-fx [m]
   (let [uuid (->> m :path-params :uuid)]
     [[:dispatch-n
-      [:selection :grid-sidebar
-       (api/grid-view uuid)]]]))
+      [[:selection :grid-sidebar
+        (api/grid-view uuid) {}]
+       [:validate
+        [:selection :grid-sidebar]
+        [(validations/max-num-elems [:selection :grid-sidebar :losses] 1 :has-loss)
+         (validations/max-num-elems [:selection :grid-sidebar :inputs] 1 :has-input)]]]]]))
 
 (defn demo-before-fx [_]
   [[:dispatch
     [:selection :grid-sidebar
-     (api/generator-grid)]]])
+     (api/generator-grid) {}]]])
 
 ;; ---
 ;; Sidebar View
 ;; ---
 
-(defn grid-demo-sidebar-render [grid losses inputs]
-  [:<>
-   [grid-display-partial grid]
-   [goal-display-partial losses inputs]])
-
 (defn grid-sidebar [m]
-  (let [state-path [:selection :grid-sidebar]]
+  (let [state-path [:selection :grid-sidebar]
+        grid       @(subscribe [:selection :grid-sidebar :grids 0])
+        losses     @(subscribe [:selection :grid-sidebar :losses])
+        inputs     @(subscribe [:selection :grid-sidebar :inputs])]
     [:<>
      [grid-display-partial grid]
      (when (not @(subscribe [:is-demo?]))
@@ -105,36 +107,3 @@
           [util/sl (util/path ["grid" (:uuid grid) "loss_create"]) [sc/button "Add New Goal Annotation"]]]]
         [:p [util/sl (util/path ["grid" (:uuid grid) "grad_kickoff"]) [sc/button "Kickoff Gradient Calculations"]]]])
      [goal-display-partial losses inputs]]))
-
-;; ---
-;; Class
-;; ---
-
-(defn grid-sidebar [m]
-  ;;;;;;;
-  ;;;;;;;
-  ;;;;;;;
-  ;;;;;;; re-frameify
-  ;;;;;;;
-  ;;;;;;;
-  ;;;;;;;
-  (sel/set-selection-if-changed!
-    sidebar-state
-    api/grid-view
-    (->> m :path-params :uuid)
-    [:uuid])
-  (fn [m]
-    (sc-handlers/do-validations! sidebar-state [(validations/max-num-elems [:selection :losses] 1 :has-loss)
-                                                (validations/max-num-elems [:selection :inputs] 1 :has-input)])
-    [grid-sidebar-render
-     (->> @sidebar-state :selection :grids first)
-     (->> @sidebar-state :selection :losses)
-     (->> @sidebar-state :selection :inputs)]))
-
-(defn grid-demo-sidebar [m]
-  (sel/set-selection! sidebar-state api/generator-grid)
-  (fn [m]
-    [grid-demo-sidebar-render
-     (->> @sidebar-state :selection :grids first)
-     (->> @sidebar-state :selection :losses)
-     (->> @sidebar-state :selection :inputs)]))

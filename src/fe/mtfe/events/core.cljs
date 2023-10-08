@@ -9,6 +9,7 @@
             [day8.re-frame.http-fx]
             [mtfe.api :as api]
             [mtfe.util :as util]
+            [mtfe.validations :as validations]
             [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]))
 
 ;; ---
@@ -111,13 +112,11 @@
 ;; ---
 
 (reg-event-db
+  ;; Mostly use validate-state in components only, this is for more idiosyncratic validations
   :validate
-  (fn [db [evt state-path validations]]
-    ;;;;
-    ;;;;
-    ;;;;
-    ;;;;
-    nil))
+  (fn [db [evt db-path validations]]
+    (let [curr-state   (get-in db db-path)]
+      (update-in db db-path #(validations/do-validations! % validations)))))
 
 (reg-event-fx
   :error
