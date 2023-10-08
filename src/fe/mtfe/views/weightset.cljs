@@ -22,8 +22,6 @@
                         (api/weightset-view uuid))]
     [[:dispatch [:selection :ws-view ws-endpoint {}]]]))
 
-(defonce ws-mode (r/atom :default))
-
 (defn cost-object-member [cost-object]
   [:div.pa3
    (util/path-fsl ["cost_object" (:uuid cost-object)]
@@ -78,8 +76,9 @@
         {src-cobjs :src-cobjs
          tgt-cobjs :tgt-cobjs
          weightset :weightset} ws-view
-        curr-matrix            (display-matrix ws-view @ws-mode)
-        is-demo?               @(subscribe [:is-demo?])]
+        ws-mode                @(subscribe [:weightset-mode])
+        is-demo?               @(subscribe [:is-demo?])
+        curr-matrix            (display-matrix ws-view ws-mode)]
     [:div.fl.pa2
      [:h1 [sc/ws-icon] " Weightset " [:strong (->> weightset :name str)]]
      [:p (->> weightset :label str)]
