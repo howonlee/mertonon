@@ -114,6 +114,13 @@
     :db          (-> db
                      (assoc-in [:loading resource] true))}))
 
+(reg-event-fx
+  :sidebar-selection-success
+  (fn [{:keys [db]} [evt resource res]]
+    {:db (-> db
+             (assoc-in [:sidebar-state resource] res)
+             (assoc-in [:loading resource] false))}))
+
 ;; ---
 ;; Error-Handling and Validations
 ;; ---

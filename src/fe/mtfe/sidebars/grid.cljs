@@ -67,14 +67,14 @@
 
 (defn before-fx [m]
   (let [uuid (->> m :path-params :uuid)]
-    [[:dispatch-n
-      [[:selection :grid-sidebar
-        (api/grid-view uuid) {}]
-       [:copy [:selection :grid-sidebar] [:sidebar-state :grid-sidebar]]
-       [:validate
-        [:sidebar-state :grid-sidebar]
-        [(validations/max-num-elems [:sidebar-state :grid-sidebar :losses] 1 :has-loss)
-         (validations/max-num-elems [:sidebar-state :grid-sidebar :inputs] 1 :has-input)]]]]]))
+    [[:dispatch
+      [:select-with-custom-success :grid-sidebar
+       (api/grid-view uuid) {} :sidebar-selection-success]]]))
+
+;; [:validate
+;;         [:sidebar-state :grid-sidebar]
+;;         [(validations/max-num-elems [:sidebar-state :grid-sidebar :losses] 1 :has-loss)
+;;          (validations/max-num-elems [:sidebar-state :grid-sidebar :inputs] 1 :has-input)]]
 
 (defn demo-before-fx [_]
   [[:dispatch
@@ -87,9 +87,9 @@
 
 (defn grid-sidebar [m]
   (let [val-path   [:grid-sidebar]
-        grid       @(subscribe [:selection :grid-sidebar :grids 0])
-        losses     @(subscribe [:selection :grid-sidebar :losses])
-        inputs     @(subscribe [:selection :grid-sidebar :inputs])
+        grid       @(subscribe [:sidebar-state :grid-sidebar :grids 0])
+        losses     @(subscribe [:sidebar-state :grid-sidebar :losses])
+        inputs     @(subscribe [:sidebar-state :grid-sidebar :inputs])
         printo     (println @(subscribe [:sidebar-state :grid-sidebar]))]
     [:<>
      [grid-display-partial grid]
