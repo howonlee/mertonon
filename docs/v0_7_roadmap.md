@@ -9,8 +9,8 @@
 - [x] Login, intro sidebars, w/ custom labels
 
 - [x] Grid view sidebar - re-frameify
+- [x] Selection views - have a single click to dive in thing
 - [ ] Other view sidebars - re-frameify
-- [ ] Selection views - have a single click to dive in thing
 - [ ] Kill selection.cljs
 - [ ] Some of the creation sidebars
 

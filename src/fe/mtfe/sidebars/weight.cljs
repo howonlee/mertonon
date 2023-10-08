@@ -130,7 +130,7 @@
 
 (defn weight-data-partial [curr-weight-state]
   [:<>
-   [:p "Double-click to inspect more."]
+   [:h2 "Double-Click or click \"Dive In\" to Dive In"]
    (when (seq (->> curr-weight-state :src-cobj))
      [:<>
       [:h3 [sc/cobj-icon] " Source cost node"]
@@ -190,15 +190,15 @@
        [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]])]))
 
 (defn weight-selection-sidebar [m]
-  (let [is-demo?    @(subscribe [:is-demo?])
-        weight-uuid (->> m :path-params :uuid str)
-        weight-api  (if is-demo?
-                      api/generator-weight
-                      api/weight-view)
-        _           (sel/set-state-with-results! sidebar-state weight-api [:selection] weight-uuid)]
+  (let [is-demo?          @(subscribe [:is-demo?])
+        weight-uuid       (->> m :path-params :uuid str)
+        curr-weight-state @(subscribe [:selection :weight-view])]
     [:<>
      [header-partial]
-     [weight-data-partial (->> @sidebar-state :selection)]
+     [weight-data-partial curr-weight-state]
+     [:div [util/path-fsl
+            ["weight" weight-uuid]
+            [sc/button "Dive In"]]]
      (if (not is-demo?)
        [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]])]))
 
@@ -212,7 +212,7 @@
      :endpoint   (api/weight-member uuid)
      :state-path [:weight :delete]
      :model-name "Weight"
-     :nav-to     :reload}))
+     :nav-to     "#/"}))
 
 (defn weight-delete-before-fx [m]
   (del/before-fx (delete-config m) m))
