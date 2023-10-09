@@ -19,20 +19,10 @@
 
 (defn input-layer-uuid-set-getter [curr-state]
   (apply hash-set
-         (->> curr-state :grid-view-selection :inputs (mapv :layer-uuid))))
+         (->> curr-state :grid-view :inputs (mapv :layer-uuid))))
 
 (defn curr-layer-uuid-member-getter [curr-state]
   (->> curr-state :create-params :layer-uuid))
-;;     (sel/set-state-if-changed! sidebar-state
-;;                                api/grid-graph
-;;                                grid-uuid
-;;                                [:grid-graph-selection :grids 0 :uuid]
-;;                                [:grid-graph-selection])
-;;     (sel/set-state-if-changed! sidebar-state
-;;                                api/grid-view
-;;                                grid-uuid
-;;                                [:grid-view-selection :grids 0 :uuid]
-;;                                [:grid-view-selection])
 
 ;; ---
 ;; Partials
@@ -68,8 +58,12 @@
    :nav-to        :refresh})
 
 (defn loss-create-before-fx [m]
-  [[:dispatch-n
-    [[:select-sidebar-state some crap]]]])
+  (let [grid-uuid (->> m :path-params :uuid)]
+    [[:dispatch-n [[:reset-create-state create-config]
+                   [:select-with-custom-success :grid-graph
+                    (api/grid-graph grid-uuid) {} :sidebar-selection-success]
+                   [:select-with-custom-success :grid-view
+                    (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn loss-create-sidebar [m]
   (let [grid-uuid     (->> m :path-params :uuid)
@@ -84,10 +78,10 @@
       [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a input; inputs cannot also be goals"
        [sc/form-label "Responsibility Center"]]
       [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
-       [fi/state-select-input state-path grid-contents [:create-params :layer-uuid]]]]
+       [fi/state-select-input state-path [:create-params :layer-uuid] grid-contents]]]
      [vblurbs/validation-popover state-path :name-blank "Annotation Name is blank"
-      [fi/state-text-input state-path "Annotation Name" [:create-params :name]]]
-     [fi/state-text-input state-path "Label" [:create-params :label]]
+      [fi/state-text-input state-path [:create-params :name] "Annotation Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Label"]
      [cr/create-button create-config]]))
 
 ;; ---

@@ -42,7 +42,7 @@
 
 (defn state-select-input [state-path param-path choices]
   [sc/select {:on-change #(dispatch [:mutate-create-state state-path param-path (evt->val %)])
-              :value     @(subscribe (-> [:sidebar-path] (into state-path) (into param-path)))}
+              :value     @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))}
    [sc/select-option {:value ""} "---"]
    (for [member choices] ^{:key (:uuid member)}
       [sc/select-option {:value (:uuid member)} (:name member)])])
@@ -54,12 +54,12 @@
   ([state-path param-path _min _max step]
    [sc/input {:type     "range"
               :on-input #(dispatch [:mutate-create-state state-path param-path (evt->val %)])
-              :value    @(subscribe (-> [:sidebar-path] (into state-path) (into param-path)))
+              :value    @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))
               :min      _min
               :max      _max
               :step     step}]))
 
 (defn state-datepicker [state-path param-path]
   [date-picker {:popper-placement "left"
-                :selected         @(subscribe (-> [:sidebar-path] (into state-path) (into param-path)))
+                :selected         @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))
                 :on-select        #(dispatch [:mutate-create-state state-path param-path (evt->val %)])}])
