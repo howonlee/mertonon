@@ -61,6 +61,17 @@
   (cr/before-fx (create-config m) m))
 
 (defn layer-create-sidebar [m]
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
+  ;;;;;;;;;;; doesn't init, doesn't proc validates, doesn't seem to do the create button things at all..
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
+  ;;;;;;;;;;;
   (let [grid-uuid   (->> m :path-params :uuid)
         curr-config (create-config m)
         state-path  (curr-config :state-path)
@@ -68,7 +79,7 @@
     [:<>
      [:h1 [sc/layer-icon] " Add Responsibility Center"]
      [:div.mb2 "UUID - " (str new-uuid)]
-     [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
+     [:div.mb2 [sc/grid-icon] " Grid UUID - " (str grid-uuid)]
      [vblurbs/validation-popover state-path :name-blank "Responsibility Center Name is blank"
       [fi/state-text-input state-path [:create-params :name] "Responsibility Center Name"]]
      [fi/state-text-input state-path [:create-params :label] "Label"]
