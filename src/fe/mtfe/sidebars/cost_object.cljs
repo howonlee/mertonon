@@ -1,7 +1,6 @@
 (ns mtfe.sidebars.cost-object
   "Sidebar for cost-object"
-  (:require [ajax.core :refer [GET POST]]
-            [mertonon.models.constructors :as mc]
+  (:require [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
@@ -9,11 +8,6 @@
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
             [reagent.core :as r]
