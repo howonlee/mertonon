@@ -108,7 +108,7 @@
     [layer-create-sidebar-render m]))
 
 ;; ---
-;; View Before-fx
+;; Sidebar Views
 ;; ---
 
 (defn layer-sidebar-before-fx [m]
@@ -118,10 +118,6 @@
                          (api/generator-layer uuid)
                          (api/layer-view uuid))]
     [[:dispatch [:selection :layer-view layer-endpoint {}]]]))
-
-;; ---
-;; Sidebar Views
-;; ---
 
 (defn layer-sidebar [{:keys [data] :as req}]
   (let [curr-layer-state @(subscribe [:selection :layer-view])
