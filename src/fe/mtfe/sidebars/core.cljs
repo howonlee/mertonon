@@ -68,7 +68,9 @@
    ["/grid/:uuid"                     {:name      ::grid-sidebar
                                        :view      grid/grid-sidebar
                                        :before-fx grid/before-fx}]
-   ["/grid/:uuid/layer_create"        {:name ::layer-create-sidebar :view layer/layer-create-sidebar}]
+   ["/grid/:uuid/layer_create"        {:name      ::layer-create-sidebar
+                                       :view      layer/layer-create-sidebar
+                                       :before-fx layer/layer-create-before-fx}]
    ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]
    ["/grid/:uuid/input_create"        {:name      ::input-create-sidebar
                                        :view      input/input-create-sidebar

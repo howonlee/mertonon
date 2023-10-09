@@ -6,58 +6,13 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.layer :as layer-view]
-            [mtfe.views.grid :as grid-view]
+            [mtfe.validations :as validations]
             [reagent.core :as r]
             [re-frame.core :refer [subscribe]]))
-
-;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:uuid      (str (random-uuid))
-   :grid-uuid ""
-   :name      ""
-   :label     ""})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)
-                                :selection          {}}))
-
-;; ---
-;; Statecharts
-;; ---
-
-(defonce create-sc-state
-   (r/atom nil))
-(defonce delete-sc-state
-   (r/atom nil))
-
-(def create-sc
-  (mt-statechart/simple-create :layer-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler
-                                                 sidebar-state
-                                                 [(sc-validation/non-blank [:curr-create-params :name] :name-blank)])
-                                :action-fn     (sc-handlers/creation-handler api/layer create-sc-state mc/->Layer [:uuid :grid-uuid :name :label])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(def delete-sc
-  (mt-statechart/simple-delete :layer-delete
-                               {:action-fn   (sc-handlers/deletion-handler api/layer-member delete-sc-state)
-                                :finalize-fn (sc-handlers/refresh-handler delete-sc-state)}))
-
-(mt-statechart/init-sc! :layer-create create-sc-state create-sc)
-(mt-statechart/init-sc! :layer-delete delete-sc-state delete-sc)
 
 ;; ---
 ;; Partials
@@ -88,24 +43,36 @@
 ;; Create
 ;; ---
 
-(defn layer-create-sidebar-render [m]
-  (let [grid-uuid     (->> m :path-params :uuid)]
-    [:<>
-     [:h1 [sc/layer-icon] " Add Responsibility Center"]
-     [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-     [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
-     [sc-components/validation-popover sidebar-state :name-blank "Responsibility Center Name is blank"
-      [sc-components/state-text-input create-sc-state "Responsibility Center Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
+(defn create-config [m]
+  {:resource      :curr-layer
+   :endpoint      (api/layer)
+   :state-path    [:layer :create]
+   :init-state-fn (fn []
+                    {:uuid      (str (random-uuid))
+                     :grid-uuid (->> m :path-params uuid)
+                     :name      ""
+                     :label     ""})
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)]
+   :ctr           mc/->Layer
+   :ctr-params    [:uuid :grid-uuid :name :label]
+   :nav-to        :refresh})
+
+(defn layer-create-before-fx [m]
+  (cr/before-fx (create-config m) m))
 
 (defn layer-create-sidebar [m]
-  (let [grid-uuid (->> m :path-params :uuid str)]
-    (sel/swap-if-changed! grid-uuid
-                          sidebar-state
-                          [:curr-create-params :grid-uuid])
-    (mt-statechart/send-reset-event-if-finished! create-sc-state)
-    [layer-create-sidebar-render m]))
+  (let [grid-uuid   (->> m :path-params :uuid)
+        curr-config (create-config m)
+        state-path  (curr-config :state-path)
+        new-uuid    @(subscribe [:sidebar-state :create-params :uuid])]
+    [:<>
+     [:h1 [sc/layer-icon] " Add Responsibility Center"]
+     [:div.mb2 "UUID - " (str new-uuid)]
+     [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
+     [vblurbs/validation-popover state-path :name-blank "Responsibility Center Name is blank"
+      [fi/state-text-input state-path [:create-params :name] "Responsibility Center Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [cr/create-button curr-config]]))
 
 ;; ---
 ;; Sidebar Views
@@ -143,7 +110,6 @@
             [sc/button "Dive In"]]]
      (if (not is-demo?)
        [:div [util/sl (util/path ["layer" layer-uuid "delete"]) [sc/button "Delete"]]])]))
-
 
 ;; ---
 ;; Deletion
