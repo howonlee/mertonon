@@ -9,11 +9,6 @@
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
             [reagent.core :as r]
@@ -23,13 +18,13 @@
 ;; Creation
 ;; ---
 
-(def create-config
+(defn create-config [m]
   {:resource      :curr-entry
    :endpoint      (api/entry)
    :state-path    [:entry :create]
    :init-state-fn (fn []
                     {:uuid       (str (random-uuid))
-                     :cobj-uuid  ""
+                     :cobj-uuid  (->> m :path-params :uuid)
                      :name       ""
                      :label      ""
                      :type       "abstract.arbitrary.value"
@@ -43,12 +38,13 @@
    :nav-to        :refresh})
 
 (defn entry-create-before-fx [m]
-  (cr/before-fx create-config m))
+  (cr/before-fx (create-config m) m))
 
 (defn entry-create-sidebar [m]
-  (let [cobj-uuid  (->> m :path-params :uuid)
-        state-path (create-config :state-path)
-        new-uuid   (str @(subscribe [:sidebar-state :create-params :uuid]))]
+  (let [cobj-uuid   (->> m :path-params :uuid)
+        curr-config (create-config m)
+        state-path  (curr-config :state-path)
+        new-uuid    (str @(subscribe [:sidebar-state :create-params :uuid]))]
     [:<>
      [:h1 [sc/entry-icon] " Add Journal Entry"]
      [:div.mb2 "UUID - " new-uuid]
@@ -64,7 +60,7 @@
      [sc/border-region
       [sc/form-label "Entry Date"]
       [fi/state-datepicker state-path [:create-params :date]]]
-     [cr/create-button create-config]]))
+     [cr/create-button curr-config]]))
 
 ;; ---
 ;; Deletion
