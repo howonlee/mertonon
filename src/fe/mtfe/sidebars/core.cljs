@@ -71,7 +71,9 @@
    ["/grid/:uuid/layer_create"        {:name ::layer-create-sidebar :view layer/layer-create-sidebar}]
    ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]
    ["/grid/:uuid/input_create"        {:name ::input-create-sidebar :view input/input-create-sidebar}]
-   ["/grid/:uuid/loss_create"         {:name ::loss-create-sidebar :view loss/loss-create-sidebar}]
+   ["/grid/:uuid/loss_create"         {:name      ::loss-create-sidebar
+                                       :view      loss/loss-create-sidebar
+                                       :before-fx loss/loss-create-before-fx}]
    ["/grid_demo"                      {:name      ::grid-demo-sidebar
                                        :view      grid/grid-sidebar
                                        :before-fx grid/demo-before-fx}]
