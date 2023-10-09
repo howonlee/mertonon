@@ -23,10 +23,6 @@
 
 (defn curr-layer-uuid-member-getter [curr-state]
   (->> curr-state :create-params :layer-uuid))
-
-
-
-(sc-handlers/creation-handler api/loss create-sc-state mc/->Loss [:uuid :layer-uuid :name :label :type])
 ;;     (sel/set-state-if-changed! sidebar-state
 ;;                                api/grid-graph
 ;;                                grid-uuid
@@ -72,27 +68,25 @@
    :nav-to        :refresh})
 
 (defn loss-create-before-fx [m]
-  ;;;;;
-  ;;;;;
-  ;;;;;
-  nil)
+  [[:dispatch-n
+    [[some crap]]]])
 
 (defn loss-create-sidebar [m]
   (let [grid-uuid     (->> m :path-params :uuid)
-        grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
+        grid-contents (->> @sidebar-state :grid-graph-sidebar :layers)]
     [:<>
      [:h1 "Denote Responsibility Center as Overall Goal Center"]
-     [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
+     [:div.mb2 "UUID - " (->> @sidebar-state :create-params :uuid str)]
      [:div.mb2 "Grid UUID - " (->> grid-uuid str)]
      [sc/mgn-border-region
       [sc-components/validation-popover sidebar-state :also-an-input "Responsibility center is also a input; inputs cannot also be goals"
        [sc/form-label "Responsibility Center"]]
       [sc-components/validation-popover sidebar-state :layer-blank "Must choose responsibility center"
-       [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :layer-uuid]]]]
+       [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:create-params :layer-uuid]]]]
      [sc-components/validation-popover sidebar-state :name-blank "Annotation Name is blank"
-      [sc-components/state-text-input create-sc-state "Annotation Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
+      [sc-components/state-text-input create-sc-state "Annotation Name" [:create-params :name]]]
+     [sc-components/state-text-input create-sc-state "Label" [:create-params :label]]
+     [cr/create-button create-config]]))
 
 ;; ---
 ;; Deletion
