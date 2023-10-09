@@ -69,23 +69,25 @@
 
 (defn loss-create-before-fx [m]
   [[:dispatch-n
-    [[some crap]]]])
+    [[:select-sidebar-state some crap]]]])
 
 (defn loss-create-sidebar [m]
   (let [grid-uuid     (->> m :path-params :uuid)
-        grid-contents (->> @sidebar-state :grid-graph-sidebar :layers)]
+        grid-contents @(subscribe [:sidebar-state :grid-graph :layers])
+        new-uuid      (str @(subscribe [:sidebar-state :create-params :uuid]))
+        state-path    (create-config :state-path)]
     [:<>
      [:h1 "Denote Responsibility Center as Overall Goal Center"]
-     [:div.mb2 "UUID - " (->> @sidebar-state :create-params :uuid str)]
-     [:div.mb2 "Grid UUID - " (->> grid-uuid str)]
+     [:div.mb2 "UUID - " new-uuid]
+     [:div.mb2 "Grid UUID - " (str grid-uuid)]
      [sc/mgn-border-region
-      [sc-components/validation-popover sidebar-state :also-an-input "Responsibility center is also a input; inputs cannot also be goals"
+      [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a input; inputs cannot also be goals"
        [sc/form-label "Responsibility Center"]]
-      [sc-components/validation-popover sidebar-state :layer-blank "Must choose responsibility center"
-       [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:create-params :layer-uuid]]]]
-     [sc-components/validation-popover sidebar-state :name-blank "Annotation Name is blank"
-      [sc-components/state-text-input create-sc-state "Annotation Name" [:create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:create-params :label]]
+      [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
+       [fi/state-select-input state-path grid-contents [:create-params :layer-uuid]]]]
+     [vblurbs/validation-popover state-path :name-blank "Annotation Name is blank"
+      [fi/state-text-input state-path "Annotation Name" [:create-params :name]]]
+     [fi/state-text-input state-path "Label" [:create-params :label]]
      [cr/create-button create-config]]))
 
 ;; ---
