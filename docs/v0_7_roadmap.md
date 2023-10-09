@@ -12,17 +12,14 @@
 - [x] Selection views - have a single click to dive in thing
 
 - [x] Input and loss create sidebars
-- [x] Entry and layer create sidebars
-- [ ] Other view sidebars - re-frameify
-- [ ] Kill selection.cljs
-- [ ] Rest of the creation sidebars.
-- [ ] Action sidebar, redo it for grad kickoff. Test all the way to grad kickoff again
-
+- [x] Entry and layer and cobj view and create sidebars
+- [ ] Weight and weightset view and create sidebars
+- [ ] Grad action sidebar
 - [ ] Purge then kill the statecharts
 - [ ] Purge then kill the selectors
 - [ ] Consider the re-frame bit done
-- [ ] Create and delete for password logins separately with selector lol
 
+- [ ] Create and delete for password logins separately with selector lol
 - [ ] Weight mutation - think harder about fitt's law
 - [ ] Model updates, genericized endpoints in BE
 - [ ] Model updates component
