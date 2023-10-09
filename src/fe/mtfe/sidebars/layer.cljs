@@ -49,7 +49,7 @@
    :state-path    [:layer :create]
    :init-state-fn (fn []
                     {:uuid      (str (random-uuid))
-                     :grid-uuid (->> m :path-params uuid)
+                     :grid-uuid (->> m :path-params :uuid)
                      :name      ""
                      :label     ""})
    :validations   [(validations/non-blank [:create-params :name] :name-blank)]
@@ -61,17 +61,6 @@
   (cr/before-fx (create-config m) m))
 
 (defn layer-create-sidebar [m]
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
-  ;;;;;;;;;;; doesn't init, doesn't proc validates, doesn't seem to do the create button things at all..
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
-  ;;;;;;;;;;;
   (let [grid-uuid   (->> m :path-params :uuid)
         curr-config (create-config m)
         state-path  (curr-config :state-path)
