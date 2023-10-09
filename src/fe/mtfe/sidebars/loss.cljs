@@ -1,35 +1,17 @@
 (ns mtfe.sidebars.loss
   "Loss sidebar. Call em 'Goals' but they're just very strange neural net losses"
-  (:require [ajax.core :refer [GET POST]]
-            [mertonon.models.constructors :as mc]
+  (:require [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
-
-;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:uuid       (str (random-uuid))
-   :layer-uuid ""
-   :name       ""
-   :label      ""
-   :type       "competitiveness"})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)
-                                :selection          {}}))
+            [mtfe.validations :as validations]
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; Validation Utils
@@ -40,37 +22,62 @@
          (->> curr-state :grid-view-selection :inputs (mapv :layer-uuid))))
 
 (defn curr-layer-uuid-member-getter [curr-state]
-  (->> curr-state :curr-create-params :layer-uuid))
+  (->> curr-state :create-params :layer-uuid))
+
+
+
+(sc-handlers/creation-handler api/loss create-sc-state mc/->Loss [:uuid :layer-uuid :name :label :type])
+;;     (sel/set-state-if-changed! sidebar-state
+;;                                api/grid-graph
+;;                                grid-uuid
+;;                                [:grid-graph-selection :grids 0 :uuid]
+;;                                [:grid-graph-selection])
+;;     (sel/set-state-if-changed! sidebar-state
+;;                                api/grid-view
+;;                                grid-uuid
+;;                                [:grid-view-selection :grids 0 :uuid]
+;;                                [:grid-view-selection])
 
 ;; ---
-;; Statecharts
+;; Partials
 ;; ---
 
-(defonce create-sc-state
-  (r/atom nil))
-
-(def create-sc
-  (mt-statechart/simple-create :loss-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler
-                                                 sidebar-state
-                                                 [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
-                                                  (sc-validation/non-blank [:curr-create-params :layer-uuid] :layer-blank)
-                                                  (sc-validation/not-in-set
-                                                    input-layer-uuid-set-getter
-                                                    curr-layer-uuid-member-getter
-                                                    :also-an-input)])
-                                :action-fn     (sc-handlers/creation-handler api/loss create-sc-state mc/->Loss [:uuid :layer-uuid :name :label :type])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(mt-statechart/init-sc! :loss-create create-sc-state create-sc)
+(defn header-partial []
+  [:<>
+   [:h1 "Goals"]
+   [:p "This is an annotation for the gradient descent to tell Mertonon that this is an overall goal center."]])
 
 ;; ---
 ;; Creation
 ;; ---
 
-(defn loss-create-sidebar-render [m]
+(def create-config
+  {:resource      :curr-loss
+   :endpoint      (api/loss)
+   :state-path    [:loss :create]
+   :init-state-fn (fn []
+                    {:uuid       (str (random-uuid))
+                     :layer-uuid ""
+                     :name       ""
+                     :label      ""
+                     :type       "competitiveness"})
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)
+                   (validations/non-blank [:create-params :layer-uuid] :layer-blank)
+                   (validations/not-in-set
+                     input-layer-uuid-set-getter
+                     curr-layer-uuid-member-getter
+                     :also-an-input)]
+   :ctr           mc/->Loss
+   :ctr-params    [:uuid :layer-uuid :name :label :type]
+   :nav-to        :refresh})
+
+(defn loss-create-before-fx [m]
+  ;;;;;
+  ;;;;;
+  ;;;;;
+  nil)
+
+(defn loss-create-sidebar [m]
   (let [grid-uuid     (->> m :path-params :uuid)
         grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
     [:<>
@@ -86,34 +93,6 @@
       [sc-components/state-text-input create-sc-state "Annotation Name" [:curr-create-params :name]]]
      [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
      [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
-
-;; ---
-;; Partials
-;; ---
-
-(defn header-partial []
-  [:<>
-   [:h1 "Goals"]
-   [:p "This is an annotation for the gradient descent to tell Mertonon that this is an overall goal center."]])
-
-;; ---
-;; Top-level render
-;; ---
-
-(defn loss-create-sidebar [m]
-  (let [grid-uuid (->> m :path-params :uuid str)]
-    (sel/set-state-if-changed! sidebar-state
-                               api/grid-graph
-                               grid-uuid
-                               [:grid-graph-selection :grids 0 :uuid]
-                               [:grid-graph-selection])
-    (sel/set-state-if-changed! sidebar-state
-                               api/grid-view
-                               grid-uuid
-                               [:grid-view-selection :grids 0 :uuid]
-                               [:grid-view-selection])
-    (mt-statechart/send-reset-event-if-finished! create-sc-state)
-    [loss-create-sidebar-render m]))
 
 ;; ---
 ;; Deletion

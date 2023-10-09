@@ -10,10 +10,9 @@
 
 - [x] Grid view sidebar - re-frameify
 - [x] Selection views - have a single click to dive in thing
+
 - [ ] Other view sidebars - re-frameify
 - [ ] Kill selection.cljs
-- [ ] Some of the creation sidebars
-
 - [ ] Rest of the creation sidebars.
 - [ ] Action sidebar, redo it for grad kickoff. Test all the way to grad kickoff again
 - [ ] Purge then kill the statecharts
