@@ -60,21 +60,6 @@
 (mt-statechart/init-sc! :layer-delete delete-sc-state delete-sc)
 
 ;; ---
-;; Creation
-;; ---
-
-(defn layer-create-sidebar-render [m]
-  (let [grid-uuid     (->> m :path-params :uuid)]
-    [:<>
-     [:h1 [sc/layer-icon] " Add Responsibility Center"]
-     [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-     [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
-     [sc-components/validation-popover sidebar-state :name-blank "Responsibility Center Name is blank"
-      [sc-components/state-text-input create-sc-state "Responsibility Center Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
-
-;; ---
 ;; Partials
 ;; ---
 
@@ -102,6 +87,17 @@
 ;; ---
 ;; Create
 ;; ---
+
+(defn layer-create-sidebar-render [m]
+  (let [grid-uuid     (->> m :path-params :uuid)]
+    [:<>
+     [:h1 [sc/layer-icon] " Add Responsibility Center"]
+     [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
+     [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
+     [sc-components/validation-popover sidebar-state :name-blank "Responsibility Center Name is blank"
+      [sc-components/state-text-input create-sc-state "Responsibility Center Name" [:curr-create-params :name]]]
+     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
+     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
 
 (defn layer-create-sidebar [m]
   (let [grid-uuid (->> m :path-params :uuid str)]

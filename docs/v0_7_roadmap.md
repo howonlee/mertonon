@@ -11,6 +11,7 @@
 - [x] Grid view sidebar - re-frameify
 - [x] Selection views - have a single click to dive in thing
 
+- [x] Input and loss create sidebars
 - [ ] Other view sidebars - re-frameify
 - [ ] Kill selection.cljs
 - [ ] Rest of the creation sidebars.

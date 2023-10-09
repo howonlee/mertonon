@@ -62,4 +62,4 @@
 (defn state-datepicker [state-path param-path]
   [date-picker {:popper-placement "left"
                 :selected         @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))
-                :on-select        #(dispatch [:mutate-create-state state-path param-path (evt->val %)])}])
+                :on-select        #(dispatch [:mutate-create-state state-path param-path %])}])
