@@ -91,7 +91,9 @@
                                        :before-fx layer/layer-delete-before-fx}]
    ["/layer/:uuid/cost_object_create" {:name ::cost-object-create-sidebar :view cost-object/cost-object-create-sidebar}]
 
-   ["/cost_object/:uuid"              {:name ::cost-object-sidebar :view cost-object/cost-object-sidebar}]
+   ["/cost_object/:uuid"              {:name      ::cost-object-sidebar
+                                       :view      cost-object/cost-object-sidebar
+                                       :before-fx cost-object/cost-object-sidebar-before-fx}]
    ["/cost_object/:uuid/entry_create" {:name      ::entry-create-sidebar
                                        :view      entry/entry-create-sidebar
                                        :before-fx entry/entry-create-before-fx}]

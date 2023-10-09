@@ -6,6 +6,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -14,7 +15,7 @@
             [mtfe.statecharts.sideeffects :as sc-se]
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.cost-object :as cobj-view]
+            [mtfe.validations :as validations]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
@@ -86,29 +87,41 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [cobj-create-sidebar-render m])
 
-(defn cost-object-sidebar [m]
+;; ---
+;; Sidebar View
+;; ---
+
+(defn cost-object-sidebar-before-fx [m]
   (let [is-demo?        @(subscribe [:is-demo?])
         cobj-uuid       (->> m :path-params :uuid)
         cobj-endpoint   (if is-demo?
-                          api/generator-cost-object
-                          api/cost-object-view)]
-    (sel/set-state-if-changed! sidebar-state
-                               cobj-endpoint
-                               cobj-uuid
-                               [:cobj-selection :cost-object :uuid]
-                               [:cobj-selection])
-    (sc-handlers/do-validations! sidebar-state
-                                 [(sc-validation/and-predicate
-                                    (sc-validation/min-num-elems [:cobj-selection :losses] 1 :no-loss)
-                                    (sc-validation/min-num-elems [:cobj-selection :inputs] 1 :no-input)
-                                    :not-input-or-loss)])
+                          (api/generator-cost-object cobj-uuid)
+                          (api/cost-object-view cobj-uuid))]
+    [[:dispatch
+      [:select-with-custom-success
+       :cobj-view
+       cobj-endpoint
+       {}
+       :sidebar-selection-and-validate
+       {:validations
+        [(validations/and-predicate
+           (validations/min-num-elems [:losses] 1 :no-loss)
+           (validations/min-num-elems [:inputs] 1 :no-input)
+           :not-input-or-loss)]}]]]))
+
+(defn cost-object-sidebar [m]
+  (let [curr-cobj-state @(subscribe [:selection :cobj-view])
+        val-path        [:cobj-view]
+        is-demo?        @(subscribe [:is-demo?])
+        cobj-uuid       (->> m :path-params :uuid)]
     [:<>
      [header-partial]
-     (if (not is-demo?)
+     (when (not is-demo?)
        [:<>
-        [sc-components/validation-toast sidebar-state :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]
-        [sc-components/validated-link sidebar-state :not-input-or-loss "Create Journal Entry"
-         [util/sl (util/path ["cost_object" cobj-uuid "entry_create"]) [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
+        [vblurbs/validation-toast val-path :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]
+        [vblurbs/validated-link val-path :not-input-or-loss "Create Journal Entry"
+         [util/sl (util/path ["cost_object" cobj-uuid "entry_create"])
+          [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
 
 ;; ---
 ;; Deletion
