@@ -20,37 +20,6 @@
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:uuid       (str (random-uuid))
-   :layer-uuid ""
-   :name       ""
-   :label      ""})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)}))
-
-;; ---
-;; Statecharts
-;; ---
-
-(defonce create-sc-state
-   (r/atom nil))
-
-(def create-sc
-  (mt-statechart/simple-create :cobj-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler
-                                                 sidebar-state
-                                                 [(sc-validation/non-blank [:curr-create-params :name] :name-blank)])
-                                :action-fn     (sc-handlers/creation-handler api/cost-object create-sc-state mc/->CostObject [:uuid :layer-uuid :name :label])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(mt-statechart/init-sc! :cobj-create create-sc-state create-sc)
-
-;; ---
 ;; Partials
 ;; ---
 
@@ -65,22 +34,34 @@
 ;; Creation
 ;; ---
 
-(defn cobj-create-sidebar-render [m]
-  (let [layer-uuid (->> m :path-params :uuid)]
+(defn create-config [m]
+  {:resource      :curr-cobj
+   :endpoint      (api/cost-object)
+   :state-path    [:cobj :create]
+   :init-state-fn (fn []
+                    {:uuid       (str (random-uuid))
+                     :layer-uuid (->> m :path-params :uuid)
+                     :name       ""
+                     :label      ""})
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)]
+   :ctr           mc/->CostObject
+   :ctr-params    [:uuid :layer-uuid :name :label]
+   :nav-to        :refresh})
+
+(defn cost-object-create-before-fx [m]
+  (cr/before-fx (create-config m) m))
+
+(defn cost-object-create-sidebar [m]
+  (let [layer-uuid  (->> m :path-params :uuid)
+        curr-config (create-config m)
+        state-path  (curr-config :state-path)]
     [:<>
      [:h1 [sc/cobj-icon] " Add Cost Node"]
      [:div.mb2 [sc/layer-icon] " Layer UUID - " (->> layer-uuid str)]
-     [sc-components/validation-popover sidebar-state :name-blank "Cost Node Name is blank"
-      [sc-components/state-text-input create-sc-state "Cost Node Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
-
-(defn cost-object-create-sidebar [m]
-  (sel/swap-if-changed! (->> m :path-params :uuid str)
-                         sidebar-state
-                         [:curr-create-params :layer-uuid])
-  (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  [cobj-create-sidebar-render m])
+     [vblurbs/validation-popover state-path :name-blank "Cost Node Name is blank"
+      [fi/state-text-input state-path [:create-params :name] "Cost Node Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [cr/create-button curr-config]]))
 
 ;; ---
 ;; Sidebar View
