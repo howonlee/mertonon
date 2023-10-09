@@ -67,6 +67,15 @@
 (mt-statechart/init-sc! :input-create create-sc-state create-sc)
 
 ;; ---
+;; Partials
+;; ---
+
+(defn header-partial []
+  [:<>
+   [:h1 "Inputs"]
+   [:p "This is an annotation for the gradient descent to tell Mertonon that this is an input cost center."]])
+
+;; ---
 ;; Creation
 ;; ---
 
@@ -86,15 +95,6 @@
       [sc-components/state-text-input create-sc-state "Annotation Name" [:curr-create-params :name]]]
      [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
      [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
-
-;; ---
-;; Partials
-;; ---
-
-(defn header-partial []
-  [:<>
-   [:h1 "Inputs"]
-   [:p "This is an annotation for the gradient descent to tell Mertonon that this is an input cost center."]])
 
 ;; ---
 ;; Top-level render
