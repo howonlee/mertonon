@@ -51,21 +51,6 @@
 (mt-statechart/init-sc! :cobj-create create-sc-state create-sc)
 
 ;; ---
-;; Creation
-;; ---
-
-(defn cobj-create-sidebar-render [m]
-  (let [layer-uuid (->> m :path-params :uuid)]
-    [:<>
-     [:h1 [sc/cobj-icon] " Add Cost Node"]
-     [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-     [:div.mb2 [sc/layer-icon] " Layer UUID - " (->> layer-uuid str)]
-     [sc-components/validation-popover sidebar-state :name-blank "Cost Node Name is blank"
-      [sc-components/state-text-input create-sc-state "Cost Node Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
-
-;; ---
 ;; Partials
 ;; ---
 
@@ -77,8 +62,18 @@
    [:p]])
 
 ;; ---
-;; Top-level render
+;; Creation
 ;; ---
+
+(defn cobj-create-sidebar-render [m]
+  (let [layer-uuid (->> m :path-params :uuid)]
+    [:<>
+     [:h1 [sc/cobj-icon] " Add Cost Node"]
+     [:div.mb2 [sc/layer-icon] " Layer UUID - " (->> layer-uuid str)]
+     [sc-components/validation-popover sidebar-state :name-blank "Cost Node Name is blank"
+      [sc-components/state-text-input create-sc-state "Cost Node Name" [:curr-create-params :name]]]
+     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
+     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
 
 (defn cost-object-create-sidebar [m]
   (sel/swap-if-changed! (->> m :path-params :uuid str)

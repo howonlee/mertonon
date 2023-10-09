@@ -69,11 +69,9 @@
 (defn input-create-sidebar [m]
   (let [grid-uuid     (->> m :path-params :uuid)
         grid-contents @(subscribe [:sidebar-state :grid-graph :layers])
-        new-uuid      (str @(subscribe [:sidebar-state :create-params :uuid]))
         state-path    (create-config :state-path)]
     [:<>
      [:h1 "Denote Responsibility Center as Overall Input Center"]
-     [:div.mb2 "UUID - " new-uuid]
      [:div.mb2 "Grid UUID - " (str grid-uuid)]
      [sc/mgn-border-region
       [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a goal; goals cannot also be inputs"

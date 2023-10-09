@@ -63,11 +63,9 @@
 (defn layer-create-sidebar [m]
   (let [grid-uuid   (->> m :path-params :uuid)
         curr-config (create-config m)
-        state-path  (curr-config :state-path)
-        new-uuid    @(subscribe [:sidebar-state :create-params :uuid])]
+        state-path  (curr-config :state-path)]
     [:<>
      [:h1 [sc/layer-icon] " Add Responsibility Center"]
-     [:div.mb2 "UUID - " (str new-uuid)]
      [:div.mb2 [sc/grid-icon] " Grid UUID - " (str grid-uuid)]
      [vblurbs/validation-popover state-path :name-blank "Responsibility Center Name is blank"
       [fi/state-text-input state-path [:create-params :name] "Responsibility Center Name"]]

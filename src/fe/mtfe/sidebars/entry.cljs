@@ -43,11 +43,9 @@
 (defn entry-create-sidebar [m]
   (let [cobj-uuid   (->> m :path-params :uuid)
         curr-config (create-config m)
-        state-path  (curr-config :state-path)
-        new-uuid    (str @(subscribe [:sidebar-state :create-params :uuid]))]
+        state-path  (curr-config :state-path)]
     [:<>
      [:h1 [sc/entry-icon] " Add Journal Entry"]
-     [:div.mb2 "UUID - " new-uuid]
      [:div.mb2 [sc/cobj-icon] " Cost Node UUID - " (->> cobj-uuid str)]
      [:p "Values currently have to be an arbitrary integer only right now."]
      [:p "Currency and lots of other stuff is coming."]
