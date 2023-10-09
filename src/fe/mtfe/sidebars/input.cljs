@@ -1,35 +1,18 @@
 (ns mtfe.sidebars.input
   "Input sidebar"
-  (:require [ajax.core :refer [GET POST]]
-            [mertonon.models.constructors :as mc]
+  (:require [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
             [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
-
-;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:uuid       (str (random-uuid))
-   :layer-uuid ""
-   :name       ""
-   :label      ""
-   :type       "competitiveness"})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)
-                                :selection          {}}))
+            [mtfe.validations :as validations]
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; Validation Utils
@@ -37,34 +20,10 @@
 
 (defn loss-layer-uuid-set-getter [curr-state]
   (apply hash-set
-         (->> curr-state :grid-view-selection :losses (mapv :layer-uuid))))
+         (->> curr-state :grid-view :losses (mapv :layer-uuid))))
 
 (defn curr-layer-uuid-member-getter [curr-state]
-  (->> curr-state :curr-create-params :layer-uuid))
-
-;; ---
-;; Statecharts
-;; ---
-
-(defonce create-sc-state
-  (r/atom nil))
-
-(def create-sc
-  (mt-statechart/simple-create :input-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler
-                                                 sidebar-state
-                                                 [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
-                                                  (sc-validation/non-blank [:curr-create-params :layer-uuid] :layer-blank)
-                                                  (sc-validation/not-in-set
-                                                    loss-layer-uuid-set-getter
-                                                    curr-layer-uuid-member-getter
-                                                    :also-a-loss)])
-                                :action-fn     (sc-handlers/creation-handler api/input create-sc-state mc/->Input [:uuid :layer-uuid :name :label :type])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(mt-statechart/init-sc! :input-create create-sc-state create-sc)
+  (->> curr-state :create-params :layer-uuid))
 
 ;; ---
 ;; Partials
@@ -79,41 +38,52 @@
 ;; Creation
 ;; ---
 
-(defn input-create-sidebar-render [m]
-  (let [grid-uuid     (->> m :path-params :uuid)
-        grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
-    [:<>
-     [:h1 "Denote Responsibility Center as Input Cost Center"]
-     [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-     [:div.mb2 "Grid UUID - " (->> grid-uuid str)]
-     [sc/mgn-border-region
-      [sc-components/validation-popover sidebar-state :also-a-loss "Responsibility center is also a goal: goals cannot also be inputs"
-       [sc/form-label "Responsibility Center"]]
-      [sc-components/validation-popover sidebar-state :layer-blank "Must choose responsibility center"
-       [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :layer-uuid]]]]
-     [sc-components/validation-popover sidebar-state :name-blank "Annotation Name is blank"
-      [sc-components/state-text-input create-sc-state "Annotation Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
+(def create-config
+  {:resource      :curr-input
+   :endpoint      (api/input)
+   :state-path    [:input :create]
+   :init-state-fn (fn []
+                    {:uuid       (str (random-uuid))
+                     :layer-uuid ""
+                     :name       ""
+                     :label      ""
+                     :type       "competitiveness"})
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)
+                   (validations/non-blank [:create-params :layer-uuid] :layer-blank)
+                   (validations/not-in-set
+                     loss-layer-uuid-set-getter
+                     curr-layer-uuid-member-getter
+                     :also-an-input)]
+   :ctr           mc/->Input
+   :ctr-params    [:uuid :layer-uuid :name :label :type]
+   :nav-to        :refresh})
 
-;; ---
-;; Top-level render
-;; ---
+(defn input-create-before-fx [m]
+  (let [grid-uuid (->> m :path-params :uuid)]
+    [[:dispatch-n [[:reset-create-state create-config]
+                   [:select-with-custom-success :grid-graph
+                    (api/grid-graph grid-uuid) {} :sidebar-selection-success]
+                   [:select-with-custom-success :grid-view
+                    (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn input-create-sidebar [m]
-  (let [grid-uuid (->> m :path-params :uuid str)]
-    (sel/set-state-if-changed! sidebar-state
-                               api/grid-graph
-                               grid-uuid
-                               [:grid-graph-selection :grids 0 :uuid]
-                               [:grid-graph-selection])
-    (sel/set-state-if-changed! sidebar-state
-                               api/grid-view
-                               grid-uuid
-                               [:grid-view-selection :grids 0 :uuid]
-                               [:grid-view-selection])
-    (mt-statechart/send-reset-event-if-finished! create-sc-state)
-    [input-create-sidebar-render m]))
+  (let [grid-uuid     (->> m :path-params :uuid)
+        grid-contents @(subscribe [:sidebar-state :grid-graph :layers])
+        new-uuid      (str @(subscribe [:sidebar-state :create-params :uuid]))
+        state-path    (create-config :state-path)]
+    [:<>
+     [:h1 "Denote Responsibility Center as Overall Input Center"]
+     [:div.mb2 "UUID - " new-uuid]
+     [:div.mb2 "Grid UUID - " (str grid-uuid)]
+     [sc/mgn-border-region
+      [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a goal; goals cannot also be inputs"
+       [sc/form-label "Responsibility Center"]]
+      [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
+       [fi/state-select-input state-path [:create-params :layer-uuid] grid-contents]]]
+     [vblurbs/validation-popover state-path :name-blank "Annotation Name is blank"
+      [fi/state-text-input state-path [:create-params :name] "Annotation Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [cr/create-button create-config]]))
 
 ;; ---
 ;; Deletion
