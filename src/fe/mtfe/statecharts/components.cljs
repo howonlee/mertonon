@@ -92,39 +92,3 @@
   [date-picker {:popper-placement "left"
                 :selected         (get-in @state path)
                 :on-select        (mt-statechart/mutate-from-plain-function-handler sc-state path)}])
-
-;; ---
-;; (Arbitrary) Action
-;; ---
-
-(defn action-state-blurb [stateset]
-  (condp #(contains? %2 %1) stateset
-    :initial  "Press Kickoff button to kick off."
-    :filled   "Press Kickoff button to kick off."
-    :acting   "Kicking off..."
-    :success  "Successfully kicked off!"
-    :failure  "Failed to kick off."
-    :finished "Finished."))
-
-(defn action-button [curr-action-state action-sc-state sidebar-state]
-  [sc/border-region
-   [:div.pa2
-    (action-state-blurb (->> curr-action-state ::fsc/configuration))]
-   [:div
-    (if (and (empty? (->> @sidebar-state :validation-errors))
-             (or
-               (->> curr-action-state ::fsc/configuration :initial)
-               (->> curr-action-state ::fsc/configuration :filled)))
-      [util/stl action-sc-state :submit
-       [sc/button "Kickoff"]
-       (->> @sidebar-state :curr-action-params)]
-      [sc/disabled-button "Kickoff"])
-    [:span.pa2
-     (if (->> curr-action-state ::fsc/configuration :acting)
-       [sc/spinny-icon]
-       [sc/blank-icon])]]
-   [:div
-    (if (seq (clojure.set/intersection #{:success :failure} (->> curr-action-state ::fsc/configuration)))
-      [util/stl action-sc-state :finish
-       [sc/button "Finish"]]
-      [sc/disabled-button "Finish"])]])
