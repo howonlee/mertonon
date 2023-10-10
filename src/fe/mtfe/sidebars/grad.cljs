@@ -146,7 +146,11 @@
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn grad-sidebar [m]
-  (let [dealio nil]
+  (let [grid-uuid     (->> m :path-params :uuid)
+        curr-config   (action-config m)
+        state-path    (curr-config :state-path)
+        grid-contents @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
+        printo        (println grid-contents)]
     [:<>]))
   ;; [:<>
   ;;  [:h1 "Gradient Determination Kickoff"]
