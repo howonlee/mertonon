@@ -16,7 +16,7 @@
    :finished "Finished."
 
    ;; Button labels
-   :kickoff  "Kickoff"
+   :submit   "Kickoff"
    :finish   "Finish"})
 
 (defn sidebar-path [state-path]
@@ -81,29 +81,32 @@
          endpoint   :endpoint
          nav-to     :nav-to}    config
         curr-sidebar-state      @(subscribe (sidebar-path state-path))
-        curr-action-state        (get curr-sidebar-state :action-state :invalid)
-        curr-action-params       (get curr-sidebar-state :action-params {})
-        curr-labels              (if (seq labels) labels default-labels)
-        curr-error               (get curr-sidebar-state :action-error nil)]
-    nil))
-;;   [sc/border-region
-;;    [:div.pa2
-;;     (action-state-blurb (->> curr-action-state ::fsc/configuration))]
-;;    [:div
-;;     (if (and (empty? (->> @sidebar-state :validation-errors))
-;;              (or
-;;                (->> curr-action-state ::fsc/configuration :initial)
-;;                (->> curr-action-state ::fsc/configuration :filled)))
-;;       [util/stl action-sc-state :submit
-;;        [sc/button "Kickoff"]
-;;        (->> @sidebar-state :curr-action-params)]
-;;       [sc/disabled-button "Kickoff"])
-;;     [:span.pa2
-;;      (if (->> curr-action-state ::fsc/configuration :acting)
-;;        [sc/spinny-icon]
-;;        [sc/blank-icon])]]
-;;    [:div
-;;     (if (seq (clojure.set/intersection #{:success :failure} (->> curr-action-state ::fsc/configuration)))
-;;       [util/stl action-sc-state :finish
-;;        [sc/button "Finish"]]
-;;       [sc/disabled-button "Finish"])]])
+        curr-action-state       (get curr-sidebar-state :action-state :invalid)
+        curr-action-params      (get curr-sidebar-state :action-params {})
+        curr-labels             (if (seq labels) labels default-labels)
+        curr-error              (get curr-sidebar-state :action-error nil)]
+    [sc/border-region
+     [:div.pa2
+      (curr-labels curr-action-state)]
+     [:div
+      (if (and (empty? (->> curr-sidebar-state :validation-errors))
+               (or
+                 (= curr-action-state :initial)
+                 (= curr-action-state :filled)))
+        [util/evl :submit-action
+         [sc/button (curr-labels :submit)]
+         (assoc config :action-params curr-action-params)]
+        [sc/disabled-button (curr-labels :submit)])
+      [:span.pa2
+       (if (= curr-action-state :acting)
+         [sc/spinny-icon]
+         [sc/blank-icon])]]
+     [:div
+      (if (contains? #{:success :failure} curr-action-state)
+        [util/evl :finish-and-nav
+         [sc/button (curr-labels :finish)]
+         nav-to]
+        [sc/disabled-button (curr-labels :finish)])]
+     [:div
+      (if (= :failure curr-action-state)
+        [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
