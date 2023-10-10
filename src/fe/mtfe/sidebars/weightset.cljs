@@ -165,11 +165,6 @@
                              ;;          :default))}]
    [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
 
-
-;; ---
-;; Top-level render
-;; ---
-
 (defn weightset-create-sidebar [m]
   (sel/set-state-if-changed! sidebar-state
                              api/grid-graph
@@ -179,18 +174,24 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [weightset-create-sidebar-render m])
 
+;; ---
+;; Sidebar Views
+;; ---
 
 (defn weightset-sidebar [m]
-  (let [curr-ws-state {}
+  (let [;;;;;;;;;
+        ;;;;;;;;;
+        ;;;;;;;;;
+        ws-state-path {}
         is-demo?      @(subscribe [:is-demo?])
-        ws-uuid       (->> curr-ws-state :selection :weightset :uuid)]
+        ws-uuid       (->> m :path-params :uuid)]
     [:<>
      [header-partial]
      [adjustment-checkbox-partial]
      (if (not is-demo?)
        [util/sl (util/path ["weightset" ws-uuid "weight_create"]) [sc/button [sc/weight-icon] " Create Weight"]])
-     [src-layer-partial curr-ws-state]
-     [tgt-layer-partial curr-ws-state]]))
+     [src-layer-partial ws-state-path]
+     [tgt-layer-partial ws-state-path]]))
 
 (defn weightset-selection-sidebar [m]
   (let [is-demo? @(subscribe [:is-demo?])
@@ -203,7 +204,6 @@
             [sc/button "Dive In"]]]
      (if (not is-demo?)
        [:div [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]]])]))
-
 
 ;; ---
 ;; Deletion
