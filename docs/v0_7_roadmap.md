@@ -14,11 +14,12 @@
 - [x] Input and loss create sidebars
 - [x] Entry and layer and cobj view and create sidebars
 
+- [ ] Weight and weightset view sidebars
+- [ ] Purge then kill the selectors
 - [ ] Action button
 - [ ] Grad action sidebar
-- [ ] Weight and weightset view and create sidebars
+- [ ] Weight and weightset create sidebars
 - [ ] Purge then kill the statecharts
-- [ ] Purge then kill the selectors
 - [ ] Consider the re-frame bit done
 
 - [ ] Model updates, genericized endpoints in BE
