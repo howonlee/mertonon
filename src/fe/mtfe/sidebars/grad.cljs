@@ -20,7 +20,7 @@
             [mtfe.util :as util]
             [mtfe.validations :as validations]
             [reagent.core :as r]
-            [re-frame.core :refer [dispatch dispatch-sync subscribe]]
+            [re-frame.core :refer [dispatch dispatch-sync reg-event-fx subscribe]]
             [tick.core :as t]))
 
 ;; ---
@@ -143,19 +143,22 @@
                    [:select-with-custom-success [:grad :action :grid-view]
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
+(reg-event-fx
+  ::manual-check
+  (fn [{:keys [db]} [evt action-params]]
+    {:dispatch-n [[:select-with-custom-success [:grad :action :grid-dump]
+                                               (api/grid-dump (action-params :grid-uuid))
+                                               action-params
+                                               :sidebar-selection-success]
+                  [:validate-action-state [:grad :action]]]}))
+
 (defn grad-sidebar [m]
   (let [grid-uuid          (->> m :path-params :uuid)
         curr-config        (action-config m)
         state-path         (curr-config :state-path)
         grid-contents      @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
         ;;; proc via a check button?
-        curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])
-        printo             (println curr-action-params)]
-        ;; _                  (when (seq curr-action-params)
-        ;;                      (do
-        ;;                        (dispatch-sync [:select-with-custom-success [:grad :action :grid-dump]
-        ;;                                        (api/grid-dump grid-uuid) curr-action-params :sidebar-selection-success])
-        ;;                        (dispatch-sync [:validate-action-state [:grad :action]])))]
+        curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])]
     [:<>]))
   ;; [:<>
   ;;  [:h1 "Gradient Determination Kickoff"]
