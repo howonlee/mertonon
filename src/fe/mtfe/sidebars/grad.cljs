@@ -124,39 +124,57 @@
 ;; ---
 
 (defn action-config [m]
-  nil)
+  (let [grid-uuid (->> m :path-params :uuid)]
+    {:resource      :curr-grad
+     :endpoint      (api/grad)
+     :state-path    [:grad :action]
+     :init-state-fn (fn []
+                      {:start-date (last-week)
+                       :end-date   (tomorrow)
+                       :grid-uuid  grid-uuid})
+     :validations   []
+     :nav-to        :refresh})
 
 (defn grad-before-fx [m]
-  nil)
+  (let [grid-uuid (->> m :path-params :uuid)]
+    [[:dispatch-n [[:reset-action-state (action-config m)]
+                   [:select-with-custom-success [:grad :action :grid-graph]
+                    (api/grid-graph grid-uuid) {} :sidebar-selection-success]
+                   [:select-with-custom-success [:grad :action :grid-dump]
+                    (api/grid-dump grid-uuid) {} :sidebar-selection-success]
+                   [:select-with-custom-success [:grad :action :grid-view]
+                    (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn grad-sidebar [m]
-  [:<>
-   [:h1 "Gradient Determination Kickoff"]
-   [:p "Currently, determination of gradients and deltas is done by Mertonon but kicked off manually by you, the user. When you press the button Mertonon will go and determine gradients and deltas for weights and cost objects, which comprise Mertonon's combination of local determinations into a global one."]
-   [:p
-    [sc-components/validation-toast sidebar-state :few-layers "Mertonon has to have at least 2 responsibility centers to determine a gradient flow."]]
-   [:p
-    [sc-components/validation-toast sidebar-state :no-weightsets "Mertonon has to have a weightset to determine a gradient flow."]]
-   [:p
-    [sc-components/validation-toast sidebar-state :no-inputs "Mertonon has to have an input annotation to determine a gradient flow."]]
-   [:p
-    [sc-components/validation-toast sidebar-state :no-losses "Mertonon has to have a goal annotation to determine a gradient flow."]]
-   [:p
-    [sc-components/validation-toast sidebar-state :few-cobjs "Mertonon has to have multiple cost objects in each responsibility center to determine a gradient flow."]]
-   [:p
-    [sc-components/validation-toast sidebar-state :few-weights "Mertonon has to have some weights in each weightset to determine a gradient flow."]]
-   [:p
-    [sc-components/validation-toast sidebar-state :few-input-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to inputs to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
-   [:p
-    [sc-components/validation-toast sidebar-state :few-loss-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to goals to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
-   [sc/mgn-border-region
-    [sc/form-label "Start Date"]
-    [sc-components/state-datepicker action-sc-state sidebar-state [:curr-action-params :start-date]]]
-   [sc/mgn-border-region
-    [sc/form-label "End Date"]
-    [sc-components/state-datepicker action-sc-state sidebar-state [:curr-action-params :end-date]]]
-   [sc/mgn-border-region
-    [sc-components/action-button @action-sc-state action-sc-state sidebar-state]]])
+  (let [dealio nil]
+    [:<>]))
+  ;; [:<>
+  ;;  [:h1 "Gradient Determination Kickoff"]
+  ;;  [:p "Currently, determination of gradients and deltas is done by Mertonon but kicked off manually by you, the user. When you press the button Mertonon will go and determine gradients and deltas for weights and cost objects, which comprise Mertonon's combination of local determinations into a global one."]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :few-layers "Mertonon has to have at least 2 responsibility centers to determine a gradient flow."]]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :no-weightsets "Mertonon has to have a weightset to determine a gradient flow."]]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :no-inputs "Mertonon has to have an input annotation to determine a gradient flow."]]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :no-losses "Mertonon has to have a goal annotation to determine a gradient flow."]]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :few-cobjs "Mertonon has to have multiple cost objects in each responsibility center to determine a gradient flow."]]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :few-weights "Mertonon has to have some weights in each weightset to determine a gradient flow."]]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :few-input-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to inputs to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
+  ;;  [:p
+  ;;   [sc-components/validation-toast sidebar-state :few-loss-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to goals to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
+  ;;  [sc/mgn-border-region
+  ;;   [sc/form-label "Start Date"]
+  ;;   [sc-components/state-datepicker action-sc-state sidebar-state [:curr-action-params :start-date]]]
+  ;;  [sc/mgn-border-region
+  ;;   [sc/form-label "End Date"]
+  ;;   [sc-components/state-datepicker action-sc-state sidebar-state [:curr-action-params :end-date]]]
+  ;;  [sc/mgn-border-region
+  ;;   [sc-components/action-button @action-sc-state action-sc-state sidebar-state]]])
 
 ;; ---
 ;; Top-level render
