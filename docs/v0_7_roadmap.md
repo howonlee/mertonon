@@ -15,7 +15,7 @@
 - [x] Entry and layer and cobj view and create sidebars
 
 - [x] Weight and weightset view sidebars
-- [ ] Weight create sidebar
+- [x] Weight create sidebar
 - [ ] Weightset create sidebar
 - [ ] Action button
 - [ ] Grad action sidebar
