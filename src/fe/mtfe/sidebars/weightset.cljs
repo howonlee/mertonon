@@ -17,6 +17,34 @@
             [re-frame.core :refer [dispatch dispatch-sync subscribe reg-event-db]]))
 
 ;; ---
+;; Partials
+;; ---
+
+(defn header-partial []
+  [:<>
+   [:h1 [sc/ws-icon] " Weightset"]
+   [:p "In order to make allocation suggestions, Mertonon needs matrices of weights relating cost nodes to each other in reference to an overall performance indicator."]
+   [:p "In addition to suggesting the allocations themselves, Mertonon also makes suggestions for adjustments to the weights, which are suggestions for differences to make on the relations cost nodes have to each other."]
+   [:p "The lighter the background color, the stronger the determined relation."]
+   [:p "Usually in neural weights, people also do negative weights, but we decided not to because of the vicious organizational politics implications. Math works out fine either way."]
+   [:strong "Mertonon weight gradients are _only_ updated whenever gradient calculations are kicked off, not on initial creation."]
+   ])
+
+(defn src-layer-partial [curr-ws-state]
+  (when (seq (->> curr-ws-state :src-layer))
+    [:<>
+     [:h3 [sc/layer-icon] " Source responsibilty center"]
+     [util/path-fsl ["layer" (->> curr-ws-state :src-layer :uuid)]
+      [sc/link (str (->> curr-ws-state :src-layer :name))]]]))
+
+(defn tgt-layer-partial [curr-ws-state]
+  (when (seq (->> curr-ws-state :tgt-layer))
+    [:<>
+     [:h3 [sc/layer-icon] " Target responsibilty center"]
+     [util/path-fsl ["layer" (->> curr-ws-state :tgt-layer :uuid)]
+      [sc/link (str (->> curr-ws-state :tgt-layer :name))]]]))
+
+;; ---
 ;; Validations
 ;; ---
 
@@ -46,34 +74,6 @@
 (defn curr-coord-getter [curr-state]
   [(->> curr-state :create-params :src-layer-uuid)
    (->> curr-state :create-params :tgt-layer-uuid)])
-
-;; ---
-;; Partials
-;; ---
-
-(defn header-partial []
-  [:<>
-   [:h1 [sc/ws-icon] " Weightset"]
-   [:p "In order to make allocation suggestions, Mertonon needs matrices of weights relating cost nodes to each other in reference to an overall performance indicator."]
-   [:p "In addition to suggesting the allocations themselves, Mertonon also makes suggestions for adjustments to the weights, which are suggestions for differences to make on the relations cost nodes have to each other."]
-   [:p "The lighter the background color, the stronger the determined relation."]
-   [:p "Usually in neural weights, people also do negative weights, but we decided not to because of the vicious organizational politics implications. Math works out fine either way."]
-   [:strong "Mertonon weight gradients are _only_ updated whenever gradient calculations are kicked off, not on initial creation."]
-   ])
-
-(defn src-layer-partial [curr-ws-state]
-  (when (seq (->> curr-ws-state :src-layer))
-    [:<>
-     [:h3 [sc/layer-icon] " Source responsibilty center"]
-     [util/path-fsl ["layer" (->> curr-ws-state :src-layer :uuid)]
-      [sc/link (str (->> curr-ws-state :src-layer :name))]]]))
-
-(defn tgt-layer-partial [curr-ws-state]
-  (when (seq (->> curr-ws-state :tgt-layer))
-    [:<>
-     [:h3 [sc/layer-icon] " Target responsibilty center"]
-     [util/path-fsl ["layer" (->> curr-ws-state :tgt-layer :uuid)]
-      [sc/link (str (->> curr-ws-state :tgt-layer :name))]]]))
 
 ;; ---
 ;; Creation
@@ -108,35 +108,34 @@
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn weightset-create-sidebar [m]
-  (let [grid-uuid  (->> m :path-params :uuid)
-        grid-graph @(subscribe [:sidebar-state :weightset :create :grid-graph])
-        printo     (println grid-graph)]
-    [:<>]))
-      ;; [:<>
-      ;;  [sc-components/validation-popover sidebar-state :cyclic
-      ;;   "We don't have support for cyclic weightsets at this time. We will put them in eventually."
-      ;;   [:h1 [sc/ws-icon] " Add Weightset"]]
-      ;;  [sc-components/validation-popover sidebar-state :few-layers
-      ;;   "You need at least two responsibility centers (layers) to make a weightset."
-      ;;   [:<>]]
-      ;;  [sc-components/validation-popover sidebar-state :duplicate-weightset "That weightset already exists."
-      ;;   [:<>]]
-      ;;  [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-      ;;  [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
-      ;;  [sc/mgn-border-region
-      ;;   [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
-      ;;   [sc-components/validation-popover sidebar-state :src-layer-blank "Must choose source responsiblilty center"
-      ;;    [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :src-layer-uuid]]]]
+  (let [grid-uuid     (->> m :path-params :uuid)
+        curr-config   (create-config m)
+        state-path    (curr-config :state-path)
+        grid-contents @(subscribe [:sidebar-state :weightset :create :grid-graph :layers])]
+    [:<>
+     [vblurbs/validation-popover state-path :cyclic
+      "We don't have support for cyclic weightsets at this time. We will put them in eventually."
+      [:h1 [sc/ws-icon] " Add Weightset"]]
+     [vblurbs/validation-popover state-path :few-layers
+      "You need at least two responsibility centers (layers) to make a weightset."
+      [:<>]]
+     [vblurbs/validation-popover state-path :duplicate-weightset "That weightset already exists."
+      [:<>]]
+     [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
+     [sc/mgn-border-region
+      [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
+      [vblurbs/validation-popover state-path :src-layer-blank "Must choose source responsiblilty center"
+       [fi/state-select-input state-path [:create-params :src-layer-uuid] grid-contents]]]
 
-      ;;  [sc/mgn-border-region
-      ;;   [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
-      ;;   [sc-components/validation-popover sidebar-state :tgt-layer-blank "Must choose target responsiblilty center"
-      ;;    [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :tgt-layer-uuid]]]]
+     [sc/mgn-border-region
+      [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
+      [vblurbs/validation-popover state-path :tgt-layer-blank "Must choose target responsiblilty center"
+       [fi/state-select-input state-path [:create-params :tgt-layer-uuid] grid-contents]]]
 
-      ;;  [sc-components/validation-popover sidebar-state :name-blank "Weightset Name is blank"
-      ;;   [sc-components/state-text-input create-sc-state "Weightset Name" [:curr-create-params :name]]]
-      ;;  [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-      ;;  [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
+     [vblurbs/validation-popover state-path :name-blank "Weightset Name is blank"
+      [fi/state-text-input state-path [:create-params :name] "Weightset Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [cr/create-button curr-config]]))
 
 ;; ---
 ;; Sidebar Views
