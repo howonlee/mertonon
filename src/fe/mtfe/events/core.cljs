@@ -9,6 +9,7 @@
             [day8.re-frame.http-fx]
             [mtfe.api :as api]
             [mtfe.util :as util]
+            [mtfe.validations :as validations]
             [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]))
 
 ;; ---
@@ -71,6 +72,13 @@
         {:non-main-path ["sidebar-change" "/"]}
         {:non-main-path ["sidebar-change" pathname]}))))
 
+(reg-event-fx
+  :finish-and-nav
+  (fn [cofx [_ nav-to]]
+    (if (contains? #{:refresh :reload} nav-to)
+      {:dispatch [:refresh]}
+      {:dispatch [:nav-page nav-to]})))
+
 ;; ---
 ;; Selection
 ;; ---
@@ -96,25 +104,43 @@
 
 (reg-event-fx
   :select-with-custom-success
- (fn [{:keys [db]} [evt resource endpoint params success-event]]
+ (fn [{:keys [db]} [evt resource endpoint params success-event & [success-params]]]
    {:http-xhrio {:method          :get
                  :uri             endpoint
                  :params          params
                  :response-format (json-response-format {:keywords? true})
-                 :on-success      [success-event resource]
+                 :on-success      (if (some? success-params)
+                                    [success-event resource success-params]
+                                    [success-event resource])
                  :on-failure      [:api-request-error evt resource]}
     :db          (-> db
                      (assoc-in [:loading resource] true))}))
 
+(reg-event-fx
+  :sidebar-selection-success
+  (fn [{:keys [db]} [evt resource res]]
+    {:db (-> db
+             (assoc-in [:sidebar-state resource] res)
+             (assoc-in [:loading resource] false))}))
 
+(reg-event-fx
+  :sidebar-selection-and-validate
+  ;; Include validations in success-params
+  (fn [{:keys [db]} [evt resource {:keys [validations]} res]]
+    {:db       (-> db
+                   (assoc-in [:sidebar-state resource] res)
+                   (assoc-in [:loading resource] false))
+     :dispatch [:validate [:sidebar-state resource] validations]}))
 
 ;; ---
-;; Delete
+;; Error-Handling and Validations
 ;; ---
 
-;; ---
-;; Error-Handling
-;; ---
+(reg-event-db
+  ;; Mostly use validate-state in components only, this is for more idiosyncratic validations
+  :validate
+  (fn [db [evt db-path validations]]
+    (update-in db db-path #(validations/do-validations! % validations))))
 
 (reg-event-fx
   :error
@@ -141,14 +167,3 @@
                    :response-format (json-response-format {:keywords? true})
                    :on-success [:nav-page "#/intro"]
                    :on-failure [:nav-page "#/login"]}}))
-
-;; ---
-;; Misc
-;; ---
-
-(reg-event-fx
-  :finish-and-nav
-  (fn [cofx [_ nav-to]]
-    (if (contains? #{:refresh :reload} nav-to)
-      {:dispatch [:refresh]}
-      {:dispatch [:nav-page nav-to]})))

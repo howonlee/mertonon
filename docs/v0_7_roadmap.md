@@ -8,18 +8,23 @@
 - [x] Rest of the form inputs, make em re-framey
 - [x] Login, intro sidebars, w/ custom labels
 
-- [ ] Creation sidebars: the normal ones. Gotta see if validations can be c&p
-- [ ] Action sidebar, redo it for grad kickoff. Test all the way to grad kickoff again
-- [ ] Create and delete for password logins separately with selector lol
+- [x] Grid view sidebar - re-frameify
+- [x] Selection views - have a single click to dive in thing
 
-- [ ] Selection views - have a single click to dive in thing
+- [x] Input and loss create sidebars
+- [x] Entry and layer and cobj view and create sidebars
+
+- [ ] Weight and weightset view and create sidebars
+- [ ] Grad action sidebar
 - [ ] Purge then kill the statecharts
 - [ ] Purge then kill the selectors
 - [ ] Consider the re-frame bit done
 
 - [ ] Model updates, genericized endpoints in BE
 - [ ] Model updates component
-- [ ] Model updates FE
+- [ ] Model updates for grids
+- [ ] Create and delete for password logins separately with selector lol
+- [ ] Weight mutation input - think harder about fitt's law
 
 - [ ] Changelog
 - [ ] Clicking around a bit

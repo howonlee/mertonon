@@ -1,68 +1,17 @@
 (ns mtfe.sidebars.cost-object
   "Sidebar for cost-object"
-  (:require [ajax.core :refer [GET POST]]
-            [mertonon.models.constructors :as mc]
+  (:require [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.cost-object :as cobj-view]
-            [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
-
-;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:uuid       (str (random-uuid))
-   :layer-uuid ""
-   :name       ""
-   :label      ""})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)}))
-
-;; ---
-;; Statecharts
-;; ---
-
-(defonce create-sc-state
-   (r/atom nil))
-
-(def create-sc
-  (mt-statechart/simple-create :cobj-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler
-                                                 sidebar-state
-                                                 [(sc-validation/non-blank [:curr-create-params :name] :name-blank)])
-                                :action-fn     (sc-handlers/creation-handler api/cost-object create-sc-state mc/->CostObject [:uuid :layer-uuid :name :label])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(mt-statechart/init-sc! :cobj-create create-sc-state create-sc)
-
-;; ---
-;; Creation
-;; ---
-
-(defn cobj-create-sidebar-render [m]
-  (let [layer-uuid (->> m :path-params :uuid)]
-    [:<>
-     [:h1 [sc/cobj-icon] " Add Cost Node"]
-     [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-     [:div.mb2 [sc/layer-icon] " Layer UUID - " (->> layer-uuid str)]
-     [sc-components/validation-popover sidebar-state :name-blank "Cost Node Name is blank"
-      [sc-components/state-text-input create-sc-state "Cost Node Name" [:curr-create-params :name]]]
-     [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-     [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
+            [mtfe.validations :as validations]
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; Partials
@@ -76,39 +25,73 @@
    [:p]])
 
 ;; ---
-;; Top-level render
+;; Creation
 ;; ---
 
-(defn cost-object-create-sidebar [m]
-  (sel/swap-if-changed! (->> m :path-params :uuid str)
-                         sidebar-state
-                         [:curr-create-params :layer-uuid])
-  (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  [cobj-create-sidebar-render m])
+(defn create-config [m]
+  {:resource      :curr-cobj
+   :endpoint      (api/cost-object)
+   :state-path    [:cobj :create]
+   :init-state-fn (fn []
+                    {:uuid       (str (random-uuid))
+                     :layer-uuid (->> m :path-params :uuid)
+                     :name       ""
+                     :label      ""})
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)]
+   :ctr           mc/->CostObject
+   :ctr-params    [:uuid :layer-uuid :name :label]
+   :nav-to        :refresh})
 
-(defn cost-object-sidebar [m]
-  (let [is-demo?        @grid-view/demo-state
+(defn cost-object-create-before-fx [m]
+  (cr/before-fx (create-config m) m))
+
+(defn cost-object-create-sidebar [m]
+  (let [layer-uuid  (->> m :path-params :uuid)
+        curr-config (create-config m)
+        state-path  (curr-config :state-path)]
+    [:<>
+     [:h1 [sc/cobj-icon] " Add Cost Node"]
+     [:div.mb2 [sc/layer-icon] " Layer UUID - " (->> layer-uuid str)]
+     [vblurbs/validation-popover state-path :name-blank "Cost Node Name is blank"
+      [fi/state-text-input state-path [:create-params :name] "Cost Node Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [cr/create-button curr-config]]))
+
+;; ---
+;; Sidebar View
+;; ---
+
+(defn cost-object-sidebar-before-fx [m]
+  (let [is-demo?        @(subscribe [:is-demo?])
         cobj-uuid       (->> m :path-params :uuid)
         cobj-endpoint   (if is-demo?
-                          api/generator-cost-object
-                          api/cost-object-view)]
-    (sel/set-state-if-changed! sidebar-state
-                               cobj-endpoint
-                               cobj-uuid
-                               [:cobj-selection :cost-object :uuid]
-                               [:cobj-selection])
-    (sc-handlers/do-validations! sidebar-state
-                                 [(sc-validation/and-predicate
-                                    (sc-validation/min-num-elems [:cobj-selection :losses] 1 :no-loss)
-                                    (sc-validation/min-num-elems [:cobj-selection :inputs] 1 :no-input)
-                                    :not-input-or-loss)])
+                          (api/generator-cost-object cobj-uuid)
+                          (api/cost-object-view cobj-uuid))]
+    [[:dispatch
+      [:select-with-custom-success
+       :cobj-view
+       cobj-endpoint
+       {}
+       :sidebar-selection-and-validate
+       {:validations
+        [(validations/and-predicate
+           (validations/min-num-elems [:losses] 1 :no-loss)
+           (validations/min-num-elems [:inputs] 1 :no-input)
+           :not-input-or-loss)]}]]]))
+
+(defn cost-object-sidebar [m]
+  (let [curr-cobj-state @(subscribe [:selection :cobj-view])
+        val-path        [:cobj-view]
+        is-demo?        @(subscribe [:is-demo?])
+        cobj-uuid       (->> m :path-params :uuid)]
     [:<>
      [header-partial]
-     (if (not is-demo?)
+     (when (not is-demo?)
        [:<>
-        [sc-components/validation-toast sidebar-state :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]
-        [sc-components/validated-link sidebar-state :not-input-or-loss "Create Journal Entry"
-         [util/sl (util/path ["cost_object" cobj-uuid "entry_create"]) [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
+        [vblurbs/validation-toast val-path :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]
+        [vblurbs/validated-link val-path :not-input-or-loss "Create Journal Entry"
+         [util/sl (util/path ["cost_object" cobj-uuid "entry_create"])
+          [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
 
 ;; ---
 ;; Deletion

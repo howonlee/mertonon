@@ -4,7 +4,7 @@
 
 (defn endpoint []
   {:get  (fn [match]
-           {:status 200 :body {:cue "How essential to your work is this entity"}})
+           {:status 200 :body {:cue "How essential is this cost node to the workings of this other cost node?"}})
    :name ::allocation-cue})
 
 (defn routes []

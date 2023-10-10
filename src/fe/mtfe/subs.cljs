@@ -35,6 +35,11 @@
   (fn [db _]
     (:is-demo? db)))
 
+(reg-sub
+  :weightset-mode
+  (fn [db _]
+    (get-in db [:sidebar-state :weightset :mode])))
+
 ;; ---
 ;; Validation and other errors
 ;; ---

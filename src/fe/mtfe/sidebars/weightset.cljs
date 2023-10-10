@@ -8,6 +8,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -16,9 +17,9 @@
             [mtfe.statecharts.sideeffects :as sc-se]
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
-            [mtfe.views.weightset :as ws-view]
-            [reagent.core :as r]))
+            [mtfe.validations :as validations]
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; State
@@ -153,16 +154,16 @@
 (defn adjustment-checkbox-partial []
   [:div.ba.pa2.b--white-20
    [sc/checkbox {:type "checkbox"
-                 :on-click #(reset! ws-view/ws-mode
-                                    (if (= @ws-view/ws-mode :default)
-                                      :grad
-                                      :default))}]
+                 ;;;;;;
+                 ;;;;;;
+                 ;;;;;;
+                 ;;;;;;
+                 :on-click identity}]
+                             ;; reset! ws-view/ws-mode
+                             ;;        (if (= @ws-view/ws-mode :default)
+                             ;;          :grad
+                             ;;          :default))}]
    [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
-
-
-;; ---
-;; Top-level render
-;; ---
 
 (defn weightset-create-sidebar [m]
   (sel/set-state-if-changed! sidebar-state
@@ -173,28 +174,36 @@
   (mt-statechart/send-reset-event-if-finished! create-sc-state)
   [weightset-create-sidebar-render m])
 
+;; ---
+;; Sidebar Views
+;; ---
 
 (defn weightset-sidebar [m]
-  (let [curr-ws-state @ws-view/ws-state
-        is-demo?      @grid-view/demo-state
-        ws-uuid       (->> curr-ws-state :selection :weightset :uuid)]
+  (let [;;;;;;;;;
+        ;;;;;;;;;
+        ;;;;;;;;;
+        ws-state-path {}
+        is-demo?      @(subscribe [:is-demo?])
+        ws-uuid       (->> m :path-params :uuid)]
     [:<>
      [header-partial]
      [adjustment-checkbox-partial]
      (if (not is-demo?)
        [util/sl (util/path ["weightset" ws-uuid "weight_create"]) [sc/button [sc/weight-icon] " Create Weight"]])
-     [src-layer-partial curr-ws-state]
-     [tgt-layer-partial curr-ws-state]]))
+     [src-layer-partial ws-state-path]
+     [tgt-layer-partial ws-state-path]]))
 
 (defn weightset-selection-sidebar [m]
-  (let [is-demo? @grid-view/demo-state
+  (let [is-demo? @(subscribe [:is-demo?])
         ws-uuid  (->> m :path-params :uuid)]
     [:<>
      [header-partial]
-     [:h2 "Double-Click to Dive In"]
+     [:h2 "Double-Click or click \"Dive In\" to Dive In"]
+     [:div [util/path-fsl
+            ["weightset" ws-uuid]
+            [sc/button "Dive In"]]]
      (if (not is-demo?)
-       [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]])]))
-
+       [:div [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]]])]))
 
 ;; ---
 ;; Deletion

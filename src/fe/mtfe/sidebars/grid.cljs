@@ -1,24 +1,13 @@
 (ns mtfe.sidebars.grid
   "Sidebar for grid"
-  (:require [applied-science.js-interop :as j]
-            [mertonon.models.constructors :as mc]
-            [mtfe.api :as api]
+  (:require [mtfe.api :as api]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
-            [reagent.core :as r]))
-
-;; ---
-;; States
-;; ---
-
-(defonce sidebar-state
-  (r/atom {:selection {}}))
+            [mtfe.validations :as validations]
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; Partials
@@ -32,7 +21,7 @@
    [:p (->> loss :label str)]
    [:div "Matching Layer UUID: " (str (:layer-uuid loss))]
    [:div "Type: Competitiveness"]
-   (if (not @grid-view/demo-state)
+   (if (not @(subscribe [:is-demo?]))
      [:div [util/sl (util/path ["loss" (:uuid loss) "delete"]) [sc/button "Delete Annotation"]]])
    [:hr]]) ;; TODO: get these to actually react to loss types
 
@@ -44,7 +33,7 @@
    [:p (->> input :label str)]
    [:div "Matching Layer UUID: " (str (:layer-uuid input))]
    [:div "Type: Competitiveness"]
-   (if (not @grid-view/demo-state)
+   (if (not @(subscribe [:is-demo?]))
      [:div [util/sl (util/path ["input" (:uuid input) "delete"]) [sc/button "Delete Annotation"]]])
    [:hr]]) ;; TODO: differentiate from loss and different types
 
@@ -73,54 +62,50 @@
    [:p "(We have designed Mertonon goals to be dynamical eventually, but currently they're hardcoded to be competitiveness)"]])
 
 ;; ---
-;; Top-level rendering
+;; Before-fx
 ;; ---
 
-(defn grid-demo-sidebar-render [grid losses inputs]
-  [:<>
-   [grid-display-partial grid]
-   [goal-display-partial losses inputs]])
+(defn before-fx [m]
+  (let [uuid (->> m :path-params :uuid)]
+    [[:dispatch
+      [:select-with-custom-success
+       :grid-sidebar
+       (api/grid-view uuid)
+       {}
+       :sidebar-selection-and-validate
+       {:validations
+        [(validations/max-num-elems [:losses] 1 :has-loss)
+         (validations/max-num-elems [:inputs] 1 :has-input)]}]]]))
 
-(defn grid-sidebar-render [grid losses inputs]
-  [:<>
-   [grid-display-partial grid]
-   [:p [util/sl (util/path ["grid" (:uuid grid) "layer_create"]) [sc/button [sc/layer-icon] " Add New Responsibility Center (Layer)"]]]
-   [:p [util/sl (util/path ["grid" (:uuid grid) "weightset_create"]) [sc/button [sc/ws-icon] " Add New Weightset"]]]
-   [:p
-    [sc-components/validation-toast sidebar-state :has-input "Currently we only support one input per grid"]]
-   [:p
-    [sc-components/validated-link sidebar-state :has-input "Add New Input Annotation"
-     [util/sl (util/path ["grid" (:uuid grid) "input_create"]) [sc/button "Add New Input Annotation"]]]]
-   [:p
-    [sc-components/validation-toast sidebar-state :has-loss "Currently we only support one goal per grid"]]
-   [:p
-    [sc-components/validated-link sidebar-state :has-loss "Add New Goal Annotation"
-     [util/sl (util/path ["grid" (:uuid grid) "loss_create"]) [sc/button "Add New Goal Annotation"]]]]
-   [:p [util/sl (util/path ["grid" (:uuid grid) "grad_kickoff"]) [sc/button "Kickoff Gradient Calculations"]]]
-   [goal-display-partial losses inputs]])
+(defn demo-before-fx [_]
+  [[:dispatch
+    [:selection :grid-sidebar
+     (api/generator-grid) {}]]])
 
 ;; ---
-;; Class
+;; Sidebar View
 ;; ---
 
 (defn grid-sidebar [m]
-  (sel/set-selection-if-changed!
-    sidebar-state
-    api/grid-view
-    (->> m :path-params :uuid)
-    [:uuid])
-  (fn [m]
-    (sc-handlers/do-validations! sidebar-state [(sc-validation/max-num-elems [:selection :losses] 1 :has-loss)
-                                                (sc-validation/max-num-elems [:selection :inputs] 1 :has-input)])
-    [grid-sidebar-render
-     (->> @sidebar-state :selection :grids first)
-     (->> @sidebar-state :selection :losses)
-     (->> @sidebar-state :selection :inputs)]))
-
-(defn grid-demo-sidebar [m]
-  (sel/set-selection! sidebar-state api/generator-grid)
-  (fn [m]
-    [grid-demo-sidebar-render
-     (->> @sidebar-state :selection :grids first)
-     (->> @sidebar-state :selection :losses)
-     (->> @sidebar-state :selection :inputs)]))
+  (let [val-path   [:grid-sidebar]
+        grid       @(subscribe [:sidebar-state :grid-sidebar :grids 0])
+        losses     @(subscribe [:sidebar-state :grid-sidebar :losses])
+        inputs     @(subscribe [:sidebar-state :grid-sidebar :inputs])]
+    [:<>
+     [grid-display-partial grid]
+     (when (not @(subscribe [:is-demo?]))
+       [:<>
+        [:p [util/sl (util/path ["grid" (:uuid grid) "layer_create"]) [sc/button [sc/layer-icon] " Add New Responsibility Center (Layer)"]]]
+        [:p [util/sl (util/path ["grid" (:uuid grid) "weightset_create"]) [sc/button [sc/ws-icon] " Add New Weightset"]]]
+        [:p
+         [vblurbs/validation-toast val-path :has-input "Currently we only support one input per grid"]]
+        [:p
+         [vblurbs/validated-link val-path :has-input "Add New Input Annotation"
+          [util/sl (util/path ["grid" (:uuid grid) "input_create"]) [sc/button "Add New Input Annotation"]]]]
+        [:p
+         [vblurbs/validation-toast val-path :has-loss "Currently we only support one goal per grid"]]
+        [:p
+         [vblurbs/validated-link val-path :has-loss "Add New Goal Annotation"
+          [util/sl (util/path ["grid" (:uuid grid) "loss_create"]) [sc/button "Add New Goal Annotation"]]]]
+        [:p [util/sl (util/path ["grid" (:uuid grid) "grad_kickoff"]) [sc/button "Kickoff Gradient Calculations"]]]])
+     [goal-display-partial losses inputs]]))

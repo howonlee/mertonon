@@ -21,8 +21,6 @@
                          (api/layer-view uuid))]
     [[:dispatch [:selection :layer-view layer-endpoint {}]]]))
 
-(defonce layer-state (r/atom {:selection {}}))
-
 ;; ---
 ;; Partials
 ;; ---
@@ -52,7 +50,7 @@
 (defn layer-page [_]
   (let [layer-state @(subscribe [:selection :layer-view])
         is-demo?    @(subscribe [:is-demo?])
-        grid-path   (if is-demo?  ["grid_demo"] ["grid" (->> layer-state :layer :grid-uuid)])]
+        grid-path   (if is-demo? ["grid_demo"] ["grid" (->> layer-state :layer :grid-uuid)])]
     [:div.fl.pa2
      [:h1 [sc/layer-icon] " Responsibility Center " [:strong (str (->> layer-state :layer :name))]]
      [:h2 [util/path-fsl grid-path [:p [sc/grid-icon] " Back to Grid"]]]

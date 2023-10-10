@@ -4,27 +4,18 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Logout BE test
+- Model updates FE for all models
 - Update mertonon.com
 - FE only generation
 - FE testing with generation
-- Remove postgres requirement for build
-- Outline essay for real
 
-- GH build CI
-- GH test CI
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property. Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Kick off forward passes every time we change anything
-- EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
-- RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
-- RBAC FE
-- EE: Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
+- Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
 - Email integration (as first integration)
 - Full grad view (exec summary view)
-- Crontab for adjustments
-- Email digesting on the crontab
+- Crontab for adjustments, emails
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
-- License design, then task out for after alpha
 
 - Cut alpha, think of future
 
@@ -32,6 +23,11 @@ Also look at small tasks roadmap
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
+- License design, then task out for after alpha
+- EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
+- RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
+- RBAC FE
+- Make auditing EE properly
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Weight painter and modal changing

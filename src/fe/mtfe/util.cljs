@@ -3,7 +3,6 @@
   (:require [ajax.core :refer [GET POST]]
             [clojure.string :as str]
             [clojure.walk :as walk]
-            [com.fulcrologic.statecharts :as fsc]
             [goog.string :as gstring]
             [mtfe.statecharts.core :as mt-statechart]
             [reagent.core :as r]

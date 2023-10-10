@@ -39,7 +39,9 @@
 
 (def sidebar-routes
   [["/"                               {:name ::home-sidebar :view home-sidebar}]
-   ["/intro"                          {:name ::intro-sidebar :view intro/intro-sidebar}]
+   ["/intro"                          {:name      ::intro-sidebar
+                                       :view      intro/intro-sidebar
+                                       :before-fx intro/intro-before-fx}]
    ["/login"                          {:name      ::login-sidebar
                                        :view      session/login-sidebar
                                        :before-fx session/login-before-fx}]
@@ -63,22 +65,40 @@
    ["/grid/:uuid/delete"              {:name      ::grid-delete-sidebar
                                        :view      grid-select/grid-delete-sidebar
                                        :before-fx grid-select/grid-delete-before-fx}]
-   ["/grid/:uuid"                     {:name ::grid-sidebar :view grid/grid-sidebar}]
-   ["/grid/:uuid/layer_create"        {:name ::layer-create-sidebar :view layer/layer-create-sidebar}]
+   ["/grid/:uuid"                     {:name      ::grid-sidebar
+                                       :view      grid/grid-sidebar
+                                       :before-fx grid/before-fx}]
+   ["/grid/:uuid/layer_create"        {:name      ::layer-create-sidebar
+                                       :view      layer/layer-create-sidebar
+                                       :before-fx layer/layer-create-before-fx}]
    ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]
-   ["/grid/:uuid/input_create"        {:name ::input-create-sidebar :view input/input-create-sidebar}]
-   ["/grid/:uuid/loss_create"         {:name ::loss-create-sidebar :view loss/loss-create-sidebar}]
-   ["/grid_demo"                      {:name ::grid-demo-sidebar :view grid/grid-demo-sidebar}]
+   ["/grid/:uuid/input_create"        {:name      ::input-create-sidebar
+                                       :view      input/input-create-sidebar
+                                       :before-fx input/input-create-before-fx}]
+   ["/grid/:uuid/loss_create"         {:name      ::loss-create-sidebar
+                                       :view      loss/loss-create-sidebar
+                                       :before-fx loss/loss-create-before-fx}]
+   ["/grid_demo"                      {:name      ::grid-demo-sidebar
+                                       :view      grid/grid-sidebar
+                                       :before-fx grid/demo-before-fx}]
 
-   ["/layer/:uuid"                    {:name ::layer-sidebar :view layer/layer-sidebar}]
+   ["/layer/:uuid"                    {:name      ::layer-sidebar
+                                       :view      layer/layer-sidebar
+                                       :before-fx layer/layer-sidebar-before-fx}]
    ["/layer_selection/:uuid"          {:name ::layer-selection-sidebar :view layer/layer-selection-sidebar}]
    ["/layer/:uuid/delete"             {:name      ::layer-delete-sidebar
                                        :view      layer/layer-delete-sidebar
                                        :before-fx layer/layer-delete-before-fx}]
-   ["/layer/:uuid/cost_object_create" {:name ::cost-object-create-sidebar :view cost-object/cost-object-create-sidebar}]
+   ["/layer/:uuid/cost_object_create" {:name      ::cost-object-create-sidebar
+                                       :view      cost-object/cost-object-create-sidebar
+                                       :before-fx cost-object/cost-object-create-before-fx}]
 
-   ["/cost_object/:uuid"              {:name ::cost-object-sidebar :view cost-object/cost-object-sidebar}]
-   ["/cost_object/:uuid/entry_create" {:name ::entry-create-sidebar :view entry/entry-create-sidebar}]
+   ["/cost_object/:uuid"              {:name      ::cost-object-sidebar
+                                       :view      cost-object/cost-object-sidebar
+                                       :before-fx cost-object/cost-object-sidebar-before-fx}]
+   ["/cost_object/:uuid/entry_create" {:name      ::entry-create-sidebar
+                                       :view      entry/entry-create-sidebar
+                                       :before-fx entry/entry-create-before-fx}]
    ["/cost_object/:uuid/delete"       {:name      ::cost-object-delete-sidebar
                                        :view      cost-object/cost-object-delete-sidebar
                                        :before-fx cost-object/cost-object-delete-before-fx}]
