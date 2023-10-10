@@ -41,7 +41,7 @@
 
 (defn acyclic-validation
   "Procs if the new weightset we're making would make the graph cyclic"
-  [grid-graph]
+  [grid-graph-path]
   (fn [curr-state]
     (let [src-uuid (->> curr-state :curr-create-params :src-layer-uuid)
           tgt-uuid (->> curr-state :curr-create-params :tgt-layer-uuid)]
@@ -49,6 +49,7 @@
       (if (or (str/blank? src-uuid) (str/blank? tgt-uuid))
         nil
         (let [new-edge    [src-uuid tgt-uuid]
+              grid-graph  (get-in curr-state grid-graph-path)
               old-graph   (apply graph/digraph (:edges grid-graph))
               new-graph   (graph/add-edges old-graph new-edge)
               topsort-res (graph-alg/topsort new-graph)]
@@ -76,7 +77,7 @@
   [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
    (sc-validation/non-blank [:curr-create-params :src-layer-uuid] :src-layer-blank)
    (sc-validation/non-blank [:curr-create-params :tgt-layer-uuid] :tgt-layer-blank)
-   (acyclic-validation (@sidebar-state :grid-graph-selection))
+   (acyclic-validation [:grid-graph])
    (sc-validation/min-num-elems [:grid-graph-selection :layers] 2 :few-layers)
    (sc-validation/not-in-set weightset-coord-getter curr-coord-getter :duplicate-weightset)])
 
@@ -90,34 +91,7 @@
 
 (mt-statechart/init-sc! :weightset-create create-sc-state create-sc)
 
-(defn weightset-create-sidebar-render [m]
-  (let [grid-uuid     (->> m :path-params :uuid)
-        grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
-      [:<>
-       [sc-components/validation-popover sidebar-state :cyclic
-        "We don't have support for cyclic weightsets at this time. We will put them in eventually."
-        [:h1 [sc/ws-icon] " Add Weightset"]]
-       [sc-components/validation-popover sidebar-state :few-layers
-        "You need at least two responsibility centers (layers) to make a weightset."
-        [:<>]]
-       [sc-components/validation-popover sidebar-state :duplicate-weightset "That weightset already exists."
-        [:<>]]
-       [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-       [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
-       [sc/mgn-border-region
-        [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
-        [sc-components/validation-popover sidebar-state :src-layer-blank "Must choose source responsiblilty center"
-         [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :src-layer-uuid]]]]
 
-       [sc/mgn-border-region
-        [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
-        [sc-components/validation-popover sidebar-state :tgt-layer-blank "Must choose target responsiblilty center"
-         [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :tgt-layer-uuid]]]]
-
-       [sc-components/validation-popover sidebar-state :name-blank "Weightset Name is blank"
-        [sc-components/state-text-input create-sc-state "Weightset Name" [:curr-create-params :name]]]
-       [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-       [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
 
 ;; ---
 ;; Partials
@@ -151,14 +125,47 @@
 ;; Creation
 ;; ---
 
+(defn weightset-create-before-fx [m]
+  [[:dispatch-n [[some crap]]]])
+;; [:weightset :create :grid-graph] is resource
+
+  ;; (sel/set-state-if-changed! sidebar-state
+  ;;                            api/grid-graph
+  ;;                            (->> m :path-params :uuid str)
+  ;;                            [:grid-graph-selection :grids 0 :uuid]
+  ;;                            [:grid-graph-selection])
+  ;; (mt-statechart/send-reset-event-if-finished! create-sc-state)
+  ;; [weightset-create-sidebar-render m])
+
 (defn weightset-create-sidebar [m]
-  (sel/set-state-if-changed! sidebar-state
-                             api/grid-graph
-                             (->> m :path-params :uuid str)
-                             [:grid-graph-selection :grids 0 :uuid]
-                             [:grid-graph-selection])
-  (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  [weightset-create-sidebar-render m])
+  (let [grid-uuid     (->> m :path-params :uuid)
+        grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
+    [:<>]))
+      ;; [:<>
+      ;;  [sc-components/validation-popover sidebar-state :cyclic
+      ;;   "We don't have support for cyclic weightsets at this time. We will put them in eventually."
+      ;;   [:h1 [sc/ws-icon] " Add Weightset"]]
+      ;;  [sc-components/validation-popover sidebar-state :few-layers
+      ;;   "You need at least two responsibility centers (layers) to make a weightset."
+      ;;   [:<>]]
+      ;;  [sc-components/validation-popover sidebar-state :duplicate-weightset "That weightset already exists."
+      ;;   [:<>]]
+      ;;  [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
+      ;;  [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
+      ;;  [sc/mgn-border-region
+      ;;   [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
+      ;;   [sc-components/validation-popover sidebar-state :src-layer-blank "Must choose source responsiblilty center"
+      ;;    [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :src-layer-uuid]]]]
+
+      ;;  [sc/mgn-border-region
+      ;;   [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
+      ;;   [sc-components/validation-popover sidebar-state :tgt-layer-blank "Must choose target responsiblilty center"
+      ;;    [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :tgt-layer-uuid]]]]
+
+      ;;  [sc-components/validation-popover sidebar-state :name-blank "Weightset Name is blank"
+      ;;   [sc-components/state-text-input create-sc-state "Weightset Name" [:curr-create-params :name]]]
+      ;;  [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
+      ;;  [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
 
 ;; ---
 ;; Sidebar Views
