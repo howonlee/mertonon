@@ -9,6 +9,7 @@
 (def default-labels
   {;; State labels
    :initial  "Press Kickoff button to kick off."
+   :filled   "Press Kickoff button to kick off."
    :acting   "Kicking off..."
    :success  "Successfully kicked off!"
    :failure  "Failed to kick off."
@@ -32,13 +33,48 @@
                  :validation-errors {}
                  :validations       (or validations [])}))))
 
-;; validate
+(reg-event-fx
+  :mutate-action-state
+  (fn [{:keys [db]} [evt state-path param-path evt-content]]
+    (let [total-path (into (sidebar-path state-path) param-path)
+          key-path   (into (sidebar-path state-path) [:action-state])]
+      {:dispatch [:validate-action-state state-path]
+       :db       (-> db
+                     (assoc-in total-path evt-content)
+                     (assoc-in key-path :filled))})))
 
-;; submit
+(reg-event-db
+  :validate-action-state
+  (fn [db [evt state-path]]
+    (let [path         (sidebar-path state-path)
+          action-state (get-in db path)
+          validations  (action-state :validations)]
+      (update-in db path #(validations/do-validations! % validations)))))
 
-;; succeed
+(reg-event-fx
+  :submit-action
+  (fn [{:keys [db]}
+       [_ {:keys [action-params resource endpoint state-path]}]]
+    {:http-xhrio {:method          :post
+                  :uri             endpoint
+                  :params          action-params
+                  :format          (json-request-format)
+                  :response-format (json-response-format {:keywords? true})
+                  :on-success      [:succeed-action state-path]
+                  :on-failure      [:fail-action state-path]}
+     :db          (assoc-in db
+                            (into (sidebar-path state-path) [:action-state])
+                            :acting)}))
 
-;; fail
+(reg-event-db
+  :succeed-action
+  (fn [db [_ state-path]]
+    (assoc-in db (into (sidebar-path state-path) [:action-state]) :success)))
+
+(reg-event-db
+  :fail-action
+  (fn [db [_ state-path]]
+    (assoc-in db (into (sidebar-path state-path) [:action-state]) :failure)))
 
 (defn action-button [config & [labels]]
   (let [{state-path :state-path

@@ -16,7 +16,7 @@
 
 - [x] Weight and weightset view sidebars
 - [x] Weight create sidebar
-- [ ] Weightset create sidebar
+- [x] Weightset create sidebar
 - [ ] Action button
 - [ ] Grad action sidebar
 - [ ] Purge then kill the selectors
