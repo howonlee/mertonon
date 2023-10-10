@@ -76,7 +76,7 @@
         {src-cobjs :src-cobjs
          tgt-cobjs :tgt-cobjs
          weightset :weightset} ws-view
-        ws-mode                @(subscribe [:weightset-mode])
+        ws-mode                @(subscribe [:sidebar-state :ws-adjustment])
         is-demo?               @(subscribe [:is-demo?])
         curr-matrix            (display-matrix ws-view ws-mode)]
     [:div.fl.pa2

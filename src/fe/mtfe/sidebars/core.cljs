@@ -106,7 +106,9 @@
                                        :view      entry/entry-delete-sidebar
                                        :before-fx entry/entry-delete-before-fx}]
 
-   ["/weightset/:uuid"                {:name ::weightset-sidebar :view weightset/weightset-sidebar}]
+   ["/weightset/:uuid"                {:name      ::weightset-sidebar
+                                       :view      weightset/weightset-sidebar
+                                       :before-fx weightset/weightset-before-fx}]
    ["/weightset_selection/:uuid"      {:name ::weightset-selection-sidebar :view weightset/weightset-selection-sidebar}]
    ["/weightset/:uuid/delete"         {:name      ::weightset-delete-sidebar
                                        :view      weightset/weightset-delete-sidebar

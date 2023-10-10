@@ -19,7 +19,7 @@
             [mtfe.util :as util]
             [mtfe.validations :as validations]
             [reagent.core :as r]
-            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
+            [re-frame.core :refer [dispatch dispatch-sync subscribe reg-event-db]]))
 
 ;; ---
 ;; State
@@ -138,31 +138,30 @@
    ])
 
 (defn src-layer-partial [curr-ws-state]
-  (when (seq (->> curr-ws-state :selection :src-layer))
+  (when (seq (->> curr-ws-state :src-layer))
     [:<>
      [:h3 [sc/layer-icon] " Source responsibilty center"]
-     [util/path-fsl ["layer" (->> curr-ws-state :selection :src-layer :uuid)]
-      [sc/link (str (->> curr-ws-state :selection :src-layer :name))]]]))
+     [util/path-fsl ["layer" (->> curr-ws-state :src-layer :uuid)]
+      [sc/link (str (->> curr-ws-state :src-layer :name))]]]))
 
 (defn tgt-layer-partial [curr-ws-state]
-  (when (seq (->> curr-ws-state :selection :tgt-layer))
+  (when (seq (->> curr-ws-state :tgt-layer))
     [:<>
      [:h3 [sc/layer-icon] " Target responsibilty center"]
-     [util/path-fsl ["layer" (->> curr-ws-state :selection :tgt-layer :uuid)]
-      [sc/link (str (->> curr-ws-state :selection :tgt-layer :name))]]]))
+     [util/path-fsl ["layer" (->> curr-ws-state :tgt-layer :uuid)]
+      [sc/link (str (->> curr-ws-state :tgt-layer :name))]]]))
+
+(reg-event-db
+  ::toggle-weightset-adjustment
+  (fn [db _]
+    (if (= (get-in db [:sidebar-state :ws-adjustment]) :default)
+      (assoc-in db [:sidebar-state :ws-adjustment] :grad)
+      (assoc-in db [:sidebar-state :ws-adjustment] :default))))
 
 (defn adjustment-checkbox-partial []
   [:div.ba.pa2.b--white-20
-   [sc/checkbox {:type "checkbox"
-                 ;;;;;;
-                 ;;;;;;
-                 ;;;;;;
-                 ;;;;;;
-                 :on-click identity}]
-                             ;; reset! ws-view/ws-mode
-                             ;;        (if (= @ws-view/ws-mode :default)
-                             ;;          :grad
-                             ;;          :default))}]
+   [sc/checkbox {:type     "checkbox"
+                 :on-click #(dispatch [::toggle-weightset-adjustment])}]
    [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
 
 (defn weightset-create-sidebar [m]
@@ -178,20 +177,22 @@
 ;; Sidebar Views
 ;; ---
 
+(defn weightset-before-fx [m]
+  (let [uuid (->> m :path-params :uuid)]
+    [[:dispatch
+      [:selection :ws-sidebar (api/weightset-view uuid) {}]]]))
+
 (defn weightset-sidebar [m]
-  (let [;;;;;;;;;
-        ;;;;;;;;;
-        ;;;;;;;;;
-        ws-state-path {}
-        is-demo?      @(subscribe [:is-demo?])
-        ws-uuid       (->> m :path-params :uuid)]
+  (let [ws-state @(subscribe [:selection :ws-sidebar])
+        is-demo? @(subscribe [:is-demo?])
+        ws-uuid  (->> m :path-params :uuid)]
     [:<>
      [header-partial]
      [adjustment-checkbox-partial]
      (if (not is-demo?)
        [util/sl (util/path ["weightset" ws-uuid "weight_create"]) [sc/button [sc/weight-icon] " Create Weight"]])
-     [src-layer-partial ws-state-path]
-     [tgt-layer-partial ws-state-path]]))
+     [src-layer-partial ws-state]
+     [tgt-layer-partial ws-state]]))
 
 (defn weightset-selection-sidebar [m]
   (let [is-demo? @(subscribe [:is-demo?])
