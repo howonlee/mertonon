@@ -97,12 +97,12 @@
 
 (def validation-list
   [(sc-validation/min-num-elems [:grid-graph :layers] 2 :few-layers)
-   (sc-validation/grouped-min-num-elems
-     [:grid-dump] [:layers :cost-objects] [[:uuid :layer-uuid]] 2 :few-cobjs)
-   (sc-validation/grouped-min-num-elems
-     [:grid-dump] [:weightsets :weights] [[:uuid :weightset-uuid]] 2 :few-weights)
-   (input-has-entries-validation 1)
-   (loss-has-entries-validation 1)
+   ;; (sc-validation/grouped-min-num-elems
+   ;;   [:grid-dump] [:layers :cost-objects] [[:uuid :layer-uuid]] 2 :few-cobjs)
+   ;; (sc-validation/grouped-min-num-elems
+   ;;   [:grid-dump] [:weightsets :weights] [[:uuid :weightset-uuid]] 2 :few-weights)
+   ;; (input-has-entries-validation 1)
+   ;; (loss-has-entries-validation 1)
 
    (sc-validation/min-num-elems [:grid-graph :weightsets] 1 :no-weightsets)
    (sc-validation/min-num-elems [:grid-view :inputs] 1 :no-inputs)
@@ -129,8 +129,8 @@
      :endpoint      (api/grid-grad)
      :state-path    [:grad :action]
      :init-state-fn (fn []
-                      {:start-date (last-week)
-                       :end-date   (tomorrow)
+                      {:start-date (.toISOString (last-week))
+                       :end-date   (.toISOString (tomorrow))
                        :grid-uuid  grid-uuid})
      :validations   []
      :nav-to        :refresh}))
@@ -148,13 +148,14 @@
         curr-config        (action-config m)
         state-path         (curr-config :state-path)
         grid-contents      @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
+        ;;; proc via a check button?
         curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])
-        printo             (println curr-action-params)
-        _                  (when (seq curr-action-params)
-                             (do
-                               (dispatch-sync [:select-with-custom-success [:grad :action :grid-dump]
-                                               (api/grid-dump grid-uuid) curr-action-params :sidebar-selection-success])
-                               (dispatch-sync [:validate-action-state [:grad :action]])))]
+        printo             (println curr-action-params)]
+        ;; _                  (when (seq curr-action-params)
+        ;;                      (do
+        ;;                        (dispatch-sync [:select-with-custom-success [:grad :action :grid-dump]
+        ;;                                        (api/grid-dump grid-uuid) curr-action-params :sidebar-selection-success])
+        ;;                        (dispatch-sync [:validate-action-state [:grad :action]])))]
     [:<>]))
   ;; [:<>
   ;;  [:h1 "Gradient Determination Kickoff"]
