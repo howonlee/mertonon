@@ -9,7 +9,6 @@
 (def default-labels
   {;; State labels
    :initial  "Press Kickoff button to kick off."
-   :filled   "Press Kickoff button to kick off."
    :acting   "Kicking off..."
    :success  "Successfully kicked off!"
    :failure  "Failed to kick off."
@@ -19,7 +18,33 @@
    :kickoff  "Kickoff"
    :finish   "Finish"})
 
-;; (defn action-button [curr-action-state action-sc-state sidebar-state]
+(defn sidebar-path [state-path]
+  (into [:sidebar-state] state-path))
+
+(reg-event-db
+  :reset-action-state
+  (fn [db [evt {:keys [state-path init-state-fn validations]}]]
+    (let [path (sidebar-path state-path)]
+      (assoc-in db path
+                {:action-params    (init-state-fn)
+                 :action-state     :initial
+                 :error            nil
+                 :validation-error {}
+                 :validations      (or validations [])}))))
+
+;; validate
+
+;; submit
+
+;; succeed
+
+;; fail
+
+(defn action-button [config & [labels]]
+  (let [{state-path :state-path
+         endpoint   :endpoint
+         nav-to     :nav-to}    config]
+    nil))
 ;;   [sc/border-region
 ;;    [:div.pa2
 ;;     (action-state-blurb (->> curr-action-state ::fsc/configuration))]
