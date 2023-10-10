@@ -57,7 +57,9 @@
                                        :view      mt-user/mt-user-delete-sidebar
                                        :before-fx mt-user/mt-user-delete-before-fx}]
 
-   ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
+   ["/grid/:uuid/grad_kickoff"        {:name      ::grad-sidebar
+                                       :view      grad/grad-sidebar
+                                       :before-fx grad/grad-before-fx}]
 
    ["/grid_create"                    {:name      ::grid-create-sidebar
                                        :view      grid-select/grid-create-sidebar

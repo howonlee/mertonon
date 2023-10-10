@@ -55,12 +55,12 @@
 (defn input-has-entries-validation
   [min-num]
   (fn [state]
-    (let [grouped-cobjs      (group-by :uuid (->> state :grid-dump-selection :cost-objects))
+    (let [grouped-cobjs      (group-by :uuid (->> state :grid-dump :cost-objects))
           grouped-entries    (group-by
                                (fn [member]
                                  (->> member :cobj-uuid grouped-cobjs first :layer-uuid))
-                               (->> state :grid-dump-selection :entries))
-          inputs-layer-uuids (->> state :grid-dump-selection :inputs (map :layer-uuid) (apply hash-set))
+                               (->> state :grid-dump :entries))
+          inputs-layer-uuids (->> state :grid-dump :inputs (map :layer-uuid) (apply hash-set))
           filtered-entries   (into {} (filter (fn [[layer-uuid entry]]
                                                 (contains? inputs-layer-uuids layer-uuid)) grouped-entries))
           has-entries?       (every?
@@ -73,12 +73,12 @@
 (defn loss-has-entries-validation
   [min-num]
   (fn [state]
-    (let [grouped-cobjs      (group-by :uuid (->> state :grid-dump-selection :cost-objects))
+    (let [grouped-cobjs      (group-by :uuid (->> state :grid-dump :cost-objects))
           grouped-entries    (group-by
                                (fn [member]
                                  (->> member :cobj-uuid grouped-cobjs first :layer-uuid))
-                               (->> state :grid-dump-selection :entries))
-          losses-layer-uuids (->> state :grid-dump-selection :losses (map :layer-uuid) (apply hash-set))
+                               (->> state :grid-dump :entries))
+          losses-layer-uuids (->> state :grid-dump :losses (map :layer-uuid) (apply hash-set))
           filtered-entries   (into {} (filter (fn [[layer-uuid entry]]
                                                 (contains? losses-layer-uuids layer-uuid)) grouped-entries))
           has-entries?       (every?
@@ -96,17 +96,17 @@
    (r/atom nil))
 
 (def validation-list
-  [(sc-validation/min-num-elems [:grid-graph-selection :layers] 2 :few-layers)
+  [(sc-validation/min-num-elems [:grid-graph :layers] 2 :few-layers)
    (sc-validation/grouped-min-num-elems
-     [:grid-dump-selection] [:layers :cost-objects] [[:uuid :layer-uuid]] 2 :few-cobjs)
+     [:grid-dump] [:layers :cost-objects] [[:uuid :layer-uuid]] 2 :few-cobjs)
    (sc-validation/grouped-min-num-elems
-     [:grid-dump-selection] [:weightsets :weights] [[:uuid :weightset-uuid]] 2 :few-weights)
+     [:grid-dump] [:weightsets :weights] [[:uuid :weightset-uuid]] 2 :few-weights)
    (input-has-entries-validation 1)
    (loss-has-entries-validation 1)
 
-   (sc-validation/min-num-elems [:grid-graph-selection :weightsets] 1 :no-weightsets)
-   (sc-validation/min-num-elems [:grid-view-selection :inputs] 1 :no-inputs)
-   (sc-validation/min-num-elems [:grid-view-selection :losses] 1 :no-losses)])
+   (sc-validation/min-num-elems [:grid-graph :weightsets] 1 :no-weightsets)
+   (sc-validation/min-num-elems [:grid-view :inputs] 1 :no-inputs)
+   (sc-validation/min-num-elems [:grid-view :losses] 1 :no-losses)])
 
 (def action-sc
   (mt-statechart/simple-action :grad-kickoff
@@ -120,10 +120,16 @@
 ;; TODO: Get job kickoffs going as opposed to current synchronous thing
 
 ;; ---
-;; Render
+;; Action
 ;; ---
 
-(defn grad-sidebar-render [m]
+(defn action-config [m]
+  nil)
+
+(defn grad-before-fx [m]
+  nil)
+
+(defn grad-sidebar [m]
   [:<>
    [:h1 "Gradient Determination Kickoff"]
    [:p "Currently, determination of gradients and deltas is done by Mertonon but kicked off manually by you, the user. When you press the button Mertonon will go and determine gradients and deltas for weights and cost objects, which comprise Mertonon's combination of local determinations into a global one."]
@@ -156,27 +162,27 @@
 ;; Top-level render
 ;; ---
 
-(defn grad-sidebar [m]
-  (let [grid-uuid (->> m :path-params :uuid str)]
-    (sel/swap-if-changed! grid-uuid sidebar-state [:curr-action-params :grid-uuid])
-    (sel/set-state-if-changed! sidebar-state
-                               api/grid-graph
-                               grid-uuid
-                               [:grid-graph-selection :grids 0 :uuid]
-                               [:grid-graph-selection])
-    (sel/set-state-if-changed! sidebar-state
-                               api/grid-view
-                               grid-uuid
-                               [:grid-view-selection :grids 0 :uuid]
-                               [:grid-view-selection])
-    (sel/set-query-state-if-changed! sidebar-state
-                                     api/grid-dump
-                                     grid-uuid
-                                     (@sidebar-state :curr-action-params)
-                                     [:grid-dump-selection :grids 0 :uuid]
-                                     [:grid-dump-selection :query]
-                                     [:grid-dump-selection])
-    (mt-statechart/send-reset-event-if-finished! action-sc-state)
-    (fn [m]
-      (sc-handlers/do-validations! sidebar-state validation-list)
-      [grad-sidebar-render m])))
+;; (defn grad-sidebar [m]
+;;   (let [grid-uuid (->> m :path-params :uuid str)]
+;;     (sel/swap-if-changed! grid-uuid sidebar-state [:curr-action-params :grid-uuid])
+;;     (sel/set-state-if-changed! sidebar-state
+;;                                api/grid-graph
+;;                                grid-uuid
+;;                                [:grid-graph :grids 0 :uuid]
+;;                                [:grid-graph])
+;;     (sel/set-state-if-changed! sidebar-state
+;;                                api/grid-view
+;;                                grid-uuid
+;;                                [:grid-view :grids 0 :uuid]
+;;                                [:grid-view])
+;;     (sel/set-query-state-if-changed! sidebar-state
+;;                                      api/grid-dump
+;;                                      grid-uuid
+;;                                      (@sidebar-state :curr-action-params)
+;;                                      [:grid-dump :grids 0 :uuid]
+;;                                      [:grid-dump :query]
+;;                                      [:grid-dump])
+;;     (mt-statechart/send-reset-event-if-finished! action-sc-state)
+;;     (fn [m]
+;;       (sc-handlers/do-validations! sidebar-state validation-list)
+;;       [grad-sidebar-render m])))
