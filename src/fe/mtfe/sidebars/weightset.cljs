@@ -90,10 +90,6 @@
 
 (mt-statechart/init-sc! :weightset-create create-sc-state create-sc)
 
-;; ---
-;; Creation
-;; ---
-
 (defn weightset-create-sidebar-render [m]
   (let [grid-uuid     (->> m :path-params :uuid)
         grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
@@ -151,18 +147,9 @@
      [util/path-fsl ["layer" (->> curr-ws-state :tgt-layer :uuid)]
       [sc/link (str (->> curr-ws-state :tgt-layer :name))]]]))
 
-(reg-event-db
-  ::toggle-weightset-adjustment
-  (fn [db _]
-    (if (= (get-in db [:sidebar-state :ws-adjustment]) :default)
-      (assoc-in db [:sidebar-state :ws-adjustment] :grad)
-      (assoc-in db [:sidebar-state :ws-adjustment] :default))))
-
-(defn adjustment-checkbox-partial []
-  [:div.ba.pa2.b--white-20
-   [sc/checkbox {:type     "checkbox"
-                 :on-click #(dispatch [::toggle-weightset-adjustment])}]
-   [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
+;; ---
+;; Creation
+;; ---
 
 (defn weightset-create-sidebar [m]
   (sel/set-state-if-changed! sidebar-state
@@ -182,6 +169,19 @@
     [[:dispatch
       [:selection :ws-sidebar (api/weightset-view uuid) {}]]]))
 
+(reg-event-db
+  ::toggle-weightset-adjustment
+  (fn [db _]
+    (if (= (get-in db [:sidebar-state :ws-adjustment]) :default)
+      (assoc-in db [:sidebar-state :ws-adjustment] :grad)
+      (assoc-in db [:sidebar-state :ws-adjustment] :default))))
+
+(defn adjustment-checkbox-partial []
+  [:div.ba.pa2.b--white-20
+   [sc/checkbox {:type     "checkbox"
+                 :on-click #(dispatch [::toggle-weightset-adjustment])}]
+   [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
+
 (defn weightset-sidebar [m]
   (let [ws-state @(subscribe [:selection :ws-sidebar])
         is-demo? @(subscribe [:is-demo?])
@@ -190,7 +190,9 @@
      [header-partial]
      [adjustment-checkbox-partial]
      (if (not is-demo?)
-       [util/sl (util/path ["weightset" ws-uuid "weight_create"]) [sc/button [sc/weight-icon] " Create Weight"]])
+       [util/sl
+        (util/path ["weightset" ws-uuid "weight_create"])
+        [sc/button [sc/weight-icon] " Create Weight"]])
      [src-layer-partial ws-state]
      [tgt-layer-partial ws-state]]))
 
@@ -204,7 +206,9 @@
             ["weightset" ws-uuid]
             [sc/button "Dive In"]]]
      (if (not is-demo?)
-       [:div [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]]])]))
+       [:div [util/sl
+              (util/path ["weightset" ws-uuid "delete"])
+              [sc/button "Delete"]]])]))
 
 ;; ---
 ;; Deletion
