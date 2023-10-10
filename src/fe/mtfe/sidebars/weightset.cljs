@@ -22,20 +22,6 @@
             [re-frame.core :refer [dispatch dispatch-sync subscribe reg-event-db]]))
 
 ;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:uuid           (str (random-uuid))
-   :src-layer-uuid ""
-   :tgt-layer-uuid ""
-   :name           ""
-   :label          ""})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)
-                                :selection          {}}))
-
-;; ---
 ;; Validations
 ;; ---
 
@@ -43,8 +29,8 @@
   "Procs if the new weightset we're making would make the graph cyclic"
   [grid-graph-path]
   (fn [curr-state]
-    (let [src-uuid (->> curr-state :curr-create-params :src-layer-uuid)
-          tgt-uuid (->> curr-state :curr-create-params :tgt-layer-uuid)]
+    (let [src-uuid (->> curr-state :create-params :src-layer-uuid)
+          tgt-uuid (->> curr-state :create-params :tgt-layer-uuid)]
       ;; Can only proc if we define both things
       (if (or (str/blank? src-uuid) (str/blank? tgt-uuid))
         nil
@@ -59,39 +45,12 @@
 
 (defn weightset-coord-getter [curr-state]
   (apply hash-set
-         (for [ws (->> curr-state :grid-graph-selection :weightsets)]
+         (for [ws (->> curr-state :grid-graph :weightsets)]
            [(ws :src-layer-uuid) (ws :tgt-layer-uuid)])))
 
 (defn curr-coord-getter [curr-state]
-  [(->> curr-state :curr-create-params :src-layer-uuid)
-   (->> curr-state :curr-create-params :tgt-layer-uuid)])
-
-;; ---
-;; Statecharts
-;; ---
-
-(defonce create-sc-state
-   (r/atom nil))
-
-(def validation-list
-  [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
-   (sc-validation/non-blank [:curr-create-params :src-layer-uuid] :src-layer-blank)
-   (sc-validation/non-blank [:curr-create-params :tgt-layer-uuid] :tgt-layer-blank)
-   (acyclic-validation [:grid-graph])
-   (sc-validation/min-num-elems [:grid-graph-selection :layers] 2 :few-layers)
-   (sc-validation/not-in-set weightset-coord-getter curr-coord-getter :duplicate-weightset)])
-
-(def create-sc
-  (mt-statechart/simple-create :weightset-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/weightset create-sc-state mc/->Weightset [:uuid :src-layer-uuid :tgt-layer-uuid :name :label])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(mt-statechart/init-sc! :weightset-create create-sc-state create-sc)
-
-
+  [(->> curr-state :create-params :src-layer-uuid)
+   (->> curr-state :create-params :tgt-layer-uuid)])
 
 ;; ---
 ;; Partials
@@ -125,21 +84,38 @@
 ;; Creation
 ;; ---
 
-(defn weightset-create-before-fx [m]
-  [[:dispatch-n [[some crap]]]])
-;; [:weightset :create :grid-graph] is resource
+(defn create-config [m]
+  {:resource      :curr-weightset
+   :endpoint      (api/weightset)
+   :state-path    [:weightset :create]
+   :init-state-fn (fn []
+                    {:uuid           (str (random-uuid))
+                     :src-layer-uuid ""
+                     :tgt-layer-uuid ""
+                     :name           ""
+                     :label          ""}
+                    )
+   :validations
+   [(validations/non-blank [:create-params :name] :name-blank)
+    (validations/non-blank [:create-params :src-layer-uuid] :src-layer-blank)
+    (validations/non-blank [:create-params :tgt-layer-uuid] :tgt-layer-blank)
+    (acyclic-validation [:grid-graph])
+    (validations/min-num-elems [:grid-graph :layers] 2 :few-layers)
+    (validations/not-in-set weightset-coord-getter curr-coord-getter :duplicate-weightset)]
+   :ctr           mc/->Weightset
+   :ctr-params    [:uuid :src-layer-uuid :tgt-layer-uuid :name :label]
+   :nav-to        :refresh})
 
-  ;; (sel/set-state-if-changed! sidebar-state
-  ;;                            api/grid-graph
-  ;;                            (->> m :path-params :uuid str)
-  ;;                            [:grid-graph-selection :grids 0 :uuid]
-  ;;                            [:grid-graph-selection])
-  ;; (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  ;; [weightset-create-sidebar-render m])
+(defn weightset-create-before-fx [m]
+  (let [grid-uuid (->> m :path-params :uuid)]
+    [[:dispatch-n [[:reset-create-state (create-config m)]
+                   [:select-with-custom-success [:weightset :create :grid-graph]
+                    (api/grid-graph grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn weightset-create-sidebar [m]
-  (let [grid-uuid     (->> m :path-params :uuid)
-        grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
+  (let [grid-uuid  (->> m :path-params :uuid)
+        grid-graph @(subscribe [:sidebar-state :weightset :create :grid-graph])
+        printo     (println grid-graph)]
     [:<>]))
       ;; [:<>
       ;;  [sc-components/validation-popover sidebar-state :cyclic

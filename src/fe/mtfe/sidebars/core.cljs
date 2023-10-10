@@ -71,7 +71,9 @@
    ["/grid/:uuid/layer_create"        {:name      ::layer-create-sidebar
                                        :view      layer/layer-create-sidebar
                                        :before-fx layer/layer-create-before-fx}]
-   ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]
+   ["/grid/:uuid/weightset_create"    {:name      ::weightset-create-sidebar
+                                       :view      weightset/weightset-create-sidebar
+                                       :before-fx weightset/weightset-create-before-fx}]
    ["/grid/:uuid/input_create"        {:name      ::input-create-sidebar
                                        :view      input/input-create-sidebar
                                        :before-fx input/input-create-before-fx}]
