@@ -153,9 +153,6 @@
        [:p " --- "]
        [:p curr-label]))])
 
-;; ---
-;; Top-level render
-;; ---
 
 (defn weight-create-sidebar [m]
   (let [ws-uuid        (->> m :path-params :uuid str)
@@ -181,6 +178,10 @@
       (swap! sidebar-state assoc-in [:curr-create-params :tgt-cobj-uuid] tgt-cobj-uuid)
       [weight-create-sidebar-render m])))
 
+;; ---
+;; Sidebar View
+;; ---
+
 (defn weight-sidebar [m]
   (let [is-demo?    @(subscribe [:is-demo?])
         weight-uuid (->> m :path-params :uuid)]
@@ -188,6 +189,11 @@
      [header-partial]
      (if (not is-demo?)
        [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]])]))
+
+(defn weight-selection-before-fx [m]
+  (let [uuid (->> m :path-params :uuid str)]
+    [[:dispatch
+      [:selection :weight-view (api/weight-view uuid) {}]]]))
 
 (defn weight-selection-sidebar [m]
   (let [is-demo?          @(subscribe [:is-demo?])

@@ -114,7 +114,9 @@
    ["/weightset/:uuid/weight_create"  {:name ::weight-create-sidebar :view weight/weight-create-sidebar}]
 
    ["/weight/:uuid"                   {:name ::weight-sidebar :view weight/weight-sidebar}]
-   ["/weight_selection/:uuid"         {:name ::weight-selection-sidebar :view weight/weight-selection-sidebar}]
+   ["/weight_selection/:uuid"         {:name      ::weight-selection-sidebar
+                                       :view      weight/weight-selection-sidebar
+                                       :before-fx weight/weight-selection-before-fx}]
    ["/weight/:uuid/delete"            {:name      ::weight-delete-sidebar
                                        :view      weight/weight-delete-sidebar
                                        :before-fx weight/weight-delete-before-fx}]
