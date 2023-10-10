@@ -37,7 +37,7 @@
                 {:create-params    (init-state-fn)
                  :create-state     :blank
                  :error            nil
-                 :validation-error {}
+                 :validation-errors {}
                  :validations      (or validations [])}))))
 
 (reg-event-fx

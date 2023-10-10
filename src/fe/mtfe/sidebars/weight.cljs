@@ -99,81 +99,58 @@
      :nav-to        :refresh}))
 
 (defn weight-create-before-fx [m]
-  ;; ws-selection
-  ;; alloc-cue
-  ;; create reset event
-  [[:dispatch-n [[:some-crap]]]])
+  (let [ws-uuid (->> m :path-params :uuid)]
+    [[:dispatch-n [[:reset-create-state (create-config m)]
+                   [:select-with-custom-success :ws-selection
+                    (api/weightset-view ws-uuid) {} :sidebar-selection-success]
+                   [:select-with-custom-success :alloc-cue
+                    (api/allocation-cue) {} :sidebar-selection-success]]]]))
 
 (defn weight-create-sidebar [m]
   (let [ws-uuid     (->> m :path-params :uuid)
         curr-config (create-config m)
         state-path  (curr-config :state-path)
+        alloc-cue   @(subscribe [:sidebar-state :alloc-cue])
+        curr-params @(subscribe [:sidebar-state :create-params])
         src-cobjs   @(subscribe [:sidebar-state :ws-selection :src-cobjs])
-        tgt-cobjs   @(subscribe [:sidebar-state :ws-selection :tgt-cobjs])]
-    (println src-cobjs)
-    [:<>]))
-    ;; [:<>
-    ;;  [sc-components/validation-popover sidebar-state :few-cobjs
-    ;;   "You need at least two cost nodes, one in the source and one in the target responsibility center (layer)."
-    ;;   [:h1 [sc/weight-icon] " Add Weight"]]
-    ;;  [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-    ;;  [:div.mb2 [sc/ws-icon] " Weightset UUID - " (->> ws-uuid str)]
-    ;;  [:p "Values currently have to be a positive integer only right now. We might do other things eventually."]
-    ;;  [sc/mgn-border-region
-    ;;   [sc-components/validation-popover sidebar-state :duplicate-weight "That weight already exists."
-    ;;    [:<>
-    ;;     [:p "Weight prompt: "]
-    ;;     [:strong (->> @sidebar-state :alloc-cue :cue str)]]]]
-    ;;  [sc/mgn-border-region
-    ;;   [sc/form-label [sc/cobj-icon] " Source Cost Node"]
-    ;;   [sc-components/validation-popover sidebar-state :src-cobj-blank "Must choose source cost node"
-    ;;    [sc-components/state-select-input create-sc-state sidebar-state src-cobjs [:curr-create-params :src-cobj-uuid]]]]
+        tgt-cobjs   @(subscribe [:sidebar-state :ws-selection :tgt-cobjs])
+        validations @(subscribe [:sidebar-state :validation-errors])
+        printo      (println validations)]
+    [:<>
+     [vblurbs/validation-popover state-path :few-cobjs
+      "You need at least two cost nodes, one in the source and one in the target responsibility center (layer)."
+      [:h1 [sc/weight-icon] " Add Weight"]]
+     [:div.mb2 [sc/ws-icon] " Weightset UUID - " (->> ws-uuid str)]
+     [:p "Values currently have to be a positive integer only right now. We might do other things eventually."]
+     [sc/mgn-border-region
+      [vblurbs/validation-popover state-path :duplicate-weight "That weight already exists."
+       [:<>
+        [:p "Weight prompt: "]
+        [:strong (->> alloc-cue :cue str)]]]]
+     [sc/mgn-border-region
+      [sc/form-label [sc/cobj-icon] " Source Cost Node"]
+      [vblurbs/validation-popover state-path :src-cobj-blank "Must choose source cost node"
+       [fi/state-select-input state-path [:create-params :src-cobj-uuid] src-cobjs]]]
 
-    ;;  [sc/mgn-border-region
-    ;;   [sc/form-label [sc/cobj-icon] " Target Cost Node"]
-    ;;   [sc-components/validation-popover sidebar-state :tgt-cobj-blank "Must choose target cost node"
-    ;;    [sc-components/state-select-input create-sc-state sidebar-state tgt-cobjs [:curr-create-params :tgt-cobj-uuid]]]]
+     [sc/mgn-border-region
+      [sc/form-label [sc/cobj-icon] " Target Cost Node"]
+      [vblurbs/validation-popover state-path :tgt-cobj-blank "Must choose target cost node"
+       [fi/state-select-input state-path [:create-params :tgt-cobj-uuid] tgt-cobjs]]]
 
-    ;;  [sc/mgn-border-region
-    ;;   [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]]
+     [sc/mgn-border-region
+      [fi/state-text-input state-path [:create-params :label] "Label"]]
 
-    ;;  [sc/mgn-border-region
-    ;;   [sc/form-label "Weight Value"]
-    ;;   [sc/form-label "(no units, normalized automatically)"]
-    ;;   [sc-components/validation-popover sidebar-state :value-blank "Value is blank"
-    ;;    [sc-components/validation-popover sidebar-state :value-not-int "Value is not a positive integer"
-    ;;     [sc-components/state-range-input create-sc-state sidebar-state [:curr-create-params :value]
-    ;;      10
-    ;;      1000
-    ;;      10]]]
-    ;;   [sc/form-label (->> @sidebar-state :curr-create-params :value str)]]
-    ;;  [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
-  
-
-
-;; (defn weight-create-sidebar [m]
-;;   (let [ws-uuid        (->> m :path-params :uuid str)
-;;         src-cobj-uuid  (->> m :query-params :src_cobj_uuid)
-;;         tgt-cobj-uuid  (->> m :query-params :tgt_cobj_uuid)]
-;;     (sel/swap-if-changed! ws-uuid
-;;                           sidebar-state
-;;                           [:curr-create-params :weightset-uuid])
-;;     ;; always reset state because otherwise mutations from layers mucking don't show up on ws
-;;     ;; TODO: fix this, maybe by sticking like a second prop system on there,
-;;     ;; maybe by converting everything else to hooks and suffering,
-;;     ;; maybe in a less monstrous way
-;;     (sel/set-state-with-results! sidebar-state
-;;                                  api/weightset-view
-;;                                  [:ws-selection]
-;;                                  ws-uuid)
-;;     (sel/set-state-with-results! sidebar-state
-;;                                  api/allocation-cue
-;;                                  [:alloc-cue])
-;;     (mt-statechart/send-reset-event-if-finished! create-sc-state)
-;;     (fn [m]
-;;       (swap! sidebar-state assoc-in [:curr-create-params :src-cobj-uuid] src-cobj-uuid)
-;;       (swap! sidebar-state assoc-in [:curr-create-params :tgt-cobj-uuid] tgt-cobj-uuid)
-;;       [weight-create-sidebar-render m])))
+     [sc/mgn-border-region
+      [sc/form-label "Weight Value"]
+      [sc/form-label "(no units, normalized automatically)"]
+      [vblurbs/validation-popover state-path :value-blank "Value is blank"
+       [vblurbs/validation-popover state-path :value-not-int "Value is not a positive integer"
+        [fi/state-range-input state-path [:create-params :value]
+         10
+         1000
+         10]]]
+      [sc/form-label (->> curr-params :value str)]]
+     [cr/create-button curr-config]]))
 
 ;; ---
 ;; Sidebar View

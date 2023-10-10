@@ -26,11 +26,11 @@
   (fn [db [evt {:keys [state-path init-state-fn validations]}]]
     (let [path (sidebar-path state-path)]
       (assoc-in db path
-                {:action-params    (init-state-fn)
-                 :action-state     :initial
-                 :error            nil
-                 :validation-error {}
-                 :validations      (or validations [])}))))
+                {:action-params     (init-state-fn)
+                 :action-state      :initial
+                 :error             nil
+                 :validation-errors {}
+                 :validations       (or validations [])}))))
 
 ;; validate
 
