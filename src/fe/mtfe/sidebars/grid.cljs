@@ -2,7 +2,6 @@
   "Sidebar for grid"
   (:require [mtfe.api :as api]
             [mtfe.components.validation-blurbs :as vblurbs]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]

@@ -1,13 +1,11 @@
 (ns mtfe.sidebars.entry
   "Sidebar for entry"
-  (:require [ajax.core :refer [GET POST]]
-            [mertonon.models.constructors :as mc]
+  (:require [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
             [mtfe.components.validation-blurbs :as vblurbs]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
