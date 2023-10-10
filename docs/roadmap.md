@@ -13,7 +13,7 @@ Also look at small tasks roadmap
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property.
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Email integration (as first integration)
-- Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically
+- Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
 - Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
 - Full grad view (exec summary view)
