@@ -101,7 +101,7 @@
 (defn weight-create-before-fx [m]
   (let [ws-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-create-state (create-config m)]
-                   [:select-with-custom-success :ws-selection
+                   [:select-with-custom-success [:weight :create :ws-selection]
                     (api/weightset-view ws-uuid) {} :sidebar-selection-success]
                    [:select-with-custom-success :alloc-cue
                     (api/allocation-cue) {} :sidebar-selection-success]]]]))
@@ -112,10 +112,8 @@
         state-path  (curr-config :state-path)
         alloc-cue   @(subscribe [:sidebar-state :alloc-cue])
         curr-params @(subscribe [:sidebar-state :create-params])
-        src-cobjs   @(subscribe [:sidebar-state :ws-selection :src-cobjs])
-        tgt-cobjs   @(subscribe [:sidebar-state :ws-selection :tgt-cobjs])
-        total-state @(subscribe [:sidebar-state])
-        validations @(subscribe [:sidebar-state :weight :create :validation-errors])]
+        src-cobjs   @(subscribe [:sidebar-state :weight :create :ws-selection :src-cobjs])
+        tgt-cobjs   @(subscribe [:sidebar-state :weight :create :ws-selection :tgt-cobjs])]
     [:<>
      [vblurbs/validation-popover state-path :few-cobjs
       "You need at least two cost nodes, one in the source and one in the target responsibility center (layer)."
@@ -192,7 +190,7 @@
      :endpoint   (api/weight-member uuid)
      :state-path [:weight :delete]
      :model-name "Weight"
-     :nav-to     "#/"}))
+     :nav-to     :refresh}))
 
 (defn weight-delete-before-fx [m]
   (del/before-fx (delete-config m) m))

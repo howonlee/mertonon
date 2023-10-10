@@ -84,11 +84,11 @@
 ;; ---
 
 (defn resource-path
-  "Resource can be simple or complicated"
+  "Resource can be simple or complicated. Do this at last minute possible (so when assoc'ing in db)"
   [top-key resource]
   (cond
     (keyword? resource) [top-key resource]
-    (seq resource)      (into [top-key] resource)
+    (vector? resource)  (into [top-key] resource)
     :else               [top-key resource]))
 
 (reg-event-fx
@@ -98,7 +98,7 @@
                  :uri             endpoint
                  :params          params
                  :response-format (json-response-format {:keywords? true})
-                 :on-success      (resource-path :selection-success resource)
+                 :on-success      [:selection-success resource]
                  :on-failure      [:api-request-error evt resource]}
     :db          (-> db
                      (assoc-in (resource-path :loading resource) true))}))
@@ -118,8 +118,8 @@
                  :params          params
                  :response-format (json-response-format {:keywords? true})
                  :on-success      (if (some? success-params)
-                                    (into (resource-path success-event resource) success-params)
-                                    (resource-path success-event resource))
+                                    [success-event resource success-params]
+                                    [success-event resource])
                  :on-failure      [:api-request-error evt resource]}
     :db          (-> db
                      (assoc-in (resource-path :loading resource) true))}))
@@ -138,7 +138,7 @@
     {:db       (-> db
                    (assoc-in (resource-path :sidebar-state resource) res)
                    (assoc-in (resource-path :loading resource) false))
-     :dispatch [:validate (resource-path :sidebar-state resource) validations]}))
+     :dispatch [:validate resource validations]}))
 
 
 
