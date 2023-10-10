@@ -18,15 +18,15 @@
 - [x] Weight create sidebar
 - [x] Weightset create sidebar
 - [x] Action button
+- [ ] Check button for grad...
 - [ ] Grad action sidebar
 - [ ] Purge then kill the selectors
 - [ ] Purge then kill the statecharts
 - [ ] Consider the re-frame bit done
 
+- [ ] Create and delete for password logins separately with selector lol
 - [ ] Model updates, genericized endpoints in BE
 - [ ] Update button
-- [ ] Model updates for grids
-- [ ] Create and delete for password logins separately with selector lol
 - [ ] Weight mutation input - think harder about fitt's law
 
 - [ ] Changelog
