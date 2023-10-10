@@ -14,11 +14,12 @@
 - [x] Input and loss create sidebars
 - [x] Entry and layer and cobj view and create sidebars
 
-- [ ] Weight and weightset view sidebars
-- [ ] Purge then kill the selectors
+- [x] Weight and weightset view sidebars
+- [ ] Weight create sidebar
+- [ ] Weightset create sidebar
 - [ ] Action button
 - [ ] Grad action sidebar
-- [ ] Weight and weightset create sidebars
+- [ ] Purge then kill the selectors
 - [ ] Purge then kill the statecharts
 - [ ] Consider the re-frame bit done
 

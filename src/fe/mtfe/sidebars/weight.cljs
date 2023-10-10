@@ -114,8 +114,8 @@
         curr-params @(subscribe [:sidebar-state :create-params])
         src-cobjs   @(subscribe [:sidebar-state :ws-selection :src-cobjs])
         tgt-cobjs   @(subscribe [:sidebar-state :ws-selection :tgt-cobjs])
-        validations @(subscribe [:sidebar-state :weight :create :validation-errors])
-        printo      (println validations)]
+        total-state @(subscribe [:sidebar-state])
+        validations @(subscribe [:sidebar-state :weight :create :validation-errors])]
     [:<>
      [vblurbs/validation-popover state-path :few-cobjs
       "You need at least two cost nodes, one in the source and one in the target responsibility center (layer)."

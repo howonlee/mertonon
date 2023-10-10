@@ -83,6 +83,14 @@
 ;; Selection
 ;; ---
 
+(defn resource-path
+  "Resource can be simple or complicated"
+  [top-key resource]
+  (cond
+    (keyword? resource) [top-key resource]
+    (seq resource)      (into [top-key] resource)
+    :else               [top-key resource]))
+
 (reg-event-fx
  :selection
  (fn [{:keys [db]} [evt resource endpoint params]]
@@ -90,17 +98,17 @@
                  :uri             endpoint
                  :params          params
                  :response-format (json-response-format {:keywords? true})
-                 :on-success      [:selection-success resource]
+                 :on-success      (resource-path :selection-success resource)
                  :on-failure      [:api-request-error evt resource]}
     :db          (-> db
-                     (assoc-in [:loading resource] true))}))
+                     (assoc-in (resource-path :loading resource) true))}))
 
 (reg-event-fx
   :selection-success
   (fn [{:keys [db]} [evt resource res]]
     {:db (-> db
-             (assoc-in [:selection resource] res)
-             (assoc-in [:loading resource] false))}))
+             (assoc-in (resource-path :selection resource) res)
+             (assoc-in (resource-path :loading resource) false))}))
 
 (reg-event-fx
   :select-with-custom-success
@@ -110,27 +118,27 @@
                  :params          params
                  :response-format (json-response-format {:keywords? true})
                  :on-success      (if (some? success-params)
-                                    [success-event resource success-params]
-                                    [success-event resource])
+                                    (into (resource-path success-event resource) success-params)
+                                    (resource-path success-event resource))
                  :on-failure      [:api-request-error evt resource]}
     :db          (-> db
-                     (assoc-in [:loading resource] true))}))
+                     (assoc-in (resource-path :loading resource) true))}))
 
 (reg-event-fx
   :sidebar-selection-success
   (fn [{:keys [db]} [evt resource res]]
     {:db (-> db
-             (assoc-in [:sidebar-state resource] res)
-             (assoc-in [:loading resource] false))}))
+             (assoc-in (resource-path :sidebar-state resource) res)
+             (assoc-in (resource-path :loading resource) false))}))
 
 (reg-event-fx
   :sidebar-selection-and-validate
   ;; Include validations in success-params
   (fn [{:keys [db]} [evt resource {:keys [validations]} res]]
     {:db       (-> db
-                   (assoc-in [:sidebar-state resource] res)
-                   (assoc-in [:loading resource] false))
-     :dispatch [:validate [:sidebar-state resource] validations]}))
+                   (assoc-in (resource-path :sidebar-state resource) res)
+                   (assoc-in (resource-path :loading resource) false))
+     :dispatch [:validate (resource-path :sidebar-state resource) validations]}))
 
 
 

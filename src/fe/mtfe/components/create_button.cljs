@@ -34,11 +34,11 @@
   (fn [db [evt {:keys [state-path init-state-fn validations]}]]
     (let [path   (sidebar-path state-path)]
       (assoc-in db path
-                {:create-params    (init-state-fn)
-                 :create-state     :blank
-                 :error            nil
+                {:create-params     (init-state-fn)
+                 :create-state      :blank
+                 :error             nil
                  :validation-errors {}
-                 :validations      (or validations [])}))))
+                 :validations       (or validations [])}))))
 
 (reg-event-fx
   :mutate-create-state
@@ -55,6 +55,8 @@
   (fn [db [evt state-path]]
     (let [path         (sidebar-path state-path)
           create-state (get-in db path)
+          printo       (println "curr-create-state")
+          printo       (println (keys (db :sidebar-state)))
           validations  (create-state :validations)]
       (update-in db path #(validations/do-validations! % validations)))))
 
