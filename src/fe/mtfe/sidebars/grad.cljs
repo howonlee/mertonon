@@ -124,7 +124,9 @@
 ;; ---
 
 (defn action-config [m]
-  (let [grid-uuid (->> m :path-params :uuid)]
+  (let [grid-uuid          (->> m :path-params :uuid)
+        curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])
+        printo             (println curr-action-params)]
     {:resource      :curr-grad
      :endpoint      (api/grid-grad)
      :state-path    [:grad :action]
@@ -132,20 +134,19 @@
                       {:start-date (last-week)
                        :end-date   (tomorrow)
                        :grid-uuid  grid-uuid})
+     :on-filled    [[:dispatch-n
+                     [[:select-with-custom-success [:grad :action :grid-dump]
+                       (api/grid-dump grid-uuid) curr-action-params :sidebar-selection-success]]]]
      :validations   []
      :nav-to        :refresh}))
 
 (defn grad-before-fx [m]
-  (let [grid-uuid          (->> m :path-params :uuid)
-        curr-action-params @(subscribe [:sidebar-state :action-params])
-        printo             (println curr-action-params)]
+  (let [grid-uuid          (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-action-state (action-config m)]
                    [:select-with-custom-success [:grad :action :grid-graph]
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]
                    [:select-with-custom-success [:grad :action :grid-view]
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
-                   ;; [:select-with-custom-success [:grad :action :grid-dump]
-                   ;;  (api/grid-dump grid-uuid) curr-action-params :sidebar-selection-success]]]]))
 
 (defn grad-sidebar [m]
   (let [grid-uuid     (->> m :path-params :uuid)
