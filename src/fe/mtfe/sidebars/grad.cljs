@@ -126,14 +126,14 @@
 (defn action-config [m]
   (let [grid-uuid (->> m :path-params :uuid)]
     {:resource      :curr-grad
-     :endpoint      (api/grad)
+     :endpoint      (api/grid-grad)
      :state-path    [:grad :action]
      :init-state-fn (fn []
                       {:start-date (last-week)
                        :end-date   (tomorrow)
                        :grid-uuid  grid-uuid})
      :validations   []
-     :nav-to        :refresh})
+     :nav-to        :refresh}))
 
 (defn grad-before-fx [m]
   (let [grid-uuid (->> m :path-params :uuid)]
