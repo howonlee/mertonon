@@ -79,7 +79,12 @@
 (defn action-button [config & [labels]]
   (let [{state-path :state-path
          endpoint   :endpoint
-         nav-to     :nav-to}    config]
+         nav-to     :nav-to}    config
+        curr-sidebar-state      @(subscribe (sidebar-path state-path))
+        curr-action-state        (get curr-sidebar-state :action-state :invalid)
+        curr-action-params       (get curr-sidebar-state :action-params {})
+        curr-labels              (if (seq labels) labels default-labels)
+        curr-error               (get curr-sidebar-state :action-error nil)]
     nil))
 ;;   [sc/border-region
 ;;    [:div.pa2
