@@ -97,6 +97,7 @@
    {:http-xhrio {:method          :get
                  :uri             endpoint
                  :params          params
+                 :format          (json-request-format)
                  :response-format (json-response-format {:keywords? true})
                  :on-success      [:selection-success resource]
                  :on-failure      [:api-request-error evt resource]}
@@ -116,6 +117,7 @@
    {:http-xhrio {:method          :get
                  :uri             endpoint
                  :params          params
+                 :format          (json-request-format)
                  :response-format (json-response-format {:keywords? true})
                  :on-success      (if (some? success-params)
                                     [success-event resource success-params]

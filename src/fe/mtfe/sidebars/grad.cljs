@@ -124,8 +124,7 @@
 ;; ---
 
 (defn action-config [m]
-  (let [grid-uuid          (->> m :path-params :uuid)
-        curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])]
+  (let [grid-uuid          (->> m :path-params :uuid)]
     {:resource      :curr-grad
      :endpoint      (api/grid-grad)
      :state-path    [:grad :action]
@@ -133,15 +132,11 @@
                       {:start-date (last-week)
                        :end-date   (tomorrow)
                        :grid-uuid  grid-uuid})
-     :on-filled     [[:dispatch-n
-                      [[:select-with-custom-success [:grad :action :grid-dump]
-                        (api/grid-dump grid-uuid) curr-action-params :sidebar-selection-success]
-                       [:validate-action-state [:grad :action]]]]]
      :validations   []
      :nav-to        :refresh}))
 
 (defn grad-before-fx [m]
-  (let [grid-uuid (->> m :path-params :uuid)]
+  (let [grid-uuid          (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-action-state (action-config m)]
                    [:select-with-custom-success [:grad :action :grid-graph]
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]
@@ -149,11 +144,17 @@
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn grad-sidebar [m]
-  (let [grid-uuid     (->> m :path-params :uuid)
-        curr-config   (action-config m)
-        state-path    (curr-config :state-path)
-        grid-contents @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
-        printo        (println grid-contents)]
+  (let [grid-uuid          (->> m :path-params :uuid)
+        curr-config        (action-config m)
+        state-path         (curr-config :state-path)
+        grid-contents      @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
+        curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])
+        printo             (println curr-action-params)
+        _                  (when (seq curr-action-params)
+                             (do
+                               (dispatch-sync [:select-with-custom-success [:grad :action :grid-dump]
+                                               (api/grid-dump grid-uuid) curr-action-params :sidebar-selection-success])
+                               (dispatch-sync [:validate-action-state [:grad :action]])))]
     [:<>]))
   ;; [:<>
   ;;  [:h1 "Gradient Determination Kickoff"]
