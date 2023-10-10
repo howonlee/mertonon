@@ -5,6 +5,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.statecharts.components :as sc-components]
@@ -13,7 +14,7 @@
             [mtfe.statecharts.sideeffects :as sc-se]
             [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
-            [mtfe.views.weight :as weight-view]
+            [mtfe.validations :as validations]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
@@ -32,6 +33,41 @@
 
 (defonce sidebar-state (r/atom {:curr-create-params (init-create-params)
                                 :selection          {}}))
+
+;; ---
+;; Partials
+;; ---
+
+(defn header-partial []
+  [:<>
+   [:h1 [sc/weight-icon] " Weight"]
+   [:p "This is an in-Mertonon judgement of the relation of one cost node to another."]
+   [:p "Eventually we will have a whole menagerie of integrations for figuring this out, but because they can inevitably be gamed the first method must be by arbitrary manual setting."]])
+
+(defn weight-data-partial [curr-weight-state]
+  [:<>
+   [:h2 "Double-Click or click \"Dive In\" to Dive In"]
+   (when (seq (->> curr-weight-state :src-cobj))
+     [:<>
+      [:h3 [sc/cobj-icon] " Source cost node"]
+      [util/path-fsl ["cost_object" (->> curr-weight-state :src-cobj :uuid str)]
+       [sc/link (str (->> curr-weight-state :src-cobj :name))]]])
+   (when (seq (->> curr-weight-state :tgt-cobj))
+     [:<>
+      [:h3 [sc/cobj-icon] " Target cost node"]
+      [util/path-fsl ["cost_object" (->> curr-weight-state :tgt-cobj :uuid str)]
+       [sc/link (str (->> curr-weight-state :tgt-cobj :name))]]])
+   [:h3 "Weight Value"]
+   [:p (->> curr-weight-state :weight :value str)]
+
+   [:h3 "Weight Gradient"]
+   [:p (->> curr-weight-state :weight :grad str)]
+
+   [:h3 "Label"]
+   (let [curr-label (->> curr-weight-state :weight :label str)]
+     (if (clojure.string/blank? curr-label)
+       [:p " --- "]
+       [:p curr-label]))])
 
 ;; ---
 ;; Validations
@@ -72,10 +108,6 @@
                                 :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
 
 (mt-statechart/init-sc! :weight-create create-sc-state create-sc)
-
-;; ---
-;; Creation
-;; ---
 
 (defn weight-create-sidebar-render [m]
   (let [ws-uuid   (->> m :path-params :uuid)
@@ -119,40 +151,8 @@
      [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
 
 ;; ---
-;; Partials
+;; Creation
 ;; ---
-
-(defn header-partial []
-  [:<>
-   [:h1 [sc/weight-icon] " Weight"]
-   [:p "This is an in-Mertonon judgement of the relation of one cost node to another."]
-   [:p "Eventually we will have a whole menagerie of integrations for figuring this out, but because they can inevitably be gamed the first method must be by arbitrary manual setting."]])
-
-(defn weight-data-partial [curr-weight-state]
-  [:<>
-   [:h2 "Double-Click or click \"Dive In\" to Dive In"]
-   (when (seq (->> curr-weight-state :src-cobj))
-     [:<>
-      [:h3 [sc/cobj-icon] " Source cost node"]
-      [util/path-fsl ["cost_object" (->> curr-weight-state :src-cobj :uuid str)]
-       [sc/link (str (->> curr-weight-state :src-cobj :name))]]])
-   (when (seq (->> curr-weight-state :tgt-cobj))
-     [:<>
-      [:h3 [sc/cobj-icon] " Target cost node"]
-      [util/path-fsl ["cost_object" (->> curr-weight-state :tgt-cobj :uuid str)]
-       [sc/link (str (->> curr-weight-state :tgt-cobj :name))]]])
-   [:h3 "Weight Value"]
-   [:p (->> curr-weight-state :weight :value str)]
-
-   [:h3 "Weight Gradient"]
-   [:p (->> curr-weight-state :weight :grad str)]
-
-   [:h3 "Label"]
-   (let [curr-label (->> curr-weight-state :weight :label str)]
-     (if (clojure.string/blank? curr-label)
-       [:p " --- "]
-       [:p curr-label]))])
-
 
 (defn weight-create-sidebar [m]
   (let [ws-uuid        (->> m :path-params :uuid str)
