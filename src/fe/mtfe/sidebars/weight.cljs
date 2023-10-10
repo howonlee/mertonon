@@ -114,7 +114,7 @@
         curr-params @(subscribe [:sidebar-state :create-params])
         src-cobjs   @(subscribe [:sidebar-state :ws-selection :src-cobjs])
         tgt-cobjs   @(subscribe [:sidebar-state :ws-selection :tgt-cobjs])
-        validations @(subscribe [:sidebar-state :validation-errors])
+        validations @(subscribe [:sidebar-state :weight :create :validation-errors])
         printo      (println validations)]
     [:<>
      [vblurbs/validation-popover state-path :few-cobjs
