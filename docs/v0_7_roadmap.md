@@ -18,7 +18,8 @@
 - [x] Weight create sidebar
 - [x] Weightset create sidebar
 - [x] Action button
-- [ ] Check button for grad...
+
+- [ ] Make check button for grad
 - [ ] Grad action sidebar
 - [ ] Purge then kill the selectors
 - [ ] Purge then kill the statecharts
