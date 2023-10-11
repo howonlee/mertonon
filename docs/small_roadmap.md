@@ -2,6 +2,8 @@ Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
 - Remove postgres requirement for build
+- Automated upload to website
+- Automated download-from-website-and-try test
 - GH build CI
 - GH test CI
 - Logout BE test
