@@ -10,41 +10,12 @@
             [mtfe.components.action-button :as act]
             [mtfe.components.form-inputs :as fi]
             [mtfe.components.validation-blurbs :as vblurbs]
-            [mtfe.selectors :as sel]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync reg-event-fx subscribe]]
             [tick.core :as t]))
-
-;; ---
-;; State
-;; ---
-
-(defn last-week []
-  (-> (t/<< (t/instant) (t/new-duration 7 :days))
-      (t/long)
-      (* 1000)
-      (js/Date.)))
-
-(defn tomorrow []
-  (-> (t/>> (t/instant) (t/new-duration 1 :days))
-      (t/long)
-      (* 1000)
-      (js/Date.)))
-
-(defn init-grad-params []
-  {:start-date (last-week)
-   :end-date   (tomorrow)
-   :grid-uuid  ""})
-
-(defonce sidebar-state (r/atom {:curr-action-params (init-grad-params)}))
 
 ;; ---
 ;; Validations
@@ -89,35 +60,26 @@
         :few-loss-entries))))
 
 ;; ---
-;; Statechart
+;; Dates
 ;; ---
 
-(defonce action-sc-state
-   (r/atom nil))
 
-(def validation-list
-  [(sc-validation/min-num-elems [:grid-graph :layers] 2 :few-layers)
-   ;; (sc-validation/grouped-min-num-elems
-   ;;   [:grid-dump] [:layers :cost-objects] [[:uuid :layer-uuid]] 2 :few-cobjs)
-   ;; (sc-validation/grouped-min-num-elems
-   ;;   [:grid-dump] [:weightsets :weights] [[:uuid :weightset-uuid]] 2 :few-weights)
-   ;; (input-has-entries-validation 1)
-   ;; (loss-has-entries-validation 1)
+(defn last-week []
+  (-> (t/<< (t/instant) (t/new-duration 7 :days))
+      (t/long)
+      (* 1000)
+      (js/Date.)))
 
-   (sc-validation/min-num-elems [:grid-graph :weightsets] 1 :no-weightsets)
-   (sc-validation/min-num-elems [:grid-view :inputs] 1 :no-inputs)
-   (sc-validation/min-num-elems [:grid-view :losses] 1 :no-losses)])
+(defn tomorrow []
+  (-> (t/>> (t/instant) (t/new-duration 1 :days))
+      (t/long)
+      (* 1000)
+      (js/Date.)))
 
-(def action-sc
-  (mt-statechart/simple-action :grad-kickoff
-                               {:action-fn     (sc-handlers/action-handler api/grid-grad action-sc-state)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :finalize-fn   (sc-handlers/refresh-handler action-sc-state)}))
-
-(mt-statechart/init-sc! :grad-kickoff action-sc-state action-sc)
-
-;; TODO: Get job kickoffs going as opposed to current synchronous thing
+(defn stringify-dates [curr-action-params]
+  (-> curr-action-params
+      (update :start-date #(.toISOString %))
+      (update :end-date   #(.toISOString %))))
 
 ;; ---
 ;; Action
@@ -132,7 +94,17 @@
                       {:start-date (last-week)
                        :end-date   (tomorrow)
                        :grid-uuid  grid-uuid})
-     :validations   []
+     :validations   [(validations/min-num-elems [:grid-graph :layers] 2 :few-layers)
+                     (validations/grouped-min-num-elems
+                       [:grid-dump] [:layers :cost-objects] [[:uuid :layer-uuid]] 2 :few-cobjs)
+                     (validations/grouped-min-num-elems
+                       [:grid-dump] [:weightsets :weights] [[:uuid :weightset-uuid]] 2 :few-weights)
+                     (input-has-entries-validation 1)
+                     (loss-has-entries-validation 1)
+
+                     (validations/min-num-elems [:grid-graph :weightsets] 1 :no-weightsets)
+                     (validations/min-num-elems [:grid-view :inputs] 1 :no-inputs)
+                     (validations/min-num-elems [:grid-view :losses] 1 :no-losses)]
      :nav-to        :refresh}))
 
 (defn grad-before-fx [m]
@@ -143,11 +115,6 @@
                    [:select-with-custom-success [:grad :action :grid-view]
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
-(defn stringify-dates [curr-action-params]
-  (-> curr-action-params
-      (update :start-date #(.toISOString %))
-      (update :end-date   #(.toISOString %))))
-
 (reg-event-fx
   ::manual-check
   (fn [{:keys [db]} [evt action-params]]
@@ -156,6 +123,10 @@
                                                (stringify-dates action-params)
                                                :sidebar-selection-success]
                   [:validate-action-state [:grad :action]]]}))
+
+;; ---
+;; Action Sidebar
+;; ---
 
 (defn grad-sidebar [m]
   (let [grid-uuid          (->> m :path-params :uuid)
@@ -193,32 +164,3 @@
        [sc/button "Check if gradient can be kicked off"]
        curr-action-params]
       [act/action-button curr-config]]]))
-
-;; ---
-;; Top-level render
-;; ---
-
-;; (defn grad-sidebar [m]
-;;   (let [grid-uuid (->> m :path-params :uuid str)]
-;;     (sel/swap-if-changed! grid-uuid sidebar-state [:curr-action-params :grid-uuid])
-;;     (sel/set-state-if-changed! sidebar-state
-;;                                api/grid-graph
-;;                                grid-uuid
-;;                                [:grid-graph :grids 0 :uuid]
-;;                                [:grid-graph])
-;;     (sel/set-state-if-changed! sidebar-state
-;;                                api/grid-view
-;;                                grid-uuid
-;;                                [:grid-view :grids 0 :uuid]
-;;                                [:grid-view])
-;;     (sel/set-query-state-if-changed! sidebar-state
-;;                                      api/grid-dump
-;;                                      grid-uuid
-;;                                      (@sidebar-state :curr-action-params)
-;;                                      [:grid-dump :grids 0 :uuid]
-;;                                      [:grid-dump :query]
-;;                                      [:grid-dump])
-;;     (mt-statechart/send-reset-event-if-finished! action-sc-state)
-;;     (fn [m]
-;;       (sc-handlers/do-validations! sidebar-state validation-list)
-;;       [grad-sidebar-render m])))
