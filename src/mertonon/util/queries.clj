@@ -185,14 +185,19 @@
 ;; ) as c(column_b, column_a, column_c) 
 ;; where c.column_b = t.column_b;
 
+(defn dotted-keyword [key1 key2]
+  (keyword (str (name key1) "." (name key2))))
+
 (defn update-many-set-clause [table columns]
-  {:updated-at :temp.updated-at})
+  (let [no-uuid-columns (filter #(not= :uuid %) columns)]
+    (into {} (for [curr-column no-uuid-columns]
+               [curr-column (dotted-keyword :temp curr-column)]))))
 
 (defn update-many-from-clause [members]
-  [{:values [[:bleh :whleh] [:mleh :vleh]]}])
+  [{:values [[:bleh :whleh] [:mleh :vleh]]} :temp])
 
 (defn update-many-where-clause [table]
-  (let [table-uuid (-> table name (str ".uuid") keyword)]
+  (let [table-uuid (dotted-keyword table :uuid)]
     [:= :temp.uuid table-uuid]))
 
 (defn update-many-q [table columns uuids members]
@@ -207,9 +212,10 @@
   (require '[clojure.test.check.generators :as gen])
   (let [grids [(gen/generate gen-net/generate-grid)
                (gen/generate gen-net/generate-grid)]]
-    (sql/format (update-many-q :mertonon.grid
+    (println (sql/format (update-many-q :mertonon.grid
                                [:uuid :version :created-at :updated-at :name :label :optimizer-type :hyperparams]
-                               (mapv :uuid grids) grids))))
+                               (mapv :uuid grids) grids)
+                {:pretty true}))))
 
 (defn update-many [{:keys [table columns uuids members row->member]}]
   (if (empty? uuids)
