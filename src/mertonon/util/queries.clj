@@ -185,15 +185,22 @@
 ;; ) as c(column_b, column_a, column_c) 
 ;; where c.column_b = t.column_b;
 
+(defn update-many-set-clause [table columns]
+  {:updated-at :temp.updated-at})
+
+(defn update-many-from-clause [members]
+  [{:values [[:bleh :whleh] [:mleh :vleh]]}])
+
+(defn update-many-where-clause [table]
+  (let [table-uuid (-> table name (str ".uuid") keyword)]
+    [:= :temp.uuid table-uuid]))
+
 (defn update-many-q [table columns uuids members]
   {:update    [table :curr-table]
-   :set       {:updated-at :temp.updated-at}
-   :from      [{:values [[:bleh :whleh] [:mleh :vleh]]}]
-   :where     [:= :temp.uuid :cutt_table.uuid]
+   :set       (update-many-set-clause table columns)
+   :from      (update-many-from-clause members)
+   :where     (update-many-where-clause table)
    :returning :*})
-  ;; {:update table
-  ;;  :set    {:updated-at :c.updated-at}
-  ;;  })
 
 (comment
   (require '[mertonon.generators.net :as gen-net])
