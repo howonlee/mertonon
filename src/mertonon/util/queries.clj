@@ -185,7 +185,10 @@
 ;; ) as c(column_b, column_a, column_c) 
 ;; where c.column_b = t.column_b;
 
-(defn dotted-keyword [key1 key2]
+(defn dotted-keyword
+  "Example usage:
+  (dotted-keyword :bleh :whleh) => :bleh.whleh"
+  [key1 key2]
   (keyword (str (name key1) "." (name key2))))
 
 (defn update-many-set-clause [table columns]
@@ -194,7 +197,12 @@
                [curr-column (dotted-keyword :temp curr-column)]))))
 
 (defn update-many-from-clause [members]
-  [{:values [[:bleh :whleh] [:mleh :vleh]]} :temp])
+  (for [member members]
+    (let [member-attrs (-> member
+                           (dissoc :uuid)
+                           (assoc :updated-at (t/instant)))]
+      nil)))
+;;  [{:values [[:bleh :whleh] [:mleh :vleh]]} :temp])
 
 (defn update-many-where-clause [table]
   (let [table-uuid (dotted-keyword table :uuid)]
