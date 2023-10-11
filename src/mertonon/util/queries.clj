@@ -196,9 +196,11 @@
     (into {} (for [curr-column no-uuid-columns]
                [curr-column (dotted-keyword :temp curr-column)]))))
 
-(defn update-many-from-clause [members member->row]
-  (let [rows (into [] (for [member members]
-                        (member->row member)))]
+(defn update-many-from-clause [columns members member->row]
+  (let [rows (vec (for [member members]
+                    (do
+                      (println member)
+                      (rowify columns (member->row member)))))]
     [{:values rows} :temp]))
 
 (defn update-many-where-clause [table]
@@ -208,22 +210,22 @@
 (defn update-many-q [table columns uuids members member->row]
   {:update    [table :curr-table]
    :set       (update-many-set-clause table columns)
-   :from      (update-many-from-clause members member->row)
+   :from      (update-many-from-clause columns members member->row)
    :where     (update-many-where-clause table)
    :returning :*})
 
 (comment
   (require '[mertonon.generators.net :as gen-net])
   (require '[clojure.test.check.generators :as gen])
-  (let [grids [(gen/generate gen-net/generate-grid)
-               (gen/generate gen-net/generate-grid)]]
-    (println (sql/format (update-many-q :mertonon.grid
+  (let [grids [(->> (gen/generate gen-net/generate-grid) :grids first)
+               (->> (gen/generate gen-net/generate-grid) :grids first)]]
+    (sql/format (update-many-q :mertonon.grid
                                [:uuid :version :created-at :updated-at :name :label :optimizer-type :hyperparams]
                                (mapv :uuid grids) grids
                                #'mertonon.models.grid/member->row)
-                {:pretty true}))))
+                {:pretty true})))
 
-(defn update-many [{:keys [table columns uuids members row->member member->row]}]
+(defn update-many [{:keys [table columns uuids members member->row row->member]}]
   (if (empty? uuids)
     members
     (->> (update-many-q table columns uuids members member->row) (db/query) (mapv row->member))))
