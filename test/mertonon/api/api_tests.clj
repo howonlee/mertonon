@@ -84,7 +84,13 @@
         api-read-all     (fn []
                            (let [res       (app {:uri endpoint :request-method :get})
                                  processed (process-app-response res)]
-                             (mapv row->member processed)))]
+                             (mapv row->member processed)))
+        ;;;;;;
+        ;;;;;;
+        ;;;;;; todo: update
+        ;;;;;;
+        ;;;;;;
+        ]
     {:gen-net           generates
      :model-instance    elem
      :model-instances   (tu/generates->members generates table)
@@ -137,6 +143,9 @@
                     (test-inp table generates db/*defined-connection*)))))
 
 ;; API will not have arbitrary read-where semantics. That's a terrible idea.
+
+;;; update-and-update-back
+;;; update-many-and-update-back
 
 (defspec create-and-delete-inversion
   100

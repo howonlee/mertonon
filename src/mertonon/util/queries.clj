@@ -176,8 +176,12 @@
     member
     (->> (update-one-q table uuid member) (db/query) first row->member)))
 
-;; TODO: Catch the footgun of updating all
-;; TODO: Upsert many and update many, for perf
+(defn update-many [{:keys [table uuids members row->member]}]
+  ;;;;;
+  ;;;;;
+  ;;;;;
+  ;;;;;
+  nil)
 
 ;; -----
 ;; Delete
@@ -223,6 +227,7 @@
    :read-all          (fn [] (select-all query-info))
    :count             (fn [] (count-all query-info))
    :update-one!       (fn [uuid member] (update-one (assoc query-info :uuid uuid :member member)))
+   :update-many!      (fn [uuids members] (update-many (assoc query-info :uuids uuid :members members)))
    :hard-delete-one!  (fn [uuid] (hard-delete-one (assoc query-info :uuid uuid)))
    :hard-delete-many! (fn [uuids] (hard-delete-many (assoc query-info :uuids uuids)))
    :row->member       row->member

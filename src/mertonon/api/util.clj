@@ -61,7 +61,13 @@
     (let [curr-uuid (path-uuid match)]
       {:status 200 :body ((curr-model :read-one) curr-uuid)})))
 
-;; TODO: update percolated up to API
+(defn update-model [curr-model]
+  (fn [match]
+    (let [model-or-models (body-params match)
+          res             (if (map? model-or-models)
+                            ((curr-model :update-one!) (:uuid model-or-models) model-or-models)
+                            ((curr-model :update-many!) (mapv :uuid model-or-models) model-or-models))]
+      {:status 200 :body res})))
 
 (defn delete-model [curr-model]
   (fn [match]
