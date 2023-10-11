@@ -25,9 +25,10 @@
 - [x] Purge then kill the statecharts
 - [x] Consider the re-frame bit done
 
+- [x] Model update genericized endpoints in BE
 - [ ] Model update-many
 - [ ] Test model update-many
-- [ ] Model update genericized endpoints in BE, test
+- [ ] Test api model update, update-many
 - [ ] Create and delete for password logins separately with selector lol
 - [ ] Update button
 - [ ] Weight mutation input - think harder about fitt's law

@@ -176,12 +176,13 @@
     member
     (->> (update-one-q table uuid member) (db/query) first row->member)))
 
-(defn update-many [{:keys [table uuids members row->member]}]
-  ;;;;;
-  ;;;;;
-  ;;;;;
-  ;;;;;
+(defn update-many-q [table uuids members]
   nil)
+
+(defn update-many [{:keys [table uuids members row->member]}]
+  (if (empty? uuids)
+    member
+    (->> (update-many-q table uuids members) (db/query) (mapv row->member))))
 
 ;; -----
 ;; Delete
