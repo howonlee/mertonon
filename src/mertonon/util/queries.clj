@@ -186,7 +186,11 @@
 ;; where c.column_b = t.column_b;
 
 (defn update-many-q [table columns uuids members]
-  {:values row-list;; row-list [[:bleh :whleh] [:mleh :vleh]]})
+  {:update    [table :curr-table]
+   :set       {:updated-at :temp.updated-at}
+   :from      [{:values [[:bleh :whleh] [:mleh :vleh]]}]
+   :where     [:= :temp.uuid :cutt_table.uuid]
+   :returning :*})
   ;; {:update table
   ;;  :set    {:updated-at :c.updated-at}
   ;;  })
