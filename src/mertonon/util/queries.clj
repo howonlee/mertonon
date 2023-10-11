@@ -176,13 +176,22 @@
     member
     (->> (update-one-q table uuid member) (db/query) first row->member)))
 
-(defn update-many-q [table uuids members]
+;; update test as t set
+;;     column_a = c.column_a,
+;;     column_c = c.column_c
+;; from (values
+;;     ('123', 1, '---'),
+;;     ('345', 2, '+++')  
+;; ) as c(column_b, column_a, column_c) 
+;; where c.column_b = t.column_b;
+
+(defn update-many-q [table columns uuids members]
   nil)
 
-(defn update-many [{:keys [table uuids members row->member]}]
+(defn update-many [{:keys [table columns uuids members row->member]}]
   (if (empty? uuids)
     member
-    (->> (update-many-q table uuids members) (db/query) (mapv row->member))))
+    (->> (update-many-q table columns uuids members) (db/query) (mapv row->member))))
 
 ;; -----
 ;; Delete
