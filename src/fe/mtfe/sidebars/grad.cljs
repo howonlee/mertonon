@@ -158,7 +158,9 @@
         state-path         (curr-config :state-path)
         grid-contents      @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
         curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])]
-    [util/evl ::manual-check]))
+    [util/evl ::manual-check
+     [sc/button "Check if gradient can be kicked off"]
+     curr-action-params]))
   ;; [:<>
   ;;  [:h1 "Gradient Determination Kickoff"]
   ;;  [:p "Currently, determination of gradients and deltas is done by Mertonon but kicked off manually by you, the user. When you press the button Mertonon will go and determine gradients and deltas for weights and cost objects, which comprise Mertonon's combination of local determinations into a global one."]
