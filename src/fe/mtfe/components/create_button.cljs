@@ -18,7 +18,7 @@
    :finished "Finished!"
 
    ;; Button labels
-   :submit   "Submit"
+   :submit   "Create"
    :finish   "Finish"
    })
 
