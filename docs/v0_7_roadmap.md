@@ -26,12 +26,12 @@
 - [x] Consider the re-frame bit done
 
 - [x] Model update genericized endpoints in BE
+- [ ] Weight mutation input - think harder about fitt's law
 - [ ] Model update-many
 - [ ] Test model update-many
 - [ ] Test api model update, update-many
 - [ ] Create and delete for password logins separately with selector lol
 - [ ] Update button
-- [ ] Weight mutation input - think harder about fitt's law
 
 - [ ] Changelog
 - [ ] Clicking around a bit
