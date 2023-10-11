@@ -64,6 +64,8 @@
   "So you're connecting two things - gotta have two elems to do so..."
   [path min-num-elems curr-keyword]
   (fn [curr-state]
+    (println "curr-state")
+    (println curr-state)
     (if (<= min-num-elems (count (get-in curr-state path)))
       nil
       curr-keyword)))

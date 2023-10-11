@@ -6,7 +6,6 @@
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
             [mtfe.components.validation-blurbs :as vblurbs]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.views.grid :as grid-view]

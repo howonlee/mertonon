@@ -57,7 +57,9 @@
                                        :view      mt-user/mt-user-delete-sidebar
                                        :before-fx mt-user/mt-user-delete-before-fx}]
 
-   ["/grid/:uuid/grad_kickoff"        {:name ::grad-sidebar :view grad/grad-sidebar}]
+   ["/grid/:uuid/grad_kickoff"        {:name      ::grad-sidebar
+                                       :view      grad/grad-sidebar
+                                       :before-fx grad/grad-before-fx}]
 
    ["/grid_create"                    {:name      ::grid-create-sidebar
                                        :view      grid-select/grid-create-sidebar
@@ -71,7 +73,9 @@
    ["/grid/:uuid/layer_create"        {:name      ::layer-create-sidebar
                                        :view      layer/layer-create-sidebar
                                        :before-fx layer/layer-create-before-fx}]
-   ["/grid/:uuid/weightset_create"    {:name ::weightset-create-sidebar :view weightset/weightset-create-sidebar}]
+   ["/grid/:uuid/weightset_create"    {:name      ::weightset-create-sidebar
+                                       :view      weightset/weightset-create-sidebar
+                                       :before-fx weightset/weightset-create-before-fx}]
    ["/grid/:uuid/input_create"        {:name      ::input-create-sidebar
                                        :view      input/input-create-sidebar
                                        :before-fx input/input-create-before-fx}]
@@ -106,15 +110,21 @@
                                        :view      entry/entry-delete-sidebar
                                        :before-fx entry/entry-delete-before-fx}]
 
-   ["/weightset/:uuid"                {:name ::weightset-sidebar :view weightset/weightset-sidebar}]
+   ["/weightset/:uuid"                {:name      ::weightset-sidebar
+                                       :view      weightset/weightset-sidebar
+                                       :before-fx weightset/weightset-before-fx}]
    ["/weightset_selection/:uuid"      {:name ::weightset-selection-sidebar :view weightset/weightset-selection-sidebar}]
    ["/weightset/:uuid/delete"         {:name      ::weightset-delete-sidebar
                                        :view      weightset/weightset-delete-sidebar
                                        :before-fx weightset/weightset-delete-before-fx}]
-   ["/weightset/:uuid/weight_create"  {:name ::weight-create-sidebar :view weight/weight-create-sidebar}]
+   ["/weightset/:uuid/weight_create"  {:name      ::weight-create-sidebar
+                                       :view      weight/weight-create-sidebar
+                                       :before-fx weight/weight-create-before-fx}]
 
    ["/weight/:uuid"                   {:name ::weight-sidebar :view weight/weight-sidebar}]
-   ["/weight_selection/:uuid"         {:name ::weight-selection-sidebar :view weight/weight-selection-sidebar}]
+   ["/weight_selection/:uuid"         {:name      ::weight-selection-sidebar
+                                       :view      weight/weight-selection-sidebar
+                                       :before-fx weight/weight-selection-before-fx}]
    ["/weight/:uuid/delete"            {:name      ::weight-delete-sidebar
                                        :view      weight/weight-delete-sidebar
                                        :before-fx weight/weight-delete-before-fx}]

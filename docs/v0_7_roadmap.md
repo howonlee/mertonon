@@ -14,16 +14,20 @@
 - [x] Input and loss create sidebars
 - [x] Entry and layer and cobj view and create sidebars
 
-- [ ] Weight and weightset view and create sidebars
-- [ ] Grad action sidebar
-- [ ] Purge then kill the statecharts
-- [ ] Purge then kill the selectors
-- [ ] Consider the re-frame bit done
+- [x] Weight and weightset view sidebars
+- [x] Weight create sidebar
+- [x] Weightset create sidebar
+- [x] Action button
 
-- [ ] Model updates, genericized endpoints in BE
-- [ ] Model updates component
-- [ ] Model updates for grids
+- [x] Make check button for grad
+- [x] Grad action sidebar
+- [x] Purge then kill the selectors
+- [x] Purge then kill the statecharts
+- [x] Consider the re-frame bit done
+
 - [ ] Create and delete for password logins separately with selector lol
+- [ ] Model updates, genericized endpoints in BE
+- [ ] Update button
 - [ ] Weight mutation input - think harder about fitt's law
 
 - [ ] Changelog

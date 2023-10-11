@@ -25,7 +25,6 @@
       (into state-path)
       (into [:delete-state])))
 
-
 ;; ---
 ;; Events
 ;; ---

@@ -18,7 +18,7 @@
    :finished "Finished!"
 
    ;; Button labels
-   :submit   "Submit"
+   :submit   "Create"
    :finish   "Finish"
    })
 
@@ -34,11 +34,11 @@
   (fn [db [evt {:keys [state-path init-state-fn validations]}]]
     (let [path   (sidebar-path state-path)]
       (assoc-in db path
-                {:create-params    (init-state-fn)
-                 :create-state     :blank
-                 :error            nil
-                 :validation-error {}
-                 :validations      (or validations [])}))))
+                {:create-params     (init-state-fn)
+                 :create-state      :blank
+                 :error             nil
+                 :validation-errors {}
+                 :validations       (or validations [])}))))
 
 (reg-event-fx
   :mutate-create-state

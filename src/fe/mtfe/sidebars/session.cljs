@@ -1,12 +1,10 @@
 (ns mtfe.sidebars.session
   "Login and logout sidebar (session management)"
-  (:require [ajax.core :refer [GET POST]]
-            [mtfe.api :as api]
+  (:require [mtfe.api :as api]
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
             [mtfe.components.validation-blurbs :as vblurbs]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]

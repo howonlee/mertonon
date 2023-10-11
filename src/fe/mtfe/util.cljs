@@ -4,7 +4,6 @@
             [clojure.string :as str]
             [clojure.walk :as walk]
             [goog.string :as gstring]
-            [mtfe.statecharts.core :as mt-statechart]
             [reagent.core :as r]
             [reagent.dom :as rdom]
             [re-frame.core :refer [dispatch dispatch-sync]]
@@ -93,15 +92,6 @@
   [sidebar-path content]
   [:span.white.underline.hover-gray.pointer
    {:on-click #(dispatch [:nav-route "sidebar-change" sidebar-path])}
-   content])
-
-(defn stl
-  "Statechart state transition link
-
-  TODO: kill everywhere"
-  [sc-state event-key content & [data]]
-  [:a.white.underline.hover-gray.pointer
-   {:on-click #(mt-statechart/send-event-and-reset! sc-state event-key data)}
    content])
 
 (defn evl

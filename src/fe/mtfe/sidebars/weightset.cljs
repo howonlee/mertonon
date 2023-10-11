@@ -9,119 +9,11 @@
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
             [mtfe.components.validation-blurbs :as vblurbs]
-            [mtfe.selectors :as sel]
             [mtfe.stylecomps :as sc]
-            [mtfe.statecharts.components :as sc-components]
-            [mtfe.statecharts.core :as mt-statechart]
-            [mtfe.statecharts.handlers :as sc-handlers]
-            [mtfe.statecharts.sideeffects :as sc-se]
-            [mtfe.statecharts.validations :as sc-validation]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
             [reagent.core :as r]
-            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
-
-;; ---
-;; State
-;; ---
-
-(defn init-create-params []
-  {:uuid           (str (random-uuid))
-   :src-layer-uuid ""
-   :tgt-layer-uuid ""
-   :name           ""
-   :label          ""})
-
-(defonce sidebar-state (r/atom {:curr-create-params (init-create-params)
-                                :selection          {}}))
-
-;; ---
-;; Validations
-;; ---
-
-(defn acyclic-validation
-  "Procs if the new weightset we're making would make the graph cyclic"
-  [grid-graph]
-  (fn [curr-state]
-    (let [src-uuid (->> curr-state :curr-create-params :src-layer-uuid)
-          tgt-uuid (->> curr-state :curr-create-params :tgt-layer-uuid)]
-      ;; Can only proc if we define both things
-      (if (or (str/blank? src-uuid) (str/blank? tgt-uuid))
-        nil
-        (let [new-edge    [src-uuid tgt-uuid]
-              old-graph   (apply graph/digraph (:edges grid-graph))
-              new-graph   (graph/add-edges old-graph new-edge)
-              topsort-res (graph-alg/topsort new-graph)]
-          (if (nil? topsort-res)
-            :cyclic
-            nil))))))
-
-(defn weightset-coord-getter [curr-state]
-  (apply hash-set
-         (for [ws (->> curr-state :grid-graph-selection :weightsets)]
-           [(ws :src-layer-uuid) (ws :tgt-layer-uuid)])))
-
-(defn curr-coord-getter [curr-state]
-  [(->> curr-state :curr-create-params :src-layer-uuid)
-   (->> curr-state :curr-create-params :tgt-layer-uuid)])
-
-;; ---
-;; Statecharts
-;; ---
-
-(defonce create-sc-state
-   (r/atom nil))
-
-(def validation-list
-  [(sc-validation/non-blank [:curr-create-params :name] :name-blank)
-   (sc-validation/non-blank [:curr-create-params :src-layer-uuid] :src-layer-blank)
-   (sc-validation/non-blank [:curr-create-params :tgt-layer-uuid] :tgt-layer-blank)
-   (acyclic-validation (@sidebar-state :grid-graph-selection))
-   (sc-validation/min-num-elems [:grid-graph-selection :layers] 2 :few-layers)
-   (sc-validation/not-in-set weightset-coord-getter curr-coord-getter :duplicate-weightset)])
-
-(def create-sc
-  (mt-statechart/simple-create :weightset-create
-                               {:reset-fn      (sc-handlers/reset-handler sidebar-state [:curr-create-params] init-create-params)
-                                :mutation-fn   (sc-handlers/mutation-handler sidebar-state)
-                                :validation-fn (sc-handlers/validation-handler sidebar-state validation-list)
-                                :action-fn     (sc-handlers/creation-handler api/weightset create-sc-state mc/->Weightset [:uuid :src-layer-uuid :tgt-layer-uuid :name :label])
-                                :finalize-fn   (sc-handlers/refresh-handler create-sc-state)}))
-
-(mt-statechart/init-sc! :weightset-create create-sc-state create-sc)
-
-;; ---
-;; Creation
-;; ---
-
-(defn weightset-create-sidebar-render [m]
-  (let [grid-uuid     (->> m :path-params :uuid)
-        grid-contents (->> @sidebar-state :grid-graph-selection :layers)]
-      [:<>
-       [sc-components/validation-popover sidebar-state :cyclic
-        "We don't have support for cyclic weightsets at this time. We will put them in eventually."
-        [:h1 [sc/ws-icon] " Add Weightset"]]
-       [sc-components/validation-popover sidebar-state :few-layers
-        "You need at least two responsibility centers (layers) to make a weightset."
-        [:<>]]
-       [sc-components/validation-popover sidebar-state :duplicate-weightset "That weightset already exists."
-        [:<>]]
-       [:div.mb2 "UUID - " (->> @sidebar-state :curr-create-params :uuid str)]
-       [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
-       [sc/mgn-border-region
-        [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
-        [sc-components/validation-popover sidebar-state :src-layer-blank "Must choose source responsiblilty center"
-         [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :src-layer-uuid]]]]
-
-       [sc/mgn-border-region
-        [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
-        [sc-components/validation-popover sidebar-state :tgt-layer-blank "Must choose target responsiblilty center"
-         [sc-components/state-select-input create-sc-state sidebar-state grid-contents [:curr-create-params :tgt-layer-uuid]]]]
-
-       [sc-components/validation-popover sidebar-state :name-blank "Weightset Name is blank"
-        [sc-components/state-text-input create-sc-state "Weightset Name" [:curr-create-params :name]]]
-       [sc-components/state-text-input create-sc-state "Label" [:curr-create-params :label]]
-       [sc-components/create-button @create-sc-state create-sc-state sidebar-state]]))
+            [re-frame.core :refer [dispatch dispatch-sync subscribe reg-event-db]]))
 
 ;; ---
 ;; Partials
@@ -138,60 +30,147 @@
    ])
 
 (defn src-layer-partial [curr-ws-state]
-  (when (seq (->> curr-ws-state :selection :src-layer))
+  (when (seq (->> curr-ws-state :src-layer))
     [:<>
      [:h3 [sc/layer-icon] " Source responsibilty center"]
-     [util/path-fsl ["layer" (->> curr-ws-state :selection :src-layer :uuid)]
-      [sc/link (str (->> curr-ws-state :selection :src-layer :name))]]]))
+     [util/path-fsl ["layer" (->> curr-ws-state :src-layer :uuid)]
+      [sc/link (str (->> curr-ws-state :src-layer :name))]]]))
 
 (defn tgt-layer-partial [curr-ws-state]
-  (when (seq (->> curr-ws-state :selection :tgt-layer))
+  (when (seq (->> curr-ws-state :tgt-layer))
     [:<>
      [:h3 [sc/layer-icon] " Target responsibilty center"]
-     [util/path-fsl ["layer" (->> curr-ws-state :selection :tgt-layer :uuid)]
-      [sc/link (str (->> curr-ws-state :selection :tgt-layer :name))]]]))
+     [util/path-fsl ["layer" (->> curr-ws-state :tgt-layer :uuid)]
+      [sc/link (str (->> curr-ws-state :tgt-layer :name))]]]))
 
-(defn adjustment-checkbox-partial []
-  [:div.ba.pa2.b--white-20
-   [sc/checkbox {:type "checkbox"
-                 ;;;;;;
-                 ;;;;;;
-                 ;;;;;;
-                 ;;;;;;
-                 :on-click identity}]
-                             ;; reset! ws-view/ws-mode
-                             ;;        (if (= @ws-view/ws-mode :default)
-                             ;;          :grad
-                             ;;          :default))}]
-   [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
+;; ---
+;; Validations
+;; ---
+
+(defn acyclic-validation
+  "Procs if the new weightset we're making would make the graph cyclic"
+  [grid-graph-path]
+  (fn [curr-state]
+    (let [src-uuid (->> curr-state :create-params :src-layer-uuid)
+          tgt-uuid (->> curr-state :create-params :tgt-layer-uuid)]
+      ;; Can only proc if we define both things
+      (if (or (str/blank? src-uuid) (str/blank? tgt-uuid))
+        nil
+        (let [new-edge    [src-uuid tgt-uuid]
+              grid-graph  (get-in curr-state grid-graph-path)
+              old-graph   (apply graph/digraph (:edges grid-graph))
+              new-graph   (graph/add-edges old-graph new-edge)
+              topsort-res (graph-alg/topsort new-graph)]
+          (if (nil? topsort-res)
+            :cyclic
+            nil))))))
+
+(defn weightset-coord-getter [curr-state]
+  (apply hash-set
+         (for [ws (->> curr-state :grid-graph :weightsets)]
+           [(ws :src-layer-uuid) (ws :tgt-layer-uuid)])))
+
+(defn curr-coord-getter [curr-state]
+  [(->> curr-state :create-params :src-layer-uuid)
+   (->> curr-state :create-params :tgt-layer-uuid)])
+
+;; ---
+;; Creation
+;; ---
+
+(defn create-config [m]
+  {:resource      :curr-weightset
+   :endpoint      (api/weightset)
+   :state-path    [:weightset :create]
+   :init-state-fn (fn []
+                    {:uuid           (str (random-uuid))
+                     :src-layer-uuid ""
+                     :tgt-layer-uuid ""
+                     :name           ""
+                     :label          ""}
+                    )
+   :validations
+   [(validations/non-blank [:create-params :name] :name-blank)
+    (validations/non-blank [:create-params :src-layer-uuid] :src-layer-blank)
+    (validations/non-blank [:create-params :tgt-layer-uuid] :tgt-layer-blank)
+    (acyclic-validation [:grid-graph])
+    (validations/min-num-elems [:grid-graph :layers] 2 :few-layers)
+    (validations/not-in-set weightset-coord-getter curr-coord-getter :duplicate-weightset)]
+   :ctr           mc/->Weightset
+   :ctr-params    [:uuid :src-layer-uuid :tgt-layer-uuid :name :label]
+   :nav-to        :refresh})
+
+(defn weightset-create-before-fx [m]
+  (let [grid-uuid (->> m :path-params :uuid)]
+    [[:dispatch-n [[:reset-create-state (create-config m)]
+                   [:select-with-custom-success [:weightset :create :grid-graph]
+                    (api/grid-graph grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn weightset-create-sidebar [m]
-  (sel/set-state-if-changed! sidebar-state
-                             api/grid-graph
-                             (->> m :path-params :uuid str)
-                             [:grid-graph-selection :grids 0 :uuid]
-                             [:grid-graph-selection])
-  (mt-statechart/send-reset-event-if-finished! create-sc-state)
-  [weightset-create-sidebar-render m])
+  (let [grid-uuid     (->> m :path-params :uuid)
+        curr-config   (create-config m)
+        state-path    (curr-config :state-path)
+        grid-contents @(subscribe [:sidebar-state :weightset :create :grid-graph :layers])]
+    [:<>
+     [vblurbs/validation-popover state-path :cyclic
+      "We don't have support for cyclic weightsets at this time. We will put them in eventually."
+      [:h1 [sc/ws-icon] " Add Weightset"]]
+     [vblurbs/validation-popover state-path :few-layers
+      "You need at least two responsibility centers (layers) to make a weightset."
+      [:<>]]
+     [vblurbs/validation-popover state-path :duplicate-weightset "That weightset already exists."
+      [:<>]]
+     [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
+     [sc/mgn-border-region
+      [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
+      [vblurbs/validation-popover state-path :src-layer-blank "Must choose source responsiblilty center"
+       [fi/state-select-input state-path [:create-params :src-layer-uuid] grid-contents]]]
+
+     [sc/mgn-border-region
+      [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
+      [vblurbs/validation-popover state-path :tgt-layer-blank "Must choose target responsiblilty center"
+       [fi/state-select-input state-path [:create-params :tgt-layer-uuid] grid-contents]]]
+
+     [vblurbs/validation-popover state-path :name-blank "Weightset Name is blank"
+      [fi/state-text-input state-path [:create-params :name] "Weightset Name"]]
+     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [cr/create-button curr-config]]))
 
 ;; ---
 ;; Sidebar Views
 ;; ---
 
+(defn weightset-before-fx [m]
+  (let [uuid (->> m :path-params :uuid)]
+    [[:dispatch
+      [:selection :ws-sidebar (api/weightset-view uuid) {}]]]))
+
+(reg-event-db
+  ::toggle-weightset-adjustment
+  (fn [db _]
+    (if (= (get-in db [:sidebar-state :ws-adjustment]) :default)
+      (assoc-in db [:sidebar-state :ws-adjustment] :grad)
+      (assoc-in db [:sidebar-state :ws-adjustment] :default))))
+
+(defn adjustment-checkbox-partial []
+  [:div.ba.pa2.b--white-20
+   [sc/checkbox {:type     "checkbox"
+                 :on-click #(dispatch [::toggle-weightset-adjustment])}]
+   [:label.lh-copy {:for "ws-mode"} "Show weights with suggested Mertonon adjustments"]])
+
 (defn weightset-sidebar [m]
-  (let [;;;;;;;;;
-        ;;;;;;;;;
-        ;;;;;;;;;
-        ws-state-path {}
-        is-demo?      @(subscribe [:is-demo?])
-        ws-uuid       (->> m :path-params :uuid)]
+  (let [ws-state @(subscribe [:selection :ws-sidebar])
+        is-demo? @(subscribe [:is-demo?])
+        ws-uuid  (->> m :path-params :uuid)]
     [:<>
      [header-partial]
      [adjustment-checkbox-partial]
      (if (not is-demo?)
-       [util/sl (util/path ["weightset" ws-uuid "weight_create"]) [sc/button [sc/weight-icon] " Create Weight"]])
-     [src-layer-partial ws-state-path]
-     [tgt-layer-partial ws-state-path]]))
+       [util/sl
+        (util/path ["weightset" ws-uuid "weight_create"])
+        [sc/button [sc/weight-icon] " Create Weight"]])
+     [src-layer-partial ws-state]
+     [tgt-layer-partial ws-state]]))
 
 (defn weightset-selection-sidebar [m]
   (let [is-demo? @(subscribe [:is-demo?])
@@ -203,7 +182,9 @@
             ["weightset" ws-uuid]
             [sc/button "Dive In"]]]
      (if (not is-demo?)
-       [:div [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]]])]))
+       [:div [util/sl
+              (util/path ["weightset" ws-uuid "delete"])
+              [sc/button "Delete"]]])]))
 
 ;; ---
 ;; Deletion
