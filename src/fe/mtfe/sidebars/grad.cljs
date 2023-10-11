@@ -157,9 +157,8 @@
         curr-config        (action-config m)
         state-path         (curr-config :state-path)
         grid-contents      @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
-        ;;; proc via a check button?
         curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])]
-    [:<>]))
+    [util/evl ::manual-check]))
   ;; [:<>
   ;;  [:h1 "Gradient Determination Kickoff"]
   ;;  [:p "Currently, determination of gradients and deltas is done by Mertonon but kicked off manually by you, the user. When you press the button Mertonon will go and determine gradients and deltas for weights and cost objects, which comprise Mertonon's combination of local determinations into a global one."]

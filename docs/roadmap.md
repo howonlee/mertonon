@@ -4,9 +4,10 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Manumission essay
+- FE only generation
 - Model updates FE for all models
 - Update mertonon.com
-- FE only generation
 - FE testing with generation
 
 - Basic periodization of things so cronjob gets easier... think of period as a separate table
