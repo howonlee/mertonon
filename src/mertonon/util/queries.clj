@@ -48,6 +48,12 @@
          (cond (keyword? entry) (name entry)
                :else            entry))))
 
+(defn dotted-keyword
+  "Example usage:
+  (dotted-keyword :bleh :whleh) => :bleh.whleh"
+  [key1 key2]
+  (keyword (str (name key1) "." (name key2))))
+
 ;; Renormalized like EF Codd, not like KG Wilson
 (defn renormalize-joined-row
   [raw-table->table table->model joined-row]
@@ -185,33 +191,24 @@
 ;; ) as c(column_b, column_a, column_c) 
 ;; where c.column_b = t.column_b;
 
-(defn dotted-keyword
-  "Example usage:
-  (dotted-keyword :bleh :whleh) => :bleh.whleh"
-  [key1 key2]
-  (keyword (str (name key1) "." (name key2))))
-
 (defn update-many-set-clause [table columns]
   (let [no-uuid-columns (filter #(not= :uuid %) columns)]
     (into {} (for [curr-column no-uuid-columns]
                [curr-column (dotted-keyword :temp curr-column)]))))
 
-(defn update-many-from-clause [members]
-  (for [member members]
-    (let [member-attrs (-> member
-                           (dissoc :uuid)
-                           (assoc :updated-at (t/instant)))]
-      nil)))
-;;  [{:values [[:bleh :whleh] [:mleh :vleh]]} :temp])
+(defn update-many-from-clause [members member->row]
+  (let [rows (into [] (for [member members]
+                        (member->row member)))]
+    [{:values rows} :temp]))
 
 (defn update-many-where-clause [table]
   (let [table-uuid (dotted-keyword table :uuid)]
     [:= :temp.uuid table-uuid]))
 
-(defn update-many-q [table columns uuids members]
+(defn update-many-q [table columns uuids members member->row]
   {:update    [table :curr-table]
    :set       (update-many-set-clause table columns)
-   :from      (update-many-from-clause members)
+   :from      (update-many-from-clause members member->row)
    :where     (update-many-where-clause table)
    :returning :*})
 
@@ -222,13 +219,14 @@
                (gen/generate gen-net/generate-grid)]]
     (println (sql/format (update-many-q :mertonon.grid
                                [:uuid :version :created-at :updated-at :name :label :optimizer-type :hyperparams]
-                               (mapv :uuid grids) grids)
+                               (mapv :uuid grids) grids
+                               #'mertonon.models.grid/member->row)
                 {:pretty true}))))
 
-(defn update-many [{:keys [table columns uuids members row->member]}]
+(defn update-many [{:keys [table columns uuids members row->member member->row]}]
   (if (empty? uuids)
     members
-    (->> (update-many-q table columns uuids members) (db/query) (mapv row->member))))
+    (->> (update-many-q table columns uuids members member->row) (db/query) (mapv row->member))))
 
 ;; -----
 ;; Delete
