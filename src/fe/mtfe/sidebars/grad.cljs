@@ -129,8 +129,8 @@
      :endpoint      (api/grid-grad)
      :state-path    [:grad :action]
      :init-state-fn (fn []
-                      {:start-date (.toISOString (last-week))
-                       :end-date   (.toISOString (tomorrow))
+                      {:start-date (last-week)
+                       :end-date   (tomorrow)
                        :grid-uuid  grid-uuid})
      :validations   []
      :nav-to        :refresh}))
@@ -143,12 +143,17 @@
                    [:select-with-custom-success [:grad :action :grid-view]
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
+(defn stringify-dates [curr-action-params]
+  (-> curr-action-params
+      (update :start-date #(.toISOString %))
+      (update :end-date   #(.toISOString %))))
+
 (reg-event-fx
   ::manual-check
   (fn [{:keys [db]} [evt action-params]]
     {:dispatch-n [[:select-with-custom-success [:grad :action :grid-dump]
                                                (api/grid-dump (action-params :grid-uuid))
-                                               action-params
+                                               (stringify-dates action-params)
                                                :sidebar-selection-success]
                   [:validate-action-state [:grad :action]]]}))
 
@@ -176,18 +181,18 @@
       [vblurbs/validation-toast state-path :few-input-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to inputs to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
      [:p
       [vblurbs/validation-toast state-path :few-loss-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to goals to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
-     [util/evl ::manual-check
-      [sc/button "Check if gradient can be kicked off"]
-      curr-action-params]]))
    
-  ;;  [sc/mgn-border-region
-  ;;   [sc/form-label "Start Date"]
-  ;;   [sc-components/state-datepicker action-sc-state sidebar-state [:curr-action-params :start-date]]]
-  ;;  [sc/mgn-border-region
-  ;;   [sc/form-label "End Date"]
-  ;;   [sc-components/state-datepicker action-sc-state sidebar-state [:curr-action-params :end-date]]]
-  ;;  [sc/mgn-border-region
-  ;;   [sc-components/action-button @action-sc-state action-sc-state sidebar-state]]])
+     [sc/mgn-border-region
+      [sc/form-label "Start Date"]
+      [fi/state-datepicker state-path [:action-params :start-date] :mutate-action-state]]
+     [sc/mgn-border-region
+      [sc/form-label "End Date"]
+      [fi/state-datepicker state-path [:action-params :end-date] :mutate-action-state]]
+     [sc/mgn-border-region
+      [util/evl ::manual-check
+       [sc/button "Check if gradient can be kicked off"]
+       curr-action-params]
+      [act/action-button curr-config]]]))
 
 ;; ---
 ;; Top-level render
