@@ -19,11 +19,11 @@
 - [x] Weightset create sidebar
 - [x] Action button
 
-- [ ] Make check button for grad
-- [ ] Grad action sidebar
-- [ ] Purge then kill the selectors
-- [ ] Purge then kill the statecharts
-- [ ] Consider the re-frame bit done
+- [x] Make check button for grad
+- [x] Grad action sidebar
+- [x] Purge then kill the selectors
+- [x] Purge then kill the statecharts
+- [x] Consider the re-frame bit done
 
 - [ ] Create and delete for password logins separately with selector lol
 - [ ] Model updates, genericized endpoints in BE
