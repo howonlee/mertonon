@@ -1,10 +1,7 @@
 (ns mtfe.sidebars.grad
   "Sidebar for grad kickoff"
   (:require [mtfe.components.validation-blurbs :as vblurbs]
-    [applied-science.js-interop :as j]
-            [com.fulcrologic.statecharts :as fsc]
-            [com.fulcrologic.statecharts.protocols :as sp]
-            [com.fulcrologic.statecharts.simple :as simple]
+            [applied-science.js-interop :as j]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
             [mtfe.components.action-button :as act]

@@ -5,9 +5,7 @@
  :dependencies
  [[applied-science/js-interop "0.3.3"]  ;; Misc JS interop fns
   [aysylu/loom "1.0.2"]                 ;; Graphy libraries
-  [clj-statecharts "0.1.7"]             ;; Statecharts lib
   [cljs-ajax "0.8.4"]                   ;; HTTP client
-  [com.fulcrologic/statecharts "1.1.0"] ;; Statechart libs
   [day8.re-frame/http-fx "v0.2.0"]      ;; re-frame http fx
   [metosin/reitit "0.6.0"]              ;; Routing
   [metosin/reitit-frontend "0.6.0"]     ;; Routing bits for cljs
