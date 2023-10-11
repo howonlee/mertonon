@@ -26,7 +26,7 @@
 - [x] Consider the re-frame bit done
 
 - [x] Model update genericized endpoints in BE
-- [ ] Model update-many
+- [x] Model update-many
 - [ ] Test model update-many
 - [ ] Test api model update, update-many
 
