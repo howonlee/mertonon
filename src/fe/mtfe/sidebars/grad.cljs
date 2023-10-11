@@ -158,28 +158,28 @@
         state-path         (curr-config :state-path)
         grid-contents      @(subscribe [:sidebar-state :grad :action :grid-graph :layers])
         curr-action-params @(subscribe [:sidebar-state :grad :action :action-params])]
-    [util/evl ::manual-check
-     [sc/button "Check if gradient can be kicked off"]
-     curr-action-params]))
-  ;; [:<>
-  ;;  [:h1 "Gradient Determination Kickoff"]
-  ;;  [:p "Currently, determination of gradients and deltas is done by Mertonon but kicked off manually by you, the user. When you press the button Mertonon will go and determine gradients and deltas for weights and cost objects, which comprise Mertonon's combination of local determinations into a global one."]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :few-layers "Mertonon has to have at least 2 responsibility centers to determine a gradient flow."]]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :no-weightsets "Mertonon has to have a weightset to determine a gradient flow."]]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :no-inputs "Mertonon has to have an input annotation to determine a gradient flow."]]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :no-losses "Mertonon has to have a goal annotation to determine a gradient flow."]]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :few-cobjs "Mertonon has to have multiple cost objects in each responsibility center to determine a gradient flow."]]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :few-weights "Mertonon has to have some weights in each weightset to determine a gradient flow."]]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :few-input-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to inputs to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
-  ;;  [:p
-  ;;   [sc-components/validation-toast sidebar-state :few-loss-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to goals to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
+    [:<>
+     [:h1 "Gradient Determination Kickoff"]
+     [:p "Currently, determination of gradients and deltas is done by Mertonon but kicked off manually by you, the user. When you press the button Mertonon will go and determine gradients and deltas for weights and cost objects, which comprise Mertonon's combination of local determinations into a global one."]
+     [:p [vblurbs/validation-toast state-path :few-layers "Mertonon has to have at least 2 responsibility centers to determine a gradient flow."]]
+     [:p
+      [vblurbs/validation-toast state-path :no-weightsets "Mertonon has to have a weightset to determine a gradient flow."]]
+     [:p
+      [vblurbs/validation-toast state-path :no-inputs "Mertonon has to have an input annotation to determine a gradient flow."]]
+     [:p
+      [vblurbs/validation-toast state-path :no-losses "Mertonon has to have a goal annotation to determine a gradient flow."]]
+     [:p
+      [vblurbs/validation-toast state-path :few-cobjs "Mertonon has to have multiple cost objects in each responsibility center to determine a gradient flow."]]
+     [:p
+      [vblurbs/validation-toast state-path :few-weights "Mertonon has to have some weights in each weightset to determine a gradient flow."]]
+     [:p
+      [vblurbs/validation-toast state-path :few-input-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to inputs to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
+     [:p
+      [vblurbs/validation-toast state-path :few-loss-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to goals to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
+     [util/evl ::manual-check
+      [sc/button "Check if gradient can be kicked off"]
+      curr-action-params]]))
+   
   ;;  [sc/mgn-border-region
   ;;   [sc/form-label "Start Date"]
   ;;   [sc-components/state-datepicker action-sc-state sidebar-state [:curr-action-params :start-date]]]
