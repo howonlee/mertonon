@@ -190,7 +190,7 @@
 
 (defn update-many [{:keys [table columns uuids members row->member]}]
   (if (empty? uuids)
-    member
+    members
     (->> (update-many-q table columns uuids members) (db/query) (mapv row->member))))
 
 ;; -----
@@ -237,7 +237,7 @@
    :read-all          (fn [] (select-all query-info))
    :count             (fn [] (count-all query-info))
    :update-one!       (fn [uuid member] (update-one (assoc query-info :uuid uuid :member member)))
-   :update-many!      (fn [uuids members] (update-many (assoc query-info :uuids uuid :members members)))
+   :update-many!      (fn [uuids members] (update-many (assoc query-info :uuids uuids :members members)))
    :hard-delete-one!  (fn [uuid] (hard-delete-one (assoc query-info :uuid uuid)))
    :hard-delete-many! (fn [uuids] (hard-delete-many (assoc query-info :uuids uuids)))
    :row->member       row->member
