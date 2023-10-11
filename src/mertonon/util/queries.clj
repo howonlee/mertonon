@@ -186,7 +186,19 @@
 ;; where c.column_b = t.column_b;
 
 (defn update-many-q [table columns uuids members]
-  nil)
+  {:values row-list;; row-list [[:bleh :whleh] [:mleh :vleh]]})
+  ;; {:update table
+  ;;  :set    {:updated-at :c.updated-at}
+  ;;  })
+
+(comment
+  (require '[mertonon.generators.net :as gen-net])
+  (require '[clojure.test.check.generators :as gen])
+  (let [grids [(gen/generate gen-net/generate-grid)
+               (gen/generate gen-net/generate-grid)]]
+    (sql/format (update-many-q :mertonon.grid
+                               [:uuid :version :created-at :updated-at :name :label :optimizer-type :hyperparams]
+                               (mapv :uuid grids) grids))))
 
 (defn update-many [{:keys [table columns uuids members row->member]}]
   (if (empty? uuids)
