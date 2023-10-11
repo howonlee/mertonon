@@ -53,9 +53,14 @@
 ;; TODO: get it to be logspace!!!!
 (defn state-range-input
   ([state-path param-path]
-  (state-range-input state-path param-path 0 1000 5))
+  (state-range-input state-path param-path 0 200 1))
   ([state-path param-path _min _max step & [evt-key]]
    [sc/input {:type     "range"
+              ;;;; logarithmic values...
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
+              ;;;;;;;
               :on-input #(dispatch [(curr-evt-key evt-key) state-path param-path (evt->val %)])
               :value    @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))
               :min      _min

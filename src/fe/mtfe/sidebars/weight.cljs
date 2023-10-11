@@ -137,10 +137,7 @@
       [sc/form-label "(no units, normalized automatically)"]
       [vblurbs/validation-popover state-path :value-blank "Value is blank"
        [vblurbs/validation-popover state-path :value-not-int "Value is not a positive integer"
-        [fi/state-range-input state-path [:create-params :value]
-         10
-         1000
-         10]]]
+        [fi/state-range-input state-path [:create-params :value]]]]
       [sc/form-label (->> curr-params :value str)]]
      [cr/create-button curr-config]]))
 
