@@ -10,23 +10,22 @@
             [reagent.core :as r]))
 
 ;; ---
-;; Creation
+;; Creation (Done as action because idiosyncrasy of ctr)
 ;; ---
 
-;; most important validation: can't be another password login
+;; TODO: there can't be another password login for mt user
 ;; also enforce on backend side...
 
-;; (def create-config
-;;   {:resource    :curr-mt-user
-;;    :endpoint    (api/mt-user)
-;;    :state-path  [:mt-user :create]
-;;    :init-params (fn []
-;;                   {:uuid     (str (random-uuid))
-;;                    :username ""
-;;                    :email    ""})
-;;    :ctr         mc/->MtUser
-;;    :ctr-params  [:uuid :username :email]
-;;    :nav-to      "#/admin"})
+(def action-config
+  {:resource    :curr-password-login
+   :endpoint    (api/password-login)
+   :state-path  [:password-login :create]
+   :init-params (fn []
+                  {:uuid         (str (random-uuid))
+                   :mt-user-uuid ""
+                   :password     ""})
+   :validation  []
+   :nav-to      "#/admin"})
 ;; 
 ;; (defn mt-user-create-before-fx [m]
 ;;   (cr/before-fx create-config m))

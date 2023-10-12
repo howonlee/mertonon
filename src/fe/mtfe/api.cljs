@@ -68,6 +68,9 @@
 (defn mt-user [] (gstring/format "%s/api/v1/mt_user/" host))
 (defn mt-user-member [uuid] (gstring/format "%s/api/v1/mt_user/%s" host uuid))
 
+(defn password-login [] (gstring/format "%s/api/v1/password_login/" host))
+(defn password-login-member [uuid] (gstring/format "%s/api/v1/password_login/%s" host uuid))
+
 (defn curr-mt-user
   "The mt user that is currently authed"
   []

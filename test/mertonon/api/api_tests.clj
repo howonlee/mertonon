@@ -43,8 +43,7 @@
    :mertonon.weights         "/api/v1/weight/"
    :mertonon.losses          "/api/v1/loss/"
    :mertonon.inputs          "/api/v1/input/"
-   :mertonon.mt-users        "/api/v1/mt_user/"
-   :mertonon.password-logins "/api/v1/password_login/"})
+   :mertonon.mt-users        "/api/v1/mt_user/"})
 
 (defn encode-to-stream [inp]
   (io/input-stream (.getBytes (json/write-str inp))))
