@@ -30,10 +30,6 @@
 
 - [x] Weight mutation input - think harder about fitt's law
 - [x] Config for the easy util things - aim to include more stuff in them eventually
-- [ ] Password login validation - 1 per user
-- [ ] Create and delete for password logins separately
-- [ ] Test model update-many
-- [ ] Test api model update, update-many
-- [ ] Changelog
-- [ ] Clicking around a bit
-- [ ] Cut release
+- [x] Changelog
+- [x] Clicking around a bit
+- [x] Cut release

@@ -1,5 +1,8 @@
 (ns mertonon.util.validations
-  "Bunch of generic validations and validation templates")
+  "Bunch of generic validations and validation templates"
+  (:require [mertonon.util.queries :as q]
+            [mertonon.util.registry :as registry]
+            ))
 
 ;; ---
 ;; Doing the validations
@@ -30,6 +33,11 @@
 ;; Validations
 ;; ---
 
+(defn nil-validation
+  "Doesn't ever proc"
+  []
+  (fn [req] nil))
+
 (defn table-count-check
   [table-model pred-count curr-keyword]
   (fn [req] 
@@ -37,5 +45,18 @@
       nil
       curr-keyword)))
 
-(defn join-count-check [bleh]
-  nil)
+;; (defn join-count-check
+;;   [config]
+;;   (let [{fst-table-model :fst-table-model
+;;          snd-table-name  :snd-table-name
+;;          fkey-vec        :fkey-vec
+;;          on-clause       :on-clause}         config]
+;;     (fn [req]
+;;       (let [uuid     (->> req :params some crap)
+;;             join-res ((fst-table-model :read-where-joined)
+;;                       {:join-tables      [snd-table-name]
+;;                        :join-col-edges   [fkey-vec]
+;;                        :raw-table->table registry/raw-table->table
+;;                        :table->model     registry/table->model})
+;;             printo   (println join-res)]
+;;       nil))))

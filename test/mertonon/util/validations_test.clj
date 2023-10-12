@@ -1,4 +1,5 @@
 (ns mertonon.util.validations-test
+  "Tests for the act of validating and for the individual validations if we see the need."
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
@@ -12,8 +13,11 @@
             [mertonon.test-utils :as tu]
             [mertonon.util.config :as mt-config]
             [mertonon.util.io :as uio]
-            [mertonon.util.validations :as uval]
-            ))
+            [mertonon.util.validations :as uval]))
+
+;; ---
+;; Tests for the act of validating
+;; ---
 
 (defn simple-dummy-validation [random-keyword]
   (fn [req] random-keyword))

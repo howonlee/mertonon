@@ -1,7 +1,6 @@
 (ns mtfe.sidebars.grad
   "Sidebar for grad kickoff"
-  (:require [mtfe.components.validation-blurbs :as vblurbs]
-            [applied-science.js-interop :as j]
+  (:require [applied-science.js-interop :as j]
             [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
             [mtfe.components.action-button :as act]
@@ -105,7 +104,7 @@
      :nav-to        :refresh}))
 
 (defn grad-before-fx [m]
-  (let [grid-uuid          (->> m :path-params :uuid)]
+  (let [grid-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-action-state (action-config m)]
                    [:select-with-custom-success [:grad :action :grid-graph]
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]
