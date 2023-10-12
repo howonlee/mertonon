@@ -1,5 +1,6 @@
 (ns mertonon.util.validations
-  "Bunch of generic validations and validation templates")
+  "Bunch of generic validations and validation templates"
+  (:require [mertonon.util.queries :as q]))
 
 ;; ---
 ;; Doing the validations
@@ -37,5 +38,13 @@
       nil
       curr-keyword)))
 
-(defn join-count-check [bleh]
-  nil)
+(defn join-count-check
+  [first-table-model snd-table-name fkey-vec]
+  (fn [req]
+    (let [join-res ((first-table-model :read-where-joined)
+                    {:join-tables      [snd-table-name]
+                     :join-col-edges   [fkey-vec]
+                     :raw-table->table registry/raw-table->table
+                     :table->model     registry/table->model})
+          printo   (println join-res)]
+      nil)))

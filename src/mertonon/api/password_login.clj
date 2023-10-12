@@ -4,7 +4,12 @@
   Not for directly logging in, but for doing CRUD for password logins"
   (:require [mertonon.api.util :as api-util]
             [mertonon.models.password-login :as password-login-model]
-            [mertonon.util.uuid :as uutils]))
+            [mertonon.models.mt-user :as mt-user-model]
+            [mertonon.util.uuid :as uutils]
+            [mertonon.util.validations :as uvals]
+            ))
+
+(def validations [(uvals/join-count-check mt-user-model/model :password_login [some crap])])
 
 (defn single-login-endpoint []
   {:get    (api-util/get-model password-login-model/model)
