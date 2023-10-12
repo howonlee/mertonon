@@ -1,5 +1,5 @@
 (ns mertonon.util.validations-test
-  "Tests for the act of validating and for the individual validations"
+  "Tests for the act of validating and for the individual validations if we see the need."
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
@@ -63,12 +63,5 @@
   (let [nil-dummy (simple-dummy-validation nil)
         resp      (uval/validate {} [nil-dummy nil-dummy])]
     (is (= {} resp))))
-
-;; ---
-;; Tests for the doing of specific validations
-;; ---
-
-(defspec some crap
-  nil)
 
 (comment (run-tests))
