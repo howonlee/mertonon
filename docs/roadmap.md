@@ -34,6 +34,7 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - Make auditing EE properly
 - Sorting / Pagination BE
 - Sorting / Pagination FE
+- Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care
 - Weight painter and modal changing
 - Mass operations in FE
 - Bookmarks BE
