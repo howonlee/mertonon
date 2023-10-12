@@ -63,3 +63,4 @@ v0.7.commits - October 12 2023
 - Infinite pile of jankiness wrt redirect after creating, deleting stuff should be gone now
 - Put in separate button for the heavier validations for grad calculations
 - Weight value input now nonlinear (~ O(n^2))
+- BE work for updating
