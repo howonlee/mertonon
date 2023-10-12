@@ -1,6 +1,7 @@
 Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
+- Enforce single password login per user validation in BE also at create time (instead of just at login time), not just in FE
 - Remove postgres requirement for build
 - Automated upload to website
 - Automated download-from-website-and-try test

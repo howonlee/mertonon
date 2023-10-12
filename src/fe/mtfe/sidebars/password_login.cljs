@@ -13,6 +13,9 @@
 ;; Creation
 ;; ---
 
+;; most important validation: can't be another password login
+;; also enforce on backend side...
+
 ;; (def create-config
 ;;   {:resource    :curr-mt-user
 ;;    :endpoint    (api/mt-user)
