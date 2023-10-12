@@ -4,11 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Manumission essay
 - FE only generation
+- Bigger and markdownified label input
 - Model updates FE for all models
 - Update mertonon.com
 - FE testing with generation
+- Manumission essay
 
 - Basic periodization of things so cronjob gets easier... think of period as a separate table
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property.
@@ -34,7 +35,7 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - Make auditing EE properly
 - Sorting / Pagination BE
 - Sorting / Pagination FE
-- Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care
+- Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
 - Weight painter and modal changing
 - Mass operations in FE
 - Bookmarks BE
