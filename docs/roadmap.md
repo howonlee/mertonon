@@ -5,8 +5,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 Also look at small tasks roadmap
 
 - FE only generation
-- Bigger and markdownified label input
 - Model updates FE for all models
+- Bigger and markdownified label input - maybe with preview
 - Update mertonon.com
 - FE testing with generation
 - Manumission essay
