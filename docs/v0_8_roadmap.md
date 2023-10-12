@@ -5,8 +5,9 @@
 - [ ] Test BE model update-many
 - [ ] Test BE api model update, update-many
 
-- [ ] Generationtide - get the list of whole net, just once before test?
-- [ ] Generationtide - grid somehow
+- [ ] Think harder about how to get FE testing to get some ROI
+- [ ] Event gens
+- [ ] Event tests
 
 - [ ] Changelog
 - [ ] Click around a bit

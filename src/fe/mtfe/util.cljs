@@ -31,30 +31,14 @@
   (let [handler  (fn [e] (on-match (rf/match-by-path router (.. e -detail -path))))]
     (.addEventListener js/window event-id handler)))
 
-;; Best not to use this resolve stuff too much, but the monstrosity required to avoid circular dep was too much
-(defn refresh!
-  []
-  ((resolve 'mtfe.core/main-mount!)))
-
 ;; ---
 ;; Parsing and string stuff
 ;; ---
-
-(defn json-parse
-  "Ajax resp comes as text. Parse it and deal with the keys..."
-  [ajax-resp]
-  (->> (.parse js/JSON ajax-resp) js->clj walk/keywordize-keys))
 
 (defn params->str
   [params]
   (let [res (.toString (new (.-URLSearchParams js/window) (clj->js params)))]
     res))
-
-(defn differs-in [fst fst-in snd snd-in]
-  (not= (get-in fst fst-in) (get-in snd snd-in)))
-
-(defn iso-date-params [params]
-  (into {} (map (fn [[k v]] (if (= js/Date (type v)) [k (.toISOString v)] [k v])) params)))
 
 ;; ---
 ;; Dealing with paths
@@ -79,8 +63,6 @@
 ;; ---
 ;; Different links in different routers
 ;; ---
-
-;; TODO: do this with re-frame dispatches
 
 (defn fl
   "Fragment-only link"
