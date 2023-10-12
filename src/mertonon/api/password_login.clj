@@ -3,6 +3,7 @@
 
   Not for directly logging in, but for doing CRUD for password logins"
   (:require [mertonon.api.util :as api-util]
+            [mertonon.models.constructors :as mtc]
             [mertonon.models.password-login :as password-login-model]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.util.uuid :as uutils]
