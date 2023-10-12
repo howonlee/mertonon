@@ -30,7 +30,6 @@
 
 - [x] Weight mutation input - think harder about fitt's law
 - [x] Config for the easy util things - aim to include more stuff in them eventually
-- [ ] Create and delete FE for password logins separately, maybe w/ FE validation
-- [ ] Changelog
-- [ ] Clicking around a bit
-- [ ] Cut release
+- [x] Changelog
+- [x] Clicking around a bit
+- [x] Cut release
