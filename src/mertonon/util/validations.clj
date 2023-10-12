@@ -36,3 +36,6 @@
     (if (= ((table-model :count)) pred-count)
       nil
       curr-keyword)))
+
+(defn join-count-check [bleh]
+  nil)
