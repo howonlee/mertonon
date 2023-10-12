@@ -46,8 +46,8 @@
       nil)))
 
 ;; Unfortunately, clojurescript inherits javascript's numeric type madness
-(defn is-integer
-  "Procs if that path in curr-state is _not_ an integer"
+(defn is-integer-string
+  "Procs if that path in curr-state contains a string which is semantically not an integer"
   [path curr-keyword]
   (fn [curr-state]
     (let [curr-member (get-in curr-state path)]
@@ -64,8 +64,6 @@
   "So you're connecting two things - gotta have two elems to do so..."
   [path min-num-elems curr-keyword]
   (fn [curr-state]
-    (println "curr-state")
-    (println curr-state)
     (if (<= min-num-elems (count (get-in curr-state path)))
       nil
       curr-keyword)))

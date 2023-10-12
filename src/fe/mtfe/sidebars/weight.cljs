@@ -82,7 +82,6 @@
      [(validations/non-blank [:create-params :src-cobj-uuid] :src-cobj-blank)
       (validations/non-blank [:create-params :tgt-cobj-uuid] :tgt-cobj-blank)
       (validations/non-blank [:create-params :value] :value-blank)
-      (validations/is-integer [:create-params :value] :value-not-int)
       (validations/or-predicate
         (validations/min-num-elems [:ws-selection :src-cobjs] 1 :few-src)
         (validations/min-num-elems [:ws-selection :tgt-cobjs] 1 :few-tgt)
@@ -105,7 +104,7 @@
         curr-config (create-config m)
         state-path  (curr-config :state-path)
         alloc-cue   @(subscribe [:sidebar-state :alloc-cue])
-        curr-params @(subscribe [:sidebar-state :create-params])
+        curr-params @(subscribe [:sidebar-state :weight :create :create-params])
         src-cobjs   @(subscribe [:sidebar-state :weight :create :ws-selection :src-cobjs])
         tgt-cobjs   @(subscribe [:sidebar-state :weight :create :ws-selection :tgt-cobjs])]
     [:<>
@@ -136,11 +135,7 @@
       [sc/form-label "Weight Value"]
       [sc/form-label "(no units, normalized automatically)"]
       [vblurbs/validation-popover state-path :value-blank "Value is blank"
-       [vblurbs/validation-popover state-path :value-not-int "Value is not a positive integer"
-        [fi/state-range-input state-path [:create-params :value]
-         10
-         1000
-         10]]]
+       [fi/state-power-range-input state-path [:create-params :value]]]
       [sc/form-label (->> curr-params :value str)]]
      [cr/create-button curr-config]]))
 

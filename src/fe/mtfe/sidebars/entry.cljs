@@ -30,7 +30,7 @@
                      :date       (js/Date.)})
    :validations   [(validations/non-blank [:create-params :name] :name-blank)
                    (validations/non-blank [:create-params :value] :value-blank)
-                   (validations/is-integer [:create-params :value] :value-not-int)]
+                   (validations/is-integer-string [:create-params :value] :value-not-int-str)]
    :ctr           mc/->Entry
    :ctr-params    [:uuid :cobj-uuid :name :label :type :value :date]
    :nav-to        :refresh})
@@ -50,7 +50,7 @@
      [vblurbs/validation-popover state-path :name-blank "Journal Entry Name is blank"
       [fi/state-text-input state-path [:create-params :name] "Journal Entry Name"]]
      [fi/state-text-input state-path [:create-params :label] "Label"]
-     [vblurbs/validation-popover state-path :value-not-int "Value is not an integer"
+     [vblurbs/validation-popover state-path :value-not-int-str "Value is not an integer"
       [vblurbs/validation-popover state-path :value-blank "Value is blank"
        [fi/state-text-input state-path [:create-params :value] "Value"]]]
      [sc/border-region

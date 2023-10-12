@@ -25,11 +25,15 @@
 - [x] Purge then kill the statecharts
 - [x] Consider the re-frame bit done
 
-- [ ] Create and delete for password logins separately with selector lol
-- [ ] Model updates, genericized endpoints in BE
-- [ ] Update button
-- [ ] Weight mutation input - think harder about fitt's law
+- [x] Model update genericized endpoints in BE
+- [x] Model update-many
 
+- [x] Weight mutation input - think harder about fitt's law
+- [x] Config for the easy util things - aim to include more stuff in them eventually
+- [ ] Password login validation - 1 per user
+- [ ] Create and delete for password logins separately
+- [ ] Test model update-many
+- [ ] Test api model update, update-many
 - [ ] Changelog
 - [ ] Clicking around a bit
 - [ ] Cut release
