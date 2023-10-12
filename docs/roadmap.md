@@ -4,13 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- FE only generation
+- FE only generation, then testing. Unfortunate that it took this much
+
 - Model updates FE for all models
 - Bigger and markdownified label input - maybe with preview
 - Update mertonon.com
-- FE testing with generation
 - Manumission essay
-
 - Basic periodization of things so cronjob gets easier... think of period as a separate table
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property.
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization

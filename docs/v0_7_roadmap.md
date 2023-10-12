@@ -31,8 +31,7 @@
 - [x] Weight mutation input - think harder about fitt's law
 - [x] Config for the easy util things - aim to include more stuff in them eventually
 - [ ] Password login BE validation - 1 per user
-- [ ] Password login FE validation
-- [ ] Create and delete for password logins separately
+- [ ] Create and delete FE for password logins separately, w/ FE validation
 - [ ] Test model update-many
 - [ ] Test api model update, update-many
 - [ ] Changelog
