@@ -17,7 +17,7 @@ Also look at small tasks roadmap
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
 - Full grad view (exec summary view)
-- Email integration (as first integration
+- Email integration (as first integration)
 - Crontab for adjustments, emails
 - Bigger and markdownified label input - maybe with preview
 

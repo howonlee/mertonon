@@ -14,10 +14,12 @@
 - [ ] Event property tests
 
 - [ ] Pure view gens
-- [ ] View exercise tests
+- [ ] Think harder of view properties - no exercise
+- [ ] View test
 
 - [ ] Mutation state gens
-- [ ] Mutation state exercise tests
+- [ ] Think harder of mutation properties - no exercise
+- [ ] Mutation test
 
 - [ ] Changelog
 - [ ] Click around a bit
