@@ -19,27 +19,35 @@
 ;; TODO: there can't be another password login for mt user
 ;; also enforce on backend side...
 
-(def action-config
-  {:resource    :curr-password-login
-   :endpoint    (api/password-login)
-   :state-path  [:password-login :create]
-   :init-params (fn []
-                  {:uuid         (str (random-uuid))
-                   :mt-user-uuid ""
-                   :password     ""})
-   :validation  []
-   :nav-to      "#/admin"})
-;; 
-;; (defn mt-user-create-before-fx [m]
-;;   (cr/before-fx create-config m))
-;; 
-;; (defn mt-user-create-sidebar [m]
-;;   [:<>
-;;    [:h1 "New Mertonon user"]
-;;    [:p "Assign a password separately."]
-;;    [fi/state-text-input (create-config :state-path) [:create-params :username] "User username"]
-;;    [fi/state-text-input (create-config :state-path) [:create-params :email] "User email"]
-;;    [cr/create-button create-config]])
+(defn action-config [m]
+  (let [mt-user-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-password-login
+     :endpoint    (api/password-login)
+     :state-path  [:password-login :action]
+     :init-params (fn []
+                    {:uuid         (str (random-uuid))
+                     :mt-user-uuid mt-user-uuid
+                     :password     ""})
+     :validation  []
+     :nav-to      "#/admin"}))
+
+(defn password-login-create-before-fx [m]
+  (let [mt-user-uuid (->> m :path-params :uuid)]
+    [[:dispatch-n [[:reset-action-state (action-config m)]
+                   [:select-with-custom-success [:password-login :action :mt-user]
+                    (api/mt-user-member mt-user-uuid) {} :sidebar-selection-success]]]]))
+
+(defn password-login-create-sidebar [m]
+  (let [mt-user-uuid (->> m :path-params :uuid)
+        curr-config  (action-config m)
+        state-path   (curr-config :state-path)
+        user-name    @(subscribe [:sidebar-state :password-login :action :mt-user :username])]
+    [:h1 "New Mertonon password login"]
+    [:p "There will eventually be many login methods, which is why you have to create them separately"]
+    [:p "For user: " [:strong user-name]]
+    [fi/state-password-input (curr-config :state-path) [:action-params :password] "Password"]
+    [fi/state-password-input (curr-config :state-path) [:password-dup] "Password again"]
+    [act/action-button curr-config]))
 
 ;; ---
 ;; No reading - no password reading lol
