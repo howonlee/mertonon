@@ -1,3 +1,4 @@
+- [ ] Filter list endpoint thing
 - [ ] Test password api endpoint
 - [ ] Finish login session tests
 - [ ] Test BE model update-many
