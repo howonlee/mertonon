@@ -9,9 +9,9 @@
             [mertonon.util.validations :as uvals]
             ))
 
-(def validations [(uvals/join-count-check mt-user-model/model
-                                          :mertonon.password_login
-                                          [:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid])])
+(def validations [(uvals/join-count-check {:fst-table-model mt-user-model/model
+                                           :snd-table-name :mertonon.password-login
+                                           :fkey-vec        [:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]})])
 
 (defn single-login-endpoint []
   {:get    (api-util/get-model password-login-model/model {:validations validations})
