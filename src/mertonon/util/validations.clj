@@ -1,6 +1,8 @@
 (ns mertonon.util.validations
   "Bunch of generic validations and validation templates"
-  (:require [mertonon.util.queries :as q]))
+  (:require [mertonon.util.queries :as q]
+            [mertonon.util.registry :as registry]
+            ))
 
 ;; ---
 ;; Doing the validations
