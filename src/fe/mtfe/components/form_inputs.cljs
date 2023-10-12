@@ -56,16 +56,24 @@
   (state-range-input state-path param-path 0 200 1))
   ([state-path param-path _min _max step & [evt-key]]
    [sc/input {:type     "range"
-              ;;;; logarithmic values...
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
-              ;;;;;;;
               :on-input #(dispatch [(curr-evt-key evt-key) state-path param-path (evt->val %)])
               :value    @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))
               :min      _min
               :max      _max
               :step     step}]))
+
+(defn state-power-range-input
+  ([state-path param-path]
+   (state-power-range-input state-path param-path 1 100 1))
+  ([state-path param-path _min _max step & [evt-key]]
+   (let [exp-curr-val (fn [inp-state]
+                        (. js/Math pow (evt->val inp-state) 2))]
+   [sc/input {:type     "range"
+              :on-input #(dispatch [(curr-evt-key evt-key) state-path param-path (exp-curr-val %)])
+              :value    (. js/Math sqrt @(subscribe (-> [:sidebar-state] (into state-path) (into param-path))))
+              :min      _min
+              :max      _max
+              :step     step}])))
 
 (defn state-datepicker [state-path param-path & [evt-key]]
   [date-picker {:popper-placement "left"

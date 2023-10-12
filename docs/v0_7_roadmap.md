@@ -27,11 +27,11 @@
 
 - [x] Model update genericized endpoints in BE
 - [x] Model update-many
+
+- [x] Weight mutation input - think harder about fitt's law
+- [ ] Create and delete for password logins separately
 - [ ] Test model update-many
 - [ ] Test api model update, update-many
-
-- [ ] Weight mutation input - think harder about fitt's law
-- [ ] Create and delete for password logins separately
 - [ ] Changelog
 - [ ] Clicking around a bit
 - [ ] Cut release
