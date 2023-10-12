@@ -13,7 +13,7 @@
             [re-frame.core :refer [subscribe]]))
 
 ;; ---
-;; Creation (Done as action because idiosyncrasy of ctr)
+;; Creation (Done as action because idiosyncrasy of constructor)
 ;; ---
 
 ;; TODO: there can't be another password login for mt user
