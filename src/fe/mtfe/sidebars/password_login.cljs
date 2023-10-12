@@ -2,12 +2,15 @@
   "Mertonon password login sidebar"
   (:require [mertonon.models.constructors :as mc]
             [mtfe.api :as api]
-            [mtfe.components.create-button :as cr]
+            [mtfe.components.action-button :as act]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
-            [reagent.core :as r]))
+            [mtfe.validations :as validations]
+            [reagent.core :as r]
+            [re-frame.core :refer [subscribe]]))
 
 ;; ---
 ;; Creation (Done as action because idiosyncrasy of ctr)
@@ -46,16 +49,16 @@
 ;; Deletion
 ;; ---
 
-;; (defn delete-config [m]
-;;   (let [uuid (->> m :path-params :uuid)]
-;;     {:resource   :curr-mt-user
-;;      :endpoint   (api/mt-user-member uuid)
-;;      :state-path [:mt-user :delete]
-;;      :model-name "Mertonon User"
-;;      :nav-to     "#/admin"}))
-;; 
-;; (defn mt-user-delete-before-fx [m]
-;;   (del/before-fx (delete-config m) m))
-;; 
-;; (defn mt-user-delete-sidebar [m]
-;;   [del/delete-model-sidebar (delete-config m) m])
+(defn delete-config [m]
+  (let [uuid (->> m :path-params :uuid)]
+    {:resource   :curr-password-login
+     :endpoint   (api/password-login-member uuid)
+     :state-path [:password-login :delete]
+     :model-name "Mertonon Password Login (for Mertonon user)"
+     :nav-to     "#/admin"}))
+
+(defn password-login-delete-before-fx [m]
+  (del/before-fx (delete-config m) m))
+
+(defn password-login-delete-sidebar [m]
+  [del/delete-model-sidebar (delete-config m) m])
