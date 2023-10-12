@@ -5,7 +5,7 @@
 - [ ] Test BE model update-many
 - [ ] Test BE api model update, update-many
 
-- [ ] Think harder about how to get FE testing to get some ROI
+- [ ] Think harder about how to get FE testing to get some ROI - the gens shouldn't deal with BE at all...
 - [ ] Event gens
 - [ ] Event tests
 

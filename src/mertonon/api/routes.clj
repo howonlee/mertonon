@@ -2,7 +2,6 @@
   (:require [mertonon.api.allocation-cue :as api-allocation-cue]
             [mertonon.api.cost-object :as api-cost-object]
             [mertonon.api.entry :as api-entry]
-            [mertonon.api.fe-test-generators :as fe-test-generators]
             [mertonon.api.generators :as api-generators]
             [mertonon.api.grid :as api-grid]
             [mertonon.api.health-check :as health-check]
@@ -21,7 +20,6 @@
   [(into ["/allocation_cue"] (api-allocation-cue/routes))
    (into ["/cost_object"] (api-cost-object/routes))
    (into ["/entry"] (api-entry/routes))
-   (into ["/fe_generators"] (fe-test-generators/fe-generator-routes))
    (into ["/generators"] (api-generators/generator-routes))
    (into ["/grid"] (api-grid/routes))
    (into ["/health_check"] (health-check/health-check-routes))
