@@ -1,5 +1,5 @@
-(ns mertonon.api.password-login-tests
-  "Creating, reading password login tests"
+(ns mertonon.api.select-where-api-tests
+  "Select where API tests"
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
