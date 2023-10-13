@@ -124,8 +124,8 @@
 ;; Generic joined endpoints
 ;; ---
 
-(defn- construct-where-clause [uuids table]
-  nil)
+(defn- construct-where-clause [fkey uuids]
+  [:in fkey uuids])
 
 (defn get-joined-models [curr-model & [config]]
   (fn [match]
@@ -136,7 +136,7 @@
            join-col-edges :join-col-edges} config
           check!                           (if (seq validations)
                                              (uvals/throw-if-invalid! match validations))
-          where-clause                     nil ;; (construct the where clause here)
+          where-clause                     (construct-where-table fkey uuids)
           res                              ((curr-model :read-where-joined)
                                             where-clause
                                             join-tables
