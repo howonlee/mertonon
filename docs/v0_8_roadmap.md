@@ -2,6 +2,8 @@
 
 - [x] Filter list endpoint thing for utils
 - [ ] Select where joined endpoints - for the mt user dump
+- [ ] Selech where joined tests
+
 - [ ] Password login FE linkup and manual testing
 - [ ] Call password authn done (not authz)
 
