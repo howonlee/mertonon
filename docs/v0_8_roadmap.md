@@ -2,9 +2,9 @@
 
 - [x] Filter list endpoint thing for utils
 - [x] Select where joined endpoints - for the mt user dump
+- [x] Joined mt user endpoint
 - [ ] Select where joined endpoint generation
 - [ ] Select where joined tests
-- [ ] Joined mt user endpoint
 - [ ] Munge mt user FE to be joined with password logins
 
 - [ ] Manually test create/delete FE for password logins

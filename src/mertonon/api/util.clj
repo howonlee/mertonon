@@ -141,7 +141,7 @@
           fkey                             (get-in join-col-edges [0 1])
           where-clause                     (construct-where-clause fkey uuid-list)
           res                              ((curr-model :read-where-joined)
-                                            {:where-clause    where-clause
+                                            {:where-clause     where-clause
                                              :join-tables      join-tables
                                              :join-col-edges   join-col-edges
                                              :raw-table->table registry/raw-table->table
@@ -151,5 +151,23 @@
                                              {} res)]
       {:status 200 :body res})))
 
-(defn get-joined-model [bleh]
-  nil)
+(defn get-joined-model [curr-model & [config]]
+  (fn [match]
+    (let [uuid                             (path-uuid match)
+          {validations    :validations
+           key-banlist    :key-banlist
+           join-tables    :join-tables
+           join-col-edges :join-col-edges} config
+          check!                           (if (seq validations)
+                                             (uvals/throw-if-invalid! match validations))
+          fkey                             (get-in join-col-edges [0 1])
+          res                              ((curr-model :read-where-joined)
+                                            {:where-clause     [:= fkey uuid]
+                                             :join-tables      join-tables
+                                             :join-col-edges   join-col-edges
+                                             :raw-table->table registry/raw-table->table
+                                             :table->model     registry/table->model})
+          res                              (reduce-kv
+                                             (fn [m k v] (assoc m k (maybe-filter-results key-banlist v)))
+                                             {} res)]
+      {:status 200 :body res})))
