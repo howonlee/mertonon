@@ -1,7 +1,7 @@
 - [x] Think harder about how to get FE testing to get some ROI - the gens shouldn't deal with BE at all...
 
 - [x] Filter list endpoint thing for utils
-- [ ] Select where joined endpoints - for the mt user dump
+- [x] Select where joined endpoints - for the mt user dump
 - [ ] Select where joined endpoint generation
 - [ ] Select where joined tests
 - [ ] Joined mt user endpoint
