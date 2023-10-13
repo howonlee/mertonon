@@ -3,13 +3,12 @@
 - [x] Banlist endpoint thing for utils
 - [x] Select where joined endpoints - for the mt user dump
 - [x] Joined mt user endpoint
-
 - [ ] Select where joined endpoint generation
+- [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Munge mt user FE to be joined with password logins
 - [ ] Manually test create/delete FE for password logins
 - [ ] Call password authn done for now (not authz)
 
-- [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Whack that one failing test
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
