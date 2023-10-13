@@ -2,6 +2,7 @@
   "API utilities"
   (:require [clojure.walk :as walk]
             [mertonon.util.io :as uio]
+            [mertonon.util.registry :as registry]
             [mertonon.util.uuid :as uutils]
             [mertonon.util.validations :as uvals]
             [taoensso.timbre :as timbre :refer [log]]
@@ -41,7 +42,7 @@
 ;; ---
 ;; Some of these are pretty much as good in middlewares, I just don't put them there
 
-(defn maybe-filter-results [key-banlist res]
+(defn- maybe-filter-results [key-banlist res]
   (let [curr-filter #(apply dissoc % key-banlist)]
     (if (seq key-banlist)
       (if (vector? res)
@@ -68,7 +69,7 @@
 
 (defn get-models [curr-model & [config]]
   (fn [match]
-    (let [uuid-list (body-uuids match)
+    (let [uuid-list                  (body-uuids match)
           {validations :validations
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
@@ -81,7 +82,7 @@
 
 (defn get-model [curr-model & [config]]
   (fn [match]
-    (let [curr-uuid (path-uuid match)
+    (let [curr-uuid                  (path-uuid match)
           {validations :validations
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
@@ -105,7 +106,7 @@
 
 (defn delete-model [curr-model & [config]]
   (fn [match]
-    (let [curr-uuid (path-uuid match)
+    (let [curr-uuid                  (path-uuid match)
           {validations :validations} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))]
@@ -113,7 +114,7 @@
 
 (defn delete-models [curr-model & [config]]
   (fn [match]
-    (let [curr-uuids (body-uuids match)
+    (let [curr-uuids                 (body-uuids match)
           {validations :validations} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))]
@@ -123,8 +124,27 @@
 ;; Generic joined endpoints
 ;; ---
 
-(defn get-joined-models
+(defn- construct-where-clause [uuids table]
   nil)
 
-(defn get-joined-model
+(defn get-joined-models [curr-model & [config]]
+  (fn [match]
+    (let [uuid-list                        (body-uuids match)
+          {validations    :validations
+           key-banlist    :key-banlist
+           join-table     :join-tables
+           join-col-edges :join-col-edges} config
+          check!                           (if (seq validations)
+                                             (uvals/throw-if-invalid! match validations))
+          where-clause                     nil ;; (construct the where clause here)
+          res                              ((curr-model :read-where-joined)
+                                            where-clause
+                                            join-tables
+                                            join-col-edges
+                                            registry/raw-table->table
+                                            registry/table->model)
+          res                              (maybe-filter-results key-banlist res)]
+      {:status 200 :body res})))
+
+(defn get-joined-model [bleh]
   nil)
