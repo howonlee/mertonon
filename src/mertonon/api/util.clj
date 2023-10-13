@@ -37,6 +37,13 @@
        (mapv uutils/uuid)))
 
 ;; ---
+;; Result munging
+;; ---
+
+(defn filter-results [res key-banlist]
+  (apply dissoc res key-banlist))
+
+;; ---
 ;; Generic endpoints
 ;; ---
 
