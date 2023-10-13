@@ -50,19 +50,24 @@
 (defn create-model [curr-model & [config]]
   (fn [match]
     (let [model-or-models            (body-params match)
-          {validations :validations} config
+          {validations :validations
+           key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
           ;; TODO: sanitize or do something so I can log stuff willy-nilly
           res             (if (map? model-or-models)
                             ((curr-model :create-one!) model-or-models)
-                            ((curr-model :create-many!) model-or-models))]
+                            ((curr-model :create-many!) model-or-models))
+          res             (if (seq key-banlist)
+                            (filter-results res key-banlist)
+                            res)]
       {:status 200 :body res})))
 
 (defn get-models [curr-model & [config]]
   (fn [match]
     (let [uuid-list (body-uuids match)
-          {validations :validations} config
+          {validations :validations
+           key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
           res       (if (empty? uuid-list)
@@ -73,7 +78,8 @@
 (defn get-model [curr-model & [config]]
   (fn [match]
     (let [curr-uuid (path-uuid match)
-          {validations :validations} config
+          {validations :validations
+           key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))]
       {:status 200 :body ((curr-model :read-one) curr-uuid)})))
@@ -81,7 +87,8 @@
 (defn update-model [curr-model & [config]]
   (fn [match]
     (let [model-or-models (body-params match)
-          {validations :validations} config
+          {validations :validations
+           key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
           res             (if (map? model-or-models)
