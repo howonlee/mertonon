@@ -141,12 +141,14 @@
           fkey                             (get-in join-col-edges [0 1])
           where-clause                     (construct-where-clause fkey uuid-list)
           res                              ((curr-model :read-where-joined)
-                                            where-clause
-                                            join-tables
-                                            join-col-edges
-                                            registry/raw-table->table
-                                            registry/table->model)
-          res                              (maybe-filter-results key-banlist res)]
+                                            {:where-clause    where-clause
+                                             :join-tables      join-tables
+                                             :join-col-edges   join-col-edges
+                                             :raw-table->table registry/raw-table->table
+                                             :table->model     registry/table->model})
+          res                              (reduce-kv
+                                             (fn [m k v] (assoc m k (maybe-filter-results key-banlist v)))
+                                             {} res)]
       {:status 200 :body res})))
 
 (defn get-joined-model [bleh]

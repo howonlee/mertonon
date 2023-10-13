@@ -19,10 +19,7 @@
   {:get  (api-util/get-joined-models
            mt-user-model/model
            {:join-tables    [:mertonon.password_login]
-            :join-col-edges [[:mertonon.password_login
-                              :mertonon.password_login.mt_user_uuid
-                              :mertonon.mt_users
-                              :mertonon.mt_user.uuid]]})
+            :join-col-edges   [[:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]]})
    :name ::mt-user-password-login})
 
 (defn curr-user [m]
