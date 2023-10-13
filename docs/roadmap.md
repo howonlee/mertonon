@@ -6,7 +6,7 @@ Also look at small tasks roadmap
 
 - Model updates FE for all models
 - Update mertonon.com, figure out something better for inbound email thing
-- Manumission essay, PBT essay
+- Gantt essay, PBT essay
 - Cut postprealpha, sponsor newsletters
 
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property.

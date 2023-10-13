@@ -2,6 +2,10 @@
   "Complex but parameterized Mertonon API endpoints"
   (:require [clojure.string :as str]
             [clojure.test.check.generators :as gen]
+            [mertonon.generators.queries :as queries-gen]
             [tick.core :as t]))
 
-;;;; join
+(def join-endpoint-gen
+  (gen/let [join-q queries-gen/generate-single-joined-query]
+    (let [some crap]
+      (get the endpoint done))))

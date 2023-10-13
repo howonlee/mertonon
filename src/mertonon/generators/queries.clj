@@ -15,10 +15,10 @@
 
 (def generate-single-joined-query
   (gen/let [[child-table child-table-col parent-table parent-table-col] generate-fkeys]
-    {:table          child-table
-     :join-tables    [parent-table]
-     :join-col-edges [[child-table-col parent-table-col]]
-     :where-clause   [:= 1 1]
+    {:table            child-table
+     :join-tables      [parent-table]
+     :join-col-edges   [[child-table-col parent-table-col]]
+     :where-clause     [:= 1 1]
      :raw-table->table registry/raw-table->table
      :table->model     registry/table->model}))
 

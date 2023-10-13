@@ -5,19 +5,16 @@
 - [x] Joined mt user endpoint
 
 - [ ] Select where joined endpoint generation
-- [ ] Select where joined tests
 - [ ] Munge mt user FE to be joined with password logins
 - [ ] Manually test create/delete FE for password logins
 - [ ] Call password authn done for now (not authz)
 
+- [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Whack that one failing test
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
 - [ ] Test BE model update-many
 - [ ] Test BE api model update, update-many
-
-- [ ] Update button thinking
-- [ ] Make one instance of update button (grid)
 
 - [ ] Event gens
 - [ ] Event property tests
@@ -29,6 +26,9 @@
 - [ ] Mutation state gens
 - [ ] Think harder of mutation properties - no exercise
 - [ ] Mutation test
+
+- [ ] Update button thinking
+- [ ] Make one instance of update button (grid)
 
 - [ ] Changelog
 - [ ] Click around a bit
