@@ -50,7 +50,7 @@
       res)))
 
 ;; ---
-;; Generic endpoints
+;; Generic simple endpoints
 ;; ---
 
 (defn create-model [curr-model & [config]]
@@ -118,3 +118,13 @@
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))]
       {:status 200 :body ((curr-model :hard-delete-many!) curr-uuids)})))
+
+;; ---
+;; Generic joined endpoints
+;; ---
+
+(defn get-joined-models
+  nil)
+
+(defn get-joined-model
+  nil)

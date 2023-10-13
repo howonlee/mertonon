@@ -6,9 +6,9 @@
 - [ ] Select where joined tests
 - [ ] Joined mt user endpoint
 - [ ] Munge mt user FE to be joined with password logins
-- [ ] Call password authn done for now (not authz)
 
-- [ ] Test create/delete for password logins
+- [ ] Manually test create/delete FE for password logins
+- [ ] Call password authn done for now (not authz)
 - [ ] Whack that one failing test
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
