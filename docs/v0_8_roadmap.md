@@ -1,6 +1,6 @@
 - [x] Think harder about how to get FE testing to get some ROI - the gens shouldn't deal with BE at all...
 
-- [ ] Filter list endpoint thing for utils
+- [x] Filter list endpoint thing for utils
 - [ ] Password login FE linkup and manual testing
 - [ ] Call password authn done (not authz)
 
