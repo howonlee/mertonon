@@ -1,5 +1,5 @@
-(ns mertonon.api.select-where-api-tests
-  "Select where API tests"
+(ns mertonon.api.joined-api-tests
+  "Joined API tests"
   (:require [clojure.data :as cd]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
@@ -14,3 +14,5 @@
             [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
+
+nil
