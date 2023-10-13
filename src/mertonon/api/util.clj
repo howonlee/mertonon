@@ -138,6 +138,7 @@
            join-col-edges :join-col-edges} config
           check!                           (if (seq validations)
                                              (uvals/throw-if-invalid! match validations))
+          fkey                             (get-in join-col-edges [0 1])
           where-clause                     (construct-where-table fkey uuids)
           res                              ((curr-model :read-where-joined)
                                             where-clause
