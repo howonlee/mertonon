@@ -15,6 +15,13 @@
    :delete (api-util/delete-models mt-user-model/model)
    :name   ::mt-users})
 
+(defn password-login-join-endpoint []
+  {:get  (api-util/get-joined-models
+           mt-user-model/model
+           {:join-tables    [:mertonon.password_login]
+            :join-col-edges [[nil]]})
+   :name ::mt-user-password-login})
+
 (defn curr-user [m]
   {:status 200 :body (-> m :session :value)})
 
@@ -25,4 +32,5 @@
 (defn routes []
   [["/" (mass-user-endpoint)]
    ["/:uuid" (single-user-endpoint)]
+   ["/:uuid/password_login" (password-login-join-endpoint)]
    ["/_/me" (curr-user-endpoint)]])
