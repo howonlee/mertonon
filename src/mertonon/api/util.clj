@@ -40,8 +40,13 @@
 ;; Result munging
 ;; ---
 
-(defn filter-results [res key-banlist]
-  (apply dissoc res key-banlist))
+(defn maybe-filter-results [key-banlist res]
+  (let [curr-filter #(apply dissoc % key-banlist)]
+    (if (seq key-banlist)
+      (if (vector? res)
+        (mapv curr-filter res)
+        (curr-filter res))
+      res)))
 
 ;; ---
 ;; Generic endpoints
@@ -54,13 +59,10 @@
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
-          ;; TODO: sanitize or do something so I can log stuff willy-nilly
-          res             (if (map? model-or-models)
-                            ((curr-model :create-one!) model-or-models)
-                            ((curr-model :create-many!) model-or-models))
-          res             (if (seq key-banlist)
-                            (filter-results res key-banlist)
-                            res)]
+          res                        (if (map? model-or-models)
+                                       ((curr-model :create-one!) model-or-models)
+                                       ((curr-model :create-many!) model-or-models))
+          res                        (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))
 
 (defn get-models [curr-model & [config]]
@@ -70,9 +72,10 @@
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
-          res       (if (empty? uuid-list)
-                      ((curr-model :read-all))
-                      ((curr-model :read-many) uuid-list))]
+          res                        (if (empty? uuid-list)
+                                       ((curr-model :read-all))
+                                       ((curr-model :read-many) uuid-list))
+          res                        (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))
 
 (defn get-model [curr-model & [config]]
@@ -81,19 +84,22 @@
           {validations :validations
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
-                                       (uvals/throw-if-invalid! match validations))]
-      {:status 200 :body ((curr-model :read-one) curr-uuid)})))
+                                       (uvals/throw-if-invalid! match validations))
+          res                        ((curr-model :read-one) curr-uuid)
+          res                        (maybe-filter-results key-banlist res)]
+      {:status 200 :body res})))
 
 (defn update-model [curr-model & [config]]
   (fn [match]
-    (let [model-or-models (body-params match)
+    (let [model-or-models            (body-params match)
           {validations :validations
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
-          res             (if (map? model-or-models)
-                            ((curr-model :update-one!) (:uuid model-or-models) model-or-models)
-                            ((curr-model :update-many!) (mapv :uuid model-or-models) model-or-models))]
+          res                        (if (map? model-or-models)
+                                       ((curr-model :update-one!) (:uuid model-or-models) model-or-models)
+                                       ((curr-model :update-many!) (mapv :uuid model-or-models) model-or-models))
+          res                        (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))
 
 (defn delete-model [curr-model & [config]]

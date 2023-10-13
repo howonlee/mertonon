@@ -45,7 +45,3 @@
 
 (def model
   (q/default-model query-info))
-
-(comment
-  (require '[crypto.password.scrypt :as scrypt])
-  (scrypt/encrypt "bleh"))
