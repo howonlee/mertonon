@@ -125,7 +125,9 @@
 ;; ---
 
 (defn- construct-where-clause [fkey uuids]
-  [:in fkey uuids])
+  (if (seq uuids)
+    [:in fkey uuids]
+    [:= 1 1]))
 
 (defn get-joined-models [curr-model & [config]]
   (fn [match]
