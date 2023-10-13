@@ -2,19 +2,21 @@
 
 - [x] Filter list endpoint thing for utils
 - [ ] Select where joined endpoints - for the mt user dump
+- [ ] Select where joined endpoint generation
 - [ ] Select where joined tests
 - [ ] Joined mt user endpoint
-- [ ] Mung mt user FE to be joined with password logins
-- [ ] Test create/delete for password logins
+- [ ] Munge mt user FE to be joined with password logins
 - [ ] Call password authn done for now (not authz)
 
+- [ ] Test create/delete for password logins
+- [ ] Whack that one failing test
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
 - [ ] Test BE model update-many
 - [ ] Test BE api model update, update-many
 
 - [ ] Update button thinking
-- [ ] Make one instance of update button
+- [ ] Make one instance of update button (grid)
 
 - [ ] Event gens
 - [ ] Event property tests

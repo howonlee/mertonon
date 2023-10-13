@@ -15,4 +15,6 @@
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
 
+;; make up a random endpoint
+
 nil
