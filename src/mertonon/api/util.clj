@@ -39,6 +39,7 @@
 ;; ---
 ;; Result munging
 ;; ---
+;; Some of these are pretty much as good in middlewares, I just don't put them there
 
 (defn maybe-filter-results [key-banlist res]
   (let [curr-filter #(apply dissoc % key-banlist)]
