@@ -19,7 +19,10 @@
   {:get  (api-util/get-joined-models
            mt-user-model/model
            {:join-tables    [:mertonon.password_login]
-            :join-col-edges [[nil]]})
+            :join-col-edges [[:mertonon.password_login
+                              :mertonon.password_login.mt_user_uuid
+                              :mertonon.mt_users
+                              :mertonon.mt_user.uuid]]})
    :name ::mt-user-password-login})
 
 (defn curr-user [m]
@@ -32,5 +35,5 @@
 (defn routes []
   [["/" (mass-user-endpoint)]
    ["/:uuid" (single-user-endpoint)]
-   ["/:uuid/password_login" (password-login-join-endpoint)]
+   ["/_/password_login" (password-login-join-endpoint)]
    ["/_/me" (curr-user-endpoint)]])
