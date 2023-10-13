@@ -2,10 +2,11 @@
 
 - [x] Filter list endpoint thing for utils
 - [ ] Select where joined endpoints - for the mt user dump
-- [ ] Selech where joined tests
-
-- [ ] Password login FE linkup and manual testing
-- [ ] Call password authn done (not authz)
+- [ ] Select where joined tests
+- [ ] Joined mt user endpoint
+- [ ] Mung mt user FE to be joined with password logins
+- [ ] Test create/delete for password logins
+- [ ] Call password authn done for now (not authz)
 
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
