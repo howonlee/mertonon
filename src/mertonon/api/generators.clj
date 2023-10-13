@@ -1,7 +1,5 @@
 (ns mertonon.api.generators
-  "API for demo generated data. Generated once per program run.
-  Do not use for FE testing, there's a `mertonon.api.fe-test-generators`
-  for that which will give you multiple generates"
+  "API for demo generated data. Generated once per program run."
   (:require [clojure.core.matrix :as cm]
             [clojure.test.check.generators :as gen]
             [loom.graph :as graph]

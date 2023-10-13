@@ -3,6 +3,7 @@ Small tasks roadmap ("I could colorably do this in one day only")
 
 - Enforce single password login per user validation in BE also at create time (instead of just at login time), not just in FE
 - Remove postgres requirement for build
+- Registry accuracy enforcement with tests
 - Automated upload to website
 - Automated download-from-website-and-try test
 - GH build CI
@@ -28,7 +29,6 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Whack the fiddliness of the transpositions by making uneven cobj cardinalities in generate
 - Check for sign errors harder
 - Attack flaky consonances
-- Registry accuracy enforcement with tests
 - Joined complex inserts for default cobj, weight, etc to avoid blank page problems
 - Less half-assed logo
 - Privacy policy

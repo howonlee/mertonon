@@ -4,6 +4,8 @@
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.util.uuid :as uutils]))
 
+(def banlist [:password-state :password-digest :recovery-token-hash])
+
 (defn single-user-endpoint []
   {:get    (api-util/get-model mt-user-model/model)
    :delete (api-util/delete-model mt-user-model/model)
@@ -15,6 +17,22 @@
    :delete (api-util/delete-models mt-user-model/model)
    :name   ::mt-users})
 
+(defn password-login-join-endpoint []
+  {:get  (api-util/get-joined-model
+           mt-user-model/model
+           {:join-tables    [:mertonon.password_login]
+            :join-col-edges [[:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]]
+            :key-banlist    banlist})
+   :name ::mt-user-password-login})
+
+(defn password-login-mass-join-endpoint []
+  {:get  (api-util/get-joined-models
+           mt-user-model/model
+           {:join-tables    [:mertonon.password_login]
+            :join-col-edges [[:mertonon.mt_user.uuid :mertonon.password_login.mt_user_uuid]]
+            :key-banlist    banlist})
+   :name ::mt-user-mass-password-login})
+
 (defn curr-user [m]
   {:status 200 :body (-> m :session :value)})
 
@@ -25,4 +43,6 @@
 (defn routes []
   [["/" (mass-user-endpoint)]
    ["/:uuid" (single-user-endpoint)]
+   ["/:uuid/curr_password_login" (password-login-join-endpoint)]
+   ["/_/password_login" (password-login-mass-join-endpoint)]
    ["/_/me" (curr-user-endpoint)]])

@@ -12,13 +12,16 @@
 ;; TODO: put in the password api validation
 (def validations [(uvals/nil-validation)])
 
+(def banlist [:password-state :password-digest :recovery-token-hash])
+
 (defn single-login-endpoint []
-  {:get    (api-util/get-model password-login-model/model)
+  {:get    (api-util/get-model password-login-model/model {:key-banlist banlist})
    :delete (api-util/delete-model password-login-model/model)
    :name   ::password-login})
 
 (defn- password-create
-  "Other create endpoints return created thing. Can't do that here lol"
+  "Other create endpoints return created thing.
+  Can't do that here. Also need to hash the password in BE"
   [m]
   (let [body                         (api-util/body-params m)
         {uuid         :uuid
@@ -29,7 +32,7 @@
     {:status 200 :body {:message :success}}))
 
 (defn mass-login-endpoint []
-  {:get    (api-util/get-models password-login-model/model)
+  {:get    (api-util/get-models password-login-model/model {:key-banlist banlist})
    :post   password-create
    :delete (api-util/delete-models password-login-model/model)
    :name   ::password-logins})
