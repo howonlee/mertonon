@@ -1,11 +1,25 @@
-- [ ] Create and delete FE for password logins separately, maybe w/ FE validation
-- [ ] Filter list endpoint thing
-- [ ] Test password api endpoint
-- [ ] Finish login session tests
+- [x] Think harder about how to get FE testing to get some ROI - the gens shouldn't deal with BE at all...
+
+- [ ] Filter list endpoint thing for utils - test it on its own I guess?
+- [ ] Password login FE linkup and manual testing
+- [ ] Password login create BE api test
+- [ ] Actually write out session login BE test
+
 - [ ] Test BE model update-many
 - [ ] Test BE api model update, update-many
+- [ ] Update button thinking
+- [ ] Make one instance of update button
 
-- [ ] Generationtide begins
+- [ ] Event gens
+- [ ] Event property tests
+
+- [ ] Pure view gens
+- [ ] Think harder of view properties - no exercise
+- [ ] View test
+
+- [ ] Mutation state gens
+- [ ] Think harder of mutation properties - no exercise
+- [ ] Mutation test
 
 - [ ] Changelog
 - [ ] Click around a bit
