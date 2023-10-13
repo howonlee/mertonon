@@ -15,10 +15,6 @@
    :delete (api-util/delete-models mt-user-model/model)
    :name   ::mt-users})
 
-(defn user-password-login-endpoint []
-  {:get  user-password-login
-   :name ::mt-user-password-login})
-
 (defn curr-user [m]
   {:status 200 :body (-> m :session :value)})
 
@@ -29,5 +25,4 @@
 (defn routes []
   [["/" (mass-user-endpoint)]
    ["/:uuid" (single-user-endpoint)]
-   ["/:uuid/password_login" (user-password-login-endpoint)]
    ["/_/me" (curr-user-endpoint)]])
