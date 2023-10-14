@@ -5,6 +5,7 @@
             [next.jdbc :as jdbc]
             [mertonon.server.handler :as handlers]
             [mertonon.util.db :as db]
+            [mertonon.util.queries :as q]
             [mertonon.util.registry :as reg]))
 
 ;; ---
@@ -115,13 +116,14 @@
   [{:keys [gen-net model-instances update-many! setup]}]
   (let [setup-res   (setup gen-net)
         ;; Depends rather a lot on immutability of clojure-land stuff
-        fst-members [(first model-instances) (second model-instances)]
-        snd-members [(second model-instances) (first model-instances)]
+        fst-members (q/compact [(first model-instances) (second model-instances)])
+        snd-members (q/compact [(second model-instances) (first model-instances)])
         fst-update  (update-many! (mapv :uuid fst-members) snd-members)
         snd-update  (update-many! (mapv :uuid fst-members) fst-members)]
     ;; Dissoc updated-at values because they're not quite exactly the same instant
     (and
-      (= (mapv #(dissoc % :updated-at) fst-members) (mapv #(dissoc % :updated-at) snd-update))
+      (= (mapv #(dissoc % :updated-at) fst-members)
+         (mapv #(dissoc % :updated-at) snd-update))
       (not= (mapv :updated-at fst-members) (mapv :updated-at snd-update)))))
 
 
