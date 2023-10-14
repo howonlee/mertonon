@@ -7,5 +7,4 @@
 
 (def join-endpoint-gen
   (gen/let [join-q queries-gen/generate-single-joined-query]
-    (let [some crap]
-      (get the endpoint done))))
+    nil))

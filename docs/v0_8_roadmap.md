@@ -3,6 +3,7 @@
 - [x] Banlist endpoint thing for utils
 - [x] Select where joined endpoints - for the mt user dump
 - [x] Joined mt user endpoint
+
 - [ ] Select where joined endpoint generation
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Munge mt user FE to be joined with password logins
@@ -16,13 +17,12 @@
 - [ ] Test BE api model update, update-many
 
 - [ ] Event gens
-- [ ] Event property tests
-
 - [ ] Pure view gens
+- [ ] Mutation state gens
+
+- [ ] Event property tests
 - [ ] Think harder of view properties - no exercise
 - [ ] View test
-
-- [ ] Mutation state gens
 - [ ] Think harder of mutation properties - no exercise
 - [ ] Mutation test
 
