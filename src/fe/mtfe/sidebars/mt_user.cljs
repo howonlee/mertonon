@@ -14,16 +14,16 @@
 ;; ---
 
 (def create-config
-  {:resource    :curr-mt-user
-   :endpoint    (api/mt-user)
-   :state-path  [:mt-user :create]
-   :init-params (fn []
-                  {:uuid     (str (random-uuid))
-                   :username ""
-                   :email    ""})
-   :ctr         mc/->MtUser
-   :ctr-params  [:uuid :username :email]
-   :nav-to      "#/admin"})
+  {:resource      :curr-mt-user
+   :endpoint      (api/mt-user)
+   :state-path    [:mt-user :create]
+   :init-state-fn (fn []
+                    {:uuid     (str (random-uuid))
+                     :username ""
+                     :email    ""})
+   :ctr           mc/->MtUser
+   :ctr-params    [:uuid :username :email]
+   :nav-to        "#/admin"})
 
 (defn mt-user-create-before-fx [m]
   (cr/before-fx create-config m))
