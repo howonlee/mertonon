@@ -92,4 +92,4 @@
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
 
-(comment (run-tests))
+(comment (update-many-then-update-back))

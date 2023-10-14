@@ -114,8 +114,9 @@
 (defn update-many-then-update-back
   [{:keys [gen-net model-instances update-many! setup]}]
   (let [setup-res   (setup gen-net)
+        ;; Depends rather a lot on immutability of clojure-land stuff
         fst-members [(first model-instances) (second model-instances)]
-        snd-members [(second model-instances) (nth model-instances 2)]
+        snd-members [(second model-instances) (first model-instances)]
         fst-update  (update-many! (mapv :uuid fst-members) snd-members)
         snd-update  (update-many! (mapv :uuid fst-members) fst-members)]
     ;; Dissoc updated-at values because they're not quite exactly the same instant
