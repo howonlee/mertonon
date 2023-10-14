@@ -201,19 +201,22 @@
     (into {} (for [curr-column no-uuid-columns]
                [curr-column (dotted-keyword :temp curr-column)]))))
 
-(defn update-many-from-clause [columns members member->row]
+(defn update-many-from-clause [columns members]
   (let [rows (vec (for [member members]
-                    (rowify columns (member->row member))))]
+                    (let [update-member (-> member
+                                            (assoc :updated-at (t/instant))
+                                            stringify-vals-for-update)]
+                      (rowify columns update-member))))]
     [[{:values rows} [(into [:temp] columns)]]]))
 
 (defn update-many-where-clause [[table]]
   (let [table-uuid (dotted-keyword table :uuid)]
     [:= :temp.uuid table-uuid]))
 
-(defn update-many-q [table columns uuids members member->row]
+(defn update-many-q [table columns uuids members]
   {:update    table
    :set       (update-many-set-clause table columns)
-   :from      (update-many-from-clause columns members member->row)
+   :from      (update-many-from-clause columns members)
    :where     (update-many-where-clause table)
    :returning :*})
 
@@ -224,20 +227,20 @@
                (->> (gen/generate gen-net/generate-grid) :grids first)]]
     (sql/format (update-many-q [:mertonon.grid]
                                [:uuid :version :created-at :updated-at :name :label :optimizer-type :hyperparams]
-                               (mapv :uuid grids) grids
-                               #'mertonon.models.grid/member->row))))
+                               (mapv :uuid grids) grids))))
 
 (defn update-many
   "You can have nil uuids, you can have nil members, but they better match in where the nils are"
-  [{:keys [table columns uuids members member->row row->member]}]
+  [{:keys [table columns uuids members row->member]}]
   (if (empty? uuids)
     members
     (->> (update-many-q
            table
            columns
            (compact uuids)
-           (compact members)
-           member->row) (db/query) (mapv row->member))))
+           (compact members))
+         (db/query)
+         (mapv row->member))))
 
 ;; -----
 ;; Delete
