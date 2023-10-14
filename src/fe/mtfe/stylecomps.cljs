@@ -78,3 +78,4 @@
 (def select-option :option.b--black-20)
 
 (def validation-toast :span.light-blue)
+(def scary-font :span.red)

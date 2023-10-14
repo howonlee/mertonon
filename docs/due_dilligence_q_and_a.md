@@ -6,7 +6,7 @@ TBD. We will have an answer for you when we start charging. We don't want to dis
 
 ## How often can the pricing change and by how much?
 
-For enterprise customers, pricing and will only change whenever contract renegotiations occur on renewals. For low-touch professional customers, pricing can change at any time but with 30 day's notice.
+For enterprise customers, pricing will only change whenever contract renegotiations occur on renewals. For low-touch professional customers, pricing can change at any time but with 30 day's notice.
 
 ## What is the length of the standard contract? What terms exist around cancellation? Are there severance charges or any long-term costs?
 
@@ -90,7 +90,7 @@ When we get some employees we will use a SaaS solution for this.
 
 As is usual for software, we use many software libraries which are licensed variously to us via open source licenses. These licenses are licensed to us invariably with limitations of liability and disclaimers of warranty, as we ourselves limit our liability and disclaim our warranty for the community section of our software. Therefore, when there is an issue with these, we will either solve the issue on our side, change the library out, or ask the OSS maintainers if they would be willing to work on the issue, depending upon severity and urgency of issue and our understanding of the libraries.
 
-We do not use SaaS sub-vendors for delivering the service to you at this time, with the exception of git hosting and font-awesome files served from the unpkg CDN. This will change when we actually do cloud hosting. At that time we will determine the processes of issues with sub-vendors.
+We do not use SaaS sub-vendors for delivering the service to you at this time, with the exception of git hosting. This will change when we actually do cloud hosting. At that time we will determine the processes of issues with sub-vendors.
 
 ## What happens if you go out of business?
 

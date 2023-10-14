@@ -8,7 +8,7 @@
             [tick.core :as t]))
 
 ;; -----
-;; Proprocessing and coercions
+;; Proprocessing and coercions and other munging
 ;; -----
 
 (defn snakify
@@ -39,8 +39,8 @@
                   clojure.lang.Keyword            (name v)
                   clojure.lang.PersistentVector   (json/write-str v)
                   clojure.lang.PersistentArrayMap (json/write-str v)
+                  java.time.Instant               [:cast v :timestamptz]
                   v)})))
-
 
 (defn rowify [columns member]
   (vec (for [column columns
@@ -53,6 +53,11 @@
   (dotted-keyword :bleh :whleh) => :bleh.whleh"
   [key1 key2]
   (keyword (str (name key1) "." (name key2))))
+
+(defn compact
+  "Filter out nil members"
+  [coll]
+  (vec (keep identity coll)))
 
 ;; Renormalized like EF Codd, not like KG Wilson
 (defn renormalize-joined-row
@@ -196,19 +201,22 @@
     (into {} (for [curr-column no-uuid-columns]
                [curr-column (dotted-keyword :temp curr-column)]))))
 
-(defn update-many-from-clause [columns members member->row]
+(defn update-many-from-clause [columns members]
   (let [rows (vec (for [member members]
-                    (rowify columns (member->row member))))]
-    [{:values rows} :temp]))
+                    (let [update-member (-> member
+                                            (assoc :updated-at (t/instant))
+                                            stringify-vals-for-update)]
+                      (rowify columns update-member))))]
+    [[{:values rows} [(into [:temp] columns)]]]))
 
-(defn update-many-where-clause [table]
+(defn update-many-where-clause [[table]]
   (let [table-uuid (dotted-keyword table :uuid)]
     [:= :temp.uuid table-uuid]))
 
-(defn update-many-q [table columns uuids members member->row]
-  {:update    [table :curr-table]
+(defn update-many-q [table columns uuids members]
+  {:update    table
    :set       (update-many-set-clause table columns)
-   :from      (update-many-from-clause columns members member->row)
+   :from      (update-many-from-clause columns members)
    :where     (update-many-where-clause table)
    :returning :*})
 
@@ -217,16 +225,22 @@
   (require '[clojure.test.check.generators :as gen])
   (let [grids [(->> (gen/generate gen-net/generate-grid) :grids first)
                (->> (gen/generate gen-net/generate-grid) :grids first)]]
-    (sql/format (update-many-q :mertonon.grid
+    (sql/format (update-many-q [:mertonon.grid]
                                [:uuid :version :created-at :updated-at :name :label :optimizer-type :hyperparams]
-                               (mapv :uuid grids) grids
-                               #'mertonon.models.grid/member->row)
-                {:pretty true})))
+                               (mapv :uuid grids) grids))))
 
-(defn update-many [{:keys [table columns uuids members member->row row->member]}]
+(defn update-many
+  "You can have nil uuids, you can have nil members, but they better match in where the nils are"
+  [{:keys [table columns uuids members row->member]}]
   (if (empty? uuids)
     members
-    (->> (update-many-q table columns uuids members member->row) (db/query) (mapv row->member))))
+    (->> (update-many-q
+           table
+           columns
+           (compact uuids)
+           (compact members))
+         (db/query)
+         (mapv row->member))))
 
 ;; -----
 ;; Delete

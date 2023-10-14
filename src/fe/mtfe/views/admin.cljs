@@ -13,7 +13,7 @@
 (defn login-view [curr-mt-user curr-password-login]
   (let [state   (if (seq curr-password-login) :password :none)
         message ({:password "Password"
-                  :none     "None"} state)
+                  :none     [sc/scary-font "None"]} state)
         link    ({:password
                   [:span.ma2 (util/sl (util/path ["password_login" (get curr-password-login :uuid nil) "delete"]) [sc/trash-icon])]
                   :none
@@ -40,7 +40,7 @@
            [sc/table-head "Created Date"]
            [sc/table-head "Updated Date"]
            [sc/table-head "Authentication Type"]
-           [sc/table-head ""]]]
+           [sc/table-head "Utils"]]]
          [:tbody
           (for [mt-user mt-users] ^{:key (:uuid mt-user)}
             (let [curr-password-login (first (grouped-logins (mt-user :uuid)))]

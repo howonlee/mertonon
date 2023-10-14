@@ -19,6 +19,20 @@
 ;; TODO: there can't be another password login for mt user
 ;; also enforce on backend side...
 
+(def password-login-labels
+  {
+   ;; State labels
+   :initial  "Enter new password for user"
+   :filled   "Press Create Password button to create the password."
+   :acting   "Creating password..."
+   :success  "Successfully created password for user."
+   :failure  "Failed to create password for user. See error."
+   :finished "Finished!"
+
+   ;; Button labels
+   :submit   "Create Password"
+   :finish   "Finish"})
+
 (defn action-config [m]
   (let [mt-user-uuid (->> m :path-params :uuid)]
     {:resource      :curr-password-login
@@ -52,7 +66,7 @@
      [fi/state-password-input (curr-config :state-path) [:action-params :password] "Password" :mutate-action-state]
      [vblurbs/validation-popover state-path :password-not-match "Passwords do not match"
       [fi/state-password-input (curr-config :state-path) [:password-repeat] "Password again" :mutate-action-state]]
-     [act/action-button curr-config]]))
+     [act/action-button curr-config password-login-labels]]))
 
 ;; ---
 ;; No reading - no password reading lol

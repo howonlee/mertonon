@@ -57,6 +57,5 @@
 ;;                       {:join-tables      [snd-table-name]
 ;;                        :join-col-edges   [fkey-vec]
 ;;                        :raw-table->table registry/raw-table->table
-;;                        :table->model     registry/table->model})
-;;             printo   (println join-res)]
+;;                        :table->model     registry/table->model})]
 ;;       nil))))

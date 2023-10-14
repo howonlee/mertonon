@@ -111,6 +111,20 @@
       (= (dissoc fst-member :updated-at) (dissoc snd-update :updated-at))
       (not= (fst-member :updated-at) (snd-update :updated-at)))))
 
+(defn update-many-then-update-back
+  [{:keys [gen-net model-instances update-many! setup]}]
+  (let [setup-res   (setup gen-net)
+        ;; Depends rather a lot on immutability of clojure-land stuff
+        fst-members [(first model-instances) (second model-instances)]
+        snd-members [(second model-instances) (first model-instances)]
+        fst-update  (update-many! (mapv :uuid fst-members) snd-members)
+        snd-update  (update-many! (mapv :uuid fst-members) fst-members)]
+    ;; Dissoc updated-at values because they're not quite exactly the same instant
+    (and
+      (= (mapv #(dissoc % :updated-at) fst-members) (mapv #(dissoc % :updated-at) snd-update))
+      (not= (mapv :updated-at fst-members) (mapv :updated-at snd-update)))))
+
+
 (defn read-one-read-many-consonance
   [{:keys [gen-net model-instances read-one read-many setup]}]
   (let [setup-res   (setup gen-net)

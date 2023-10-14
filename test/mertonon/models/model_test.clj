@@ -65,11 +65,10 @@
   (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
                 (tu/with-test-txn (tu/update-then-update-back (test-inp table generates)))))
 
-;;;;;
-;;;;;
-;;;;; update-many-then-update-back
-;;;;;
-;;;;;
+(defspec update-many-then-update-back
+  100
+  (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
+                (tu/with-test-txn (tu/update-many-then-update-back (test-inp table generates)))))
 
 (defspec read-one-read-many-consonance
   100
@@ -93,4 +92,4 @@
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
 
-(comment (run-tests))
+(comment (update-many-then-update-back))
