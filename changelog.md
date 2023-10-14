@@ -64,3 +64,9 @@ v0.7.commits - October 12 2023
 - Put in separate button for the heavier validations for grad calculations
 - Weight value input now nonlinear (~ O(n^2))
 - BE work for updating and actual creation of logins
+
+v0.8.commits - October 19 2023
+---
+
+- Actual creation of password logins in addition to the accounts
+- Password digests handling not terrible anymore
