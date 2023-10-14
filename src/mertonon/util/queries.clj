@@ -204,7 +204,7 @@
 (defn update-many-from-clause [columns members member->row]
   (let [rows (vec (for [member members]
                     (rowify columns (member->row member))))]
-    [[{:values rows} :temp]]))
+    [[{:values rows} [(into [:temp] columns)]]]))
 
 (defn update-many-where-clause [[table]]
   (let [table-uuid (dotted-keyword table :uuid)]
