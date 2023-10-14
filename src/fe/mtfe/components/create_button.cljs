@@ -129,5 +129,6 @@
 ;; Before-fx
 ;; ---
 
+;; This is a default one, but they could get pretty baroque
 (defn before-fx [config _]
   [[:dispatch [:reset-create-state config]]])
