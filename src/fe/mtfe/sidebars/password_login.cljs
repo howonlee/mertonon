@@ -28,7 +28,10 @@
                       {:uuid         (str (random-uuid))
                        :mt-user-uuid mt-user-uuid
                        :password     ""})
-     :validations   []
+     :validations   [(validations/two-members-equal
+                       [:action-params :password]
+                       [:password-repeat]
+                       :password-not-match)]
      :nav-to        "#/admin"}))
 
 (defn password-login-create-before-fx [m]
@@ -47,7 +50,8 @@
      [:p "There will eventually be many login methods, which is why you have to create them separately"]
      [:p "For user: " [:strong (str username)]]
      [fi/state-password-input (curr-config :state-path) [:action-params :password] "Password" :mutate-action-state]
-     [fi/state-password-input (curr-config :state-path) [:password-dup] "Password again" :mutate-action-state]
+     [vblurbs/validation-popover state-path :password-not-match "Passwords do not match"
+      [fi/state-password-input (curr-config :state-path) [:password-repeat] "Password again" :mutate-action-state]]
      [act/action-button curr-config]]))
 
 ;; ---
