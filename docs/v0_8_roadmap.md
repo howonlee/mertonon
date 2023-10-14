@@ -28,6 +28,7 @@
 
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
+- [ ] Update mertonon.com, figure out something better for inbound email thing
 
 - [ ] Changelog
 - [ ] Click around a bit
