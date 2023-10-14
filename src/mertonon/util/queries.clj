@@ -204,14 +204,14 @@
 (defn update-many-from-clause [columns members member->row]
   (let [rows (vec (for [member members]
                     (rowify columns (member->row member))))]
-    [{:values rows} :temp]))
+    [[{:values rows} :temp]]))
 
-(defn update-many-where-clause [table]
+(defn update-many-where-clause [[table]]
   (let [table-uuid (dotted-keyword table :uuid)]
     [:= :temp.uuid table-uuid]))
 
 (defn update-many-q [table columns uuids members member->row]
-  {:update    [table :curr-table]
+  {:update    table
    :set       (update-many-set-clause table columns)
    :from      (update-many-from-clause columns members member->row)
    :where     (update-many-where-clause table)
@@ -222,11 +222,10 @@
   (require '[clojure.test.check.generators :as gen])
   (let [grids [(->> (gen/generate gen-net/generate-grid) :grids first)
                (->> (gen/generate gen-net/generate-grid) :grids first)]]
-    (sql/format (update-many-q :mertonon.grid
+    (sql/format (update-many-q [:mertonon.grid]
                                [:uuid :version :created-at :updated-at :name :label :optimizer-type :hyperparams]
                                (mapv :uuid grids) grids
-                               #'mertonon.models.grid/member->row)
-                {:pretty true})))
+                               #'mertonon.models.grid/member->row))))
 
 (defn update-many
   "You can have nil uuids, you can have nil members, but they better match in where the nils are"
