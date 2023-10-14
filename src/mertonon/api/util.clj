@@ -135,7 +135,8 @@
           {validations    :validations
            key-banlist    :key-banlist
            join-tables    :join-tables
-           join-col-edges :join-col-edges} config
+           join-col-edges :join-col-edges
+           renormalize?   :renormalize?}    config
           check!                           (if (seq validations)
                                              (uvals/throw-if-invalid! match validations))
           fkey                             (get-in join-col-edges [0 1])
@@ -145,7 +146,8 @@
                                              :join-tables      join-tables
                                              :join-col-edges   join-col-edges
                                              :raw-table->table registry/raw-table->table
-                                             :table->model     registry/table->model})
+                                             :table->model     registry/table->model
+                                             :renormalize?     renormalize?})
           res                              (reduce-kv
                                              (fn [m k v] (assoc m k (maybe-filter-results key-banlist v)))
                                              {} res)]
@@ -157,7 +159,8 @@
           {validations    :validations
            key-banlist    :key-banlist
            join-tables    :join-tables
-           join-col-edges :join-col-edges} config
+           join-col-edges :join-col-edges
+           renormalize?   :renormalize?}   config
           check!                           (if (seq validations)
                                              (uvals/throw-if-invalid! match validations))
           fkey                             (get-in join-col-edges [0 1])
@@ -166,8 +169,7 @@
                                              :join-tables      join-tables
                                              :join-col-edges   join-col-edges
                                              :raw-table->table registry/raw-table->table
-                                             :table->model     registry/table->model})
-          res                              (reduce-kv
-                                             (fn [m k v] (assoc m k (maybe-filter-results key-banlist v)))
-                                             {} res)]
+                                             :table->model     registry/table->model
+                                             :renormalize?     renormalize?})
+          res                              (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))

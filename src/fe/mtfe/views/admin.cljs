@@ -7,13 +7,16 @@
             [re-frame.core :refer [dispatch subscribe]]))
 
 (defn before-fx [m]
-  [[:dispatch-n [[:selection :mt-users (api/mt-user) {}]
-                 ]]])
+  [[:dispatch-n [[:selection
+                  :mt-user-password-logins
+                  (api/mt-user-password-login)
+                  {}]]]])
 
 ;; [:selection :password-logins (api/password-login) {}]
 
 (defn admin-page [m]
-  (let [mt-users @(subscribe [:selection :mt-users])]
+  (let [mt-users @(subscribe [:selection
+                              :mt-user-password-logins])]
     [:div.fl.pa2
      [:h1 "Admin"]
      [:p "There are no non-admin accounts at this time. We will add normal user accounts when we do it."]

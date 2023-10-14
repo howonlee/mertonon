@@ -158,9 +158,11 @@
    :where      where-clause})
 
 (defn select-where-joined
-  [{:keys [table join-tables join-col-edges where-clause raw-table->table table->model]}]
+  [{:keys [table join-tables join-col-edges where-clause raw-table->table table->model renormalize?]}]
   (let [curr-query (select-where-joined-q table join-tables join-col-edges where-clause)]
-    (->> curr-query (db/query) (renormalize-joined-res raw-table->table table->model))))
+    (if renormalize?
+      (->> curr-query (db/query) (renormalize-joined-res raw-table->table table->model))
+      (->> curr-query (db/query)))))
 
 ;; -----
 ;; Update
@@ -263,13 +265,16 @@
    ;; Do not forget they don't come sorted!
    :read-where        (fn [where-clause] (select-where (assoc query-info :where-clause where-clause)))
    :read-where-joined (fn [{:keys [where-clause join-tables join-col-edges
-                                   raw-table->table table->model]}]
+                                   raw-table->table table->model renormalize?]}]
                         (select-where-joined (assoc query-info
                                                     :where-clause     where-clause
                                                     :join-tables      join-tables
                                                     :join-col-edges   join-col-edges
                                                     :raw-table->table raw-table->table
-                                                    :table->model     table->model)))
+                                                    :table->model     table->model
+                                                    :renormalize?     (if (nil? renormalize?)
+                                                                        true
+                                                                        renormalize?))))
    :read-many         (fn [uuids] (select-many (assoc query-info :uuids uuids)))
    :read-all          (fn [] (select-all query-info))
    :count             (fn [] (count-all query-info))
