@@ -9,6 +9,9 @@
 - [x] Manually test create/delete FE for password logins
 - [x] Call password authn done for now (not authz)
 - [x] Select where joined endpoint generation
+- [ ] Update button thinking
+- [ ] Make one instance of update button (grid)
+
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
@@ -29,9 +32,6 @@
 - [ ] View test
 - [ ] Think harder of mutation properties - no exercise
 - [ ] Mutation test
-
-- [ ] Update button thinking
-- [ ] Make one instance of update button (grid)
 
 - [ ] Update mertonon.com, figure out something better for inbound email thing
 
