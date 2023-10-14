@@ -9,14 +9,14 @@
 - [x] Manually test create/delete FE for password logins
 - [x] Call password authn done for now (not authz)
 - [x] Select where joined endpoint generation
+- [ ] Test BE model update-many
+- [ ] Test BE api model update, update-many
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
 
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
-- [ ] Test BE model update-many
-- [ ] Test BE api model update, update-many
 
 - [ ] Cobjs for self-gantt
 - [ ] Weights for self-gantt
