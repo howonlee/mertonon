@@ -4,12 +4,16 @@
 - [x] Select where joined endpoints - for the mt user dump
 - [x] Joined mt user endpoint
 
+- [x] Layers / weightsets for self-gantt
 - [ ] Select where joined endpoint generation
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Munge mt user FE to be joined with password logins
 - [ ] Manually test create/delete FE for password logins
 - [ ] Call password authn done for now (not authz)
 
+- [ ] Cobjs for self-gantt
+- [ ] Weights for self-gantt
+- [ ] Some entries for self-gantt
 - [ ] Whack that one failing test
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
@@ -27,8 +31,7 @@
 - [ ] Think harder of mutation properties - no exercise
 - [ ] Mutation test
 
-- [ ] Figuring out gantt dogfood dealio
-- [ ] Update button thinking
+- [ ] Update button thinking - whole update button only?
 - [ ] Make one instance of update button (grid)
 - [ ] Update mertonon.com, figure out something better for inbound email thing
 
