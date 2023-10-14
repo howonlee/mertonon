@@ -6,7 +6,7 @@
             [mertonon.api.util :as api-util]
             [tick.core :as t]))
 
-(def join-endpoint-gen
+(def mass-join-endpoint-gen
   (gen/let [join-q queries-gen/generate-single-joined-query]
     (let [{table            :table
            table->model     :table->model} join-q
@@ -14,4 +14,14 @@
           endpoint                         (api-util/get-joined-models curr-model join-q)]
       endpoint)))
 
-(comment (println (gen/generate join-endpoint-gen)))
+(def single-join-endpint-gen
+  (gen/let [join-q queries-gen/generate-single-joined-query]
+    (let [{table            :table
+           table->model     :table->model} join-q
+          curr-model                       (table->model table)
+          endpoint                         (api-util/get-joined-model curr-model join-q)]
+      endpoint)))
+
+(comment
+  (println (gen/generate mass-join-endpoint-gen))
+  (println (gen/generate join-endpoint-gen)))
