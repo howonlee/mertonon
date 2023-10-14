@@ -27,10 +27,10 @@
 - [ ] Think harder of mutation properties - no exercise
 - [ ] Mutation test
 
+- [ ] Figuring out gantt dogfood dealio
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
 - [ ] Update mertonon.com, figure out something better for inbound email thing
-- [ ] Think about outline for gantt dealio
 
 - [ ] Changelog
 - [ ] Click around a bit
