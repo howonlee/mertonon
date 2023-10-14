@@ -26,8 +26,7 @@
                               :mertonon.mt-users])
         grouped-logins (group-by :mt-user-uuid @(subscribe [:selection
                               :mt-user-password-logins
-                              :mertonon.password-logins]))
-        printo         (println grouped-logins)]
+                              :mertonon.password-logins]))]
     [:div.fl.pa2
      [:h1 "Admin"]
      [:p "There are no non-admin accounts at this time. We will add normal user accounts when we do it."]
