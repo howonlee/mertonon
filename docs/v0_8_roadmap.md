@@ -10,16 +10,15 @@
 - [x] Call password authn done for now (not authz)
 - [ ] Select where joined endpoint generation
 - [ ] Select where joined tests - ordinary properties, read only tho
-
-- [ ] Cobjs for self-gantt
-- [ ] Weights for self-gantt
-- [ ] Some entries for self-gantt
-- [ ] Whack that one failing test
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
 - [ ] Test BE model update-many
 - [ ] Test BE api model update, update-many
 
+- [ ] Cobjs for self-gantt
+- [ ] Weights for self-gantt
+- [ ] Some entries for self-gantt
+- [ ] Whack that one failing test
 - [ ] Event gens
 - [ ] Pure view gens
 - [ ] Mutation state gens
