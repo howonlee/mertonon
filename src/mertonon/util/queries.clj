@@ -54,6 +54,11 @@
   [key1 key2]
   (keyword (str (name key1) "." (name key2))))
 
+(defn compact
+  "Filter out nil members"
+  [coll]
+  (vec (keep identity coll)))
+
 ;; Renormalized like EF Codd, not like KG Wilson
 (defn renormalize-joined-row
   [raw-table->table table->model joined-row]
@@ -206,6 +211,7 @@
     [:= :temp.uuid table-uuid]))
 
 (defn update-many-q [table columns uuids members member->row]
+  (println members)
   {:update    [table :curr-table]
    :set       (update-many-set-clause table columns)
    :from      (update-many-from-clause columns members member->row)
@@ -223,10 +229,17 @@
                                #'mertonon.models.grid/member->row)
                 {:pretty true})))
 
-(defn update-many [{:keys [table columns uuids members member->row row->member]}]
+(defn update-many
+  "You can have nil uuids, you can have nil members, but they better match in where the nils are"
+  [{:keys [table columns uuids members member->row row->member]}]
   (if (empty? uuids)
     members
-    (->> (update-many-q table columns uuids members member->row) (db/query) (mapv row->member))))
+    (->> (update-many-q
+           table
+           columns
+           (compact uuids)
+           (compact members)
+           member->row) (db/query) (mapv row->member))))
 
 ;; -----
 ;; Delete
