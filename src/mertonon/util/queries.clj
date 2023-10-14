@@ -39,8 +39,8 @@
                   clojure.lang.Keyword            (name v)
                   clojure.lang.PersistentVector   (json/write-str v)
                   clojure.lang.PersistentArrayMap (json/write-str v)
+                  java.time.Instant               [:cast v :timestamptz]
                   v)})))
-
 
 (defn rowify [columns member]
   (vec (for [column columns
