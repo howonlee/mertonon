@@ -66,7 +66,11 @@
 (defn intro [] (gstring/format "%s/api/v1/intro/" host))
 
 (defn mt-user [] (gstring/format "%s/api/v1/mt_user/" host))
+(defn mt-user-password-login []
+  (gstring/format "%s/api/v1/mt_user/_/password_login" host))
 (defn mt-user-member [uuid] (gstring/format "%s/api/v1/mt_user/%s" host uuid))
+(defn mt-user-member-password-login [uuid]
+  (gstring/format "%s/api/v1/mt_user/%s/password_login" host uuid))
 
 (defn password-login [] (gstring/format "%s/api/v1/password_login/" host))
 (defn password-login-member [uuid] (gstring/format "%s/api/v1/password_login/%s" host uuid))

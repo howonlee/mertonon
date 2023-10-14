@@ -28,7 +28,8 @@
          password     :password
          mt-user-uuid :mt-user-uuid} body
         digest                       (password-login-model/hash-password password)
-        new-password                 (mtc/->PasswordLogin uuid mt-user-uuid :default digest)]
+        new-password                 ((password-login-model/model :create-one!)
+                                      (mtc/->PasswordLogin uuid mt-user-uuid :default digest))]
     {:status 200 :body {:message :success}}))
 
 (defn mass-login-endpoint []

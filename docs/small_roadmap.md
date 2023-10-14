@@ -2,6 +2,7 @@ Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
 - Enforce single password login per user validation in BE also at create time (instead of just at login time), not just in FE
+- Use banlist for password and lots of validation, requirements, entropy stuff
 - Remove postgres requirement for build
 - Registry accuracy enforcement with tests
 - Automated upload to website
@@ -16,7 +17,6 @@ Small tasks roadmap ("I could colorably do this in one day only")
 - Cookie staleness gets nullpointerexception, make a less awful error
 - More skeumorphism in button
 - Some kind of middlingly durable settings db thing... maybe with table
-- Use banlist for password
 - Make sessions actually expire
 - Avoid the denial-of-service possibility of the health check endpoint
 - Stick in more shenanigans in the warmup request, yell about the mertonon user being given stuff

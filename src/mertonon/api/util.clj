@@ -167,7 +167,5 @@
                                              :join-col-edges   join-col-edges
                                              :raw-table->table registry/raw-table->table
                                              :table->model     registry/table->model})
-          res                              (reduce-kv
-                                             (fn [m k v] (assoc m k (maybe-filter-results key-banlist v)))
-                                             {} res)]
+          res                              (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))

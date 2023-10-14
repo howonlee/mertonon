@@ -198,9 +198,7 @@
 
 (defn update-many-from-clause [columns members member->row]
   (let [rows (vec (for [member members]
-                    (do
-                      (println member)
-                      (rowify columns (member->row member)))))]
+                    (rowify columns (member->row member))))]
     [{:values rows} :temp]))
 
 (defn update-many-where-clause [table]

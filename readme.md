@@ -1,6 +1,6 @@
 # 🥞 Mertonon - Neural Organizational Management
 
-<!-- ci / version spam -->
+<!-- shieldio spam -->
 
 <!-- video here when we do it -->
 
