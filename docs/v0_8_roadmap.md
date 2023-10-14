@@ -20,6 +20,9 @@
 - [ ] Test BE model update-many
 - [ ] Test BE api model update, update-many
 
+- [ ] Update button thinking
+- [ ] Make one instance of update button (grid)
+
 - [ ] Event gens
 - [ ] Pure view gens
 - [ ] Mutation state gens
@@ -31,8 +34,6 @@
 - [ ] Think harder of mutation properties - no exercise
 - [ ] Mutation test
 
-- [ ] Update button thinking - whole update button only?
-- [ ] Make one instance of update button (grid)
 - [ ] Update mertonon.com, figure out something better for inbound email thing
 
 - [ ] Changelog
