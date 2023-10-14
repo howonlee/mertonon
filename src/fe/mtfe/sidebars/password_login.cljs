@@ -41,16 +41,14 @@
   (let [mt-user-uuid (->> m :path-params :uuid)
         curr-config  (action-config m)
         state-path   (curr-config :state-path)
-        user-name    @(subscribe [:sidebar-state])
-        printo       (println user-name)]
+        username     @(subscribe [:sidebar-state :password-login :action :mt-user :username])]
     [:<>
      [:h1 "New Mertonon password login"]
      [:p "There will eventually be many login methods, which is why you have to create them separately"]
-     [:p "For user: " [:strong (str mt-user-uuid)]]
-]))
-    ;; [fi/state-password-input (curr-config :state-path) [:action-params :password] "Password"]
-    ;; [fi/state-password-input (curr-config :state-path) [:password-dup] "Password again"]
-    ;; [act/action-button curr-config]))
+     [:p "For user: " [:strong (str username)]]
+     [fi/state-password-input (curr-config :state-path) [:action-params :password] "Password" :mutate-action-state]
+     [fi/state-password-input (curr-config :state-path) [:password-dup] "Password again" :mutate-action-state]
+     [act/action-button curr-config]]))
 
 ;; ---
 ;; No reading - no password reading lol
