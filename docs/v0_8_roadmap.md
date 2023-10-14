@@ -5,10 +5,10 @@
 - [x] Joined mt user endpoint
 
 - [x] Layers / weightsets for self-gantt
+- [ ] Munge mt user FE to be joined with password logins for viewing
+- [ ] Manually test create/delete FE for password logins
 - [ ] Select where joined endpoint generation
 - [ ] Select where joined tests - ordinary properties, read only tho
-- [ ] Munge mt user FE to be joined with password logins
-- [ ] Manually test create/delete FE for password logins
 - [ ] Call password authn done for now (not authz)
 
 - [ ] Cobjs for self-gantt
