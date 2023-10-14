@@ -22,6 +22,3 @@
           endpoint                         (api-util/get-joined-model curr-model join-q)]
       endpoint)))
 
-(comment
-  (println (gen/generate mass-join-endpoint-gen))
-  (println (gen/generate join-endpoint-gen)))

@@ -8,7 +8,7 @@
             [tick.core :as t]))
 
 ;; -----
-;; Proprocessing and coercions
+;; Proprocessing and coercions and other munging
 ;; -----
 
 (defn snakify
@@ -211,7 +211,6 @@
     [:= :temp.uuid table-uuid]))
 
 (defn update-many-q [table columns uuids members member->row]
-  (println members)
   {:update    [table :curr-table]
    :set       (update-many-set-clause table columns)
    :from      (update-many-from-clause columns members member->row)
