@@ -8,7 +8,7 @@
 - [x] Munge mt user FE to be joined with password logins for viewing
 - [x] Manually test create/delete FE for password logins
 - [x] Call password authn done for now (not authz)
-- [ ] Select where joined endpoint generation
+- [x] Select where joined endpoint generation
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
