@@ -7,23 +7,22 @@
             [re-frame.core :refer [dispatch subscribe]]))
 
 (defn before-fx [m]
-  [[:dispatch-n [[:selection
-                  :mt-user-password-logins
-                  (api/mt-user-password-login)
-                  {}]]]])
+  [[:dispatch-n [[:selection :mt-users (api/mt-user) {}]
+                 [:selection :mt-user-password-logins (api/mt-user-password-login) {}]]]])
 
 (defn login-view [curr-password-login]
-  (let [message (if (seq curr-password-login)
-                  "Password"
-                  "None")]
-    [sc/table-member message
-     ;; link to deletion or creation or whatever
-     ]))
+  (let [state   (if (seq curr-password-login) :password :none)
+        message ({:password "Password"
+                  :none     "None"} state)
+        link    ({:password
+                  [:span.ma2 (util/sl (util/path ["password_login" (get curr-password-login :uuid nil) "delete"]) [sc/trash-icon])]
+                  :none
+                  [:span.ma2 (util/sl (util/path ["password_login_create"]) [sc/plus-icon])]} state)]
+    [sc/table-member message link]))
 
 (defn admin-page [m]
   (let [mt-users @(subscribe [:selection
-                              :mt-user-password-logins
-                              :mertonon.mt-users])
+                              :mt-users])
         grouped-logins (group-by :mt-user-uuid @(subscribe [:selection
                               :mt-user-password-logins
                               :mertonon.password-logins]))]
@@ -49,6 +48,6 @@
              [sc/table-member (str (mt-user :username) " - " (mt-user :email))]
              [sc/table-member (str (:created-at mt-user))]
              [sc/table-member (str (:updated-at mt-user))]
-             [login-view (grouped-logins (mt-user :uuid))]
+             [login-view (first (grouped-logins (mt-user :uuid)))]
              [sc/table-member [util/sl (util/path ["mt_user" (str (:uuid mt-user)) "delete"])
                                [sc/trash-icon]]]])]]])]))

@@ -159,6 +159,11 @@
      :view      password-login/password-login-create-sidebar
      :before-fx password-login/password-login-create-before-fx}]
 
+   ["/password_login/:uuid/delete"
+    {:name      ::password-login-delete-sidebar
+     :view      password-login/password-login-delete-sidebar
+     :before-fx password-login/password-login-delete-before-fx}]
+
    ["/weight/:uuid"
     {:name ::weight-sidebar :view weight/weight-sidebar}]
    ["/weight/:uuid/delete"
