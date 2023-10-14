@@ -22,7 +22,7 @@
                      :username ""
                      :email    ""})
    :ctr           mc/->MtUser
-   :ctr-params    [:uuid :username :email]
+   :ctr-params    [:uuid :email :username]
    :nav-to        "#/admin"})
 
 (defn mt-user-create-before-fx [m]
