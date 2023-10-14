@@ -19,6 +19,7 @@
 - [ ] Event gens
 - [ ] Pure view gens
 - [ ] Mutation state gens
+- [ ] Trivial FE test
 
 - [ ] Event property tests
 - [ ] Think harder of view properties - no exercise
@@ -29,6 +30,7 @@
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
 - [ ] Update mertonon.com, figure out something better for inbound email thing
+- [ ] Think about outline for gantt dealio
 
 - [ ] Changelog
 - [ ] Click around a bit
