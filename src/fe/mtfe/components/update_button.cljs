@@ -58,20 +58,17 @@
 (reg-event-fx
   :submit-update
   (fn [{:keys [db]}
-       [_ {:keys [create-params resource endpoint state-path ctr ctr-params]}]]
-    (let [param-list (vec (for [member-param ctr-params]
-                            (create-params member-param)))
-          new-member (apply ctr param-list)]
-    {:http-xhrio {:method          :post
+       [_ {:keys [update-params resource endpoint state-path]}]]
+    {:http-xhrio {:method          :put
                   :uri             endpoint
-                  :params          new-member
+                  :params          update-params
                   :format          (json-request-format)
                   :response-format (json-response-format {:keywords? true})
-                  :on-success      [:succeed-create state-path]
-                  :on-failure      [:fail-create state-path]}
+                  :on-success      [:succeed-update state-path]
+                  :on-failure      [:fail-update state-path]}
      :db          (assoc-in db
-                            (into (util/sidebar-path state-path) [:create-state])
-                            :creating)})))
+                            (into (util/sidebar-path state-path) [:update-state])
+                            :updating)}))
 
 (reg-event-db
   :succeed-update
