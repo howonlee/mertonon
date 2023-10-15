@@ -25,6 +25,7 @@ Also look at small tasks roadmap
 - Cut pre-8x-beta
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
 - License design, then task out for after alpha
+- Munge according to a serious password-based-auth checklist
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Make auditing EE properly
