@@ -7,6 +7,7 @@ Also look at small tasks roadmap
 - Model updates FE for all models
 - Gantt self-instance usage...
 - Gantt essay, PBT essay. Gantt essay at 9th grade level
+- Redo setup, usage for grade level
 - Cut postprealpha, sponsor newsletters
 
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
