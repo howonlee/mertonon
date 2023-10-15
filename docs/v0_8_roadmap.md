@@ -10,11 +10,11 @@
 - [x] Call password authn done for now (not authz)
 - [x] Select where joined endpoint generation
 - [x] Test BE model update-many
+
 - [ ] Slide in all update-one, update-many's
 - [ ] Test BE api model update, update-many
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
-
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test

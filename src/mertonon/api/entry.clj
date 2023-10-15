@@ -6,12 +6,14 @@
 
 (defn single-endpoint []
   {:get    (api-util/get-model entry-model/model)
+   :put    (api-util/update-model entry-model/model)
    :delete (api-util/delete-model entry-model/model)
    :name   ::entry})
 
 (defn mass-endpoint []
   {:get    (api-util/get-models entry-model/model)
    :post   (api-util/create-model entry-model/model)
+   :put    (api-util/update-model entry-model/model)
    :delete (api-util/delete-models entry-model/model)
    :name   ::entries})
 

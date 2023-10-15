@@ -9,12 +9,14 @@
 
 (defn single-endpoint []
   {:get    (api-util/get-model weightset-model/model)
+   :put    (api-util/update-model weightset-model/model)
    :delete (api-util/delete-model weightset-model/model)
    :name   ::weightset})
 
 (defn mass-endpoint []
   {:get    (api-util/get-models weightset-model/model)
    :post   (api-util/create-model weightset-model/model)
+   :put    (api-util/update-model weightset-model/model)
    :delete (api-util/delete-models weightset-model/model)
    :name   ::weightsets})
 

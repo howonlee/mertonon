@@ -16,6 +16,7 @@
 
 (defn single-login-endpoint []
   {:get    (api-util/get-model password-login-model/model {:key-banlist banlist})
+   ;; No updates
    :delete (api-util/delete-model password-login-model/model)
    :name   ::password-login})
 
@@ -35,6 +36,7 @@
 (defn mass-login-endpoint []
   {:get    (api-util/get-models password-login-model/model {:key-banlist banlist})
    :post   password-create
+   ;; No updates
    :delete (api-util/delete-models password-login-model/model)
    :name   ::password-logins})
 
