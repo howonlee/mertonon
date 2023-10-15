@@ -84,14 +84,14 @@
                            (let [res       (app {:uri endpoint :request-method :get})
                                  processed (process-app-response res)]
                              (mapv row->member processed)))
-        api-update-one!  (fn [member]
+        api-update-one!  (fn [_ member]
                            (let [res       (app {:uri endpoint :request-method :put :body-params member})
                                  processed (process-app-response res)]
-                             (row->member processed)))
-        api-update-many! (fn [member]
+                             processed))
+        api-update-many! (fn [_ member]
                            (let [res       (app {:uri endpoint :request-method :put :body-params member})
                                  processed (process-app-response res)]
-                             (mapv row->member processed)))]
+                             processed))]
     {:gen-net           generates
      :model-instance    elem
      :model-instances   (tu/generates->members generates table)
@@ -150,12 +150,12 @@
 (defspec update-then-update-back
   100
   (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
-                (tu/with-test-txn (tu/update-then-update-back (test-inp table generates)))))
+                (tu/with-test-txn (tu/update-then-update-back (test-inp table generates db/*defined-connection*)))))
 
 (defspec update-many-then-update-back
   100
   (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
-                (tu/with-test-txn (tu/update-many-then-update-back (test-inp table generates)))))
+                (tu/with-test-txn (tu/update-many-then-update-back (test-inp table generates db/*defined-connection*)))))
 
 (defspec create-and-delete-inversion
   100
@@ -169,4 +169,4 @@
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance
                                     (test-inp table generates db/*defined-connection*)))))
 
-(comment (run-tests))
+(comment (update-then-update-back))
