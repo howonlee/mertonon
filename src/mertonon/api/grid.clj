@@ -21,12 +21,14 @@
 
 (defn single-endpoint []
   {:get    (api-util/get-model grid-model/model)
+   :put    (api-util/update-model grid-model/model)
    :delete (api-util/delete-model grid-model/model)
    :name   ::grid})
 
 (defn mass-endpoint []
   {:get    (api-util/get-models grid-model/model)
    :post   (api-util/create-model grid-model/model)
+   :put    (api-util/update-model grid-model/model)
    :delete (api-util/delete-models grid-model/model)
    :name   ::grids})
 

@@ -10,12 +10,14 @@
 
 (defn single-endpoint []
   {:get    (api-util/get-model layer-model/model)
+   :put    (api-util/update-model layer-model/model)
    :delete (api-util/delete-model layer-model/model)
    :name   ::layer})
 
 (defn mass-endpoint []
   {:get    (api-util/get-models layer-model/model)
    :post   (api-util/create-model layer-model/model)
+   :put    (api-util/update-model layer-model/model)
    :delete (api-util/delete-models layer-model/model)
    :name   ::layers})
 

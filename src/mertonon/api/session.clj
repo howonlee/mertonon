@@ -68,6 +68,7 @@
 
 (defn session-endpoint []
   {:post   do-login
+   ;; No updating
    :delete do-logout
    :name   ::session})
 

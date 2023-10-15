@@ -4,25 +4,26 @@
 - [x] Select where joined endpoints - for the mt user dump
 - [x] Joined mt user endpoint
 
-- [x] Layers / weightsets for self-gantt
+- [x] Layers / weightsets for self-project
 - [x] Munge mt user FE to be joined with password logins for viewing
 - [x] Manually test create/delete FE for password logins
 - [x] Call password authn done for now (not authz)
 - [x] Select where joined endpoint generation
 - [x] Test BE model update-many
-- [ ] Slide in all update-one, update-many's
-- [ ] Test BE api model update, update-many
+
+- [x] Slide in all update-one, update-many's
+- [x] Test BE api model update, update-many (get it to actually work lol)
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
-
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
-
-- [ ] Cobjs for self-gantt
-- [ ] Weights for self-gantt
-- [ ] Some entries for self-gantt
 - [ ] Whack that one failing test
+
+- [ ] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
+- [ ] Cobjs for self-project
+- [ ] Weights for self-project
+- [ ] Some entries for self-project
 - [ ] Event gens
 - [ ] Pure view gens
 - [ ] Mutation state gens

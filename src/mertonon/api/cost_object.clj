@@ -11,12 +11,14 @@
 
 (defn single-endpoint []
   {:get    (api-util/get-model cost-object-model/model)
+   :put    (api-util/update-model cost-object-model/model)
    :delete (api-util/delete-model cost-object-model/model)
    :name   ::cost-object})
 
 (defn mass-endpoint []
   {:get    (api-util/get-models cost-object-model/model)
    :post   (api-util/create-model cost-object-model/model)
+   :put    (api-util/update-model cost-object-model/model)
    :delete (api-util/delete-models cost-object-model/model)
    :name   ::cost-objects})
 

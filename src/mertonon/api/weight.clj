@@ -8,12 +8,14 @@
 
 (defn single-endpoint []
   {:get    (api-util/get-model weight-model/model)
+   :put    (api-util/update-model weight-model/model)
    :delete (api-util/delete-model weight-model/model)
    :name   ::weight})
 
 (defn mass-endpoint []
   {:get    (api-util/get-models weight-model/model)
    :post   (api-util/create-model weight-model/model)
+   :put    (api-util/update-model weight-model/model)
    :delete (api-util/delete-models weight-model/model)
    :name   ::weights})
 

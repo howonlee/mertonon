@@ -5,6 +5,7 @@
             [clojure.string :as str]
             [honey.sql :as sql]
             [mertonon.util.db :as db]
+            [mertonon.util.munge :as mun]
             [tick.core :as t]))
 
 ;; -----
@@ -53,11 +54,6 @@
   (dotted-keyword :bleh :whleh) => :bleh.whleh"
   [key1 key2]
   (keyword (str (name key1) "." (name key2))))
-
-(defn compact
-  "Filter out nil members"
-  [coll]
-  (vec (keep identity coll)))
 
 ;; Renormalized like EF Codd, not like KG Wilson
 (defn renormalize-joined-row
@@ -237,8 +233,8 @@
     (->> (update-many-q
            table
            columns
-           (compact uuids)
-           (compact members))
+           (mun/compact uuids)
+           (mun/compact members))
          (db/query)
          (mapv row->member))))
 

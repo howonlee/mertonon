@@ -13,6 +13,22 @@
             [reagent.core :as r]))
 
 ;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key]
+  [:<>
+   [:h1 "New Grid"]
+   [:p "More optimization types and ability to change hyperparameters are coming."]
+   [vblurbs/validation-popover state-path :name-blank "Grid Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Grid Name"]]
+   [fi/state-text-input state-path [param-key :label] "Grid Label"]
+   ;; TODO: let these change, lol
+   [:div.mb2 "Optimization Type - SGD"]
+   [:div.mb2 "Hyperparameters"
+    [:div "Adjustment Rate - 0.025"]]])
+
+;; ---
 ;; Creation
 ;; ---
 
@@ -38,15 +54,7 @@
 (defn grid-create-sidebar [m]
   (let [state-path (create-config :state-path)]
     [:<>
-     [:h1 "New Grid"]
-     [:p "More optimization types and ability to change hyperparameters are coming."]
-     [vblurbs/validation-popover state-path :name-blank "Grid Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Grid Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Grid Label"]
-     ;; TODO: let these change, lol
-     [:div.mb2 "Optimization Type - SGD"]
-     [:div.mb2 "Hyperparameters"
-      [:div "Adjustment Rate - 0.025"]]
+     [mutation-view state-path :create-params]
      [cr/create-button create-config]]))
 
 ;; ---

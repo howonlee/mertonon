@@ -28,8 +28,6 @@
 ;; Inputs and Form Stuff
 ;; ---
 
-;; TODO: be less idiosyncratic to create
-
 (defn curr-evt-key [evt-key]
   (if (some? evt-key) evt-key :mutate-create-state))
 
@@ -50,7 +48,6 @@
    (for [member choices] ^{:key (:uuid member)}
       [sc/select-option {:value (:uuid member)} (:name member)])])
 
-;; TODO: get it to be logspace!!!!
 (defn state-range-input
   ([state-path param-path]
   (state-range-input state-path param-path 0 200 1))
