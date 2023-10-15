@@ -11,7 +11,8 @@
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
 
 ;; ---
 ;; Mutation view
@@ -64,11 +65,11 @@
 
 (defn update-config [m]
   (let [grid-uuid (->> m :path-params :uuid)]
-    {:resource :curr-grid
-     :endpoint (api/grid-member grid-uuid)
-     :state-path [:grid :update]
-     :validations   [(validations/non-blank [:update-params :name] :name-blank)]
-     :nav-to "#/"}))
+    {:resource    :curr-grid
+     :endpoint    (api/grid-member grid-uuid)
+     :state-path  [:grid :update]
+     :validations [(validations/non-blank [:update-params :name] :name-blank)]
+     :nav-to      "#/"}))
 
 (defn grid-update-before-fx [m]
   (up/before-fx (update-config m) m))
