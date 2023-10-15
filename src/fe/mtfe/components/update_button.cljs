@@ -47,6 +47,10 @@
                      (assoc-in total-path evt-content)
                      (assoc-in key-path :filled))})))
 
+(reg-event-fx
+  :select-for-update
+  nil)
+
 (reg-event-db
   :validate-update-state
   (fn [db [evt state-path]]
