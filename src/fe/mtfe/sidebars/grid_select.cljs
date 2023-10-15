@@ -63,7 +63,11 @@
 ;; ---
 
 (def update-config
-  {})
+  {:resource :curr-grid
+   :endpoint (api/grid)
+   :state-path [:grid :update]
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)]
+   :nav-to "#/"})
 
 (defn grid-update-before-fx [m]
   [])
