@@ -64,10 +64,10 @@
         row->member     ((reg/table->model table) :row->member)
 
         ;; NB: slurp is not idempotent! slurp is stateful!
-        api-create-one! (fn [member]
-                          (let [res       (app {:uri endpoint :request-method :post :body-params member})
-                                processed (process-app-response res)]
-                            (row->member processed)))
+        api-create-one!  (fn [member]
+                           (let [res       (app {:uri endpoint :request-method :post :body-params member})
+                                 processed (process-app-response res)]
+                             (row->member processed)))
         api-create-many! (fn [member]
                            (let [res       (app {:uri endpoint :request-method :post :body-params member})
                                  processed (process-app-response res)]
@@ -98,6 +98,8 @@
      :read-one          api-read-one
      :read-many         api-read-many
      :read-all          api-read-all
+     ;; :update-one!       api-update-one!
+     ;; :update-many!      api-update-many!
      :hard-delete-one!  #(app {:uri (indiv-endpoint %) :request-method :delete})
      :hard-delete-many! #(app {:uri endpoint :request-method :delete :body (encode-to-stream %)})
      :member->row       member->row
