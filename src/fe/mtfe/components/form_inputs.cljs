@@ -24,6 +24,9 @@
       -srcElement
       -value))
 
+(defn- form-path [state-path param-path]
+  (-> [:sidebar-state] (into state-path) (into param-path)))
+
 ;; ---
 ;; Inputs and Form Stuff
 ;; ---
@@ -34,16 +37,18 @@
 (defn state-text-input [state-path param-path placeholder & [evt-key]]
   [sc/input {:type        "text"
              :placeholder placeholder
+             :value       @(subscribe (form-path state-path param-path))
              :on-change   #(dispatch [(curr-evt-key evt-key) state-path param-path (evt->val %)])}])
 
 (defn state-password-input [state-path param-path placeholder & [evt-key]]
   [sc/input {:type        "password"
              :placeholder placeholder
+             :value       @(subscribe (form-path state-path param-path))
              :on-change   #(dispatch [(curr-evt-key evt-key) state-path param-path (evt->val %)])}])
 
 (defn state-select-input [state-path param-path choices & [evt-key]]
   [sc/select {:on-change #(dispatch [(curr-evt-key evt-key) state-path param-path (evt->val %)])
-              :value     @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))}
+              :value     @(subscribe (form-path state-path param-path))}
    [sc/select-option {:value ""} "---"]
    (for [member choices] ^{:key (:uuid member)}
       [sc/select-option {:value (:uuid member)} (:name member)])])
@@ -54,7 +59,7 @@
   ([state-path param-path _min _max step & [evt-key]]
    [sc/input {:type     "range"
               :on-input #(dispatch [(curr-evt-key evt-key) state-path param-path (evt->val %)])
-              :value    @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))
+              :value    @(subscribe (form-path state-path param-path))
               :min      _min
               :max      _max
               :step     step}]))
@@ -67,12 +72,12 @@
                         (. js/Math pow (evt->val inp-state) 2))]
    [sc/input {:type     "range"
               :on-input #(dispatch [(curr-evt-key evt-key) state-path param-path (exp-curr-val %)])
-              :value    (. js/Math sqrt @(subscribe (-> [:sidebar-state] (into state-path) (into param-path))))
+              :value    (. js/Math sqrt @(subscribe (form-path state-path param-path)))
               :min      _min
               :max      _max
               :step     step}])))
 
 (defn state-datepicker [state-path param-path & [evt-key]]
   [date-picker {:popper-placement "left"
-                :selected         @(subscribe (-> [:sidebar-state] (into state-path) (into param-path)))
+                :selected         @(subscribe (form-path state-path param-path))
                 :on-select        #(dispatch [(curr-evt-key evt-key) state-path param-path %])}])
