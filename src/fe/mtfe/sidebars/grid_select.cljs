@@ -6,6 +6,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
@@ -56,6 +57,24 @@
      [:h1 "New Grid"]
      [mutation-view state-path :create-params]
      [cr/create-button create-config]]))
+
+;; ---
+;; Update
+;; ---
+
+(def update-config
+  {})
+
+(defn grid-update-before-fx [m]
+  [])
+
+(defn grid-update-sidebar [m]
+  (let [state-path (update-config :state-path)]
+    [:<>
+     [:h1 "Update Grid"]
+     [mutation-view state-path :update-params]
+     [up/update-button update-config]]))
+
 
 ;; ---
 ;; Deletion
