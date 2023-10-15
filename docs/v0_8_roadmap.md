@@ -9,7 +9,8 @@
 - [x] Manually test create/delete FE for password logins
 - [x] Call password authn done for now (not authz)
 - [x] Select where joined endpoint generation
-- [ ] Test BE model update-many
+- [x] Test BE model update-many
+- [ ] Slide in all update-one, update-many's
 - [ ] Test BE api model update, update-many
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
