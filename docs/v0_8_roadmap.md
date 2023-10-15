@@ -14,7 +14,7 @@
 - [x] Slide in all update-one, update-many's
 - [x] Test BE api model update, update-many (get it to actually work lol)
 - [x] Update button thinking
-- [ ] Make one instance of update button (grid)
+- [x] Make one instance of update button (grid)
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test

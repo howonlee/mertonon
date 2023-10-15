@@ -93,7 +93,10 @@
 
 (defn update-model [curr-model & [config]]
   (fn [match]
-    (let [member-or-members            (body-params match)
+    (let [member-or-members          (body-params match)
+          member-or-members          (if (map? member-or-members)
+                                       ((curr-model :row->member) member-or-members)
+                                       (mapv (curr-model :row->member) member-or-members))
           {validations :validations
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
@@ -103,10 +106,8 @@
                                          ((curr-model :update-one!) (:uuid curr-member) curr-member))
                                        (catch Exception e (println (str "caught exception: " (.getMessage e)))))
           res                        (if (map? member-or-members)
-                                       (let [curr-member ((curr-model :row->member) member-or-members)]
-                                         ((curr-model :update-one!) (:uuid curr-member) curr-member))
-                                       (let [curr-members (mapv (curr-model :row->member) member-or-members)]
-                                         ((curr-model :update-many!) (mapv :uuid curr-members) curr-members)))
+                                         ((curr-model :update-one!) (:uuid member-or-members) member-or-members)
+                                         ((curr-model :update-many!) (mapv :uuid member-or-members) member-or-members))
           res                        (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))
 
