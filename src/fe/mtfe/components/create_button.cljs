@@ -22,9 +22,6 @@
    :finish   "Finish"
    })
 
-(defn sidebar-path [state-path]
-  (into [:sidebar-state] state-path))
-
 ;; ---
 ;; Events
 ;; ---
@@ -32,7 +29,7 @@
 (reg-event-db
   :reset-create-state
   (fn [db [evt {:keys [state-path init-state-fn validations]}]]
-    (let [path   (sidebar-path state-path)]
+    (let [path   (util/sidebar-path state-path)]
       (assoc-in db path
                 {:create-params     (init-state-fn)
                  :create-state      :blank
@@ -43,8 +40,8 @@
 (reg-event-fx
   :mutate-create-state
   (fn [{:keys [db]} [evt state-path param-path evt-content]]
-    (let [total-path (into (sidebar-path state-path) param-path)
-          key-path   (into (sidebar-path state-path) [:create-state])]
+    (let [total-path (into (util/sidebar-path state-path) param-path)
+          key-path   (into (util/sidebar-path state-path) [:create-state])]
       {:dispatch [:validate-create-state state-path]
        :db       (-> db
                      (assoc-in total-path evt-content)
@@ -53,7 +50,7 @@
 (reg-event-db
   :validate-create-state
   (fn [db [evt state-path]]
-    (let [path         (sidebar-path state-path)
+    (let [path         (util/sidebar-path state-path)
           create-state (get-in db path)
           validations  (create-state :validations)]
       (update-in db path #(validations/do-validations! % validations)))))
@@ -73,18 +70,18 @@
                   :on-success      [:succeed-create state-path]
                   :on-failure      [:fail-create state-path]}
      :db          (assoc-in db
-                            (into (sidebar-path state-path) [:create-state])
+                            (into (util/sidebar-path state-path) [:create-state])
                             :creating)})))
 
 (reg-event-db
   :succeed-create
   (fn [db [_ state-path]]
-    (assoc-in db (into (sidebar-path state-path) [:create-state]) :success)))
+    (assoc-in db (into (util/sidebar-path state-path) [:create-state]) :success)))
 
 (reg-event-db
   :fail-create
   (fn [db [_ state-path]]
-    (assoc-in db (into (sidebar-path state-path) [:create-state]) :failure)))
+    (assoc-in db (into (util/sidebar-path state-path) [:create-state]) :failure)))
 
 ;; ---
 ;; Component
@@ -96,7 +93,7 @@
          ctr        :ctr
          param-list :param-list
          nav-to     :nav-to}     config
-        curr-sidebar-state       @(subscribe (sidebar-path state-path))
+        curr-sidebar-state       @(subscribe (util/sidebar-path state-path))
         curr-create-state        (get curr-sidebar-state :create-state :invalid)
         curr-create-params       (get curr-sidebar-state :create-params {})
         curr-labels              (if (seq labels) labels default-labels)
