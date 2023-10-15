@@ -18,12 +18,12 @@
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
+- [ ] Whack that one failing test
 
 - [ ] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
 - [ ] Cobjs for self-gantt
 - [ ] Weights for self-gantt
 - [ ] Some entries for self-gantt
-- [ ] Whack that one failing test
 - [ ] Event gens
 - [ ] Pure view gens
 - [ ] Mutation state gens
