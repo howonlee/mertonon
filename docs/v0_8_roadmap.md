@@ -25,9 +25,9 @@
 - [ ] Cobjs for self-project
 - [ ] Weights for self-project
 - [ ] Some entries for self-project
-- [ ] Event gens
-- [ ] Pure view gens
-- [ ] Mutation state gens
+- [ ] Event gens - exercise only?
+- [ ] Pure view gens - only read properties i guess?
+- [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
 - [ ] Trivial FE test
 
 - [ ] Event property tests
