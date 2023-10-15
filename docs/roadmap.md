@@ -27,7 +27,7 @@ Also look at small tasks roadmap
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Make auditing EE properly
-- Cut alpha. I think we're going to lard on more 'pre's to the pre-betas (pre-pre-pre-pre-beta?)
+- Cut alpha. I think we're going to lard on more 'pre's to the pre-betas (pre-5x-beta?)
 
 # General Future Roadmap (not in any real order)
 
