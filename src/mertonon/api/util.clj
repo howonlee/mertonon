@@ -101,10 +101,6 @@
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
-          printo                     (try
-                                       (let [curr-member ((curr-model :row->member) member-or-members)]
-                                         ((curr-model :update-one!) (:uuid curr-member) curr-member))
-                                       (catch Exception e (println (str "caught exception: " (.getMessage e)))))
           res                        (if (map? member-or-members)
                                          ((curr-model :update-one!) (:uuid member-or-members) member-or-members)
                                          ((curr-model :update-many!) (mapv :uuid member-or-members) member-or-members))
