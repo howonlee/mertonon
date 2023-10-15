@@ -124,5 +124,8 @@
 ;; ---
 
 (defn before-fx [config m]
-  [[:dispatch-n [[:reset-update-state config]
-                 [:select with other crap the selection]]]])
+  (let [endpoint   (config :endpoint)
+        state-path (config :state-path)]
+    [[:dispatch-n [[:reset-update-state config]
+                   [:select-with-custom-success (into state-path [:update-params])
+                    endpoint {} :sidebar-selection-success] ]]]))
