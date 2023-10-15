@@ -4,7 +4,7 @@
 - [x] Select where joined endpoints - for the mt user dump
 - [x] Joined mt user endpoint
 
-- [x] Layers / weightsets for self-gantt
+- [x] Layers / weightsets for self-project
 - [x] Munge mt user FE to be joined with password logins for viewing
 - [x] Manually test create/delete FE for password logins
 - [x] Call password authn done for now (not authz)
@@ -21,9 +21,9 @@
 - [ ] Whack that one failing test
 
 - [ ] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
-- [ ] Cobjs for self-gantt
-- [ ] Weights for self-gantt
-- [ ] Some entries for self-gantt
+- [ ] Cobjs for self-project
+- [ ] Weights for self-project
+- [ ] Some entries for self-project
 - [ ] Event gens
 - [ ] Pure view gens
 - [ ] Mutation state gens

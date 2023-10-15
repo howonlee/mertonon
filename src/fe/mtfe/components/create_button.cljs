@@ -13,7 +13,7 @@
    :blank    "Enter data."
    :filled   "Press Create button to create."
    :creating "Creating..."
-   :success  "Successfully created"
+   :success  "Successfully created!"
    :failure  "Failed to create. See error."
    :finished "Finished!"
 
