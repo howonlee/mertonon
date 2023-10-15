@@ -88,3 +88,37 @@
 ;; Component
 ;; ---
 
+(defn update-button [config & [labels]]
+  (let [{state-path :state-path
+         endpoint   :endpoint
+         nav-to     :nav-to}    config
+        curr-sidebar-state      @(subscribe (util/sidebar-path state-path))
+        curr-update-state       (get curr-sidebar-state :update-state :invalid)
+        curr-update-params      (get curr-sidebar-state :update-params {})
+        curr-labels             (if (seq labels) labels default-labels)
+        curr-error              (get curr-sidebar-state :update-error nil)]
+    [sc/border-region
+     [:div.pa2
+      (curr-labels curr-update-state)]
+     [:div
+      (if (and (empty? (->> curr-sidebar-state :validation-errors))
+               (or
+                 (= curr-update-state :initial)
+                 (= curr-update-state :filled)))
+        [util/evl :submit-update
+         [sc/button (curr-labels :submit)]
+         (assoc config :update-params curr-update-params)]
+        [sc/disabled-button (curr-labels :submit)])
+      [:span.pa2
+       (if (= curr-update-state :updating)
+         [sc/spinny-icon]
+         [sc/blank-icon])]]
+     [:div
+      (if (contains? #{:success :failure} curr-update-state)
+        [util/evl :finish-and-nav
+         [sc/button (curr-labels :finish)]
+         nav-to]
+        [sc/disabled-button (curr-labels :finish)])]
+     [:div
+      (if (= :failure curr-update-state)
+        [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
