@@ -71,9 +71,9 @@
 
 (defn sl
   "Sidebar-only link"
-  [sidebar-path content]
+  [sidebar-link-path content]
   [:span.white.underline.hover-gray.pointer
-   {:on-click #(dispatch [:nav-route "sidebar-change" sidebar-path])}
+   {:on-click #(dispatch [:nav-route "sidebar-change" sidebar-link-path])}
    content])
 
 (defn evl
@@ -90,10 +90,10 @@
 
 (defn fsl
   "Fragment and sidebar link, both at same time. Usually you want to use path-fsl"
-  [fragment-path sidebar-path content]
+  [fragment-path sidebar-link-path content]
   [:a.white.underline.hover-gray.pointer
    {:href     fragment-path
-    :on-click #(dispatch [:nav-route "sidebar-change" sidebar-path])}
+    :on-click #(dispatch [:nav-route "sidebar-change" sidebar-link-path])}
    content])
 
 (defn path-fsl
@@ -108,8 +108,8 @@
   "Single click is a sidebar link. Double click is a fragment link.
 
   As opposed to ordinary fsl, wherein one single click is both sidebar and fragment link."
-  [fragment-path sidebar-path content]
+  [fragment-path sidebar-link-path content]
   [:div.white.underline.hover-gray.pointer
-   {:on-click        #(dispatch [:nav-route "sidebar-change" sidebar-path])
+   {:on-click        #(dispatch [:nav-route "sidebar-change" sidebar-link-path])
     :on-double-click #(dispatch [:nav-page fragment-path])}
    content])
