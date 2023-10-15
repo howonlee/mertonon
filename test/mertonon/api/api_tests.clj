@@ -86,8 +86,10 @@
                              (mapv row->member processed)))
         api-update-one!  (fn [_ member]
                            (let [res       (app {:uri endpoint :request-method :put :body-params member})
-                                 processed (process-app-response res)]
-                             processed))
+                                 processed (process-app-response res)
+                                 printo    (println processed)
+                                 printo    (println (row->member processed))]
+                             (row->member processed)))
         api-update-many! (fn [_ member]
                            (let [res       (app {:uri endpoint :request-method :put :body-params member})
                                  processed (process-app-response res)]

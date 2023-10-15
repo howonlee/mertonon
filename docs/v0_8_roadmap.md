@@ -12,7 +12,7 @@
 - [x] Test BE model update-many
 
 - [x] Slide in all update-one, update-many's
-- [ ] Test BE api model update, update-many
+- [ ] Test BE api model update, update-many (get it to actually work lol)
 - [ ] Update button thinking
 - [ ] Make one instance of update button (grid)
 - [ ] Select where joined tests - ordinary properties, read only tho
