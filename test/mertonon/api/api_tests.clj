@@ -10,6 +10,7 @@
             [mertonon.server.handler :as handler]
             [mertonon.test-utils :as tu]
             [mertonon.util.db :as db]
+            [mertonon.util.munge :as mun]
             [mertonon.util.registry :as reg]
             [mertonon.util.io :as uio]))
 
@@ -93,7 +94,9 @@
         api-update-many! (fn [_ member]
                            (let [res       (app {:uri endpoint :request-method :put :body-params member})
                                  processed (process-app-response res)]
-                             processed))]
+                             (->> processed
+                                  mun/compact
+                                  (mapv row->member))))]
     {:gen-net           generates
      :model-instance    elem
      :model-instances   (tu/generates->members generates table)
@@ -171,4 +174,4 @@
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance
                                     (test-inp table generates db/*defined-connection*)))))
 
-(comment (update-then-update-back))
+(comment (run-tests))
