@@ -28,7 +28,7 @@
 
 (reg-event-db
   :reset-update-state
-  (fn [db [evt {:keys [state-path init-state-path validations]}]]
+  (fn [db [evt {:keys [state-path validations]}]]
     (let [path   (util/sidebar-path state-path)]
       ;; Initial update params is set by the selector event, not by this one
       (assoc-in db path
@@ -46,10 +46,6 @@
        :db       (-> db
                      (assoc-in total-path evt-content)
                      (assoc-in key-path :filled))})))
-
-(reg-event-fx
-  :select-for-update
-  nil)
 
 (reg-event-db
   :validate-update-state
@@ -128,8 +124,5 @@
 ;; ---
 
 (defn before-fx [config m]
-  ;;;;
-  ;;;;
-  ;;;;
-  ;;;;
-  [[:dispatch nil]])
+  [[:dispatch-n [[:reset-update-state config]
+                 [:select with other crap the selection]]]])
