@@ -68,5 +68,6 @@ v0.7.commits - October 12 2023
 v0.8.commits - October 19 2023
 ---
 
-- Actual creation of password logins in addition to the accounts
+- Actual creation of password logins in addition to the accounts. No serious validation on password quality yet
 - Password digests handling not terrible anymore
+- Add the first trivial editing of grids - rest to come when it comes
