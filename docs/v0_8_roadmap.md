@@ -13,8 +13,8 @@
 
 - [x] Slide in all update-one, update-many's
 - [x] Test BE api model update, update-many (get it to actually work lol)
-- [ ] Split out the mutation views
 - [ ] Update button thinking
+- [ ] Split out the mutation views
 - [ ] Make one instance of update button (grid)
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test

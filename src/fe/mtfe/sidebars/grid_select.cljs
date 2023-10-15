@@ -18,7 +18,6 @@
 
 (defn mutation-view [state-path param-key]
   [:<>
-   [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
    [vblurbs/validation-popover state-path :name-blank "Grid Name is blank"
     [fi/state-text-input state-path [param-key :name] "Grid Name"]]
@@ -54,6 +53,7 @@
 (defn grid-create-sidebar [m]
   (let [state-path (create-config :state-path)]
     [:<>
+     [:h1 "New Grid"]
      [mutation-view state-path :create-params]
      [cr/create-button create-config]]))
 
