@@ -84,12 +84,14 @@
                            (let [res       (app {:uri endpoint :request-method :get})
                                  processed (process-app-response res)]
                              (mapv row->member processed)))
-        ;;;;;;
-        ;;;;;;
-        ;;;;;; todo: update
-        ;;;;;;
-        ;;;;;;
-        ]
+        api-update-one!  (fn [member]
+                           (let [res       (app {:uri endpoint :request-method :put :body-params member})
+                                 processed (process-app-response res)]
+                             (row->member processed)))
+        api-update-many! (fn [member]
+                           (let [res       (app {:uri endpoint :request-method :put :body-params member})
+                                 processed (process-app-response res)]
+                             (mapv row->member processed)))]
     {:gen-net           generates
      :model-instance    elem
      :model-instances   (tu/generates->members generates table)
@@ -98,8 +100,8 @@
      :read-one          api-read-one
      :read-many         api-read-many
      :read-all          api-read-all
-     ;; :update-one!       api-update-one!
-     ;; :update-many!      api-update-many!
+     :update-one!       api-update-one!
+     :update-many!      api-update-many!
      :hard-delete-one!  #(app {:uri (indiv-endpoint %) :request-method :delete})
      :hard-delete-many! #(app {:uri endpoint :request-method :delete :body (encode-to-stream %)})
      :member->row       member->row
@@ -145,8 +147,15 @@
 
 ;; API will not have arbitrary read-where semantics. That's a terrible idea.
 
-;;; update-and-update-back
-;;; update-many-and-update-back
+(defspec update-then-update-back
+  100
+  (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
+                (tu/with-test-txn (tu/update-then-update-back (test-inp table generates)))))
+
+(defspec update-many-then-update-back
+  100
+  (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
+                (tu/with-test-txn (tu/update-many-then-update-back (test-inp table generates)))))
 
 (defspec create-and-delete-inversion
   100
