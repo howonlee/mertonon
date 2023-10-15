@@ -6,6 +6,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
@@ -18,7 +19,6 @@
 
 (defn mutation-view [state-path param-key]
   [:<>
-   [:h1 "New Grid"]
    [:p "More optimization types and ability to change hyperparameters are coming."]
    [vblurbs/validation-popover state-path :name-blank "Grid Name is blank"
     [fi/state-text-input state-path [param-key :name] "Grid Name"]]
@@ -54,8 +54,31 @@
 (defn grid-create-sidebar [m]
   (let [state-path (create-config :state-path)]
     [:<>
+     [:h1 "New Grid"]
      [mutation-view state-path :create-params]
      [cr/create-button create-config]]))
+
+;; ---
+;; Update
+;; ---
+
+(def update-config
+  {:resource :curr-grid
+   :endpoint (api/grid)
+   :state-path [:grid :update]
+   :validations   [(validations/non-blank [:create-params :name] :name-blank)]
+   :nav-to "#/"})
+
+(defn grid-update-before-fx [m]
+  (up/before-fx update-config m))
+
+(defn grid-update-sidebar [m]
+  (let [state-path (update-config :state-path)]
+    [:<>
+     [:h1 "Update Grid"]
+     [mutation-view state-path :update-params]
+     [up/update-button update-config]]))
+
 
 ;; ---
 ;; Deletion

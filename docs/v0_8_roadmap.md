@@ -13,7 +13,7 @@
 
 - [x] Slide in all update-one, update-many's
 - [x] Test BE api model update, update-many (get it to actually work lol)
-- [ ] Update button thinking
+- [x] Update button thinking
 - [ ] Make one instance of update button (grid)
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
@@ -24,9 +24,9 @@
 - [ ] Cobjs for self-project
 - [ ] Weights for self-project
 - [ ] Some entries for self-project
-- [ ] Event gens
-- [ ] Pure view gens
-- [ ] Mutation state gens
+- [ ] Event gens - exercise only?
+- [ ] Pure view gens - only read properties i guess?
+- [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
 - [ ] Trivial FE test
 
 - [ ] Event property tests

@@ -7,6 +7,7 @@ Also look at small tasks roadmap
 - Model updates FE for all models
 - Gantt self-instance usage...
 - Gantt essay, PBT essay. Gantt essay at 9th grade level
+- Redo setup, usage for grade level
 - Cut postprealpha, sponsor newsletters
 
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
@@ -15,18 +16,19 @@ Also look at small tasks roadmap
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
 - Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
-- Cut postpostprealpha, sponsor more newsletters
+- Cut alpha, sponsor more newsletters
 
 - Full grad view (exec summary view)
 - Email integration (as first integration)
 - Crontab for adjustments, emails
 - Bigger and markdownified label input - maybe with preview
+- Cut pre-8x-beta
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
 - License design, then task out for after alpha
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Make auditing EE properly
-- Cut alpha. I think we're going to lard on more 'pre's to the pre-betas (pre-pre-pre-pre-beta?)
+- Cut pre-7x-beta
 
 # General Future Roadmap (not in any real order)
 

@@ -38,6 +38,12 @@
    [:p "Click on the Demo button to see a demo, click an existing grid to see
         that grid, or click the + button to create a new grid."]])
 
+(defn missing-sidebar []
+  [:div
+   [:h1 "🥞 Mertonon"]
+   [:h2 "Sidebar not found"]
+   [:p "We messed up linking something up or something, because Mertonon doesn't know what this sidebar is."]])
+
 (def sidebar-routes
   ;; ---
   ;; Keep it in recursive alphabetical order!
@@ -93,6 +99,10 @@
     {:name      ::loss-create-sidebar
      :view      loss/loss-create-sidebar
      :before-fx loss/loss-create-before-fx}]
+   ["/grid/:uuid/update"
+    {:name      ::grid-update-sidebar
+     :view      grid-select/grid-update-sidebar
+     :before-fx grid-select/grid-update-before-fx}]
    ["/grid/:uuid/weightset_create"
     {:name      ::weightset-create-sidebar
      :view      weightset/weightset-create-sidebar
@@ -201,8 +211,7 @@
        (let [view (with-meta (-> curr-sidebar-match :data :view)
                              {:query-params (-> curr-sidebar-match :query-params)})]
          [view curr-sidebar-match])
-       ;; Default to home seems pretty jank but we're doing it initially
-       [home-sidebar])]))
+       [missing-sidebar])]))
 
 ;; TODO: sidebar histories
 
