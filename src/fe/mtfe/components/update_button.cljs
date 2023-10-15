@@ -122,3 +122,14 @@
      [:div
       (if (= :failure curr-update-state)
         [:pre (with-out-str (cljs.pprint/pprint curr-error))])]]))
+
+;; ---
+;; Before-fx
+;; ---
+
+(defn before-fx [config m]
+  ;;;;
+  ;;;;
+  ;;;;
+  ;;;;
+  [[:dispatch nil]])

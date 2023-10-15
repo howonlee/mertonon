@@ -99,6 +99,10 @@
     {:name      ::loss-create-sidebar
      :view      loss/loss-create-sidebar
      :before-fx loss/loss-create-before-fx}]
+   ["/grid/:uuid/update"
+    {:name      ::grid-update-sidebar
+     :view      grid-select/grid-update-sidebar
+     :before-fx grid-select/grid-update-before-fx}]
    ["/grid/:uuid/weightset_create"
     {:name      ::weightset-create-sidebar
      :view      weightset/weightset-create-sidebar

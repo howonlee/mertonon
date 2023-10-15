@@ -70,7 +70,7 @@
    :nav-to "#/"})
 
 (defn grid-update-before-fx [m]
-  [])
+  (up/before-fx update-config m))
 
 (defn grid-update-sidebar [m]
   (let [state-path (update-config :state-path)]
