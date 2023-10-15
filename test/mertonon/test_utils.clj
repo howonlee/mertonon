@@ -106,9 +106,7 @@
         fst-member (first model-instances)
         snd-member (second model-instances)
         fst-update (update-one! (:uuid fst-member) snd-member)
-        snd-update (update-one! (:uuid fst-member) fst-member)
-        printo (clojure.pprint/pprint (cd/diff (dissoc fst-member :updated-at) (dissoc snd-update :updated-at)))
-        ]
+        snd-update (update-one! (:uuid fst-member) fst-member)]
     ;; Dissoc updated-at values because they're not quite exactly the same instant
     (and
       (= (dissoc fst-member :updated-at) (dissoc snd-update :updated-at))
