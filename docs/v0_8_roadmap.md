@@ -18,8 +18,8 @@
 
 - [x] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
 - [x] Update-many fiddly problem
+- [x] Update-one blowup in test despite working well in dev
 
-- [ ] Update-one blowup in test despite working well in dev
 - [ ] Generated grid-graph being persnickety
 - [ ] See if I can get generated cobj to blow up again
 - [ ] Select where joined tests - ordinary properties, read only tho

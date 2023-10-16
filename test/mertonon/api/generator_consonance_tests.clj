@@ -49,7 +49,7 @@
        :body uio/maybe-slurp uio/maybe-json-decode strip-updated-at))
 
 (defspec grid-dump-consonance-test
-  tu/few
+  tu/middle
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -67,7 +67,9 @@
                           demo-dump-endpoint   "/api/v1/generators/dump"
                           test-app             (tu/app-with-test-txn db/*defined-connection*)
                           demo-dump-res        (app-get test-app demo-dump-endpoint)
-                          dump-res             (dissoc (app-get test-app dump-endpoint query-data) "query")]
+                          dump-res             (dissoc (app-get test-app dump-endpoint query-data) "query")
+                          printo               (println (first (cd/diff dump-res demo-dump-res)))
+                          printo               (println (second (cd/diff dump-res demo-dump-res)))]
                       (= dump-res demo-dump-res))))))
 
 (defspec grid-graph-consonance-test
@@ -200,4 +202,4 @@
                       (= grad-rollup demo-grad-rollup))))))
 
 (comment
-  (run-tests))
+  (grid-dump-consonance-test))
