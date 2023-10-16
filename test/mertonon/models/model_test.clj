@@ -36,59 +36,59 @@
 ;; ---
 
 (defspec model-instance-singular
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (not (vector? (:model-instance (test-inp table generates))))))
 
 (defspec create-and-generate-consonance
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-generate-consonance (test-inp table generates)))))
 
 (defspec member->row-round-trip
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/member->row-round-trip (test-inp table generates)))))
 
 (defspec create-and-read-consonance
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-read-consonance (test-inp table generates)))))
 
 (defspec create-one-create-many-consonance
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-one-create-many-consonance (test-inp table generates)))))
 
 (defspec update-then-update-back
-  100
+  tu/many
   (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
                 (tu/with-test-txn (tu/update-then-update-back (test-inp table generates)))))
 
 (defspec update-many-then-update-back
-  100
+  tu/many
   (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
                 (tu/with-test-txn (tu/update-many-then-update-back (test-inp table generates)))))
 
 (defspec read-one-read-many-consonance
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
                   (tu/read-one-read-many-consonance (test-inp table generates)))))
 
 (defspec read-one-read-where-consonance
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
                   (tu/read-one-read-where-consonance (test-inp table generates)))))
 
 (defspec create-and-delete-inversion
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-delete-inversion (test-inp table generates)))))
 
 (defspec delete-one-delete-many-consonance
-  100
+  tu/many
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance (test-inp table generates)))))
 

@@ -10,7 +10,7 @@
             [mertonon.util.registry :as registry]))
 
 (defspec nets-have-sorted-uuid-pkeys
-  100
+  tu/many
   (prop/for-all [curr-net (gen/one-of [net-gen/generate-simple-net
                                        net-gen/generate-linear-net
                                        net-gen/generate-dag-net])
@@ -20,7 +20,7 @@
                    (mapv :uuid (sort-by :uuid (curr-net (tu/maybe-strip-schema table)))))))
 
 (defspec nets-have-nontrivial-tables
-  100
+  tu/many
   (prop/for-all [curr-net (gen/one-of [net-gen/generate-simple-net
                                        net-gen/generate-linear-net
                                        net-gen/generate-dag-net])
@@ -29,7 +29,7 @@
                      (> (count (curr-net (tu/maybe-strip-schema table))) 0))))
 
 (defspec different-arity-group-by-dependent-uuid-agree
-  100
+  tu/many
   (prop/for-all [fk-uuids  (gen/vector gen/uuid 4)
                  pk-uuids  (gen/vector gen/uuid 12)
                  some-vals (gen/vector gen/small-integer 12)]
@@ -51,7 +51,7 @@
 
 ;; (defspec no-weights-with-duplicate-src-tgt-cobjs
 ;;   ;; for simple linear and dag
-;;   100
+;;   tu/many
 ;;   nil)
 
 (comment (run-tests))

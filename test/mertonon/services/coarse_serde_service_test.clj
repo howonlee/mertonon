@@ -14,7 +14,7 @@
 ;; TODO: Guarantee of ordering in serde
 
 (defspec coarse-serde-test
-  100
+  tu/many
   (prop/for-all [net net-gen/generate-dag-net]
                 (let [grid-uuid (-> net :grids first :uuid)]
                   (tu/with-test-txn

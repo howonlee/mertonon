@@ -49,7 +49,7 @@
        :body uio/maybe-slurp uio/maybe-json-decode strip-updated-at))
 
 (defspec grid-dump-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -71,7 +71,7 @@
                       (= dump-res demo-dump-res))))))
 
 (defspec grid-graph-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -86,7 +86,7 @@
                       (= grid-res demo-grid-res))))))
 
 (defspec grid-view-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -103,7 +103,7 @@
 (defspec layer-consonance-test
   ;; Layer-entry patterns will not be consonant, because the generator takes from all the entries every time
   ;; TODO: Make layer-entry patterns consonant
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -120,7 +120,7 @@
                       (= layer-res demo-layer-res))))))
 
 (defspec weightset-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -137,7 +137,7 @@
                       (= weightset-res demo-weightset-res))))))
 
 (defspec cobj-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -155,7 +155,7 @@
                       (= cost-object-res demo-cost-object-res))))))
 
 (defspec weight-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -174,7 +174,7 @@
 ;; TODO: losses
 
 (defspec grad-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
