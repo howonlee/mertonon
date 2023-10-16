@@ -6,10 +6,11 @@
             [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
+            [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.net :as net-gen]
             [mertonon.services.graph-service :as gs]
             [mertonon.services.matrix-service :as ms]
-            [mertonon.generators.net :as net-gen]
-            [mertonon.generators.aug-net :as aug-net-gen]))
+            [mertonon.test-utils :as tu]))
 
 ;; TODO: make sure the matrices produced are correct shape
 

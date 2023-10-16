@@ -8,12 +8,13 @@
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [mertonon.autodiff.reverse-ops :as ops]
+            [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.grad-net :as grad-net-gen]
+            [mertonon.generators.net :as net-gen]
             [mertonon.services.grad-service :as gs]
             [mertonon.services.graph-service :as graphs]
             [mertonon.services.matrix-service :as ms]
-            [mertonon.generators.net :as net-gen]
-            [mertonon.generators.aug-net :as aug-net-gen]
-            [mertonon.generators.grad-net :as grad-net-gen]))
+            [mertonon.test-utils :as tu]))
 
 (defspec matrix-var-encdec-test
   tu/many

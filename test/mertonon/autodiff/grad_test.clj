@@ -10,6 +10,7 @@
             [mertonon.autodiff.reverse-ops :as reverse-ops]
             [mertonon.autodiff.grad :as grad]
             [mertonon.generators.autodiff :as autodiff-gen]
+            [mertonon.test-utils :as tu]
             [mertonon.util.registry :as registry]))
 
 (defspec normalization-normalizes-1d
