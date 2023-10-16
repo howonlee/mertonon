@@ -51,7 +51,7 @@
             tgt-layer-uuid gen/uuid]
     (let [grid-uuid ((first (:grids grid)) :uuid)]
       (assoc grid :layers (norm [(mtc/->Layer src-layer-uuid grid-uuid "first-layer" "trivial")
-                                  (mtc/->Layer tgt-layer-uuid grid-uuid "second-layer" "trivial")])))))
+                                 (mtc/->Layer tgt-layer-uuid grid-uuid "second-layer" "trivial")])))))
 
 (def generate-simple-cost-objects
   (gen/let [layers        generate-simple-layers
@@ -59,7 +59,7 @@
             tgt-cobj-uuid gen/uuid]
     (let [[src-layer-uuid tgt-layer-uuid] (mapv :uuid (:layers layers))]
       (assoc layers :cost-objects (norm [(mtc/->CostObject src-cobj-uuid src-layer-uuid "first-cobj" "trivial")
-                                     (mtc/->CostObject tgt-cobj-uuid tgt-layer-uuid "second-cobj" "trivial")])))))
+                                         (mtc/->CostObject tgt-cobj-uuid tgt-layer-uuid "second-cobj" "trivial")])))))
 
 (def generate-simple-weightsets
   (gen/let [cobjs   generate-simple-cost-objects
