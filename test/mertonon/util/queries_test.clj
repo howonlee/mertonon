@@ -13,13 +13,13 @@
 ;; TODO: make the coverage less awful
 
 (defspec exercise-select-where-single-joined-query
-  100
+  tu/many
   (prop/for-all [joined-query query-gen/generate-single-joined-query]
                 (tu/with-test-txn
                   (queries/select-where-joined joined-query))))
 
 (defspec exercise-select-where-multi-joined-query
-  100
+  tu/many
   (prop/for-all [joined-query query-gen/generate-multi-joined-query]
                 (tu/with-test-txn
                   (queries/select-where-joined joined-query))))

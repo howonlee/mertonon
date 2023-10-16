@@ -25,7 +25,7 @@
     slurped))
 
 (defspec intro-not-idempotent
-  1
+  tu/few
   (prop/for-all
     [usernames  (gen/vector-distinct-by str/lower-case (gen-data/gen-mt-user-usernames :line-noise) {:num-elements 2})
      emails     (gen/vector-distinct (gen-data/gen-mt-user-emails :line-noise) {:num-elements 2})

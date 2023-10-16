@@ -29,7 +29,7 @@
 
 
 (defspec just-login-a-bunch
-  1
+  tu/few
   (prop/for-all
     [generated    authn-gen/generate-password-logins
      ;; bad by dint of being too long
@@ -52,7 +52,7 @@
              (= 401 (:status bad-password-res)))))))
 
 ;; (defspec login-logout
-;;   1
+;;   tu/few
 ;;   (prop/for-all
 ;;     [generated    authn-gen/generate-password-logins
 ;;      (tu/with-test-txn

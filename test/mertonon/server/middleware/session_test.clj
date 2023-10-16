@@ -25,7 +25,7 @@
     slurped))
 
 (defspec endpoint-needs-session-test
-  1
+  tu/few
   (prop/for-all
     [generated authn-gen/generate-mt-sessions]
     (tu/with-test-txn

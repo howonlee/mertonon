@@ -10,9 +10,9 @@
             [mertonon.generators.aug-net :as aug-net-gen]))
 
 ;; (defspec net-graph-is-dag-test
-;;   100
+;;   tu/many
 ;;   nil)
 ;; 
 ;; (defspec if-both-initial-and-terminal-is-trivial-node-test
-;;   100
+;;   tu/many
 ;;   nil)
