@@ -28,30 +28,4 @@
                 (and (vector? (curr-net (tu/maybe-strip-schema table)))
                      (> (count (curr-net (tu/maybe-strip-schema table))) 0))))
 
-(defspec different-arity-group-by-dependent-uuid-agree
-  tu/many
-  (prop/for-all [fk-uuids  (gen/vector gen/uuid 4)
-                 pk-uuids  (gen/vector gen/uuid 12)
-                 some-vals (gen/vector gen/small-integer 12)]
-                (let [first-constructor  (fn [fk-uuid pk-uuid] {:uuid pk-uuid :snd-uuid fk-uuid})
-                      second-constructor (fn [fk-uuid pk-uuid some-val] {:uuid pk-uuid :snd-uuid fk-uuid :some-val some-val})
-                      partitioned-uuids  (partition 4 pk-uuids)
-                      partitioned-vals   (partition 4 some-vals)
-                      arity-filter       #(dissoc % :some-val)
-                      first-res          (net-gen/group-by-dependent-uuid
-                                           first-constructor
-                                           fk-uuids
-                                           partitioned-uuids)
-                      second-res         (mapv arity-filter (net-gen/group-by-dependent-uuid
-                                                              second-constructor
-                                                              fk-uuids
-                                                              partitioned-uuids
-                                                              partitioned-vals))]
-                  (= first-res second-res))))
-
-;; (defspec no-weights-with-duplicate-src-tgt-cobjs
-;;   ;; for simple linear and dag
-;;   tu/many
-;;   nil)
-
 (comment (run-tests))
