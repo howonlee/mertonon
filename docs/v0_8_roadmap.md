@@ -16,11 +16,11 @@
 - [x] Update button thinking
 - [x] Make one instance of update button (grid)
 
+- [ ] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
 - [ ] Whack that one failing test
-- [ ] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
 - [ ] Cobjs for self-project
 - [ ] Weights for self-project
 - [ ] Some entries for self-project

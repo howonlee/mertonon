@@ -12,14 +12,14 @@
 ;; Test cardinality presets
 ;; ---
 
-(def few-test-num
+(def few
   "1 isn't quite 1 if test fails, which is why 1 is named 'few'"
   1)
 
-(def middle-test-num
+(def middle
   20)
 
-(def many-test-num
+(def many
   100)
 
 ;; ---
