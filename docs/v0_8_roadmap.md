@@ -16,18 +16,17 @@
 - [x] Update button thinking
 - [x] Make one instance of update button (grid)
 
-- [ ] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
+- [x] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
+
+- [ ] Fight update regressions
+- [ ] Whack that one failing test
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
-- [ ] Whack that one failing test
-- [ ] Cobjs for self-project
-- [ ] Weights for self-project
-- [ ] Some entries for self-project
 - [ ] Event gens - exercise only?
 - [ ] Pure view gens - only read properties i guess?
 - [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
-- [ ] Trivial FE test
+- [ ] Trivial FE test, runnable from top
 
 - [ ] Event property tests
 - [ ] Think harder of view properties - no exercise
