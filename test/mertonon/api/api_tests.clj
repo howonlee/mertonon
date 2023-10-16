@@ -88,7 +88,7 @@
         api-update-one!  (fn [_ member]
                            (let [res       (app {:uri endpoint :request-method :put :body-params member})
                                  processed (process-app-response res)]
-                             (if (some? processed)
+                             (if (seq processed)
                                (row->member processed)
                                processed)))
         api-update-many! (fn [_ member]
@@ -174,4 +174,4 @@
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance
                                     (test-inp table generates db/*defined-connection*)))))
 
-(comment (update-then-update-back))
+(comment (run-tests))
