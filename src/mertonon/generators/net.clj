@@ -202,30 +202,33 @@
 
 (defn generate-linear-cost-objects*
   [{:keys [cobjs-per-layer num-layers name-type label-type] :as params}]
-  (let [num-cobjs (* num-layers cobjs-per-layer)]
-    (gen/let [layers (generate-linear-layers* params)
-              cobjs  (apply gen/tuple
-                            (map #(gen/vector (gen-cobj-row params %) cobjs-per-layer)
-                                 (layers :layers)))]
-      (assoc layers :cost-objects (norm (flatten cobjs))))))
+  (gen/let [layers (generate-linear-layers* params)
+            cobjs  (apply gen/tuple
+                          (map #(gen/vector (gen-cobj-row params %) cobjs-per-layer)
+                               (layers :layers)))]
+    (assoc layers :cost-objects (norm (flatten cobjs)))))
 
 (def generate-linear-cost-objects      (generate-linear-cost-objects* net-params/test-gen-params))
 (def generate-linear-cost-objects-demo (generate-linear-cost-objects* net-params/demo-gen-params))
 
 (defn generate-linear-weightsets*
   [{:keys [num-layers label-type] :as params}]
-  (gen/let [cobjs     (generate-linear-cost-objects* params)
-            ws-uuids  (gen/vector gen/uuid (- num-layers 1))
-            ws-labels (gen/vector (gen-data/gen-labels label-type) (- num-layers 1))]
-    (let [layer-bigrams      (bigrams (map :uuid (:layers cobjs)))
-          layer-name-bigrams (bigrams (map :name (:layers cobjs)))
-          ws-names           (for [[fst snd] layer-name-bigrams]
-                               (str/join " => " [fst snd]))
-          weightsets         (mapv mtc/->Weightset ws-uuids layer-bigrams ws-names ws-labels)]
-      (assoc cobjs :weightsets (norm weightsets)))))
+  (gen/let [cobjs      (generate-linear-cost-objects* params)
+            weightsets (apply gen/tuple
+                              (map (fn [[src tgt]] (gen-weightset-row params src tgt))
+                                   (bigrams (:layers cobjs))))]
+      (assoc cobjs :weightsets (norm weightsets))))
 
 (def generate-linear-weightsets      (generate-linear-weightsets* net-params/test-gen-params))
 (def generate-linear-weightsets-demo (generate-linear-weightsets* net-params/demo-gen-params))
+
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
 
 (defn generate-linear-weights*
   [{:keys [label-type] :as params}]
@@ -421,4 +424,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-linear-cost-objects))
+  (gen/generate generate-linear-weightsets))
