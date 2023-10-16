@@ -174,4 +174,4 @@
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance
                                     (test-inp table generates db/*defined-connection*)))))
 
-(comment (run-tests))
+(comment (update-then-update-back))
