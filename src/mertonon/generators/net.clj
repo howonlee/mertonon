@@ -194,13 +194,8 @@
 (defn generate-linear-layers*
   [{:keys [num-layers name-type label-type] :as params}]
   (gen/let [grid          (generate-grid* params)
-            layer-uuids   (gen/vector gen/uuid num-layers)
-            layer-names   (gen/vector (gen-data/gen-layer-names name-type) num-layers)
-            layer-labels  (gen/vector (gen-data/gen-labels label-type) num-layers)]
-    (let [grid-uuid       ((first (:grids grid)) :uuid)]
-      (assoc grid :layers (norm (for [[layer-uuid layer-name layer-label]
-                                      (apply map vector [layer-uuids layer-names layer-labels])]
-                                  (mtc/->Layer layer-uuid grid-uuid layer-name layer-label)))))))
+            layers        (gen/vector (gen-layer-row params grid) num-layers)]
+    (assoc grid :layers (norm layers))))
 
 (def generate-linear-layers      (generate-linear-layers* net-params/test-gen-params))
 (def generate-linear-layers-demo (generate-linear-layers* net-params/demo-gen-params))
@@ -208,20 +203,11 @@
 (defn generate-linear-cost-objects*
   [{:keys [cobjs-per-layer num-layers name-type label-type] :as params}]
   (let [num-cobjs (* num-layers cobjs-per-layer)]
-    (gen/let [layers          (generate-linear-layers* params)
-              cobj-uuids      (gen/vector gen/uuid num-cobjs)
-              cobj-names      (gen/vector (gen-data/gen-cobj-names name-type) num-cobjs)
-              cobj-labels     (gen/vector (gen-data/gen-labels label-type) num-cobjs)]
-      (let [layer-uuids           (mapv :uuid (:layers layers))
-            cost-objects-by-layer (partition cobjs-per-layer cobj-uuids)
-            cobj-names-by-layer   (partition cobjs-per-layer cobj-names)
-            cobj-labels-by-layer  (partition cobjs-per-layer cobj-labels)
-            cobjs                 (group-by-dependent-uuid mtc/->CostObject
-                                                           layer-uuids
-                                                           cost-objects-by-layer
-                                                           cobj-names-by-layer
-                                                           cobj-labels-by-layer)]
-        (assoc layers :cost-objects cobjs)))))
+    (gen/let [layers (generate-linear-layers* params)
+              cobjs  (apply gen/tuple
+                            (map #(gen/vector (gen-cobj-row params %) cobjs-per-layer)
+                                 (layers :layers)))]
+      (assoc layers :cost-objects (norm (flatten cobjs))))))
 
 (def generate-linear-cost-objects      (generate-linear-cost-objects* net-params/test-gen-params))
 (def generate-linear-cost-objects-demo (generate-linear-cost-objects* net-params/demo-gen-params))
@@ -435,4 +421,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-simple-net))
+  (gen/generate generate-linear-cost-objects))
