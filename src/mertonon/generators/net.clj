@@ -22,7 +22,7 @@
   (->> table (sort-by :uuid) vec))
 
 ;; ---
-;; Individual row gens
+;; Individual table row gens
 ;; ---
 
 (defn gen-grid-row
@@ -49,9 +49,9 @@
 (defn gen-weightset-row
   [{:keys [name-type label-type] :as params} src-layer tgt-layer]
   (gen/let [ws-uuid  gen/uuid
-            ws-name  (str/join " => " [(src-layer :name) (tgt-layer :name)])
             ws-label (gen-data/gen-labels label-type)]
-    (mtc/->Weightset ws-uuid (src-layer :uuid) (tgt-layer :uuid) ws-name ws-label)))
+    (let [ws-name  (str/join " => " [(src-layer :name) (tgt-layer :name)])]
+      (mtc/->Weightset ws-uuid (src-layer :uuid) (tgt-layer :uuid) ws-name ws-label))))
 
 (defn gen-weight-row
   [{:keys [name-type label-type] :as params} weightset src-cobj tgt-cobj]
@@ -67,6 +67,16 @@
                   weight-type
                   weight-val)))
 
+(defn gen-input-row
+  [{:keys [name-type label-type] :as params} layer]
+  (gen/let [input-uuid gen/uuid]
+    (mtc/->Input input-uuid (layer :uuid) "input" "trivial" :competitiveness)))
+
+
+(defn gen-loss-row
+  [{:keys [name-type label-type] :as params} layer]
+  (gen/let [loss-uuid gen/uuid]
+    (mtc/->Input loss-uuid (layer :uuid) "loss" "trivial" :competitiveness)))
 
 ;; ---
 ;; Grid generator
@@ -86,69 +96,42 @@
 
 ;; Testing use only, do not use for demos.
 
-(defn generate-simple-layers*
-  [{:keys [num-layers name-type label-type] :as params}]
+(def simple-params net-params/test-gen-params)
+
+(def generate-simple-layers
   (gen/let [grid      generate-grid
-            src-layer (gen-layer-row params (-> grid :grids first))
-            tgt-layer (gen-layer-row params (-> grid :grids first))]
+            src-layer (gen-layer-row simple-params (-> grid :grids first))
+            tgt-layer (gen-layer-row simple-params (-> grid :grids first))]
     (assoc grid :layers (norm [src-layer tgt-layer]))))
 
-(def generate-simple-layers (generate-simple-layers* net-params/test-gen-params))
-
 (def generate-simple-cost-objects
-  (gen/let [layers        generate-simple-layers
-            src-cobj-uuid gen/uuid
-            tgt-cobj-uuid gen/uuid]
-    (let [[src-layer-uuid tgt-layer-uuid] (mapv :uuid (:layers layers))]
-      (assoc layers :cost-objects (norm [(mtc/->CostObject src-cobj-uuid src-layer-uuid "first-cobj" "trivial")
-                                         (mtc/->CostObject tgt-cobj-uuid tgt-layer-uuid "second-cobj" "trivial")])))))
+  (gen/let [layers   generate-simple-layers
+            src-cobj (gen-cobj-row simple-params (-> layers :layers first))
+            tgt-cobj (gen-cobj-row simple-params (-> layers :layers second))]
+    (assoc layers :cost-objects (norm [src-cobj tgt-cobj]))))
 
 (def generate-simple-weightsets
-  (gen/let [cobjs   generate-simple-cost-objects
-            ws-uuid gen/uuid]
-    (let [[src-layer-uuid tgt-layer-uuid] (mapv :uuid (:layers cobjs))]
-      (assoc cobjs :weightsets [(mtc/->Weightset
-                                  ws-uuid
-                                  src-layer-uuid
-                                  tgt-layer-uuid
-                                  "weightset"
-                                  "trivial")]))))
+  (gen/let [cobjs generate-simple-cost-objects
+            ws    (gen-weightset-row simple-params (-> cobjs :layers first) (-> cobjs :layers second))]
+    (assoc cobjs :weightsets [ws])))
 
 (def generate-simple-weights
-  (gen/let [weightsets   generate-simple-weightsets
-            weight-uuid  gen/uuid
-            weight-type  (gen/return :default)
-            value        (gen/fmap #(+ 1 %) gen/nat)]
-    (let [[src-cobj-uuid tgt-cobj-uuid] (mapv :uuid (:cost-objects weightsets))
-          ws-uuid                       ((first (:weightsets weightsets)) :uuid)]
-      (assoc weightsets :weights [(mtc/->Weight
-                                    weight-uuid
-                                    ws-uuid
-                                    src-cobj-uuid
-                                    tgt-cobj-uuid
-                                    "trivial"
-                                    weight-type
-                                    value)]))))
+  (gen/let [weightsets generate-simple-weightsets
+            weight     (gen-weight-row simple-params
+                                       (-> weightsets :weightsets first)
+                                       (-> weightsets :cost-objects first)
+                                       (-> weightsets :cost-objects second))]
+    (assoc weightsets :weights [[weight]])))
 
 (def generate-simple-inputs
-  (gen/let [weights    generate-simple-weights
-            input-uuid gen/uuid]
-    (let [layer-uuid ((first (:layers weights)) :uuid)]
-      (assoc weights :inputs [(mtc/->Input input-uuid
-                                           layer-uuid
-                                           "input"
-                                           "trivial"
-                                           :competitiveness)]))))
+  (gen/let [weights generate-simple-weights
+            input   (gen-input-row simple-params (-> weights :layers first))]
+    (assoc weights :inputs [input])))
 
 (def generate-simple-losses
-  (gen/let [inputs    generate-simple-inputs
-            loss-uuid gen/uuid]
-    (let [layer-uuid ((last (:layers inputs)) :uuid)]
-      (assoc inputs :losses [(mtc/->Loss loss-uuid
-                                         layer-uuid
-                                         "output"
-                                         "trivial"
-                                         :competitiveness)]))))
+  (gen/let [inputs generate-simple-inputs
+            loss   (gen-loss-row simple-params (-> inputs :layers last))]
+    (assoc inputs :losses [loss])))
 
 (def generate-simple-net generate-simple-losses)
 
@@ -452,4 +435,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-simple-layers))
+  (gen/generate generate-simple-net))
