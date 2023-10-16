@@ -33,9 +33,40 @@
     (mtc/->Grid grid-uuid grid-name grid-label optimizer-type {})))
 
 (defn gen-layer-row
-  [{:keys [optimizer-type name-type label-type] :as params} grid]
-  (gen/let [layer-uuid gen/uuid]
-    (mtc/->Layer layer-uuid grid-uuid some other crap)))
+  [{:keys [name-type label-type] :as params} grid]
+  (gen/let [layer-uuid   gen/uuid
+            layer-name   (gen-data/gen-layer-names name-type)
+            layer-label  (gen-data/gen-labels label-type)]
+    (mtc/->Layer layer-uuid (grid :uuid) layer-name layer-label)))
+
+(defn gen-cobj-row
+  [{:keys [name-type label-type] :as params} layer]
+  (gen/let [cobj-uuid  gen/uuid
+            cobj-name  (gen-data/gen-cobj-names name-type)
+            cobj-label (gen-data/gen-labels label-type)]
+    (mtc/->CostObject cobj-uuid (layer :uuid) cobj-name cobj-label)))
+
+(defn gen-weightset-row
+  [{:keys [name-type label-type] :as params} src-layer tgt-layer]
+  (gen/let [ws-uuid  gen/uuid
+            ws-name  (str/join " => " [(src-layer :name) (tgt-layer :name)])
+            ws-label (gen-data/gen-labels label-type)]
+    (mtc/->Weightset ws-uuid (src-layer :uuid) (tgt-layer :uuid) ws-name ws-label)))
+
+(defn gen-weight-row
+  [{:keys [name-type label-type] :as params} weightset src-cobj tgt-cobj]
+  (gen/let [weight-uuid  gen/uuid
+            weight-val   (gen/fmap #(+ 1 %) gen/nat)
+            weight-type  (gen/return :default)
+            weight-label (gen-data/gen-labels label-type)]
+    (mtc/->Weight weight-uuid
+                  (weightset :uuid)
+                  (src-cobj :uuid)
+                  (tgt-cobj :uuid)
+                  weight-label
+                  weight-type
+                  weight-val)))
+
 
 ;; ---
 ;; Grid generator
@@ -53,15 +84,16 @@
 ;; Simpler generators
 ;; ---
 
-;; Testing use only, do not use for demos. Takes no net gen params because of this
+;; Testing use only, do not use for demos.
 
-(def generate-simple-layers
-  (gen/let [grid           generate-grid
-            src-layer-uuid gen/uuid
-            tgt-layer-uuid gen/uuid]
-    (let [grid-uuid ((first (:grids grid)) :uuid)]
-      (assoc grid :layers (norm [(mtc/->Layer src-layer-uuid grid-uuid "first-layer" "trivial")
-                                 (mtc/->Layer tgt-layer-uuid grid-uuid "second-layer" "trivial")])))))
+(defn generate-simple-layers*
+  [{:keys [num-layers name-type label-type] :as params}]
+  (gen/let [grid      generate-grid
+            src-layer (gen-layer-row params (-> grid :grids first))
+            tgt-layer (gen-layer-row params (-> grid :grids first))]
+    (assoc grid :layers (norm [src-layer tgt-layer]))))
+
+(def generate-simple-layers (generate-simple-layers* net-params/test-gen-params))
 
 (def generate-simple-cost-objects
   (gen/let [layers        generate-simple-layers
@@ -420,4 +452,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-dag-demo-net))
+  (gen/generate generate-simple-layers))
