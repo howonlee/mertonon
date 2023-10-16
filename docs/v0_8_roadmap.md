@@ -23,6 +23,7 @@
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
+
 - [ ] Event gens - exercise only?
 - [ ] Pure view gens - only read properties i guess?
 - [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
@@ -35,7 +36,6 @@
 - [ ] Mutation test
 
 - [ ] Update mertonon.com, figure out something better for inbound email thing
-
 - [ ] Changelog
 - [ ] Click around a bit
 - [ ] Cut release
