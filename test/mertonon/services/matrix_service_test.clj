@@ -6,21 +6,22 @@
             [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
+            [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.net :as net-gen]
             [mertonon.services.graph-service :as gs]
             [mertonon.services.matrix-service :as ms]
-            [mertonon.generators.net :as net-gen]
-            [mertonon.generators.aug-net :as aug-net-gen]))
+            [mertonon.test-utils :as tu]))
 
 ;; TODO: make sure the matrices produced are correct shape
 
 (defspec weightset-matrix-encdec-test
-  100
+  tu/many
   (prop/for-all [matrix-weights net-gen/generate-matrix-weights]
                 (= matrix-weights (-> matrix-weights ms/weights->matrix ms/matrix->weights))))
 
 ;; Do not let matrix rows sum to zero because we l1-normalize matrix rows and what's normalization of a zero row anyways
 (defspec matrix-rows-do-not-sum-to-zero
-  100
+  tu/many
   (prop/for-all [matrix-weights net-gen/generate-matrix-weights]
                 (let [elem-set (->> matrix-weights ms/weights->matrix :matrix
                                     cm/slices (mapv cm/esum) (apply hash-set))]
@@ -28,7 +29,7 @@
 
 
 (defspec linear-entry-pattern-encdec-test
-  100
+  tu/many
   (prop/for-all [[net entries] aug-net-gen/net-and-entries]
                 (let [orig-entries          (sort-by :cobj-uuid (entries :entries))
                       cost-objects-by-layer (group-by :layer-uuid (:cost-objects net))
@@ -47,7 +48,7 @@
                   (= orig-inp involuted-inp))))
 
 (defspec dag-entry-pattern-encdec-test
-  100
+  tu/many
   (prop/for-all [[net entries] aug-net-gen/dag-net-and-entries]
                 (let [orig-entries          (sort-by :cobj-uuid (entries :entries))
                       cost-objects-by-layer (group-by :layer-uuid (:cost-objects net))
@@ -74,7 +75,7 @@
   )
 
 (defspec linear-full-encdec-test
-  100
+  tu/many
   (prop/for-all [net net-gen/generate-linear-net]
                 (= net
                    (-> net
@@ -82,7 +83,7 @@
                        ms/matrix-net->row-net))))
 
 (defspec dag-full-encdec-test
-  100
+  tu/many
   (prop/for-all [dag-net net-gen/generate-dag-net]
                 (= dag-net
                    (-> dag-net

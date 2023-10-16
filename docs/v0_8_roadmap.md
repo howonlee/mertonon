@@ -14,20 +14,23 @@
 - [x] Slide in all update-one, update-many's
 - [x] Test BE api model update, update-many (get it to actually work lol)
 - [x] Update button thinking
-- [ ] Make one instance of update button (grid)
+- [x] Make one instance of update button (grid)
+
+- [x] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
+- [x] Update-many fiddly problem
+- [x] Update-one blowup in test despite working well in dev
+- [x] Redo OG simple net
+- [ ] Redo OG linear net
+- [ ] Redo OG dag net
+- [ ] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
+
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
 - [ ] Actually write out session login BE test
-- [ ] Whack that one failing test
-
-- [ ] 3 orders of magnitudes for tests adjustable at central location - 1, 10, 40 by default, 5, 100, 2000 for long
-- [ ] Cobjs for self-project
-- [ ] Weights for self-project
-- [ ] Some entries for self-project
 - [ ] Event gens - exercise only?
 - [ ] Pure view gens - only read properties i guess?
 - [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
-- [ ] Trivial FE test
+- [ ] Trivial FE test, runnable from top
 
 - [ ] Event property tests
 - [ ] Think harder of view properties - no exercise
@@ -36,7 +39,6 @@
 - [ ] Mutation test
 
 - [ ] Update mertonon.com, figure out something better for inbound email thing
-
 - [ ] Changelog
 - [ ] Click around a bit
 - [ ] Cut release

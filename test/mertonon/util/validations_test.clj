@@ -29,7 +29,7 @@
   (fn [req] {random-keyword [random-member]}))
 
 (defspec two-validations-add-reses
-  20
+  tu/middle
   (prop/for-all [curr-keyword gen/keyword
                  members      (gen/vector-distinct gen/string {:num-elements 2})]
                 (let [dummy-1 (filled-dummy-validation curr-keyword (first members))
@@ -46,7 +46,7 @@
 
 
 (defspec mix-simple-and-nonsimple-validation
-  20
+  tu/middle
   (prop/for-all [[fst-keyword snd-keyword] (gen/vector-distinct gen/keyword {:num-elements 2})]
                 (let [dummy        (dummy-validation fst-keyword)
                       simple-dummy (simple-dummy-validation snd-keyword)

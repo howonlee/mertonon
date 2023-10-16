@@ -8,15 +8,16 @@
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [mertonon.autodiff.reverse-ops :as ops]
+            [mertonon.generators.aug-net :as aug-net-gen]
+            [mertonon.generators.grad-net :as grad-net-gen]
+            [mertonon.generators.net :as net-gen]
             [mertonon.services.grad-service :as gs]
             [mertonon.services.graph-service :as graphs]
             [mertonon.services.matrix-service :as ms]
-            [mertonon.generators.net :as net-gen]
-            [mertonon.generators.aug-net :as aug-net-gen]
-            [mertonon.generators.grad-net :as grad-net-gen]))
+            [mertonon.test-utils :as tu]))
 
 (defspec matrix-var-encdec-test
-  100
+  tu/many
   (prop/for-all [matrix-weights net-gen/generate-matrix-weights]
                 (= matrix-weights (-> matrix-weights
                                       ms/weights->matrix
@@ -25,7 +26,7 @@
                                       ms/matrix->weights))))
 
 (defspec linear-forward-encdec-test
-  100
+  tu/many
   (prop/for-all [[matrix-net patterns] (grad-net-gen/matrix-net-and-patterns aug-net-gen/net-and-entries)]
                 ;; TODO: deal with the normalization a better way than ignoring it, make it conform to profit
                 (let [[new-matrix-net new-patterns] (gs/forward-pass->net-patterns
@@ -38,7 +39,7 @@
                                (map vector matrices new-matrices))))))
 
 (defspec original-graph-corresponds-to-forward-encdec
-  100
+  tu/many
   (prop/for-all [[matrix-net patterns] (grad-net-gen/matrix-net-and-patterns aug-net-gen/dag-net-and-entries)]
                 (let [orig-graph     (graphs/net->graph (:layers matrix-net) (map :weightset (:matrices matrix-net)))
                       [encdec-net _] (gs/forward-pass->net-patterns
@@ -50,7 +51,7 @@
 
 
 (defspec dag-forward-encdec-test
-  100
+  tu/many
   (prop/for-all [[matrix-net patterns] (grad-net-gen/matrix-net-and-patterns aug-net-gen/dag-net-and-entries)]
                 ;; TODO: deal with the normalization a better way than ignoring it, make it conform to profit
                 (let [[new-matrix-net new-patterns] (gs/forward-pass->net-patterns
@@ -63,20 +64,20 @@
                                (map vector matrices new-matrices))))))
 
 (defspec linear-grad-run-test
-  100
+  tu/many
   (prop/for-all [[matrix-net patterns] (grad-net-gen/matrix-net-and-patterns aug-net-gen/net-and-entries)]
                 (let [forward-pass (gs/net-patterns->forward-pass matrix-net patterns)]
                   (not-empty (:grads (gs/forward-pass->grad forward-pass))))))
 
 (defspec dag-grad-run-test
-  100
+  tu/many
   (prop/for-all [[matrix-net patterns] (grad-net-gen/matrix-net-and-patterns aug-net-gen/dag-net-and-entries)]
                 (let [forward-pass (gs/net-patterns->forward-pass matrix-net patterns)]
                   (not-empty (:grads (gs/forward-pass->grad forward-pass))))))
 
 ;; TODO: actually kick off the save, within a test ctx
 (defspec grad-save-completion-test
-  100
+  tu/many
   (prop/for-all [[matrix-net patterns forward grads cobj-updates weight-updates]
                  (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (let [cobjs                            (:cost-objects matrix-net)

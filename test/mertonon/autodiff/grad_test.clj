@@ -10,10 +10,11 @@
             [mertonon.autodiff.reverse-ops :as reverse-ops]
             [mertonon.autodiff.grad :as grad]
             [mertonon.generators.autodiff :as autodiff-gen]
+            [mertonon.test-utils :as tu]
             [mertonon.util.registry :as registry]))
 
 (defspec normalization-normalizes-1d
-  100
+  tu/many
   (prop/for-all [vec-1d autodiff-gen/generate-entry-vec]
                 (let [forward-normalized (forward-ops/op-norm-1d (forward-ops/op-var vec-1d 1))
                       reverse-normalized (reverse-ops/op-norm-1d (reverse-ops/op-var vec-1d))]
@@ -21,7 +22,7 @@
                        (= (cm/esum (:value reverse-normalized)) 1)))))
 
 (defspec normalization-normalizes-one-dim-of-2d
-  100
+  tu/many
   (prop/for-all [vec-2d autodiff-gen/generate-entry-mat]
                 (let [forward-normalized (forward-ops/op-norm-2d (forward-ops/op-var vec-2d 1))
                       reverse-normalized (reverse-ops/op-norm-2d (reverse-ops/op-var vec-2d))
@@ -30,7 +31,7 @@
                        (= (mapv cm/esum (:value reverse-normalized)) all-ones)))))
 
 (defspec matmul-same-shapes
-  100
+  tu/many
   (prop/for-all [fst-member autodiff-gen/generate-mat-or-vec
                  snd-member autodiff-gen/generate-mat-or-vec]
                 ;; dout has same shape as the output so just pretend output is dout
@@ -44,7 +45,7 @@
                                   (->> snd-back cm/shape cm/array))))))
 
 (defspec same-res-op-and-numerical-diff
-  100
+  tu/many
   (prop/for-all [applied-op (autodiff-gen/generate-ops autodiff-gen/generate-matrix-var)]
                 (let [op-type         (:type applied-op)
                       op-inp          (:inputs applied-op)
@@ -61,7 +62,7 @@
 
 ;; TODO: test on matrix values. Requires a lot of fiddling with autodiff-gen because forward automatic differentiation needs that
 (defspec same-res-forward-and-reverse
-  100
+  tu/many
   (prop/for-all [[complex-var loss-uuid] autodiff-gen/generate-complex-variable-and-loss]
                 (let [grads       (grad/grad complex-var 1 {:norm-grad false})
                       forward-var (autodiff-gen/complex-variable->forward-ops [complex-var loss-uuid])]

@@ -49,7 +49,7 @@
        :body uio/maybe-slurp uio/maybe-json-decode strip-updated-at))
 
 (defspec grid-dump-consonance-test
-  3
+  tu/middle
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -67,11 +67,13 @@
                           demo-dump-endpoint   "/api/v1/generators/dump"
                           test-app             (tu/app-with-test-txn db/*defined-connection*)
                           demo-dump-res        (app-get test-app demo-dump-endpoint)
-                          dump-res             (dissoc (app-get test-app dump-endpoint query-data) "query")]
+                          dump-res             (dissoc (app-get test-app dump-endpoint query-data) "query")
+                          printo               (println (first (cd/diff dump-res demo-dump-res)))
+                          printo               (println (second (cd/diff dump-res demo-dump-res)))]
                       (= dump-res demo-dump-res))))))
 
 (defspec grid-graph-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -86,7 +88,7 @@
                       (= grid-res demo-grid-res))))))
 
 (defspec grid-view-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -103,7 +105,7 @@
 (defspec layer-consonance-test
   ;; Layer-entry patterns will not be consonant, because the generator takes from all the entries every time
   ;; TODO: Make layer-entry patterns consonant
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -120,7 +122,7 @@
                       (= layer-res demo-layer-res))))))
 
 (defspec weightset-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -137,7 +139,7 @@
                       (= weightset-res demo-weightset-res))))))
 
 (defspec cobj-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -155,7 +157,7 @@
                       (= cost-object-res demo-cost-object-res))))))
 
 (defspec weight-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -174,7 +176,7 @@
 ;; TODO: losses
 
 (defspec grad-consonance-test
-  3
+  tu/few
   (prop/for-all [net-and-backprop-and-updates (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (tu/with-test-txn
                   (do
@@ -200,4 +202,4 @@
                       (= grad-rollup demo-grad-rollup))))))
 
 (comment
-  (run-tests))
+  (grid-dump-consonance-test))

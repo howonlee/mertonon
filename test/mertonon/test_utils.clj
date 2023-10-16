@@ -9,6 +9,20 @@
             [mertonon.util.registry :as reg]))
 
 ;; ---
+;; Test cardinality presets
+;; ---
+
+(def few
+  "1 isn't quite 1 if test fails, which is why 1 is named 'few'"
+  1)
+
+(def middle
+  20)
+
+(def many
+  100)
+
+;; ---
 ;; Test transaction macro and middleware
 ;; ---
 
@@ -121,9 +135,10 @@
         fst-update  (update-many! (mapv :uuid fst-members) snd-members)
         snd-update  (update-many! (mapv :uuid fst-members) fst-members)]
     ;; Dissoc updated-at values because they're not quite exactly the same instant
+    ;; Note how fst-members and snd-members can't be sorted, which is why we compare hash-sets
     (and
-      (= (mapv #(dissoc % :updated-at) fst-members)
-         (mapv #(dissoc % :updated-at) snd-update))
+      (= (apply hash-set (map #(dissoc % :updated-at) fst-members))
+         (apply hash-set (map #(dissoc % :updated-at) snd-update)))
       (not= (mapv :updated-at fst-members) (mapv :updated-at snd-update)))))
 
 

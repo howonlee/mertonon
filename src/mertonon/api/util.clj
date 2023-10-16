@@ -56,14 +56,14 @@
 
 (defn create-model [curr-model & [config]]
   (fn [match]
-    (let [model-or-models            (body-params match)
+    (let [member-or-members          (body-params match)
           {validations :validations
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
-          res                        (if (map? model-or-models)
-                                       ((curr-model :create-one!) model-or-models)
-                                       ((curr-model :create-many!) model-or-models))
+          res                        (if (map? member-or-members)
+                                       ((curr-model :create-one!) member-or-members)
+                                       ((curr-model :create-many!) member-or-members))
           res                        (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))
 
@@ -93,14 +93,17 @@
 
 (defn update-model [curr-model & [config]]
   (fn [match]
-    (let [model-or-models            (body-params match)
+    (let [member-or-members          (body-params match)
+          member-or-members          (if (map? member-or-members)
+                                       ((curr-model :row->member) member-or-members)
+                                       (mapv (curr-model :row->member) member-or-members))
           {validations :validations
            key-banlist :key-banlist} config
           check!                     (if (seq validations)
                                        (uvals/throw-if-invalid! match validations))
-          res                        (if (map? model-or-models)
-                                       ((curr-model :update-one!) (:uuid model-or-models) model-or-models)
-                                       ((curr-model :update-many!) (mapv :uuid model-or-models) model-or-models))
+          res                        (if (map? member-or-members)
+                                         ((curr-model :update-one!) (:uuid member-or-members) member-or-members)
+                                         ((curr-model :update-many!) (mapv :uuid member-or-members) member-or-members))
           res                        (maybe-filter-results key-banlist res)]
       {:status 200 :body res})))
 

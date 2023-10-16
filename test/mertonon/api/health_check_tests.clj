@@ -24,7 +24,7 @@
 
 ;; Exercising only
 (defspec just-post-a-bunch
-  100
+  tu/many
   (prop/for-all [hc (hc-gen/generate-health-check)]
                 (tu/with-test-txn
                   (some? (:uuid (post-to-health-check! hc db/*defined-connection*))))))

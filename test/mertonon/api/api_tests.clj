@@ -88,7 +88,7 @@
         api-update-one!  (fn [_ member]
                            (let [res       (app {:uri endpoint :request-method :put :body-params member})
                                  processed (process-app-response res)]
-                             (if (some? processed)
+                             (if (seq processed)
                                (row->member processed)
                                processed)))
         api-update-many! (fn [_ member]
@@ -120,31 +120,31 @@
 ;; ---
 
 (defspec create-and-generate-consonance
-  100
+  tu/middle
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-generate-consonance
                                     (test-inp table generates db/*defined-connection*)))))
 
 (defspec member->row-round-trip
-  100
+  tu/middle
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/member->row-round-trip
                                     (test-inp table generates db/*defined-connection*)))))
 
 (defspec create-and-read-consonance
-  100
+  tu/middle
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-read-consonance
                                     (test-inp table generates db/*defined-connection*)))))
 
 (defspec create-one-create-many-consonance
-  100
+  tu/middle
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-one-create-many-consonance
                                     (test-inp table generates db/*defined-connection*)))))
 
 (defspec read-one-read-many-consonance
-  100
+  tu/middle
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn
                   (tu/read-one-read-many-consonance
@@ -153,23 +153,23 @@
 ;; API will not have arbitrary read-where semantics. That's a terrible idea.
 
 (defspec update-then-update-back
-  100
+  tu/middle
   (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
                 (tu/with-test-txn (tu/update-then-update-back (test-inp table generates db/*defined-connection*)))))
 
 (defspec update-many-then-update-back
-  100
+  tu/middle
   (prop/for-all [[table generates] (tu/table-and-generates tables-under-test #{:mertonon.mt-users})]
                 (tu/with-test-txn (tu/update-many-then-update-back (test-inp table generates db/*defined-connection*)))))
 
 (defspec create-and-delete-inversion
-  100
+  tu/middle
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/create-and-delete-inversion
                                     (test-inp table generates db/*defined-connection*)))))
 
 (defspec delete-one-delete-many-consonance
-  100
+  tu/middle
   (prop/for-all [[table generates] table-and-generates]
                 (tu/with-test-txn (tu/delete-one-delete-many-consonance
                                     (test-inp table generates db/*defined-connection*)))))

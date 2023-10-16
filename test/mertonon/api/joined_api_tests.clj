@@ -15,6 +15,7 @@
             [mertonon.test-utils :as tu]
             [mertonon.util.io :as uio]))
 
-;; make up a random endpoint
+;; get the made up random endpoint
+;; execute the read properties on it
 
 nil

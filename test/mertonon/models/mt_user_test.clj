@@ -18,7 +18,7 @@
 ;; ---
 
 (defspec hit-the-unique-constraint
-  100
+  tu/many
   (prop/for-all [users-gen authn-gen/generate-mt-users]
                 (let [user-vec
                       (:mt-users users-gen)
@@ -41,7 +41,7 @@
 
 (defspec password-is-digest
   ;; The problem with running scrypt in property tests is that scrypt is designed to be slow
-  3
+  tu/few
   (prop/for-all [password-login-gen authn-gen/generate-password-logins]
                 (let [{password-logins :password-logins} password-login-gen]
                   (every? password-login-model/is-digest? password-logins))))
