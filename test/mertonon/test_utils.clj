@@ -9,6 +9,20 @@
             [mertonon.util.registry :as reg]))
 
 ;; ---
+;; Test cardinality presets
+;; ---
+
+(def few-test-num
+  "1 isn't quite 1 if test fails, which is why 1 is named 'few'"
+  1)
+
+(def middle-test-num
+  20)
+
+(def many-test-num
+  100)
+
+;; ---
 ;; Test transaction macro and middleware
 ;; ---
 
