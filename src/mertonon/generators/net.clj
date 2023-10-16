@@ -69,14 +69,16 @@
 
 (defn gen-input-row
   [{:keys [name-type label-type] :as params} layer]
-  (gen/let [input-uuid gen/uuid]
-    (mtc/->Input input-uuid (layer :uuid) "input" "trivial" :competitiveness)))
+  (gen/let [input-uuid  gen/uuid
+            input-label (gen-data/gen-labels label-type)]
+    (mtc/->Input input-uuid (layer :uuid) "Input" input-label :competitiveness)))
 
 
 (defn gen-loss-row
   [{:keys [name-type label-type] :as params} layer]
-  (gen/let [loss-uuid gen/uuid]
-    (mtc/->Input loss-uuid (layer :uuid) "loss" "trivial" :competitiveness)))
+  (gen/let [loss-uuid  gen/uuid
+            loss-label (gen-data/gen-labels label-type)]
+    (mtc/->Input loss-uuid (layer :uuid) "Output" loss-label :competitiveness)))
 
 ;; ---
 ;; Grid generator
@@ -247,38 +249,23 @@
 (def generate-linear-weights      (generate-linear-weights* net-params/test-gen-params))
 (def generate-linear-weights-demo (generate-linear-weights* net-params/demo-gen-params))
 
+
 (defn generate-linear-inputs*
-  "Only for linear net, hardcodes the last layer as being the input and competitiveness input"
-  [{:keys [label-type loss-type] :as params}]
-  (gen/let [weights     (generate-linear-weights* params)
-            input-uuid  gen/uuid
-            input-label (gen-data/gen-labels label-type)]
-    (let [first-layer-uuid (-> weights :layers first :uuid)
-          input-name       (str/join ["Input" " (" (-> weights :layers first :name) ")"])
-          input            (mtc/->Input input-uuid
-                                        first-layer-uuid
-                                        input-name
-                                        input-label
-                                        loss-type)]
-      (assoc weights :inputs [input]))))
+  "Only for linear net, hardcodes the first layer as being the input and competitiveness input"
+  [params]
+  (gen/let [weights (generate-linear-weights* params)
+            input   (gen-input-row params (-> weights :layers first))]
+    (assoc weights :inputs [input])))
 
 (def generate-linear-inputs      (generate-linear-inputs* net-params/test-gen-params))
 (def generate-linear-inputs-demo (generate-linear-inputs* net-params/demo-gen-params))
 
 (defn generate-linear-losses*
   "Only for linear net, hardcodes the last layer as being the loss and competitiveness loss"
-  [{:keys [label-type loss-type] :as params}]
-  (gen/let [inputs     (generate-linear-inputs* params)
-            loss-uuid  gen/uuid
-            loss-label (gen-data/gen-labels label-type)]
-    (let [last-layer-uuid (-> inputs :layers last :uuid)
-          loss-name       (str/join ["Output" " (" (-> inputs :layers last :name) ")"])
-          loss            (mtc/->Loss loss-uuid
-                                      last-layer-uuid
-                                      loss-name
-                                      loss-label
-                                      loss-type)]
-      (assoc inputs :losses [loss]))))
+  [params]
+  (gen/let [weights (generate-linear-weights* params)
+            loss    (gen-loss-row params (-> weights :layers last))]
+    (assoc weights :losses [loss])))
 
 (def generate-linear-losses      (generate-linear-losses* net-params/test-gen-params))
 (def generate-linear-losses-demo (generate-linear-losses* net-params/demo-gen-params))
@@ -424,4 +411,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-linear-weightsets))
+  (gen/generate generate-linear-net))
