@@ -22,19 +22,29 @@
   (->> table (sort-by :uuid) vec))
 
 ;; ---
-;; Grid generator
+;; Individual row gens
 ;; ---
 
-(defn generate-grid*
+(defn gen-grid-row
   [{:keys [optimizer-type name-type label-type] :as params}]
   (gen/let [grid-uuid  gen/uuid
             grid-name  (gen-data/gen-grid-names name-type)
             grid-label (gen-data/gen-labels label-type)]
-    {:grids [(mtc/->Grid grid-uuid
-                         grid-name
-                         grid-label
-                         optimizer-type
-                         {})]}))
+    (mtc/->Grid grid-uuid grid-name grid-label optimizer-type {})))
+
+(defn gen-layer-row
+  [{:keys [optimizer-type name-type label-type] :as params} grid]
+  (gen/let [layer-uuid gen/uuid]
+    (mtc/->Layer layer-uuid grid-uuid some other crap)))
+
+;; ---
+;; Grid generator
+;; ---
+
+(defn generate-grid*
+  [params]
+  (gen/let [grid (gen-grid-row params)]
+    {:grids [grid]}))
 
 (def generate-grid      (generate-grid* net-params/test-gen-params))
 (def generate-grid-demo (generate-grid* net-params/demo-gen-params))
