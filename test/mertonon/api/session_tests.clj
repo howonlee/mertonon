@@ -28,10 +28,9 @@
     slurped))
 
 (defn grid-get [curr-app]
-  (let [endpoint    "/api/v1/grids/"
-        res         (curr-app {:uri endpoint :request-method :get})
-        slurped     (update res :body (comp walk/keywordize-keys uio/maybe-slurp uio/maybe-json-decode))]
-    slurped))
+  (let [endpoint    "/api/v1/grid/"
+        res         (curr-app {:uri endpoint :request-method :get :body-params {}})]
+    res))
 
 
 (defspec just-login-a-bunch
