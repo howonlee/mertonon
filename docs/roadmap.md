@@ -26,6 +26,7 @@ Also look at small tasks roadmap
 - Crontab for adjustments, emails
 - Bigger and markdownified label input - maybe with preview
 - Cut pre-8x-beta
+
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
 - License design, then task out for after alpha
 - Make auditing EE properly
