@@ -316,18 +316,10 @@
   (gen/let [weights (generate-dag-weights* params)]
     (let [graph               (gs/net->graph (:layers weights) (:weightsets weights))
           initial-layer-uuids (gs/initial-layer-uuids graph)
-          layers-by-uuid      (group-by :uuid (:layers weights))]
-      (gen/let [input-uuids  (gen/vector gen/uuid (count initial-layer-uuids))
-                input-labels (gen/vector (gen-data/gen-labels label-type) (count initial-layer-uuids))]
-        (let [inputs (for [idx (range (count input-uuids))
-                           :let [input-uuid  (nth input-uuids idx)
-                                 layer-uuid  (nth initial-layer-uuids idx)
-                                 input-name  (str/join
-                                               ["Input" " (" (-> (layers-by-uuid layer-uuid) first :name) ")"])
-                                 input-label (nth input-labels idx)
-                                 input-type  loss-type]]
-                       (mtc/->Input input-uuid layer-uuid input-name input-label input-type))]
-          (assoc weights :inputs (norm inputs)))))))
+          layers-by-uuid      (group-by :uuid (:layers weights))
+          initial-layers      (flatten (mapv layers-by-uuid initial-layer-uuids))]
+      (gen/let [inputs (apply gen/tuple (map (fn [layer] (gen-input-row params layer)) initial-layers))]
+        (assoc weights :inputs (norm inputs))))))
 
 (def generate-dag-inputs      (generate-dag-inputs* net-params/test-gen-params))
 (def generate-dag-inputs-demo (generate-dag-inputs* net-params/demo-gen-params))
@@ -337,18 +329,10 @@
   (gen/let [inputs (generate-dag-inputs* params)]
     (let [graph                (gs/net->graph (:layers inputs) (:weightsets inputs))
           terminal-layer-uuids (gs/terminal-layer-uuids graph)
-          layers-by-uuid       (group-by :uuid (:layers inputs))]
-      (gen/let [loss-uuids  (gen/vector gen/uuid (count terminal-layer-uuids))
-                loss-labels (gen/vector (gen-data/gen-labels label-type) (count terminal-layer-uuids))]
-        (let [losses (for [idx (range (count loss-uuids))
-                           :let [loss-uuid  (nth loss-uuids idx)
-                                 layer-uuid (nth terminal-layer-uuids idx)
-                                 loss-name  (str/join
-                                               ["Output" " (" (-> (layers-by-uuid layer-uuid) first :name) ")"])
-                                 loss-label (nth loss-labels idx)
-                                 loss-type  loss-type]]
-                       (mtc/->Loss loss-uuid layer-uuid loss-name loss-label loss-type))]
-          (assoc inputs :losses (norm losses)))))))
+          layers-by-uuid       (group-by :uuid (:layers inputs))
+          terminal-layers      (flatten (mapv layers-by-uuid terminal-layer-uuids))]
+      (gen/let [losses (apply gen/tuple (map (fn [layer] (gen-loss-row params layer)) terminal-layers))]
+        (assoc inputs :losses (norm losses))))))
 
 (def generate-dag-losses      (generate-dag-losses* net-params/test-gen-params))
 (def generate-dag-losses-demo (generate-dag-losses* net-params/demo-gen-params))
@@ -360,4 +344,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-dag-weights))
+  (gen/generate generate-dag-net))
