@@ -22,3 +22,6 @@
           endpoint                         (api-util/get-joined-model curr-model join-q)]
       endpoint)))
 
+(comment
+    ;; how to actually call this thing?
+    )
