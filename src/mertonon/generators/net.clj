@@ -67,6 +67,41 @@
                   weight-type
                   weight-val)))
 
+(defn gen-weight-rows
+  [params weightset src-cobjs tgt-cobjs]
+  (gen/let [num-weights   (gen/choose 1 (* (count src-cobjs) (count tgt-cobjs)))
+            distinct-tups (gen/vector-distinct
+                            (gen/tuple (gen/elements src-cobjs) (gen/elements tgt-cobjs))
+                            {:num-elements num-weights :max-tries 3000})
+            new-weights   (apply gen/tuple
+                                 (map (fn [[src-cobj tgt-cobj]] (gen-weight-row params weightset src-cobj tgt-cobj))
+                                      distinct-tups))]
+    (flatten new-weights)))
+
+(defn generate-weights-for-weightset
+  "Weights cannot have duplicate src and tgt cost-objects. This creates a whole set of weights satisfying condition."
+  [weightset src-cost-objects tgt-cost-objects label-type]
+  (let [max-num-weights (* (count src-cost-objects) (count tgt-cost-objects))
+        src-cobj-uuids  (map :uuid src-cost-objects)
+        tgt-cobj-uuids  (map :uuid tgt-cost-objects)]
+    ;; Workaround for nested gen/vector-distinct problem
+    (let [num-weights   (gen/generate (gen/choose 1 max-num-weights))
+          weight-uuids  (gen/generate (gen/vector gen/uuid num-weights))
+          weight-vals   (gen/generate (gen/vector (gen/fmap #(+ 1 %) gen/nat) num-weights))
+          weight-types  (gen/generate (gen/vector (gen/return :default) num-weights))
+          weight-labels (gen/generate (gen/vector (gen-data/gen-labels label-type) num-weights))
+          tuples        (gen/tuple (gen/elements src-cobj-uuids) (gen/elements tgt-cobj-uuids))
+          distinct-tups (gen/generate (gen/vector-distinct tuples {:num-elements num-weights :max-tries 3000}))]
+      (vec (for [[[src-cobj-uuid tgt-cobj-uuid] weight-uuid weight-val weight-type weight-label]
+                 (map vector distinct-tups weight-uuids weight-vals weight-types weight-labels)]
+             (mtc/->Weight weight-uuid
+                           (:uuid weightset)
+                           src-cobj-uuid
+                           tgt-cobj-uuid
+                           weight-label
+                           weight-type
+                           weight-val))))))
+
 (defn gen-input-row
   [{:keys [name-type label-type] :as params} layer]
   (gen/let [input-uuid  gen/uuid
@@ -165,30 +200,6 @@
 (defn bigrams [series]
   (partition 2 1 series))
 
-(defn generate-weights-for-weightset
-  "Weights cannot have duplicate src and tgt cost-objects. This creates a whole set of weights satisfying condition."
-  [weightset src-cost-objects tgt-cost-objects label-type]
-  (let [max-num-weights (* (count src-cost-objects) (count tgt-cost-objects))
-        src-cobj-uuids  (map :uuid src-cost-objects)
-        tgt-cobj-uuids  (map :uuid tgt-cost-objects)]
-    ;; Workaround for nested gen/vector-distinct problem
-    (let [num-weights   (gen/generate (gen/choose 1 max-num-weights))
-          weight-uuids  (gen/generate (gen/vector gen/uuid num-weights))
-          weight-vals   (gen/generate (gen/vector (gen/fmap #(+ 1 %) gen/nat) num-weights))
-          weight-types  (gen/generate (gen/vector (gen/return :default) num-weights))
-          weight-labels (gen/generate (gen/vector (gen-data/gen-labels label-type) num-weights))
-          tuples        (gen/tuple (gen/elements src-cobj-uuids) (gen/elements tgt-cobj-uuids))
-          distinct-tups (gen/generate (gen/vector-distinct tuples {:num-elements num-weights :max-tries 3000}))]
-      (vec (for [[[src-cobj-uuid tgt-cobj-uuid] weight-uuid weight-val weight-type weight-label]
-                 (map vector distinct-tups weight-uuids weight-vals weight-types weight-labels)]
-             (mtc/->Weight weight-uuid
-                           (:uuid weightset)
-                           src-cobj-uuid
-                           tgt-cobj-uuid
-                           weight-label
-                           weight-type
-                           weight-val))))))
-
 ;; ---
 ;; Linear net generators
 ;; ---
@@ -224,14 +235,6 @@
 (def generate-linear-weightsets      (generate-linear-weightsets* net-params/test-gen-params))
 (def generate-linear-weightsets-demo (generate-linear-weightsets* net-params/demo-gen-params))
 
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-
 (defn generate-linear-weights*
   [{:keys [label-type] :as params}]
   (gen/let [weightsets (generate-linear-weightsets* params)]
@@ -239,16 +242,11 @@
           weights        (for [weightset (:weightsets weightsets)]
                            (let [src-cobjs (cobjs-by-layer (:src-layer-uuid weightset))
                                  tgt-cobjs (cobjs-by-layer (:tgt-layer-uuid weightset))]
-                             (norm (generate-weights-for-weightset
-                                     weightset
-                                     src-cobjs
-                                     tgt-cobjs
-                                     label-type))))]
-      (assoc weightsets :weights (vec (sort-by #(:weightset-uuid (first %)) weights))))))
+                             (gen/generate (gen-weight-rows params weightset src-cobjs tgt-cobjs))))]
+      (assoc weightsets :weights (-> weights vec flatten norm)))))
 
 (def generate-linear-weights      (generate-linear-weights* net-params/test-gen-params))
 (def generate-linear-weights-demo (generate-linear-weights* net-params/demo-gen-params))
-
 
 (defn generate-linear-inputs*
   "Only for linear net, hardcodes the first layer as being the input and competitiveness input"
