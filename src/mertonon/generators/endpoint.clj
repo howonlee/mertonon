@@ -10,7 +10,6 @@
 (defn table->raw-table [table]
   (-> table name (clojure.string/split #"\.") second keyword))
 
-
 (def mass-join-endpoint-gen
   (gen/let [join-q queries-gen/generate-single-joined-query]
     (let [{table            :table

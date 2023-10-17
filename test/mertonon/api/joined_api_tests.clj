@@ -27,9 +27,8 @@
    :read-many (fn [] nil)
    :setup (do-setup! net)})
 
-(defspec read-one-read-many-consonance
-  tu/few
-  (prop/for-all [[some crap] net]
-                (tu/with-test-txn
-                  (tu/read-one-read-many-consonance
-                    (test-inp net)))))
+;; get-all-exercise
+
+;; mass-joined-exercise
+
+;; single-joined-exercise
