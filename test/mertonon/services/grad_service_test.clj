@@ -81,7 +81,7 @@
   (prop/for-all [[matrix-net patterns forward grads cobj-updates weight-updates]
                  (grad-net-gen/net-and-backprop-and-updates aug-net-gen/dag-net-and-entries)]
                 (let [cobjs                            (:cost-objects matrix-net)
-                      weights                          (apply concat (:weights matrix-net))
+                      weights                          (:weights matrix-net)
                       cobj-update-counts-match         (= (count (keys cobj-updates)) (count cobjs))
                       weight-update-counts-match       (= (count (keys weight-updates)) (count weights))
                       all-cobj-activations             (every? some? (map :activation (vals cobj-updates)))

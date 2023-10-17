@@ -21,6 +21,9 @@
   [table]
   (->> table (sort-by :uuid) vec))
 
+(defn bigrams [series]
+  (partition 2 1 series))
+
 ;; ---
 ;; Individual table row gens
 ;; ---
@@ -67,16 +70,30 @@
                   weight-type
                   weight-val)))
 
+(defn gen-weight-rows
+  "Give weights to fill up a weightset's worth of rows, given adjacent source and target cobj vecs"
+  [params weightset src-cobjs tgt-cobjs]
+  (gen/let [num-weights   (gen/choose 1 (* (count src-cobjs) (count tgt-cobjs)))
+            distinct-tups (gen/vector-distinct
+                            (gen/tuple (gen/elements src-cobjs) (gen/elements tgt-cobjs))
+                            {:num-elements num-weights :max-tries 3000})
+            new-weights   (apply gen/tuple
+                                 (map (fn [[src-cobj tgt-cobj]] (gen-weight-row params weightset src-cobj tgt-cobj))
+                                      distinct-tups))]
+    (flatten new-weights)))
+
 (defn gen-input-row
   [{:keys [name-type label-type] :as params} layer]
-  (gen/let [input-uuid gen/uuid]
-    (mtc/->Input input-uuid (layer :uuid) "input" "trivial" :competitiveness)))
+  (gen/let [input-uuid  gen/uuid
+            input-label (gen-data/gen-labels label-type)]
+    (mtc/->Input input-uuid (layer :uuid) "Input" input-label :competitiveness)))
 
 
 (defn gen-loss-row
   [{:keys [name-type label-type] :as params} layer]
-  (gen/let [loss-uuid gen/uuid]
-    (mtc/->Input loss-uuid (layer :uuid) "loss" "trivial" :competitiveness)))
+  (gen/let [loss-uuid  gen/uuid
+            loss-label (gen-data/gen-labels label-type)]
+    (mtc/->Input loss-uuid (layer :uuid) "Output" loss-label :competitiveness)))
 
 ;; ---
 ;; Grid generator
@@ -136,65 +153,13 @@
 (def generate-simple-net generate-simple-losses)
 
 ;; ---
-;; Linear net generator utils
-;; ---
-
-(defn group-by-dependent-uuid 
-  "Handles having a foreign key relation in the generation"
-  ([record-constructor upstream-uuids partitioned-downstream-uuids]
-   (->> (map-indexed (fn [upstream-idx member]
-                       (mapv #(record-constructor % (nth upstream-uuids upstream-idx)) member))
-                     partitioned-downstream-uuids)
-        flatten
-        (sort-by :uuid)
-        vec))
-  ([record-constructor upstream-uuids partitioned-downstream-uuids & partitioned-other-cols]
-   (let [init-res (for [partition-idx (into [] (range (count partitioned-downstream-uuids)))
-                        :let [curr-upstream-uuid (nth upstream-uuids partition-idx)
-                              curr-partition     (nth partitioned-downstream-uuids partition-idx)
-                              curr-other-cols    (map #(nth % partition-idx) partitioned-other-cols)]]
-                    (for [downstream-idx (into [] (range (count curr-partition)))
-                          :let [curr-partition-member (nth curr-partition downstream-idx)
-                                curr-args             (into [curr-partition-member curr-upstream-uuid]
-                                                            (mapv #(nth % downstream-idx) curr-other-cols))]]
-                      (apply record-constructor curr-args)))]
-         (->> init-res flatten (sort-by :uuid) vec))))
-
-(defn bigrams [series]
-  (partition 2 1 series))
-
-(defn generate-weights-for-weightset
-  "Weights cannot have duplicate src and tgt cost-objects. This creates a whole set of weights satisfying condition."
-  [weightset src-cost-objects tgt-cost-objects label-type]
-  (let [max-num-weights (* (count src-cost-objects) (count tgt-cost-objects))
-        src-cobj-uuids  (map :uuid src-cost-objects)
-        tgt-cobj-uuids  (map :uuid tgt-cost-objects)]
-    ;; Workaround for nested gen/vector-distinct problem
-    (let [num-weights   (gen/generate (gen/choose 1 max-num-weights))
-          weight-uuids  (gen/generate (gen/vector gen/uuid num-weights))
-          weight-vals   (gen/generate (gen/vector (gen/fmap #(+ 1 %) gen/nat) num-weights))
-          weight-types  (gen/generate (gen/vector (gen/return :default) num-weights))
-          weight-labels (gen/generate (gen/vector (gen-data/gen-labels label-type) num-weights))
-          tuples        (gen/tuple (gen/elements src-cobj-uuids) (gen/elements tgt-cobj-uuids))
-          distinct-tups (gen/generate (gen/vector-distinct tuples {:num-elements num-weights :max-tries 3000}))]
-      (vec (for [[[src-cobj-uuid tgt-cobj-uuid] weight-uuid weight-val weight-type weight-label]
-                 (map vector distinct-tups weight-uuids weight-vals weight-types weight-labels)]
-             (mtc/->Weight weight-uuid
-                           (:uuid weightset)
-                           src-cobj-uuid
-                           tgt-cobj-uuid
-                           weight-label
-                           weight-type
-                           weight-val))))))
-
-;; ---
 ;; Linear net generators
 ;; ---
 
 (defn generate-linear-layers*
   [{:keys [num-layers name-type label-type] :as params}]
   (gen/let [grid          (generate-grid* params)
-            layers        (gen/vector (gen-layer-row params grid) num-layers)]
+            layers        (gen/vector (gen-layer-row params (-> grid :grids first)) num-layers)]
     (assoc grid :layers (norm layers))))
 
 (def generate-linear-layers      (generate-linear-layers* net-params/test-gen-params))
@@ -222,63 +187,39 @@
 (def generate-linear-weightsets      (generate-linear-weightsets* net-params/test-gen-params))
 (def generate-linear-weightsets-demo (generate-linear-weightsets* net-params/demo-gen-params))
 
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-
 (defn generate-linear-weights*
   [{:keys [label-type] :as params}]
-  (gen/let [weightsets (generate-linear-weightsets* params)]
-    (let [cobjs-by-layer (group-by :layer-uuid (:cost-objects weightsets))
-          weights        (for [weightset (:weightsets weightsets)]
-                           (let [src-cobjs (cobjs-by-layer (:src-layer-uuid weightset))
-                                 tgt-cobjs (cobjs-by-layer (:tgt-layer-uuid weightset))]
-                             (norm (generate-weights-for-weightset
-                                     weightset
-                                     src-cobjs
-                                     tgt-cobjs
-                                     label-type))))]
-      (assoc weightsets :weights (vec (sort-by #(:weightset-uuid (first %)) weights))))))
+  (gen/let [weightsets     (generate-linear-weightsets* params)
+            cobjs-by-layer (gen/return (group-by :layer-uuid (:cost-objects weightsets)))
+            weight-cobjs   (gen/return (vec (for [weightset (:weightsets weightsets)]
+                                              [weightset
+                                               (cobjs-by-layer (:src-layer-uuid weightset))
+                                               (cobjs-by-layer (:tgt-layer-uuid weightset))])))
+            weights        (apply gen/tuple
+                                  (map (fn [[weightset src-cobjs tgt-cobjs]]
+                                         (gen-weight-rows params weightset src-cobjs tgt-cobjs))
+                                       weight-cobjs))]
+      (assoc weightsets :weights (-> weights vec flatten norm))))
 
 (def generate-linear-weights      (generate-linear-weights* net-params/test-gen-params))
 (def generate-linear-weights-demo (generate-linear-weights* net-params/demo-gen-params))
 
 (defn generate-linear-inputs*
-  "Only for linear net, hardcodes the last layer as being the input and competitiveness input"
-  [{:keys [label-type loss-type] :as params}]
-  (gen/let [weights     (generate-linear-weights* params)
-            input-uuid  gen/uuid
-            input-label (gen-data/gen-labels label-type)]
-    (let [first-layer-uuid (-> weights :layers first :uuid)
-          input-name       (str/join ["Input" " (" (-> weights :layers first :name) ")"])
-          input            (mtc/->Input input-uuid
-                                        first-layer-uuid
-                                        input-name
-                                        input-label
-                                        loss-type)]
-      (assoc weights :inputs [input]))))
+  "Only for linear net, hardcodes the first layer as being the input and competitiveness input"
+  [params]
+  (gen/let [weights (generate-linear-weights* params)
+            input   (gen-input-row params (-> weights :layers first))]
+    (assoc weights :inputs [input])))
 
 (def generate-linear-inputs      (generate-linear-inputs* net-params/test-gen-params))
 (def generate-linear-inputs-demo (generate-linear-inputs* net-params/demo-gen-params))
 
 (defn generate-linear-losses*
   "Only for linear net, hardcodes the last layer as being the loss and competitiveness loss"
-  [{:keys [label-type loss-type] :as params}]
-  (gen/let [inputs     (generate-linear-inputs* params)
-            loss-uuid  gen/uuid
-            loss-label (gen-data/gen-labels label-type)]
-    (let [last-layer-uuid (-> inputs :layers last :uuid)
-          loss-name       (str/join ["Output" " (" (-> inputs :layers last :name) ")"])
-          loss            (mtc/->Loss loss-uuid
-                                      last-layer-uuid
-                                      loss-name
-                                      loss-label
-                                      loss-type)]
-      (assoc inputs :losses [loss]))))
+  [params]
+  (gen/let [inputs  (generate-linear-inputs* params)
+            loss    (gen-loss-row params (-> inputs :layers last))]
+    (assoc inputs :losses [loss])))
 
 (def generate-linear-losses      (generate-linear-losses* net-params/test-gen-params))
 (def generate-linear-losses-demo (generate-linear-losses* net-params/demo-gen-params))
@@ -321,8 +262,8 @@
 
   This stack overflow thing is of use:
   https://stackoverflow.com/questions/12790337/generating-a-random-dag"
-  [layer-uuids num-dag-weightsets]
-  (let [num-layers (count layer-uuids)]
+  [layers num-dag-weightsets]
+  (let [num-layers (count layers)]
     ;; implicit matrix goes src -> tgt
     ;; [idx, idx] would be recurrent links, which we aren't doing yet
     ;; therefore, the possible coords are [idx, idx + 1] to [idx, num-layers]
@@ -331,8 +272,8 @@
     (gen/set
       (gen/let [row (gen/choose 0 (- num-layers 2))
                 col (gen/choose (+ row 1) (- num-layers 1))]
-        [(nth layer-uuids row)
-         (nth layer-uuids col)])
+        [(nth layers row)
+         (nth layers col)])
       {:num-elements num-dag-weightsets
        :max-tries    1000})))
 
@@ -344,33 +285,28 @@
   [{:keys [label-type] :as params}]
   (gen/let [cobjs              (generate-linear-cost-objects* params)
             num-dag-weightsets (gen-num-weightsets cobjs)
-            dag-ws-uuids       (gen/vector gen/uuid num-dag-weightsets)
-            dag-ws-labels      (gen/vector (gen-data/gen-labels label-type) num-dag-weightsets)
-            dag-ws-coords      (gen-adjacency-coords (mapv :uuid (:layers cobjs)) num-dag-weightsets)]
-    (let [layers-by-uuid (group-by :uuid (:layers cobjs))
-          dag-ws-names   (for [[fst snd] dag-ws-coords]
-                          (str/join " => " [(-> fst layers-by-uuid first :name)
-                                            (-> snd layers-by-uuid first :name)]))
-          dag-weightsets (mapv #(mtc/->Weightset %1 (first %2) (second %2) %3 %4)
-                               dag-ws-uuids
-                               dag-ws-coords
-                               dag-ws-names
-                               dag-ws-labels)
-          weightsets     (norm dag-weightsets)]
-      (assoc cobjs :weightsets (norm weightsets)))))
+            dag-ws-coords      (gen-adjacency-coords (:layers cobjs) num-dag-weightsets)
+            dag-weightsets     (apply gen/tuple
+                                      (map (fn [[src tgt]] (gen-weightset-row params src tgt))
+                                           dag-ws-coords))]
+      (assoc cobjs :weightsets (norm dag-weightsets))))
 
 (def generate-dag-weightsets      (generate-dag-weightsets* net-params/test-gen-params))
 (def generate-dag-weightsets-demo (generate-dag-weightsets* net-params/demo-gen-params))
 
 (defn generate-dag-weights*
   [{:keys [label-type] :as params}]
-  (gen/let [weightsets (generate-dag-weightsets* params)]
-    (let [cobjs-by-layer (group-by :layer-uuid (:cost-objects weightsets))
-          weights (for [weightset (:weightsets weightsets)]
-                    (let [src-cobjs (cobjs-by-layer (:src-layer-uuid weightset))
-                          tgt-cobjs (cobjs-by-layer (:tgt-layer-uuid weightset))]
-                      (norm (generate-weights-for-weightset weightset src-cobjs tgt-cobjs label-type))))]
-      (assoc weightsets :weights (vec (sort-by #(:weightset-uuid (first %)) weights))))))
+  (gen/let [weightsets     (generate-dag-weightsets* params)
+            cobjs-by-layer (gen/return (group-by :layer-uuid (:cost-objects weightsets)))
+            weight-cobjs   (gen/return (vec (for [weightset (:weightsets weightsets)]
+                                              [weightset
+                                               (cobjs-by-layer (:src-layer-uuid weightset))
+                                               (cobjs-by-layer (:tgt-layer-uuid weightset))])))
+            weights        (apply gen/tuple
+                                  (map (fn [[weightset src-cobjs tgt-cobjs]]
+                                         (gen-weight-rows params weightset src-cobjs tgt-cobjs))
+                                       weight-cobjs))]
+    (assoc weightsets :weights (-> weights vec flatten norm))))
 
 (def generate-dag-weights      (generate-dag-weights* net-params/test-gen-params))
 (def generate-dag-weights-demo (generate-dag-weights* net-params/demo-gen-params))
@@ -380,18 +316,10 @@
   (gen/let [weights (generate-dag-weights* params)]
     (let [graph               (gs/net->graph (:layers weights) (:weightsets weights))
           initial-layer-uuids (gs/initial-layer-uuids graph)
-          layers-by-uuid      (group-by :uuid (:layers weights))]
-      (gen/let [input-uuids  (gen/vector gen/uuid (count initial-layer-uuids))
-                input-labels (gen/vector (gen-data/gen-labels label-type) (count initial-layer-uuids))]
-        (let [inputs (for [idx (range (count input-uuids))
-                           :let [input-uuid  (nth input-uuids idx)
-                                 layer-uuid  (nth initial-layer-uuids idx)
-                                 input-name  (str/join
-                                               ["Input" " (" (-> (layers-by-uuid layer-uuid) first :name) ")"])
-                                 input-label (nth input-labels idx)
-                                 input-type  loss-type]]
-                       (mtc/->Input input-uuid layer-uuid input-name input-label input-type))]
-          (assoc weights :inputs (norm inputs)))))))
+          layers-by-uuid      (group-by :uuid (:layers weights))
+          initial-layers      (flatten (mapv layers-by-uuid initial-layer-uuids))]
+      (gen/let [inputs (apply gen/tuple (map (fn [layer] (gen-input-row params layer)) initial-layers))]
+        (assoc weights :inputs (norm inputs))))))
 
 (def generate-dag-inputs      (generate-dag-inputs* net-params/test-gen-params))
 (def generate-dag-inputs-demo (generate-dag-inputs* net-params/demo-gen-params))
@@ -401,18 +329,10 @@
   (gen/let [inputs (generate-dag-inputs* params)]
     (let [graph                (gs/net->graph (:layers inputs) (:weightsets inputs))
           terminal-layer-uuids (gs/terminal-layer-uuids graph)
-          layers-by-uuid       (group-by :uuid (:layers inputs))]
-      (gen/let [loss-uuids  (gen/vector gen/uuid (count terminal-layer-uuids))
-                loss-labels (gen/vector (gen-data/gen-labels label-type) (count terminal-layer-uuids))]
-        (let [losses (for [idx (range (count loss-uuids))
-                           :let [loss-uuid  (nth loss-uuids idx)
-                                 layer-uuid (nth terminal-layer-uuids idx)
-                                 loss-name  (str/join
-                                               ["Output" " (" (-> (layers-by-uuid layer-uuid) first :name) ")"])
-                                 loss-label (nth loss-labels idx)
-                                 loss-type  loss-type]]
-                       (mtc/->Loss loss-uuid layer-uuid loss-name loss-label loss-type))]
-          (assoc inputs :losses (norm losses)))))))
+          layers-by-uuid       (group-by :uuid (:layers inputs))
+          terminal-layers      (flatten (mapv layers-by-uuid terminal-layer-uuids))]
+      (gen/let [losses (apply gen/tuple (map (fn [layer] (gen-loss-row params layer)) terminal-layers))]
+        (assoc inputs :losses (norm losses))))))
 
 (def generate-dag-losses      (generate-dag-losses* net-params/test-gen-params))
 (def generate-dag-losses-demo (generate-dag-losses* net-params/demo-gen-params))
@@ -424,4 +344,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-linear-weightsets))
+  (gen/generate generate-dag-net))

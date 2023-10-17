@@ -20,9 +20,11 @@
 - [x] Update-many fiddly problem
 - [x] Update-one blowup in test despite working well in dev
 - [x] Redo OG simple net
-- [ ] Redo OG linear net
-- [ ] Redo OG dag net
-- [ ] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
+- [x] Redo OG linear net
+- [x] Redo entry net
+- [x] Redo OG dag net
+- [x] Whack fallout of weights being flattened initially
+- [x] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
 
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test

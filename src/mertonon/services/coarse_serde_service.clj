@@ -50,16 +50,18 @@
                       [:in :layer-uuid (mapv :uuid layers)])
         losses       ((loss-model/model :read-where)
                       [:in :layer-uuid (mapv :uuid layers)])
-        weightsets   ((weightset-model/model :read-where) [:in :tgt-layer-uuid (mapv :uuid layers)])
-        flat-weights ((weight-model/model :read-where) [:in :weightset-uuid (mapv :uuid weightsets)])
-        weights      (->> flat-weights (group-by :weightset-uuid) vals vec)]
+        weightsets   ((weightset-model/model :read-where)
+                      [:in :tgt-layer-uuid (mapv :uuid layers)])
+        weights      ((weight-model/model :read-where)
+                      [:in :weightset-uuid (mapv :uuid weightsets)])]
     {:grids        [grid]
-     :layers       layers
-     :cost-objects cost-objects
-     :inputs       inputs
-     :losses       losses
-     :weightsets   weightsets
-     :weights      weights}))
+     ;; TODO: do this in query
+     :layers       (->> layers (sort-by :uuid))
+     :cost-objects (->> cost-objects (sort-by :uuid))
+     :inputs       (->> inputs (sort-by :uuid))
+     :losses       (->> losses (sort-by :uuid))
+     :weightsets   (->> weightsets (sort-by :uuid))
+     :weights      (->> weights (sort-by :uuid))}))
 
 (comment (require '[mertonon.generators.net :as net-gen])
          (require '[clojure.test.check.generators :as gen])

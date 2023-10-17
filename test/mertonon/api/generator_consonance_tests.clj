@@ -67,9 +67,7 @@
                           demo-dump-endpoint   "/api/v1/generators/dump"
                           test-app             (tu/app-with-test-txn db/*defined-connection*)
                           demo-dump-res        (app-get test-app demo-dump-endpoint)
-                          dump-res             (dissoc (app-get test-app dump-endpoint query-data) "query")
-                          printo               (println (first (cd/diff dump-res demo-dump-res)))
-                          printo               (println (second (cd/diff dump-res demo-dump-res)))]
+                          dump-res             (dissoc (app-get test-app dump-endpoint query-data) "query")]
                       (= dump-res demo-dump-res))))))
 
 (defspec grid-graph-consonance-test
