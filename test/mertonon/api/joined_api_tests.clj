@@ -18,4 +18,18 @@
 ;; get the made up random endpoint
 ;; execute the read properties on it
 
-nil
+(defn do-setup! [net]
+  nil)
+
+(defn test-inp [net]
+  {
+   :read-one (fn [] nil)
+   :read-many (fn [] nil)
+   :setup (do-setup! net)})
+
+(defspec read-one-read-many-consonance
+  tu/few
+  (prop/for-all [[some crap] net]
+                (tu/with-test-txn
+                  (tu/read-one-read-many-consonance
+                    (test-inp net)))))
