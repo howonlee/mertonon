@@ -152,9 +152,12 @@
        [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]])]))
 
 (defn weight-selection-before-fx [m]
-  (let [uuid (->> m :path-params :uuid str)]
-    [[:dispatch
-      [:selection :weight-view (api/weight-view uuid) {}]]]))
+  (let [is-demo?        @(subscribe [:is-demo?])
+        uuid            (->> m :path-params :uuid)
+        weight-endpoint (if is-demo?
+                          (api/generator-weight uuid)
+                          (api/weight-view uuid))]
+    [[:dispatch [:selection :weight-view weight-endpoint {}]]]))
 
 (defn weight-selection-sidebar [m]
   (let [is-demo?          @(subscribe [:is-demo?])

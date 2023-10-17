@@ -141,9 +141,12 @@
 ;; ---
 
 (defn weightset-before-fx [m]
-  (let [uuid (->> m :path-params :uuid)]
-    [[:dispatch
-      [:selection :ws-sidebar (api/weightset-view uuid) {}]]]))
+  (let [is-demo?    @(subscribe [:is-demo?])
+        uuid        (->> m :path-params :uuid)
+        ws-endpoint (if is-demo?
+                      (api/generator-weightset uuid)
+                      (api/weightset-view uuid))]
+    [[:dispatch [:selection :ws-sidebar ws-endpoint {}]]]))
 
 (reg-event-db
   ::toggle-weightset-adjustment
