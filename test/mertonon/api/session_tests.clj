@@ -21,11 +21,14 @@
         slurped     (update res :body (comp walk/keywordize-keys uio/maybe-slurp uio/maybe-json-decode))]
     slurped))
 
-(defn post-logout! [member curr-app headers]
+(defn post-logout! [curr-app]
   (let [endpoint    "/api/v1/session/"
-        res         (curr-app {:uri endpoint :request-method :delete :body-params member})
+        res         (curr-app {:uri endpoint :request-method :delete})
         slurped     (update res :body (comp walk/keywordize-keys uio/maybe-slurp uio/maybe-json-decode))]
     slurped))
+
+(defn grid-get [curr-app]
+  (let [nil some crap])
 
 
 (defspec just-login-a-bunch
@@ -51,23 +54,23 @@
              (= 401 (:status wrong-user-res))
              (= 401 (:status bad-password-res)))))))
 
-;; (defspec login-logout
-;;   tu/few
-;;   (prop/for-all
-;;     [generated    authn-gen/generate-password-logins
-;;      (tu/with-test-txn
-;;        (let [{mt-users        :mt-users
-;;               password-logins :password-logins
-;;               orig-passwords  :orig-passwords} generated
-;;              insert-mt-users!                  ((mt-user-model/model :create-many!) mt-users)
-;;              insert-password-logins!           ((password-login-model/model :create-many!) password-logins)
-;;              curr-app                          (handler/app-handler)
-;;              good-login-res                    (post-login!  {:username (-> mt-users first :canonical-username)
-;;                                                               :password (-> orig-passwords first)} curr-app)]))))
-;;          ;;; login
-;;          ;;; logout
-;;          ;;; one last res
-;;          ;;; make sure 200 then 200 then 401
-;;          nil))))
+(defspec login-logout
+  tu/few
+  (prop/for-all
+    [generated    authn-gen/generate-password-logins]
+    (tu/with-test-txn
+      (let [{mt-users        :mt-users
+             password-logins :password-logins
+             orig-passwords  :orig-passwords} generated
+            insert-mt-users!                  ((mt-user-model/model :create-many!) mt-users)
+            insert-password-logins!           ((password-login-model/model :create-many!) password-logins)
+            curr-app                          (handler/app-handler)
+            login-res                         (post-login!  {:username (-> mt-users first :canonical-username)
+                                                             :password (-> orig-passwords first)} curr-app)
+            logout-res                        (post-logout! curr-app)
+            invalid-grid-get                  (grid-get)]
+        (and (= 200 (:status login-res))
+             (= 200 (:status logout-res))
+             (= 401 (:status invalid-grid-get)))))))
 
 (comment (run-tests))
