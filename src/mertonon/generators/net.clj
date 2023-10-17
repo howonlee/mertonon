@@ -21,6 +21,9 @@
   [table]
   (->> table (sort-by :uuid) vec))
 
+(defn bigrams [series]
+  (partition 2 1 series))
+
 ;; ---
 ;; Individual table row gens
 ;; ---
@@ -171,34 +174,6 @@
     (assoc inputs :losses [loss])))
 
 (def generate-simple-net generate-simple-losses)
-
-;; ---
-;; Linear net generator utils
-;; ---
-
-(defn group-by-dependent-uuid 
-  "Handles having a foreign key relation in the generation"
-  ([record-constructor upstream-uuids partitioned-downstream-uuids]
-   (->> (map-indexed (fn [upstream-idx member]
-                       (mapv #(record-constructor % (nth upstream-uuids upstream-idx)) member))
-                     partitioned-downstream-uuids)
-        flatten
-        (sort-by :uuid)
-        vec))
-  ([record-constructor upstream-uuids partitioned-downstream-uuids & partitioned-other-cols]
-   (let [init-res (for [partition-idx (into [] (range (count partitioned-downstream-uuids)))
-                        :let [curr-upstream-uuid (nth upstream-uuids partition-idx)
-                              curr-partition     (nth partitioned-downstream-uuids partition-idx)
-                              curr-other-cols    (map #(nth % partition-idx) partitioned-other-cols)]]
-                    (for [downstream-idx (into [] (range (count curr-partition)))
-                          :let [curr-partition-member (nth curr-partition downstream-idx)
-                                curr-args             (into [curr-partition-member curr-upstream-uuid]
-                                                            (mapv #(nth % downstream-idx) curr-other-cols))]]
-                      (apply record-constructor curr-args)))]
-         (->> init-res flatten (sort-by :uuid) vec))))
-
-(defn bigrams [series]
-  (partition 2 1 series))
 
 ;; ---
 ;; Linear net generators
