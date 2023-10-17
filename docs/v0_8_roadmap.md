@@ -24,7 +24,7 @@
 - [x] Redo entry net
 - [x] Redo OG dag net
 - [x] Whack fallout of weights being flattened initially
-- [ ] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
+- [x] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
 
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
