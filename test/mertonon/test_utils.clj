@@ -203,17 +203,13 @@
 (defn generates->members
   [generates table-name]
   (let [stripped-table (maybe-strip-schema table-name)]
-    (cond
-      (vector? generates) (flatten (mapv stripped-table generates))
-      :else               (generates stripped-table))))
+    (generates stripped-table)))
 
 (defn generates->member
   [generates table-name]
   (let [stripped-table (maybe-strip-schema table-name)]
     (cond (not (contains? generates stripped-table))
           nil
-          (= stripped-table :weights)
-          (first (flatten (generates->members generates stripped-table)))
           :else
           (first (generates->members generates stripped-table)))))
 
@@ -226,7 +222,7 @@
           insert-all! (doall
                         (for [[table members] all-members]
                           (when members
-                            (((reg/table->model table) :create-many!) (flatten [members])))))]
+                            (((reg/table->model table) :create-many!) members))))]
       nil)))
 
 (defn table-and-generates

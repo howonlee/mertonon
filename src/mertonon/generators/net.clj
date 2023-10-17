@@ -159,7 +159,7 @@
 (defn generate-linear-layers*
   [{:keys [num-layers name-type label-type] :as params}]
   (gen/let [grid          (generate-grid* params)
-            layers        (gen/vector (gen-layer-row params grid) num-layers)]
+            layers        (gen/vector (gen-layer-row params (-> grid :grids first)) num-layers)]
     (assoc grid :layers (norm layers))))
 
 (def generate-linear-layers      (generate-linear-layers* net-params/test-gen-params))
