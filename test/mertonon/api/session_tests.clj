@@ -28,7 +28,10 @@
     slurped))
 
 (defn grid-get [curr-app]
-  (let [nil some crap])
+  (let [endpoint    "/api/v1/grids/"
+        res         (curr-app {:uri endpoint :request-method :get})
+        slurped     (update res :body (comp walk/keywordize-keys uio/maybe-slurp uio/maybe-json-decode))]
+    slurped))
 
 
 (defspec just-login-a-bunch
@@ -68,7 +71,7 @@
             login-res                         (post-login!  {:username (-> mt-users first :canonical-username)
                                                              :password (-> orig-passwords first)} curr-app)
             logout-res                        (post-logout! curr-app)
-            invalid-grid-get                  (grid-get)]
+            invalid-grid-get                  (grid-get curr-app)]
         (and (= 200 (:status login-res))
              (= 200 (:status logout-res))
              (= 401 (:status invalid-grid-get)))))))
