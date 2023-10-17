@@ -25,6 +25,7 @@
 - [x] Redo OG dag net
 - [x] Whack fallout of weights being flattened initially
 - [x] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
+- [x] Whack problems found in demo again because of big re-frame refactor
 
 - [ ] Select where joined tests - ordinary properties, read only tho
 - [ ] Password login create BE api test
