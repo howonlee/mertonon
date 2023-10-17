@@ -217,9 +217,9 @@
 (defn generate-linear-losses*
   "Only for linear net, hardcodes the last layer as being the loss and competitiveness loss"
   [params]
-  (gen/let [weights (generate-linear-weights* params)
-            loss    (gen-loss-row params (-> weights :layers last))]
-    (assoc weights :losses [loss])))
+  (gen/let [inputs  (generate-linear-inputs* params)
+            loss    (gen-loss-row params (-> inputs :layers last))]
+    (assoc inputs :losses [loss])))
 
 (def generate-linear-losses      (generate-linear-losses* net-params/test-gen-params))
 (def generate-linear-losses-demo (generate-linear-losses* net-params/demo-gen-params))

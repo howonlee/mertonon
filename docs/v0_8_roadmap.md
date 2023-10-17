@@ -22,7 +22,7 @@
 - [x] Redo OG simple net
 - [x] Redo OG linear net
 - [x] Redo entry net
-- [ ] Redo OG dag net
+- [x] Redo OG dag net
 - [ ] Whack fallout of weights being flattened initially
 - [ ] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
 

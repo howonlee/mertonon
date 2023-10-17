@@ -70,7 +70,7 @@
          losses       :losses
          weightsets   :weightsets
          weights      :weights}   row-net
-        weights-by-weightset    (group-by :weightset-uuid (flatten weights))
+        weights-by-weightset    (group-by :weightset-uuid weights)
         cobjs-by-layer          (group-by :layer-uuid cost-objects)
         matrices                (sort-by #(get-in % [:weightset :uuid])
                                   (vec (for [weightset weightsets]
@@ -100,7 +100,11 @@
          matrices     :matrices} matrix-net
         reverse-results      (map matrix->weights matrices)
         weightsets           (mapv :weightset reverse-results)
-        weights              (mapv :weights reverse-results)]
+        weights              (->> reverse-results
+                                  (map :weights)
+                                  flatten
+                                  (sort-by :uuid)
+                                  vec)]
     {:grids        grids
      :layers       layers
      :cost-objects cost-objects
