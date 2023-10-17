@@ -18,10 +18,10 @@
   (prop/for-all [net net-gen/generate-dag-net]
                 (let [grid-uuid (-> net :grids first :uuid)]
                   (tu/with-test-txn
-                    (= (->> net :weights flatten (mapv :uuid) set)
+                    (= (->> net :weights (mapv :uuid) set)
                        (->>
                          (do (coarse-serde/net->db net)
-                           (coarse-serde/db->net grid-uuid))
-                         :weights flatten (mapv :uuid) set))))))
+                             (coarse-serde/db->net grid-uuid))
+                         :weights (mapv :uuid) set))))))
 
 (comment (run-tests))
