@@ -189,13 +189,17 @@
 
 (defn generate-linear-weights*
   [{:keys [label-type] :as params}]
-  (gen/let [weightsets (generate-linear-weightsets* params)]
-    (let [cobjs-by-layer (group-by :layer-uuid (:cost-objects weightsets))
-          weights        (for [weightset (:weightsets weightsets)]
-                           (let [src-cobjs (cobjs-by-layer (:src-layer-uuid weightset))
-                                 tgt-cobjs (cobjs-by-layer (:tgt-layer-uuid weightset))]
-                             (gen/generate (gen-weight-rows params weightset src-cobjs tgt-cobjs))))]
-      (assoc weightsets :weights (-> weights vec flatten norm)))))
+  (gen/let [weightsets     (generate-linear-weightsets* params)
+            cobjs-by-layer (gen/return (group-by :layer-uuid (:cost-objects weightsets)))
+            weight-cobjs   (gen/return (vec (for [weightset (:weightsets weightsets)]
+                                              [weightset
+                                               (cobjs-by-layer (:src-layer-uuid weightset))
+                                               (cobjs-by-layer (:tgt-layer-uuid weightset))])))
+            weights        (apply gen/tuple
+                                  (map (fn [[weightset src-cobjs tgt-cobjs]]
+                                         (gen-weight-rows params weightset src-cobjs tgt-cobjs))
+                                       weight-cobjs))]
+      (assoc weightsets :weights (-> weights vec flatten norm))))
 
 (def generate-linear-weights      (generate-linear-weights* net-params/test-gen-params))
 (def generate-linear-weights-demo (generate-linear-weights* net-params/demo-gen-params))
@@ -292,13 +296,17 @@
 
 (defn generate-dag-weights*
   [{:keys [label-type] :as params}]
-  (gen/let [weightsets (generate-dag-weightsets* params)]
-    (let [cobjs-by-layer (group-by :layer-uuid (:cost-objects weightsets))
-          weights        (for [weightset (:weightsets weightsets)]
-                           (let [src-cobjs (cobjs-by-layer (:src-layer-uuid weightset))
-                                 tgt-cobjs (cobjs-by-layer (:tgt-layer-uuid weightset))]
-                             (gen/generate (gen-weight-rows params weightset src-cobjs tgt-cobjs))))]
-      (assoc weightsets :weights (-> weights vec flatten norm)))))
+  (gen/let [weightsets     (generate-dag-weightsets* params)
+            cobjs-by-layer (gen/return (group-by :layer-uuid (:cost-objects weightsets)))
+            weight-cobjs   (gen/return (vec (for [weightset (:weightsets weightsets)]
+                                              [weightset
+                                               (cobjs-by-layer (:src-layer-uuid weightset))
+                                               (cobjs-by-layer (:tgt-layer-uuid weightset))])))
+            weights        (apply gen/tuple
+                                  (map (fn [[weightset src-cobjs tgt-cobjs]]
+                                         (gen-weight-rows params weightset src-cobjs tgt-cobjs))
+                                       weight-cobjs))]
+    (assoc weightsets :weights (-> weights vec flatten norm))))
 
 (def generate-dag-weights      (generate-dag-weights* net-params/test-gen-params))
 (def generate-dag-weights-demo (generate-dag-weights* net-params/demo-gen-params))
