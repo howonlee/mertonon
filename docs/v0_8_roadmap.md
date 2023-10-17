@@ -21,8 +21,8 @@
 - [x] Update-one blowup in test despite working well in dev
 - [x] Redo OG simple net
 - [x] Redo OG linear net
+- [x] Redo entry net
 - [ ] Redo OG dag net
-- [ ] Redo entry net
 - [ ] Whack fallout of weights being flattened initially
 - [ ] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
 

@@ -71,6 +71,7 @@
                   weight-val)))
 
 (defn gen-weight-rows
+  "Give weights to fill up a weightset's worth of rows, given adjacent source and target cobj vecs"
   [params weightset src-cobjs tgt-cobjs]
   (gen/let [num-weights   (gen/choose 1 (* (count src-cobjs) (count tgt-cobjs)))
             distinct-tups (gen/vector-distinct
@@ -305,14 +306,9 @@
   (gen/let [cobjs              (generate-linear-cost-objects* params)
             num-dag-weightsets (gen-num-weightsets cobjs)
             dag-ws-coords      (gen-adjacency-coords (:layers cobjs) num-dag-weightsets)
-            dag-weightsets     
-;;;;;;;;
-;;;;;;;;
-;;;;;;;;
-;;;;;;;;
-;;;;;;;;
-;;;;;;;;
-            (apply tuple shit)]
+            dag-weightsets     (apply gen/tuple
+                                      (map (fn [[src tgt]] (gen-weightset-row params src tgt))
+                                           dag-ws-coords))]
       (assoc cobjs :weightsets (norm dag-weightsets))))
 
 (def generate-dag-weightsets      (generate-dag-weightsets* net-params/test-gen-params))
@@ -322,11 +318,11 @@
   [{:keys [label-type] :as params}]
   (gen/let [weightsets (generate-dag-weightsets* params)]
     (let [cobjs-by-layer (group-by :layer-uuid (:cost-objects weightsets))
-          weights (for [weightset (:weightsets weightsets)]
-                    (let [src-cobjs (cobjs-by-layer (:src-layer-uuid weightset))
-                          tgt-cobjs (cobjs-by-layer (:tgt-layer-uuid weightset))]
-                      (norm (generate-weights-for-weightset weightset src-cobjs tgt-cobjs label-type))))]
-      (assoc weightsets :weights (vec (sort-by #(:weightset-uuid (first %)) weights))))))
+          weights        (for [weightset (:weightsets weightsets)]
+                           (let [src-cobjs (cobjs-by-layer (:src-layer-uuid weightset))
+                                 tgt-cobjs (cobjs-by-layer (:tgt-layer-uuid weightset))]
+                             (gen/generate (gen-weight-rows params weightset src-cobjs tgt-cobjs))))]
+      (assoc weightsets :weights (-> weights vec flatten norm)))))
 
 (def generate-dag-weights      (generate-dag-weights* net-params/test-gen-params))
 (def generate-dag-weights-demo (generate-dag-weights* net-params/demo-gen-params))
@@ -380,4 +376,4 @@
 (def generate-dag-demo-net generate-dag-losses-demo)
 
 (comment
-  (gen/generate generate-linear-net))
+  (gen/generate generate-dag-weights))
