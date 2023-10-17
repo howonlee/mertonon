@@ -16,6 +16,9 @@ Also look at small tasks roadmap
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
 - Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
+- Munge according to a serious password-based-auth checklist
+- RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
+- RBAC FE
 - Cut alpha, sponsor more newsletters
 
 - Full grad view (exec summary view)
@@ -25,21 +28,18 @@ Also look at small tasks roadmap
 - Cut pre-8x-beta
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
 - License design, then task out for after alpha
-- Munge according to a serious password-based-auth checklist
-- RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
-- RBAC FE
 - Make auditing EE properly
+- Sorting / Pagination BE
+- Sorting / Pagination FE
+- Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
+- Weight painter and modal changing
+- Mass operations in FE
 - Cut pre-7x-beta
 
 # General Future Roadmap (not in any real order)
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
-- Sorting / Pagination BE
-- Sorting / Pagination FE
-- Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
-- Weight painter and modal changing
-- Mass operations in FE
 - Bookmarks BE
 - Bookmarks FE
 - Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
