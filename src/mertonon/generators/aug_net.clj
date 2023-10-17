@@ -22,6 +22,19 @@
     (gen/fmap power-law-transform (gen/double* {:infinite? false :NaN? false :min 0.0 :max 0.99}))))
 
 ;; ---
+;; Individual table row gens
+;; ---
+
+(defn gen-entry-row
+  [{:keys [name-type label-type] :as params} cobj]
+  (gen/let [entry-uuid  gen/uuid
+            entry-name  (gen-data/gen-entry-names name-type)
+            entry-label (gen-data/gen-labels label-type)
+            entry-type  (gen/return :abstract.arbitrary.value)
+            entry-val   entry-val-gen]
+    (mtc/->Entry entry-uuid (cobj :uuid) entry-name entry-label entry-type entry-val)))
+
+;; ---
 ;; Generate with respect to net
 ;; ---
 
@@ -35,57 +48,16 @@
         net-graph             (gs/net->graph layers weightsets)
         initial-layers        (gs/initial-layer-uuids net-graph)
         terminal-layers       (gs/terminal-layer-uuids net-graph)
-        init-cobj-uuids       (->> (for [layer-uuid initial-layers] (cost-objects-by-layer layer-uuid))
+        init-cobjs            (->> (for [layer-uuid initial-layers] (cost-objects-by-layer layer-uuid))
                                    flatten
-                                   vec
-                                   (map :uuid))
-        term-cobj-uuids       (->> (for [layer-uuid terminal-layers] (cost-objects-by-layer layer-uuid))
+                                   vec)
+        term-cobjs            (->> (for [layer-uuid terminal-layers] (cost-objects-by-layer layer-uuid))
                                    flatten
-                                   vec
-                                   (map :uuid))]
-    (gen/let [entries-per-cost-object (gen/choose 2 8)
-              total-num-inits         (gen/return (* (count init-cobj-uuids) entries-per-cost-object))
-              init-entry-uuids        (gen/vector gen/uuid total-num-inits)
-              init-entry-names        (gen/vector (gen-data/gen-entry-names name-type) total-num-inits)
-              init-entry-labels       (gen/vector (gen-data/gen-labels label-type) total-num-inits)
-              init-entry-types        (gen/vector (gen/return :abstract.arbitrary.value) total-num-inits)
-              init-entry-vals         (gen/vector entry-val-gen total-num-inits)
-
-              total-num-terms         (gen/return (* (count term-cobj-uuids) entries-per-cost-object))
-              term-entry-uuids        (gen/vector gen/uuid total-num-terms)
-              term-entry-names        (gen/vector (gen-data/gen-entry-names name-type) total-num-inits)
-              term-entry-labels       (gen/vector (gen-data/gen-labels label-type) total-num-inits)
-              term-entry-types        (gen/vector (gen/return :abstract.arbitrary.value) total-num-terms)
-              term-entry-vals         (gen/vector entry-val-gen total-num-terms)]
-      (let [init-entries-by-cobj  (partition entries-per-cost-object init-entry-uuids)
-            init-entry-names      (partition entries-per-cost-object init-entry-names)
-            init-entry-labels     (partition entries-per-cost-object init-entry-labels)
-            init-entry-types      (partition entries-per-cost-object init-entry-types)
-            init-entry-vals       (partition entries-per-cost-object init-entry-vals)
-
-            term-entries-by-cobj  (partition entries-per-cost-object term-entry-uuids)
-            term-entry-names      (partition entries-per-cost-object term-entry-names)
-            term-entry-labels     (partition entries-per-cost-object term-entry-labels)
-            term-entry-types      (partition entries-per-cost-object term-entry-types)
-            term-entry-vals       (partition entries-per-cost-object term-entry-vals)
-
-            ;; TODO: also generate entry dates
-
-            init-entries          (net-gen/group-by-dependent-uuid mtc/->Entry
-                                                                   init-cobj-uuids
-                                                                   init-entries-by-cobj
-                                                                   init-entry-names
-                                                                   init-entry-labels
-                                                                   init-entry-types
-                                                                   init-entry-vals)
-            term-entries          (net-gen/group-by-dependent-uuid mtc/->Entry
-                                                                   term-cobj-uuids
-                                                                   term-entries-by-cobj
-                                                                   term-entry-names
-                                                                   term-entry-labels
-                                                                   term-entry-types
-                                                                   term-entry-vals)]
-        {:entries (vec (into init-entries term-entries))}))))
+                                   vec)]
+    (gen/let [entries-per-cobj (gen/choose 2 8)
+              init-entries     (apply gen/tuple (map #(gen/vector (gen-entry-row params %) entries-per-cobj) init-cobjs))
+              term-entries     (apply gen/tuple (map #(gen/vector (gen-entry-row params %) entries-per-cobj) term-cobjs))]
+      {:entries (-> (into init-entries term-entries) flatten vec net-gen/norm)})))
 
 (def net-and-entries
   (gen/let [net     net-gen/generate-linear-net
@@ -115,3 +87,4 @@
             entries (generate-net-entries dag-net gen-params/demo-gen-params)]
     [dag-net entries]))
 
+(comment (gen/generate net-and-entries))
