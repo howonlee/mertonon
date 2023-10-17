@@ -72,12 +72,12 @@
     filled-weights))
 
 (defn weightset-page [_]
-  (let [ws-view                @(subscribe [:selection :ws-view])
+  (let [is-demo?               @(subscribe [:is-demo?])
+        ws-view                @(subscribe [:selection :ws-view])
         {src-cobjs :src-cobjs
          tgt-cobjs :tgt-cobjs
          weightset :weightset} ws-view
         ws-mode                @(subscribe [:sidebar-state :ws-adjustment])
-        is-demo?               @(subscribe [:is-demo?])
         curr-matrix            (display-matrix ws-view ws-mode)]
     [:div.fl.pa2
      [:h1 [sc/ws-icon] " Weightset " [:strong (->> weightset :name str)]]

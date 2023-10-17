@@ -26,7 +26,6 @@
                         join-key-vals
                         (hash-set join-key-vals))]
     (->> (net table)
-         flatten ;; for weights
          (filter #(contains? join-key-vals (join-key %)))
          vec)))
 
