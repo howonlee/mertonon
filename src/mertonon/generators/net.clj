@@ -306,8 +306,8 @@
 
   This stack overflow thing is of use:
   https://stackoverflow.com/questions/12790337/generating-a-random-dag"
-  [layer-uuids num-dag-weightsets]
-  (let [num-layers (count layer-uuids)]
+  [layers num-dag-weightsets]
+  (let [num-layers (count layers)]
     ;; implicit matrix goes src -> tgt
     ;; [idx, idx] would be recurrent links, which we aren't doing yet
     ;; therefore, the possible coords are [idx, idx + 1] to [idx, num-layers]
@@ -316,8 +316,8 @@
     (gen/set
       (gen/let [row (gen/choose 0 (- num-layers 2))
                 col (gen/choose (+ row 1) (- num-layers 1))]
-        [(nth layer-uuids row)
-         (nth layer-uuids col)])
+        [(nth layers row)
+         (nth layers col)])
       {:num-elements num-dag-weightsets
        :max-tries    1000})))
 
@@ -329,20 +329,16 @@
   [{:keys [label-type] :as params}]
   (gen/let [cobjs              (generate-linear-cost-objects* params)
             num-dag-weightsets (gen-num-weightsets cobjs)
-            dag-ws-uuids       (gen/vector gen/uuid num-dag-weightsets)
-            dag-ws-labels      (gen/vector (gen-data/gen-labels label-type) num-dag-weightsets)
-            dag-ws-coords      (gen-adjacency-coords (mapv :uuid (:layers cobjs)) num-dag-weightsets)]
-    (let [layers-by-uuid (group-by :uuid (:layers cobjs))
-          dag-ws-names   (for [[fst snd] dag-ws-coords]
-                          (str/join " => " [(-> fst layers-by-uuid first :name)
-                                            (-> snd layers-by-uuid first :name)]))
-          dag-weightsets (mapv #(mtc/->Weightset %1 (first %2) (second %2) %3 %4)
-                               dag-ws-uuids
-                               dag-ws-coords
-                               dag-ws-names
-                               dag-ws-labels)
-          weightsets     (norm dag-weightsets)]
-      (assoc cobjs :weightsets (norm weightsets)))))
+            dag-ws-coords      (gen-adjacency-coords (:layers cobjs) num-dag-weightsets)
+            dag-weightsets     
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+            (apply tuple shit)]
+      (assoc cobjs :weightsets (norm dag-weightsets))))
 
 (def generate-dag-weightsets      (generate-dag-weightsets* net-params/test-gen-params))
 (def generate-dag-weightsets-demo (generate-dag-weightsets* net-params/demo-gen-params))
