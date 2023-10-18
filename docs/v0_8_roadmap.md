@@ -28,17 +28,12 @@
 - [x] Whack problems found in demo again because of big re-frame refactor
 
 - [x] Actually write out session login BE test - also create properties
-- [ ] Shave yaks for having FE test callable and printing be printed - import things in core, basically
-- [ ] Event gens - figure out a serde thing
-- [ ] Pure view gens - can still figure out a serde thing
-- [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
-- [ ] First property test, event serde - for one event, I think
 
-- [ ] Event property tests
-- [ ] Think harder of view properties - no exercise
-- [ ] View test
-- [ ] Think harder of mutation properties - no exercise
-- [ ] Mutation test
+- [ ] Shave yaks for having FE test callable and printing be printed - import things in core, basically
+- [ ] Event gens
+- [ ] Pure view gens
+- [ ] Event property tests - just serde
+- [ ] View test - just serde
 - [ ] Generated select joined endpoint property tests - just the read properties
 
 - [ ] Update mertonon.com, figure out something better for inbound email thing
