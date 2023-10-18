@@ -28,4 +28,4 @@
 
 (comment
   (let [endpoint (gen/generate mass-join-endpoint-gen)]
-    (println (endpoint {}))))
+    (endpoint {})))

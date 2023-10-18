@@ -28,8 +28,7 @@
 - [x] Whack problems found in demo again because of big re-frame refactor
 
 - [x] Actually write out session login BE test - also create properties
-- [ ] Look into cljs repling harder?
-- [ ] Shave yaks for having FE test callable
+- [ ] Shave yaks for having FE test callable and printing be printed - import things in core, basically
 - [ ] Event gens - figure out a serde thing
 - [ ] Pure view gens - can still figure out a serde thing
 - [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
