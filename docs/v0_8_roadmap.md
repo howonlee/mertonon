@@ -32,10 +32,10 @@
 - [ ] Shave yaks for having FE test callable and printing be printed - import things in core, basically
 - [ ] Event gens
 - [ ] Pure view gens
-- [ ] Event property tests - just serde
-- [ ] View test - just serde
 - [ ] Generated select joined endpoint property tests - just the read properties
 
+- [ ] Event property tests - just serde
+- [ ] View test - just serde
 - [ ] Update mertonon.com, figure out something better for inbound email thing
 - [ ] Changelog
 - [ ] Click around a bit
