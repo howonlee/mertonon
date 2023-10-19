@@ -1,12 +1,25 @@
 
-- FE gens
-- Model updates FE for all models
-- Gantt self-instance usage...
-- Gantt essay, PBT essay. Gantt essay at 9th grade level
-- Update mertonon.com
-- Redo setup, usage for grade level
-- Cut postprealpha, sponsor newsletters
+- [ ] FE gens - event
+- [ ] Model updates FE layer, cobj
+- [ ] Gantt self-instance usage...
 
+- [ ] FE gens - views
+- [ ] Model updates FE entry, input, loss
+- [ ] Gantt essay outline
+
+- [ ] FE gens - mutation state
+- [ ] Model updates FE weightset, weight
+- [ ] Gantt essay first draft
+
+- [ ] Gantt essay nth draft
+- [ ] Gantt essay reduce grade level
+- [ ] PBT essay outline
+
+- [ ] Gantt essay final draft and publish
+- [ ] Update mertonon.com
+- [ ] Redo setup, usage for grade level
+- [ ] Sponsor newsletters - budget 3k usd, 3 sponsors, I think
+- [ ] Cut postprealpha
 
 - [ ] Changelog
 - [ ] Click around a bit
