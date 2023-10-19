@@ -27,21 +27,8 @@
 - [x] Check if this incidentally whacks the intermittent generator consonance tests. If not, just punt on them again
 - [x] Whack problems found in demo again because of big re-frame refactor
 
-- [ ] Select where joined tests - ordinary properties, read only tho
-- [ ] Password login create BE api test
-- [ ] Actually write out session login BE test
-- [ ] Event gens - exercise only?
-- [ ] Pure view gens - only read properties i guess?
-- [ ] Mutation state gens (for mutation crud - think of mutation like a crud)
-- [ ] Trivial FE test, runnable from top
+- [x] Actually write out session login BE test - also create properties
 
-- [ ] Event property tests
-- [ ] Think harder of view properties - no exercise
-- [ ] View test
-- [ ] Think harder of mutation properties - no exercise
-- [ ] Mutation test
-
-- [ ] Update mertonon.com, figure out something better for inbound email thing
 - [ ] Changelog
 - [ ] Click around a bit
 - [ ] Cut release

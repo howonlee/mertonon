@@ -18,4 +18,17 @@
 ;; get the made up random endpoint
 ;; execute the read properties on it
 
-nil
+(defn do-setup! [net]
+  nil)
+
+(defn test-inp [net]
+  {
+   :read-one (fn [] nil)
+   :read-many (fn [] nil)
+   :setup (do-setup! net)})
+
+;; get-all-exercise
+
+;; mass-joined-exercise
+
+;; single-joined-exercise
