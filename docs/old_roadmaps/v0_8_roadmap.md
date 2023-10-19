@@ -29,6 +29,6 @@
 
 - [x] Actually write out session login BE test - also create properties
 
-- [ ] Changelog
-- [ ] Click around a bit
-- [ ] Cut release
+- [x] Changelog
+- [x] Click around a bit
+- [x] Cut release
