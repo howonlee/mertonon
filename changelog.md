@@ -71,3 +71,5 @@ v0.8.commits - October 19 2023
 - Actual creation of password logins in addition to the accounts. No serious validation on password quality yet
 - Password digests handling not terrible anymore
 - Add the first trivial editing of grids - rest to come when it comes
+- Whack test bugs stemming from bad generation
+- Whack demo bugs stemming from re-frame refactor
