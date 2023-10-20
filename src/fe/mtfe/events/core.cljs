@@ -113,18 +113,18 @@
 
 (reg-event-fx
   :select-with-custom-success
- (fn [{:keys [db]} [evt resource endpoint params success-event & [success-params]]]
-   {:http-xhrio {:method          :get
-                 :uri             endpoint
-                 :params          params
-                 :format          (json-request-format)
-                 :response-format (json-response-format {:keywords? true})
-                 :on-success      (if (some? success-params)
-                                    [success-event resource success-params]
-                                    [success-event resource])
-                 :on-failure      [:api-request-error evt resource]}
-    :db          (-> db
-                     (assoc-in (resource-path :loading resource) true))}))
+  (fn [{:keys [db]} [evt resource endpoint params success-event & [success-params]]]
+    {:http-xhrio {:method          :get
+                  :uri             endpoint
+                  :params          params
+                  :format          (json-request-format)
+                  :response-format (json-response-format {:keywords? true})
+                  :on-success      (if (some? success-params)
+                                     [success-event resource success-params]
+                                     [success-event resource])
+                  :on-failure      [:api-request-error evt resource]}
+     :db          (-> db
+                      (assoc-in (resource-path :loading resource) true))}))
 
 (reg-event-fx
   :sidebar-selection-success
@@ -132,6 +132,12 @@
     {:db (-> db
              (assoc-in (resource-path :sidebar-state resource) res)
              (assoc-in (resource-path :loading resource) false))}))
+
+(reg-event-fx
+  :select-series
+  (fn [{:keys [db]} [evt series]]
+    nil
+    ))
 
 ;; sidebar-selection-success-and-dispatch
 
