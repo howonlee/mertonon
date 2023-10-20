@@ -21,8 +21,8 @@
   (apply hash-set
          (->> curr-state :grid-view :losses (mapv :layer-uuid))))
 
-(defn curr-layer-uuid-member-getter [curr-state]
-  (->> curr-state :create-params :layer-uuid))
+(defn curr-layer-uuid-member-getter [param-key]
+  (fn [curr-state] (->> curr-state param-key :layer-uuid)))
 
 ;; ---
 ;; Partials
@@ -40,7 +40,7 @@
 (defn mutation-view [state-path param-key grid-contents]
   [:<>
    [sc/mgn-border-region
-    [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a goal; goals cannot also be inputs"
+    [vblurbs/validation-popover state-path :also-a-goal "Responsibility center is also a goal; goals cannot also be inputs"
      [sc/form-label "Responsibility Center"]]
     [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
      [fi/state-select-input state-path [param-key :layer-uuid] grid-contents]]]
@@ -66,8 +66,8 @@
                    (validations/non-blank [:create-params :layer-uuid] :layer-blank)
                    (validations/not-in-set
                      loss-layer-uuid-set-getter
-                     curr-layer-uuid-member-getter
-                     :also-an-input)]
+                     (curr-layer-uuid-member-getter :create-params)
+                     :also-a-goal)]
    :ctr           mc/->Input
    :ctr-params    [:uuid :layer-uuid :name :label :type]
    :nav-to        :refresh})
@@ -89,6 +89,45 @@
      [:div.mb2 "Grid UUID - " (str grid-uuid)]
      [mutation-view state-path :create-params grid-contents]
      [cr/create-button create-config]]))
+
+;; ---
+;; Update
+;; ---
+
+(defn update-config [m]
+  (let [input-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-input
+     :endpoint    (api/input-member input-uuid)
+     :state-path  [:input :update]
+     :validations [(validations/non-blank [:update-params :name] :name-blank)
+                   (validations/non-blank [:update-params :layer-uuid] :layer-blank)
+                   (validations/not-in-set
+                     loss-layer-uuid-set-getter
+                     (curr-layer-uuid-member-getter :update-params)
+                     :also-a-goal)]
+     :nav-to      :refresh}))
+
+(defn input-update-before-fx [m]
+  (let [curr-config (update-config m)
+        endpoint    (config :endpoint)
+        state-path  (config :state-path)]
+    [[:dispatch-n [[:reset-update-state config]
+                   [:select-with-custom-success (into state-path [:update-params])
+                    endpoint {} :sidebar-selection-success]
+                   ;;;;;;;;
+                   ;;;;;;;;
+                   ;;;;;;;;
+                   ;;;;;;;;
+                   ;;;;;;;;
+                   ]]])
+
+(defn input-update-sidebar [m]
+  (let [curr-config (update-config m)
+        state-path  (curr-config :state-path)]
+    [:<>
+     [:h1 "Update Input Annotation"]
+     [mutation-view state-path :update-params]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion
