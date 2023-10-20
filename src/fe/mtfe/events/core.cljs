@@ -133,6 +133,8 @@
              (assoc-in (resource-path :sidebar-state resource) res)
              (assoc-in (resource-path :loading resource) false))}))
 
+;; sidebar-selection-success-and-dispatch
+
 (reg-event-fx
   :sidebar-selection-and-validate
   ;; Include validations in success-params

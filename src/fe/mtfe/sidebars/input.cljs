@@ -5,6 +5,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
@@ -109,9 +110,9 @@
 
 (defn input-update-before-fx [m]
   (let [curr-config (update-config m)
-        endpoint    (config :endpoint)
-        state-path  (config :state-path)]
-    [[:dispatch-n [[:reset-update-state config]
+        endpoint    (curr-config :endpoint)
+        state-path  (curr-config :state-path)]
+    [[:dispatch-n [[:reset-update-state curr-config]
                    [:select-with-custom-success (into state-path [:update-params])
                     endpoint {} :sidebar-selection-success]
                    ;;;;;;;;
@@ -119,7 +120,7 @@
                    ;;;;;;;;
                    ;;;;;;;;
                    ;;;;;;;;
-                   ]]])
+                   ]]]))
 
 (defn input-update-sidebar [m]
   (let [curr-config (update-config m)
