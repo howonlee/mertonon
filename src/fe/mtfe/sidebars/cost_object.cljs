@@ -25,6 +25,16 @@
    [:p]])
 
 ;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key]
+  [:<>
+   [vblurbs/validation-popover state-path :name-blank "Cost Node Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Cost Node Name"]]
+   [fi/state-text-input state-path [param-key :label] "Label"]])
+
+;; ---
 ;; Creation
 ;; ---
 
@@ -52,9 +62,7 @@
     [:<>
      [:h1 [sc/cobj-icon] " Add Cost Node"]
      [:div.mb2 [sc/layer-icon] " Layer UUID - " (->> layer-uuid str)]
-     [vblurbs/validation-popover state-path :name-blank "Cost Node Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Cost Node Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [mutation-view state-path :create-params]
      [cr/create-button curr-config]]))
 
 ;; ---
@@ -104,6 +112,17 @@
      :state-path  [:cobj :update]
      :validations [(validations/non-blank [:update-params :name] :name-blank)]
      :nav-to      :refresh}))
+
+(defn cobj-update-before-fx [m]
+  (up/before-fx (update-config m) m))
+
+(defn cobj-update-sidebar [m]
+  (let [curr-config (update-config m)
+        state-path  (curr-config :state-path)]
+    [:<>
+     [:h1 "Update Cost Object"]
+     [mutation-view state-path :update-params]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion

@@ -69,6 +69,10 @@
     {:name      ::entry-create-sidebar
      :view      entry/entry-create-sidebar
      :before-fx entry/entry-create-before-fx}]
+   ["/cost_object/:uuid/update"
+    {:name      ::cost-object-update-sidebar
+     :view      cost-object/cost-object-update-sidebar
+     :before-fx cost-object/cost-object-update-before-fx}]
 
    ["/entry/:uuid/delete"
     {:name      ::entry-delete-sidebar

@@ -79,9 +79,13 @@
           [sc/histogram-member
            [adjusted-activation-hist-view cost-object]]
           (when (not is-demo?)
-            [sc/table-member
-             [util/sl (util/path ["cost_object" (:uuid cost-object) "delete"])
-              [sc/trash-icon]]])])
+            [:<>
+             [sc/table-member
+              [util/sl (util/path ["cost_object" (:uuid cost-object) "update"])
+               [sc/pen-icon]]]
+             [sc/table-member
+              [util/sl (util/path ["cost_object" (:uuid cost-object) "delete"])
+               [sc/trash-icon]]]])])
        (when (not is-demo?)
          [sc/table-member
           [util/sl (util/path ["layer" (->> layer-state :layer :uuid) "cost_object_create"])
