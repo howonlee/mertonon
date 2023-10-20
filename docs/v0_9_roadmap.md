@@ -2,6 +2,7 @@
 - [x] Model updates FE layer
 - [x] Model updates FE cobj
 - [x] Model updates FE entry
+- [ ] DAG select event
 
 - [ ] Model updates FE input
 - [ ] Model updates FE loss

@@ -134,12 +134,16 @@
              (assoc-in (resource-path :loading resource) false))}))
 
 (reg-event-fx
-  :select-series
-  (fn [{:keys [db]} [evt series]]
+  :select-dag
+  (fn [{:keys [db]} [evt [series]]]
     nil
     ))
 
-;; sidebar-selection-success-and-dispatch
+(reg-event-fx
+  :select-dag-success
+  (fn [{:keys [db]} [evt [series]]]
+    nil
+    ))
 
 (reg-event-fx
   :sidebar-selection-and-validate
