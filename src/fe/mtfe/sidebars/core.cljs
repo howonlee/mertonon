@@ -139,6 +139,10 @@
     {:name      ::layer-delete-sidebar
      :view      layer/layer-delete-sidebar
      :before-fx layer/layer-delete-before-fx}]
+   ["/layer/:uuid/update"
+    {:name      ::layer-update-sidebar
+     :view      layer/layer-update-sidebar
+     :before-fx layer/layer-update-before-fx}]
 
    ["/layer_selection/:uuid"
     {:name ::layer-selection-sidebar :view layer/layer-selection-sidebar}]
