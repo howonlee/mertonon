@@ -10,7 +10,7 @@ Also look at small tasks roadmap
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
 - Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
-- Munge according to a serious password-based-auth checklist
+- Munge and validate password according to a serious password-based-auth checklist
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Cut alpha, sponsor more newsletters

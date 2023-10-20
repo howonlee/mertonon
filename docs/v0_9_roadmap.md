@@ -1,4 +1,4 @@
-
+- [ ] FE gens - figure out a way to print em
 - [ ] FE gens - event
 - [ ] Model updates FE layer, cobj
 - [ ] Gantt self-instance usage...
@@ -9,6 +9,7 @@
 
 - [ ] FE gens - mutation state
 - [ ] Model updates FE weightset, weight
+- [ ] Check if we're doing model updates for anything else
 - [ ] Gantt essay first draft
 
 - [ ] Gantt essay nth draft
