@@ -1,4 +1,4 @@
-- [ ] FE gens - figure out a way to print em
+- [x] FE gens - figure out a way to print em
 - [ ] FE gens - event
 - [ ] Model updates FE layer, cobj
 - [ ] Gantt self-instance usage...
