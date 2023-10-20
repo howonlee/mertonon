@@ -34,6 +34,21 @@
    [:p "This is an annotation for the gradient descent to tell Mertonon that this is an input cost center."]])
 
 ;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key grid-contents]
+  [:<>
+   [sc/mgn-border-region
+    [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a goal; goals cannot also be inputs"
+     [sc/form-label "Responsibility Center"]]
+    [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
+     [fi/state-select-input state-path [param-key :layer-uuid] grid-contents]]]
+   [vblurbs/validation-popover state-path :name-blank "Annotation Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Annotation Name"]]
+   [fi/state-text-input state-path [param-key :label] "Label"]])
+
+;; ---
 ;; Creation
 ;; ---
 
@@ -72,14 +87,7 @@
     [:<>
      [:h1 "Denote Responsibility Center as Overall Input Center"]
      [:div.mb2 "Grid UUID - " (str grid-uuid)]
-     [sc/mgn-border-region
-      [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a goal; goals cannot also be inputs"
-       [sc/form-label "Responsibility Center"]]
-      [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
-       [fi/state-select-input state-path [:create-params :layer-uuid] grid-contents]]]
-     [vblurbs/validation-popover state-path :name-blank "Annotation Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Annotation Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [mutation-view state-path :create-params grid-contents]
      [cr/create-button create-config]]))
 
 ;; ---
