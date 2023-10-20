@@ -38,6 +38,17 @@
          [util/path-fsl ["weightset" (:uuid tgt-weightset)] [sc/link (str (:name tgt-weightset))]])]))
 
 ;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key grid-uuid]
+  [:<>
+   [:div.mb2 [sc/grid-icon] " Grid UUID - " (str grid-uuid)]
+   [vblurbs/validation-popover state-path :name-blank "Responsibility Center Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Responsibility Center Name"]]
+   [fi/state-text-input state-path [param-key :label] "Label"]])
+
+;; ---
 ;; Create
 ;; ---
 
@@ -64,10 +75,7 @@
         state-path  (curr-config :state-path)]
     [:<>
      [:h1 [sc/layer-icon] " Add Responsibility Center"]
-     [:div.mb2 [sc/grid-icon] " Grid UUID - " (str grid-uuid)]
-     [vblurbs/validation-popover state-path :name-blank "Responsibility Center Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Responsibility Center Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [mutation-view state-path :create-params grid-uuid]
      [cr/create-button curr-config]]))
 
 ;; ---

@@ -1,6 +1,7 @@
 - [x] FE gens - figure out a way to print em
+- [ ] Model updates FE layer
 - [ ] FE gens - event
-- [ ] Model updates FE layer, cobj
+- [ ] Model updates FE cobj
 - [ ] Gantt self-instance usage...
 
 - [ ] FE gens - views
