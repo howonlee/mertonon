@@ -5,6 +5,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
@@ -91,6 +92,18 @@
         [vblurbs/validated-link val-path :not-input-or-loss "Create Journal Entry"
          [util/sl (util/path ["cost_object" cobj-uuid "entry_create"])
           [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
+
+;; ---
+;; Update
+;; ---
+
+(defn update-config [m]
+  (let [cobj-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-cobj
+     :endpoint    (api/cost-object-member cobj-uuid)
+     :state-path  [:cobj :update]
+     :validations [(validations/non-blank [:update-params :name] :name-blank)]
+     :nav-to      :refresh}))
 
 ;; ---
 ;; Deletion

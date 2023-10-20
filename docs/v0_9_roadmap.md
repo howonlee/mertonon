@@ -1,16 +1,18 @@
 - [x] FE gens - figure out a way to print em
-- [ ] Model updates FE layer
-- [ ] FE gens - event
+- [x] Model updates FE layer
 - [ ] Model updates FE cobj
-- [ ] Gantt self-instance usage...
+- [ ] Model updates FE entry
+- [ ] Model updates FE input
+- [ ] Model updates FE loss
+- [ ] Model updates FE weightset
+- [ ] Model updates FE weight
 
+- [ ] FE gens - event
 - [ ] FE gens - views
-- [ ] Model updates FE entry, input, loss
+- [ ] Gantt self-instance usage...
 - [ ] Gantt essay outline
 
 - [ ] FE gens - mutation state
-- [ ] Model updates FE weightset, weight
-- [ ] Check if we're doing model updates for anything else
 - [ ] Gantt essay first draft
 
 - [ ] Gantt essay nth draft
