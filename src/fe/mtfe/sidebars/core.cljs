@@ -78,6 +78,10 @@
     {:name      ::entry-delete-sidebar
      :view      entry/entry-delete-sidebar
      :before-fx entry/entry-delete-before-fx}]
+   ["/entry/:uuid/update"
+    {:name      ::entry-update-sidebar
+     :view      entry/entry-update-sidebar
+     :before-fx entry/entry-update-before-fx}]
 
    ["/grid/:uuid"
     {:name      ::grid-sidebar

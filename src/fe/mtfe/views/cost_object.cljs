@@ -83,6 +83,9 @@
               (str (:value entry))]
              (when (not is-demo?)
                [sc/table-member
+                [util/sl (util/path ["entry" (:uuid entry) "update"])
+                 [sc/pen-icon]]
+                [:span " "]
                 [util/sl (util/path ["entry" (:uuid entry) "delete"])
                  [sc/trash-icon]]])])
           (when (not is-demo?)

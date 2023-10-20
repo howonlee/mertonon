@@ -1,6 +1,7 @@
 - [x] FE gens - figure out a way to print em
 - [x] Model updates FE layer
-- [ ] Model updates FE cobj
+- [x] Model updates FE cobj
+
 - [ ] Model updates FE entry
 - [ ] Model updates FE input
 - [ ] Model updates FE loss
