@@ -113,10 +113,10 @@
      :validations [(validations/non-blank [:update-params :name] :name-blank)]
      :nav-to      :refresh}))
 
-(defn cobj-update-before-fx [m]
+(defn cost-object-update-before-fx [m]
   (up/before-fx (update-config m) m))
 
-(defn cobj-update-sidebar [m]
+(defn cost-object-update-sidebar [m]
   (let [curr-config (update-config m)
         state-path  (curr-config :state-path)]
     [:<>
