@@ -18,9 +18,11 @@
 ;; Validation Utils
 ;; ---
 
-(defn loss-layer-uuid-set-getter [curr-state]
-  (apply hash-set
-         (->> curr-state :grid-view :losses (mapv :layer-uuid))))
+(defn loss-layer-uuid-set-getter [_]
+  ;; TODO: listen to re-frame complaining about subcription. eventually
+  (let [losses @(subscribe [:sidebar-state :grid-view :losses])]
+    (apply hash-set
+           (->> losses (mapv :layer-uuid)))))
 
 (defn curr-layer-uuid-member-getter [param-key]
   (fn [curr-state]
