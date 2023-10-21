@@ -23,7 +23,8 @@
          (->> curr-state :grid-view :losses (mapv :layer-uuid))))
 
 (defn curr-layer-uuid-member-getter [param-key]
-  (fn [curr-state] (->> curr-state param-key :layer-uuid)))
+  (fn [curr-state]
+    (->> curr-state param-key :layer-uuid)))
 
 ;; ---
 ;; Partials
