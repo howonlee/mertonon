@@ -173,6 +173,10 @@
     {:name      ::loss-delete-sidebar
      :view      loss/loss-delete-sidebar
      :before-fx loss/loss-delete-before-fx}]
+   ["/loss/:uuid/update"
+    {:name      ::loss-update-sidebar
+     :view      loss/loss-update-sidebar
+     :before-fx loss/loss-update-before-fx}]
 
    ["/mt_user"
     {:name ::mt-user-sidebar :view mt-user/mt-user-sidebar}]

@@ -18,12 +18,15 @@
 ;; Validation Utils
 ;; ---
 
-(defn input-layer-uuid-set-getter [curr-state]
-  (apply hash-set
-         (->> curr-state :grid-view :inputs (mapv :layer-uuid))))
+(defn input-layer-uuid-set-getter [_]
+  ;; TODO: listen to re-frame complaining about subcription. eventually
+  (let [inputs @(subscribe [:sidebar-state :grid-view :inputs])]
+    (apply hash-set
+           (->> inputs (mapv :layer-uuid)))))
 
-(defn curr-layer-uuid-member-getter [curr-state]
-  (->> curr-state :create-params :layer-uuid))
+(defn curr-layer-uuid-member-getter [param-key]
+  (fn [curr-state]
+    (->> curr-state param-key :layer-uuid)))
 
 ;; ---
 ;; Partials
@@ -90,6 +93,45 @@
      [:div.mb2 "Grid UUID - " (str grid-uuid)]
      [mutation-view state-path :create-params grid-contents]
      [cr/create-button create-config]]))
+
+;; ---
+;; Update
+;; ---
+
+
+(defn update-config [m]
+  (let [loss-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-loss
+     :endpoint    (api/loss-member loss-uuid)
+     :state-path  [:loss :update]
+     :validations [(validations/non-blank [:update-params :name] :name-blank)
+                   (validations/non-blank [:update-params :layer-uuid] :layer-blank)
+                   (validations/not-in-set
+                     input-layer-uuid-set-getter
+                     (curr-layer-uuid-member-getter :update-params)
+                     :also-an-input)]
+     :nav-to      :refresh}))
+
+(defn loss-update-before-fx [m]
+  (let [curr-config (update-config m)
+        endpoint    (curr-config :endpoint)
+        state-path  (curr-config :state-path)]
+    [[:dispatch-n [[:reset-update-state curr-config]
+                   [:select-cust
+                    {:resource       (into state-path [:update-params])
+                     :endpoint       endpoint
+                     :params         {}
+                     :success-event  :sidebar-dag-success
+                     :success-params {:children-fn (event-util/layer-join-dag-step event-util/grid-view-terminal-step)}}]]]]))
+
+(defn loss-update-sidebar [m]
+  (let [curr-config   (update-config m)
+        grid-contents @(subscribe [:sidebar-state :grid-graph :layers])
+        state-path    (curr-config :state-path)]
+    [:<>
+     [:h1 "Update Goal Annotation"]
+     [mutation-view state-path :update-params grid-contents]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion

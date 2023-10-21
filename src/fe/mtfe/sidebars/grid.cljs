@@ -21,7 +21,10 @@
    [:div "Matching Layer UUID: " (str (:layer-uuid loss))]
    [:div "Type: Competitiveness"]
    (if (not @(subscribe [:is-demo?]))
-     [:div [util/sl (util/path ["loss" (:uuid loss) "delete"]) [sc/button "Delete Annotation"]]])
+     [:div
+      [util/sl (util/path ["loss" (:uuid loss) "update"]) [sc/button "Change Annotation"]]
+      [:span " "]
+      [util/sl (util/path ["loss" (:uuid loss) "delete"]) [sc/button "Delete Annotation"]]])
    [:hr]]) ;; TODO: get these to actually react to loss types
 
 (defn single-input-partial [input]
