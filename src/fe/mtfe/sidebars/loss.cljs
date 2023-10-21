@@ -59,9 +59,9 @@
 (defn loss-create-before-fx [m]
   (let [grid-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-create-state create-config]
-                   [:select-with-custom-success :grid-graph
+                   [:select-custom :grid-graph
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]
-                   [:select-with-custom-success :grid-view
+                   [:select-custom :grid-view
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn loss-create-sidebar [m]

@@ -76,9 +76,9 @@
 (defn input-create-before-fx [m]
   (let [grid-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-create-state create-config]
-                   [:select-with-custom-success :grid-graph
+                   [:select-custom :grid-graph
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]
-                   [:select-with-custom-success :grid-view
+                   [:select-custom :grid-view
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn input-create-sidebar [m]
@@ -113,7 +113,7 @@
         endpoint    (curr-config :endpoint)
         state-path  (curr-config :state-path)]
     [[:dispatch-n [[:reset-update-state curr-config]
-                   [:select-with-custom-success (into state-path [:update-params])
+                   [:select-custom (into state-path [:update-params])
                     endpoint {} :sidebar-selection-success]
                    ;;;;;;;;
                    ;;;;;;;;

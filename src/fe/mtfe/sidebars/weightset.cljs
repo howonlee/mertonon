@@ -103,7 +103,7 @@
 (defn weightset-create-before-fx [m]
   (let [grid-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-create-state (create-config m)]
-                   [:select-with-custom-success [:weightset :create :grid-graph]
+                   [:select-custom [:weightset :create :grid-graph]
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn weightset-create-sidebar [m]

@@ -112,7 +112,7 @@
              (assoc-in (resource-path :loading resource) false))}))
 
 (reg-event-fx
-  :select-with-custom-success
+  :select-custom
   (fn [{:keys [db]} [evt resource endpoint params success-event & [success-params]]]
     {:http-xhrio {:method          :get
                   :uri             endpoint
@@ -134,8 +134,8 @@
              (assoc-in (resource-path :loading resource) false))}))
 
 (reg-event-fx
-  :select-dag
-  (fn [{:keys [db]} [evt [series]]]
+  :sidebar-selection-dag-success
+  (fn [{:keys [db]} [evt resource {:keys [children]} res]]
     nil
     ))
 

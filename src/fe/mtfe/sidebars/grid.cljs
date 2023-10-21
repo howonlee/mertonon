@@ -67,7 +67,7 @@
 (defn before-fx [m]
   (let [uuid (->> m :path-params :uuid)]
     [[:dispatch
-      [:select-with-custom-success
+      [:select-custom
        :grid-sidebar
        (api/grid-view uuid)
        {}

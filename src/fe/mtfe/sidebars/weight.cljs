@@ -94,9 +94,9 @@
 (defn weight-create-before-fx [m]
   (let [ws-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-create-state (create-config m)]
-                   [:select-with-custom-success [:weight :create :ws-selection]
+                   [:select-custom [:weight :create :ws-selection]
                     (api/weightset-view ws-uuid) {} :sidebar-selection-success]
-                   [:select-with-custom-success :alloc-cue
+                   [:select-custom :alloc-cue
                     (api/allocation-cue) {} :sidebar-selection-success]]]]))
 
 (defn weight-create-sidebar [m]

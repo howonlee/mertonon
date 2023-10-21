@@ -76,7 +76,7 @@
                           (api/generator-cost-object cobj-uuid)
                           (api/cost-object-view cobj-uuid))]
     [[:dispatch
-      [:select-with-custom-success
+      [:select-custom
        :cobj-view
        cobj-endpoint
        {}

@@ -127,5 +127,5 @@
   (let [endpoint   (config :endpoint)
         state-path (config :state-path)]
     [[:dispatch-n [[:reset-update-state config]
-                   [:select-with-custom-success (into state-path [:update-params])
+                   [:select-custom (into state-path [:update-params])
                     endpoint {} :sidebar-selection-success] ]]]))
