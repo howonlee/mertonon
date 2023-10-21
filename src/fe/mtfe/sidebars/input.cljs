@@ -113,21 +113,16 @@
         endpoint    (curr-config :endpoint)
         state-path  (curr-config :state-path)]
     [[:dispatch-n [[:reset-update-state curr-config]
-                   [:select-custom (into state-path [:update-params])
-                    endpoint {} :sidebar-selection-success]
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ]]]))
+                   [:select-custom (into state-path [:update-params]) endpoint {}
+                    :sidebar-dag-success
+                    {:children-fn (fn [res] (println res) [])}]]]]))
 
 (defn input-update-sidebar [m]
   (let [curr-config (update-config m)
         state-path  (curr-config :state-path)]
     [:<>
      [:h1 "Update Input Annotation"]
-     [mutation-view state-path :update-params]
+     [mutation-view state-path :update-params []]
      [up/update-button curr-config]]))
 
 ;; ---

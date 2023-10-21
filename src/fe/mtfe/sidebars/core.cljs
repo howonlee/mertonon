@@ -130,6 +130,10 @@
     {:name      ::input-delete-sidebar
      :view      input/input-delete-sidebar
      :before-fx input/input-delete-before-fx}]
+   ["/input/:uuid/update"
+    {:name      ::input-update-sidebar
+     :view      input/input-update-sidebar
+     :before-fx input/input-update-before-fx}]
    ["/intro"
     {:name      ::intro-sidebar
      :view      intro/intro-sidebar
