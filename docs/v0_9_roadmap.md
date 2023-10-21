@@ -4,7 +4,7 @@
 - [x] Model updates FE entry
 - [x] DAG select event
 
-- [ ] Model updates FE input
+- [x] Model updates FE input
 - [ ] Model updates FE loss
 - [ ] Model updates FE weightset
 - [ ] Model updates FE weight
