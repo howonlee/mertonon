@@ -8,7 +8,9 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
+            [mtfe.events.util :as event-util]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
@@ -42,6 +44,34 @@
      [:h3 [sc/layer-icon] " Target responsibilty center"]
      [util/path-fsl ["layer" (->> curr-ws-state :tgt-layer :uuid)]
       [sc/link (str (->> curr-ws-state :tgt-layer :name))]]]))
+
+;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key grid-contents]
+  [:<>
+   [vblurbs/validation-popover state-path :cyclic
+    "We don't have support for cyclic weightsets at this time. We will put them in eventually."
+    [:h1 [sc/ws-icon] " Add Weightset"]]
+   [vblurbs/validation-popover state-path :few-layers
+    "You need at least two responsibility centers (layers) to have a weightset."
+    [:<>]]
+   [vblurbs/validation-popover state-path :duplicate-weightset "That weightset already exists."
+    [:<>]]
+   [sc/mgn-border-region
+    [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
+    [vblurbs/validation-popover state-path :src-layer-blank "Must choose source responsiblilty center"
+     [fi/state-select-input state-path [param-key :src-layer-uuid] grid-contents]]]
+
+   [sc/mgn-border-region
+    [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
+    [vblurbs/validation-popover state-path :tgt-layer-blank "Must choose target responsiblilty center"
+     [fi/state-select-input state-path [param-key :tgt-layer-uuid] grid-contents]]]
+
+   [vblurbs/validation-popover state-path :name-blank "Weightset Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Weightset Name"]]
+   [fi/state-text-input state-path [param-key :label] "Label"]])
 
 ;; ---
 ;; Validations
@@ -112,28 +142,8 @@
         state-path    (curr-config :state-path)
         grid-contents @(subscribe [:sidebar-state :weightset :create :grid-graph :layers])]
     [:<>
-     [vblurbs/validation-popover state-path :cyclic
-      "We don't have support for cyclic weightsets at this time. We will put them in eventually."
-      [:h1 [sc/ws-icon] " Add Weightset"]]
-     [vblurbs/validation-popover state-path :few-layers
-      "You need at least two responsibility centers (layers) to make a weightset."
-      [:<>]]
-     [vblurbs/validation-popover state-path :duplicate-weightset "That weightset already exists."
-      [:<>]]
      [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
-     [sc/mgn-border-region
-      [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
-      [vblurbs/validation-popover state-path :src-layer-blank "Must choose source responsiblilty center"
-       [fi/state-select-input state-path [:create-params :src-layer-uuid] grid-contents]]]
-
-     [sc/mgn-border-region
-      [sc/form-label [sc/layer-icon] " Target Responsibility Center"]
-      [vblurbs/validation-popover state-path :tgt-layer-blank "Must choose target responsiblilty center"
-       [fi/state-select-input state-path [:create-params :tgt-layer-uuid] grid-contents]]]
-
-     [vblurbs/validation-popover state-path :name-blank "Weightset Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Weightset Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [mutation-view state-path :create-params grid-contents]
      [cr/create-button curr-config]]))
 
 ;; ---
