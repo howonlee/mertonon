@@ -6,12 +6,12 @@
 ;; Dag event steps - joining
 ;; ---
 
-(defn layer-join-dag-step [next-step]
+(defn layer-join-dag-step [resource next-step]
   (fn [res]
     (let [layer-uuid (res :layer-uuid)]
       [[:dispatch
         [:select-cust
-         {:resource       :curr-layer
+         {:resource       resource
           :endpoint       (api/layer-member layer-uuid)
           :params         {}
           :success-event  :sidebar-dag-success
@@ -21,7 +21,8 @@
 ;; Dag event steps - terminal
 ;; ---
 
-(defn grid-view-terminal-step [res]
-  (let [grid-uuid (res :grid-uuid)]
-    [[:dispatch [:select-custom :grid-graph (api/grid-graph grid-uuid) {} :sidebar-selection-success]]
-     [:dispatch [:select-custom :grid-view (api/grid-view grid-uuid) {} :sidebar-selection-success]]]))
+(defn grid-view-terminal-step [graph-resource view-resource]
+  (fn [res]
+    (let [grid-uuid (res :grid-uuid)]
+      [[:dispatch [:select-custom graph-resource (api/grid-graph grid-uuid) {} :sidebar-selection-success]]
+       [:dispatch [:select-custom view-resource (api/grid-view grid-uuid) {} :sidebar-selection-success]]])))

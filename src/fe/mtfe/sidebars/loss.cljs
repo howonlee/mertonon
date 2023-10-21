@@ -115,14 +115,19 @@
 (defn loss-update-before-fx [m]
   (let [curr-config (update-config m)
         endpoint    (curr-config :endpoint)
-        state-path  (curr-config :state-path)]
+        state-path  (curr-config :state-path)
+        children-fn (event-util/layer-join-dag-step
+                      (into state-path [:curr-layer])
+                      (event-util/grid-view-terminal-step (into state-path [:grid-graph])
+                                                          (into state-path [:grid-view])))
+        ]
     [[:dispatch-n [[:reset-update-state curr-config]
                    [:select-cust
                     {:resource       (into state-path [:update-params])
                      :endpoint       endpoint
                      :params         {}
                      :success-event  :sidebar-dag-success
-                     :success-params {:children-fn (event-util/layer-join-dag-step event-util/grid-view-terminal-step)}}]]]]))
+                     :success-params {:children-fn children-fn}}]]]]))
 
 (defn loss-update-sidebar [m]
   (let [curr-config   (update-config m)

@@ -18,11 +18,9 @@
 ;; Validation Utils
 ;; ---
 
-(defn loss-layer-uuid-set-getter [_]
-  ;; TODO: listen to re-frame complaining about subcription. eventually
-  (let [losses @(subscribe [:sidebar-state :grid-view :losses])]
-    (apply hash-set
-           (->> losses (mapv :layer-uuid)))))
+(defn loss-layer-uuid-set-getter [curr-state]
+  (apply hash-set
+         (->> curr-state :grid-view :losses (mapv :layer-uuid))))
 
 (defn curr-layer-uuid-member-getter [param-key]
   (fn [curr-state]
@@ -114,18 +112,22 @@
 (defn input-update-before-fx [m]
   (let [curr-config (update-config m)
         endpoint    (curr-config :endpoint)
-        state-path  (curr-config :state-path)]
+        state-path  (curr-config :state-path)
+        children-fn (event-util/layer-join-dag-step
+                      (into state-path [:curr-layer])
+                      (event-util/grid-view-terminal-step (into state-path [:grid-graph])
+                                                          (into state-path [:grid-view])))]
     [[:dispatch-n [[:reset-update-state curr-config]
                    [:select-cust
                     {:resource       (into state-path [:update-params])
                      :endpoint       endpoint
                      :params         {}
                      :success-event  :sidebar-dag-success
-                     :success-params {:children-fn (event-util/layer-join-dag-step event-util/grid-view-terminal-step)}}]]]]))
+                     :success-params {:children-fn children-fn}}]]]]))
 
 (defn input-update-sidebar [m]
   (let [curr-config   (update-config m)
-        grid-contents @(subscribe [:sidebar-state :grid-graph :layers])
+        grid-contents @(subscribe [:sidebar-state :input :update :grid-graph :layers])
         state-path    (curr-config :state-path)]
     [:<>
      [:h1 "Update Input Annotation"]
