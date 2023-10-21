@@ -2,7 +2,7 @@
 - [x] Model updates FE layer
 - [x] Model updates FE cobj
 - [x] Model updates FE entry
-- [ ] DAG select event
+- [x] DAG select event
 
 - [ ] Model updates FE input
 - [ ] Model updates FE loss
@@ -22,6 +22,7 @@
 - [ ] PBT essay outline
 
 - [ ] Gantt essay final draft and publish
+- [ ] Put in mailchimp alternative
 - [ ] Update mertonon.com
 - [ ] Redo setup, usage for grade level
 - [ ] Sponsor newsletters - budget 3k usd, 3 sponsors, I think
