@@ -7,6 +7,7 @@
             [mtfe.components.form-inputs :as fi]
             [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
+            [mtfe.events.util :as event-util]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.views.grid :as grid-view]
@@ -111,21 +112,6 @@
                      :also-a-goal)]
      :nav-to      :refresh}))
 
-(defn input-update-dag-success-grid [res]
-  (let [grid-uuid (res :grid-uuid)]
-    [[:dispatch [:select-custom :grid-graph (api/grid-graph grid-uuid) {} :sidebar-selection-success]]
-     [:dispatch [:select-custom :grid-view (api/grid-view grid-uuid) {} :sidebar-selection-success]]]))
-
-(defn input-update-dag-success-layer [res]
-  (let [layer-uuid (res :layer-uuid)]
-    [[:dispatch
-      [:select-cust
-       {:resource       :curr-layer
-        :endpoint       (api/layer-member layer-uuid)
-        :params         {}
-        :success-event  :sidebar-dag-success
-        :success-params {:children-fn input-update-dag-success-grid}}]]]))
-
 (defn input-update-before-fx [m]
   (let [curr-config (update-config m)
         endpoint    (curr-config :endpoint)
@@ -136,7 +122,7 @@
                      :endpoint       endpoint
                      :params         {}
                      :success-event  :sidebar-dag-success
-                     :success-params {:children-fn input-update-dag-success-layer}}]]]]))
+                     :success-params {:children-fn (event-util/layer-join-dag-step event-util/grid-view-terminal-step)}}]]]]))
 
 (defn input-update-sidebar [m]
   (let [curr-config   (update-config m)

@@ -5,6 +5,7 @@
 - [x] DAG select event
 
 - [x] Model updates FE input
+- [x] Think of the dag selects as being like joins
 - [ ] Model updates FE loss
 - [ ] Model updates FE weightset
 - [ ] Model updates FE weight
