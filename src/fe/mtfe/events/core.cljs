@@ -134,16 +134,20 @@
              (assoc-in (resource-path :loading resource) false))}))
 
 (reg-event-fx
-  :sidebar-selection-dag-success
-  (fn [{:keys [db]} [evt resource {:keys [children]} res]]
-    nil
-    ))
+  :dag-success
+  (fn [{:keys [db]} [evt resource {:keys [children-fn]} res]]
+    {:db         (-> db
+                     (assoc-in (resource-path :selection resource) res)
+                     (assoc-in (resource-path :loading resource) false))
+     :dispatch-n (children-fn res)}))
 
 (reg-event-fx
-  :select-dag-success
-  (fn [{:keys [db]} [evt [series]]]
-    nil
-    ))
+  :sidebar-dag-success
+  (fn [{:keys [db]} [evt resource {:keys [children]} res]]
+    {:db         (-> db
+                     (assoc-in (resource-path :sidebar-state resource) res)
+                     (assoc-in (resource-path :loading resource) false))
+     :dispatch-n (children-fn res)}))
 
 (reg-event-fx
   :sidebar-selection-and-validate
