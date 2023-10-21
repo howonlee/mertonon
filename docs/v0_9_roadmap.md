@@ -10,6 +10,7 @@
 - [ ] Model updates FE weight
 
 - [ ] FE gens - event
+- [ ] FE gens - net things... - try to squeeze net into cljc, i think
 - [ ] FE gens - views
 - [ ] Gantt self-instance usage...
 - [ ] Gantt essay outline

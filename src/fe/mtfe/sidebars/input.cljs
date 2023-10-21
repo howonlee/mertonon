@@ -108,21 +108,40 @@
                      :also-a-goal)]
      :nav-to      :refresh}))
 
+(defn input-update-dag-success-grid [res]
+  (let [grid-uuid (res :grid-uuid)]
+    [[:dispatch [:select-custom :grid-graph (api/grid-graph grid-uuid) {} :sidebar-selection-success]]
+     [:dispatch [:select-custom :grid-view (api/grid-view grid-uuid) {} :sidebar-selection-success]]]))
+
+(defn input-update-dag-success-layer [res]
+  (let [layer-uuid (res :layer-uuid)]
+    [[:dispatch
+      [:select-cust
+       {:resource       :curr-layer
+        :endpoint       (api/layer-member layer-uuid)
+        :params         {}
+        :success-event  :sidebar-dag-success
+        :success-params {:children-fn input-update-dag-success-grid}}]]]))
+
 (defn input-update-before-fx [m]
   (let [curr-config (update-config m)
         endpoint    (curr-config :endpoint)
         state-path  (curr-config :state-path)]
     [[:dispatch-n [[:reset-update-state curr-config]
-                   [:select-custom (into state-path [:update-params]) endpoint {}
-                    :sidebar-dag-success
-                    {:children-fn (fn [res] (println res) [])}]]]]))
+                   [:select-cust
+                    {:resource       (into state-path [:update-params])
+                     :endpoint       endpoint
+                     :params         {}
+                     :success-event  :sidebar-dag-success
+                     :success-params {:children-fn input-update-dag-success-layer}}]]]]))
 
 (defn input-update-sidebar [m]
-  (let [curr-config (update-config m)
-        state-path  (curr-config :state-path)]
+  (let [curr-config   (update-config m)
+        grid-contents @(subscribe [:sidebar-state :grid-graph :layers])
+        state-path    (curr-config :state-path)]
     [:<>
      [:h1 "Update Input Annotation"]
-     [mutation-view state-path :update-params []]
+     [mutation-view state-path :update-params grid-contents]
      [up/update-button curr-config]]))
 
 ;; ---
