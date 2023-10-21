@@ -18,11 +18,9 @@
 ;; Validation Utils
 ;; ---
 
-(defn input-layer-uuid-set-getter [_]
-  ;; TODO: listen to re-frame complaining about subcription. eventually
-  (let [inputs @(subscribe [:sidebar-state :grid-view :inputs])]
-    (apply hash-set
-           (->> inputs (mapv :layer-uuid)))))
+(defn input-layer-uuid-set-getter [curr-state]
+  (apply hash-set
+         (->> curr-state :grid-view :inputs (mapv :layer-uuid))))
 
 (defn curr-layer-uuid-member-getter [param-key]
   (fn [curr-state]
@@ -119,8 +117,7 @@
         children-fn (event-util/layer-join-dag-step
                       (into state-path [:curr-layer])
                       (event-util/grid-view-terminal-step (into state-path [:grid-graph])
-                                                          (into state-path [:grid-view])))
-        ]
+                                                          (into state-path [:grid-view])))]
     [[:dispatch-n [[:reset-update-state curr-config]
                    [:select-cust
                     {:resource       (into state-path [:update-params])
@@ -131,7 +128,7 @@
 
 (defn loss-update-sidebar [m]
   (let [curr-config   (update-config m)
-        grid-contents @(subscribe [:sidebar-state :grid-graph :layers])
+        grid-contents @(subscribe [:sidebar-state :loss :update :grid-graph :layers])
         state-path    (curr-config :state-path)]
     [:<>
      [:h1 "Update Goal Annotation"]
