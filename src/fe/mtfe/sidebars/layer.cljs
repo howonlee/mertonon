@@ -5,6 +5,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
@@ -38,6 +39,16 @@
          [util/path-fsl ["weightset" (:uuid tgt-weightset)] [sc/link (str (:name tgt-weightset))]])]))
 
 ;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key]
+  [:<>
+   [vblurbs/validation-popover state-path :name-blank "Responsibility Center Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Responsibility Center Name"]]
+   [fi/state-text-input state-path [param-key :label] "Label"]])
+
+;; ---
 ;; Create
 ;; ---
 
@@ -65,9 +76,7 @@
     [:<>
      [:h1 [sc/layer-icon] " Add Responsibility Center"]
      [:div.mb2 [sc/grid-icon] " Grid UUID - " (str grid-uuid)]
-     [vblurbs/validation-popover state-path :name-blank "Responsibility Center Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Responsibility Center Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [mutation-view state-path :create-params]
      [cr/create-button curr-config]]))
 
 ;; ---
@@ -105,7 +114,32 @@
             ["layer" layer-uuid]
             [sc/button "Dive In"]]]
      (if (not is-demo?)
-       [:div [util/sl (util/path ["layer" layer-uuid "delete"]) [sc/button "Delete"]]])]))
+       [:<>
+        [:div [util/sl (util/path ["layer" layer-uuid "update"]) [sc/button [sc/pen-icon] " Update"]]]
+        [:div [util/sl (util/path ["layer" layer-uuid "delete"]) [sc/button [sc/trash-icon] " Delete"]]]])]))
+
+;; ---
+;; Update
+;; ---
+
+(defn update-config [m]
+  (let [layer-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-layer
+     :endpoint    (api/layer-member layer-uuid)
+     :state-path  [:layer :update]
+     :validations [(validations/non-blank [:update-params :name] :name-blank)]
+     :nav-to      :refresh}))
+
+(defn layer-update-before-fx [m]
+  (up/before-fx (update-config m) m))
+
+(defn layer-update-sidebar [m]
+  (let [curr-config (update-config m)
+        state-path  (curr-config :state-path)]
+    [:<>
+     [:h1 "Update Layer"]
+     [mutation-view state-path :update-params]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion

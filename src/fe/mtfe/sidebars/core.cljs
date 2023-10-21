@@ -69,11 +69,19 @@
     {:name      ::entry-create-sidebar
      :view      entry/entry-create-sidebar
      :before-fx entry/entry-create-before-fx}]
+   ["/cost_object/:uuid/update"
+    {:name      ::cost-object-update-sidebar
+     :view      cost-object/cost-object-update-sidebar
+     :before-fx cost-object/cost-object-update-before-fx}]
 
    ["/entry/:uuid/delete"
     {:name      ::entry-delete-sidebar
      :view      entry/entry-delete-sidebar
      :before-fx entry/entry-delete-before-fx}]
+   ["/entry/:uuid/update"
+    {:name      ::entry-update-sidebar
+     :view      entry/entry-update-sidebar
+     :before-fx entry/entry-update-before-fx}]
 
    ["/grid/:uuid"
     {:name      ::grid-sidebar
@@ -139,6 +147,10 @@
     {:name      ::layer-delete-sidebar
      :view      layer/layer-delete-sidebar
      :before-fx layer/layer-delete-before-fx}]
+   ["/layer/:uuid/update"
+    {:name      ::layer-update-sidebar
+     :view      layer/layer-update-sidebar
+     :before-fx layer/layer-update-before-fx}]
 
    ["/layer_selection/:uuid"
     {:name ::layer-selection-sidebar :view layer/layer-selection-sidebar}]

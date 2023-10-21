@@ -5,6 +5,7 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
@@ -22,6 +23,16 @@
    [:p "Cost nodes in Mertonon are the entities that Mertonon suggests allocations on. They could be people, cost objects for paperclips, etc etc."]
    [:strong "Mertonon contribution percentages and suggested contribution percentages are _only_ updated whenever gradient calculations are kicked off, not on initial creation."]
    [:p]])
+
+;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key]
+  [:<>
+   [vblurbs/validation-popover state-path :name-blank "Cost Node Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Cost Node Name"]]
+   [fi/state-text-input state-path [param-key :label] "Label"]])
 
 ;; ---
 ;; Creation
@@ -51,9 +62,7 @@
     [:<>
      [:h1 [sc/cobj-icon] " Add Cost Node"]
      [:div.mb2 [sc/layer-icon] " Layer UUID - " (->> layer-uuid str)]
-     [vblurbs/validation-popover state-path :name-blank "Cost Node Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Cost Node Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [mutation-view state-path :create-params]
      [cr/create-button curr-config]]))
 
 ;; ---
@@ -91,6 +100,29 @@
         [vblurbs/validated-link val-path :not-input-or-loss "Create Journal Entry"
          [util/sl (util/path ["cost_object" cobj-uuid "entry_create"])
           [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
+
+;; ---
+;; Update
+;; ---
+
+(defn update-config [m]
+  (let [cobj-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-cobj
+     :endpoint    (api/cost-object-member cobj-uuid)
+     :state-path  [:cobj :update]
+     :validations [(validations/non-blank [:update-params :name] :name-blank)]
+     :nav-to      :refresh}))
+
+(defn cost-object-update-before-fx [m]
+  (up/before-fx (update-config m) m))
+
+(defn cost-object-update-sidebar [m]
+  (let [curr-config (update-config m)
+        state-path  (curr-config :state-path)]
+    [:<>
+     [:h1 "Update Cost Object"]
+     [mutation-view state-path :update-params]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion

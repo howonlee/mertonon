@@ -5,12 +5,31 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
+
+;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key]
+  [:<>
+   [:p "Values currently have to be an arbitrary integer only right now."]
+   [:p "Currency and lots of other stuff is coming."]
+   [vblurbs/validation-popover state-path :name-blank "Journal Entry Name is blank"
+    [fi/state-text-input state-path [param-key :name] "Journal Entry Name"]]
+   [fi/state-text-input state-path [param-key :label] "Label"]
+   [vblurbs/validation-popover state-path :value-not-int-str "Value is not an integer"
+    [vblurbs/validation-popover state-path :value-blank "Value is blank"
+     [fi/state-text-input state-path [param-key :value] "Value"]]]
+   [sc/border-region
+    [sc/form-label "Entry Date"]
+    [fi/state-datepicker state-path [param-key :date]]]])
 
 ;; ---
 ;; Creation
@@ -45,18 +64,33 @@
     [:<>
      [:h1 [sc/entry-icon] " Add Journal Entry"]
      [:div.mb2 [sc/cobj-icon] " Cost Node UUID - " (->> cobj-uuid str)]
-     [:p "Values currently have to be an arbitrary integer only right now."]
-     [:p "Currency and lots of other stuff is coming."]
-     [vblurbs/validation-popover state-path :name-blank "Journal Entry Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Journal Entry Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
-     [vblurbs/validation-popover state-path :value-not-int-str "Value is not an integer"
-      [vblurbs/validation-popover state-path :value-blank "Value is blank"
-       [fi/state-text-input state-path [:create-params :value] "Value"]]]
-     [sc/border-region
-      [sc/form-label "Entry Date"]
-      [fi/state-datepicker state-path [:create-params :date]]]
+     [mutation-view state-path :create-params]
      [cr/create-button curr-config]]))
+
+;; ---
+;; Update
+;; ---
+
+(defn update-config [m]
+  (let [entry-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-entry
+     :endpoint    (api/entry-member entry-uuid)
+     :state-path  [:entry :update]
+     :validations [(validations/non-blank [:update-params :name] :name-blank)
+                   (validations/non-blank [:update-params :value] :value-blank)
+                   (validations/is-integer-string [:update-params :value] :value-not-int-str)]
+     :nav-to      :refresh}))
+
+(defn entry-update-before-fx [m]
+  (up/before-fx (update-config m) m))
+
+(defn entry-update-sidebar [m]
+  (let [curr-config (update-config m)
+        state-path  (curr-config :state-path)]
+    [:<>
+     [:h1 "Update Journal Entry"]
+     [mutation-view state-path :update-params]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion
