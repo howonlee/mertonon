@@ -2,6 +2,10 @@
   "Other functions that are good for futzing with events"
   (:require [mtfe.api :as api]))
 
+;; ---
+;; Dag event steps - joining
+;; ---
+
 (defn layer-join-dag-step [next-step]
   (fn [res]
     (let [layer-uuid (res :layer-uuid)]
@@ -12,6 +16,10 @@
           :params         {}
           :success-event  :sidebar-dag-success
           :success-params {:children-fn next-step}}]]])))
+
+;; ---
+;; Dag event steps - terminal
+;; ---
 
 (defn grid-view-terminal-step [res]
   (let [grid-uuid (res :grid-uuid)]

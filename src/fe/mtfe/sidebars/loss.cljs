@@ -5,7 +5,9 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
+            [mtfe.events.util :as event-util]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
@@ -31,6 +33,21 @@
   [:<>
    [:h1 "Goals"]
    [:p "This is an annotation for the gradient descent to tell Mertonon that this is an overall goal center."]])
+
+;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view [state-path param-key grid-contents]
+  [:<>
+     [sc/mgn-border-region
+      [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a input; inputs cannot also be goals"
+       [sc/form-label "Responsibility Center"]]
+      [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
+       [fi/state-select-input state-path [param-key :layer-uuid] grid-contents]]]
+     [vblurbs/validation-popover state-path :name-blank "Annotation Name is blank"
+      [fi/state-text-input state-path [param-key :name] "Annotation Name"]]
+     [fi/state-text-input state-path [param-key :label] "Label"]])
 
 ;; ---
 ;; Creation
@@ -71,14 +88,7 @@
     [:<>
      [:h1 "Denote Responsibility Center as Overall Goal Center"]
      [:div.mb2 "Grid UUID - " (str grid-uuid)]
-     [sc/mgn-border-region
-      [vblurbs/validation-popover state-path :also-an-input "Responsibility center is also a input; inputs cannot also be goals"
-       [sc/form-label "Responsibility Center"]]
-      [vblurbs/validation-popover state-path :layer-blank "Must choose responsibility center"
-       [fi/state-select-input state-path [:create-params :layer-uuid] grid-contents]]]
-     [vblurbs/validation-popover state-path :name-blank "Annotation Name is blank"
-      [fi/state-text-input state-path [:create-params :name] "Annotation Name"]]
-     [fi/state-text-input state-path [:create-params :label] "Label"]
+     [mutation-view state-path :create-params grid-contents]
      [cr/create-button create-config]]))
 
 ;; ---
