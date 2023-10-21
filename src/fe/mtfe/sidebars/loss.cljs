@@ -131,7 +131,7 @@
         grid-contents @(subscribe [:sidebar-state :loss :update :grid-graph :layers])
         state-path    (curr-config :state-path)]
     [:<>
-     [:h1 "Update Goal Annotation"]
+     [:h1 "Change Goal Annotation"]
      [mutation-view state-path :update-params grid-contents]
      [up/update-button curr-config]]))
 

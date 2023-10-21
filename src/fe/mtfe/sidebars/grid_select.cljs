@@ -78,7 +78,7 @@
   (let [curr-config (update-config m)
         state-path  (curr-config :state-path)]
     [:<>
-     [:h1 "Update Grid"]
+     [:h1 "Change Grid"]
      [mutation-view state-path :update-params]
      [up/update-button curr-config]]))
 

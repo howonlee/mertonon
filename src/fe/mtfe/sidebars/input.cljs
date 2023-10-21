@@ -130,7 +130,7 @@
         grid-contents @(subscribe [:sidebar-state :input :update :grid-graph :layers])
         state-path    (curr-config :state-path)]
     [:<>
-     [:h1 "Update Input Annotation"]
+     [:h1 "Change Input Annotation"]
      [mutation-view state-path :update-params grid-contents]
      [up/update-button curr-config]]))
 

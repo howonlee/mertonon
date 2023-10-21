@@ -79,10 +79,10 @@
 
 (defn acyclic-validation
   "Procs if the new weightset we're making would make the graph cyclic"
-  [grid-graph-path]
+  [param-key grid-graph-path]
   (fn [curr-state]
-    (let [src-uuid (->> curr-state :create-params :src-layer-uuid)
-          tgt-uuid (->> curr-state :create-params :tgt-layer-uuid)]
+    (let [src-uuid (->> curr-state param-key :src-layer-uuid)
+          tgt-uuid (->> curr-state param-key :tgt-layer-uuid)]
       ;; Can only proc if we define both things
       (if (or (str/blank? src-uuid) (str/blank? tgt-uuid))
         nil
@@ -117,13 +117,12 @@
                      :src-layer-uuid ""
                      :tgt-layer-uuid ""
                      :name           ""
-                     :label          ""}
-                    )
+                     :label          ""})
    :validations
    [(validations/non-blank [:create-params :name] :name-blank)
     (validations/non-blank [:create-params :src-layer-uuid] :src-layer-blank)
     (validations/non-blank [:create-params :tgt-layer-uuid] :tgt-layer-blank)
-    (acyclic-validation [:grid-graph])
+    (acyclic-validation :create-params [:grid-graph])
     (validations/min-num-elems [:grid-graph :layers] 2 :few-layers)
     (validations/not-in-set weightset-coord-getter curr-coord-getter :duplicate-weightset)]
    :ctr           mc/->Weightset
@@ -198,6 +197,15 @@
        [:div [util/sl
               (util/path ["weightset" ws-uuid "delete"])
               [sc/button "Delete"]]])]))
+
+;; ---
+;; Update
+;; ---
+
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
+;;;;;;;;;;;;
 
 ;; ---
 ;; Deletion
