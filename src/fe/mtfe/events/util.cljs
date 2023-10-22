@@ -6,9 +6,12 @@
 ;; Dag event steps - joining
 ;; ---
 
-(defn layer-join-dag-step [resource next-step]
+(defn layer-join-dag-step
+  "Join the selection by layer or src-layer"
+  [resource next-step]
   (fn [res]
-    (let [layer-uuid (res :layer-uuid)]
+    (let [layer-uuid (or (res :layer-uuid)
+                         (res :src-layer-uuid))]
       [[:dispatch
         [:select-cust
          {:resource       resource

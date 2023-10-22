@@ -53,7 +53,7 @@
   [:<>
    [vblurbs/validation-popover state-path :cyclic
     "We don't have support for cyclic weightsets at this time. We will put them in eventually."
-    [:h1 [sc/ws-icon] " Add Weightset"]]
+    [:<>]]
    [vblurbs/validation-popover state-path :few-layers
     "You need at least two responsibility centers (layers) to have a weightset."
     [:<>]]
@@ -142,7 +142,7 @@
         state-path    (curr-config :state-path)
         grid-contents @(subscribe [:sidebar-state :weightset :create :grid-graph :layers])]
     [:<>
-     [:h1 [sc/ws-icon] " Weightset"]
+     [:h1 [sc/ws-icon] " Add Weightset"]
      [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
      [mutation-view state-path :create-params grid-contents]
      [cr/create-button curr-config]]))
@@ -196,9 +196,10 @@
             ["weightset" ws-uuid]
             [sc/button "Dive In"]]]
      (if (not is-demo?)
-       [:div [util/sl
-              (util/path ["weightset" ws-uuid "delete"])
-              [sc/button "Delete"]]])]))
+       [:div
+        [util/sl (util/path ["weightset" ws-uuid "update"]) [sc/button "Change"]]
+        [:span " "]
+        [util/sl (util/path ["weightset" ws-uuid "delete"]) [sc/button "Delete"]]])]))
 
 ;; ---
 ;; Update
@@ -237,10 +238,12 @@
 (defn weightset-update-sidebar [m]
   (let [curr-config   (create-config m)
         state-path    (curr-config :state-path)
-        grid-contents @(subscribe [:sidebar-state :weightset :update :grid-graph :layers])]
+        grid-contents @(subscribe [:sidebar-state :weightset :update :grid-graph :layers])
+        curr-params   @(subscribe [:sidebar-state :weightset :update :update-state])
+        printo        (println curr-params)]
     [:<>
      [:h1 [sc/ws-icon] " Weightset"]
-     [mutation-view state-path :create-params grid-contents]
+     [mutation-view state-path :update-params grid-contents]
      [up/update-button curr-config]]))
 
 ;; ---
