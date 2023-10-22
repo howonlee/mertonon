@@ -48,6 +48,42 @@
        [:p curr-label]))])
 
 ;; ---
+;; Mutation view
+;; ---
+
+(defn mutation-view
+  [state-path param-key alloc-cue curr-params src-cobjs tgt-cobjs]
+  [:<>
+   [vblurbs/validation-popover state-path :few-cobjs
+    "You need at least two cost nodes, one in the source and one in the target responsibility center (layer)."
+    [:<>]]
+   [:p "Values currently have to be a positive integer only right now. We might do other things eventually."]
+   [sc/mgn-border-region
+    [vblurbs/validation-popover state-path :duplicate-weight "That weight already exists."
+     [:<>
+      [:p "Weight prompt: "]
+      [:strong (->> alloc-cue :cue str)]]]]
+   [sc/mgn-border-region
+    [sc/form-label [sc/cobj-icon] " Source Cost Node"]
+    [vblurbs/validation-popover state-path :src-cobj-blank "Must choose source cost node"
+     [fi/state-select-input state-path [param-key :src-cobj-uuid] src-cobjs]]]
+
+   [sc/mgn-border-region
+    [sc/form-label [sc/cobj-icon] " Target Cost Node"]
+    [vblurbs/validation-popover state-path :tgt-cobj-blank "Must choose target cost node"
+     [fi/state-select-input state-path [param-key :tgt-cobj-uuid] tgt-cobjs]]]
+
+   [sc/mgn-border-region
+    [fi/state-text-input state-path [param-key :label] "Label"]]
+
+   [sc/mgn-border-region
+    [sc/form-label "Weight Value"]
+    [sc/form-label "(no units, normalized automatically)"]
+    [vblurbs/validation-popover state-path :value-blank "Value is blank"
+     [fi/state-power-range-input state-path [param-key :value]]]
+    [sc/form-label (->> curr-params :value str)]]])
+
+;; ---
 ;; Validations
 ;; ---
 
@@ -56,8 +92,9 @@
          (for [weight (->> curr-state :ws-selection :weights)]
            [(weight :src-cobj-uuid) (weight :tgt-cobj-uuid)])))
 
-(defn curr-coord-getter [curr-state]
-  [(->> curr-state :create-params :src-cobj-uuid) (->> curr-state :create-params :tgt-cobj-uuid)])
+(defn curr-coord-getter [param-key]
+  (fn [curr-state]
+    [(->> curr-state param-key :src-cobj-uuid) (->> curr-state param-key :tgt-cobj-uuid)]))
 
 ;; ---
 ;; Creation
@@ -86,7 +123,7 @@
         (validations/min-num-elems [:ws-selection :src-cobjs] 1 :few-src)
         (validations/min-num-elems [:ws-selection :tgt-cobjs] 1 :few-tgt)
         :few-cobjs)
-      (validations/not-in-set weight-coord-getter curr-coord-getter :duplicate-weight)]
+      (validations/not-in-set weight-coord-getter (curr-coord-getter :create-params) :duplicate-weight)]
      :ctr           mc/->Weight
      :ctr-params    [:uuid :weightset-uuid :src-cobj-uuid :tgt-cobj-uuid :label :type :value]
      :nav-to        :refresh}))
@@ -108,35 +145,9 @@
         src-cobjs   @(subscribe [:sidebar-state :weight :create :ws-selection :src-cobjs])
         tgt-cobjs   @(subscribe [:sidebar-state :weight :create :ws-selection :tgt-cobjs])]
     [:<>
-     [vblurbs/validation-popover state-path :few-cobjs
-      "You need at least two cost nodes, one in the source and one in the target responsibility center (layer)."
-      [:h1 [sc/weight-icon] " Add Weight"]]
+     [:h1 [sc/weight-icon] " Add Weight"]
      [:div.mb2 [sc/ws-icon] " Weightset UUID - " (->> ws-uuid str)]
-     [:p "Values currently have to be a positive integer only right now. We might do other things eventually."]
-     [sc/mgn-border-region
-      [vblurbs/validation-popover state-path :duplicate-weight "That weight already exists."
-       [:<>
-        [:p "Weight prompt: "]
-        [:strong (->> alloc-cue :cue str)]]]]
-     [sc/mgn-border-region
-      [sc/form-label [sc/cobj-icon] " Source Cost Node"]
-      [vblurbs/validation-popover state-path :src-cobj-blank "Must choose source cost node"
-       [fi/state-select-input state-path [:create-params :src-cobj-uuid] src-cobjs]]]
-
-     [sc/mgn-border-region
-      [sc/form-label [sc/cobj-icon] " Target Cost Node"]
-      [vblurbs/validation-popover state-path :tgt-cobj-blank "Must choose target cost node"
-       [fi/state-select-input state-path [:create-params :tgt-cobj-uuid] tgt-cobjs]]]
-
-     [sc/mgn-border-region
-      [fi/state-text-input state-path [:create-params :label] "Label"]]
-
-     [sc/mgn-border-region
-      [sc/form-label "Weight Value"]
-      [sc/form-label "(no units, normalized automatically)"]
-      [vblurbs/validation-popover state-path :value-blank "Value is blank"
-       [fi/state-power-range-input state-path [:create-params :value]]]
-      [sc/form-label (->> curr-params :value str)]]
+     [mutation-view state-path :create-params alloc-cue curr-params src-cobjs tgt-cobjs]
      [cr/create-button curr-config]]))
 
 ;; ---
@@ -170,7 +181,10 @@
             ["weight" weight-uuid]
             [sc/button "Dive In"]]]
      (if (not is-demo?)
-       [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]])]))
+       [:div
+        [util/sl (util/path ["weight" weight-uuid "update"]) [sc/button "Change"]]
+        [:span " "]
+        [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]]])]))
 
 ;; ---
 ;; Deletion
