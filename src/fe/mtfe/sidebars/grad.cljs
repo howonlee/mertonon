@@ -106,15 +106,15 @@
 (defn grad-before-fx [m]
   (let [grid-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-action-state (action-config m)]
-                   [:select-with-custom-success [:grad :action :grid-graph]
+                   [:select-custom [:grad :action :grid-graph]
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]
-                   [:select-with-custom-success [:grad :action :grid-view]
+                   [:select-custom [:grad :action :grid-view]
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (reg-event-fx
   ::manual-check
   (fn [{:keys [db]} [evt action-params]]
-    {:dispatch-n [[:select-with-custom-success [:grad :action :grid-dump]
+    {:dispatch-n [[:select-custom [:grad :action :grid-dump]
                                                (api/grid-dump (action-params :grid-uuid))
                                                (stringify-dates action-params)
                                                :sidebar-selection-success]

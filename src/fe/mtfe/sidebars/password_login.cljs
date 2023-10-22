@@ -51,7 +51,7 @@
 (defn password-login-create-before-fx [m]
   (let [mt-user-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-action-state (action-config m)]
-                   [:select-with-custom-success [:password-login :action :mt-user]
+                   [:select-custom [:password-login :action :mt-user]
                     (api/mt-user-member mt-user-uuid) {} :sidebar-selection-success]]]]))
 
 (defn password-login-create-sidebar [m]

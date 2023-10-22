@@ -2,26 +2,29 @@
 - [x] Model updates FE layer
 - [x] Model updates FE cobj
 - [x] Model updates FE entry
-- [ ] DAG select event
+- [x] DAG select event
 
-- [ ] Model updates FE input
-- [ ] Model updates FE loss
-- [ ] Model updates FE weightset
-- [ ] Model updates FE weight
+- [x] Model updates FE input
+- [x] Think of the dag selects as being like joins
+- [x] Model updates FE loss
 
+- [x] Model updates FE weightset
+- [x] Model updates FE weight
 - [ ] FE gens - event
-- [ ] FE gens - views
-- [ ] Gantt self-instance usage...
+- [ ] FE gens - net things... - try to squeeze net into cljc, i think
 - [ ] Gantt essay outline
 
+- [ ] FE gens - views
 - [ ] FE gens - mutation state
 - [ ] Gantt essay first draft
+- [ ] Gantt self-instance usage...
 
 - [ ] Gantt essay nth draft
 - [ ] Gantt essay reduce grade level
 - [ ] PBT essay outline
 
 - [ ] Gantt essay final draft and publish
+- [ ] Put in mailchimp alternative
 - [ ] Update mertonon.com
 - [ ] Redo setup, usage for grade level
 - [ ] Sponsor newsletters - budget 3k usd, 3 sponsors, I think

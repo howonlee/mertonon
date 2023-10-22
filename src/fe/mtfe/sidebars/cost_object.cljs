@@ -76,7 +76,7 @@
                           (api/generator-cost-object cobj-uuid)
                           (api/cost-object-view cobj-uuid))]
     [[:dispatch
-      [:select-with-custom-success
+      [:select-custom
        :cobj-view
        cobj-endpoint
        {}
@@ -120,7 +120,7 @@
   (let [curr-config (update-config m)
         state-path  (curr-config :state-path)]
     [:<>
-     [:h1 "Update Cost Object"]
+     [:h1 "Change Cost Object"]
      [mutation-view state-path :update-params]
      [up/update-button curr-config]]))
 

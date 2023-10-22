@@ -111,20 +111,32 @@
              (assoc-in (resource-path :selection resource) res)
              (assoc-in (resource-path :loading resource) false))}))
 
+;; ---
+;; Selections but weird
+;; The only difference between select-custom and select-cust should be in fiddliness of params
+;; ---
+
+(defn select-custom*
+  "Select custom impl"
+  [{:keys [db]} [evt resource endpoint params success-event & [success-params]]]
+  {:http-xhrio {:method          :get
+                :uri             endpoint
+                :params          params
+                :format          (json-request-format)
+                :response-format (json-response-format {:keywords? true})
+                :on-success      (if (some? success-params)
+                                   [success-event resource success-params]
+                                   [success-event resource])
+                :on-failure      [:api-request-error evt resource]}
+   :db          (-> db
+                    (assoc-in (resource-path :loading resource) true))})
+
+(reg-event-fx :select-custom select-custom*)
+
 (reg-event-fx
-  :select-with-custom-success
-  (fn [{:keys [db]} [evt resource endpoint params success-event & [success-params]]]
-    {:http-xhrio {:method          :get
-                  :uri             endpoint
-                  :params          params
-                  :format          (json-request-format)
-                  :response-format (json-response-format {:keywords? true})
-                  :on-success      (if (some? success-params)
-                                     [success-event resource success-params]
-                                     [success-event resource])
-                  :on-failure      [:api-request-error evt resource]}
-     :db          (-> db
-                      (assoc-in (resource-path :loading resource) true))}))
+  :select-cust
+  (fn [{:keys [db] :as cofx} [evt {:keys [resource endpoint params success-event success-params]}]]
+    (select-custom* cofx [evt resource endpoint params success-event success-params])))
 
 (reg-event-fx
   :sidebar-selection-success
@@ -134,16 +146,20 @@
              (assoc-in (resource-path :loading resource) false))}))
 
 (reg-event-fx
-  :select-dag
-  (fn [{:keys [db]} [evt [series]]]
-    nil
-    ))
+  :dag-success
+  (fn [{:keys [db]} [evt resource {:keys [children-fn]} res]]
+    {:db (-> db
+             (assoc-in (resource-path :selection resource) res)
+             (assoc-in (resource-path :loading resource) false))
+     :fx (children-fn res)}))
 
 (reg-event-fx
-  :select-dag-success
-  (fn [{:keys [db]} [evt [series]]]
-    nil
-    ))
+  :sidebar-dag-success
+  (fn [{:keys [db]} [evt resource {:keys [children-fn]} res]]
+    {:db (-> db
+             (assoc-in (resource-path :sidebar-state resource) res)
+             (assoc-in (resource-path :loading resource) false))
+     :fx (children-fn res)}))
 
 (reg-event-fx
   :sidebar-selection-and-validate

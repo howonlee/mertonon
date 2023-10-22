@@ -115,7 +115,7 @@
             [sc/button "Dive In"]]]
      (if (not is-demo?)
        [:<>
-        [:div [util/sl (util/path ["layer" layer-uuid "update"]) [sc/button [sc/pen-icon] " Update"]]]
+        [:div [util/sl (util/path ["layer" layer-uuid "update"]) [sc/button [sc/pen-icon] " Change"]]]
         [:div [util/sl (util/path ["layer" layer-uuid "delete"]) [sc/button [sc/trash-icon] " Delete"]]]])]))
 
 ;; ---
@@ -137,7 +137,7 @@
   (let [curr-config (update-config m)
         state-path  (curr-config :state-path)]
     [:<>
-     [:h1 "Update Layer"]
+     [:h1 "Change Layer"]
      [mutation-view state-path :update-params]
      [up/update-button curr-config]]))
 

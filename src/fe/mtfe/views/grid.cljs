@@ -34,13 +34,13 @@
   (let [uuid (->> m :path-params :uuid)]
     [[:dispatch-n
       [[:reset-grid-state]
-       [:select-with-custom-success :curr-grid
+       [:select-custom :curr-grid
         (api/grid-graph uuid) {} :set-grid-state]]]]))
 
 (defn demo-before-fx [_]
   [[:dispatch-n
     [[:reset-grid-state]
-     [:select-with-custom-success :curr-grid
+     [:select-custom :curr-grid
       (api/generator-graph) {} :set-grid-state-demo]]]])
 
 ;; ---

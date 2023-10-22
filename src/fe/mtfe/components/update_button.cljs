@@ -11,14 +11,14 @@
   {
    ;; State labels
    :initial  "Make your changes."
-   :filled   "Press Update button to change things."
-   :updating "Updating..."
-   :success  "Successfully updated!"
-   :failure  "Failed to update See error."
+   :filled   "Press Change button to change things."
+   :updating "Changing..."
+   :success  "Successfully changed!"
+   :failure  "Failed to change. See error."
    :finished "Finished!"
 
    ;; Button labels
-   :submit   "Update"
+   :submit   "Change"
    :finish   "Finish"
    })
 
@@ -127,5 +127,5 @@
   (let [endpoint   (config :endpoint)
         state-path (config :state-path)]
     [[:dispatch-n [[:reset-update-state config]
-                   [:select-with-custom-success (into state-path [:update-params])
+                   [:select-custom (into state-path [:update-params])
                     endpoint {} :sidebar-selection-success] ]]]))

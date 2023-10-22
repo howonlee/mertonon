@@ -130,6 +130,10 @@
     {:name      ::input-delete-sidebar
      :view      input/input-delete-sidebar
      :before-fx input/input-delete-before-fx}]
+   ["/input/:uuid/update"
+    {:name      ::input-update-sidebar
+     :view      input/input-update-sidebar
+     :before-fx input/input-update-before-fx}]
    ["/intro"
     {:name      ::intro-sidebar
      :view      intro/intro-sidebar
@@ -169,6 +173,10 @@
     {:name      ::loss-delete-sidebar
      :view      loss/loss-delete-sidebar
      :before-fx loss/loss-delete-before-fx}]
+   ["/loss/:uuid/update"
+    {:name      ::loss-update-sidebar
+     :view      loss/loss-update-sidebar
+     :before-fx loss/loss-update-before-fx}]
 
    ["/mt_user"
     {:name ::mt-user-sidebar :view mt-user/mt-user-sidebar}]
@@ -192,6 +200,10 @@
     {:name      ::weight-delete-sidebar
      :view      weight/weight-delete-sidebar
      :before-fx weight/weight-delete-before-fx}]
+   ["/weight/:uuid/update"
+    {:name      ::weight-update-sidebar
+     :view      weight/weight-update-sidebar
+     :before-fx weight/weight-update-before-fx}]
 
    ["/weight_selection/:uuid"
     {:name      ::weight-selection-sidebar
@@ -207,6 +219,10 @@
     {:name      ::weightset-delete-sidebar
      :view      weightset/weightset-delete-sidebar
      :before-fx weightset/weightset-delete-before-fx}]
+   ["/weightset/:uuid/update"
+    {:name      ::weightset-update-sidebar
+     :view      weightset/weightset-update-sidebar
+     :before-fx weightset/weightset-update-before-fx}]
    ["/weightset/:uuid/weight_create"
     {:name      ::weight-create-sidebar
      :view      weight/weight-create-sidebar

@@ -7,9 +7,9 @@
             [mtfe.components.form-inputs :as fi]
             [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
+            [mtfe.events.util :as event-util]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
-            [mtfe.views.grid :as grid-view]
             [mtfe.validations :as validations]
             [reagent.core :as r]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]))
@@ -23,7 +23,8 @@
          (->> curr-state :grid-view :losses (mapv :layer-uuid))))
 
 (defn curr-layer-uuid-member-getter [param-key]
-  (fn [curr-state] (->> curr-state param-key :layer-uuid)))
+  (fn [curr-state]
+    (->> curr-state param-key :layer-uuid)))
 
 ;; ---
 ;; Partials
@@ -76,9 +77,9 @@
 (defn input-create-before-fx [m]
   (let [grid-uuid (->> m :path-params :uuid)]
     [[:dispatch-n [[:reset-create-state create-config]
-                   [:select-with-custom-success :grid-graph
+                   [:select-custom :grid-graph
                     (api/grid-graph grid-uuid) {} :sidebar-selection-success]
-                   [:select-with-custom-success :grid-view
+                   [:select-custom :grid-view
                     (api/grid-view grid-uuid) {} :sidebar-selection-success]]]]))
 
 (defn input-create-sidebar [m]
@@ -111,23 +112,26 @@
 (defn input-update-before-fx [m]
   (let [curr-config (update-config m)
         endpoint    (curr-config :endpoint)
-        state-path  (curr-config :state-path)]
+        state-path  (curr-config :state-path)
+        children-fn (event-util/layer-join-dag-step
+                      (into state-path [:curr-layer])
+                      (event-util/grid-view-terminal-step (into state-path [:grid-graph])
+                                                          (into state-path [:grid-view])))]
     [[:dispatch-n [[:reset-update-state curr-config]
-                   [:select-with-custom-success (into state-path [:update-params])
-                    endpoint {} :sidebar-selection-success]
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ;;;;;;;;
-                   ]]]))
+                   [:select-cust
+                    {:resource       (into state-path [:update-params])
+                     :endpoint       endpoint
+                     :params         {}
+                     :success-event  :sidebar-dag-success
+                     :success-params {:children-fn children-fn}}]]]]))
 
 (defn input-update-sidebar [m]
-  (let [curr-config (update-config m)
-        state-path  (curr-config :state-path)]
+  (let [curr-config   (update-config m)
+        grid-contents @(subscribe [:sidebar-state :input :update :grid-graph :layers])
+        state-path    (curr-config :state-path)]
     [:<>
-     [:h1 "Update Input Annotation"]
-     [mutation-view state-path :update-params]
+     [:h1 "Change Input Annotation"]
+     [mutation-view state-path :update-params grid-contents]
      [up/update-button curr-config]]))
 
 ;; ---
