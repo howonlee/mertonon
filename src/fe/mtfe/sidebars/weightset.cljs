@@ -100,9 +100,10 @@
          (for [ws (->> curr-state :grid-graph :weightsets)]
            [(ws :src-layer-uuid) (ws :tgt-layer-uuid)])))
 
-(defn curr-coord-getter [curr-state]
-  [(->> curr-state :create-params :src-layer-uuid)
-   (->> curr-state :create-params :tgt-layer-uuid)])
+(defn curr-coord-getter [param-key]
+  (fn [curr-state]
+    [(->> curr-state param-key :src-layer-uuid)
+     (->> curr-state param-key :tgt-layer-uuid)]))
 
 ;; ---
 ;; Creation
@@ -124,7 +125,7 @@
     (validations/non-blank [:create-params :tgt-layer-uuid] :tgt-layer-blank)
     (acyclic-validation :create-params [:grid-graph])
     (validations/min-num-elems [:grid-graph :layers] 2 :few-layers)
-    (validations/not-in-set weightset-coord-getter curr-coord-getter :duplicate-weightset)]
+    (validations/not-in-set weightset-coord-getter (curr-coord-getter :create-params) :duplicate-weightset)]
    :ctr           mc/->Weightset
    :ctr-params    [:uuid :src-layer-uuid :tgt-layer-uuid :name :label]
    :nav-to        :refresh})
@@ -141,6 +142,7 @@
         state-path    (curr-config :state-path)
         grid-contents @(subscribe [:sidebar-state :weightset :create :grid-graph :layers])]
     [:<>
+     [:h1 [sc/ws-icon] " Weightset"]
      [:div.mb2 [sc/grid-icon] " Grid UUID - " (->> grid-uuid str)]
      [mutation-view state-path :create-params grid-contents]
      [cr/create-button curr-config]]))
@@ -202,10 +204,35 @@
 ;; Update
 ;; ---
 
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
-;;;;;;;;;;;;
+(defn update-config [m]
+  (let [weightset-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-weightset
+     :endpoint    (api/weightset-member weightset-uuid)
+     :state-path  [:weightset :update]
+     :validations
+     [(validations/non-blank [:update-params :name] :name-blank)
+      (validations/non-blank [:update-params :src-layer-uuid] :src-layer-blank)
+      (validations/non-blank [:update-params :tgt-layer-uuid] :tgt-layer-blank)
+      (acyclic-validation :update-params [:grid-graph])
+      (validations/min-num-elems [:grid-graph :layers] 2 :few-layers)
+      (validations/not-in-set weightset-coord-getter (curr-coord-getter :update-params) :duplicate-weightset)]
+     :nav-to      :refresh}))
+
+(defn weightset-update-before-fx [m]
+  ;;;;
+  ;;;;
+  ;;;;
+  ;;;;
+  nil)
+
+(defn weightset-update-sidebar [m]
+  (let [curr-config   (create-config m)
+        state-path    (curr-config :state-path)
+        grid-contents @(subscribe [:sidebar-state :weightset :update :grid-graph :layers])]
+    [:<>
+     [:h1 [sc/ws-icon] " Weightset"]
+     [mutation-view state-path :create-params grid-contents]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion
