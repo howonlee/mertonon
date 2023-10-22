@@ -9,7 +9,7 @@
 - [x] Model updates FE loss
 
 - [x] Model updates FE weightset
-- [ ] Model updates FE weight
+- [x] Model updates FE weight
 - [ ] FE gens - event
 - [ ] FE gens - net things... - try to squeeze net into cljc, i think
 - [ ] Gantt essay outline

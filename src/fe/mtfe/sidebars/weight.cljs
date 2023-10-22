@@ -5,7 +5,9 @@
             [mtfe.components.create-button :as cr]
             [mtfe.components.delete-button :as del]
             [mtfe.components.form-inputs :as fi]
+            [mtfe.components.update-button :as up]
             [mtfe.components.validation-blurbs :as vblurbs]
+            [mtfe.events.util :as event-util]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [mtfe.validations :as validations]
@@ -213,6 +215,7 @@
         state-path  (curr-config :state-path)
         children-fn (event-util/weightset-view-terminal-step (into state-path [:ws-selection]))]
     [[:dispatch-n [[:reset-update-state curr-config]
+                   [:select-custom :alloc-cue (api/allocation-cue) {} :sidebar-selection-success]
                    [:select-cust
                     {:resource       (into state-path [:update-params])
                      :endpoint       endpoint
@@ -221,7 +224,16 @@
                      :success-params {:children-fn children-fn}}]]]]))
 
 (defn weight-update-sidebar [m]
-  nil)
+  (let [curr-config (update-config m)
+        state-path  (curr-config :state-path)
+        alloc-cue   @(subscribe [:sidebar-state :alloc-cue])
+        curr-params @(subscribe [:sidebar-state :weight :update :create-params])
+        src-cobjs   @(subscribe [:sidebar-state :weight :update :ws-selection :src-cobjs])
+        tgt-cobjs   @(subscribe [:sidebar-state :weight :update :ws-selection :tgt-cobjs])]
+    [:<>
+     [:h1 [sc/weight-icon] " Weight"]
+     [mutation-view state-path :update-params alloc-cue curr-params src-cobjs tgt-cobjs]
+     [up/update-button curr-config]]))
 
 ;; ---
 ;; Deletion

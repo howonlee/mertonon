@@ -200,6 +200,10 @@
     {:name      ::weight-delete-sidebar
      :view      weight/weight-delete-sidebar
      :before-fx weight/weight-delete-before-fx}]
+   ["/weight/:uuid/update"
+    {:name      ::weight-update-sidebar
+     :view      weight/weight-update-sidebar
+     :before-fx weight/weight-update-before-fx}]
 
    ["/weight_selection/:uuid"
     {:name      ::weight-selection-sidebar

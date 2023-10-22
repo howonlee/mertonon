@@ -240,8 +240,7 @@
   (let [curr-config   (update-config m)
         state-path    (curr-config :state-path)
         grid-contents @(subscribe [:sidebar-state :weightset :update :grid-graph :layers])
-        curr-params   @(subscribe [:sidebar-state :weightset :update :update-state])
-        printo        (println curr-params)]
+        curr-params   @(subscribe [:sidebar-state :weightset :update :update-state])]
     [:<>
      [:h1 [sc/ws-icon] " Weightset"]
      [mutation-view state-path :update-params grid-contents]
