@@ -219,11 +219,20 @@
      :nav-to      :refresh}))
 
 (defn weightset-update-before-fx [m]
-  ;;;;
-  ;;;;
-  ;;;;
-  ;;;;
-  nil)
+  (let [curr-config (update-config m)
+        endpoint    (curr-config :endpoint)
+        state-path  (curr-config :state-path)
+        children-fn (event-util/layer-join-dag-step
+                      (into state-path [:curr-weightset])
+                      (event-util/grid-view-terminal-step (into state-path [:grid-graph])
+                                                          (into state-path [:grid-view])))]
+    [[:dispatch-n [[:reset-update-state curr-config]
+                   [:select-cust
+                    {:resource       (into state-path [:update-params])
+                     :endpoint       endpoint
+                     :params         {}
+                     :success-event  :sidebar-dag-success
+                     :success-params {:children-fn children-fn}}]]]]))
 
 (defn weightset-update-sidebar [m]
   (let [curr-config   (create-config m)
