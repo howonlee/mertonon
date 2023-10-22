@@ -190,13 +190,22 @@
 ;; Update
 ;; ---
 
-;;;;;;;;;;;
-;;;;;;;;;;;
-;;;;;;;;;;;
-;;;;;;;;;;;
-
 (defn update-config [m]
-  nil)
+  (let [weight-uuid (->> m :path-params :uuid)]
+    {:resource    :curr-weight
+     :endpoint    (api/weight-member weight-uuid)
+     :state-path  [:weight :update]
+     :validations
+     [(validations/non-blank [:update-params :src-cobj-uuid] :src-cobj-blank)
+      (validations/non-blank [:update-params :tgt-cobj-uuid] :tgt-cobj-blank)
+      (validations/non-blank [:update-params :value] :value-blank)
+      (validations/or-predicate
+        (validations/min-num-elems [:ws-selection :src-cobjs] 1 :few-src)
+        (validations/min-num-elems [:ws-selection :tgt-cobjs] 1 :few-tgt)
+        :few-cobjs)]
+      ;; Note duplicate-weight is missing because I need to munge it to do self-instance
+      ;; TODO: get duplicate-weight to not cry about no-change-topology changes
+     :nav-to      :refresh}))
 
 (defn weight-update-before-fx [m]
   nil)
