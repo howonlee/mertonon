@@ -208,7 +208,17 @@
      :nav-to      :refresh}))
 
 (defn weight-update-before-fx [m]
-  nil)
+  (let [curr-config (update-config m)
+        endpoint    (curr-config :endpoint)
+        state-path  (curr-config :state-path)
+        children-fn (event-util/weightset-view-terminal-step (into state-path [:ws-selection]))]
+    [[:dispatch-n [[:reset-update-state curr-config]
+                   [:select-cust
+                    {:resource       (into state-path [:update-params])
+                     :endpoint       endpoint
+                     :params         {}
+                     :success-event  :sidebar-dag-success
+                     :success-params {:children-fn children-fn}}]]]]))
 
 (defn weight-update-sidebar [m]
   nil)

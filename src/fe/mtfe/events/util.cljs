@@ -29,3 +29,8 @@
     (let [grid-uuid (res :grid-uuid)]
       [[:dispatch [:select-custom graph-resource (api/grid-graph grid-uuid) {} :sidebar-selection-success]]
        [:dispatch [:select-custom view-resource (api/grid-view grid-uuid) {} :sidebar-selection-success]]])))
+
+(defn weightset-view-terminal-step [ws-resource]
+  (fn [res]
+    (let [ws-uuid (res :weightset-uuid)]
+      [[:dispatch [:select-custom ws-resource (api/weightset-view ws-uuid) {} :sidebar-selection-success]]])))
