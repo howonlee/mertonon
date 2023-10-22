@@ -114,7 +114,7 @@
                        :tgt-cobj-uuid  tgt-cobj-uuid
                        :label          ""
                        :type           "default"
-                       :value          0})
+                       :value          1})
      :validations   
      [(validations/non-blank [:create-params :src-cobj-uuid] :src-cobj-blank)
       (validations/non-blank [:create-params :tgt-cobj-uuid] :tgt-cobj-blank)
@@ -185,6 +185,24 @@
         [util/sl (util/path ["weight" weight-uuid "update"]) [sc/button "Change"]]
         [:span " "]
         [util/sl (util/path ["weight" weight-uuid "delete"]) [sc/button "Delete"]]])]))
+
+;; ---
+;; Update
+;; ---
+
+;;;;;;;;;;;
+;;;;;;;;;;;
+;;;;;;;;;;;
+;;;;;;;;;;;
+
+(defn update-config [m]
+  nil)
+
+(defn weight-update-before-fx [m]
+  nil)
+
+(defn weight-update-sidebar [m]
+  nil)
 
 ;; ---
 ;; Deletion
