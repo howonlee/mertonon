@@ -25,6 +25,9 @@
                    (validations/non-blank [:create-params :password] :password-blank)]
    :ctr           (fn [username password] {:username username :password password})
    :ctr-params    [:username :password]
+   ;; TODO: login redirect semantics
+   ;; Login redirect is an attack vector! Go hard on the mandating of hash url.
+   ;; Cannot have hash url's which redirect to outside url, etc etc
    :nav-to        "#/"})
 
 (defn login-before-fx [m]
