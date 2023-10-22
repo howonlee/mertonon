@@ -53,12 +53,12 @@
   [:<>
    [vblurbs/validation-popover state-path :cyclic
     "We don't have support for cyclic weightsets at this time. We will put them in eventually."
-    [:<>]]
+    [:div]]
    [vblurbs/validation-popover state-path :few-layers
     "You need at least two responsibility centers (layers) to have a weightset."
-    [:<>]]
+    [:div]]
    [vblurbs/validation-popover state-path :duplicate-weightset "That weightset already exists."
-    [:<>]]
+    [:div]]
    [sc/mgn-border-region
     [sc/form-label [sc/layer-icon] " Source Responsibility Center"]
     [vblurbs/validation-popover state-path :src-layer-blank "Must choose source responsiblilty center"
@@ -215,8 +215,9 @@
       (validations/non-blank [:update-params :src-layer-uuid] :src-layer-blank)
       (validations/non-blank [:update-params :tgt-layer-uuid] :tgt-layer-blank)
       (acyclic-validation :update-params [:grid-graph])
-      (validations/min-num-elems [:grid-graph :layers] 2 :few-layers)
-      (validations/not-in-set weightset-coord-getter (curr-coord-getter :update-params) :duplicate-weightset)]
+      (validations/min-num-elems [:grid-graph :layers] 2 :few-layers)]
+      ;; Note duplicate-weightset is missing because I need to munge it to do self-instance
+      ;; TODO: get duplicate-weightset to not cry about no-change-topology changes
      :nav-to      :refresh}))
 
 (defn weightset-update-before-fx [m]
@@ -236,7 +237,7 @@
                      :success-params {:children-fn children-fn}}]]]]))
 
 (defn weightset-update-sidebar [m]
-  (let [curr-config   (create-config m)
+  (let [curr-config   (update-config m)
         state-path    (curr-config :state-path)
         grid-contents @(subscribe [:sidebar-state :weightset :update :grid-graph :layers])
         curr-params   @(subscribe [:sidebar-state :weightset :update :update-state])

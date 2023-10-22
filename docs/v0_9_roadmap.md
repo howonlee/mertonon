@@ -8,7 +8,7 @@
 - [x] Think of the dag selects as being like joins
 - [x] Model updates FE loss
 
-- [ ] Model updates FE weightset
+- [x] Model updates FE weightset
 - [ ] Model updates FE weight
 - [ ] FE gens - event
 - [ ] FE gens - net things... - try to squeeze net into cljc, i think
