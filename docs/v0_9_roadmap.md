@@ -10,11 +10,11 @@
 
 - [x] Model updates FE weightset
 - [x] Model updates FE weight
+
 - [ ] Test hookup for cljs test
 - [ ] FE gens - event
 - [ ] FE gens - net things... - try to squeeze net into cljc, i think
 - [ ] Gantt essay outline
-
 - [ ] FE gens - views
 - [ ] FE gens - mutation state
 - [ ] Gantt essay first draft
@@ -27,11 +27,11 @@
 - [ ] Gantt essay final draft and publish
 - [ ] Put in mailchimp alternative
 - [ ] Update mertonon.com
+
 - [ ] Redo setup, usage gifs again...
 - [ ] Redo setup, usage for grade level
 - [ ] Sponsor newsletters - budget 3k usd, 3 sponsors, I think
 - [ ] Cut postprealpha
-
 - [ ] Changelog
 - [ ] Click around a bit
 - [ ] Cut release

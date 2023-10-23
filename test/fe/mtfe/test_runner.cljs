@@ -1,4 +1,5 @@
 (ns mertonon.test-runner
+  ;; no, this wont work, eftest is clojure only
   (:require [clojure.test :as ct]
             [eftest.runner :as eftest]))
 

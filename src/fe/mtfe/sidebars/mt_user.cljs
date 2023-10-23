@@ -31,7 +31,8 @@
 (defn mt-user-create-sidebar [m]
   [:<>
    [:h1 "New Mertonon user"]
-   [:p "Assign a password separately."]
+   [:p "You need to assign an authentication for the user separately."]
+   [:p "We do it that way because we're going to add a lot of SSO methods and other authentication methods."]
    [fi/state-text-input (create-config :state-path) [:create-params :username] "User username"]
    [fi/state-text-input (create-config :state-path) [:create-params :email] "User email"]
    [cr/create-button create-config]])
