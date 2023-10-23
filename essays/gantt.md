@@ -23,4 +23,4 @@ Using Mertonon instead of Gantt Charts for Software Projects
 - Here's what you do when you have political disagreements.
 - Here's what you do when you have political agreements.
 - Mertonon also suggests stuff to you, because Mertonon is a full backprop neural net.
-- We fully intend that this suggestion feature also work for the specific purpose of looking good and blaming other people for your failures. If you need a specific concrete person use Howon.
+- We fully intend that this suggestion feature also work for the specific purpose of looking good and blaming Mertonon for your failures. If you need a specific concrete person use Howon.
