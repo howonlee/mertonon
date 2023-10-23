@@ -22,9 +22,10 @@
    :asset-path "resources/public/cljs"
    :modules    {:main {:init-fn mtfe.core/init!}}}
   :test
-  {:target    :browser-test
-   :test-dir  "build/test"
-   :ns-regexp "-tests?$"
-   :autorun   true}}
+  {:target    :karma
+   :output-to "target/test.js"
+   :ns-regexp "-test$"
+   :autorun   true
+}
  :dev-http { 3001 "build/test" }
 }
