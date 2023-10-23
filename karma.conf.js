@@ -1,8 +1,8 @@
 module.exports = function (config) {
     config.set({
         browsers: ['ChromeHeadless'],
-        basePath: 'out', // this is the same as the base-path of `:output-to` in `shadow-cljs.edn`
-        files: ['test.js'], // this is the same as the file-name (ending with .js) of `:output-to` in `shadow-cljs.edn`
+        basePath: 'target',
+        files: ['test.js'],
         frameworks: ['cljs-test'],
         plugins: ['karma-cljs-test', 'karma-chrome-launcher'],
         colors: true,

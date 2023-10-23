@@ -25,7 +25,6 @@
   {:target    :karma
    :output-to "target/test.js"
    :ns-regexp "-test$"
-   :autorun   true
-}
+   :autorun   true}}
  :dev-http { 3001 "build/test" }
 }
