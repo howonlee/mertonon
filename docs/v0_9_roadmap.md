@@ -12,7 +12,7 @@
 - [x] Model updates FE weight
 
 - [x] Gantt essay outline
-- [ ] Test hookup for cljs test
+- [x] Test hookup for cljs test
 - [ ] FE gens - event
 - [ ] FE gens - net things... - try to squeeze net into cljc, i think
 - [ ] FE gens - views
