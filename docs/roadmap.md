@@ -4,8 +4,11 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Back button
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
+- Take-the-suggested-weight-change updates
+- Mass CRUD ops
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property.
 - Make graphs and tests and write about how the renorm layer op is cool and good
 - RG for computer scientists (towards RG for salespeeps)
@@ -13,10 +16,11 @@ Also look at small tasks roadmap
 - Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
 - Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
 - Munge and validate password according to a serious password-based-auth checklist
-- RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
-- RBAC FE
 - Cut alpha, sponsor more newsletters
 
+- RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
+- RBAC FE
+- Splitscreen views and mutations
 - Full grad view (exec summary view)
 - Email integration (as first integration)
 - Crontab for adjustments, emails
@@ -30,7 +34,6 @@ Also look at small tasks roadmap
 - Sorting / Pagination FE
 - Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
 - Weight painter and modal changing
-- Mass operations in FE
 - Cut pre-7x-beta
 
 # General Future Roadmap (not in any real order)

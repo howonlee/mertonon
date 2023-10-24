@@ -5,9 +5,7 @@
             [mertonon.generators.data :as gen-data]
             [mertonon.generators.params :as net-params]
             [mertonon.models.constructors :as mtc]
-            [mertonon.services.graph-service :as gs]
-            [mertonon.util.schemas :as mts]
-            [schema.core :as s]))
+            [mertonon.services.graph-service :as gs]))
 
 ;; ---
 ;; General utils

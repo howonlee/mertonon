@@ -11,26 +11,26 @@
 - [x] Model updates FE weightset
 - [x] Model updates FE weight
 
-- [ ] Test hookup for cljs test
-- [ ] Gantt essay outline
-- [ ] FE gens - event
+- [x] Gantt essay outline
+- [x] Test hookup for cljs test
+
+- [ ] Gantt self-instance usage - just think about it
+- [ ] Gantt essay outline the usage bits
 - [ ] FE gens - net things... - try to squeeze net into cljc, i think
+- [ ] FE gens - event
 - [ ] FE gens - views
 - [ ] FE gens - mutation state
-
-- [ ] Gantt essay first draft
-- [ ] Gantt self-instance usage...
-- [ ] Gantt essay nth draft
-- [ ] Gantt essay reduce grade level
-- [ ] PBT essay outline
-
-- [ ] Gantt essay final draft and publish
 - [ ] Put in mailchimp alternative
 - [ ] Update mertonon.com
 
+- [ ] Gantt essay drafting
 - [ ] Redo setup, usage gifs again...
 - [ ] Redo setup, usage for grade level
 - [ ] Sponsor newsletters - budget 3k usd, 3 sponsors, I think
+- [ ] Gantt essay drafting
+- [ ] Gantt essay reduce grade level
+
+- [ ] Gantt essay final draft and publish
 - [ ] Cut postprealpha
 - [ ] Changelog
 - [ ] Click around a bit
