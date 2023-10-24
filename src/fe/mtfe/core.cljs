@@ -72,7 +72,6 @@
                           :view      weight/weight-page
                           :before-fx weight/before-fx}]])
 
-
 (defn nav []
   [sc/nav
    [:span.w-20.pa2 (util/fsl "#/" "/" "🥞 Mertonon")]

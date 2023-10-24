@@ -47,7 +47,6 @@
    :differential (cmo/+ (cmo/* (:value a) (:differential b))
                         (cmo/* (:value b) (:differential a)))})
 
-
 (s/defn op-mmul :- ForwardVariable
   "Matrix multiplication."
   [a :- ForwardVariable

@@ -47,7 +47,6 @@
      :value  var-mat
      :inputs []}))
 
-
 (defn generate-ops
   "Given variable generator, generate ops variables which operate on generated members of that generator"
   [generator]
@@ -98,5 +97,5 @@
   [[complex-variable target-uuid]]
   (walk/postwalk (reverse-op->forward-op target-uuid) complex-variable))
 
-(comment 
+(comment
   (complex-variable->forward-ops (gen/generate generate-complex-variable-and-target)))

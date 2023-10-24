@@ -28,8 +28,7 @@
    [:p "In addition to suggesting the allocations themselves, Mertonon also makes suggestions for adjustments to the weights, which are suggestions for differences to make on the relations cost nodes have to each other."]
    [:p "The lighter the background color, the stronger the determined relation."]
    [:p "Usually in neural weights, people also do negative weights, but we decided not to because of the vicious organizational politics implications. Math works out fine either way."]
-   [:strong "Mertonon weight gradients are _only_ updated whenever gradient calculations are kicked off, not on initial creation."]
-   ])
+   [:strong "Mertonon weight gradients are _only_ updated whenever gradient calculations are kicked off, not on initial creation."]])
 
 (defn src-layer-partial [curr-ws-state]
   (when (seq (->> curr-ws-state :src-layer))

@@ -210,8 +210,7 @@
      :view      weight/weight-selection-sidebar
      :before-fx weight/weight-selection-before-fx}]
 
-
-   ["/weightset/:uuid"
+["/weightset/:uuid"
     {:name      ::weightset-sidebar
      :view      weightset/weightset-sidebar
      :before-fx weightset/weightset-before-fx}]

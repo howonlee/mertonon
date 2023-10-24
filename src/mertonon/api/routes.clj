@@ -13,8 +13,7 @@
             [mertonon.api.mt-user :as api-mt-user]
             [mertonon.api.password-login :as api-password-login]
             [mertonon.api.weight :as api-weight]
-            [mertonon.api.weightset :as api-weightset]
-            ))
+            [mertonon.api.weightset :as api-weightset]))
 
 (defn routes []
   [(into ["/allocation_cue"] (api-allocation-cue/routes))

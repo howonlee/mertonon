@@ -82,7 +82,6 @@
      [mutation-view state-path :update-params]
      [up/update-button curr-config]]))
 
-
 ;; ---
 ;; Deletion
 ;; ---

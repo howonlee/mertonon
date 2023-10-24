@@ -25,7 +25,7 @@
         ;; Need compatibility with test txn. Means that our wrapper needs to be with respect to savepoints or something
         {username :username
          email    :email
-         password :password } body
+         password :password} body
         new-user              (mtc/->MtUser (uutils/uuid) email username)
         mt-user!              ((mt-user-model/model :create-one!) new-user)
         digest                (password-login-model/hash-password password)

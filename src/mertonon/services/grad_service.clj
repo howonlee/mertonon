@@ -52,7 +52,6 @@
   [terminal-pattern layer-uuid]
   (ops/op-norm-1d (ops/op-var terminal-pattern layer-uuid)))
 
-
 ;; ---
 ;; Matrix net and patterns <-> Forward pass
 ;; ---
@@ -195,11 +194,9 @@
      :grads            (into-with-key :grads grads)
      :var-by-uuid      (into-with-key :var-by-uuid grads)}))
 
-
 ;; ---
 ;; Serde for gradients into the cost objects and the weights, to fill out delta and grad columns
 ;; ---
-
 
 (defn learning-rate
   "Currently only one LR..."

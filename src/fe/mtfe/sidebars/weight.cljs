@@ -117,7 +117,7 @@
                        :label          ""
                        :type           "default"
                        :value          1})
-     :validations   
+     :validations
      [(validations/non-blank [:create-params :src-cobj-uuid] :src-cobj-blank)
       (validations/non-blank [:create-params :tgt-cobj-uuid] :tgt-cobj-blank)
       (validations/non-blank [:create-params :value] :value-blank)

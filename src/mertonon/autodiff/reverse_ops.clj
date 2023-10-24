@@ -157,11 +157,11 @@
   (let [[a] (:inputs op)]
     [(cmo/* dout (cm/cos (:value a)))]))
 
-(comment 
+(comment
   (s/def a (op-var (/ 1 2)))
 
   (s/def b (op-var (/ 42 10)))
-  
+
   (s/def mat-a (op-var [[(/ 1 2) 2 2] [1 2 3]]))
 
   (def mat-norm (op-norm mat-a))

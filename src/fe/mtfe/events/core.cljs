@@ -170,8 +170,6 @@
                    (assoc-in (resource-path :loading resource) false))
      :dispatch [:validate (resource-path :sidebar-state resource) validations]}))
 
-
-
 ;; ---
 ;; Error-Handling and Validations
 ;; ---

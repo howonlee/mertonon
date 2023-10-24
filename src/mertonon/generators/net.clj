@@ -86,7 +86,6 @@
             input-label (gen-data/gen-labels label-type)]
     (mtc/->Input input-uuid (layer :uuid) "Input" input-label :competitiveness)))
 
-
 (defn gen-loss-row
   [{:keys [name-type label-type] :as params} layer]
   (gen/let [loss-uuid  gen/uuid

@@ -49,7 +49,6 @@
                       encdec-graph   (graphs/net->graph (:layers encdec-net) (map :weightset (:matrices encdec-net)))]
                   (= orig-graph encdec-graph))))
 
-
 (defspec dag-forward-encdec-test
   tu/many
   (prop/for-all [[matrix-net patterns] (grad-net-gen/matrix-net-and-patterns aug-net-gen/dag-net-and-entries)]

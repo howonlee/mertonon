@@ -8,8 +8,7 @@
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
 
 (def default-labels
-  {
-   ;; State labels
+  {;; State labels
    :initial  "Make your changes."
    :filled   "Press Change button to change things."
    :updating "Changing..."
@@ -19,8 +18,7 @@
 
    ;; Button labels
    :submit   "Change"
-   :finish   "Finish"
-   })
+   :finish   "Finish"})
 
 ;; ---
 ;; Events
@@ -128,4 +126,4 @@
         state-path (config :state-path)]
     [[:dispatch-n [[:reset-update-state config]
                    [:select-custom (into state-path [:update-params])
-                    endpoint {} :sidebar-selection-success] ]]]))
+                    endpoint {} :sidebar-selection-success]]]]))

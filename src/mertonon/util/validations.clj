@@ -1,8 +1,7 @@
 (ns mertonon.util.validations
   "Bunch of generic validations and validation templates"
   (:require [mertonon.util.queries :as q]
-            [mertonon.util.registry :as registry]
-            ))
+            [mertonon.util.registry :as registry]))
 
 ;; ---
 ;; Doing the validations
@@ -40,7 +39,7 @@
 
 (defn table-count-check
   [table-model pred-count curr-keyword]
-  (fn [req] 
+  (fn [req]
     (if (= ((table-model :count)) pred-count)
       nil
       curr-keyword)))

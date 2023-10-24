@@ -174,7 +174,6 @@
                         vec)]
     {:curr-nodes curr-nodes :curr-edges curr-edges}))
 
-
 ;; ---
 ;; Idiosyncratic events
 ;; ---

@@ -58,7 +58,7 @@
      [:p "Make the administrator account for this Mertonon instance."]
      [sc/border-region
       [vblurbs/validation-popover state-path :username-blank "Username is blank"
-       [fi/state-text-input state-path [:create-params :username] "Username" ]]
+       [fi/state-text-input state-path [:create-params :username] "Username"]]
       [vblurbs/validation-popover state-path :email-blank "Email is blank"
        [fi/state-text-input state-path [:create-params :email] "Email"]]
       [vblurbs/validation-popover state-path :password-blank "Password is blank"

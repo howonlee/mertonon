@@ -32,7 +32,6 @@
         res         (curr-app {:uri endpoint :request-method :get :body-params {}})]
     res))
 
-
 (defspec just-login-a-bunch
   tu/few
   (prop/for-all

@@ -36,7 +36,7 @@
    [:div "Matching Layer UUID: " (str (:layer-uuid input))]
    [:div "Type: Competitiveness"]
    (if (not @(subscribe [:is-demo?]))
-     [:div 
+     [:div
       [util/sl (util/path ["input" (:uuid input) "update"]) [sc/button "Change Annotation"]]
       [:span " "]
       [util/sl (util/path ["input" (:uuid input) "delete"]) [sc/button "Delete Annotation"]]])
