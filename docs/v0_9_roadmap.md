@@ -14,6 +14,7 @@
 - [x] Gantt essay outline
 - [x] Test hookup for cljs test
 
+- [x] cljfmt
 - [ ] Gantt self-instance usage - just think about it
 - [ ] Gantt essay outline the usage bits
 - [ ] FE gens - net things... - try to squeeze net into cljc, i think
