@@ -7,6 +7,7 @@ Also look at small tasks roadmap
 - Back button
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
+- Take-the-suggested-weight-change updates
 - Mass CRUD ops
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property.
 - Make graphs and tests and write about how the renorm layer op is cool and good
@@ -19,6 +20,7 @@ Also look at small tasks roadmap
 
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
+- Splitscreen views and mutations
 - Full grad view (exec summary view)
 - Email integration (as first integration)
 - Crontab for adjustments, emails
