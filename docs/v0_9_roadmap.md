@@ -13,17 +13,17 @@
 
 - [x] Gantt essay outline
 - [x] Test hookup for cljs test
-- [ ] FE gens - event
+
+- [ ] Gantt self-instance usage - just think about it
+- [ ] Gantt essay outline the usage bits
 - [ ] FE gens - net things... - try to squeeze net into cljc, i think
+- [ ] FE gens - event
 - [ ] FE gens - views
 - [ ] FE gens - mutation state
-- [ ] Gantt self-instance usage...
-- [ ] Gantt essay outline the usage bits
-
-- [ ] Gantt essay drafting
 - [ ] Put in mailchimp alternative
 - [ ] Update mertonon.com
 
+- [ ] Gantt essay drafting
 - [ ] Redo setup, usage gifs again...
 - [ ] Redo setup, usage for grade level
 - [ ] Sponsor newsletters - budget 3k usd, 3 sponsors, I think
