@@ -34,8 +34,7 @@
   (cr/before-fx create-config m))
 
 (def login-labels
-  {
-   ;; State labels
+  {;; State labels
    :blank    "Enter username and password"
    :filled   "Press Log in button to log in."
    :creating "Logging in..."

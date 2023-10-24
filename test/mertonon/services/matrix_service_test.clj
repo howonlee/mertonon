@@ -27,7 +27,6 @@
                                     cm/slices (mapv cm/esum) (apply hash-set))]
                   (every? #(not (zero? %)) elem-set))))
 
-
 (defspec linear-entry-pattern-encdec-test
   tu/many
   (prop/for-all [[net entries] aug-net-gen/net-and-entries]
@@ -71,8 +70,7 @@
                       trans-out             (ms/entries->patterns orig-inp)
                       involuted-inp         (ms/patterns->entries trans-out)]
 
-                  (= orig-inp involuted-inp)))
-  )
+                  (= orig-inp involuted-inp))))
 
 (defspec linear-full-encdec-test
   tu/many

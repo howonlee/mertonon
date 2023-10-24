@@ -20,8 +20,7 @@
 ;; also enforce on backend side...
 
 (def password-login-labels
-  {
-   ;; State labels
+  {;; State labels
    :initial  "Enter new password for user"
    :filled   "Press Create Password button to create the password."
    :acting   "Creating password..."

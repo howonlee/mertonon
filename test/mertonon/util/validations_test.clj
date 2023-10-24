@@ -44,7 +44,6 @@
                         (second members)
                         (first members)])))))
 
-
 (defspec mix-simple-and-nonsimple-validation
   tu/middle
   (prop/for-all [[fst-keyword snd-keyword] (gen/vector-distinct gen/keyword {:num-elements 2})]

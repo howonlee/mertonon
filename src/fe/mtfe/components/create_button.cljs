@@ -8,8 +8,7 @@
             [re-frame.core :refer [dispatch dispatch-sync reg-event-db reg-event-fx subscribe]]))
 
 (def default-labels
-  {
-   ;; State labels
+  {;; State labels
    :blank    "Enter data."
    :filled   "Press Create button to create."
    :creating "Creating..."
@@ -19,8 +18,7 @@
 
    ;; Button labels
    :submit   "Create"
-   :finish   "Finish"
-   })
+   :finish   "Finish"})
 
 ;; ---
 ;; Events

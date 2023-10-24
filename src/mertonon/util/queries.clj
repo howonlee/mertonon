@@ -259,7 +259,6 @@
     (hard-delete-one {:table table :uuid (first uuids)})
     (db/query (hard-delete-many-q table uuids))))
 
-
 ;; -----
 ;; Define default model
 ;; -----

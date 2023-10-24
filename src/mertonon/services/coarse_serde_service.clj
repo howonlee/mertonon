@@ -17,7 +17,7 @@
 ;; ---
 
 (defn net->db [{:keys [grids layers cost-objects inputs losses weightsets weights] :as net}]
-  (do 
+  (do
     ((grid-model/model :create-many!) grids)
     ((layer-model/model :create-many!) layers)
     ((cost-object-model/model :create-many!) cost-objects)

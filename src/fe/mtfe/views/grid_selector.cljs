@@ -23,5 +23,4 @@
          [util/sl (util/path ["grid" (:uuid member) "update"])
           [:span.pa2 [sc/pen-icon]]]
          [util/sl (util/path ["grid" (:uuid member) "delete"])
-          [:span.pa2 [sc/trash-icon]]]
-         ])]]))
+          [:span.pa2 [sc/trash-icon]]]])]]))

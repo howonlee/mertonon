@@ -96,7 +96,6 @@
 ;; Update
 ;; ---
 
-
 (defn update-config [m]
   (let [loss-uuid (->> m :path-params :uuid)]
     {:resource    :curr-loss

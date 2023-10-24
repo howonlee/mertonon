@@ -59,7 +59,6 @@
 ;; Dates
 ;; ---
 
-
 (defn last-week []
   (-> (t/<< (t/instant) (t/new-duration 7 :days))
       (t/long)
@@ -148,7 +147,7 @@
       [vblurbs/validation-toast state-path :few-input-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to inputs to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
      [:p
       [vblurbs/validation-toast state-path :few-loss-entries "Mertonon has to have some entries for the dates selected in the responsibility center corresponding to goals to determine a gradient flow. Make sure that there's entries specifically in the dates selected, not just whenever."]]
-   
+
      [sc/mgn-border-region
       [sc/form-label "Start Date"]
       [fi/state-datepicker state-path [:action-params :start-date] :mutate-action-state]]

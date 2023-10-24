@@ -18,8 +18,7 @@
             [mertonon.models.health-check :as health-check-model]
             [mertonon.models.mt-user :as mt-user-model]
             [mertonon.models.password-login :as password-login-model]
-            [mertonon.models.mt-session :as mt-session-model]
-            ))
+            [mertonon.models.mt-session :as mt-session-model]))
 
 ;; TODO: enforce the registry having this stuff by tests
 ;; I don't like the obvious move of auto-introspecting stuff at runtime because the poor locality of it
@@ -108,8 +107,7 @@
 
                    :mertonon.mt-users        mt-user-model/model
                    :mertonon.password-logins password-login-model/model
-                   :mertonon.mt-sessions     mt-session-model/model
-                   })
+                   :mertonon.mt-sessions     mt-session-model/model})
 
 (def table->generator
   {:mertonon.grids           net-gen/generate-grid

@@ -5,7 +5,6 @@
             [mertonon.util.queries :as q]
             [mertonon.util.uuid :as uutils]))
 
-
 (defn canonicalize-weight [weight]
   (-> (mutils/default-canonicalize weight)
       (update :src-cobj-uuid uutils/uuid)

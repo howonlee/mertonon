@@ -141,7 +141,6 @@
          (apply hash-set (map #(dissoc % :updated-at) snd-update)))
       (not= (mapv :updated-at fst-members) (mapv :updated-at snd-update)))))
 
-
 (defn read-one-read-many-consonance
   [{:keys [gen-net model-instances read-one read-many setup]}]
   (let [setup-res   (setup gen-net)

@@ -60,7 +60,6 @@
   ([path-vec] (gstring/format "#%s" (path path-vec)))
   ([path-vec query-params] (gstring/format "#%s" (path path-vec query-params))))
 
-
 (defn sidebar-path
   "Sidebar DB path. Use the ordinary `path` for actual sidebar link path"
   [state-path]
@@ -90,7 +89,6 @@
                  (dispatch (into [event-key] data-members))
                  (dispatch [event-key]))}
    content])
-
 
 ;; TODO: get the ones that combine w/ fragment to actually work properly with html5 history state
 

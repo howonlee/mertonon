@@ -22,8 +22,7 @@
   nil)
 
 (defn test-inp [net]
-  {
-   :read-one (fn [] nil)
+  {:read-one (fn [] nil)
    :read-many (fn [] nil)
    :setup (do-setup! net)})
 

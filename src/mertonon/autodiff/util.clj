@@ -63,7 +63,6 @@
     0 maybe-vec-or-mat
     (cms/sd (cm/as-vector maybe-vec-or-mat))))
 
-
 (defn broadcasted-elem-op
   "Default broadcasting for core.matrix is pretty deficient.
   Deal with matrix-vector elementwise stuff being really annoying by using this one.

@@ -113,7 +113,7 @@
 ;; ---
 
 (defn delete-model-sidebar [config m]
-  (let [{endpoint   :endpoint 
+  (let [{endpoint   :endpoint
          resource   :resource
          state-path :state-path
          model-name :model-name

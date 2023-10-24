@@ -4,14 +4,15 @@
 
 ;; Build checklist
 ;; 1. Run tests, make sure they're green
-;; 2. Incr app version in this file
-;; 3. Incr app version in package.json
-;; 4. Iff you futzed with the readme, hit it with the Flesch-Kincaid (using `style` and keep it under 8 for first 20 lines)
-;; 5. Futz with changelog
-;; 6. Land change PR
-;; 7. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
-;; 8. Build this with `clj -T:build-ce uberjar`
-;; 9. Release
+;; 2. `cljfmt fix` things
+;; 3. Incr app version in this file
+;; 4. Incr app version in package.json
+;; 5. Iff you futzed with the readme, hit it with the Flesch-Kincaid (using `style` and keep it under 8 for first 20 lines)
+;; 6. Futz with changelog
+;; 7. Land change PR
+;; 8. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
+;; 9. Build this with `clj -T:build-ce uberjar`
+;; 10. Release
 
 ;; Proper ci/cd coming when it's coming
 (def lib 'com.github.howonlee/mertonon)
