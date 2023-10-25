@@ -27,8 +27,6 @@
 
 - [ ] Gantt essay reduce grade level
 - [ ] Gantt essay another draft, don't publish
-- [ ] FE gens - views
-- [ ] FE gens - mutation state
 - [ ] Cut postprealpha
 - [ ] Changelog
 - [ ] Click around a bit
