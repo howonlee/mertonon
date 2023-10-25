@@ -16,12 +16,12 @@
 
 - [x] cljfmt
 
+- [x] FE gens - net things... - try to squeeze net into cljc, i think
+- [ ] FE gens - event
 - [ ] Gantt self-instance usage - just think about it
 - [ ] Gantt essay drafting
 - [ ] Redo setup, usage gifs again...
 - [ ] Redo setup, usage for grade level
-- [ ] FE gens - net things... - try to squeeze net into cljc, i think
-- [ ] FE gens - event
 - [ ] Put in mailchimp alternative
 - [ ] Update mertonon.com
 
