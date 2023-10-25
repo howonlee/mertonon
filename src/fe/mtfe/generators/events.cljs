@@ -3,6 +3,12 @@
   (:require [clojure.test.check :as tc]
             [clojure.test.check.generators :as gen]))
 
+(defn gen-match* []
+  (gen/let [some-crap :some-crap]
+    nil))
+
+(def gen-match (gen-match*)
+
 ;; match
 ;; nav path
 ;; nav sidebar path
@@ -14,5 +20,3 @@
 
 ;; error
 ;; api error
-
-(println (gen/generate gen/nat))
