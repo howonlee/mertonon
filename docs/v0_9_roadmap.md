@@ -15,23 +15,20 @@
 - [x] Test hookup for cljs test
 
 - [x] cljfmt
-- [ ] Gantt self-instance usage - just think about it
-- [ ] Gantt essay outline the usage bits
-- [ ] FE gens - net things... - try to squeeze net into cljc, i think
-- [ ] FE gens - event
-- [ ] FE gens - views
-- [ ] FE gens - mutation state
-- [ ] Put in mailchimp alternative
-- [ ] Update mertonon.com
 
+- [ ] Gantt self-instance usage - just think about it
 - [ ] Gantt essay drafting
 - [ ] Redo setup, usage gifs again...
 - [ ] Redo setup, usage for grade level
-- [ ] Sponsor newsletters - budget 3k usd, 3 sponsors, I think
-- [ ] Gantt essay drafting
-- [ ] Gantt essay reduce grade level
+- [ ] FE gens - net things... - try to squeeze net into cljc, i think
+- [ ] FE gens - event
+- [ ] Put in mailchimp alternative
+- [ ] Update mertonon.com
 
-- [ ] Gantt essay final draft and publish
+- [ ] Gantt essay reduce grade level
+- [ ] Gantt essay another draft, don't publish
+- [ ] FE gens - views
+- [ ] FE gens - mutation state
 - [ ] Cut postprealpha
 - [ ] Changelog
 - [ ] Click around a bit
