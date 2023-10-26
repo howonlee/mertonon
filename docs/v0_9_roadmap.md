@@ -17,6 +17,8 @@
 - [x] cljfmt
 
 - [x] FE gens - net things... - try to squeeze net into cljc, i think
+- [x] Fiddle around in propbits
+
 - [ ] FE gens - event
 - [ ] Gantt self-instance usage - just think about it
 - [ ] Gantt essay drafting
@@ -24,9 +26,6 @@
 - [ ] Redo setup, usage for grade level
 - [ ] Put in mailchimp alternative
 - [ ] Update mertonon.com
-
-- [ ] Gantt essay reduce grade level
-- [ ] Gantt essay another draft, don't publish
 - [ ] Cut postprealpha
 - [ ] Changelog
 - [ ] Click around a bit
