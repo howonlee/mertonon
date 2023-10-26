@@ -3,20 +3,26 @@
   (:require [clojure.test.check :as tc]
             [clojure.test.check.generators :as gen]))
 
+(defn gen-nav-path* []
+  nil)
+
+(defn gen-sidebar-path* []
+  nil)
+
 (defn gen-match* []
-  (gen/let [some-crap :some-crap]
-    nil))
+  nil)
 
 (def gen-match (gen-match*)
+  nil)
 
-;; match
-;; nav path
-;; nav sidebar path
-;; nav route
+(defn gen-selection* []
+  nil)
 
-;; selection
-;; selected resource (for selection success)
-;; dag selection
+(defn gen-dag-selection* []
+  nil)
 
-;; error
-;; api error
+(defn gen-error* []
+  nil)
+
+(defn gen-api-error* []
+  nil)
