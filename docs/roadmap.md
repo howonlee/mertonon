@@ -5,7 +5,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 Also look at small tasks roadmap
 
 - Gantt essay, sponsor newsletters
-- More FE gens and FE tests
+- FE gens and FE tests
 - Back button
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too

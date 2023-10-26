@@ -19,7 +19,7 @@
 - [x] FE gens - net things... - try to squeeze net into cljc, i think
 - [x] Fiddle around in propbits
 
-- [ ] FE gens - event
+- [ ] FE hookup repl somehow
 - [ ] Gantt self-instance usage - just think about it
 - [ ] Gantt essay drafting
 - [ ] Redo setup, usage gifs again...
