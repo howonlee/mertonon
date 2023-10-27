@@ -42,7 +42,7 @@ ENV MT_DB_HOST=host.docker.internal
 
 RUN clojure -T:build-ce uberjar
 
-COPY target/*mertonon-prealpha-standalone.jar /be_build/curr-standalone.jar
+COPY target/*mertonon-postprealpha-standalone.jar /be_build/curr-standalone.jar
 
 ###
 # RUNNER

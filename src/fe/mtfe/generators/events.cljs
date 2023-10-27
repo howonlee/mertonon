@@ -1,18 +1,33 @@
 (ns mtfe.generators.events
   "Generate FE events"
   (:require [clojure.test.check :as tc]
-            [clojure.test.check.generators :as gen]))
+            [clojure.test.check.generators :as gen]
+            [mtfe.core :as mtfe]
+            [mtfe.sidebar.core :as sidebar]))
+(def gen-nav-route (gen/elements mtfe/main-routes))
 
-;; match
-;; nav path
-;; nav sidebar path
-;; nav route
+(def gen-sidebar-route (gen/elements sidebar/sidebar-routes))
 
-;; selection
-;; selected resource (for selection success)
-;; dag selection
+(defn gen-nav-path* []
+  nil)
 
-;; error
-;; api error
+(defn gen-sidebar-path* []
+  nil)
 
-(println (gen/generate gen/nat))
+(defn gen-match* []
+  nil)
+
+(def gen-match (gen-match*)
+  nil)
+
+(defn gen-selection* []
+  nil)
+
+(defn gen-dag-selection* []
+  nil)
+
+(defn gen-error* []
+  nil)
+
+(defn gen-api-error* []
+  nil)
