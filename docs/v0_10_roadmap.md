@@ -8,8 +8,8 @@
 
 - [ ] Gantt essay real drafter
 - [ ] Sponsor newsletters
-- [ ] Make history for back buttoning
-- [ ] Back button 
+- [ ] Make history for sidebar back buttoning
+- [ ] Sidebar back button
 
 - [ ] Changelog
 - [ ] Cut release
