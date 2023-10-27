@@ -1,4 +1,5 @@
 - [ ] Website update
+- [ ] Mailchimp alternative find and use
 - [ ] Update usage docs
 - [ ] Gantt usage thinking
 
