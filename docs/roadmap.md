@@ -4,6 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Frontpage and usage docs
 - Gantt essay, sponsor newsletters
 - FE gens and FE tests
 - Back button

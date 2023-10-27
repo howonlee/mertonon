@@ -73,3 +73,10 @@ v0.8.commits - October 19 2023
 - Add the first trivial editing of grids - rest to come when it comes
 - Whack test bugs stemming from bad generation
 - Whack demo bugs stemming from re-frame refactor
+
+v0.9.commits - October 26 2023
+---
+
+- Changing FE for all the other things
+- DAG selection for the event thing on FE
+- Test work on FE tests

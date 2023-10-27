@@ -19,14 +19,7 @@
 - [x] FE gens - net things... - try to squeeze net into cljc, i think
 - [x] Fiddle around in propbits
 
-- [ ] FE hookup repl somehow
-- [ ] Gantt self-instance usage - just think about it
-- [ ] Gantt essay drafting
-- [ ] Redo setup, usage gifs again...
-- [ ] Redo setup, usage for grade level
-- [ ] Put in mailchimp alternative
-- [ ] Update mertonon.com
-- [ ] Cut postprealpha
-- [ ] Changelog
+- [x] Cut postprealpha
+- [x] Changelog
 - [ ] Click around a bit
 - [ ] Cut release
