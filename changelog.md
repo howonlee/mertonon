@@ -80,3 +80,7 @@ v0.9.commits - October 26 2023
 - Changing FE for all the other things
 - DAG selection for the event thing on FE
 - Test work on FE tests
+
+v0.10.commits - November 2 2023
+---
+
