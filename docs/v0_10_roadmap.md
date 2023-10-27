@@ -1,5 +1,6 @@
 - [ ] Website update
 - [ ] Mailchimp alternative find and use
+- [ ] Quit mailchimp and disconnect the subscription
 - [ ] Update usage docs
 - [ ] Gantt usage thinking
 
