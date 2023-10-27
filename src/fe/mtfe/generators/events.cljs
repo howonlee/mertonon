@@ -3,8 +3,7 @@
   (:require [clojure.test.check :as tc]
             [clojure.test.check.generators :as gen]
             [mtfe.core :as mtfe]
-            [mtfe.sidebar.core :as sidebar]
-            ))
+            [mtfe.sidebar.core :as sidebar]))
 (def gen-nav-route (gen/elements mtfe/main-routes))
 
 (def gen-sidebar-route (gen/elements sidebar/sidebar-routes))
