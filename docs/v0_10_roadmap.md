@@ -1,12 +1,13 @@
-- [ ] Website update
-- [ ] Mailchimp alternative find and use
-- [ ] Quit mailchimp and disconnect the subscription
+- [x] Website update
+- [x] Mailchimp alternative find and use, update website again
+- [x] Quit mailchimp and disconnect the subscription
 - [ ] Update usage docs
 - [ ] Gantt usage thinking
+- [ ] FE event gens
 
 - [ ] Gantt essay, first draft for real
-- [ ] FE event gens
 - [ ] FE event tests
+- [ ] FE view gens
 
 - [ ] Gantt essay real drafter
 - [ ] Sponsor newsletters
