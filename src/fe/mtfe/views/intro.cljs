@@ -4,7 +4,7 @@
 (defn intro-page [_]
   [:div
    [:h1 "🥞 Mertonon"]
-   [:h2 "Open Pre-Alpha"]
+   [:h2 "Open Post-Pre-Alpha"]
    [:p "Mertonon is a tool for neural organizational management."]
    [:p "In accounting terms, Mertonon is a tool for semi-computational attribution of
        P&L to individual cost objects within responsibility

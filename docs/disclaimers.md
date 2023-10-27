@@ -1,6 +1,6 @@
 ## Disclaimers
 
-Mertonon is pre-alpha software. There are material known and unknown issues. Vast numbers of essential features are missing. Development is in an ongoing state.
+Mertonon is postprealpha software. There are material known and unknown issues. Vast numbers of essential features are missing. Development is in an ongoing state.
 
 Things Mertonon cannot (yet) do:
 

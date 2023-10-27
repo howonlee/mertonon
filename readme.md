@@ -6,7 +6,7 @@
 
 [Mertonon](https://mertonon.com) is a new way to plan and budget for orgs. With Mertonon, you make a picture of your org as a neural network. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. Then, Mertonon itself will suggest changes to your budget based upon those judgements. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modern version for capitalist or noncapitalist use by ordinary folks.
 
-[Click here for setup info.](docs/setup.md) [Click here for usage info](docs/usage.md). Be advised that Mertonon is pre-alpha software: there are material known and unknown issues and missing essential features.
+[Click here for setup info.](docs/setup.md) [Click here for usage info](docs/usage.md). Be advised that Mertonon is postprealpha software: there are material known and unknown issues and missing essential features.
 
 Some examples of things you could say if you had a Mertonon instance:
 
@@ -35,7 +35,7 @@ Mertonon also has pretentions to be more than a responsibility accounting mechan
 
 We also know a little of the computational side of constraint satisfaction, and contend that many strange and harmful economic phenomena in organizations are basically analogous to strange and harmful constraint-satisfaction problem phenomena. However, there are pretty good solutions to constraint-satisfaction problem phenomena which have not yet been applied to economic problems, which seem applicable and are on the roadmap as features. And there's more where that's coming from, because diagnosing and attacking bad behavior in constraint-satisfaction problems and neural nets takes orders of magnitude less time, sweat, blood and coordination than diagnosing and attacking bad behavior in economic agents in situ.
 
-Mertonon is pre-alpha software. There are material known and unknown issues. Vast numbers of essential features are missing, including much reporting, tax, compliance, reconcilliation, invoicing, statements, control procedures, any double entry anything, sophisticated access control. Development is in an ongoing state, and there will almost certainly be serious deprecations despite the fact that we will take some (but not existential) efforts to avoid deprecations and suchlike. That said, we are also aiming at a tiny release cadence of every business Thursday and a big release cadence of whenever-there's-enough-for-a-big-release.
+Mertonon is postprealpha software. There are material known and unknown issues. Vast numbers of essential features are missing, including much reporting, tax, compliance, reconcilliation, invoicing, statements, control procedures, any double entry anything, sophisticated access control. Development is in an ongoing state, and there will almost certainly be serious deprecations despite the fact that we will take some (but not existential) efforts to avoid deprecations and suchlike. That said, we are also aiming at a tiny release cadence of every business Thursday and a big release cadence of whenever-there's-enough-for-a-big-release.
 
 - [General Q&A](docs/general_q_and_a.md)
 - [Organization Q&A](docs/organization_q_and_a.md)
