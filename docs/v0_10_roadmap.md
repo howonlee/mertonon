@@ -1,8 +1,10 @@
 - [x] Website update
 - [x] Mailchimp alternative find and use, update website again
 - [x] Quit mailchimp and disconnect the subscription
-- [ ] Update usage docs
+
 - [ ] Gantt usage thinking
+- [ ] Make history for sidebar back buttoning
+- [ ] FE repl hooking
 - [ ] FE event gens
 
 - [ ] Gantt essay, first draft for real
@@ -11,8 +13,8 @@
 
 - [ ] Gantt essay real drafter
 - [ ] Sponsor newsletters
-- [ ] Make history for sidebar back buttoning
 - [ ] Sidebar back button
+- [ ] Update usage docs
 
 - [ ] Changelog
 - [ ] Cut release
