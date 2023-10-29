@@ -18,9 +18,9 @@
 ;; https://github.com/Olical/conjure/wiki/Quick-start:-Clojure
 
 ;; How to connect cljs:
-;; :ConjureConnect <autocreated-nrepl-port>
-;; then, (shadow/repl :frontend)
-;; then, nav to the page. then we should be able to repl
+;; 1. Nav to the page
+;; 2. :ConjureConnect <autocreated-nrepl-port>
+;; 3. Should be able to repl now
 
 (defn -main
  "Launch Mertonon with args"
