@@ -5,12 +5,12 @@
 - [x] Mouseover cobj sidebar on weightset
 - [x] Weightset to grid link
 - [ ] Gantt usage thinking
-- [ ] Make history for sidebar back buttoning
 - [ ] FE repl hooking
+- [ ] FE event tests
 - [ ] FE event gens
 
 - [ ] Gantt essay, first draft for real
-- [ ] FE event tests
+- [ ] Make history for sidebar back buttoning
 - [ ] FE view gens
 
 - [ ] Gantt essay real drafter
