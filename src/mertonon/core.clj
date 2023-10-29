@@ -17,17 +17,10 @@
 ;; Official docs for connecting clojure
 ;; https://github.com/Olical/conjure/wiki/Quick-start:-Clojure
 
-;; Official docs for connecting shadow-cljs
-;; https://github.com/Olical/conjure/wiki/Quick-start:-ClojureScript-(shadow-cljs)
-
-;; That one has the autocommand:
-;; function! AutoConjureSelect()
-;;   let shadow_build=system("ps aux | grep 'shadow-cljs watch' | head -1 | sed -E 's/.*?shadow-cljs watch //' | tr -d '\n'")
-;;   let cmd='ConjureShadowSelect ' . shadow_build
-;;   execute cmd
-;; endfunction
-;; command! AutoConjureSelect call AutoConjureSelect()
-;; autocmd BufReadPost *.cljs :AutoConjureSelect
+;; How to connect cljs:
+;; :ConjureConnect <autocreated-nrepl-port>
+;; then, (shadow/repl :frontend)
+;; then, nav to the page. then we should be able to repl
 
 (defn -main
  "Launch Mertonon with args"
