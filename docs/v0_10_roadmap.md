@@ -3,7 +3,7 @@
 - [x] Quit mailchimp and disconnect the subscription
 
 - [x] Mouseover cobj sidebar on weightset
-- [ ] Weightset to grid link
+- [x] Weightset to grid link
 - [ ] Gantt usage thinking
 - [ ] Make history for sidebar back buttoning
 - [ ] FE repl hooking

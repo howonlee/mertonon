@@ -76,8 +76,7 @@
         cobj-uuid       (->> m :path-params :uuid)
         cobj-endpoint   (if is-demo?
                           (api/generator-cost-object cobj-uuid)
-                          (api/cost-object-view cobj-uuid))
-        printo          (println cobj-endpoint)]
+                          (api/cost-object-view cobj-uuid))]
     [[:dispatch
       [:select-custom
        :cobj-view

@@ -4,6 +4,7 @@
             [applied-science.js-interop :as j]
             [goog.color :as gcolor]
             [mtfe.api :as api]
+            [mtfe.events.util :as event-util]
             [mtfe.stylecomps :as sc]
             [mtfe.views.grid :as grid-view]
             [mtfe.util :as util]
@@ -19,9 +20,17 @@
         uuid        (->> m :path-params :uuid)
         ws-endpoint (if is-demo?
                         (api/generator-weightset uuid)
-                        (api/weightset-view uuid))]
-    ;; joined selection
-    [[:dispatch [:selection :ws-view ws-endpoint {}]]]))
+                        (api/weightset-view uuid))
+        children-fn (event-util/layer-join-dag-step
+                      [:ws-view]
+                      (event-util/grid-terminal-step [:grid]))]
+    [[:dispatch
+      [:select-cust
+       {:resource       :ws-view
+        :endpoint       ws-endpoint
+        :params         {}
+        :success-event  :dag-success
+        :success-params {:children-fn children-fn}}]]]))
 
 (defn cost-object-member [weightset cost-object]
   [:div.pa3
@@ -82,10 +91,13 @@
          tgt-cobjs :tgt-cobjs
          weightset :weightset} ws-view
         ws-mode                @(subscribe [:sidebar-state :ws-adjustment])
+        grid                   @(subscribe [:selection :grid])
+        grid-path              (if is-demo? ["grid_demo"] ["grid" (->> grid :uuid)])
         curr-matrix            (display-matrix ws-view ws-mode)]
     [:div.fl.pa2
      [:h1 [sc/ws-icon] " Weightset " [:strong (->> weightset :name str)]]
      [:p (->> weightset :label str)]
+     [:h2 [util/path-fsl grid-path [:p [sc/grid-icon] " Back to Grid"]]]
      [sc/weightset-table
       [:tbody
        (for [curr-row (range (:rows curr-matrix))] ^{:key (str curr-row)}
