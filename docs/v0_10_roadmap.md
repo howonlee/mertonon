@@ -2,8 +2,8 @@
 - [x] Mailchimp alternative find and use, update website again
 - [x] Quit mailchimp and disconnect the subscription
 
+- [x] Mouseover cobj sidebar on weightset
 - [ ] Weightset to grid link
-- [ ] Mouseover cobj sidebar on weightset
 - [ ] Gantt usage thinking
 - [ ] Make history for sidebar back buttoning
 - [ ] FE repl hooking
