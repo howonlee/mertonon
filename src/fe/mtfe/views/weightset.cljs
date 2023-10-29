@@ -27,8 +27,8 @@
   [:div.pa3
    (util/path-fsl ["cost_object" (:uuid cost-object)]
                   [:div
-                   {:on-mouse-over #(dispatch [:nav-route "sidebar-change" (util/path ["cost_object" (:uuid cost-object)])])
-                    :on-mouse-out  #(dispatch [:nav-route "sidebar-change" (util/path ["weightset" (:uuid weightset)])])}
+                   {:on-mouse-over #(dispatch [:nav-sidebar (util/path ["cost_object" (:uuid cost-object)])])
+                    :on-mouse-out  #(dispatch [:nav-sidebar (util/path ["weightset" (:uuid weightset)])])}
                    (subs (str (:name cost-object)) 0 6)])])
 
 (defn weight-member [weight max-weight-val ws-mode]
