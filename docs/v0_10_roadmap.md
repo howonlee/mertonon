@@ -2,8 +2,8 @@
 - [x] Mailchimp alternative find and use, update website again
 - [x] Quit mailchimp and disconnect the subscription
 
-- [ ] Gantt usage thinking
 - [ ] Make history for sidebar back buttoning
+- [ ] Gantt usage thinking
 - [ ] FE repl hooking
 - [ ] FE event gens
 
