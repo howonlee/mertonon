@@ -3,6 +3,7 @@
 - [x] Quit mailchimp and disconnect the subscription
 
 - [ ] Make history for sidebar back buttoning
+- [ ] Weightset to grid link
 - [ ] Gantt usage thinking
 - [ ] FE repl hooking
 - [ ] FE event gens
