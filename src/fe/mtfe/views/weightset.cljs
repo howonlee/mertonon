@@ -20,12 +20,16 @@
         ws-endpoint (if is-demo?
                         (api/generator-weightset uuid)
                         (api/weightset-view uuid))]
+    ;; joined selection
     [[:dispatch [:selection :ws-view ws-endpoint {}]]]))
 
-(defn cost-object-member [cost-object]
+(defn cost-object-member [weightset cost-object]
   [:div.pa3
    (util/path-fsl ["cost_object" (:uuid cost-object)]
-                  [:div (subs (str (:name cost-object)) 0 6)])])
+                  [:div
+                   {:on-mouse-over #(dispatch [:nav-route "sidebar-change" (util/path ["cost_object" (:uuid cost-object)])])
+                    :on-mouse-out  #(dispatch [:nav-route "sidebar-change" (util/path ["weightset" (:uuid weightset)])])}
+                   (subs (str (:name cost-object)) 0 6)])])
 
 (defn weight-member [weight max-weight-val ws-mode]
   (let [curr-val (condp = ws-mode
@@ -48,7 +52,7 @@
 
 (defn display-matrix
   "Ad hoc DOK thing to have other stuff in there eventually"
-  [{:keys [src-cobjs tgt-cobjs weights] :as ws-state} ws-mode]
+  [{:keys [src-cobjs tgt-cobjs weights weightset] :as ws-state} ws-mode]
   (let [max-weight-val   (condp = ws-mode
                            :grad (apply max (for [{:keys [value grad]} weights]
                                               (- value grad)))
@@ -57,10 +61,10 @@
         filled-src-cobjs (into {:rows           (+ (count src-cobjs) 1)
                                 :cols           (+ (count (:tgt-cobjs ws-state)) 1)}
                                (map-indexed (fn [idx member]
-                                              [[(+ idx 1) 0] (cost-object-member member)]) src-cobjs))
+                                              [[(+ idx 1) 0] (cost-object-member weightset member)]) src-cobjs))
         filled-tgt-cobjs (into filled-src-cobjs
                                (map-indexed (fn [idx member]
-                                              [[0 (+ idx 1)] (cost-object-member member)]) tgt-cobjs))
+                                              [[0 (+ idx 1)] (cost-object-member weightset member)]) tgt-cobjs))
         src-cobj-idx     (into {} (map-indexed (fn [idx member] [(:uuid member) (+ idx 1)]) src-cobjs))
         tgt-cobj-idx     (into {} (map-indexed (fn [idx member] [(:uuid member) (+ idx 1)]) tgt-cobjs))
 
