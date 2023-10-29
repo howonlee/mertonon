@@ -63,6 +63,12 @@
   (fn [_ [_ event-id path]]
     {:non-main-path [event-id path]}))
 
+;; Given a sidebar _path_, nav to it
+(reg-event-fx
+  :nav-sidebar
+  (fn [_ [_ path]]
+    {:non-main-path ["sidebar-change" path]}))
+
 ;; Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
 (reg-event-fx
   :nav-to-sidebar-for-current-main-view

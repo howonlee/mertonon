@@ -17,9 +17,11 @@
 ;; Partials
 ;; ---
 
-(defn header-partial []
+(defn header-partial [curr-cobj-state]
   [:<>
    [:h1 [sc/cobj-icon] " Cost Node"]
+   (when (some? curr-cobj-state)
+     [:h2 (-> curr-cobj-state :cost-object :name)])
    [:p "Cost nodes in Mertonon are the entities that Mertonon suggests allocations on. They could be people, cost objects for paperclips, etc etc."]
    [:strong "Mertonon contribution percentages and suggested contribution percentages are _only_ updated whenever gradient calculations are kicked off, not on initial creation."]
    [:p]])
@@ -88,12 +90,12 @@
            :not-input-or-loss)]}]]]))
 
 (defn cost-object-sidebar [m]
-  (let [curr-cobj-state @(subscribe [:selection :cobj-view])
+  (let [curr-cobj-state @(subscribe [:sidebar-state :cobj-view])
         val-path        [:cobj-view]
         is-demo?        @(subscribe [:is-demo?])
         cobj-uuid       (->> m :path-params :uuid)]
     [:<>
-     [header-partial]
+     [header-partial curr-cobj-state]
      (when (not is-demo?)
        [:<>
         [vblurbs/validation-toast val-path :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]

@@ -8,10 +8,11 @@
 
 (defn layer-join-dag-step
   "Join the selection by layer or src-layer"
-  [resource next-step]
+  [resource next-step & [res-layer-path]]
   (fn [res]
     (let [layer-uuid (or (res :layer-uuid)
-                         (res :src-layer-uuid))]
+                         (res :src-layer-uuid)
+                         (-> res :src-layer :uuid))]
       [[:dispatch
         [:select-cust
          {:resource       resource
@@ -24,11 +25,18 @@
 ;; Dag event steps - terminal
 ;; ---
 
+;; TODO: be more rational with the selection, sidebar or not. maybe at the overall select event level, its kinda a mess
+
 (defn grid-view-terminal-step [graph-resource view-resource]
   (fn [res]
     (let [grid-uuid (res :grid-uuid)]
       [[:dispatch [:select-custom graph-resource (api/grid-graph grid-uuid) {} :sidebar-selection-success]]
        [:dispatch [:select-custom view-resource (api/grid-view grid-uuid) {} :sidebar-selection-success]]])))
+
+(defn grid-terminal-step [grid-resource]
+  (fn [res]
+    (let [grid-uuid (res :grid-uuid)]
+      [[:dispatch [:selection grid-resource (api/grid-member grid-uuid) {}]]])))
 
 (defn weightset-view-terminal-step [ws-resource]
   (fn [res]

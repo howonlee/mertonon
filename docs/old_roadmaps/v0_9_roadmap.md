@@ -21,5 +21,5 @@
 
 - [x] Cut postprealpha
 - [x] Changelog
-- [ ] Click around a bit
-- [ ] Cut release
+- [x] Click around a bit
+- [x] Cut release
