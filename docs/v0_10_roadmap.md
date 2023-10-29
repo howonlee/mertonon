@@ -4,7 +4,7 @@
 
 - [x] Mouseover cobj sidebar on weightset
 - [x] Weightset to grid link
-- [ ] FE repl hooking
+- [x] FE repl hooking
 - [ ] FE event tests
 - [ ] FE event gens
 - [ ] Gantt usage thinking
