@@ -5,7 +5,7 @@
  :dependencies
  [[applied-science/js-interop "0.3.3"]  ;; Misc JS interop fns
   [aysylu/loom "1.0.2"]                 ;; Graphy libraries
-  [cider/cider-nrepl "0.24.0"]          ;; CIDER middleware for vim futzing
+  ;; [cider/cider-nrepl "0.40.0"]          ;; CIDER middleware for vim futzing
   [cljs-ajax "0.8.4"]                   ;; HTTP client
   [day8.re-frame/http-fx "v0.2.0"]      ;; re-frame http fx
   [metosin/reitit "0.6.0"]              ;; Routing
