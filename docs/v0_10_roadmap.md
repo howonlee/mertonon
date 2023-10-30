@@ -6,6 +6,7 @@
 - [x] Weightset to grid link
 - [x] FE repl hooking
 
+- [ ] FE net store
 - [ ] FE nav gens - random navs, random sidebar navs
 - [ ] FE nav tests - nav randomly and just make sure we dont error lol
 - [ ] Gantt usage thinking

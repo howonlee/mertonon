@@ -4,19 +4,17 @@
   which therefore needs to have basically the contents of the BE dumped in them.
   
   But it's a hard ask to dump everything for every test, so here's this in-memory thing here to dump into"
-  (:require [mtfe.api :as api]))
+  (:require ;; ajax
+            [mtfe.api :as api]))
 
+;; Not a ratom! Just an ordinary cljs atom
 (def store (atom {}))
 
 (defn fill-grids [curr]
-  (assoc curr :grids))
+  ;; ajax and endpoint the thing i guess?
+  (reset! curr (assoc some crap :grids)))
 
 (defn fill-store! []
-  (let [res (->> {}
-                 (fill-grids)
-                 (fill-cobjs)
-                 identity
-                 identity
-                 identity
-                 identity)]
-    (reset! store res)))
+  (do
+    (fill-grids!)
+    (fill-cost-objects!)))
