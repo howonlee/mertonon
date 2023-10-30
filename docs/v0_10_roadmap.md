@@ -5,10 +5,11 @@
 - [x] Mouseover cobj sidebar on weightset
 - [x] Weightset to grid link
 - [x] FE repl hooking
-- [ ] FE event tests
-- [ ] FE event gens
-- [ ] Gantt usage thinking
+- [ ] FE event gens, start
 
+- [ ] FE event gens
+- [ ] FE event tests
+- [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
 - [ ] Make history for sidebar back buttoning
 - [ ] FE view gens

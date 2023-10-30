@@ -5,10 +5,6 @@
             [mtfe.core :as mtfe]
             [mtfe.sidebars.core :as sidebars]))
 
-(def gen-nav-route (gen/elements mtfe/main-routes))
-
-(def gen-sidebar-route (gen/elements sidebars/sidebar-routes))
-
 (defn gen-nav-path* []
   nil)
 
@@ -18,8 +14,7 @@
 (defn gen-match* []
   nil)
 
-(def gen-match (gen-match*)
-  nil)
+(def gen-match (gen-match*))
 
 (defn gen-selection* []
   nil)
@@ -32,3 +27,6 @@
 
 (defn gen-api-error* []
   nil)
+
+(comment
+  (first mtfe/main-routes))
