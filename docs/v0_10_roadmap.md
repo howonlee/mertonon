@@ -6,7 +6,7 @@
 - [x] Weightset to grid link
 - [x] FE repl hooking
 
-- [ ] FE event gens
+- [ ] FE event gens - random, not property based
 - [ ] FE event tests
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
