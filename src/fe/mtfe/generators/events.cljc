@@ -27,4 +27,4 @@
 
 (comment
   (require 'clojure.test.check)
-  (require 'cljs.spec.gen.alpha))
+  )
