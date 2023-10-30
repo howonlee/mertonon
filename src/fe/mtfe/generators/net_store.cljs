@@ -8,5 +8,15 @@
 
 (def store (atom {}))
 
+(defn fill-grids [curr]
+  (assoc curr :grids))
+
 (defn fill-store! []
-  nil)
+  (let [res (->> {}
+                 (fill-grids)
+                 (fill-cobjs)
+                 identity
+                 identity
+                 identity
+                 identity)]
+    (reset! store res)))

@@ -1,6 +1,7 @@
 (ns mtfe.generators.navs
   "Generate FE navigation things - routes, paths, etc"
   (:require [clojure.test.check.generators :as gen]
+            [mtfe.generators.net-store :as net-store]
             [mtfe.routes :as main-routes]))
 
 (defn allowed-members [all-members]
