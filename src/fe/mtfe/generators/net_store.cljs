@@ -4,8 +4,7 @@
   which therefore needs to have basically the contents of the BE dumped in them.
   
   But it's a hard ask to dump everything for every test, so here's this in-memory thing here to dump into"
-  (:require [mtfe.core :as mtfe]
-            [mtfe.sidebars.core :as sidebars]))
+  (:require [mtfe.api :as api]))
 
 (def store (atom {}))
 

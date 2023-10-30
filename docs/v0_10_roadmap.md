@@ -6,7 +6,8 @@
 - [x] Weightset to grid link
 - [x] FE repl hooking
 
-- [ ] FE event gens - property based lol
+- [ ] FE nav gens - random navs, random sidebar navs
+- [ ] FE event gens - random subscribe gens
 - [ ] FE event tests
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
