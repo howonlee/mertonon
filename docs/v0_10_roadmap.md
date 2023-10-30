@@ -5,7 +5,6 @@
 - [x] Mouseover cobj sidebar on weightset
 - [x] Weightset to grid link
 - [x] FE repl hooking
-- [ ] FE event gens, start
 
 - [ ] FE event gens
 - [ ] FE event tests

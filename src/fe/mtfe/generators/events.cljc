@@ -1,8 +1,6 @@
 (ns mtfe.generators.events
   "Generate FE events"
-  (:require [clojure.test.check :as tc]
-            [clojure.test.check.generators :as gen]
-            [mtfe.core :as mtfe]
+  (:require [mtfe.core :as mtfe]
             [mtfe.sidebars.core :as sidebars]))
 
 (defn gen-nav-path* [] nil)
