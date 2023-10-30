@@ -20,7 +20,9 @@
 ;; How to connect cljs:
 ;; 1. Nav to the page
 ;; 2. :ConjureConnect <autocreated-nrepl-port>
-;; 3. Should be able to repl now
+;; 3. maybe (require '[shadow.cljs.devtools.api :as shadow])
+;; 4. (shadow/repl :frontend)
+;; 5. Should be able to repl now
 
 (defn -main
  "Launch Mertonon with args"
