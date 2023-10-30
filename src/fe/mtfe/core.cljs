@@ -1,8 +1,11 @@
 (ns mtfe.core
-  "Mertonon Frontend"
+  "Mertonon Frontend
+
+  In order to actually work with the repl in any way, the octopus starting from this module has to be able to see it
+  Hence the weird imports"
   (:require [mtfe.events.core]
             [mtfe.fx]
-            [mtfe.generators.events :as events-gen]
+            [mtfe.generators.core :as gen-core]
             [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]
             [mtfe.subs]
