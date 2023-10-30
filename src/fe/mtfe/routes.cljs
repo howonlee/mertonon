@@ -31,7 +31,9 @@
    ["/intro"             {:name ::intro :view intro/intro-page}]
    ["/login"             {:name ::login :view session/session-page}]
    ["/logout"            {:name ::logout :view session/session-page}]
-   ["/error"             {:name ::error :view error-page}]
+   ["/error"             {:name              ::error
+                          :view              error-page
+                          :exclude-from-gen? true}]
    ["/admin"             {:name      ::admin
                           :view      admin/admin-page
                           :before-fx admin/before-fx}]
@@ -40,19 +42,24 @@
                           :before-fx mt-user/before-fx}]
    ["/grid/:uuid"        {:name      ::grid
                           :view      grid/grid-page
-                          :before-fx grid/before-fx}]
+                          :before-fx grid/before-fx
+                          :param-gen {:uuid :grids}}]
    ["/grid_demo"         {:name      ::grid-demo
                           :view      grid/grid-page
                           :before-fx grid/demo-before-fx}]
    ["/cost_object/:uuid" {:name      ::cost-object
                           :view      cost-object/cost-object-page
-                          :before-fx cost-object/before-fx}]
+                          :before-fx cost-object/before-fx
+                          :param-gen {:uuid :cost-objects}}]
    ["/layer/:uuid"       {:name      ::layer
                           :view      layer/layer-page
-                          :before-fx layer/before-fx}]
+                          :before-fx layer/before-fx
+                          :param-gen {:uuid :layers}}]
    ["/weightset/:uuid"   {:name      ::weightset
                           :view      weightset/weightset-page
-                          :before-fx weightset/before-fx}]
+                          :before-fx weightset/before-fx
+                          :param-gen {:uuid :weightsets}}]
    ["/weight/:uuid"      {:name      ::weight
                           :view      weight/weight-page
-                          :before-fx weight/before-fx}]])
+                          :before-fx weight/before-fx
+                          :param-gen {:uuid :weights}}]])

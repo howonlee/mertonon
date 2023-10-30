@@ -3,7 +3,13 @@
   (:require [clojure.test.check.generators :as gen]
             [mtfe.routes :as main-routes]))
 
-(defn gen-nav-route* [] (gen/elements main-routes/main-routes))
+(defn allowed-members [all-members]
+  (filter
+    (fn [[_ data]]
+      (not (data :exclude-from-gen?)))
+    all-members))
+
+(defn gen-nav-route* [] (gen/elements (allowed-members main-routes/main-routes)))
 
 (def gen-nav-route (gen-nav-route*))
 
@@ -15,5 +21,5 @@
 
 (comment
   (try
-    (gen/generate gen-nav-path)
+    (gen/sample gen-nav-route 100)
     (catch :default e (println e))))
