@@ -2,6 +2,7 @@
   "Mertonon Frontend"
   (:require [mtfe.events.core]
             [mtfe.fx]
+            [mtfe.generators.events :as events-gen]
             [mtfe.sidebars.core :as sidebar]
             [mtfe.stylecomps :as sc]
             [mtfe.subs]

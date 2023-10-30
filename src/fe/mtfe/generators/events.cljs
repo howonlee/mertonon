@@ -1,28 +1,11 @@
 (ns mtfe.generators.events
   "Generate FE events"
-  (:require [mtfe.core :as mtfe]
-            [mtfe.sidebars.core :as sidebars]))
+  (:require [clojure.test.check.generators :as gen]))
 
-(defn gen-nav-path []
-  nil)
+(try
+  (defn nav-path []
+    "bleh")
+  (catch :default e
+    (println e)))
 
-(defn gen-sidebar-path []
-  nil)
-
-(defn gen-match []
-  nil)
-
-(defn gen-selection []
-  nil)
-
-(defn gen-dag-selection []
-  nil)
-
-(defn gen-error []
-  nil)
-
-(defn gen-api-error []
-  nil)
-
-(comment
-  )
+(gen/generate (gen/elements [1 2 3]))
