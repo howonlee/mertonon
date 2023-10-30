@@ -7,13 +7,14 @@
 - [x] FE repl hooking
 
 - [ ] FE nav gens - random navs, random sidebar navs
-- [ ] FE event gens - random subscribe gens
-- [ ] FE event tests
+- [ ] FE nav tests - nav randomly and just make sure we dont error lol
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
 - [ ] Make history for sidebar back buttoning
 - [ ] FE view gens
 
+- [ ] FE event gens - random subscribe gens
+- [ ] FE event tests
 - [ ] Gantt essay real drafter
 - [ ] Sponsor newsletters
 - [ ] Sidebar back button
