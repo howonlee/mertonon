@@ -26,6 +26,5 @@
   nil)
 
 (comment
-  (try (println tc)
-       (catch js/Error e
-         (.log js/console e))))
+  (require 'clojure.test.check)
+  (require 'cljs.spec.gen.alpha))
