@@ -6,22 +6,22 @@ Also look at small tasks roadmap
 
 - Make ordinary nn test and write about how the renorm layer op is cool and good
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
+- DDL double-implementation tests...
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
 - Take-the-suggested-weight-change updates
 - Mass CRUD ops, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
-- Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
-- Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
-- Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
+- Email integration (as first integration)
+- Kick off forward passes every time we change anything, async (I think as FE event to BE trivial service thingy)
 - Munge and validate password according to a serious password-based-auth checklist
 - Easy SSO's
 - Cut alpha, sponsor more newsletters
 
+- Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Splitscreen views and mutations
 - Full grad view (exec summary view)
-- Email integration (as first integration)
 - Crontab for adjustments, emails
 - Bigger and markdownified label input - maybe with preview
 - Cut pre-8x-beta
