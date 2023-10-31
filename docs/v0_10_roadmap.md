@@ -12,7 +12,8 @@
 - [x] FE api gens - use metadata, avoid a FE registry, I think
 - [x] FE event gens - random selection gens only
 
-- [ ] FE event tests - exercise only
+- [x] FE event tests - exercise only
+- [ ] Switch back to browser tests lol
 - [ ] FE event nav tests - exercise only
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
