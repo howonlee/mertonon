@@ -1,23 +1,9 @@
 (ns mtfe.sidebars.core
-  "State and router for sidebar, which is itself a separate browsing environment, basically.
+  "State and core stuff for sidebar, which is itself a separate browsing environment, basically.
 
   Most things that would become a modal in normal sites go in sidebar"
   (:require [mtfe.api :as api]
-            [mtfe.sidebars.admin :as admin]
-            [mtfe.sidebars.cost-object :as cost-object]
-            [mtfe.sidebars.entry :as entry]
-            [mtfe.sidebars.grad :as grad]
-            [mtfe.sidebars.grid :as grid]
-            [mtfe.sidebars.grid-select :as grid-select]
-            [mtfe.sidebars.input :as input]
-            [mtfe.sidebars.intro :as intro]
-            [mtfe.sidebars.layer :as layer]
-            [mtfe.sidebars.loss :as loss]
-            [mtfe.sidebars.mt-user :as mt-user]
-            [mtfe.sidebars.password-login :as password-login]
-            [mtfe.sidebars.session :as session]
-            [mtfe.sidebars.weight :as weight]
-            [mtfe.sidebars.weightset :as weightset]
+            [mtfe.sidebars.routes :as sidebar-routes]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
             [reagent.core :as r]
@@ -25,210 +11,11 @@
             [reitit.frontend :as rf]
             [reitit.core :as re]))
 
-(defn home-sidebar []
-  [:div
-   [:h1 "🥞 Mertonon"]
-   [:h2 "Open Post-Pre-Alpha"]
-   [:p "Mertonon is a tool for neural organizational management."]
-   [:p "In accounting terms, Mertonon is a tool for semi-computational attribution of
-        P&L to individual cost objects within responsibility
-        centers, for an overall P&L. More than one P&L, targets besides competitiveness, and other KPI's forthcoming."]
-   [:p "In computing terms, Mertonon is a neural network model of your organization."]
-   [:p "A grid corresponds to an individual neural network and delimits a set of intertwined responsibility centers dealing with a budget."]
-   [:p "Click on the Demo button to see a demo, click an existing grid to see
-        that grid, or click the + button to create a new grid."]])
-
 (defn missing-sidebar []
   [:div
    [:h1 "🥞 Mertonon"]
    [:h2 "Sidebar not found"]
    [:p "We messed up linking something up or something, because Mertonon doesn't know what this sidebar is."]])
-
-(def sidebar-routes
-  ;; ---
-  ;; Keep it in recursive alphabetical order!
-  ;; ---
-  [["/"
-    {:name ::home-sidebar :view home-sidebar}]
-   ["/admin"
-    {:name ::admin-sidebar :view admin/admin-sidebar}]
-   ["/admin/mt_user_create"
-    {:name      ::mt-user-create-sidebar
-     :view      mt-user/mt-user-create-sidebar
-     :before-fx mt-user/mt-user-create-before-fx}]
-
-   ["/cost_object/:uuid"
-    {:name      ::cost-object-sidebar
-     :view      cost-object/cost-object-sidebar
-     :before-fx cost-object/cost-object-sidebar-before-fx}]
-   ["/cost_object/:uuid/delete"
-    {:name      ::cost-object-delete-sidebar
-     :view      cost-object/cost-object-delete-sidebar
-     :before-fx cost-object/cost-object-delete-before-fx}]
-   ["/cost_object/:uuid/entry_create"
-    {:name      ::entry-create-sidebar
-     :view      entry/entry-create-sidebar
-     :before-fx entry/entry-create-before-fx}]
-   ["/cost_object/:uuid/update"
-    {:name      ::cost-object-update-sidebar
-     :view      cost-object/cost-object-update-sidebar
-     :before-fx cost-object/cost-object-update-before-fx}]
-
-   ["/entry/:uuid/delete"
-    {:name      ::entry-delete-sidebar
-     :view      entry/entry-delete-sidebar
-     :before-fx entry/entry-delete-before-fx}]
-   ["/entry/:uuid/update"
-    {:name      ::entry-update-sidebar
-     :view      entry/entry-update-sidebar
-     :before-fx entry/entry-update-before-fx}]
-
-   ["/grid/:uuid"
-    {:name      ::grid-sidebar
-     :view      grid/grid-sidebar
-     :before-fx grid/before-fx}]
-   ["/grid/:uuid/delete"
-    {:name      ::grid-delete-sidebar
-     :view      grid-select/grid-delete-sidebar
-     :before-fx grid-select/grid-delete-before-fx}]
-   ["/grid/:uuid/grad_kickoff"
-    {:name      ::grad-sidebar
-     :view      grad/grad-sidebar
-     :before-fx grad/grad-before-fx}]
-   ["/grid/:uuid/input_create"
-    {:name      ::input-create-sidebar
-     :view      input/input-create-sidebar
-     :before-fx input/input-create-before-fx}]
-   ["/grid/:uuid/layer_create"
-    {:name      ::layer-create-sidebar
-     :view      layer/layer-create-sidebar
-     :before-fx layer/layer-create-before-fx}]
-   ["/grid/:uuid/loss_create"
-    {:name      ::loss-create-sidebar
-     :view      loss/loss-create-sidebar
-     :before-fx loss/loss-create-before-fx}]
-   ["/grid/:uuid/update"
-    {:name      ::grid-update-sidebar
-     :view      grid-select/grid-update-sidebar
-     :before-fx grid-select/grid-update-before-fx}]
-   ["/grid/:uuid/weightset_create"
-    {:name      ::weightset-create-sidebar
-     :view      weightset/weightset-create-sidebar
-     :before-fx weightset/weightset-create-before-fx}]
-
-   ["/grid_create"
-    {:name      ::grid-create-sidebar
-     :view      grid-select/grid-create-sidebar
-     :before-fx grid-select/grid-create-before-fx}]
-
-   ["/grid_demo"
-    {:name      ::grid-demo-sidebar
-     :view      grid/grid-sidebar
-     :before-fx grid/demo-before-fx}]
-
-   ["/input/:uuid/delete"
-    {:name      ::input-delete-sidebar
-     :view      input/input-delete-sidebar
-     :before-fx input/input-delete-before-fx}]
-   ["/input/:uuid/update"
-    {:name      ::input-update-sidebar
-     :view      input/input-update-sidebar
-     :before-fx input/input-update-before-fx}]
-   ["/intro"
-    {:name      ::intro-sidebar
-     :view      intro/intro-sidebar
-     :before-fx intro/intro-before-fx}]
-
-   ["/layer/:uuid"
-    {:name      ::layer-sidebar
-     :view      layer/layer-sidebar
-     :before-fx layer/layer-sidebar-before-fx}]
-   ["/layer/:uuid/cost_object_create"
-    {:name      ::cost-object-create-sidebar
-     :view      cost-object/cost-object-create-sidebar
-     :before-fx cost-object/cost-object-create-before-fx}]
-   ["/layer/:uuid/delete"
-    {:name      ::layer-delete-sidebar
-     :view      layer/layer-delete-sidebar
-     :before-fx layer/layer-delete-before-fx}]
-   ["/layer/:uuid/update"
-    {:name      ::layer-update-sidebar
-     :view      layer/layer-update-sidebar
-     :before-fx layer/layer-update-before-fx}]
-
-   ["/layer_selection/:uuid"
-    {:name ::layer-selection-sidebar :view layer/layer-selection-sidebar}]
-
-   ["/login"
-    {:name      ::login-sidebar
-     :view      session/login-sidebar
-     :before-fx session/login-before-fx}]
-
-   ["/logout"
-    {:name      ::logout-sidebar
-     :view      session/logout-sidebar
-     :before-fx session/logout-before-fx}]
-
-   ["/loss/:uuid/delete"
-    {:name      ::loss-delete-sidebar
-     :view      loss/loss-delete-sidebar
-     :before-fx loss/loss-delete-before-fx}]
-   ["/loss/:uuid/update"
-    {:name      ::loss-update-sidebar
-     :view      loss/loss-update-sidebar
-     :before-fx loss/loss-update-before-fx}]
-
-   ["/mt_user"
-    {:name ::mt-user-sidebar :view mt-user/mt-user-sidebar}]
-   ["/mt_user/:uuid/delete"
-    {:name      ::mt-user-delete-sidebar
-     :view      mt-user/mt-user-delete-sidebar
-     :before-fx mt-user/mt-user-delete-before-fx}]
-   ["/mt_user/:uuid/password_login_create"
-    {:name      ::password-login-create-sidebar
-     :view      password-login/password-login-create-sidebar
-     :before-fx password-login/password-login-create-before-fx}]
-
-   ["/password_login/:uuid/delete"
-    {:name      ::password-login-delete-sidebar
-     :view      password-login/password-login-delete-sidebar
-     :before-fx password-login/password-login-delete-before-fx}]
-
-   ["/weight/:uuid"
-    {:name ::weight-sidebar :view weight/weight-sidebar}]
-   ["/weight/:uuid/delete"
-    {:name      ::weight-delete-sidebar
-     :view      weight/weight-delete-sidebar
-     :before-fx weight/weight-delete-before-fx}]
-   ["/weight/:uuid/update"
-    {:name      ::weight-update-sidebar
-     :view      weight/weight-update-sidebar
-     :before-fx weight/weight-update-before-fx}]
-
-   ["/weight_selection/:uuid"
-    {:name      ::weight-selection-sidebar
-     :view      weight/weight-selection-sidebar
-     :before-fx weight/weight-selection-before-fx}]
-
-  ["/weightset/:uuid"
-    {:name      ::weightset-sidebar
-     :view      weightset/weightset-sidebar
-     :before-fx weightset/weightset-before-fx}]
-   ["/weightset/:uuid/delete"
-    {:name      ::weightset-delete-sidebar
-     :view      weightset/weightset-delete-sidebar
-     :before-fx weightset/weightset-delete-before-fx}]
-   ["/weightset/:uuid/update"
-    {:name      ::weightset-update-sidebar
-     :view      weightset/weightset-update-sidebar
-     :before-fx weightset/weightset-update-before-fx}]
-   ["/weightset/:uuid/weight_create"
-    {:name      ::weight-create-sidebar
-     :view      weight/weight-create-sidebar
-     :before-fx weight/weight-create-before-fx}]
-
-   ["/weightset_selection/:uuid"
-    {:name ::weightset-selection-sidebar :view weightset/weightset-selection-sidebar}]])
 
 (defn sidebar []
   (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])]
@@ -244,7 +31,7 @@
 
 (defn init! []
   (util/custom-route-start!
-    (rf/router sidebar-routes)
+    (rf/router sidebar-routes/sidebar-routes)
     "sidebar-change"
     (fn [m]
       (dispatch [:nav-sidebar-match m]))))
