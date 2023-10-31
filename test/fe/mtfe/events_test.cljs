@@ -5,9 +5,11 @@
             [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
-            [mtfe.generators.events :as event-gen]))
+            [mtfe.generators.events :as event-gen]
+            [mtfe.test-utils :as tu]
+            [re-frame :refer [dispatch]]))
 
-(defspec weightset-matrix-encdec-test
+(defspec selection-exercise-test
   tu/many
-  (prop/for-all [matrix-weights net-gen/generate-matrix-weights]
-                (= matrix-weights (-> matrix-weights ms/weights->matrix ms/matrix->weights))))
+  (prop/for-all [evt event-gen/gen-selection-event]
+                (dispatch evt)))
