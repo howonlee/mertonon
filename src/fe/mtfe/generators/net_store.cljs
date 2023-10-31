@@ -12,9 +12,13 @@
 
 (defn fill-grids [curr]
   ;; ajax and endpoint the thing i guess?
-  (reset! curr (assoc some crap :grids)))
+  (GET "/grids/" {:handler (fn [resp]
+                             (println (str resp)))}))
+  ;; (reset! curr (assoc some crap :grids)))
 
 (defn fill-store! []
   (do
     (fill-grids!)
     (fill-cost-objects!)))
+
+(comment (fill-store!))
