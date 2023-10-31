@@ -1,4 +1,4 @@
-(ns mtfe.example-test
+(ns mtfe.nav-test
   (:require [cljs.test :refer [deftest is]]
             [clojure.test.check.generators :as gen]
             [mertonon.generators.net :as net-gen]))
