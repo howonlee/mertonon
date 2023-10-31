@@ -10,14 +10,14 @@
 - [x] FE nav gens - random navs
 - [x] FE nav gens - random sidebar navs
 
+- [ ] FE event gens - random selection gens only
 - [ ] FE nav tests - nav randomly and just make sure we dont error lol
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
 - [ ] Make history for sidebar back buttoning
-- [ ] FE view gens
 
-- [ ] FE event gens - random subscribe gens
-- [ ] FE event tests
+- [ ] FE event tests - just select random stuff
+- [ ] FE view gens - ends up being like, view data gens
 - [ ] Gantt essay real draft
 - [ ] Sidebar back button
 - [ ] Update usage docs

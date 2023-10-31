@@ -6,6 +6,10 @@
             [mtfe.routes :as main-routes]
             [mtfe.sidebars.routes :as sidebar-routes]))
 
+;; ---
+;; Generate routes (the vec that defines the routes)
+;; ---
+
 (defn allowed-members [all-members]
   (filter
     (fn [[_ data]]
@@ -15,6 +19,10 @@
 (def gen-nav-route (gen/elements (allowed-members main-routes/main-routes)))
 
 (def gen-sidebar-route (gen/elements (allowed-members sidebar-routes/sidebar-routes)))
+
+;; ---
+;; Generate paths (the paths in the routes)
+;; ---
 
 (defn replace-path [path param-gen curr-idx]
   (reduce (fn [curr-path [to-replace [table-key table-member-key]]]
