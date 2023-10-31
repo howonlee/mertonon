@@ -12,8 +12,8 @@
 - [x] FE api gens - use metadata, avoid a FE registry, I think
 - [x] FE event gens - random selection gens only
 
-- [ ] FE event nav tests - exercise only
 - [ ] FE event tests - exercise only
+- [ ] FE event nav tests - exercise only
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
 - [ ] Make complete separate atom for history for sidebar back buttoning (not using the back button, basically, because that's for nav)

@@ -1,15 +1,16 @@
 (ns mtfe.events-test
+  "Test events"
   (:require [clojure.data :as cd]
-            [clojure.test :refer :all]
+            [clojure.test :as ct]
             [clojure.test.check :as tc]
-            [clojure.test.check.clojure-test :refer :all]
+            [clojure.test.check.clojure-test :as tct]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [mtfe.generators.events :as event-gen]
             [mtfe.test-utils :as tu]
-            [re-frame :refer [dispatch]]))
+            [re-frame.core :refer [dispatch]]))
 
-(defspec selection-exercise-test
+(tct/defspec selection-exercise-test
   tu/many
   (prop/for-all [evt event-gen/gen-selection-event]
                 (dispatch evt)))
