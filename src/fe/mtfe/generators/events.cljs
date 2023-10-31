@@ -1,4 +1,5 @@
 (ns mtfe.generators.events
   "Generate FE event things - params for events, full events, etc"
   (:require [clojure.test.check.generators :as gen]
-            [mtfe.routes :as main-routes]))
+            [mtfe.generators.api :as api-gen]
+            [mtfe.generators.navs :as nav-gen]))

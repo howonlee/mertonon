@@ -9,8 +9,8 @@
 - [x] FE net store
 - [x] FE nav gens - random navs
 - [x] FE nav gens - random sidebar navs
-
 - [ ] FE api gens - use metadata, avoid a FE registry, I think
+
 - [ ] FE event gens - random selection gens only
 - [ ] FE event nav tests - dispatch nav to path randomly and just make sure we dont error
 - [ ] FE event tests - just select random stuff
