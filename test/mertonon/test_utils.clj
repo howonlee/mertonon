@@ -10,6 +10,7 @@
 
 ;; ---
 ;; Test cardinality presets
+;; FE test cardinalities are set separately
 ;; ---
 
 (def few

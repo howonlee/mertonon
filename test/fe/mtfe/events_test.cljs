@@ -1,7 +1,13 @@
 (ns mtfe.events-test
-  (:require [cljs.test :refer [deftest is]]
+  (:require [clojure.data :as cd]
+            [clojure.test :refer :all]
+            [clojure.test.check :as tc]
+            [clojure.test.check.clojure-test :refer :all]
             [clojure.test.check.generators :as gen]
-            [mertonon.generators.net :as net-gen]))
+            [clojure.test.check.properties :as prop]
+            [mtfe.generators.events :as event-gen]))
 
-(deftest a-test
-  (is (= 1 2)))
+(defspec weightset-matrix-encdec-test
+  tu/many
+  (prop/for-all [matrix-weights net-gen/generate-matrix-weights]
+                (= matrix-weights (-> matrix-weights ms/weights->matrix ms/matrix->weights))))
