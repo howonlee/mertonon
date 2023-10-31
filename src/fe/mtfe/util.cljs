@@ -89,8 +89,6 @@
                  (dispatch [event-key]))}
    content])
 
-;; TODO: get the ones that combine w/ fragment to actually work properly with html5 history state
-
 (defn fsl
   "Fragment and sidebar link, both at same time. Usually you want to use path-fsl"
   [fragment-path sidebar-link-path content]

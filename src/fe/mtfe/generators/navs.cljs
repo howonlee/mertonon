@@ -12,13 +12,10 @@
 
 (def gen-nav-route (gen/elements (allowed-members main-routes/main-routes)))
 
-(defn nav-route->nav-path
-  [nav-route curr-store]
-  (let [[path params] nav-route
-        ]
-    nil))
-
-(defn gen-nav-path* [] nil)
+(def gen-nav-path
+  (gen/let [[path params] gen-nav-route]
+    (let [{:some crap} params]
+      nil)))
 
 (comment
   (try
