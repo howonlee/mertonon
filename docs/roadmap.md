@@ -23,7 +23,7 @@ Also look at small tasks roadmap
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Full grad view (exec summary view) FE
-- Cut pre-8x-beta
+- Cut pre-8x-beta, more sponsorships
 
 - Integration DB thinking
 - Email integration BE
@@ -33,7 +33,7 @@ Also look at small tasks roadmap
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
-- Cut pre-7x-beta
+- Cut pre-7x-beta, more sponsorships
 
 # General Future Roadmap (not in any real order)
 
