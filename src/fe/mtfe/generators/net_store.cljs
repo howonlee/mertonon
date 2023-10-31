@@ -26,7 +26,9 @@
     (fill! (api/weight) :weights)
     (fill! (api/entry) :entries)
     (fill! (api/input) :inputs)
-    (fill! (api/loss) :losses)))
+    (fill! (api/loss) :losses)
+    (fill! (api/mt-user) :mt-users)
+    (fill! (api/password-login) :password-logins)))
 
 (comment (fill-store!)
          (cljs.pprint/pprint @store)
