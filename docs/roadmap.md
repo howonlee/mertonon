@@ -5,34 +5,33 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 Also look at small tasks roadmap
 
 - Make ordinary nn test and write about how the renorm layer op is cool and good
-- EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - DDL double-implementation tests...
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
-- Take-the-suggested-weight-change updates
 - Mass CRUD ops, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
+- Take-the-suggested-weight-change updates
 - Email integration (as first integration)
 - Kick off forward passes every time we change anything, async (I think as FE event to BE trivial service thingy)
-- Munge and validate password according to a serious password-based-auth checklist
-- Easy SSO's
 - Cut alpha, sponsor more newsletters
 
+- Munge and validate password according to a serious password-based-auth checklist
+- Easy SSO's
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
+- EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Splitscreen views and mutations
 - Full grad view (exec summary view)
-- Crontab for adjustments, emails
-- Bigger and markdownified label input - maybe with preview
 - Cut pre-8x-beta
 
+- Crontab for adjustments, emails
+- Bigger and markdownified label input - maybe with preview
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
 - License design, then task out for after alpha
 - Make auditing EE properly
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
-- Weight painter and modal changing
 - Cut pre-7x-beta
 
 # General Future Roadmap (not in any real order)
