@@ -9,15 +9,15 @@
 - [x] FE net store
 - [x] FE nav gens - random navs
 - [x] FE nav gens - random sidebar navs
+- [x] FE api gens - use metadata, avoid a FE registry, I think
+- [x] FE event gens - random selection gens only
 
-- [ ] FE nav tests - nav randomly and just make sure we dont error lol
+- [ ] FE event nav tests - dispatch nav to path randomly and just make sure we dont error
+- [ ] FE event tests - just select random stuff
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
-- [ ] Make history for sidebar back buttoning
-- [ ] FE view gens
+- [ ] Make complete separate atom for history for sidebar back buttoning (not using the back button, basically, because that's for nav)
 
-- [ ] FE event gens - random subscribe gens
-- [ ] FE event tests
 - [ ] Gantt essay real draft
 - [ ] Sidebar back button
 - [ ] Update usage docs

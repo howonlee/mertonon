@@ -4,43 +4,46 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
-- Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
+- Make ordinary nn test and write about how the norm layer op is cool and good
+- DDL double-implementation tests...
+- Auditing BE
+- Auditing FE
+- Mass CRUD ops FE, incl. weight painting
+- Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
-- Mass CRUD ops
-- Staring at credit allocation semantics both in docs and program. True conservations, along with property.
-- Make graphs and tests and write about how the renorm layer op is cool and good
-- RG for computer scientists (towards RG for salespeeps)
-- Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
-- Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
-- Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
-- Munge and validate password according to a serious password-based-auth checklist
+- Kick off forward passes every time we change anything, async (I think as FE event to BE trivial service thingy)
 - Cut alpha, sponsor more newsletters
 
+- Munge and validate password according to a serious password-based-auth checklist, BE then repro FE
+- Easy SSO's BE
+- Easy SSO's FE
+- Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
+- EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
+- Make some part of auditing EE properly
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
-- Splitscreen views and mutations
-- Full grad view (exec summary view)
-- Email integration (as first integration)
-- Crontab for adjustments, emails
-- Bigger and markdownified label input - maybe with preview
-- Cut pre-8x-beta
+- Full grad view (exec summary view) FE
+- Cut pre-8x-beta, more sponsorships
 
-- Get SQLite compatibility and bundle with SQLite so you just download and play.
-- License design, then task out for after alpha
-- Make auditing EE properly
+- Integration DB thinking
+- Email integration BE
+- Email integration FE
+- Crontab for adjustments, exec summary view, emails
+- Bigger and markdownified label input - maybe with preview. Leave room for "form-language"
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
-- Weight painter and modal changing
-- Cut pre-7x-beta
+- Cut pre-7x-beta, more sponsorships
 
 # General Future Roadmap (not in any real order)
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
+- RG for computer scientists (towards RG for salespeeps)
+- License design and server
 - Bookmarks BE
 - Bookmarks FE
+- Get SQLite compatibility and bundle with SQLite so you just download and play.
 - Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
 - Full loss views, full input views
