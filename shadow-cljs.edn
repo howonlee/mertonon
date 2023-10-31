@@ -23,8 +23,8 @@
    :asset-path "resources/public/cljs"
    :modules    {:main {:init-fn mtfe.core/init!}}}
   :test
-  {:target    :karma
-   :output-to "target/test.js"
+  {:target    :browser-test
+   :test-dir  "resources/public/js/test"
    :ns-regexp "-test$"
-   :autorun   true}}
-}
+   :devtools  {:http-port 8021
+               :http-root "resources/public/js/test"}}}}

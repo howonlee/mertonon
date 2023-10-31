@@ -11,5 +11,5 @@
 
 (comment
   (try
-    (gen/generate gen-selection-evt)
+    (gen/generate gen-selection-event)
     (catch :default e (cljs.pprint/pprint e))))

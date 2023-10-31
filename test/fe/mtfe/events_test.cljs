@@ -7,8 +7,13 @@
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [mtfe.generators.events :as event-gen]
+            [mtfe.generators.net-store :as net-store]
             [mtfe.test-utils :as tu]
             [re-frame.core :refer [dispatch]]))
+
+(ct/use-fixtures :once net-store/fill-store!)
+
+;; before the thing - setup the nav tables, basically
 
 (tct/defspec selection-exercise-test
   tu/many
