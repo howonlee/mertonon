@@ -12,4 +12,4 @@
 (comment
   (try
     (gen/generate gen-selection-evt)
-    (catch :default e (println e))))
+    (catch :default e (cljs.pprint/pprint e))))
