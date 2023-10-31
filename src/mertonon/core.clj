@@ -7,6 +7,23 @@
   ;; Meaning, this is entry point for uberjar
   (:gen-class))
 
+;; ---
+;; Notes on dev
+;; ---
+
+;; Default way Howon futzes with Mertonon is Conjure, because Howon has been a vim partisan for years and years
+;; Default editor in lisp-land is emacs, of course - but we don't have anything for you if you emacs it all day
+
+;; Official docs for connecting clojure
+;; https://github.com/Olical/conjure/wiki/Quick-start:-Clojure
+
+;; How to connect cljs:
+;; 1. Nav to the page
+;; 2. :ConjureConnect <autocreated-nrepl-port>
+;; 3. maybe (require '[shadow.cljs.devtools.api :as shadow])
+;; 4. (shadow/repl :frontend)
+;; 5. Should be able to repl now
+
 (defn -main
  "Launch Mertonon with args"
   [& [cmd & args]]

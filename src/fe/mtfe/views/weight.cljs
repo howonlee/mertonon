@@ -1,7 +1,6 @@
 (ns mtfe.views.weight
   "Individual Weight view."
-  (:require [ajax.core :refer [GET POST]]
-            [applied-science.js-interop :as j]
+  (:require [applied-science.js-interop :as j]
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
             [mtfe.views.grid :as grid-view]

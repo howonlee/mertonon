@@ -1,7 +1,6 @@
 (ns mtfe.views.grid
   "Grid view / Flow view."
-  (:require [ajax.core :refer [GET POST]]
-            [applied-science.js-interop :as j]
+  (:require [applied-science.js-interop :as j]
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]

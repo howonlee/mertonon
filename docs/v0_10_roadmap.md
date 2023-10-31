@@ -4,19 +4,25 @@
 
 - [x] Mouseover cobj sidebar on weightset
 - [x] Weightset to grid link
-- [ ] Gantt usage thinking
-- [ ] FE repl hooking
-- [ ] FE event tests
-- [ ] FE event gens
+- [x] FE repl hooking
 
+- [x] FE net store
+- [x] FE nav gens - random navs
+- [x] FE nav gens - random sidebar navs
+
+- [ ] FE nav tests - nav randomly and just make sure we dont error lol
+- [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
 - [ ] Make history for sidebar back buttoning
 - [ ] FE view gens
 
-- [ ] Gantt essay real drafter
-- [ ] Sponsor newsletters
+- [ ] FE event gens - random subscribe gens
+- [ ] FE event tests
+- [ ] Gantt essay real draft
 - [ ] Sidebar back button
 - [ ] Update usage docs
 
+- [ ] Gantt essay final draft
+- [ ] Sponsor newsletters
 - [ ] Changelog
 - [ ] Cut release

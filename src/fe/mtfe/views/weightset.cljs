@@ -1,7 +1,6 @@
 (ns mtfe.views.weightset
   "Weightset / Matrix view."
-  (:require [ajax.core :refer [GET POST]]
-            [applied-science.js-interop :as j]
+  (:require [applied-science.js-interop :as j]
             [goog.color :as gcolor]
             [mtfe.api :as api]
             [mtfe.events.util :as event-util]

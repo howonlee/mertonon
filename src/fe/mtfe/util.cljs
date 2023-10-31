@@ -1,7 +1,6 @@
 (ns mtfe.util
   "Miscellaneous util things"
-  (:require [ajax.core :refer [GET POST]]
-            [clojure.string :as str]
+  (:require [clojure.string :as str]
             [clojure.walk :as walk]
             [goog.string :as gstring]
             [reagent.core :as r]
@@ -89,8 +88,6 @@
                  (dispatch (into [event-key] data-members))
                  (dispatch [event-key]))}
    content])
-
-;; TODO: get the ones that combine w/ fragment to actually work properly with html5 history state
 
 (defn fsl
   "Fragment and sidebar link, both at same time. Usually you want to use path-fsl"

@@ -26,6 +26,7 @@
   ring/ring                         {:mvn/version "1.9.6"}   ;; Server abstraction
   ring-cors/ring-cors               {:mvn/version "0.1.13"}  ;; CORS middleware for ring
   selmer/selmer                     {:mvn/version "1.12.55"} ;; Templating
+  thheller/shadow-cljs              {:mvn/version "2.25.10"} ;; Shadow-cljs, for transitioning into FE repl
   tick/tick                         {:mvn/version "0.6.0"}   ;; Time lib
  }
 
@@ -72,9 +73,9 @@
   ;;
   ;; clojure -M:dev:nrepl (etc.)
   :nrepl
-  {:extra-deps {nrepl/nrepl {:mvn/version "1.0.0"}}
-   :main-opts  ["-m" "nrepl.cmdline"]}
+  {:extra-deps {nrepl/nrepl       {:mvn/version "1.0.0"}}
+   :main-opts  ["-m" "nrepl.cmdline"]
    :jvm-opts   ["-Djava.awt.headless=true"
                 "-Dclojure.main.report=stderr"
-                "-XX:-OmitStackTraceInFastThrow"]
+                "-XX:-OmitStackTraceInFastThrow"]}
   }}
