@@ -10,13 +10,13 @@
       (not (data :exclude-from-gen?)))
     all-members))
 
-(defn gen-nav-route* [] (gen/elements (allowed-members main-routes/main-routes)))
-
-(def gen-nav-route (gen-nav-route*))
+(def gen-nav-route (gen/elements (allowed-members main-routes/main-routes)))
 
 (defn nav-route->nav-path
-  [nav-route tables]
-  nil)
+  [nav-route curr-store]
+  (let [[path params] nav-route
+        ]
+    nil))
 
 (defn gen-nav-path* [] nil)
 
