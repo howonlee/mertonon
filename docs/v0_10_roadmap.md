@@ -10,6 +10,7 @@
 - [x] FE nav gens - random navs
 - [x] FE nav gens - random sidebar navs
 
+- [ ] FE api gens - use metadata, avoid a FE registry, I think
 - [ ] FE event gens - random selection gens only
 - [ ] FE nav tests - nav randomly and just make sure we dont error lol
 - [ ] Gantt usage thinking
