@@ -3,7 +3,7 @@
   (:require [goog.string :as gstring]))
 
 (def host "Current host, terribly injected from backend template handler"
-  (.. js/window -mertonon_host))
+  (or (.. js/window -mertonon_host) "http://localho.st:5036"))
 
 ;; ---
 ;; Generator APIs

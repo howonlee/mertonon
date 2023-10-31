@@ -21,10 +21,4 @@
   {:target     :browser
    :output-dir "resources/public/cljs"
    :asset-path "resources/public/cljs"
-   :modules    {:main {:init-fn mtfe.core/init!}}}
-  :test
-  {:target    :browser-test
-   :test-dir  "resources/public/js/test"
-   :ns-regexp "-test$"
-   :devtools  {:http-port 8021
-               :http-root "resources/public/js/test"}}}}
+   :modules    {:main {:init-fn mtfe.core/init!}}}}}
