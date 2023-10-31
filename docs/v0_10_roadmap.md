@@ -15,7 +15,7 @@
 - [ ] FE nav tests - nav randomly and just make sure we dont error lol
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
-- [ ] Make history for sidebar back buttoning
+- [ ] Make complete separate atom for history for sidebar back buttoning (not using the back button, basically, because that's for nav)
 
 - [ ] FE event tests - just select random stuff
 - [ ] Gantt essay real draft
