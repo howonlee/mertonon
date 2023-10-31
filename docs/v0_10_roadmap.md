@@ -7,9 +7,10 @@
 - [x] FE repl hooking
 
 - [x] FE net store
-- [ ] FE nav gens - random navs, random sidebar navs
-- [ ] FE nav tests - nav randomly and just make sure we dont error lol
+- [ ] FE nav gens - random navs
+- [ ] FE nav gens - random sidebar navs
 
+- [ ] FE nav tests - nav randomly and just make sure we dont error lol
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
 - [ ] Make history for sidebar back buttoning
