@@ -14,10 +14,10 @@
 
 - [x] FE event tests - exercise only
 - [ ] Switch back to browser tests lol
+- [ ] Make complete separate atom for history for sidebar back buttoning (not using the back button, basically, because that's for nav)
 - [ ] FE event nav tests - exercise only
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
-- [ ] Make complete separate atom for history for sidebar back buttoning (not using the back button, basically, because that's for nav)
 
 - [ ] Gantt essay real draft
 - [ ] Sidebar back button
