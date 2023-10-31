@@ -18,7 +18,6 @@
 - [ ] Make history for sidebar back buttoning
 
 - [ ] FE event tests - just select random stuff
-- [ ] FE view gens - ends up being like, view data gens
 - [ ] Gantt essay real draft
 - [ ] Sidebar back button
 - [ ] Update usage docs

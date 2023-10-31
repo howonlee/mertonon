@@ -17,6 +17,7 @@ Also look at small tasks roadmap
 - Munge and validate password according to a serious password-based-auth checklist
 - Cut alpha, sponsor more newsletters
 
+- Easy SSO's
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Splitscreen views and mutations
