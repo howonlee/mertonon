@@ -4,20 +4,19 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Make ordinary nn test and write about how the renorm layer op is cool and good
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
 - Take-the-suggested-weight-change updates
-- Mass CRUD ops
-- Staring at credit allocation semantics both in docs and program. True conservations, along with property.
-- Make graphs and tests and write about how the renorm layer op is cool and good
-- RG for computer scientists (towards RG for salespeeps)
+- Mass CRUD ops, incl. weight painting
+- Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - Async bounded thing integration? I want like, turn on forward pass in 5 seconds but nature of neural shit means that you want dedup of idem message thing basically. And you really want it async in txn
 - Kick off forward passes every time we change anything (I think as FE event to BE trivial service thingy)
 - Munge and validate password according to a serious password-based-auth checklist
+- Easy SSO's
 - Cut alpha, sponsor more newsletters
 
-- Easy SSO's
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Splitscreen views and mutations
@@ -40,6 +39,7 @@ Also look at small tasks roadmap
 
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
+- RG for computer scientists (towards RG for salespeeps)
 - Bookmarks BE
 - Bookmarks FE
 - Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
