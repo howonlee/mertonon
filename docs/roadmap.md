@@ -11,27 +11,25 @@ Also look at small tasks roadmap
 - Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
-- Integration DB thinking
-- Email integration BE
-- Email integration FE
 - Kick off forward passes every time we change anything, async (I think as FE event to BE trivial service thingy)
 - Cut alpha, sponsor more newsletters
 
-- Munge and validate password according to a serious password-based-auth checklist
-- Easy SSO's
+- Munge and validate password according to a serious password-based-auth checklist, BE then repro FE
+- Easy SSO's BE
+- Easy SSO's FE
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
+- Make some part of auditing EE properly
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
-- Splitscreen views and mutations
-- Full grad view (exec summary view)
+- Full grad view (exec summary view) FE
 - Cut pre-8x-beta
 
-- Crontab for adjustments, emails
+- Integration DB thinking
+- Email integration BE
+- Email integration FE
+- Crontab for adjustments, exec summary view, emails
 - Bigger and markdownified label input - maybe with preview
-- Get SQLite compatibility and bundle with SQLite so you just download and play.
-- License design, then task out for after alpha
-- Make auditing EE properly
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
@@ -42,8 +40,10 @@ Also look at small tasks roadmap
 DSL's are terrifying epic quests in non-homoiconic languages but not too bad when you do have homoiconicity, so don't be scared when we just list "oh, DSL for this, DSL for that" through these places. I think they're a viable way to do the unfortunately inevitable inner platform without our skulls softly bleaching in the desert of the inner platform effect because they'll be pre-serialized, basically - they'll be small JSON lisps, and we'll expect peeps to write them by emitting them from ordinary programs in some other language, so you'll never have to touch Clojure or even Java if you don't want to, although frankly both are ridiculously better than ABAP. They'll be locked down pretty tight permissions-wise, though, so the logic programming thing comes first, and the vermintide implicit in this approach awaits us. We claim that property testing is a good weapon against this tide of vermin, but that'll sound better if (when) we actually whack enough of the bugs.
 
 - RG for computer scientists (towards RG for salespeeps)
+- License design and server
 - Bookmarks BE
 - Bookmarks FE
+- Get SQLite compatibility and bundle with SQLite so you just download and play.
 - Plugin system (both for CE and EE stuff). No third-party usage or docs intended yet
 - Low-touch paid option (Stripe integration on homepage - integration for paying to use Mertonon, not integrated into Mertonon, keygen impl, integrated licensing)
 - Full loss views, full input views
