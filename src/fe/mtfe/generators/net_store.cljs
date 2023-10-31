@@ -4,21 +4,30 @@
   which therefore needs to have basically the contents of the net BE dumped in them.
   
   But it's a hard ask to dump everything for every test, so here's this in-memory thing here to dump into"
-  (:require [ajax.core :refer [GET POST]]
+  (:require [ajax.core :refer [GET POST json-request-format json-response-format]]
             [mtfe.api :as api]))
 
-;; Not a ratom! Just an ordinary cljs atom
+;; Not a ratom, just an ordinary cljs atom. Shouldn't be reactive
 (def store (atom {}))
 
-(defn fill-grids [curr]
-  ;; ajax and endpoint the thing i guess?
-  (GET "/grids/" {:handler (fn [resp]
-                             (println (str resp)))}))
-  ;; (reset! curr (assoc some crap :grids)))
+(defn fill! [api-endpoint store-key]
+  (GET api-endpoint
+       {:format          (json-request-format)
+        :response-format (json-response-format {:keywords? true})
+        :handler         (fn [resp]
+                           (swap! store #(assoc % store-key resp)))}))
 
 (defn fill-store! []
   (do
-    (fill-grids!)
-    (fill-cost-objects!)))
+    (fill! (api/grid) :grids)
+    (fill! (api/layer) :layers)
+    (fill! (api/cost-object) :cost-objects)
+    (fill! (api/weightset) :weightsets)
+    (fill! (api/weight) :weights)
+    (fill! (api/entry) :entries)
+    (fill! (api/input) :inputs)
+    (fill! (api/loss) :losses)))
 
-(comment (fill-store!))
+(comment (fill-store!)
+         (cljs.pprint/pprint @store)
+         )
