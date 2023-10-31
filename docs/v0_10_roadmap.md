@@ -17,10 +17,11 @@
 
 - [ ] FE event gens - random subscribe gens
 - [ ] FE event tests
-- [ ] Gantt essay real drafter
-- [ ] Sponsor newsletters
+- [ ] Gantt essay real draft
 - [ ] Sidebar back button
 - [ ] Update usage docs
 
+- [ ] Gantt essay final draft
+- [ ] Sponsor newsletters
 - [ ] Changelog
 - [ ] Cut release

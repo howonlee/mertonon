@@ -1,7 +1,6 @@
 (ns mtfe.util
   "Miscellaneous util things"
-  (:require [ajax.core :refer [GET POST]]
-            [clojure.string :as str]
+  (:require [clojure.string :as str]
             [clojure.walk :as walk]
             [goog.string :as gstring]
             [reagent.core :as r]

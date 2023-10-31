@@ -4,7 +4,7 @@
   which therefore needs to have basically the contents of the BE dumped in them.
   
   But it's a hard ask to dump everything for every test, so here's this in-memory thing here to dump into"
-  (:require ;; ajax
+  (:require [ajax.core :refer [GET POST]]
             [mtfe.api :as api]))
 
 ;; Not a ratom! Just an ordinary cljs atom

@@ -1,7 +1,6 @@
 (ns mtfe.views.layer
   "Layer / Responsibility Center view"
-  (:require [ajax.core :refer [GET POST]]
-            [applied-science.js-interop :as j]
+  (:require [applied-science.js-interop :as j]
             [goog.string :as gstring]
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
