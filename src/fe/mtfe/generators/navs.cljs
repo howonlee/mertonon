@@ -2,7 +2,9 @@
   "Generate FE navigation things - routes, paths, etc"
   (:require [clojure.test.check.generators :as gen]
             [mtfe.generators.net-store :as net-store]
-            [mtfe.routes :as main-routes]))
+            [mtfe.routes :as main-routes]
+            [mtfe.sidebar.routes :as sidebar-routes]
+            ))
 
 (defn allowed-members [all-members]
   (filter
@@ -11,6 +13,8 @@
     all-members))
 
 (def gen-nav-route (gen/elements (allowed-members main-routes/main-routes)))
+
+(def gen-sidebar-route (gen/elements (allowed-members sidebar-routes/sidebar-routes)))
 
 (def gen-nav-path
   (gen/let [[path params] gen-nav-route]
