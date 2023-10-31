@@ -6,11 +6,14 @@ Also look at small tasks roadmap
 
 - Make ordinary nn test and write about how the renorm layer op is cool and good
 - DDL double-implementation tests...
-- Auditing. Not, like, doing auditing, but having stuff for audit to look at and go "mm-hmm" or "wtf" at. With semantic contingency for having the momentum implementations in there, and undo / soft delete semantics. Do it at query layer somehow? Need some sop for CE stuff too
-- Mass CRUD ops, incl. weight painting
+- Auditing BE
+- Auditing FE
+- Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
-- Email integration (as first integration)
+- Integration DB thinking
+- Email integration BE
+- Email integration FE
 - Kick off forward passes every time we change anything, async (I think as FE event to BE trivial service thingy)
 - Cut alpha, sponsor more newsletters
 
