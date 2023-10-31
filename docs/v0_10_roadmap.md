@@ -12,7 +12,7 @@
 
 - [ ] FE api gens - use metadata, avoid a FE registry, I think
 - [ ] FE event gens - random selection gens only
-- [ ] FE nav tests - nav randomly and just make sure we dont error lol
+- [ ] FE event nav tests - dispatch nav to path randomly and just make sure we dont error
 - [ ] Gantt usage thinking
 - [ ] Gantt essay, first draft for real
 - [ ] Make complete separate atom for history for sidebar back buttoning (not using the back button, basically, because that's for nav)
