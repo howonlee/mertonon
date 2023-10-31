@@ -29,7 +29,7 @@ Also look at small tasks roadmap
 - Email integration BE
 - Email integration FE
 - Crontab for adjustments, exec summary view, emails
-- Bigger and markdownified label input - maybe with preview
+- Bigger and markdownified label input - maybe with preview. Leave room for "form-language"
 - Sorting / Pagination BE
 - Sorting / Pagination FE
 - Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
