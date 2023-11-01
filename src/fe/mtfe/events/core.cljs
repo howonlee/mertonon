@@ -87,7 +87,12 @@
       {:dispatch [:refresh]}
       {:dispatch [:nav-page nav-to]})))
 
-;;; cofx for the thing
+(reg-event-fx
+  :sidebar-back
+  [:cofx-here]
+  (fn [{:keys [last-path]} _]
+    {:dispatch [:nav-sidebar last-path]
+     :sidebar-histpop nil}))
 
 ;; ---
 ;; Selection
