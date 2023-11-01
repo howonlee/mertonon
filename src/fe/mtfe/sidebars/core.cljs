@@ -21,8 +21,9 @@
   (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])
         sidebar-history    @(subscribe [:sidebar-history])]
     [sc/main-sidebar-container
-     (if (seq sidebar-history)
-       [util/evl :sidebar-histpop [sc/back-icon]])
+     (when (seq sidebar-history)
+       [sc/sidebar-back-button
+        [util/evl :sidebar-histpop [sc/back-icon]]])
      (if curr-sidebar-match
        ;; Having the metadata procs refreshes if we have different query params
        (let [view (with-meta (-> curr-sidebar-match :data :view)
