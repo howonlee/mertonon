@@ -1,6 +1,8 @@
 (ns mtfe.fx
-  "Effects and coeffects for re-frame"
-  (:require [re-frame.core :refer [reg-fx]]))
+  "Effects and coeffects for re-frame
+
+  Note that the cofx are here, not elsewhere"
+  (:require [re-frame.core :refer [reg-fx reg-cofx]]))
 
 ;; ---
 ;; Paths
@@ -33,13 +35,13 @@
   (fn [[path params]]
     (swap! sidebar-history conj [path params])))
 
-(reg-cofx
-  :last-sidebar
-  (fn [coeffects _]
-    (assoc coeffects :last-sidebar (peek @sidebar-history))))
-
 (reg-fx
   :sidebar-histpop
   (fn []
     (when (some? (peek @sidebar-history))
       (swap! sidebar-history pop))))
+
+(reg-cofx
+  :last-sidebar
+  (fn [coeffects _]
+    (assoc coeffects :last-sidebar (peek @sidebar-history))))
