@@ -50,7 +50,7 @@
 (def flexwrap-container :div.mr3.flex.flex-wrap.justify-center)
 (def rounded-button :div.br2.pa3.link.dim.pa3-ns.mr3.mv3.ba.white)
 (def grid-button-container :div.relative.br2.pa3.pa3-ns.mr3.mv3.ba.white)
-(def sidebar-back-button :div.absolute.top-5.right-0.f6.link.dim.ph2.pv2.mb2.dib.white.pointer)
+(def sidebar-back-button :div.absolute.top-5.f6.link.dim.ph2.pv2.mb2.dib.white.pointer)
 
 (def main-table :table.f6.mw8.center)
 

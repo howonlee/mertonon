@@ -30,7 +30,6 @@
     "release": "yarn shadow-cljs release frontend",
     "concurrently": "yarn && concurrently --kill-others -p name",
     "dev": "yarn concurrently 'clojure -M:run:ee' 'yarn shadow-cljs watch frontend'",
-    "fe-only": "yarn shadow-cljs watch frontend",
-    "test": "yarn shadow-cljs watch test"
+    "fe-only": "yarn shadow-cljs watch frontend"
   }
 }
