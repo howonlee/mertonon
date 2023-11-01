@@ -18,9 +18,11 @@
    [:p "We messed up linking something up or something, because Mertonon doesn't know what this sidebar is."]])
 
 (defn sidebar []
-  (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])]
+  (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])
+        sidebar-history    @(subscribe [:sidebar-history])]
     [sc/main-sidebar-container
-     [util/evl :sidebar-histpop [sc/back-icon]]
+     (if (seq sidebar-history)
+       [util/evl :sidebar-histpop [sc/back-icon]])
      (if curr-sidebar-match
        ;; Having the metadata procs refreshes if we have different query params
        (let [view (with-meta (-> curr-sidebar-match :data :view)
