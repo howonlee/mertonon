@@ -29,8 +29,13 @@
 
 (reg-fx
   :sidebar-histpush
-  nil)
+  (fn [path]
+    (swap! sidebar-history conj path)))
 
 (reg-fx
   :sidebar-histpop
-  nil)
+  (fn []
+    (let [res (peek @sidebar-history)]
+      (when (some? res)
+        (swap! sidebar-history pop))
+      res)))
