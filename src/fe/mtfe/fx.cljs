@@ -18,3 +18,19 @@
           evt-obj  (clj->js evt-obj)
           evt      (new (.-CustomEvent js/window) event-id evt-obj)]
       (.dispatchEvent js/window evt))))
+
+;; ---
+;; Sidebar history
+;; Main history is handled by reitit.frontend
+;; ---
+
+;; TODO: Get this in localstorage instead
+(def sidebar-history (atom []))
+
+(reg-fx
+  :sidebar-histpush
+  nil)
+
+(reg-fx
+  :sidebar-histpop
+  nil)

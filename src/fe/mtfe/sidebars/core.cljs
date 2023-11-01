@@ -27,10 +27,6 @@
          [view curr-sidebar-match])
        [missing-sidebar])]))
 
-;; TODO: Get this in localstorage instead
-
-(def history (atom []))
-
 (defn init! []
   (util/custom-route-start!
     (rf/router sidebar-routes/sidebar-routes)
