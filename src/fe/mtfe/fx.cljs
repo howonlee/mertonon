@@ -27,7 +27,7 @@
 ;; Main history is handled by reitit.frontend
 ;; ---
 
-;; TODO: Get this in localstorage instead
+;; TODO: Get this in localstorage instead... or the db
 (def sidebar-history (atom []))
 
 (def history-length 100)
