@@ -20,7 +20,9 @@
  :initialize-db
  []
  (fn [db _]
-   {:curr-page-match {}}))
+   {:curr-page-match    {}
+    :curr-sidebar-match {}
+    :sidebar-history    []}))
 
 ;; ---
 ;; Navigation
