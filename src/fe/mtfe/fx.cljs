@@ -30,10 +30,24 @@
 ;; TODO: Get this in localstorage instead
 (def sidebar-history (atom []))
 
+(def history-length 100)
+
+(defn stack-push
+  "Won't conj if the peek is the exact same, but will otherwise"
+  [coll [path params max-len]]
+  (let [x         [path params]
+        is-same?  (= (peek coll) x)
+        res       (if is-same? coll (conj coll x))
+        too-long? (> (count res) max-len)
+        res       (if too-long?
+                    (subvec res (- (count res) max-len) (count res))
+                    res)]
+    res))
+
 (reg-fx
   :sidebar-histpush
   (fn [[path params]]
-    (swap! sidebar-history conj [path params])))
+    (swap! sidebar-history stack-push [path params history-length])))
 
 (reg-fx
   :sidebar-histpop

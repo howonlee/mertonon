@@ -68,7 +68,8 @@
 (reg-event-fx
   :nav-sidebar
   (fn [_ [_ path]]
-    {:non-main-path    ["sidebar-change" path]}))
+    {:non-main-path    ["sidebar-change" path]
+     :sidebar-histpush [path {}]}))
 
 ;; Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
 (reg-event-fx
