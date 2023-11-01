@@ -98,46 +98,40 @@
       {:dispatch [:refresh]}
       {:dispatch [:nav-page nav-to]})))
 
-;; (reg-event-fx
-;;   :sidebar-histpop
-;;   nil)
-;; 
-;; (reg-event-fx
-;;   :sidebar-histpop
-;;   nil)
-;; 
-;; (defn stack-push
-;;   "Won't conj if the peek is the exact same, but will otherwise"
-;;   [coll path max-len]
-;;   (let [is-same?  (= (peek coll) path)
-;;         res       (if is-same? coll (conj coll path))
-;;         too-long? (> (count res) max-len)
-;;         res       (if too-long?
-;;                     (subvec res (- (count res) max-len) (count res))
-;;                     res)]
-;;     res))
-;; 
-;; (reg-fx
-;;   :sidebar-histpush
-;;   (fn [[path params]]
-;;     (swap! sidebar-history stack-push [path params history-length])))
-;; 
-;; (reg-fx
-;;   :sidebar-histpop
-;;   (fn []
-;;     (when (some? (peek @sidebar-history))
-;;       (swap! sidebar-history pop))))
-;; 
-;; (reg-cofx
-;;   :sidebar-histpeek
-;;   (fn [coeffects _]
-;;     (assoc coeffects :last-sidebar (peek @sidebar-history))))
-;; 
-  ;; (fn [{:keys [last-sidebar] :as cofx} _]
-  ;;   (let [[last-path params] last-sidebar]
-  ;;     (println last-sidebar)
-  ;;     {:non-main-path   ["sidebar-change" last-path]
-  ;;      :sidebar-histpop nil})))
+;; ---
+;; Sidebar history
+;; ---
+
+(defn stack-push
+  "Won't conj if the peek is the exact same, but will otherwise"
+  [path max-len coll]
+  (let [is-same?  (= (peek coll) path)
+        res       (if is-same? coll (conj coll path))
+        too-long? (> (count res) max-len)
+        res       (if too-long?
+                    (subvec res (- (count res) max-len) (count res))
+                    res)]
+    res))
+
+(reg-event-fx
+  :sidebar-histpush
+  (fn [{:keys [db]} [_ path]]
+    {:db  (-> db
+              (update-in :sidebar-history (partial stack-push path sidebar-max-hist)))}))
+
+(defn stack-pop
+  [coll]
+  (if (seq coll)
+    (pop coll)
+    coll))
+
+(reg-event-fx
+  :sidebar-histpop
+  (fn [{:keys [db]} _]
+    (let [last-path (peek (db :sidebar-history))]
+      {:db (-> db
+               (update-in :sidebar-history stack-pop))
+       :non-main-path ["sidebar-change" last-path]})))
 
 ;; ---
 ;; Selection
