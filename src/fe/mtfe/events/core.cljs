@@ -89,8 +89,9 @@
 
 (reg-event-fx
   :sidebar-back
-  [:cofx-here]
+  [(inject-cofx :sidebar-histpeek)]
   (fn [{:keys [last-path]} _]
+    (println "sidebar back procced")
     {:dispatch [:nav-sidebar last-path]
      :sidebar-histpop nil}))
 

@@ -56,6 +56,6 @@
       (swap! sidebar-history pop))))
 
 (reg-cofx
-  :last-sidebar
+  :sidebar-histpeek
   (fn [coeffects _]
     (assoc coeffects :last-sidebar (peek @sidebar-history))))
