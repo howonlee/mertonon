@@ -86,6 +86,8 @@
       {:dispatch [:refresh]}
       {:dispatch [:nav-page nav-to]})))
 
+;;; cofx for the thing
+
 ;; ---
 ;; Selection
 ;; ---

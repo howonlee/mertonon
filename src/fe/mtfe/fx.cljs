@@ -1,4 +1,5 @@
 (ns mtfe.fx
+  "Effects and coeffects for re-frame"
   (:require [re-frame.core :refer [reg-fx]]))
 
 ;; ---
@@ -32,10 +33,13 @@
   (fn [[path params]]
     (swap! sidebar-history conj [path params])))
 
+(reg-cofx
+  :last-sidebar
+  (fn [coeffects _]
+    (assoc coeffects :last-sidebar (peek @sidebar-history))))
+
 (reg-fx
   :sidebar-histpop
   (fn []
-    (let [res (peek @sidebar-history)]
-      (when (some? res)
-        (swap! sidebar-history pop))
-      res)))
+    (when (some? (peek @sidebar-history))
+      (swap! sidebar-history pop))))
