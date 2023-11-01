@@ -98,14 +98,46 @@
       {:dispatch [:refresh]}
       {:dispatch [:nav-page nav-to]})))
 
-(reg-event-fx
-  :sidebar-back
-  [(inject-cofx :sidebar-histpeek)]
-  (fn [{:keys [last-sidebar] :as cofx} _]
-    (let [[last-path params] last-sidebar]
-      (println last-sidebar)
-      {:non-main-path   ["sidebar-change" last-path]
-       :sidebar-histpop nil})))
+;; (reg-event-fx
+;;   :sidebar-histpop
+;;   nil)
+;; 
+;; (reg-event-fx
+;;   :sidebar-histpop
+;;   nil)
+;; 
+;; (defn stack-push
+;;   "Won't conj if the peek is the exact same, but will otherwise"
+;;   [coll path max-len]
+;;   (let [is-same?  (= (peek coll) path)
+;;         res       (if is-same? coll (conj coll path))
+;;         too-long? (> (count res) max-len)
+;;         res       (if too-long?
+;;                     (subvec res (- (count res) max-len) (count res))
+;;                     res)]
+;;     res))
+;; 
+;; (reg-fx
+;;   :sidebar-histpush
+;;   (fn [[path params]]
+;;     (swap! sidebar-history stack-push [path params history-length])))
+;; 
+;; (reg-fx
+;;   :sidebar-histpop
+;;   (fn []
+;;     (when (some? (peek @sidebar-history))
+;;       (swap! sidebar-history pop))))
+;; 
+;; (reg-cofx
+;;   :sidebar-histpeek
+;;   (fn [coeffects _]
+;;     (assoc coeffects :last-sidebar (peek @sidebar-history))))
+;; 
+  ;; (fn [{:keys [last-sidebar] :as cofx} _]
+  ;;   (let [[last-path params] last-sidebar]
+  ;;     (println last-sidebar)
+  ;;     {:non-main-path   ["sidebar-change" last-path]
+  ;;      :sidebar-histpop nil})))
 
 ;; ---
 ;; Selection
