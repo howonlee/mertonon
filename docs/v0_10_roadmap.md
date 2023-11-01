@@ -15,8 +15,9 @@
 - [x] FE event tests - exercise only
 - [x] Gantt essay, points for real
 
-- [ ] Sidebar history
+- [x] Sidebar history
 - [ ] Switch to repl-only tests, because of the setup troubles
+- [ ] FE event tests - make sure they actually work lol
 - [ ] FE event nav tests - exercise only
 - [ ] Gantt usage screenshots
 - [ ] Gantt essay real draft
