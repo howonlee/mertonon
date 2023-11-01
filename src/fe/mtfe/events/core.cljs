@@ -58,6 +58,7 @@
      res)))
 
 ;; Given a non-page route path, like sidebars, nav to it
+;; You probably don't want this. You probably want nav-sidebar.
 (reg-event-fx
   :nav-route
   (fn [_ [_ event-id path]]
@@ -67,7 +68,8 @@
 (reg-event-fx
   :nav-sidebar
   (fn [_ [_ path]]
-    {:non-main-path ["sidebar-change" path]}))
+    {:non-main-path    ["sidebar-change" path]
+     :sidebar-hishpush [path]}))
 
 ;; Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
 (reg-event-fx

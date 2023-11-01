@@ -77,7 +77,7 @@
   "Sidebar-only link"
   [sidebar-link-path content]
   [:span.white.underline.hover-gray.pointer
-   {:on-click #(dispatch [:nav-route "sidebar-change" sidebar-link-path])}
+   {:on-click #(dispatch [:nav-sidebar sidebar-link-path])}
    content])
 
 (defn evl
@@ -94,7 +94,7 @@
   [fragment-path sidebar-link-path content]
   [:a.white.underline.hover-gray.pointer
    {:href     fragment-path
-    :on-click #(dispatch [:nav-route "sidebar-change" sidebar-link-path])}
+    :on-click #(dispatch [:nav-sidebar sidebar-link-path])}
    content])
 
 (defn path-fsl
@@ -102,7 +102,7 @@
   [path-vec content]
   [:a.white.underline.hover-gray.pointer
    {:href     (hash-path path-vec)
-    :on-click #(dispatch [:nav-route "sidebar-change" (path path-vec)])}
+    :on-click #(dispatch [:nav-sidebar (path path-vec)])}
    content])
 
 (defn staged-fsl
@@ -111,6 +111,6 @@
   As opposed to ordinary fsl, wherein one single click is both sidebar and fragment link."
   [fragment-path sidebar-link-path content]
   [:div.white.underline.hover-gray.pointer
-   {:on-click        #(dispatch [:nav-route "sidebar-change" sidebar-link-path])
+   {:on-click        #(dispatch [:nav-sidebar sidebar-link-path])
     :on-double-click #(dispatch [:nav-page fragment-path])}
    content])
