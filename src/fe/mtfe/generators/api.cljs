@@ -28,4 +28,4 @@
 (comment
   (try
     (cljs.pprint/pprint (gen/generate gen-api-endpoints))
-    (catch :default e (println e))))
+    (catch :default e (cljs.pprint/pprint e))))

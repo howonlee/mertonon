@@ -52,4 +52,4 @@
 (comment
   (try
     (gen/sample gen-sidebar-path 10)
-    (catch :default e (println e))))
+    (catch :default e (cljs.pprint/pprint e))))

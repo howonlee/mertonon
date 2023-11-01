@@ -27,7 +27,10 @@
          [view curr-sidebar-match])
        [missing-sidebar])]))
 
-;; TODO: sidebar histories
+(def sidebar-history
+  "reitit history is closely tied to the browser history, which we don't want to deal with in the sidebar -
+  we want a separate back button for sidebark"
+  (atom []))
 
 (defn init! []
   (util/custom-route-start!
