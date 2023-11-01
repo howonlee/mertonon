@@ -29,8 +29,8 @@
 
 (reg-fx
   :sidebar-histpush
-  (fn [path]
-    (swap! sidebar-history conj path)))
+  (fn [[path params]]
+    (swap! sidebar-history conj [path params])))
 
 (reg-fx
   :sidebar-histpop
