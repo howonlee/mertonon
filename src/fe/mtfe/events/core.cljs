@@ -77,8 +77,15 @@
   (fn [_ _]
     (let [pathname (subs (.-hash (.-location js/window)) 1)]
       (if (clojure.string/blank? pathname)
-        {:non-main-path ["sidebar-change" "/"]}
-        {:non-main-path ["sidebar-change" pathname]}))))
+        {:non-main-path ["sidebar-change" "/"]
+         :sidebar-histpush "/"}
+        {:non-main-path ["sidebar-change" pathname]
+         :sidebar-histpush pathname}))))
+
+(reg-event-fx
+  :sidebar-back
+  (fn [_ _]
+    {:sidebar-histpop nil}))
 
 (reg-event-fx
   :finish-and-nav
