@@ -13,8 +13,10 @@
             [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]))
 
 ;; ---
-;; Initializations
+;; Initializations and constants
 ;; ---
+
+(def sidebar-max-hist 50)
 
 (reg-event-db
  :initialize-db
@@ -22,7 +24,8 @@
  (fn [db _]
    {:curr-page-match    {}
     :curr-sidebar-match {}
-    :sidebar-history    []}))
+    :sidebar-history    []
+    :sidebar-max-hist   sidebar-max-hist}))
 
 ;; ---
 ;; Navigation
