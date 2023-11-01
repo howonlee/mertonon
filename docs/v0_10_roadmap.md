@@ -15,15 +15,14 @@
 - [x] FE event tests - exercise only
 - [x] Gantt essay, points for real
 
-- [x] Sidebar history
+- [x] Sidebar history + back button
+- [ ] Gantt usage screenshots
+- [ ] Gantt essay real draft
+- [ ] Update usage docs
+
 - [ ] Switch to repl-only tests, because of the setup troubles
 - [ ] FE event tests - make sure they actually work lol
 - [ ] FE event nav tests - exercise only
-- [ ] Gantt usage screenshots
-- [ ] Gantt essay real draft
-- [ ] Sidebar back button
-- [ ] Update usage docs
-
 - [ ] Gantt essay final draft
 - [ ] Sponsor newsletters
 - [ ] Changelog
