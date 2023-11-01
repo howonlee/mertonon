@@ -29,6 +29,7 @@
 (def trash-icon :i.fa-solid.fa-trash)
 (def pen-icon :i.fa-solid.fa-pen)
 (def spinny-icon :i.fa-solid.fa-circle-notch.fa-spin)
+(def back-icon :i.fa-solid.fa-arrow-left)
 
 ;; placeholder that takes space
 (def blank-icon :i.fa-solid.fa-plus.o-0)

@@ -67,9 +67,15 @@
 ;; Given a sidebar _path_, nav to it
 (reg-event-fx
   :nav-sidebar
-  (fn [_ [_ path]]
-    {:non-main-path    ["sidebar-change" path]
-     :sidebar-histpush [path {}]}))
+  (fn [{:keys [db]} [_ path]]
+    (let [m   (db :curr-sidebar-match)
+          res {:non-main-path ["sidebar-change" path]}
+          res (if (some? m)
+                (assoc res
+                       :sidebar-histpush
+                       [(-> m :path) (-> m :query-params)])
+                res)]
+      res)))
 
 ;; Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
 (reg-event-fx
@@ -90,10 +96,11 @@
 (reg-event-fx
   :sidebar-back
   [(inject-cofx :sidebar-histpeek)]
-  (fn [{:keys [last-path]} _]
-    (println "sidebar back procced")
-    {:dispatch [:nav-sidebar last-path]
-     :sidebar-histpop nil}))
+  (fn [{:keys [last-sidebar] :as cofx} _]
+    (let [[last-path params] last-sidebar]
+      (println last-sidebar)
+      {:non-main-path   ["sidebar-change" last-path]
+       :sidebar-histpop nil})))
 
 ;; ---
 ;; Selection
