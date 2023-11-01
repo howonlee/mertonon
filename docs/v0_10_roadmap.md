@@ -15,9 +15,9 @@
 - [x] FE event tests - exercise only
 - [x] Gantt essay, points for real
 
+- [ ] Finish up history
 - [ ] Switch to repl-only tests, because of the setup troubles
 - [ ] FE event nav tests - exercise only
-- [ ] Make complete separate atom for history for sidebar back buttoning (not using the back button, basically, because that's for nav)
 - [ ] Gantt usage screenshots
 - [ ] Gantt essay real draft
 - [ ] Sidebar back button

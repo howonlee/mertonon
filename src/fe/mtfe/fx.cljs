@@ -1,6 +1,10 @@
 (ns mtfe.fx
   (:require [re-frame.core :refer [reg-fx]]))
 
+;; ---
+;; Paths
+;; ---
+
 (reg-fx
   :main-path
   ;; Main path will bring sidebar path along for the ride
@@ -14,3 +18,9 @@
           evt-obj  (clj->js evt-obj)
           evt      (new (.-CustomEvent js/window) event-id evt-obj)]
       (.dispatchEvent js/window evt))))
+
+;; ---
+;; Localstorage
+;; ---
+
+;; Currently only used for sidebar history, which is why the ops are idiosyncratic
