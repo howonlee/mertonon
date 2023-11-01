@@ -20,7 +20,7 @@
 (defn sidebar []
   (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])]
     [sc/main-sidebar-container
-     [util/evl :sidebar-back [sc/back-icon]]
+     [util/evl :sidebar-histpop [sc/back-icon]]
      (if curr-sidebar-match
        ;; Having the metadata procs refreshes if we have different query params
        (let [view (with-meta (-> curr-sidebar-match :data :view)

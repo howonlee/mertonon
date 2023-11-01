@@ -75,10 +75,8 @@
   (fn [{:keys [db]} [_ path]]
     (let [m   (db :curr-sidebar-match)
           res {:non-main-path ["sidebar-change" path]}
-          res (if (some? m)
-                (assoc res
-                       :sidebar-histpush
-                       [(-> m :path) (-> m :query-params)])
+          res (if (and (seq m) (some? (-> m :path)))
+                (assoc res :dispatch [:sidebar-histpush (-> m :path)])
                 res)]
       res)))
 
@@ -117,20 +115,16 @@
   :sidebar-histpush
   (fn [{:keys [db]} [_ path]]
     {:db  (-> db
-              (update-in :sidebar-history (partial stack-push path sidebar-max-hist)))}))
+              (update :sidebar-history (partial stack-push path sidebar-max-hist)))}))
 
-(defn stack-pop
-  [coll]
-  (if (seq coll)
-    (pop coll)
-    coll))
+(defn stack-pop [coll] (if (seq coll) (pop coll) coll))
 
 (reg-event-fx
   :sidebar-histpop
   (fn [{:keys [db]} _]
     (let [last-path (peek (db :sidebar-history))]
-      {:db (-> db
-               (update-in :sidebar-history stack-pop))
+      {:db            (-> db
+                          (update :sidebar-history stack-pop))
        :non-main-path ["sidebar-change" last-path]})))
 
 ;; ---
