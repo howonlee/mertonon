@@ -16,10 +16,10 @@
 - [x] Gantt essay, points for real
 
 - [x] Sidebar history + back button
-- [ ] Gantt usage screenshots
-- [ ] Gantt essay real draft
-- [ ] Update usage docs
+- [x] Gantt essay more points
 
+- [ ] Gantt usage screenshots
+- [ ] Update usage docs
 - [ ] Switch to repl-only tests, because of the setup troubles
 - [ ] FE event tests - make sure they actually work lol
 - [ ] FE event nav tests - exercise only

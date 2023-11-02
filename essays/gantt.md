@@ -18,7 +18,7 @@ Using Mertonon instead of Gantt Charts for Software Projects
 - Political power is not a bad thing, but to enforce it upon people without also giving them a voice is not only unethical but foolish
 
 - What's a cost object in this situation? They're the individual tasks.
-- What's an entry in this situation? The recordings of peeps actually expending effort on the tasks. Effort, more than hours - Mertonon will normalize.
+- What's an entry in this situation? The recordings of peeps actually expending effort on the tasks. Relative effort, more than hours - Mertonon will normalize.
 - Weights? These are the dependencies peeps determine in the tasks, so this is the alternative to the Gantt DAG ordering.
 - The difference is in the greater political mutability of Mertonon instances.
 - When the weights mutate as they will because Mertonon will suggest new weights, these will indicate the structures of power and of dependency actually within the group of peeps doing the task
