@@ -18,13 +18,9 @@
 - [x] Sidebar history + back button
 - [x] Gantt essay more points
 
-- [ ] Gantt usage screenshots
 - [ ] Update usage docs
 - [ ] Switch to repl-only tests, because of the setup troubles
 - [ ] FE event tests - make sure they actually work lol
 - [ ] FE event nav tests - exercise only
-- [ ] Gantt essay final draft
-- [ ] Gantt essay grade levelization
-- [ ] Sponsor newsletters
 - [ ] Changelog
 - [ ] Cut release

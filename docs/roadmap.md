@@ -4,6 +4,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Gantt essay, get it done, get it grade levelized
+- Sponsor newsletters - 3 to start
 - Make ordinary nn test and write about how the norm layer op is cool and good
 - DDL double-implementation tests...
 - Auditing BE
