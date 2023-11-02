@@ -17,6 +17,7 @@ Using Mertonon instead of Gantt Charts for Software Projects
 - "I'm going to cut your deadline by a bit" as an action always conforms closely to a real understanding of power, not of time or the task. Even if the intention is to conform to reality, the encoded power relation of the deadline means that the estimate cannot exist except as a power relation
 - Political power is not a bad thing, but to enforce it upon people without also giving them a voice is not only unethical but foolish
 
+- Example: RBAC.
 - What's a cost object in this situation? They're the individual tasks.
 - What's an entry in this situation? The recordings of peeps actually expending effort on the tasks. Relative effort, more than hours - Mertonon will normalize.
 - Weights? These are the dependencies peeps determine in the tasks, so this is the alternative to the Gantt DAG ordering.
