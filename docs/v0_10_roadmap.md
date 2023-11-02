@@ -24,6 +24,7 @@
 - [ ] FE event tests - make sure they actually work lol
 - [ ] FE event nav tests - exercise only
 - [ ] Gantt essay final draft
+- [ ] Gantt essay grade levelization
 - [ ] Sponsor newsletters
 - [ ] Changelog
 - [ ] Cut release
