@@ -18,19 +18,18 @@
    [:p "We messed up linking something up or something, because Mertonon doesn't know what this sidebar is."]])
 
 (defn sidebar []
-  (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])]
+  (let [curr-sidebar-match @(subscribe [:curr-sidebar-match])
+        sidebar-history    @(subscribe [:sidebar-history])]
     [sc/main-sidebar-container
+     (when (seq sidebar-history)
+       [sc/sidebar-back-button
+        [util/evl :sidebar-histpop [sc/back-icon]]])
      (if curr-sidebar-match
        ;; Having the metadata procs refreshes if we have different query params
        (let [view (with-meta (-> curr-sidebar-match :data :view)
                              {:query-params (-> curr-sidebar-match :query-params)})]
          [view curr-sidebar-match])
        [missing-sidebar])]))
-
-(def sidebar-history
-  "reitit history is closely tied to the browser history, which we don't want to deal with in the sidebar -
-  we want a separate back button for sidebark"
-  (atom []))
 
 (defn init! []
   (util/custom-route-start!

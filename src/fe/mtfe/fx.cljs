@@ -1,5 +1,12 @@
 (ns mtfe.fx
-  (:require [re-frame.core :refer [reg-fx]]))
+  "Effects and coeffects for re-frame
+
+  Note that the cofx are here, not elsewhere"
+  (:require [re-frame.core :refer [reg-fx reg-cofx]]))
+
+;; ---
+;; Paths
+;; ---
 
 (reg-fx
   :main-path

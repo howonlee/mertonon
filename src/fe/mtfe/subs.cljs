@@ -31,6 +31,11 @@
     (get-in db (into [:sidebar-state] path))))
 
 (reg-sub
+  :sidebar-history
+  (fn [db _]
+    (db :sidebar-history)))
+
+(reg-sub
   :is-demo?
   (fn [db _]
     (:is-demo? db)))

@@ -1,6 +1,6 @@
 {
   "name": "mertonon",
-  "version": "0.9.commits-postprealpha",
+  "version": "0.10.commits-postprealpha",
   "description": "Neural Organizational Management",
   "repository": {
     "type": "git",
@@ -30,7 +30,6 @@
     "release": "yarn shadow-cljs release frontend",
     "concurrently": "yarn && concurrently --kill-others -p name",
     "dev": "yarn concurrently 'clojure -M:run:ee' 'yarn shadow-cljs watch frontend'",
-    "fe-only": "yarn shadow-cljs watch frontend",
-    "test": "yarn shadow-cljs watch test"
+    "fe-only": "yarn shadow-cljs watch frontend"
   }
 }

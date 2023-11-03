@@ -29,6 +29,7 @@
 (def trash-icon :i.fa-solid.fa-trash)
 (def pen-icon :i.fa-solid.fa-pen)
 (def spinny-icon :i.fa-solid.fa-circle-notch.fa-spin)
+(def back-icon :i.fa-solid.fa-arrow-left)
 
 ;; placeholder that takes space
 (def blank-icon :i.fa-solid.fa-plus.o-0)
@@ -49,7 +50,7 @@
 (def flexwrap-container :div.mr3.flex.flex-wrap.justify-center)
 (def rounded-button :div.br2.pa3.link.dim.pa3-ns.mr3.mv3.ba.white)
 (def grid-button-container :div.relative.br2.pa3.pa3-ns.mr3.mv3.ba.white)
-(def grid-button-trash-container :div.absolute.top-0.right-0.f6.link.dim.ph2.pv2.mb2.dib.white.pointer)
+(def sidebar-back-button :div.absolute.top-5.f6.link.dim.ph2.pv2.mb2.dib.white.pointer)
 
 (def main-table :table.f6.mw8.center)
 

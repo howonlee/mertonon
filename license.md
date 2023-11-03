@@ -4,7 +4,7 @@ Source code in this repository is variously licensed under the GNU Affero Genera
 
 - Within the the top-level "ee" directory, source code in a given file is licensed under a commercial license. Usage is conditional upon having a valid commercial license from Howon Lee. Access to files and folders in the "ee" directory and its subdirectories does not constitute permission to use this code or Enterprise Edition features.
 
-A commercial license for the ordinarily-AGPL portion of the code is also available for enterprise customers, if your corporation bans usage of AGPL products. Contact us for a quote.
+A commercial license for the ordinarily-AGPL portion of the code is also available for enterprise customers, if your organization bans usage of AGPL products. Contact us for a quote.
 
 When built, binary files are generated for the AGPL source code and the commercially licensed source code. Binaries located at https://github.com/howonlee/mertonon/releases/ are released under the AGPL. All other releases are released under commercial license only.
 

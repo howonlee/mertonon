@@ -13,14 +13,19 @@
             [re-frame.core :refer [reg-event-db reg-event-fx reg-fx inject-cofx trim-v after path]]))
 
 ;; ---
-;; Initializations
+;; Initializations and constants
 ;; ---
+
+(def sidebar-max-hist 50)
 
 (reg-event-db
  :initialize-db
  []
  (fn [db _]
-   {:curr-page-match {}}))
+   {:curr-page-match    {}
+    :curr-sidebar-match {}
+    :sidebar-history    []
+    :sidebar-max-hist   sidebar-max-hist}))
 
 ;; ---
 ;; Navigation
@@ -58,6 +63,7 @@
      res)))
 
 ;; Given a non-page route path, like sidebars, nav to it
+;; You probably don't want this. You probably want nav-sidebar.
 (reg-event-fx
   :nav-route
   (fn [_ [_ event-id path]]
@@ -66,8 +72,13 @@
 ;; Given a sidebar _path_, nav to it
 (reg-event-fx
   :nav-sidebar
-  (fn [_ [_ path]]
-    {:non-main-path ["sidebar-change" path]}))
+  (fn [{:keys [db]} [_ path]]
+    (let [m   (db :curr-sidebar-match)
+          res {:non-main-path ["sidebar-change" path]}
+          res (if (and (seq m) (some? (-> m :path)))
+                (assoc res :dispatch [:sidebar-histpush (-> m :path)])
+                res)]
+      res)))
 
 ;; Nav to the canonical default sidebar view, which corresponds to the 'default modal' if we think of sidebar as permanent modal"
 (reg-event-fx
@@ -84,6 +95,37 @@
     (if (contains? #{:refresh :reload} nav-to)
       {:dispatch [:refresh]}
       {:dispatch [:nav-page nav-to]})))
+
+;; ---
+;; Sidebar history
+;; ---
+
+(defn stack-push
+  "Won't conj if the peek is the exact same, but will otherwise"
+  [path max-len coll]
+  (let [is-same?  (= (peek coll) path)
+        res       (if is-same? coll (conj coll path))
+        too-long? (> (count res) max-len)
+        res       (if too-long?
+                    (subvec res (- (count res) max-len) (count res))
+                    res)]
+    res))
+
+(reg-event-fx
+  :sidebar-histpush
+  (fn [{:keys [db]} [_ path]]
+    {:db  (-> db
+              (update :sidebar-history (partial stack-push path sidebar-max-hist)))}))
+
+(defn stack-pop [coll] (if (seq coll) (pop coll) coll))
+
+(reg-event-fx
+  :sidebar-histpop
+  (fn [{:keys [db]} _]
+    (let [last-path (peek (db :sidebar-history))]
+      {:db            (-> db
+                          (update :sidebar-history stack-pop))
+       :non-main-path ["sidebar-change" last-path]})))
 
 ;; ---
 ;; Selection

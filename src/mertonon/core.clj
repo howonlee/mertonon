@@ -19,7 +19,7 @@
 
 ;; How to connect cljs:
 ;; 1. Nav to the page
-;; 2. :ConjureConnect <autocreated-nrepl-port>
+;; 2. :ConjureConnect <autocreated-nrepl-port-probably-9999>
 ;; 3. maybe (require '[shadow.cljs.devtools.api :as shadow])
 ;; 4. (shadow/repl :frontend)
 ;; 5. Should be able to repl now
