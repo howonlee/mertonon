@@ -1,4 +1,6 @@
-- [ ] Update usage docs
+- [ ] Update usage docs - do the gifs again, but slowly
+- [ ] Update setup docs - grade level
+- [ ] Update usage docs - grade level
 - [ ] FE test - manual run, at least a crappy runbook
 - [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 - [ ] Propbit: Random gate gen (hypothesis)
