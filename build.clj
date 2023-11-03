@@ -3,17 +3,18 @@
             [deps-deploy.deps-deploy :as dd]))
 
 ;; Build checklist
-;; 1. Run tests, make sure they're green
-;; 2. `cljfmt fix` things
-;; 3. Incr app version in this file
-;; 4. Incr app version in package.json
-;; 5. Iff you futzed with the readme, hit it with the Flesch-Kincaid (using `style` and keep it under 8 for first 20 lines)
-;; 6. Futz with changelog
-;; 7. Land change PR
-;; 8. Change working branch to master
-;; 9. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
-;; 10. Build this with `clj -T:build-ce uberjar`
-;; 11. Release
+;; 1. Run BE tests, make sure they're green
+;; 2. Run FE tests, make sure they're green
+;; 3. `cljfmt fix` things
+;; 4. Incr app version in this file
+;; 5. Incr app version in package.json
+;; 6. Iff you futzed with the readme, hit it with the Flesch-Kincaid (using `style` and keep it under 8 for first 20 lines)
+;; 7. Futz with changelog
+;; 8. Land change PR
+;; 9. Change working branch to master
+;; 10. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
+;; 11. Build this with `clj -T:build-ce uberjar`
+;; 12. Release
 
 ;; Proper ci/cd coming when it's coming
 (def lib 'com.github.howonlee/mertonon)
