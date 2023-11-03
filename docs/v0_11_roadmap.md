@@ -1,12 +1,14 @@
-- [ ] Update usage docs - do the gifs again, but slowly
-- [ ] Update setup docs - grade level
-- [ ] Update usage docs - grade level
-- [ ] FE test - manual run, at least a crappy runbook
+- [ ] FE test - manual run of event tests, at least a crappy runbook
+- [ ] FE test - get the nav tests working
+- [ ] Gantt essay mertonon instance work
 - [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 - [ ] Propbit: Random gate gen (hypothesis)
 - [ ] Propbit: Dual test property thing
 
-- [ ] Gantt essay mertonon instance work
+- [ ] Update usage docs - do the gifs again, but slowly
+- [ ] Update setup docs - grade level
+- [ ] Update usage docs - grade level
+
 - [ ] Gantt essay first draft
 - [ ] Propbit: Get the single gates working again, piercing and not
 
@@ -19,8 +21,7 @@
 - [ ] Auditing SQL honeysql statement - overall audit thing, continue
 
 - [ ] Make ordinary nn test on norm layer op
-- [ ] Write about how the norm layer op is cool and good
-
+- [ ] Write about how the norm layer op is cool and good - first draft only
 - [ ] Changelog
 - [ ] Click around
 - [ ] Release
