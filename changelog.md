@@ -88,4 +88,5 @@ v0.10.commits - November 2 2023
 - Decided on the unfortunately jank test running method of sticking hands in the repl and running them
 - nav-sidebar event exists now
 - Back button for sidebar exists now
+- Fixed problem with gstring.format being used wrong
 

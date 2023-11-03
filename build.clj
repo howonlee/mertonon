@@ -9,10 +9,11 @@
 ;; 4. Incr app version in package.json
 ;; 5. Iff you futzed with the readme, hit it with the Flesch-Kincaid (using `style` and keep it under 8 for first 20 lines)
 ;; 6. Futz with changelog
-;; 7. Land change PR, change working branch to master
-;; 8. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
-;; 9. Build this with `clj -T:build-ce uberjar`
-;; 10. Release
+;; 7. Land change PR
+;; 8. Change working branch to master
+;; 9. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
+;; 10. Build this with `clj -T:build-ce uberjar`
+;; 11. Release
 
 ;; Proper ci/cd coming when it's coming
 (def lib 'com.github.howonlee/mertonon)

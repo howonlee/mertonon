@@ -2,6 +2,7 @@
   "Layer / Responsibility Center view"
   (:require [applied-science.js-interop :as j]
             [goog.string :as gstring]
+            [goog.string.format]
             [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
             [mtfe.util :as util]
