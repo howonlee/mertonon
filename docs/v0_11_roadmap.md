@@ -9,12 +9,12 @@
 - [ ] Propbit: Get the single gates working again, piercing and not
 
 - [ ] Gantt essay second draft
-- [ ] Auditing SQL thing - a big'un
+- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 
 - [ ] Gantt essay final draft
 - [ ] Munge on website for gantt essay publication and blog page
 - [ ] Sponsor newsletters - 3 to start
-- [ ] DDL double-implementation tests - dump the DDL for the double-implementation only, think about how to run the thing
+- [ ] Auditing SQL honeysql statement - overall audit thing, continue
 
 - [ ] Make ordinary nn test on norm layer op
 - [ ] Write about how the norm layer op is cool and good
