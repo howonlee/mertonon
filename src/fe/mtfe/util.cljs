@@ -3,6 +3,7 @@
   (:require [clojure.string :as str]
             [clojure.walk :as walk]
             [goog.string :as gstring]
+            [goog.string.format]
             [reagent.core :as r]
             [reagent.dom :as rdom]
             [re-frame.core :refer [dispatch dispatch-sync]]

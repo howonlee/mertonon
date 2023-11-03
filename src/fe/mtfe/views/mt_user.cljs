@@ -1,7 +1,6 @@
 (ns mtfe.views.mt-user
   "Mertonon User view"
-  (:require [goog.string :as gstring]
-            [mtfe.api :as api]
+  (:require [mtfe.api :as api]
             [mtfe.stylecomps :as sc]
             [re-frame.core :refer [dispatch subscribe]]))
 

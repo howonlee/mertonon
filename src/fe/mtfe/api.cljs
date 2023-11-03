@@ -1,6 +1,7 @@
 (ns mtfe.api
   "API endpoint namespace"
-  (:require [goog.string :as gstring]))
+  (:require [goog.string :as gstring]
+            [goog.string.format]))
 
 (def host "Current host, terribly injected from backend template handler"
   (or (.. js/window -mertonon_host) "http://localho.st:5036"))
