@@ -31,5 +31,4 @@
     (fill! (api/password-login) :password-logins)))
 
 (comment (fill-store!)
-         (cljs.pprint/pprint @store)
-         )
+         (cljs.pprint/pprint @store))

@@ -84,3 +84,8 @@ v0.9.commits - October 26 2023
 v0.10.commits - November 2 2023
 ---
 
+- Material progress on FE generation in preparation for the tests
+- Decided on the unfortunately jank test running method of sticking hands in the repl and running them
+- nav-sidebar event exists now
+- Back button for sidebar exists now
+
