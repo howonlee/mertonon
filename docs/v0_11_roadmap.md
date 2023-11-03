@@ -1,15 +1,16 @@
 - [ ] FE test - manual run of event tests, at least a crappy runbook
 - [ ] FE test - get the nav tests working
+- [ ] FE test - more event tests
 - [ ] Gantt essay mertonon instance work
-- [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 - [ ] Propbit: Random gate gen (hypothesis)
-- [ ] Propbit: Dual test property thing
 
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
 - [ ] Update usage docs - grade level
+- [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 
 - [ ] Gantt essay first draft
+- [ ] Propbit: Dual test property thing - sum vs. prod
 - [ ] Propbit: Get the single gates working again, piercing and not
 
 - [ ] Gantt essay second draft
