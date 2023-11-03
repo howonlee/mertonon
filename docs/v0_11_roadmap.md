@@ -1,6 +1,7 @@
 - [ ] FE test - manual run of event tests, at least a crappy runbook
 - [ ] FE test - get the nav tests working
 - [ ] FE test - more event tests
+- [ ] FE test - see if we can test for the gstring format problem, it seems a very regressable one
 - [ ] Gantt essay mertonon instance work
 - [ ] Propbit: Random gate gen (hypothesis)
 
