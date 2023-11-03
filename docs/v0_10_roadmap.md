@@ -18,9 +18,5 @@
 - [x] Sidebar history + back button
 - [x] Gantt essay more points
 
-- [ ] Update usage docs
-- [ ] Switch to repl-only tests, because of the setup troubles
-- [ ] FE event tests - make sure they actually work lol
-- [ ] FE event nav tests - exercise only
 - [ ] Changelog
 - [ ] Cut release
