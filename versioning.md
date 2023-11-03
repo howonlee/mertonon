@@ -2,6 +2,6 @@ Mertonon uses MAJOR.WEEKLY.COMMITS where MAJOR is not semantic versioning but ju
 
 In the package.json for the yarn frontend build the build is given as MAJOR.WEEKLY.commits where _commits_ is literally just the string commits instead of the number of commits. This is because we are lazy and do not wish to update package.json separately except for the weekly and major versions.
 
-We are going to be pretty jiggly with the alpha, beta, etc pre-release suffixes. They will be a very vague indicator of how far along we are to the first major release.
+We are going to be pretty jiggly with the alpha, beta, etc pre-release suffixes. They will be a very vague indicator of how far along we are to the first major release. We will start supporting old releases when we get to the first major release.
 
 We will deploy every business Thursday, no exceptions. Whether that's a major or weekly version will depend upon our coffee supply, number of sunspots, the phase of the moon, the flight of birds, the omens written in the entrails, the path of the smoke as it escapes the thurible, etc etc. We may even literally crank out a weekly version with no actual changes, for the hell of it and to exercise the ol' CI/CD. We may speed up the deploy cadence but not slow it down.
