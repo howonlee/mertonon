@@ -4,15 +4,18 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Prezzo
+- Write about how the norm layer op is cool and good
+- Auditing DB
 - Auditing BE
 - Auditing FE
 - Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
 - Kick off forward passes every time we change anything, async (I think as FE event to BE trivial service thingy)
+- Munge and validate password according to a serious password-based-auth checklist, BE then repro FE
 - Cut alpha, sponsor more newsletters
 
-- Munge and validate password according to a serious password-based-auth checklist, BE then repro FE
 - Easy SSO's BE
 - Easy SSO's FE
 - Whack a profit thing out for real, refactor the competitiveness thing to budget utilization

@@ -24,12 +24,16 @@
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-cljs-test": "^0.1.0",
     "shadow-cljs": "^2.21.0"
   },
   "scripts": {
     "release": "yarn shadow-cljs release frontend",
     "concurrently": "yarn && concurrently --kill-others -p name",
     "dev": "yarn concurrently 'clojure -M:run:ee' 'yarn shadow-cljs watch frontend'",
-    "fe-only": "yarn shadow-cljs watch frontend"
+    "fe-only": "yarn shadow-cljs watch frontend",
+    "test": "shadow-cljs compile test && karma start --single-run"
   }
 }

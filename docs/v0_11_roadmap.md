@@ -1,24 +1,25 @@
-- [ ] Update usage docs
-- [ ] FE test - manual run, at least a crappy runbook
-- [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
+- [x] FE test - declare defeat, do karma tests only so far today
+- [ ] FE test - get the event tests working
+- [ ] FE test - get the nav tests working
+- [ ] FE test - ns introspection test for gstring format problem
 - [ ] Propbit: Random gate gen (hypothesis)
-- [ ] Propbit: Dual test property thing
 
+- [ ] FE test - more event tests
 - [ ] Gantt essay mertonon instance work
-- [ ] Gantt essay first draft
-- [ ] Propbit: Get the single gates working again, piercing and not
+- [ ] Update usage docs - do the gifs again, but slowly
+- [ ] Update setup docs - grade level
+- [ ] Update usage docs - grade level
+- [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 
+- [ ] Gantt essay first draft
+- [ ] Propbit: Dual test property thing - sum vs. prod
+- [ ] Propbit: Get the single gates working again, piercing and not
 - [ ] Gantt essay second draft
-- [ ] Auditing SQL thing - a big'un
+- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 
 - [ ] Gantt essay final draft
 - [ ] Munge on website for gantt essay publication and blog page
 - [ ] Sponsor newsletters - 3 to start
-- [ ] DDL double-implementation tests - dump the DDL for the double-implementation only, think about how to run the thing
-
-- [ ] Make ordinary nn test on norm layer op
-- [ ] Write about how the norm layer op is cool and good
-
 - [ ] Changelog
 - [ ] Click around
 - [ ] Release

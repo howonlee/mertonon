@@ -1,1 +1,0 @@
-(ns mtfe.test-core)

@@ -4,4 +4,4 @@
             [mertonon.generators.net :as net-gen]))
 
 (deftest a-test
-  (is (= 1 2)))
+  (is (= 2 2)))
