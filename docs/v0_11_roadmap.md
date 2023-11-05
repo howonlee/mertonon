@@ -1,11 +1,11 @@
-- [ ] FE test - manual run of event tests, at least a crappy runbook
+- [x] FE test - declare defeat, do karma tests only so far today
+- [ ] FE test - get the event tests working
 - [ ] FE test - get the nav tests working
-- [ ] FE test - more event tests
-
 - [ ] FE test - ns introspection test for gstring format problem
-- [ ] Gantt essay mertonon instance work
 - [ ] Propbit: Random gate gen (hypothesis)
 
+- [ ] FE test - more event tests
+- [ ] Gantt essay mertonon instance work
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
 - [ ] Update usage docs - grade level
@@ -14,7 +14,6 @@
 - [ ] Gantt essay first draft
 - [ ] Propbit: Dual test property thing - sum vs. prod
 - [ ] Propbit: Get the single gates working again, piercing and not
-
 - [ ] Gantt essay second draft
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 
