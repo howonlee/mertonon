@@ -4,6 +4,9 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Prezzo
+- Write about how the norm layer op is cool and good
+- Auditing DB
 - Auditing BE
 - Auditing FE
 - Mass CRUD ops FE, incl. weight painting

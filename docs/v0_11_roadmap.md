@@ -1,7 +1,8 @@
 - [ ] FE test - manual run of event tests, at least a crappy runbook
 - [ ] FE test - get the nav tests working
 - [ ] FE test - more event tests
-- [ ] FE test - see if we can test for the gstring format problem, it seems a very regressable one
+
+- [ ] FE test - ns introspection test for gstring format problem
 - [ ] Gantt essay mertonon instance work
 - [ ] Propbit: Random gate gen (hypothesis)
 
@@ -20,10 +21,6 @@
 - [ ] Gantt essay final draft
 - [ ] Munge on website for gantt essay publication and blog page
 - [ ] Sponsor newsletters - 3 to start
-- [ ] Auditing SQL honeysql statement - overall audit thing, continue
-
-- [ ] Make ordinary nn test on norm layer op
-- [ ] Write about how the norm layer op is cool and good - first draft only
 - [ ] Changelog
 - [ ] Click around
 - [ ] Release
