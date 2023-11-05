@@ -18,7 +18,7 @@
 ;; https://github.com/Olical/conjure/wiki/Quick-start:-Clojure
 
 ;; How to connect cljs:
-;; 1. Nav to the page
+;; 1. Nav to the page (actually you have to do this, or else there won't be a js runtime)
 ;; 2. :ConjureConnect <autocreated-nrepl-port-probably-9999>
 ;; 3. maybe (require '[shadow.cljs.devtools.api :as shadow])
 ;; 4. (shadow/repl :frontend)

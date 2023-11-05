@@ -21,4 +21,9 @@
   {:target     :browser
    :output-dir "resources/public/cljs"
    :asset-path "resources/public/cljs"
-   :modules    {:main {:init-fn mtfe.core/init!}}}}}
+   :modules    {:main {:init-fn mtfe.core/init!}}}
+  :test
+  {:target   :karma
+   :output-to "out/test.js"
+   :ns-regexp "-test$"
+   :autorun   true}}}
