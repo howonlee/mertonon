@@ -1,4 +1,5 @@
 - [x] FE test - declare defeat, do karma tests only so far today
+
 - [ ] FE test - get the event tests working
 - [ ] FE test - get the nav tests working
 - [ ] FE test - ns introspection test for gstring format problem
