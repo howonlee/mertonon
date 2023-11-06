@@ -6,7 +6,7 @@
 - [ ] Propbit: Random gate gen (hypothesis)
 
 - [ ] FE test - more event tests
-- [ ] Gantt essay mertonon instance work
+- [ ] Gantt essay mertonon instance work - switch it all to the retrospective FE update things
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
 - [ ] Update usage docs - grade level
