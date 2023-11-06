@@ -1,8 +1,8 @@
 node_modules
 public
 out
-resources
 target
 yarn.lock
 package-lock.json
+karma.conf.js
 .shadow-cljs
