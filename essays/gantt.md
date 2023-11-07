@@ -9,7 +9,7 @@ Gantt charts are [directed acycle graph](https://en.wikipedia.org/wiki/Directed_
 
 Like all other data structures, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work. This is why software folks hate them.
 
-(If you need another example on how data structures can be _political_ in nature, consider the British person's complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view of resource allocation that queues represent).
+(If you need another example on how data structures can be _political_ in nature, consider the British person's complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view on resource allocation that queues represent).
 
 The political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society.
 

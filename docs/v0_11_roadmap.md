@@ -4,7 +4,7 @@
 
 - [x] Gantt essay mertonon instance work - just do the weights
 - [x] Gantt essay mertonon instance - put some usage in, get the backprop stuff
-- [ ] Gantt essay first draft
+- [x] Gantt essay first draft
 - [ ] Test for the stack push and pop
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
