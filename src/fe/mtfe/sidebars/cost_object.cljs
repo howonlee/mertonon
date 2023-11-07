@@ -98,10 +98,12 @@
      [header-partial curr-cobj-state]
      (when (not is-demo?)
        [:<>
-        [vblurbs/validation-toast val-path :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]
+        [:div
+         [vblurbs/validation-toast val-path :not-input-or-loss "Journal Entries must be for cost nodes in an input or goal responsibility center"]]
         [vblurbs/validated-link val-path :not-input-or-loss "Create Journal Entry"
-         [util/sl (util/path ["cost_object" cobj-uuid "entry_create"])
-          [sc/button [sc/entry-icon] " Create Journal Entry"]]]])]))
+         [:div
+          [util/sl (util/path ["cost_object" cobj-uuid "entry_create"])
+           [sc/button [sc/entry-icon] " Create Journal Entry"]]]]])]))
 
 ;; ---
 ;; Update
