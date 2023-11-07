@@ -84,6 +84,7 @@
 (reg-event-fx
   :nav-to-sidebar-for-current-main-view
   (fn [_ _]
+    ;; TODO: use cofx properly
     (let [pathname (subs (.-hash (.-location js/window)) 1)]
       (if (clojure.string/blank? pathname)
         {:non-main-path ["sidebar-change" "/"]}
@@ -91,7 +92,7 @@
 
 (reg-event-fx
   :finish-and-nav
-  (fn [cofx [_ nav-to]]
+  (fn [_ [_ nav-to]]
     (if (contains? #{:refresh :reload} nav-to)
       {:dispatch [:refresh]}
       {:dispatch [:nav-page nav-to]})))
@@ -103,7 +104,8 @@
 (defn stack-push
   "Won't conj if the peek is the exact same, but will otherwise"
   [path max-len coll]
-  (let [is-same?  (= (peek coll) path)
+  (let [coll      (vec coll)
+        is-same?  (= (peek coll) path)
         res       (if is-same? coll (conj coll path))
         too-long? (> (count res) max-len)
         res       (if too-long?
