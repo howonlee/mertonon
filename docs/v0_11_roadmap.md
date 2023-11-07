@@ -23,6 +23,7 @@
 - [ ] Gantt essay second draft
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 
+- [ ] Gantt essay grade level
 - [ ] Gantt essay final draft
 - [ ] Munge on website for gantt essay publication and blog page
 - [ ] Sponsor newsletters - 3 to start

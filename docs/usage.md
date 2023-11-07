@@ -8,7 +8,7 @@ Be advised that Mertonon is not financial reporting as of this time. Mertonon is
 
 From the outside, organizations look imposing. They look faceless and united as one in one purpose towards producing hammocks or safeguarding fish or writing software or what-have-you.
 
-But you know better, don't you? From the inside, I myself have found every org without exception riven by systems politics - riven by fealty, by feud, and other very human things. Sometimes the politics works - and in working, turns invisible. Sometimes it does not.
+But you know better, don't you? From the inside, I myself have found every org without exception riven by political systems - riven by fealty, by feud, and other very human things. Sometimes the politics works - and in working, turns invisible. Sometimes it does not.
 
 This is the invisible org which Mertonon seeks to make visible and align towards the stated goals of the org. "The purpose of a system is what it does". That is, to do things with system, you need to understand the system's behavior. Mertonon is software for understanding and dealing with political systems in orgs. Using Mertonon involves
 
