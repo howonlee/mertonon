@@ -4,7 +4,7 @@
 
 <!-- video here when we do it -->
 
-[Mertonon](https://mertonon.com) is a new way to plan and budget for orgs. With Mertonon, you make a picture of your org as a neural network. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. Then, Mertonon itself will suggest changes to your budget based upon those judgements. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modern version for capitalist or noncapitalist use by ordinary folks.
+[Mertonon](https://mertonon.com) is a new way to plan and budget for organizations. With Mertonon, you make a picture of your org as a neural network. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. Then, Mertonon itself will suggest changes to your budget based upon those judgements. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modern version for capitalist or noncapitalist use by ordinary folks.
 
 [Click here for setup info.](docs/setup.md) [Click here for usage info](docs/usage.md). Be advised that Mertonon is postprealpha software: there are material known and unknown issues and missing essential features.
 
