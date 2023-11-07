@@ -28,14 +28,14 @@ Allocations of time are expressions of power. You can see this whenever peeps ne
 Political power is not a bad thing, but to enforce it upon people without also giving them a voice is not only unethical but foolish.
 
 - Example: RBAC.
+- Mertonon will tell you where to move towards the allocations. The original purported purpose of Gantt charts is to do this indirectly - to allocate the resources from the estimate. Instead of giving the estimate and allocating from there, Mertonon suggests the allocations directly.
 - What's a cost object in this situation? They're the individual tasks.
 - What's an entry in this situation? The recordings of peeps actually expending effort on the tasks. Relative effort, more than hours - Mertonon will normalize.
 - Weights? These are the dependencies peeps determine in the tasks, so this is the alternative to the Gantt DAG ordering. Importantly, they're also fully intended to be political indications of resource allocation.
 - The difference is in the greater political mutability of Mertonon instances.
-- Mertonon will also tell you where to move towards the allocations. The original purported purpose of Gantt charts is to do this indirectly - to allocate the resources from the estimate. Instead of giving the estimate and allocating from there, Mertonon suggests the allocations directly.
 - When the weights mutate as they will because Mertonon will suggest new weights, these will indicate the structures of power and of dependency actually within the group of peeps doing the task
 - This is what is meant by Mertonon giving political observance given to the voice of participants in the work
 
-- Contrast to how to do Gantt charts in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
-- We intend Mertonon instances to be places where you can store unseemly discussions of power and go back to work afterwards.
-- We fully intend that this suggestion feature also work for the very specific quotidian purpose of looking good and blaming Mertonon for your failures. If you need a specific concrete person use Howon.
+Contrast to how to do Gantt charts in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
+
+We intend Mertonon instances to be places where you can store unseemly discussions of power and go back to work afterwards, if you're in the kind of culture where this sort of frank discussions of power and politics are unacceptable. We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. If you need a specific concrete person use Howon.
