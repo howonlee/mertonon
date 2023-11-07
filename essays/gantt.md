@@ -1,21 +1,31 @@
-Using Mertonon instead of Gantt Charts for Software Projects
+How to use Mertonon instead of Gantt Charts for Software Project Planning
 ---
 
-- Politics is at the core of the question of resource distribution in groups - it cannot be avoided and to avoid it is to fail at resource distribution.
-- It can work so well that it becomes invisible, though - another failure and mistake.
-- To never talk about power is to encode structures of resource allocation without ever being able to revise them. Even if it isn't really talk for polite company. Therefore excuse us for talking about power frankly.
+Politics is at the core of the question of resource distribution in groups - it cannot be avoided and to avoid it is to fail at resource distribution. It can work so well that it becomes invisible, though - another failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Even if it isn't really talk for polite company. Therefore excuse us for talking about power frankly.
 
-- Gantt charts encode a structural point of view on power which is suited to industrial work. This is why software peeps hate them.
-- This is because H. Gantt created them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society.
-- White collar work is different because white collar workers are neither enslaved people, who have no political voice at all, nor industrial workers, who have voice by de facto or formal syndication in informal or formal labor union - they have political voice as individuals.
+Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective as many Gantt chart estimates do. Also unlike Gantt charts, Mertonon itself will suggest changes to your budget based upon those judgements.
 
-- Therefore, even in formal structural planning of work, in white collar work, there must be political observance given to the voice of participants in the work - white collar work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
-- This is particularly pronounced in software work because management often doesn't have observability in how to do software work at all, so developers often must be the whole arbiters of, or huge contributors on, how to do the work. Also with great influence on what work to do.
+Gantt charts are [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies. Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. A topological sort gives an ordering of what to do, and summation of the topological sort with concurrent elements done concurrently gives an overall estimate of the task length.
 
-- This is an etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power, but built-in to Mertonon.
-- Allocations of time are expressions of power. You can see this whenever peeps negotiate deadlines in these sorts of planned tasks - the timelines never conform to reality because the reality they deal with is that of power, not of things that get done.
-- "I'm going to cut your deadline by a bit" as an action always conforms closely to a real understanding of power, not of time or the task. Even if the intention is to conform to reality, the encoded power relation of the deadline means that the estimate cannot exist except as a power relation
-- Political power is not a bad thing, but to enforce it upon people without also giving them a voice is not only unethical but foolish
+Like all other data structures, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work. This is why software folks hate them.
+
+(If you need another example on how data structures can be _political_ in nature, consider the British person's complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view of resource allocation that queues represent).
+
+The political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society.
+
+White collar work is different because white collar workers are neither enslaved people, who have no political voice at all, nor industrial workers, who have voice by de facto or formal syndication in informal or formal labor union - they have political voice as individuals.
+
+Therefore, even in formal structural planning of work, in white collar work, there must be political observance given to the voice of participants in the work - white collar work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
+
+This is particularly pronounced in software work because management often doesn't have observability in how to do software work at all, so developers often must be the whole arbiters of, or huge contributors on, how to do the work. Also with great influence on what work to do.
+
+This is an etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power, but built-in to Mertonon.
+
+Allocations of time are expressions of power. You can see this whenever peeps negotiate deadlines in these sorts of planned tasks - the timelines never conform to reality because the reality they deal with is that of power, not of things that get done.
+
+"I'm going to cut your deadline by a bit" as an action always conforms closely to a real understanding of power, not of time or the task. Even if the intention is to conform to reality, the encoded power relation of the deadline means that the estimate cannot exist except as a power relation
+
+Political power is not a bad thing, but to enforce it upon people without also giving them a voice is not only unethical but foolish.
 
 - Example: RBAC.
 - What's a cost object in this situation? They're the individual tasks.
