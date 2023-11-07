@@ -8,6 +8,7 @@ Also look at small tasks roadmap
 - Auditing DB
 - Benford's law article
 - Auditing BE
+- Try again on FE tests
 - Auditing FE
 - Write about how the norm layer op is cool and good
 - Mass CRUD ops FE, incl. weight painting

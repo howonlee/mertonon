@@ -1,15 +1,10 @@
 - [x] FE test - declare defeat, do karma tests only so far today
 
-- [ ] FE test - get the event tests working
-- [ ] FE test - get the nav tests working
-- [ ] FE test - ns introspection test for gstring format problem
-- [ ] Propbit: Random gate gen (hypothesis)
-
-- [ ] FE test - more event tests
 - [ ] Gantt essay mertonon instance work - switch it all to the retrospective FE update things
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
 - [ ] Update usage docs - grade level
+- [ ] Propbit: Random gate gen (hypothesis)
 - [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 
 - [ ] Gantt essay first draft
