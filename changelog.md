@@ -90,3 +90,6 @@ v0.10.commits - November 2 2023
 - Back button for sidebar exists now
 - Fixed problem with gstring.format being used wrong
 
+v0.11.commits - November 9 2023
+---
+
