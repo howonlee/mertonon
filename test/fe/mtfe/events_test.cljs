@@ -12,9 +12,8 @@
             [re-frame.core :refer [dispatch]]))
 
 (deftest test-selection-exercise
-  (is (= 1 1)))
-
-;; ((tc/quick-check
-;;             tu/many
-;;             (prop/for-all [evt event-gen/gen-selection-event]
-;;                           true)) :result)
+  (is (= true
+         ((tc/quick-check
+            tu/many
+            (prop/for-all [];; [evt event-gen/gen-selection-event]
+                          true)) :result))))
