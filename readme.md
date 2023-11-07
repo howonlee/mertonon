@@ -4,15 +4,15 @@
 
 <!-- video here when we do it -->
 
-[Mertonon](https://mertonon.com) is a new way to plan and budget for orgs. With Mertonon, you make a picture of your org as a neural network. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. Then, Mertonon itself will suggest changes to your budget based upon those judgements. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modern version for capitalist or noncapitalist use by ordinary folks.
+[Mertonon](https://mertonon.com) is a new way to plan and budget for organizations. With Mertonon, you make a picture of your org as a neural network. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. Then, Mertonon itself will suggest changes to your budget based upon those judgements. If you know about [Project Cybersyn / Synco](https://en.wikipedia.org/wiki/Project_Cybersyn), this is an attempted modern version for capitalist or noncapitalist use by ordinary folks.
 
 [Click here for setup info.](docs/setup.md) [Click here for usage info](docs/usage.md). Be advised that Mertonon is postprealpha software: there are material known and unknown issues and missing essential features.
 
 Some examples of things you could say if you had a Mertonon instance:
 
-- "There's the Moopy department and the Zoopy department, and we have found ourselves siloed badly. Zoopy people need to do things so Moopy people can become unblocked - Mertonon says we need to bury our ill will for the overall good of the company (or: Mertonon says we need to figure out a way to be less dependent upon one another). Will you do this?"
-- "We aren't really a cost center, even though we're evidently not a profit center - we're a hidden center, or an indirect profit center. Here it is, laid out on the Mertonon instance - we're integral to the working of the Loopzoop org, and they then deal with the Woopzoop people who then deal with sales. So you see how we're essential to the profit flow of the org here."
-- "Look, Part Meepmoop #22 really seems like some random minor doodad but the quality advantage we have for it is vital to our org's success and the whole department knows it - here it is on Mertonon - so cost-cutting is probably a bad idea. You'll probably make enemies of Cobb, Dobbs and Hobb specifically if you cut it hard without their consent - see here. Not easy to see at first glance, eh?"
+- "There's the Moopy department and the Zoopy department. We have found ourselves siloed badly. Zoopy people need to do things so Moopy people can become unblocked. Mertonon says we need to bury our ill will for the overall good of the company (or: Mertonon says we need to figure out a way to be less dependent upon one another). Will you do this?"
+- "We aren't really a cost center, even though we're evidently not a profit center. We're a hidden center, or an indirect profit center. Here it is, laid out on the Mertonon instance. We're integral to the working of the Loopzoop org, and they then deal with the Woopzoop people who then deal with sales. So you see how we're essential to the profit flow of the org here."
+- "Look, Part Meepmoop #22 really seems like some random minor doodad, but the quality advantage we have for it is vital to our org's success and the whole department knows it. Here it is on Mertonon. So cost-cutting is probably a bad idea. You'll probably make enemies of Cobb, Dobbs and Hobb specifically if you cut it hard without their consent - see here. Not easy to see at first glance, eh?"
 
 More things:
 

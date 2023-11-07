@@ -93,3 +93,4 @@ v0.10.commits - November 2 2023
 v0.11.commits - November 9 2023
 ---
 
+- Whack problem with the sidebar history not working after max history is bypassed

@@ -24,7 +24,7 @@
    [vblurbs/validation-popover state-path :name-blank "Journal Entry Name is blank"
     [fi/state-text-input state-path [param-key :name] "Journal Entry Name"]]
    [fi/state-text-input state-path [param-key :label] "Label"]
-   [vblurbs/validation-popover state-path :value-not-int-str "Value is not an integer"
+   [vblurbs/validation-popover state-path :value-not-int-str "Value is not a positive integer"
     [vblurbs/validation-popover state-path :value-blank "Value is blank"
      [fi/state-text-input state-path [param-key :value] "Value"]]]
    [sc/border-region
