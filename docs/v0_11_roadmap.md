@@ -7,8 +7,8 @@
 - [x] Gantt essay first draft
 - [x] Update setup docs - grade level, and revise (hey, it was fine)
 - [x] Update usage docs - grade level, and revise
-- [ ] Update usage docs - do the gifs again, but slowly. Give it a count of 4
 - [ ] Test for the stack push and pop
+- [ ] Update usage docs - do the gifs again, but slowly. Give it a count of 4
 - [ ] Propbit: Setup python repling
 - [ ] Propbit: Setup hypothesis
 - [ ] Propbit: Random gate gen (hypothesis)

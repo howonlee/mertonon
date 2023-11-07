@@ -17,3 +17,6 @@
             tu/many
             (prop/for-all [evt event-gen/gen-selection-event]
                           (dispatch evt))) :result))))
+
+(deftest test-stack-push
+  (is nil))
