@@ -1,6 +1,9 @@
 - [x] FE test - declare defeat, do karma tests only so far today
 
-- [ ] Gantt essay mertonon instance work - just do the weights
+- [x] Whack sidebar history bug
+
+- [x] Gantt essay mertonon instance work - just do the weights
+- [ ] Gantt essay mertonon instance - put some usage in, get the backprop stuff
 - [ ] Gantt essay first draft
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
