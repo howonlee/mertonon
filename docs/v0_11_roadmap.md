@@ -5,15 +5,18 @@
 - [x] Gantt essay mertonon instance work - just do the weights
 - [x] Gantt essay mertonon instance - put some usage in, get the backprop stuff
 - [x] Gantt essay first draft
-- [ ] Test for the stack push and pop
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
 - [ ] Update usage docs - grade level
+- [ ] Test for the stack push and pop
 - [ ] Propbit: Random gate gen (hypothesis)
 - [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 
 - [ ] Get the grad thing to say it's OK if the validations work
-- [ ] Gantt essay draft
+- [ ] Sharpen up the point about data structures being political
+- [ ] Screenshots for usage notes on essay
+- [ ] Finish the actual usage notes on the essay
+- [ ] Misc essay draft things
 - [ ] Propbit: Dual test property thing - sum vs. prod
 - [ ] Propbit: Get the single gates working again, piercing and not
 - [ ] Gantt essay second draft
