@@ -8,12 +8,14 @@
 - [x] Update setup docs - grade level, and revise (hey, it was fine)
 - [x] Update usage docs - grade level, and revise
 - [ ] Update usage docs - do the gifs again, but slowly. Give it a count of 4
-- [ ] Gantt essay - find more concretions. Concretion as to why gantt chart's political. Concretion as to white collar work. Concretion as to the deadline thing.
 - [ ] Test for the stack push and pop
+- [ ] Propbit: Setup python repling
+- [ ] Propbit: Setup hypothesis
 - [ ] Propbit: Random gate gen (hypothesis)
 - [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
 
-- [ ] Get the grad thing to say it's OK if the validations work
+- [ ] Gantt essay - find more concretions. Concretion as to why gantt chart's political. Concretion as to white collar work. Concretion as to the deadline thing. Start w/ a concretion.
+- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Sharpen up the point about data structures being political
 - [ ] Screenshots for usage notes on essay
 - [ ] Finish the actual usage notes on the essay
