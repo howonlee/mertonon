@@ -3,8 +3,10 @@
 - [x] Whack sidebar history bug
 
 - [x] Gantt essay mertonon instance work - just do the weights
-- [ ] Gantt essay mertonon instance - put some usage in, get the backprop stuff
+- [x] Gantt essay mertonon instance - put some usage in, get the backprop stuff
+- [ ] Get the grad thing to say it's OK if the validations work
 - [ ] Gantt essay first draft
+- [ ] Test for the stack push and pop
 - [ ] Update usage docs - do the gifs again, but slowly
 - [ ] Update setup docs - grade level
 - [ ] Update usage docs - grade level

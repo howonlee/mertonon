@@ -103,10 +103,10 @@
 
 (defn stack-push
   "Won't conj if the peek is the exact same, but will otherwise"
-  [path max-len coll]
+  [entry max-len coll]
   (let [coll      (vec coll)
-        is-same?  (= (peek coll) path)
-        res       (if is-same? coll (conj coll path))
+        is-same?  (= (peek coll) entry)
+        res       (if is-same? coll (conj coll entry))
         too-long? (> (count res) max-len)
         res       (if too-long?
                     (subvec res (- (count res) max-len) (count res))
