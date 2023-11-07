@@ -5,9 +5,10 @@
 - [x] Gantt essay mertonon instance work - just do the weights
 - [x] Gantt essay mertonon instance - put some usage in, get the backprop stuff
 - [x] Gantt essay first draft
-- [ ] Update usage docs - do the gifs again, but slowly
-- [ ] Update setup docs - grade level
-- [ ] Update usage docs - grade level
+- [x] Update setup docs - grade level, and revise (hey, it was fine)
+- [x] Update usage docs - grade level, and revise
+- [ ] Update usage docs - do the gifs again, but slowly. Give it a count of 4
+- [ ] Gantt essay - find more concretions. Concretion as to why gantt chart's political. Concretion as to white collar work. Concretion as to the deadline thing.
 - [ ] Test for the stack push and pop
 - [ ] Propbit: Random gate gen (hypothesis)
 - [ ] Propbit: Gate-within-a-cnot semantics (to be able to iterate or recurse)
