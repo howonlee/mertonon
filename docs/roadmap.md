@@ -26,6 +26,7 @@ Also look at small tasks roadmap
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing
 - RBAC FE
 - Full grad view (exec summary view) FE
+- Public instance
 - Cut pre-8x-beta, more sponsorships
 
 - Integration DB thinking

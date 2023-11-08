@@ -46,4 +46,4 @@ Contrast to how to do Gantt charts in software naively - this doesn't work becau
 
 We intend Mertonon instances to be places where you can store unseemly discussions of power and go back to work afterwards, if you're in the kind of culture where this sort of frank discussions of power and politics are unacceptable.
 
-We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates time to it.
+We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates my effort to it.
