@@ -8,8 +8,8 @@
 - [x] Update setup docs - grade level, and revise (hey, it was fine)
 - [x] Update usage docs - grade level, and revise
 
-- [ ] Gantt essay - find more concretions. Concretion as to why gantt chart's political. Concretion as to white collar work. Concretion as to the deadline thing. Start w/ a concretion.
-- [ ] Sharpen up the point about data structures being political
+- [x] Gantt essay - find more concretions. Concretion as to white collar work. Concretion as to the deadline thing. Start w/ a concretion.
+- [ ] Sharpen up the point about data structures being political, add concretion
 - [ ] Finish the actual usage notes on the essay
 - [ ] Misc essay draft things - call it a second draft now
 - [ ] Update usage docs - do sequences of screenshots
