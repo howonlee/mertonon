@@ -1,7 +1,7 @@
-Using Mertonon instead of Gantt Charts for Software Project Planning
+Using Mertonon instead of Gantt Charts for Project Planning
 ---
 
-There is a specific, grinding, bureaucratic doom that awaits many of us software-touchers. Here is the form of it: management sits you down and asks,
+There is a specific, grinding, bureaucratic doom that awaits many people who do things (individual contributors) in organizations. Here is the form of it: management sits you down and asks,
 
 "So what's your estimate for this feature?"
 
@@ -11,7 +11,9 @@ The doom is when they start to try to negotiate it down.
 
 "So... 7 weeks. Why couldn't it be 5?"
 
-The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort.
+Doom!
+
+The source of the doom is in mismatched expectations and worldviews, because management (management that survives) is a political animal in a way that forces the individual contributor to be. The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort. "Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality.
 
 Politics is at the core of the question of resource distribution in groups - it cannot be avoided and to avoid it is to fail at resource distribution. It can work so well that it becomes invisible, though - another failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Even if it isn't really talk for polite company. Therefore excuse us for talking about power frankly.
 
@@ -19,7 +21,7 @@ Mertonon is a new way to plan and budget for orgs, for any kind of budget. With 
 
 Gantt charts are [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies. Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. A topological sort gives an ordering of what to do, and summation of the topological sort with concurrent elements done concurrently gives an overall estimate of the task length.
 
-Like all other data structures, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work. This is why software folks hate them.
+Like all other data structures, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work.
 
 (If you need another example on how data structures can be _political_ in nature, consider the British person's complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view on resource allocation that queues represent).
 
@@ -29,7 +31,7 @@ White collar work is different because white collar workers are neither enslaved
 
 Therefore, even in formal structural planning of work, in white collar work, there must be political observance given to the voice of participants in the work - white collar work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
 
-This is particularly pronounced in software work because management often doesn't have observability in how to do software work at all, so developers often must be the whole arbiters of, or huge contributors on, how to do the work. Also with great influence on what work to do.
+This is particularly pronounced in highly technical work because management often doesn't have observability in how to do highly technical work at all, so workers often must be the whole arbiters of, or huge contributors on, how to do the work. Also with great influence on what work to do.
 
 This is an etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power, but built-in to Mertonon.
 
