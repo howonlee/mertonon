@@ -5,12 +5,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 Also look at small tasks roadmap
 
 - Prezzo
-- Auditing DB
-- Benford's law article
-- Auditing BE
 - Try again on FE tests
+- Auditing DB
+- Some other article
+- Auditing BE
 - Auditing FE
-- Write about how the norm layer op is cool and good
+- Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
