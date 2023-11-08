@@ -1,11 +1,11 @@
-Using Mertonon instead of Gantt Charts for Project Planning
+Using Mertonon instead of Gantt Charts for Project Planning and Estimation
 ---
 
 There is a specific, grinding, bureaucratic doom that awaits many people who do things (individual contributors) in organizations. Here is the form of it. Management sits you down and asks,
 
-"So what's your estimate for this feature?"
+"So what's your estimate for this task?"
 
-If you're a callow youth, you give your offhand take. If you're not, you give a grimly-considered prognosis or start hemming and hawing or actively resist. Either way, that's not the doom that comes for you.
+If you're a callow youth, you give your offhand take. If you're not, you give a grimly-considered prognosis or start hemming and hawing or try to wriggle out of it like a worm caught in a bird's mouth. Either way, that's not the doom that comes for you.
 
 "7 weeks."
 
