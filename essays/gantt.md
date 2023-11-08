@@ -1,5 +1,17 @@
-How to use Mertonon instead of Gantt Charts for Software Project Planning
+Using Mertonon instead of Gantt Charts for Software Project Planning
 ---
+
+There is a specific, grinding, bureaucratic doom that awaits many of us software-touchers. Here is the form of it: management sits you down and asks,
+
+"So what's your estimate for this feature?"
+
+If you're a callow youth, you give your offhand take. If you're not, you give a grimly-considered prognosis. Either way, that's not the doom that comes for you.
+
+The doom is when they start to try to negotiate it down.
+
+"So... 7 weeks. Why couldn't it be 5?"
+
+The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort.
 
 Politics is at the core of the question of resource distribution in groups - it cannot be avoided and to avoid it is to fail at resource distribution. It can work so well that it becomes invisible, though - another failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Even if it isn't really talk for polite company. Therefore excuse us for talking about power frankly.
 
