@@ -9,14 +9,14 @@
 - [x] Update usage docs - grade level, and revise
 
 - [ ] Test for the stack push and pop
-- [ ] Gantt essay - find more concretions. Concretion as to why gantt chart's political. Concretion as to white collar work. Concretion as to the deadline thing. Start w/ a concretion.
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
+- [ ] Gantt essay - find more concretions. Concretion as to why gantt chart's political. Concretion as to white collar work. Concretion as to the deadline thing. Start w/ a concretion.
 - [ ] Sharpen up the point about data structures being political
 - [ ] Finish the actual usage notes on the essay
+- [ ] Misc essay draft things - call it a second draft now
 - [ ] Update usage docs - do sequences of screenshots
 - [ ] Readme hero gif
 - [ ] Screenshots for usage notes on essay
-- [ ] Misc essay draft things - call it a second draft now
 
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Gantt essay grade level
