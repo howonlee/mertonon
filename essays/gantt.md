@@ -31,7 +31,7 @@ Like all other data structures, Gantt charts have a built-in opinion on what the
 
 The political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society.
 
-The world is different today, one hopes for the better. In modern work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
+The world is different today, one hopes for the better. In modern independent work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
 
 This is particularly pronounced in highly technical work because management often doesn't have observability in how to do highly technical work at all, so workers often must be the whole arbiters of, or huge contributors on, how to do the work. Also with great influence on what work to do.
 
