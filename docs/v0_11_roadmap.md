@@ -16,9 +16,6 @@
 - [ ] Update usage docs - do sequences of screenshots
 - [ ] Readme hero gif
 - [ ] Screenshots for usage notes on essay
-- [ ] Test for the stack push and pop
-- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
-- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Gantt essay grade level
 - [ ] Gantt essay final draft
 - [ ] Munge on website for gantt essay publication and blog page
