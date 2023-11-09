@@ -18,6 +18,7 @@
 - [ ] Screenshots for usage notes on essay
 - [ ] Gantt essay grade level
 - [ ] Gantt essay final draft
+- [ ] Ask Wayne about Gantt essay
 - [ ] Munge on website for gantt essay publication and blog page
 - [ ] Sponsor newsletters - 3 to start
 - [ ] Changelog
