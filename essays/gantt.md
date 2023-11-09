@@ -31,14 +31,11 @@ Gantt charts are time budgets based upon [directed acycle graph](https://en.wiki
 
 Like all other data structures, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a Gantt chart, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
 
-#######
-#######
-####### more critiqueing...
-#######
+This is not great news if you have a Gantt chart _dictated to you_. But there's no affordance within a Gantt chart for Gantt charts to _not_ be dictated to you, no handle to twiddle as an independent contributor. So the negotiations inherent in this relation are off to a bad start, for the seasoned hand, and does not even appear as an option for the greenhorn.
 
 (If you need another example on how data structures can be _political_ in nature, consider the British person's perennial complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view on resource allocation that queues represent, where there is a resource or pool of resources which are to be meted out to people in first-in first-out order).
 
-The political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society. (C. Rosenthal has [a monograph](https://www.amazon.com/Accounting-Slavery-Management-Caitlin-Rosenthal/dp/0674972090) on this.)
+That political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society. (C. Rosenthal has [a monograph](https://www.amazon.com/Accounting-Slavery-Management-Caitlin-Rosenthal/dp/0674972090) on this.)
 
 The world is different today, one hopes for the better. In modern independent work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
 
@@ -46,7 +43,7 @@ This is particularly pronounced in highly technical work because management ofte
 
 ## Mertonon
 
-This problem is political in nature, but it is also _data-structure-driven_ in nature, inasmuch as data structures encode political points of view on resource allocation. Therefore an attack on the problem might be giving people a new data structure to more directly do politics with. I have implemented such a thing and given it a server, UI and UX, under the Mertonon project.
+The doom that comes upon the independent contributor is political in nature, but it is also _data-structure-driven_ in nature, inasmuch as data structures encode political points of view on resource allocation. Therefore an attack on the problem might be giving people a new data structure to more directly do politics with. I have implemented such a thing and given it a server, UI and UX, under the Mertonon project.
 
 Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network, as a data structure. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective or apolitical as many Gantt chart estimates do. Also unlike Gantt charts, Mertonon itself will suggest changes to your budget based upon those judgements.
 
