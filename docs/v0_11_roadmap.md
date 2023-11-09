@@ -11,7 +11,7 @@
 - [x] Gantt essay - find more concretions. Concretion as to white collar work. Concretion as to the deadline thing. Start w/ a concretion.
 - [x] Misc essay draft things - call it a second draft now
 
-- [ ] Sharpen up the point about data structures being political, add concretion
+- [x] Sharpen up the point about data structures being political, add concretion
 - [ ] Finish the actual usage notes on the essay
 - [ ] Update usage docs - do sequences of screenshots
 - [ ] Readme hero gif

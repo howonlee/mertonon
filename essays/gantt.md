@@ -27,7 +27,7 @@ Domains, decisions and issues which are putatively apolitical are really indicat
 
 ###### be less technical about gantt charts
 
-Gantt charts are time budgets based upon [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies. Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. A topological sort gives an ordering of what to do, and summation of the topological sort with concurrent elements done concurrently gives an overall estimate of the task length.
+Gantt charts are time budgets based upon [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies. Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. Application of a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) algorithm gives an ordering of what to do, and summation of the topological sort with concurrent elements counted once only gives an overall estimate of the schedule length.
 
 Like all other data structures, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a Gantt chart, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
 
@@ -37,9 +37,11 @@ The political worldview inherent in the Gantt chart has a crisp source. It's fro
 
 The world is different today, one hopes for the better. In modern independent work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
 
-This is particularly pronounced in highly technical work because management often doesn't have observability in how to do highly technical work at all. Workers in that case often must be the whole arbiters of, or huge contributors on, how to do the work. They also get great influence in what work to do.
+This is particularly pronounced in highly technical work because management often doesn't have observability in how to do highly technical work at all. Workers in that case often must be the whole arbiters of, or huge contributors on, how to do the work. They also get great influence in what work to do. This is an etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power.
 
-This is an etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power, but built-in to Mertonon.
+## Mertonon
+
+This problem is political in nature, but it is also _data-structure-driven_ in nature, inasmuch as data structures encode political points of view on resource allocation. Therefore an attack on the problem might be giving people a new data structure to more directly do politics with. I have implemented such a thing and given it a server, UI and UX, under the Mertonon project.
 
 Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network, as a data structure. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective or apolitical as many Gantt chart estimates do. Also unlike Gantt charts, Mertonon itself will suggest changes to your budget based upon those judgements.
 
