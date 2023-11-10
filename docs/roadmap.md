@@ -4,6 +4,10 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Test for the stack push and pop
+- Get the grad sidebar to say it's OK if the validations work, currently its a noop
+- Benford's law for stacked modifiers - rimworld and paradox games lol
+- Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - Prezzo
 - Try again on FE tests
 - Auditing DB
