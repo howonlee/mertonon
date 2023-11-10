@@ -4,6 +4,25 @@
 - [ ] Screenshots for usage notes on essay
 - [ ] Gantt essay grade level
 - [ ] Gantt essay final draft
+
 - [ ] Ask Wayne about Gantt essay
 - [ ] Munge on website for gantt essay publication and blog page
 - [ ] Sponsor newsletters - 3 to start
+
+- [ ] Test for the stack push and pop
+- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
+- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
+
+- [ ] Benford's law for stacked modifiers - rimworld and paradox games lol
+- [ ] Auditing DDL stuff
+
+- [ ] Prezzo - mk 1., practice out loud timed
+
+- [ ] Try again on FE tests
+- [ ] Norm layer op impl in pytorch
+
+- [ ] Auditing BE endpoint thinking (just thinking)
+
+- [ ] Changelog
+- [ ] Poke around
+- [ ] Release
