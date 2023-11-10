@@ -13,7 +13,7 @@
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 
-- [ ] How much compute do you need for a planned economy?
+- [ ] Theory of value (part 1 of 4: value, inequality, class, engineering estimate)
 - [ ] Benford's law for stacked modifiers - rimworld and paradox games lol
 - [ ] Auditing DDL stuff
 
