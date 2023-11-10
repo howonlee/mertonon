@@ -19,7 +19,7 @@ The source of the doom is in mismatched expectations and worldviews, because man
 
 Politics is at the core of the question of resource distribution in groups - it cannot be avoided and to avoid it is to fail at resource distribution. "Bob is reliable, Cobb is less so - put Bob on it" is a political decision. "Let's allocate more money into this, we need these Beepboopers to be better" is a political decision. Just as "Why couldn't it be 5?" is a fundamentally political question.
 
-Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, I recognize that it really isn't talk for polite company but excuse me for talking about power and politics frankly.
+Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, we recognize that it really isn't talk for polite company but excuse me for talking about power and politics frankly.
 
 ## Gantt Charts
 
@@ -43,7 +43,7 @@ This is particularly pronounced in highly technical work because management ofte
 
 The doom that comes upon the independent contributor is political in nature, but it is also _data-structure-driven_ in nature, inasmuch as data structures encode political points of view on resource allocation. Therefore an attack on the problem might be giving people a new data structure to more directly do politics with.
 
-I have implemented such a thing and given it a server, UI and UX, and packaged it into a jar. It's called Mertonon.
+We have implemented such a thing and given it a server, UI and UX, and packaged it into a java jar. It's called Mertonon.
 
 Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network, as a data structure. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective or apolitical as many Gantt chart estimates do. Also unlike Gantt charts, Mertonon itself will suggest changes to your budget based upon those judgements.
 
