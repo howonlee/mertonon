@@ -19,7 +19,7 @@ The source of the doom is in mismatched expectations and worldviews, because man
 
 Politics is at the core of the question of resource distribution in groups - it cannot be avoided and to avoid it is to fail at resource distribution. "Bob is reliable, Cobb is less so - put Bob on it" is a political decision. "Let's allocate more money into this, we need these Beepboopers to be better" is a political decision. Just as "Why couldn't it be 5?" is a fundamentally political question.
 
-Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, we recognize that it really isn't talk for polite company but excuse me for talking about power and politics frankly.
+Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, we recognize that it really isn't talk for polite company but excuse us for talking about power and politics frankly.
 
 ## Gantt Charts
 
