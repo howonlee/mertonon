@@ -12,15 +12,6 @@
 - [x] Misc essay draft things - call it a second draft now
 
 - [x] Sharpen up the point about data structures being political, add concretion
-- [ ] Finish the actual usage notes on the essay
-- [ ] Update usage docs - do sequences of screenshots
-- [ ] Readme hero gif
-- [ ] Screenshots for usage notes on essay
-- [ ] Gantt essay grade level
-- [ ] Gantt essay final draft
-- [ ] Ask Wayne about Gantt essay
-- [ ] Munge on website for gantt essay publication and blog page
-- [ ] Sponsor newsletters - 3 to start
-- [ ] Changelog
-- [ ] Click around
-- [ ] Release
+- [x] Changelog
+- [x] Click around
+- [x] Release

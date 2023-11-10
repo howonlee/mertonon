@@ -1,0 +1,9 @@
+- [ ] Finish the actual usage notes on the essay
+- [ ] Update usage docs - do sequences of screenshots
+- [ ] Readme hero gif
+- [ ] Screenshots for usage notes on essay
+- [ ] Gantt essay grade level
+- [ ] Gantt essay final draft
+- [ ] Ask Wayne about Gantt essay
+- [ ] Munge on website for gantt essay publication and blog page
+- [ ] Sponsor newsletters - 3 to start
