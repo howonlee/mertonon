@@ -33,7 +33,7 @@ This is not great news if you have a Gantt chart _dictated to you_. But there's 
 
 (If you need another example on how data structures can be _political_ in nature, consider the British person's perennial complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view on resource allocation that queues represent, where there is a resource or pool of resources which are to be meted out to people in first-in first-out order).
 
-That political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society. (C. Rosenthal has [a monograph](https://www.amazon.com/Accounting-Slavery-Management-Caitlin-Rosenthal/dp/0674972090) on this.)
+That political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society. (C. Rosenthal has [a monograph](https://www.amazon.com/Accounting-Slavery-Management-Caitlin-Rosenthal/dp/0674972090) on this.) This is an unsettling fact, but it does explain the implicit power relations.
 
 The world is different today, one hopes for the better. In modern independent work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
 
