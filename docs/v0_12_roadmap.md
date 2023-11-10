@@ -13,6 +13,7 @@
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 
+- [ ] How much compute do you need for a planned economy?
 - [ ] Benford's law for stacked modifiers - rimworld and paradox games lol
 - [ ] Auditing DDL stuff
 
@@ -21,7 +22,7 @@
 - [ ] Try again on FE tests
 - [ ] Norm layer op impl in pytorch
 
-- [ ] Auditing BE endpoint thinking (just thinking)
+- [ ] Auditing BE endpoint thinking (just thinking and sketching)
 
 - [ ] Changelog
 - [ ] Poke around
