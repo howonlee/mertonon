@@ -1,4 +1,4 @@
-Using Mertonon instead of Gantt charts for project planning and estimation - Why and How
+The doom lurking in Gantt charts - with alternative
 ---
 
 ### lamo ai pic of gothic ass pictures or like press gangs
@@ -16,8 +16,6 @@ If you're a callow youth, you give your offhand take. If you're not, you give a 
 Doom!
 
 The source of the doom is in mismatched expectations and worldviews, because management (management that survives) is a political animal in a way that forces the individual contributor to be. The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort. "Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality.
-
-Politics is at the core of the question of resource distribution in groups - it cannot be avoided and to avoid it is to fail at resource distribution. "Bob is reliable, Cobb is less so - put Bob on it" is a political decision. "Let's allocate more money into this, we need these Beepboopers to be better" is a political decision. Just as "Why couldn't it be 5?" is a fundamentally political question.
 
 Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, we recognize that it really isn't talk for polite company but excuse us for talking about power and politics frankly.
 
@@ -63,7 +61,9 @@ Mertonon is a new way to plan and budget for orgs, for any kind of budget. With 
 
 Contrast to how to do Gantt charts in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
 
-We intend Mertonon instances to be places where you can store unseemly discussions of power and go back to work afterwards, if you're in the kind of culture where this sort of frank discussions of power and politics are unacceptable.
+## Practicalities and notes
+
+We intend Mertonon instances to be places where you can store unseemly discussions of power and go back to work afterwards, if you're in the kind of culture where this sort of frank discussions of power and politics are unacceptable. Or it could not be, if you're not that kind of organizational culture.
 
 Often, Gantt charts are for external stakeholders of some kind, as other budgets are. But they're not actually statements about putative base reality, so sharing partial Mertonon political pictures should be as mollifying.
 
