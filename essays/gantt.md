@@ -61,12 +61,16 @@ Mertonon is a new way to plan and budget for orgs, for any kind of budget. With 
 
 Contrast to how to do Gantt charts in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
 
-## Practicalities and notes
+## Q&A
+
+### But it doesn't really seem compatible with our culture of not talking about this sort of thing.
 
 We intend Mertonon instances to be places where you can store unseemly discussions of power and go back to work afterwards, if you're in the kind of culture where this sort of frank discussions of power and politics are unacceptable. Or it could not be, if you're not that kind of organizational culture.
 
+### What are we going to talk about to the external stakeholders?
+
 Often, Gantt charts are for external stakeholders of some kind, as other budgets are. But they're not actually statements about putative base reality, so sharing partial Mertonon political pictures should be as mollifying.
 
-### what happens for when things are bad faith
+### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
 We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it.
