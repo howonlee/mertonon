@@ -15,7 +15,9 @@ If you're a callow youth, you give your offhand take. If you're not, you give a 
 
 Doom!
 
-The source of the doom is in mismatched expectations and worldviews, because management (management that survives) is a political animal in a way that forces the individual contributor to be. The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort. "Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality.
+The source of the doom is in mismatched expectations and worldviews. Management (management that survives) is a political animal in a way that forces the individual contributor to play along politically.
+
+The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort. "Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality. But unless your organization is ruled by independent contributors with an iron fist like id software in its glory days, you don't have anything to fit in the political vacuum that not having estimates will create.
 
 Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, we recognize that it really isn't talk for polite company but excuse us for talking about power and politics frankly.
 
@@ -39,7 +41,7 @@ This is particularly pronounced in highly technical work because management ofte
 
 ## Mertonon
 
-The doom that comes upon the independent contributor is political in nature, but it is also _data-structure-driven_ in nature, inasmuch as data structures encode political points of view on resource allocation. Therefore an attack on the problem might be giving people a new data structure to more directly do politics with.
+The doom that comes upon the independent contributor is political in nature, but it is also _data-structure-driven_ in nature, inasmuch as data structures encode political points of view on resource allocation. Therefore an attack on the problem might be giving people a new data structure to more directly do politics with. This also attacks the problem of not doing estimates creating a political vacuum.
 
 We have implemented such a thing and given it a server, UI and UX, and packaged it into a java jar. It's called Mertonon.
 
