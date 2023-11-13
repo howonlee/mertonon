@@ -47,19 +47,23 @@ We have implemented such a thing and given it a server, UI and UX, and packaged 
 
 Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network, as a data structure. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective or apolitical as many Gantt chart estimates do. Also unlike Gantt charts, Mertonon itself will suggest changes to your budget based upon those judgements.
 
-######
-###### salesmanship for mertonon
-######
-######
+Here's a worked example. I'm working on role-based access control for Mertonon itself, so stakeholders can have limited read access to Mertonon instances, people can be assigned to responsibility centers and not have control over other centers, and so on.
 
-- Example: RBAC.
-- Mertonon will tell you where to move towards the allocations. The original purported purpose of Gantt charts is to do this indirectly - to allocate the resources from the estimate. Instead of giving the estimate and allocating from there, Mertonon suggests the allocations directly.
-- What's a cost object in this situation? They're the individual tasks.
-- What's an entry in this situation? The recordings of peeps actually expending effort on the tasks. Relative effort, more than hours - Mertonon will normalize.
-- Weights? These are the dependencies peeps determine in the tasks, so this is the alternative to the Gantt DAG ordering. Importantly, they're also fully intended to be political indications of resource allocation.
-- The difference is in the greater political mutability of Mertonon instances.
-- When the weights mutate as they will because Mertonon will suggest new weights, these will indicate the structures of power and of dependency actually within the group of peeps doing the task
-- This is what is meant by Mertonon giving political observance given to the voice of participants in the work
+#### picture
+
+The cost nodes in this situation correspond to the domains that you're investing time in. If you need a task orientated point of view you put the tasks in the domains. If you don't, you just say that you worked upon cost nodes without explicit tasking and assign entries saying that. Relative effort - you can think of it as hours or percentages, Mertonon will normalize for you. A cost node is a long-living entity, and can also correspond to people, which is why we call them cost nodes instead of cost objects.
+
+#### picture
+
+Cost nodes are grouped together into things that look like functional responsibility centers, which are related to each other by sets of so-called weights. These are the dependencies folks determine in the tasks, so this is the weighted alternative to the Gantt DAG ordering. Importantly, they're also fully intended to be political indications of resource allocation.
+
+#### picture
+
+Mertonon will tell you where to move towards the allocations. The original purported purpose of Gantt charts is to do this indirectly - to allocate the resources from the estimate. Instead of giving the estimate and allocating from there, Mertonon suggests the allocations directly. The difference is in the greater political mutability of Mertonon instances.
+
+#### picture
+
+When the weights mutate as they will because Mertonon will suggest new weights, these will indicate the changes that Mertonon suggests in the structures of power and of dependency actually within the group of peeps doing the task. This is what is meant by Mertonon giving political observance given to the voice of participants in the work
 
 Contrast to how to do Gantt charts in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
 
