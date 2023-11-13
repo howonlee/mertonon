@@ -4,9 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Prezzo
+- Try again on FE tests
 - Auditing BE
 - Auditing FE
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
+- Value theory essay
 - Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
