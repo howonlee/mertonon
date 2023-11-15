@@ -7,7 +7,9 @@ There is a concrete, grinding, bureaucratic doom that awaits many people who do 
 
 "So what's your estimate for this task?"
 
-If you're a callow youth, you give your offhand take. If you're not, you give a grimly-considered prognosis or start hemming and hawing or try to wriggle out of it like a worm caught in a bird's mouth. Either way, that's not the doom that comes for you.
+If you're a callow youth, you give your offhand take. If you're not, you give a grimly-considered prognosis or start hemming and hawing or try to wriggle out of it like a worm caught in a bird's mouth.
+
+Either way, that's not the doom that comes for you.
 
 "7 weeks."
 
@@ -15,29 +17,51 @@ If you're a callow youth, you give your offhand take. If you're not, you give a 
 
 Doom!
 
-The source of the doom is in mismatched expectations and worldviews. Management (management that survives) is a political animal in a way that forces the individual contributor to play along politically.
+The source of the doom is in mismatched expectations and worldviews.
 
-The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort. "Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality. But unless your organization is ruled by independent contributors with an iron fist, you don't have anything to fit in the political vacuum that not having estimates will create.
+Management (management that survives) is a political animal in a way that forces the individual contributor to play along politically.
 
-Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, we recognize that it really isn't talk for polite company but excuse us for talking about power and politics frankly.
+The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort.
+
+"Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality. But unless your organization is ruled by independent contributors with an iron fist, you don't have anything to fit in the political vacuum that not having estimates will create.
+
+Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible.
+
+But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them.
+
+Therefore, we recognize that it really isn't talk for polite company but excuse us for talking about power and politics frankly.
 
 ## Gantt Charts
 
 ## gantt chart picture
 
-Gantt charts are time budgets based upon a data structure. They are [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies. Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. Application of a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) algorithm gives an ordering of what to do, and summation of the topological sort with concurrent elements counted once only gives an overall estimate of the schedule length.
+Gantt charts are time budgets based upon a data structure. They are [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies.
 
-Like all other data structures that represent allocations, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a Gantt chart, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
+Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. Application of a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) algorithm gives an ordering of what to do, and summation of the topological sort with concurrent elements counted once only gives an overall estimate of the schedule length.
 
-This is not great news if you have a Gantt chart _dictated to you_. But there's no affordance within a Gantt chart for Gantt charts to _not_ be dictated to you, no handle to twiddle as an independent contributor. So the negotiations inherent in this relation are off to a bad start, for the seasoned hand, and does not even occurr to the beginner.
+Like all other data structures that represent allocations, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage.
+
+Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a Gantt chart, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
+
+The topological sort of a Gantt chart's ordering of things to do is also ambivalent: a DAG is what is called a partial ordering, where some groups of tasks can be ambivalent in ordering to one another, not a total one, where every single task has a linear ordering with respect to another. To create a linear, total ordering from a partial one is called linearization.
+
+This is almost without exception done by folks with power: the read-out from the Gantt chart, the linear sequence of tasks, is determined by folks with the power.
+
+This is not great news if you have a Gantt chart _dictated to you_. But there's no affordance within a Gantt chart for Gantt charts to _not_ be dictated to you, no handle to twiddle as an independent contributor.
+
+So the negotiations inherent in this relation are off to a bad start, for the seasoned hand, and does not even occurr to the beginner.
 
 (If you need another example on how data structures can be _political_ in nature, consider the British person's perennial complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view on resource allocation that queues represent, where there is a resource or pool of resources which are to be meted out to people in first-in first-out order).
 
-That political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society. (C. Rosenthal has [a monograph](https://www.amazon.com/Accounting-Slavery-Management-Caitlin-Rosenthal/dp/0674972090) on this.) This is an unsettling fact, but it does explain the implicit power relations and the lack of wriggle-room in the definition of what a task is.
+That political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society. (C. Rosenthal has [a monograph](https://www.amazon.com/Accounting-Slavery-Management-Caitlin-Rosenthal/dp/0674972090) on this.)
+
+This is an unsettling fact, but it does explain the implicit power relations and the lack of wriggle-room in the definition of what a task is.
 
 The world is different today, one hopes for the better. In modern independent work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
 
-This is particularly pronounced in highly technical work because management often doesn't have observability in how to do highly technical work at all. Workers in that case often must be the whole arbiters of, or huge contributors on, how to do the work. They also get great influence in what work to do. This is an etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power.
+This is particularly pronounced in highly technical work because management often doesn't have observability in how to do highly technical work at all.
+
+Workers in that case often must be the whole arbiters of, or huge contributors on, how to do the work. They also get great influence in what work to do. This is an anthropologically-etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power.
 
 ## Mertonon
 
