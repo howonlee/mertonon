@@ -25,9 +25,9 @@ Domains, decisions and issues which are putatively apolitical are really indicat
 
 ## gantt chart picture
 
-Gantt charts are time budgets based upon [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies. Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. Application of a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) algorithm gives an ordering of what to do, and summation of the topological sort with concurrent elements counted once only gives an overall estimate of the schedule length.
+Gantt charts are time budgets based upon a data structure. They are [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies. Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. Application of a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) algorithm gives an ordering of what to do, and summation of the topological sort with concurrent elements counted once only gives an overall estimate of the schedule length.
 
-Like all other data structures for allocation, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a Gantt chart, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
+Like all other data structures that represent allocations, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage. Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a Gantt chart, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
 
 This is not great news if you have a Gantt chart _dictated to you_. But there's no affordance within a Gantt chart for Gantt charts to _not_ be dictated to you, no handle to twiddle as an independent contributor. So the negotiations inherent in this relation are off to a bad start, for the seasoned hand, and does not even occurr to the beginner.
 
@@ -55,6 +55,8 @@ The things and/or people that/who you're investing in are called cost nodes in M
 
 If you want to keep that task-oriented point of view, you create entries corresponding to the tasks and apply the entries to the cost nodes. If you don't, you just say that you worked upon cost nodes without explicit tasking. It's all the same to Mertonon, because Mertonon processes with regards to relative effort.
 
+#### picture
+
 Cost nodes are grouped together into layers that look like functional responsibility centers, which are related to each other by sets of so-called weights. These are the dependencies folks determine in the tasks, so this is the weighted alternative to the Gantt DAG ordering. Importantly, they're also fully intended to be political indications of resource allocation. Here are the layers, because this is the internal political considerations for an organization of one:
 
 #### picture
@@ -63,7 +65,9 @@ Mertonon will tell you where to move towards the allocations. The original purpo
 
 #### picture
 
-When the weights mutate as they will because Mertonon will suggest new weights, these will indicate the changes that Mertonon suggests in the structures of power and of dependency actually within the group of peeps doing the task. This is what is meant by Mertonon giving political observance given to the voice of participants in the work
+When the weights mutate as they will because Mertonon will suggest new weights, these will indicate the changes that Mertonon suggests in the structures of power and of dependency actually within the group of peeps doing the task. This is what is meant by Mertonon giving political observance given to the voice of participants in the work.
+
+#### picture
 
 Contrast to how to do Gantt charts in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
 
