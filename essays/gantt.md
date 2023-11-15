@@ -65,9 +65,11 @@ Workers in that case often must be the whole arbiters of, or huge contributors o
 
 ## Mertonon
 
-The doom that comes upon the independent contributor is political in nature, but it is also _data-structure-driven_ in nature, inasmuch as data structures encode political points of view on resource allocation. Therefore an attack on the problem might be giving people a new data structure to more directly do politics with. This also attacks the problem of not doing estimates creating a political vacuum.
+The doom that comes upon the independent contributor is political in nature, but it is also _data-structure-driven_. Data structures encode political points of view on resource allocation, and this specific data structure is not fit for purpose in such a case as the modern individual contributor doing modern work.
 
-We have implemented such a thing and given it a server, UI and UX, and packaged it into a java jar. It's called Mertonon.
+Therefore an attack on the problem might be giving people a new data structure to more directly do politics with. This also attacks the problem of _not doing estimates_ creating a political vacuum that gets filled with either chaos or the same old thing again.
+
+We have implemented such a data structure and given it a server, UI and UX, and packaged it into a java jar. It's called Mertonon.
 
 Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network, as a data structure. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective or apolitical as many Gantt chart estimates do. Also unlike Gantt charts, Mertonon itself will suggest changes to your budget based upon those judgements.
 
