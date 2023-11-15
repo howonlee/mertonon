@@ -17,7 +17,7 @@ Doom!
 
 The source of the doom is in mismatched expectations and worldviews. Management (management that survives) is a political animal in a way that forces the individual contributor to play along politically.
 
-The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort. "Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality. But unless your organization is ruled by independent contributors with an iron fist like id software in its glory days, you don't have anything to fit in the political vacuum that not having estimates will create.
+The mistake is to have the estimate at all, when the quantity that is wanted is a political judgement on effort. "Why couldn't it be 5?" is an attempt at power politics, not a statement about putative base reality. But unless your organization is ruled by independent contributors with an iron fist, you don't have anything to fit in the political vacuum that not having estimates will create.
 
 Domains, decisions and issues which are putatively apolitical are really indicative of politics working so well that it becomes invisible. But to keep politics always invisible is a failure and mistake. To never talk about power is to encode structures of resource allocation without ever being able to revise them. Therefore, we recognize that it really isn't talk for polite company but excuse us for talking about power and politics frankly.
 
@@ -49,13 +49,13 @@ Mertonon is a new way to plan and budget for orgs, for any kind of budget. With 
 
 Here's a worked example. I'm working on role-based access control for Mertonon itself, so stakeholders can have limited read access to Mertonon instances, people can be assigned to responsibility centers and not have control over other centers, and so on.
 
-#### picture
-
-The cost nodes in this situation correspond to the domains that you're investing time in. If you need a task orientated point of view you put the tasks in the domains. If you don't, you just say that you worked upon cost nodes without explicit tasking and assign entries saying that. Relative effort - you can think of it as hours or percentages, Mertonon will normalize for you. A cost node is a long-living entity, and can also correspond to people, which is why we call them cost nodes instead of cost objects.
+The things and/or people that/who you're investing in are called cost nodes in Mertonon. It's OK if they're vague or highly specific. With regards to replacing a Gantt chart, those are the categories of tasks being invested in. Here are the things for one specific layer, for example:
 
 #### picture
 
-Cost nodes are grouped together into things that look like functional responsibility centers, which are related to each other by sets of so-called weights. These are the dependencies folks determine in the tasks, so this is the weighted alternative to the Gantt DAG ordering. Importantly, they're also fully intended to be political indications of resource allocation.
+If you want to keep that task-oriented point of view, you create entries corresponding to the tasks and apply the entries to the cost nodes. If you don't, you just say that you worked upon cost nodes without explicit tasking. It's all the same to Mertonon, because Mertonon processes with regards to relative effort.
+
+Cost nodes are grouped together into layers that look like functional responsibility centers, which are related to each other by sets of so-called weights. These are the dependencies folks determine in the tasks, so this is the weighted alternative to the Gantt DAG ordering. Importantly, they're also fully intended to be political indications of resource allocation. Here are the layers, because this is the internal political considerations for an organization of one:
 
 #### picture
 
