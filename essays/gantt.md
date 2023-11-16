@@ -1,4 +1,4 @@
-The doom lurking in Gantt charts - with alternative
+The doom lurking in schedules - with alternative
 ---
 
 ### lamo ai pic of gothic ass pictures or like press gangs
@@ -31,37 +31,23 @@ But to keep politics always invisible is a failure and mistake. To never talk ab
 
 Therefore, we recognize that it really isn't talk for polite company but excuse us for talking about power and politics frankly.
 
-## Gantt Charts
+# Schedules
 
-## gantt chart picture
+Like all other data structures that represent allocations, schedules have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage.
 
-Gantt charts are time budgets based upon a data structure. They are [directed acycle graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)-structured schedules, where the arrows in the network graph model dependencies.
+Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a schedule, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
 
-Each node in a Gantt chart (usually represnted in Gantt chart software as some kind of rectangle) is a task with estimate, the edges connecting the nodes are dependencies. Application of a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) algorithm gives an ordering of what to do, and summation of the topological sort with concurrent elements counted once only gives an overall estimate of the schedule length.
-
-Like all other data structures that represent allocations, Gantt charts have a built-in opinion on what the resources in question _are_, and how they should be allocated for best usage.
-
-Therefore they are _political_ tools, with an opinion on what kinds of computation and which kinds of resources are being allocated. They encode a structural point of view on power which is suited to industrial work: A task, to a Gantt chart, is well-defined, and doesn't require any political power to carry out, and isn't entangled in a web of credit allocation - the web is a task for other people, the independent contributor just executes.
-
-The topological sort of a Gantt chart's ordering of things to do is also ambivalent: a DAG is what is called a partial ordering, where some groups of tasks can be ambivalent in ordering to one another, not a total one, where every single task has a linear ordering with respect to another. To create a linear, total ordering from a partial one is called linearization.
-
-This is almost without exception done by folks with power: the read-out from the Gantt chart, the linear sequence of tasks, is determined by folks with the power.
-
-This is not great news if you have a Gantt chart _dictated to you_. But there's no affordance within a Gantt chart for Gantt charts to _not_ be dictated to you, no handle to twiddle as an independent contributor.
+This is not great news if you have a schedule _dictated to you_. But there's no affordance within a schedule for timings to _not_ be dictated to you, no handle to twiddle as an independent contributor.
 
 So the negotiations inherent in this relation are off to a bad start, for the seasoned hand, and does not even occurr to the beginner.
 
 (If you need another example on how data structures can be _political_ in nature, consider the British person's perennial complaint about how foreigners _cannot queue worth a damn_ - because the foreigners don't respect the point of view on resource allocation that queues represent, where there is a resource or pool of resources which are to be meted out to people in first-in first-out order).
 
-That political worldview inherent in the Gantt chart has a crisp source. It's from H. Gantt creating them them to organize industrial plants, in imitation of the organization of his father V. Gantt's slave plantation, although to his credit H. Gantt at least disavowed slavery as a way to organize society. (C. Rosenthal has [a monograph](https://www.amazon.com/Accounting-Slavery-Management-Caitlin-Rosenthal/dp/0674972090) on this.)
-
-This is an unsettling fact, but it does explain the implicit power relations and the lack of wriggle-room in the definition of what a task is.
-
-The world is different today, one hopes for the better. In modern independent work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
+In modern independent work, there must be political observance given to the voice of participants in the work - modern work is differentiated in that the individual worker also participates in deciding what work to do and how to do it.
 
 This is particularly pronounced in highly technical work because management often doesn't have observability in how to do highly technical work at all.
 
-Workers in that case often must be the whole arbiters of, or huge contributors on, how to do the work. They also get great influence in what work to do. This is an anthropologically-etic factor, a factor from the external point of view, in the Gantt chart, because of its roots in tasking of individuals without individual power.
+Workers in that case often must be the whole arbiters of, or huge contributors on, how to do the work. They also get great influence in what work to do. This is an anthropologically-etic factor, a factor from the external point of view, in the schedule, because of its roots in tasking of individuals without individual power.
 
 ## Mertonon
 
@@ -71,11 +57,11 @@ Therefore an attack on the problem might be giving people a new data structure t
 
 We have implemented such a data structure and given it a server, UI and UX, and packaged it into a java jar. It's called Mertonon.
 
-Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network, as a data structure. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective or apolitical as many Gantt chart estimates do. Also unlike Gantt charts, Mertonon itself will suggest changes to your budget based upon those judgements.
+Mertonon is a new way to plan and budget for orgs, for any kind of budget. With Mertonon, you make a picture of your org as a neural network, as a data structure. You do this by going on Mertonon and linking together local, political, human judgements of impact with respect to KPI's. These don't pretend to be objective or apolitical as many estimates do. Also unlike schedules, Mertonon itself will suggest changes to your budget based upon those judgements.
 
 Here's a worked example. I'm working on role-based access control for Mertonon itself, so stakeholders can have limited read access to Mertonon instances, people can be assigned to responsibility centers and not have control over other centers, and so on.
 
-The things and/or people that/who you're investing in are called cost nodes in Mertonon. It's OK if they're vague or highly specific. With regards to replacing a Gantt chart, those are the categories of tasks being invested in. Here are the things for one specific layer, for example:
+The things and/or people that/who you're investing in are called cost nodes in Mertonon. It's OK if they're vague or highly specific. With regards to replacing a schedule, those are the categories of tasks being invested in. Here are the things for one specific layer, for example:
 
 #### picture
 
@@ -83,11 +69,11 @@ If you want to keep that task-oriented point of view, you create entries corresp
 
 #### picture
 
-Cost nodes are grouped together into layers that look like functional responsibility centers, which are related to each other by sets of so-called weights. These are the dependencies folks determine in the tasks, so this is the weighted alternative to the Gantt DAG ordering. Importantly, they're also fully intended to be political indications of resource allocation. Here are the layers, because this is the internal political considerations for an organization of one:
+Cost nodes are grouped together into layers that look like functional responsibility centers, which are related to each other by sets of so-called weights. These are the dependencies folks determine in the tasks, so this is the weighted alternative to the schedule ordering. Importantly, they're also fully intended to be political indications of resource allocation. Here are the layers, because this is the internal political considerations for an organization of one:
 
 #### picture
 
-Mertonon will tell you where to move towards the allocations. The original purported purpose of Gantt charts is to do this indirectly - to allocate the resources from the estimate. Instead of giving the estimate and allocating from there, Mertonon suggests the allocations directly. The difference is in the greater political mutability of Mertonon instances.
+Mertonon will tell you where to move towards the allocations. The original purported purpose of schedules is to do this indirectly - to allocate the resources from the estimate. Instead of giving the estimate and allocating from there, Mertonon suggests the allocations directly. The difference is in the greater political mutability of Mertonon instances.
 
 #### picture
 
@@ -95,7 +81,7 @@ When the weights mutate as they will because Mertonon will suggest new weights, 
 
 #### picture
 
-Contrast to how to do Gantt charts in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
+Contrast to how to do schedules in software naively - this doesn't work because it's an infliction of power on people who have serious power to resist and who can benefit the organization by resisting foolish injunctions.
 
 ## Q&A
 
@@ -105,7 +91,7 @@ We intend Mertonon instances to be places where you can store unseemly discussio
 
 ### What are we going to talk about to the external stakeholders?
 
-Often, Gantt charts are for external stakeholders of some kind, as other budgets are. But they're not actually statements about putative base reality, so sharing partial Mertonon political pictures should be as mollifying.
+Often, schedules are for external stakeholders of some kind, as other budgets are. But they're not actually statements about putative base reality, so sharing partial Mertonon political pictures should be as mollifying.
 
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
