@@ -1,9 +1,9 @@
-Estimates and Doom - and our alternative to estimates
+The Doom in Estimates - and our alternative
 ---
 
 ### lamo ai pic of gothic ass pictures or like press gangs
 
-There is a grinding political doom that awaits many people who do things (individual contributors) in organizations. Here is the form of it. Management sits you down and asks,
+There is a grinding political doom that awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
 
 "So what's your estimate for this task?"
 
@@ -15,11 +15,31 @@ Either way, that's not the doom that comes for you.
 
 "So... 7 weeks. Why couldn't it be 5?"
 
-Doom! Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how much actual data you have, little or lots. Doom that comes for you because of a fundamental worldview mismatch.
+Doom!
+
+Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how much actual data you have, little or lots. Doom that comes for you because of a fundamental worldview mismatch between the manager and the IC.
 
 The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so just throwing their weight around a bit can lead to better results for them and theirs.
 
-The individual contributor, very often, has budgets both monetary and temporal forced upon them, but monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget, but this is often not even allowed, especially cutting scope, and cutting scope is itself subject to negotiations.
+The individual contributor, very often, has budgets both monetary and temporal forced upon them. Monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget, but this is often not even allowed, especially cutting scope, and cutting scope is itself subject to negotiations.
+
+There is another bad surprise: temporal budgets have significant internal structure. If a widget costs $10, to buy two widgets costs $20. To buy 10^5 widgets costs less per widget, but that cost curve is known and can also be quoted by the widget manufacturer. Not so for time budgets.
+
+The fizzleblorp handler has to be extended so that it can handle wizzleblorps. That task is not a widget to buy: it's a compounded quantity. Does the new wizzleblorp solution conflict with the previous hammlebloop solution? What about the Blorp Ray emissions? We have a deadlock over whether we should go with the Moople Standard or the Woople standard that some of the senior IC's have been fighting about for two years. And we have to deal with the Tootle-Noodle Phenomenon.
+
+This essay is of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their vision as innovation and uncertainty.
+
+Mertonon is a budgeting tool for quantities with politics, internal structure and intermediate structure, which we think can substantively replace the organizational purpose of estimates. It's intended for organizational budgeting first. Some autocracies led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will. Mertonon is for people without such ideological hardening.
+
+### 
+
+### Put in a usage thing here but only 3 pics.
+
+### stakeholder things: show Mertonon to stakeholders
+
+### go-or-no-go-decisions: set up a Mertonon instance with everyone's input and stare at it hard.
+
+There is often a moral-religious element to estimation, an enduring faith that the project is actually going to get done.
 
 ## Q&A
 
