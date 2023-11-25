@@ -47,6 +47,7 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - Sidebar history forwards
 - RG for computer scientists (towards RG for salespeeps)
 - License design and server
+- Mertonon voting method (somehow)
 - Bookmarks BE
 - Bookmarks FE
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
