@@ -24,6 +24,8 @@
 ;; 4. (shadow/repl :frontend)
 ;; 5. Should be able to repl now
 
+;; TODO: Make the above less bullcrap
+
 (defn -main
  "Launch Mertonon with args"
   [& [cmd & args]]

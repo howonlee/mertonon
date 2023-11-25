@@ -4,17 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Test for the stack push and pop
-- Get the grad sidebar to say it's OK if the validations work, currently its a noop
-- Benford's law for stacked modifiers - rimworld and paradox games lol
-- Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - Prezzo
 - Try again on FE tests
-- Auditing DB
-- Some other article
 - Auditing BE
 - Auditing FE
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
+- Value theory essay
 - Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
@@ -42,6 +37,8 @@ Also look at small tasks roadmap
 - Sorting / Pagination FE
 - Searching, sorting and paginating on matrices - other sorts of things dont have to care but we do have to care. The two-search method
 - Cut pre-7x-beta, more sponsorships
+
+- I would like first real release to have autoupdater
 
 # General Future Roadmap (not in any real order)
 
