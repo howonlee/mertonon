@@ -2,6 +2,7 @@ The Doom in Estimates - and our alternative
 ---
 
 ### lamo ai pic of gothic ass pictures or like press gangs
+### connective tissue
 
 There is a grinding political doom that awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
 
@@ -27,19 +28,21 @@ There is another bad surprise: temporal budgets have significant internal struct
 
 The fizzleblorp handler has to be extended so that it can handle wizzleblorps. That task is not a widget to buy: it's a compounded quantity. Does the new wizzleblorp solution conflict with the previous hammlebloop solution? What about the Blorp Ray emissions? We have a deadlock over whether we should go with the Moople Standard or the Woople standard that some of the senior IC's have been fighting about for two years. And we have to deal with the Tootle-Noodle Phenomenon.
 
-This essay is of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their vision as innovation and uncertainty.
+This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their vision as innovation and uncertainty.
 
 Mertonon is a budgeting tool for quantities with politics, internal structure and intermediate structure, which we think can substantively replace the organizational purpose of estimates. It's intended for organizational budgeting first. Some autocracies led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will. Mertonon is for people without such ideological hardening.
 
 ### 
 
-### Put in a usage thing here but only 3 pics.
+### Put in a usage thing here but only 3 pics. I think real call to action, basically
 
-### stakeholder things: show Mertonon to stakeholders
+### stakeholder things: show Mertonon instance to stakeholders.
 
 ### go-or-no-go-decisions: set up a Mertonon instance with everyone's input and stare at it hard.
 
 There is often a moral-religious element to estimation, an enduring faith that the project is actually going to get done.
+
+### cta here
 
 ## Q&A
 
@@ -47,10 +50,8 @@ There is often a moral-religious element to estimation, an enduring faith that t
 
 Did it? It's been 22 years. Agile is old enough to drink. And yet individual contributors still get asked for estimates daily. Agile is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
 
-### But it doesn't really seem compatible with our culture of not talking about this sort of thing.
-
-We intend Mertonon instances to be places where you can store unseemly discussions of power and go back to work afterwards, if you're in the kind of culture where this sort of frank discussions of power and politics are unacceptable. Or it could not be, if you're not that kind of organizational culture.
-
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
 We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it.
+
+### cta here
