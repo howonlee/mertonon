@@ -48,9 +48,13 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "OK. What's that look like for the Mertonon adjustment?"
 
-### "Mertonon is saying to reallocate effort toward UX for permissions but not the API for permissions. It wasn't surprised about the A--- Corp liking it." - whatever Mertonon actually says lol
+### "Mertonon is saying to reallocate effort toward UX for permissions but not the API for permissions. It's saying that the weights for permissions should be adjusted like that. It wasn't surprised about the A--- Corp liking it." - whatever Mertonon actually says lol
+### pictures of the reallocation thing
+### pictures of the weight
 
-### "Sounds good. Let's get Hobbs to go add this permissions task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
+### "Sounds good. Let's get Hobbs to go work this permissions task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
+### pictures of that entry
+### pictures of that weight
 
 "Done. I'll go tell Hobbs."
 
