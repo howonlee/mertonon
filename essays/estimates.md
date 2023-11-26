@@ -40,29 +40,19 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 Some autocratic organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury. Mertonon is for people and organizations who may not have such grim ideological hardening.
 
-### Here is an example Mertonon budget, talking about political resources for RBAC. Do this instead of estimates because they fully admit negotiation but also conform to reality by having internal structure. DE is related to FE only, not directly to the end user satisfaction, that sort of thing.
-
-### Inside are cost nodes, which correspond to cost objects or people, which are specific tasks. 
-
-### Weights
-
-### Loss
-
-### go-or-no-go-decisions: set up a Mertonon instance with everyone's input and stare at it hard.
-
-There is often a moral-religious element to estimation, an enduring faith that the project is actually going to get done.
+### Mertonon usage.
 
 ### cta here
 
 ## Q&A
 
-### What about my stakeholders?
+### What about stakeholders?
 
 When they ask for an estimate, show them your Mertonon instance instead. This is the advantage Mertonon has over iron-hard willing yourself to not have deadlines: you can show people something.
 
 ### What about truly hard deadlines, like planetary conjunctions or something?
 
-This approach is not suitable for absolute deadlines imposed by physical reality, but such deadlines are not actually ordinary in most ordinary work. Most supposedly-hard deadlines are basically a negotiation tactic, to increase urgency.
+This approach is not suitable for absolute deadlines imposed by physical reality or by the government or something, but such deadlines are not actually ordinary in most ordinary work. Most supposedly-hard deadlines are basically a negotiation tactic, to increase urgency.
 
 ### But Agile solves this problem in software in some way that I will now explain.
 
