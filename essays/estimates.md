@@ -8,7 +8,7 @@ A grim fate awaits many people who do things (individual contributors - IC's) in
 
 "So what's your estimate for this task?"
 
-If you're a callow youth, you give your offhand take. If you're not, you give a suitably grimly-considered prognosis or start hemming and hawing or try to wriggle out of it like a worm caught in a bird's mouth.
+If you're a callow youth, you give your offhand take. If you're not, you give a suitably considered and well-padded prognosis, or start hemming and hawing, or try to wriggle out of it like a worm caught in a bird's mouth.
 
 Either way, that's not the doom that comes for you.
 
@@ -18,11 +18,11 @@ Either way, that's not the doom that comes for you.
 
 Doom!
 
-Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental worldview mismatch between the manager and the IC.
+Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental mismatch in worldviews between the manager and the IC.
 
 The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so just throwing their weight around a bit can lead to better results for them and theirs.
 
-The individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business - and the fact of negotiation is often not known. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
+The individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business - and the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
 
 And the time budgets themselves are chancy. Monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget, but this is often not even allowed, especially cutting scope, and cutting scope is itself subject to negotiations.
 
@@ -70,7 +70,7 @@ When they ask for an estimate, show them your Mertonon instance instead. This is
 
 ### We already don't do estimates, though.
 
-Some autocratic organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury. Mertonon is for people and organizations who may or may not have such grim ideological hardening. If you already don't do estimates, Mertonon can be something to show your political situation to stakeholders inside and outside the organization.
+Some organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury. Mertonon is for people and organizations who may or may not have such grim ideological hardening. If you already don't do estimates, Mertonon can be something to show your political situation to stakeholders inside and outside the organization.
 
 ### What about truly hard deadlines, like planetary conjunctions or something?
 
