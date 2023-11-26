@@ -44,9 +44,9 @@ Some autocratic organizations substantively led by individual contributors, like
 
 ### Inside are cost nodes, which correspond to cost objects or people, which are specific tasks. 
 
-### Put in a usage thing here but only 3 pics. I think real call to action, basically
+### Weights
 
-### stakeholder things: show Mertonon instance to stakeholders.
+### Loss
 
 ### go-or-no-go-decisions: set up a Mertonon instance with everyone's input and stare at it hard.
 
@@ -58,7 +58,7 @@ There is often a moral-religious element to estimation, an enduring faith that t
 
 ### What about my stakeholders?
 
-When they ask for an estimate, show them your Mertonon instance instead.
+When they ask for an estimate, show them your Mertonon instance instead. This is the advantage Mertonon has over iron-hard willing yourself to not have deadlines: you can show people something.
 
 ### What about truly hard deadlines, like planetary conjunctions or something?
 
