@@ -42,7 +42,8 @@ Instead of estimating and having decisions on allocation of resources that way b
 
 "So, how's the role-based access control coming along?"
 
-### picture of grid
+### estimate-grid1
+### estimate-grid2
 ### gif into end user layer... slower
 ### get Dobbs end user entry
 
