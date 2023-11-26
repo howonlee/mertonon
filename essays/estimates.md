@@ -30,6 +30,8 @@ The fizzleblorp handler has to be extended so that it can handle wizzleblorps. T
 
 This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their vision as innovation and uncertainty.
 
+Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
+
 Mertonon is a budgeting tool for quantities with politics, internal structure and intermediate structure, which we think can substantively replace the organizational purpose of estimates. It's intended for organizational budgeting first. Some autocracies led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will. Mertonon is for people without such ideological hardening.
 
 ### 
