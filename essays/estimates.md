@@ -40,19 +40,19 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon just gives you some suggestions on where to allocate resources directly.
 
-"So, hows the role-based access control situation coming along?"
+"So, how's the role-based access control coming along?"
 
 ### picture of grid
-### click into end user responses
-### look at the A--- corp, B--- corp, etc
+### gif into end user layer... slower
+### get Dobbs end user entry
 
-"Good reports all around from Cobbs at the A--- Corp on the prototype. Dobbs at B--- corp only likes the UX for permissions, not the rest of it."
+"We got news back from Dobbs at B---- corp... he only likes the UX for permissions, not the rest of it."
 
 "OK. What's that look like for the Mertonon adjustment?"
 
-### "Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that. It wasn't surprised about the A--- Corp liking it." - whatever Mertonon actually says lol
-### pictures of the reallocation thing
-### pictures of the weight
+### "Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that." - whatever Mertonon actually says lol
+### pictures of the layer with reallocations
+### gif of the weights... slower
 
 ### "Sounds good. Let's get Hobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
 ### pictures of that entry
@@ -60,7 +60,7 @@ Instead of estimating and having decisions on allocation of resources that way b
 
 "Done. I'll go tell Hobbs."
 
-If you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
+If you're piqued by this little vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
 ## Q&A
 
