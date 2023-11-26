@@ -36,26 +36,25 @@ This essay is one instance of a genre: there are a thousand essays decrying esti
 
 Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
 
-Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the organizational purpose of estimates. It's intended for organizational budgeting first.
+Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. It's intended for organizational budgeting first.
 
 "So, hows the role-based access control situation coming along?"
 
-"Here's how the project is going."
+### picture of grid
+### click into end user responses
+### look at the A--- corp, B--- corp, etc
 
 "Good reports from Cobbs at the A--- Corp. Dobbs at B--- corp doesn't like the UX for permissions."
 
 "OK. What's that look like for the Mertonon adjustment?"
 
-"Mertonon is saying to reallocate effort toward UX for permissions but not the API for permissions. It wasn't surprised about the A--- Corp liking it."
+### "Mertonon is saying to reallocate effort toward UX for permissions but not the API for permissions. It wasn't surprised about the A--- Corp liking it." - whatever Mertonon actually says lol
 
-"Sounds good. Let's get Hobbs to go add this permissions task a bit. Mertonon suggestion says Pobbs but she's busy this week."
+### "Sounds good. Let's get Hobbs to go add this permissions task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
 
 "Done."
 
-### picture of grid
-
-
-### cta here
+If you want some more information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs).
 
 ## Q&A
 
@@ -79,4 +78,4 @@ Did it? It's been 22 years. Agile is old enough to drink. And yet individual con
 
 We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it.
 
-### cta here
+Again, if you want some more information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs).
