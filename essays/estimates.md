@@ -18,7 +18,7 @@ Either way, that's not the doom that comes for you.
 
 Doom!
 
-Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how much actual data you have, little or lots. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental worldview mismatch between the manager and the IC.
+Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental worldview mismatch between the manager and the IC.
 
 The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so just throwing their weight around a bit can lead to better results for them and theirs.
 
@@ -38,9 +38,22 @@ Unlike basically every other instance of that genre, though, we do have somethin
 
 Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the organizational purpose of estimates. It's intended for organizational budgeting first.
 
-Some autocratic organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury. Mertonon is for people and organizations who may not have such grim ideological hardening.
+"So, hows the role-based access control situation coming along?"
 
-### Mertonon usage.
+"Here's how the project is going."
+
+"Good reports from Cobbs at the A--- Corp. Dobbs at B--- corp doesn't like the UX for permissions."
+
+"OK. What's that look like for the Mertonon adjustment?"
+
+"Mertonon is saying to reallocate effort toward UX for permissions but not the API for permissions. It wasn't surprised about the A--- Corp liking it."
+
+"Sounds good. Let's get Hobbs to go add this permissions task a bit. Mertonon suggestion says Pobbs but she's busy this week."
+
+"Done."
+
+### picture of grid
+
 
 ### cta here
 
@@ -49,6 +62,10 @@ Some autocratic organizations substantively led by individual contributors, like
 ### What about stakeholders?
 
 When they ask for an estimate, show them your Mertonon instance instead. This is the advantage Mertonon has over iron-hard willing yourself to not have deadlines: you can show people something.
+
+### We already don't do estimates, though.
+
+Some autocratic organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury. Mertonon is for people and organizations who may or may not have such grim ideological hardening. If you already don't do estimates, Mertonon can be something to show your political situation to stakeholders inside and outside the organization.
 
 ### What about truly hard deadlines, like planetary conjunctions or something?
 
