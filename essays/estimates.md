@@ -2,9 +2,8 @@ The Doom in Estimates - and our alternative
 ---
 
 ### lamo ai pic of gothic ass pictures or like press gangs
-### connective tissue
 
-A grim fate awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
+A grim bureaucratic-political fate awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
 
 "So what's your estimate for this task?"
 
@@ -20,25 +19,25 @@ Doom!
 
 Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental mismatch in worldviews between the manager and the IC.
 
-The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so just throwing their weight around a bit can lead to better results for them and theirs.
+The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
 
 The individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business - and the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
 
 And the time budgets themselves are chancy. Monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget, but this is often not even allowed, especially cutting scope, and cutting scope is itself subject to negotiations.
 
-There is another bad surprise: temporal budgets have significant internal structure. If a widget costs $10 in money, to buy two widgets costs $20. To buy 10^5 widgets costs less per widget, but that cost curve is known and can also be quoted by the widget manufacturer. Not so for time budgets.
+There is another unpleasant surprise, no surprise to those who've lived it: temporal budgets have significant internal structure. If a widget costs $10 in money, to buy two widgets costs $20. To buy 10^5 widgets costs less per widget, but that cost curve is known and can also be quoted by the widget manufacturer. Not so for time budgets.
 
 The fizzleblorp handler has to be extended so that it can handle wizzleblorps. That task is not a widget to buy: it's a compounded quantity. Does the new wizzleblorp solution conflict with the previous hammlebloop solution? What about the Blorp Ray emissions? We have a deadlock over whether we should go with the Moople Standard or the Woople standard that some of the senior IC's have been fighting about for two years. And we have to deal with the Tootle-Noodle Phenomenon.
 
 Such temporal costs do not add, but multiply.
 
-This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty. The intermediate structure of things is always new - the screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the fizzleblorp-handler-extension, those are always new.
+This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty. The intermediate structure of things is always new - your screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the fizzleblorp-handler-extension, those are always new.
 
 Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
 
-Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. It's intended for organizational budgeting first.
+Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. It's intended for organizational budgeting first and foremost.
 
-Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon just gives you some suggestions on where to allocate resources directly.
+Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly.
 
 "So, how's the role-based access control coming along?"
 
@@ -77,9 +76,9 @@ Some organizations substantively led by individual contributors, like id Softwar
 
 This approach is not suitable for absolute deadlines imposed by physical reality or by the government or something, but such deadlines are not actually ordinary in most ordinary work. Most supposedly-hard deadlines are basically a negotiation tactic, to increase urgency.
 
-### But Agile solves this problem in software in some way that I will now explain.
+### But Agile solves this problem in software in some way (that I will now explain).
 
-Did it? It's been 22 years. Agile is old enough to drink. And yet individual contributors still get asked for estimates daily. Agile is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
+Did it? It's been 22 years. Agile is old enough to drink. And yet individual contributors still get asked for estimates daily, and those estimates still get ground down by negotiation. Agile as a manifesto-driven movement is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
 
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
