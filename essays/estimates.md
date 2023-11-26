@@ -46,15 +46,15 @@ Instead of estimating and having decisions on allocation of resources that way b
 ### click into end user responses
 ### look at the A--- corp, B--- corp, etc
 
-"Good reports from Cobbs at the A--- Corp on the prototype. Dobbs at B--- corp doesn't like the UX for permissions."
+"Good reports all around from Cobbs at the A--- Corp on the prototype. Dobbs at B--- corp only likes the UX for permissions, not the rest of it."
 
 "OK. What's that look like for the Mertonon adjustment?"
 
-### "Mertonon is saying to reallocate effort toward UX for permissions but not the API for permissions. It's saying that the weights for permissions should be adjusted like that. It wasn't surprised about the A--- Corp liking it." - whatever Mertonon actually says lol
+### "Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that. It wasn't surprised about the A--- Corp liking it." - whatever Mertonon actually says lol
 ### pictures of the reallocation thing
 ### pictures of the weight
 
-### "Sounds good. Let's get Hobbs to go work this permissions task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
+### "Sounds good. Let's get Hobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
 ### pictures of that entry
 ### pictures of that weight
 
