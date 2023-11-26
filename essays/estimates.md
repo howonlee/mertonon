@@ -38,6 +38,8 @@ Unlike basically every other instance of that genre, though, we do have somethin
 
 Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. It's intended for organizational budgeting first.
 
+Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon just gives you some suggestions on where to allocate resources directly.
+
 "So, hows the role-based access control situation coming along?"
 
 ### picture of grid
@@ -58,7 +60,7 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "Done. I'll go tell Hobbs."
 
-If you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs).
+If you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
 ## Q&A
 
@@ -82,4 +84,4 @@ Did it? It's been 22 years. Agile is old enough to drink. And yet individual con
 
 We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it.
 
-Again, if you want some more information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs).
+Again, if you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
