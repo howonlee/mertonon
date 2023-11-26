@@ -1,5 +1,5 @@
-- [x] Finish the actual usage notes on the essay
 
+- [ ] Finish the actual usage notes on the essay
 - [ ] Update usage docs - do sequences of screenshots
 - [ ] Readme hero gif
 - [ ] Screenshots for usage notes on essay
