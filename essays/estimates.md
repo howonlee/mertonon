@@ -44,7 +44,7 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 ### click into end user responses
 ### look at the A--- corp, B--- corp, etc
 
-"Good reports from Cobbs at the A--- Corp. Dobbs at B--- corp doesn't like the UX for permissions."
+"Good reports from Cobbs at the A--- Corp on the prototype. Dobbs at B--- corp doesn't like the UX for permissions."
 
 "OK. What's that look like for the Mertonon adjustment?"
 
@@ -52,9 +52,9 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 ### "Sounds good. Let's get Hobbs to go add this permissions task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
 
-"Done."
+"Done. I'll go tell Hobbs."
 
-If you want some more information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs).
+If you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs).
 
 ## Q&A
 
