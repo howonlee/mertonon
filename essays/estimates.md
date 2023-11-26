@@ -4,11 +4,11 @@ The Doom in Estimates - and our alternative
 ### lamo ai pic of gothic ass pictures or like press gangs
 ### connective tissue
 
-There is a grim political darkness that awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
+A grim fate awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
 
 "So what's your estimate for this task?"
 
-If you're a callow youth, you give your offhand take. If you're not, you give a grimly-considered prognosis or start hemming and hawing or try to wriggle out of it like a worm caught in a bird's mouth.
+If you're a callow youth, you give your offhand take. If you're not, you give a suitably grimly-considered prognosis or start hemming and hawing or try to wriggle out of it like a worm caught in a bird's mouth.
 
 Either way, that's not the doom that comes for you.
 
