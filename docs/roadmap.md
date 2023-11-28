@@ -7,7 +7,7 @@ Also look at small tasks roadmap
 - Sponsor newsletters
 - Prezzo
 - Try again on FE tests
-- Auditing BE
+- Auditing BE w/ undo stuff
 - Auditing FE
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Some other essay
