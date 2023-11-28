@@ -1,8 +1,6 @@
 The Doom in Estimates - and our alternative
 ---
 
-### lamo ai pic of gothic ass pictures or like press gangs
-
 A grim bureaucratic-political fate awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
 
 "So what's your estimate for this task?"

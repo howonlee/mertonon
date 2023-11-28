@@ -1,15 +1,16 @@
 
-- [ ] Finish the actual usage notes on the essay
-- [ ] Update usage docs - do sequences of screenshots
+- [x] Finish the actual usage notes on the essay
+- [x] Gantt essay second draft
+- [ ] Data entry bit
+- [ ] Screenshot sequence bit for essay
 - [ ] Readme hero gif
-- [ ] Screenshots for usage notes on essay
-- [ ] Gantt essay second draft
-- [ ] Norm layer op impl in pytorch
-
+- [ ] Gantt essay read-aloud
 - [ ] Gantt essay grade level
 - [ ] Gantt essay final draft
 - [ ] Ask Wayne about Gantt essay
 - [ ] Munge on website for gantt essay publication and blog page
+
+- [ ] Norm layer op impl in pytorch
 - [ ] Sponsor newsletters - 3 to start
 - [ ] "Rectification" for the thing
 
