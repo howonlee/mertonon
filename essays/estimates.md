@@ -43,20 +43,24 @@ Instead of estimating and having decisions on allocation of resources that way b
 
 ![First estimate grid picture](https://mertonon.com/assets/estimate_grid1.png)
 ![Second estimate grid picture](https://mertonon.com/assets/estimate_grid2.png)
-### gif into end user layer... slower
 ### get Dobbs end user entry
+### get Dobbs weight
 
-"We got news back from Dobbs at B---- corp... he only likes the UX for permissions, not the rest of it."
+"We got news back from Dobbs at D---- corp... he only likes the UX for permissions, not the rest of it."
 
 "OK. What's that look like for the Mertonon adjustment?"
 
 ### "Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that." - whatever Mertonon actually says lol
 ### pictures of the layer with reallocations
-### gif of the weights... slower
+### look at the weight selections, a few of them
 
-### "Sounds good. Let's get Hobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
+### "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
+### Says here Hobbs is more related to the 400's.
+
 ### pictures of that entry
 ### pictures of that weight
+
+"Really? Hobbs it is, then."
 
 "Done. I'll go tell Hobbs."
 
