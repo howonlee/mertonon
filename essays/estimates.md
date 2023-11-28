@@ -21,7 +21,9 @@ Doom that comes for you no matter the fundamental methodology, no matter if it's
 
 The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
 
-The individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business - and the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
+That's not an invalid or illegitimate point of view. If you're there with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power of some kind, whether a corporation or a government or nonprofit or something.
+
+However, the individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business - and the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
 
 And the time budgets themselves are chancy. Monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget, but this is often not even allowed, especially cutting scope, and cutting scope is itself subject to negotiations.
 
@@ -41,8 +43,8 @@ Instead of estimating and having decisions on allocation of resources that way b
 
 "So, how's the role-based access control coming along?"
 
-### estimate-grid1
-### estimate-grid2
+![First estimate grid picture](https://mertonon.com/assets/estimate_grid1.png)
+![Second estimate grid picture](https://mertonon.com/assets/estimate_grid2.png)
 ### gif into end user layer... slower
 ### get Dobbs end user entry
 
