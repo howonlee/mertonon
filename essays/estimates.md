@@ -86,7 +86,7 @@ Did it? It's been 22 years. Agile is old enough to drink, even in America. And y
 
 ### How's this different from just Kanban?
 
-You can stick people in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do, given a goal and numerical journal entries with respect to the goal. We'll put in a way to do a topological sorting of Mertonon nodes when Mertonon tells us to do it.
+You can stick people in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do, given a goal and numerical journal entries with respect to the goal. We'll put in a way to do a weighted-global-semi-topological sorting of Mertonon nodes (which would induce an overall global prioritization list with respect to the goal) when Mertonon tells us to do it.
 
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
