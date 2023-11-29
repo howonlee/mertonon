@@ -86,11 +86,13 @@ Did it? It's been 22 years. Agile is old enough to drink, even in America. And y
 
 ### How's this different from just Kanban?
 
-You can stick people in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do, given a goal and numerical journal entries with respect to the goal. We'll put in a way to do a weighted-global-semi-topological sorting of Mertonon nodes (which would induce an overall global prioritization list with respect to the goal) when Mertonon tells us to do it.
+You can stick people and relative weightings of factors in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do and how to reweight relative weightings, given a goal and numerical journal entries with respect to the goal. We'll put in a way to do a weighted-global-semi-topological sorting of Mertonon nodes (which would induce an overall global prioritization list with respect to the goal and be compatible with plain export to Kanban boards) when Mertonon tells us to do it.
+
+If you actually want to see our Mertonon instance, contact us, because we haven't made the open public view options and security measures yet.
 
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
-We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it.
+We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
 
 ---
 
