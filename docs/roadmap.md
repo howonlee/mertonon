@@ -10,6 +10,7 @@ Also look at small tasks roadmap
 - Auditing BE w/ undo stuff
 - Auditing FE
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
+- Toposort of Mertonon nodes
 - Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Some other essay
 - Try again on FE tests

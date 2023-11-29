@@ -84,6 +84,10 @@ This approach is not suitable for absolute deadlines imposed by physical reality
 
 Did it? It's been 22 years. Agile is old enough to drink, even in America. And yet individual contributors still get asked for estimates daily, and those estimates still get ground down by negotiation. Agile as a manifesto-driven movement is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
 
+### How's this different from just Kanban?
+
+You can stick people in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do, given a goal and numerical journal entries with respect to the goal. We'll put in a way to do a topological sorting of Mertonon nodes when Mertonon tells us to do it.
+
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
 We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it.
