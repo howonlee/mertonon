@@ -6,9 +6,11 @@ Also look at small tasks roadmap
 
 - Sponsor newsletters
 - Prezzo
+- Backing up something something immediately
 - Auditing BE w/ undo stuff
 - Auditing FE
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
+- Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Some other essay
 - Try again on FE tests
 - Mass CRUD ops FE, incl. weight painting
