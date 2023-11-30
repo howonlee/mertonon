@@ -94,3 +94,10 @@ v0.11.commits - November 9 2023
 ---
 
 - Whack problem with the sidebar history not working after max history is bypassed
+
+v0.12.commits - November 30 2023
+---
+
+- Change title of main page
+- 6 painful drafts of estimation essay
+- Almost a noop otherwise.
