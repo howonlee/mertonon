@@ -5,13 +5,13 @@
 - [x] Other journal entry, entry
 
 - [ ] Screenshot sequence bit for essay
-- [ ] Gantt essay read-aloud
-- [ ] Contact us page that goes straight to email this time
-- [ ] Gantt essay final draft
+- [ ] Estimation essay read-aloud
+- [ ] Contact us page that goes straight to email this time - use Formspring
+- [ ] Estimation essay final draft
 - [ ] Ask Wayne about Gantt essay
 - [ ] Munge on website for gantt essay publication and blog page
-- [ ] Norm layer op impl in pytorch. Suck teeth if total failure
 
+- [ ] Norm layer op impl in pytorch. Suck teeth if total failure
 - [ ] Sponsor newsletters - 3 to start
 - [ ] "Rectification" for the thing
 
