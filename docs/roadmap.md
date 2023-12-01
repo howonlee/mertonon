@@ -4,7 +4,6 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Sponsor newsletters
 - Prezzo
 - Backing up something something immediately
 - Auditing BE w/ undo stuff

@@ -1,8 +1,13 @@
-- [ ] Data entry bit
+- [x] Gantt essay grade level
+
+- [ ] DE -> BE entry
+- [ ] DE -> FE entry
+- [ ] BE -> FE entry
+- [ ] Other journal entry, entry
 - [ ] Screenshot sequence bit for essay
-- [ ] Readme hero gif
 - [ ] Gantt essay read-aloud
-- [ ] Gantt essay grade level
+
+- [ ] Readme hero gif
 - [ ] Gantt essay final draft
 - [ ] Ask Wayne about Gantt essay
 - [ ] Munge on website for gantt essay publication and blog page
