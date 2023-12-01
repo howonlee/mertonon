@@ -31,7 +31,9 @@ The fizzleblorp handler has to be extended so that it can handle wizzleblorps. T
 
 Such temporal costs do not add, but multiply.
 
-This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty. The intermediate structure of things is always new - your screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the fizzleblorp-handler-extension, those are always new.
+This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty.
+
+The intermediate structure of things is always new - your screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the fizzleblorp-handler-extension, those are always new.
 
 Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
 
@@ -74,7 +76,9 @@ When they ask for an estimate, show them your Mertonon instance instead. This is
 
 ### We already don't do estimates, though.
 
-Some organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury. Mertonon is for people and organizations who may or may not have such grim ideological hardening. If you already don't do estimates, Mertonon can be something to show your political situation to stakeholders inside and outside the organization.
+Some organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury.
+
+Mertonon is for people and organizations who may or may not have such grim ideological hardening. If you already don't do estimates, Mertonon can be something to show your political situation to stakeholders inside and outside the organization.
 
 ### What about truly hard deadlines, like planetary conjunctions or something?
 
@@ -82,11 +86,15 @@ This approach is not suitable for absolute deadlines imposed by physical reality
 
 ### But Agile solves this problem in software in some way (that I will now explain).
 
-Did it? It's been 22 years. Agile is old enough to drink, even in America. And yet individual contributors still get asked for estimates daily, and those estimates still get ground down by negotiation. Agile as a manifesto-driven movement is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
+Did it? It's been 22 years. Agile is old enough to drink, even in America. And yet individual contributors still get asked for estimates daily, and those estimates still get ground down by negotiation.
+
+Agile as a manifesto-driven movement is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
 
 ### How's this different from just Kanban?
 
-You can stick people and relative weightings of factors in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do and how to reweight relative weightings, given a goal and numerical journal entries with respect to the goal. We'll put in a way to do a weighted-global-semi-topological sorting of Mertonon nodes (which would induce an overall global prioritization list with respect to the goal and be compatible with plain export to Kanban boards) when Mertonon tells us to do it.
+You can stick people and relative weightings of factors in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do and how to reweight relative weightings, given a goal and numerical journal entries with respect to the goal.
+
+We'll put in a way to do a weighted-global-semi-topological sorting of Mertonon nodes (which would induce an overall global prioritization list with respect to the goal and be compatible with plain export to Kanban boards) when Mertonon tells us to do it.
 
 If you actually want to see our Mertonon instance, contact us, because we haven't made the open public view options and security measures yet.
 
