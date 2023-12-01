@@ -1,8 +1,8 @@
 - [x] Gantt essay grade level
 
-- [ ] DE -> BE entry
-- [ ] DE -> FE entry
-- [ ] BE -> FE entry
+- [x] DE -> BE entry
+- [x] DE -> FE entry
+- [x] BE -> FE entry
 - [ ] Other journal entry, entry
 - [ ] Screenshot sequence bit for essay
 - [ ] Gantt essay read-aloud
