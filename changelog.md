@@ -99,5 +99,4 @@ v0.12.commits - November 30 2023
 ---
 
 - Change title of main page
-- 6 painful drafts of estimation essay
-- Almost a noop otherwise.
+- Drafts of estimation essay

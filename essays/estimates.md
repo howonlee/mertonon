@@ -46,7 +46,7 @@ Instead of estimating and having decisions on allocation of resources that way b
 ### get Dobbs end user entry
 ### get Dobbs weight
 
-"We got news back from Dobbs at D---- corp... he only likes the UX for permissions, not the rest of it."
+"We got news back from Dobbs at D---- corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
 "OK. What's that look like for the Mertonon adjustment?"
 
