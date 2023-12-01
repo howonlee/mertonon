@@ -1,12 +1,11 @@
 - [x] Gantt essay grade level
-
 - [x] DE -> BE entry
 - [x] DE -> FE entry
 - [x] BE -> FE entry
-- [ ] Other journal entry, entry
+- [x] Other journal entry, entry
+
 - [ ] Screenshot sequence bit for essay
 - [ ] Gantt essay read-aloud
-
 - [ ] Readme hero gif
 - [ ] Gantt essay final draft
 - [ ] Ask Wayne about Gantt essay
