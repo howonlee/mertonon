@@ -13,10 +13,11 @@ Also look at small tasks roadmap
 - Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Some other essay
 - Try again on FE tests
-- Splitting and merging cost nodes
-- Splicing layer into weightset
 - Cut postpostprealpha, sponsor more newsletters
 
+- Splitting and merging cost nodes
+- Explode a cost node into a layer somehow
+- Splicing layer into weightset
 - Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
