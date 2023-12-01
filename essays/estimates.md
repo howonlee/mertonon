@@ -5,7 +5,7 @@ A grim bureaucratic-political fate awaits many people who do things (individual 
 
 "So what's your estimate for this task?"
 
-If you're a callow youth, you give your offhand take. If you're not, you give a suitably considered and well-padded prognosis, or start hemming and hawing, or try to wriggle out of it like a worm caught in a bird's mouth.
+If you're a callow youth, you give your offhand take. If you're not, you start wriggling like a worm caught in a bird's mouth. Give a suitably considered and well-padded prognosis. Start hemming and hawing. Just shrug.
 
 Either way, that's not the doom that comes for you.
 
@@ -15,19 +15,19 @@ Either way, that's not the doom that comes for you.
 
 Doom!
 
-Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental mismatch in worldviews between the manager and the IC.
+Doom that comes for you no matter the fundamental methodology. Doom that comes for you no matter if the estimation is story points or t-shirt sizes or work-breakdown or analogy estimation. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental mismatch in worldviews between the manager and the IC.
 
-The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
+The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal. Monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
 
-That's not an invalid or illegitimate point of view. If you're there with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power of some kind, whether a corporation or a government or nonprofit or something.
+That's not an invalid or illegitimate point of view. If you're there with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power of some kind. Whether a corporation or a government or nonprofit or something, that sort of negotiating is just the meat of the job of managing.
 
-However, the individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business - and the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
+However, the individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business. And the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
 
 And the time budgets themselves are chancy. Monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget, but this is often not even allowed, especially cutting scope, and cutting scope is itself subject to negotiations.
 
 There is another unpleasant surprise, no surprise to those who've lived it: temporal budgets have significant internal structure. If a widget costs $10 in money, to buy two widgets costs $20. To buy 10^5 widgets costs less per widget, but that cost curve is known and can also be quoted by the widget manufacturer. Not so for time budgets.
 
-The fizzleblorp handler has to be extended so that it can handle wizzleblorps. That task is not a widget to buy: it's a compounded quantity. Does the new wizzleblorp solution conflict with the previous hammlebloop solution? What about the Blorp Ray emissions? We have a deadlock over whether we should go with the Moople Standard or the Woople standard that some of the senior IC's have been fighting about for two years. And we have to deal with the Tootle-Noodle Phenomenon.
+The fizzleblorp handler has to be extended so that it can handle wizzleblorps. That task is not a widget to buy: it's a compounded quantity. Does the new wizzleblorp solution conflict with the previous hammlebloop solution? What about the Blorp Ray emissions? We have a deadlock over whether we should go with the Moople Standard or the Woople standard for fizzleblorps that some of the senior IC's have been fighting about for two years which will affect the handling of wizzleblorps. And we have to deal with the Tootle-Noodle Phenomenon.
 
 Such temporal costs do not add, but multiply.
 
