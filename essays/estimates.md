@@ -1,0 +1,107 @@
+The Doom in Estimates - and our alternative
+---
+
+A grim bureaucratic-political fate awaits many people who do things (individual contributors - IC's) in organizations. Here is the form of it. Management sits you down and asks,
+
+"So what's your estimate for this task?"
+
+If you're a callow youth, you give your offhand take. If you're not, you give a suitably considered and well-padded prognosis, or start hemming and hawing, or try to wriggle out of it like a worm caught in a bird's mouth.
+
+Either way, that's not the doom that comes for you.
+
+"7 weeks."
+
+"So... 7 weeks. Why couldn't it be 5?"
+
+Doom!
+
+Doom that comes for you no matter the fundamental methodology, no matter if it's story points or t-shirt sizes or work-breakdown or analogy. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental mismatch in worldviews between the manager and the IC.
+
+The managerial job is often one of negotiation. Managers are often trained in both negotiating and having a negotiating worldview whether in some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal, because monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
+
+That's not an invalid or illegitimate point of view. If you're there with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power of some kind, whether a corporation or a government or nonprofit or something.
+
+However, the individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business - and the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
+
+And the time budgets themselves are chancy. Monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget, but this is often not even allowed, especially cutting scope, and cutting scope is itself subject to negotiations.
+
+There is another unpleasant surprise, no surprise to those who've lived it: temporal budgets have significant internal structure. If a widget costs $10 in money, to buy two widgets costs $20. To buy 10^5 widgets costs less per widget, but that cost curve is known and can also be quoted by the widget manufacturer. Not so for time budgets.
+
+The fizzleblorp handler has to be extended so that it can handle wizzleblorps. That task is not a widget to buy: it's a compounded quantity. Does the new wizzleblorp solution conflict with the previous hammlebloop solution? What about the Blorp Ray emissions? We have a deadlock over whether we should go with the Moople Standard or the Woople standard that some of the senior IC's have been fighting about for two years. And we have to deal with the Tootle-Noodle Phenomenon.
+
+Such temporal costs do not add, but multiply.
+
+This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty.
+
+The intermediate structure of things is always new - your screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the fizzleblorp-handler-extension, those are always new.
+
+Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
+
+Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. It's intended for organizational budgeting first and foremost.
+
+Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly.
+
+"So, how's the role-based access control coming along?"
+
+![First estimate grid picture](https://mertonon.com/assets/estimate_grid1.png)
+![Second estimate grid picture](https://mertonon.com/assets/estimate_grid2.png)
+### get Dobbs end user entry
+### get Dobbs weight
+
+"We got news back from Dobbs at D---- corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
+
+"OK. What's that look like for the Mertonon adjustment?"
+
+### "Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that." - whatever Mertonon actually says lol
+### pictures of the layer with reallocations
+### look at the weight selections, a few of them
+
+### "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
+### Says here Hobbs is more related to the 400's.
+
+### pictures of that entry
+### pictures of that weight
+
+"Really? Hobbs it is, then."
+
+"Done. I'll go tell Hobbs."
+
+If you're piqued by this little vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
+
+## Q&A
+
+### What about stakeholders?
+
+When they ask for an estimate, show them your Mertonon instance instead. This is the advantage Mertonon has over iron-hard willing yourself to not have deadlines: you can show people something.
+
+### We already don't do estimates, though.
+
+Some organizations substantively led by individual contributors, like id Software under Carmack, manage to not give estimates by sheer dint of leadership will and fury.
+
+Mertonon is for people and organizations who may or may not have such grim ideological hardening. If you already don't do estimates, Mertonon can be something to show your political situation to stakeholders inside and outside the organization.
+
+### What about truly hard deadlines, like planetary conjunctions or something?
+
+This approach is not suitable for absolute deadlines imposed by physical reality or by the government or something, but such deadlines are not actually ordinary in most ordinary work. Most supposedly-hard deadlines are basically a negotiation tactic, to increase urgency.
+
+### But Agile solves this problem in software in some way (that I will now explain).
+
+Did it? It's been 22 years. Agile is old enough to drink, even in America. And yet individual contributors still get asked for estimates daily, and those estimates still get ground down by negotiation.
+
+Agile as a manifesto-driven movement is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
+
+### How's this different from just Kanban?
+
+You can stick people and relative weightings of factors in Mertonon in a way that doesn't make sense in Kanban. Mertonon also tells you which things to do and how to reweight relative weightings, given a goal and numerical journal entries with respect to the goal.
+
+We'll put in a way to do a weighted-global-semi-topological sorting of Mertonon nodes (which would induce an overall global prioritization list with respect to the goal and be compatible with plain export to Kanban boards) when Mertonon tells us to do it.
+
+If you actually want to see our Mertonon instance, contact us, because we haven't made the open public view options and security measures yet.
+
+### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
+
+We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
+
+---
+
+Again, if you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).

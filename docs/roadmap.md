@@ -4,12 +4,16 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Sponsor newsletters
 - Prezzo
-- Try again on FE tests
-- Auditing BE
+- Backing up something something immediately
+- Auditing BE w/ undo stuff
 - Auditing FE
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
-- Value theory essay
+- Toposort of Mertonon nodes
+- Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
+- Some other essay
+- Try again on FE tests
 - Mass CRUD ops FE, incl. weight painting
 - Staring at credit allocation semantics both in docs and program. True conservations, along with property - then liberate the input and loss cardinalities
 - Take-the-suggested-weight-change updates
@@ -47,6 +51,7 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - Sidebar history forwards
 - RG for computer scientists (towards RG for salespeeps)
 - License design and server
+- Mertonon voting method (somehow)
 - Bookmarks BE
 - Bookmarks FE
 - Get SQLite compatibility and bundle with SQLite so you just download and play.
