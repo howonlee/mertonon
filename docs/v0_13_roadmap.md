@@ -1,6 +1,3 @@
-
-- [x] Finish the actual usage notes on the essay
-- [x] Gantt essay second draft
 - [ ] Data entry bit
 - [ ] Screenshot sequence bit for essay
 - [ ] Readme hero gif
