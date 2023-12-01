@@ -6,12 +6,12 @@
 
 - [ ] Screenshot sequence bit for essay
 - [ ] Gantt essay read-aloud
-- [ ] Readme hero gif
+- [ ] Contact us page that goes straight to email this time
 - [ ] Gantt essay final draft
 - [ ] Ask Wayne about Gantt essay
 - [ ] Munge on website for gantt essay publication and blog page
+- [ ] Norm layer op impl in pytorch. Suck teeth if total failure
 
-- [ ] Norm layer op impl in pytorch
 - [ ] Sponsor newsletters - 3 to start
 - [ ] "Rectification" for the thing
 
@@ -20,6 +20,7 @@
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Auditing DDL stuff
 
+- [ ] Readme hero gif
 - [ ] Auditing BE endpoint thinking (just thinking and sketching)
 - [ ] Benford's law for stacked modifiers - rimworld and paradox games lol
 - [ ] Changelog
