@@ -25,9 +25,9 @@
 - [ ] Upload formspring form page, link to it on homepage
 - [ ] Upload the estimation essay
 - [ ] Norm layer op impl in pytorch. Suck teeth if total failure
-- [ ] Post estimation essay - 9am monday, I think
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 
+- [ ] Post estimation essay - 9am monday, I think
 - [ ] "Rectification" for the thing
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
@@ -36,7 +36,7 @@
 
 - [ ] Readme hero gif
 - [ ] Auditing BE endpoint thinking (just thinking and sketching)
-- [ ] Benford's law for stacked modifiers - rimworld and paradox games lol
+- [ ] Benford's law for stacked modifiers - rimworld and paradox games lol - start essay
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release
