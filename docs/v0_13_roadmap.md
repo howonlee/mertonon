@@ -4,11 +4,20 @@
 - [x] BE -> FE entry
 - [x] Other journal entry, entry
 
-- [ ] Screenshot sequence bit for essay
-- [ ] Estimation essay read-aloud
-- [ ] Contact us page that goes straight to email this time - use Formspring
+- [ ] Dobbs end user screenshot
+- [ ] Dobbs weight screenshot
+- [ ] Layer reallocation screenshot
+- [ ] Weight selection screenshot
+- [ ] Hobbs entry screenshot
+- [ ] Hobbs weight screenshot
+- [ ] Estimation essay read-aloud 1 / 2
+- [ ] Estimation essay read-aloud 2 / 2
+- [ ] Formspring account
+- [ ] Formspring rtfm
+- [ ] Formspring c&p into the html
 - [ ] Estimation essay final draft
 - [ ] Ask Wayne about Gantt essay
+
 - [ ] Munge on website for gantt essay publication and blog page
 
 - [ ] Norm layer op impl in pytorch. Suck teeth if total failure
