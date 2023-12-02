@@ -4,6 +4,8 @@
 - [x] BE -> FE entry
 - [x] Other journal entry, entry
 
+- [x] Formspring account
+- [x] Formspring rtfm
 - [ ] Dobbs end user screenshot
 - [ ] Dobbs weight screenshot
 - [ ] Layer reallocation screenshot
@@ -12,15 +14,14 @@
 - [ ] Hobbs weight screenshot
 - [ ] Estimation essay read-aloud 1 / 2
 - [ ] Estimation essay read-aloud 2 / 2
-- [ ] Formspring account
-- [ ] Formspring rtfm
-- [ ] Formspring c&p into the html
 - [ ] Estimation essay final draft
 - [ ] Ask Wayne about estimation essay
 
 - [ ] Install some markdown -> html thing for pagegen
 - [ ] Switch the website front page to something markdown generated
 - [ ] Think about uploading the site via our local box, too, instead of aws endpoint
+- [ ] Formspring form page in html
+- [ ] Upload formspring form page, link to it on homepage
 - [ ] Upload the estimation essay
 - [ ] Norm layer op impl in pytorch. Suck teeth if total failure
 - [ ] Post estimation essay - 9am monday, I think
