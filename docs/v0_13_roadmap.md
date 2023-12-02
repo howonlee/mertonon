@@ -16,14 +16,17 @@
 - [ ] Formspring rtfm
 - [ ] Formspring c&p into the html
 - [ ] Estimation essay final draft
-- [ ] Ask Wayne about Gantt essay
+- [ ] Ask Wayne about estimation essay
 
-- [ ] Munge on website for gantt essay publication and blog page
-
+- [ ] Install some markdown -> html thing for pagegen
+- [ ] Switch the website front page to something markdown generated
+- [ ] Think about uploading the site via our local box, too, instead of aws endpoint
+- [ ] Upload the estimation essay
 - [ ] Norm layer op impl in pytorch. Suck teeth if total failure
+- [ ] Post estimation essay - 9am monday, I think
 - [ ] Sponsor newsletters - 3 to start
-- [ ] "Rectification" for the thing
 
+- [ ] "Rectification" for the thing
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
