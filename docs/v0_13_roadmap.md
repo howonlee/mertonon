@@ -6,13 +6,13 @@
 
 - [x] Formspring account
 - [x] Formspring rtfm
+- [ ] Estimation essay read-aloud 1 / 2
 - [ ] Dobbs end user screenshot
 - [ ] Dobbs weight screenshot
 - [ ] Layer reallocation screenshot
 - [ ] Weight selection screenshot
 - [ ] Hobbs entry screenshot
 - [ ] Hobbs weight screenshot
-- [ ] Estimation essay read-aloud 1 / 2
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay final draft
 - [ ] Ask Wayne about estimation essay
