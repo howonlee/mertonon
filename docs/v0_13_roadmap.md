@@ -13,6 +13,7 @@
 - [x] Hobbs entry screenshot
 - [x] Upload screenshots
 
+- [ ] Link up the uploaded screenshots...
 - [ ] Adjust those bits in essay to actually say the state in our instance
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 8th grade
