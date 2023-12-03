@@ -16,14 +16,16 @@
 - [ ] Adjust those bits in essay to actually say the state in our instance
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Ask Wayne about estimation essay
-
 - [ ] Install some markdown -> html thing for pagegen in bb
 - [ ] Switch the website front page to something markdown generated
 - [ ] Think about uploading the site via our local box, too, instead of aws endpoint
 - [ ] Formspring form page in html
 - [ ] Upload formspring form page, link to it on homepage
 - [ ] Upload the estimation essay
-- [ ] Norm layer op impl in pytorch. Suck teeth if total failure
+
+- [ ] Reread what I have of the norm layer op
+- [ ] Norm layer op class
+- [ ] Norm layer op testing. Think up writeup if necessary
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 
 - [ ] Post estimation essay - 9am monday, I think
