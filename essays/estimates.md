@@ -29,7 +29,7 @@ There is another unpleasant surprise, no surprise to those who've lived it: temp
 
 The U-corp handler has to be extended so that it can handle L-corp interfaces. That task is not a widget to buy: it is a compounded quantity. Does the new L-corp solution conflict with the previous M-corp solution? What about the W-ray emissions? We have a deadlock over whether we should go with the M-corp Standard or the U-corp Standard for handlers that some of the senior IC's have been fighting about for two years which will affect the handling. And we have to deal with the Noodle Phenomenon that the regulators are talking about.
 
-Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude projects span, from days to centuries. Doom!
+Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude projects span, from minutes to centuries. Doom!
 
 This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty.
 
