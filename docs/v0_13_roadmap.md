@@ -25,13 +25,13 @@
 - [ ] Ask Wayne about estimation essay
 - [ ] Ask Hebert and the yospos peeps about estimation essay
 
-- [ ] Reread what I have of the norm layer op
+- [ ] Reread what I have of the norm layer op net
 - [ ] Norm layer op class
 - [ ] Norm layer op testing. Think up writeup if necessary
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 
 - [ ] Post estimation essay - 9am monday, I think
-- [ ] "Rectification" for the thing
+- [ ] "Rectification" for the thing, or "Conformance" or something different again...
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
