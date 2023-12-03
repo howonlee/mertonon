@@ -57,7 +57,7 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 ### "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
 ### Says here Hobbs is more related to the 400's.
 
-### pictures of that entry
+### hobbs entry
 ### pictures of that weight
 
 "Really? Hobbs it is, then."

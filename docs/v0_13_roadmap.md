@@ -7,15 +7,14 @@
 - [x] Formspring account
 - [x] Formspring rtfm
 - [x] Estimation essay read-aloud 1 / 2
-- [ ] Dobbs end user screenshot
-- [ ] Dobbs weight screenshot
-- [ ] Layer reallocation screenshot
-- [ ] Weight selection screenshot
-- [ ] Hobbs entry screenshot
-- [ ] Hobbs weight screenshot
+- [x] Dobbs end user screenshot
+- [x] Dobbs weight screenshot
+- [x] Layer reallocation screenshot
+- [x] Hobbs entry screenshot
+- [x] Upload screenshots
+
 - [ ] Adjust those bits in essay to actually say the state in our instance
 - [ ] Estimation essay read-aloud 2 / 2
-- [ ] One last lookthrough, cop it as final draft
 - [ ] Ask Wayne about estimation essay
 
 - [ ] Install some markdown -> html thing for pagegen in bb
