@@ -64,6 +64,10 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "Done. I'll go tell Hobbs."
 
+"Cool. Meet again next week?"
+
+"Sounds good to me."
+
 If you're piqued by this little vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
 ## Q&A
