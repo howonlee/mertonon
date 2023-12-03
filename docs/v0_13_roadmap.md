@@ -16,13 +16,14 @@
 - [ ] Adjust those bits in essay to actually say the state in our instance
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 8th grade
-- [ ] Ask Wayne about estimation essay
 - [ ] Install some markdown -> html thing for pagegen in bb
 - [ ] Switch the website front page to something markdown generated
 - [ ] Think about uploading the site via our local box, too, instead of aws endpoint
 - [ ] Formspring form page in html
 - [ ] Upload formspring form page, link to it on homepage
 - [ ] Upload the estimation essay
+- [ ] Ask Wayne about estimation essay
+- [ ] Ask Hebert and the yospos peeps about estimation essay
 
 - [ ] Reread what I have of the norm layer op
 - [ ] Norm layer op class
