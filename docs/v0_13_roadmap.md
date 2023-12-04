@@ -20,15 +20,17 @@
 
 - [x] Install some markdown -> html thing for pagegen in bb
 - [x] Janitor aws cli to have user, etc
-- [ ] Think about uploading the site via our local box, too, instead of aws endpoint
-- [ ] Switch the website front page to something markdown generated
-- [ ] Formspring form page in html
-- [ ] Upload formspring form page, link to it on homepage
+- [x] Switch the website front page to something markdown generated
+- [x] Formspring form page in html / markdown
+- [x] Write the script for uploading properly
+- [x] Upload formspring form page, link to it on homepage
+
+- [ ] Create blog index page on static
+- [ ] Estimation essay read-aloud 2 / 2
+- [ ] Estimation essay reading level - 8th grade
 - [ ] Upload the estimation essay
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 
-- [ ] Estimation essay read-aloud 2 / 2
-- [ ] Estimation essay reading level - 8th grade
 - [ ] "Rectification" for the thing, or "Conformance" or something different again...
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
