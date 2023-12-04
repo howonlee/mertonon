@@ -41,24 +41,25 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "So, how's the role-based access control coming along?"
 
-![First estimate grid picture](https://mertonon.com/assets/estimate_grid1.png)
-![Second estimate grid picture](https://mertonon.com/assets/estimate_grid2.png)
-![Dobbs champion](https://mertonon.com/assets/dobbs_champion.png)
-![Dobbs weights](https://mertonon.com/assets/dobbs_weight.png)
+<img src="https://mertonon.com/assets/estimate_grid1.png" width="30%" height="30%">
+<img src="https://mertonon.com/assets/estimate_grid2.png" width="30%" height="30%">
 
 "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
+<img src="https://mertonon.com/assets/dobbs_champion.png" width="30%" height="30%">
+<img src="https://mertonon.com/assets/dobbs_weight.png" width="30%" height="30%">
+
 "OK. What's that look like for the Mertonon adjustment?"
 
-### "Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that." - whatever Mertonon actually says lol
-### pictures of the layer with reallocations
-### look at the weight selections, a few of them
+<img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
-### "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
-### Says here Hobbs is more related to the 400's.
+"Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
 
-![Hobbs entry](https://mertonon.com/assets/hobbs_entry.png)
-![Layer reallocations](https://mertonon.com/assets/layer_realloc.png)
+(ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
+
+"Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
+
+"Says here Hobbs is more related to the 400's."
 
 "Really? Hobbs it is, then."
 
@@ -68,7 +69,7 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "Sounds good to me."
 
-If you're piqued by this little vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
+If you're piqued by this little incomplete vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
 ## Q&A
 
