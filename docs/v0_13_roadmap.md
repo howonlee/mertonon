@@ -24,6 +24,7 @@
 - [x] Formspring form page in html / markdown
 - [x] Write the script for uploading properly
 - [x] Upload formspring form page, link to it on homepage
+- [x] Make the website pages responsive
 
 - [ ] Create blog index page on static
 - [ ] Estimation essay read-aloud 2 / 2
