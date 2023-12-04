@@ -53,13 +53,13 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 <img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
-"Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that."
+"Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
+
+(ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
 
 "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
 
 "Says here Hobbs is more related to the 400's."
-
-<img src="https://mertonon.com/assets/hobbs_entry.png" width="30%" height="30%">
 
 "Really? Hobbs it is, then."
 
