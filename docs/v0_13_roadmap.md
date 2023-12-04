@@ -18,9 +18,10 @@
 - [x] Link up the uploaded screenshots...
 - [x] Adjust those bits in essay to actually say the state in our instance
 
-- [ ] Install some markdown -> html thing for pagegen in bb
-- [ ] Switch the website front page to something markdown generated
+- [x] Install some markdown -> html thing for pagegen in bb
+- [x] Janitor aws cli to have user, etc
 - [ ] Think about uploading the site via our local box, too, instead of aws endpoint
+- [ ] Switch the website front page to something markdown generated
 - [ ] Formspring form page in html
 - [ ] Upload formspring form page, link to it on homepage
 - [ ] Upload the estimation essay
