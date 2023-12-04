@@ -37,7 +37,7 @@
 - [ ] Post estimation essay - 9am wednesday, I think
 - [ ] Readme hero gif
 - [ ] Auditing BE endpoint thinking (just thinking and sketching)
-- [ ] Benford's law for stacked modifiers - rimworld and paradox games lol - start essay
+- [ ] Some other writing - always be writing
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release
