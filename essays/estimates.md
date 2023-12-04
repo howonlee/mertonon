@@ -43,8 +43,8 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 ![First estimate grid picture](https://mertonon.com/assets/estimate_grid1.png)
 ![Second estimate grid picture](https://mertonon.com/assets/estimate_grid2.png)
-### get Dobbs end user entry
-### get Dobbs weight
+![Dobbs champion](https://mertonon.com/assets/dobbs_champion.png)
+![Dobbs weights](https://mertonon.com/assets/dobbs_weight.png)
 
 "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
@@ -57,8 +57,8 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 ### "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
 ### Says here Hobbs is more related to the 400's.
 
-### hobbs entry
-### pictures of that weight
+![Hobbs entry](https://mertonon.com/assets/hobbs_entry.png)
+![Layer reallocations](https://mertonon.com/assets/layer_realloc.png)
 
 "Really? Hobbs it is, then."
 
