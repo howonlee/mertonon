@@ -37,7 +37,7 @@
 - [ ] Post estimation essay - 9am wednesday, I think
 - [ ] Readme hero gif
 - [ ] Auditing BE endpoint thinking (just thinking and sketching)
-- [ ] Some other writing - always be writing
+- [ ] Theory of value outline, research
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release

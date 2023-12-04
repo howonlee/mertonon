@@ -11,11 +11,12 @@ Also look at small tasks roadmap
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Toposort of Mertonon nodes
 - Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
-- Some other essay
 - Try again on FE tests
 - Cut postpostprealpha, sponsor more newsletters
 
 - Splitting and merging cost nodes
+- Exporting-as-website
+- Exporting-as-pdf
 - Explode a cost node into a layer somehow
 - Splicing layer into weightset
 - Mass CRUD ops FE, incl. weight painting
