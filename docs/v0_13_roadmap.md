@@ -13,31 +13,28 @@
 - [x] Hobbs entry screenshot
 - [x] Upload screenshots
 
-- [ ] Link up the uploaded screenshots...
-- [ ] Adjust those bits in essay to actually say the state in our instance
-- [ ] Estimation essay read-aloud 2 / 2
-- [ ] Estimation essay reading level - 8th grade
+- [x] Ask Wayne about estimation essay
+- [x] Ask Hebert and the yospos peeps about estimation essay
+- [x] Link up the uploaded screenshots...
+- [x] Adjust those bits in essay to actually say the state in our instance
+
 - [ ] Install some markdown -> html thing for pagegen in bb
 - [ ] Switch the website front page to something markdown generated
 - [ ] Think about uploading the site via our local box, too, instead of aws endpoint
 - [ ] Formspring form page in html
 - [ ] Upload formspring form page, link to it on homepage
 - [ ] Upload the estimation essay
-- [ ] Ask Wayne about estimation essay
-- [ ] Ask Hebert and the yospos peeps about estimation essay
-
-- [ ] Reread what I have of the norm layer op net
-- [ ] Norm layer op class
-- [ ] Norm layer op testing. Think up writeup if necessary
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 
-- [ ] Post estimation essay - 9am monday, I think
+- [ ] Estimation essay read-aloud 2 / 2
+- [ ] Estimation essay reading level - 8th grade
 - [ ] "Rectification" for the thing, or "Conformance" or something different again...
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Auditing DDL stuff
 
+- [ ] Post estimation essay - 9am wednesday, I think
 - [ ] Readme hero gif
 - [ ] Auditing BE endpoint thinking (just thinking and sketching)
 - [ ] Benford's law for stacked modifiers - rimworld and paradox games lol - start essay
