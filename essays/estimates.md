@@ -51,15 +51,15 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "OK. What's that look like for the Mertonon adjustment?"
 
-### "Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that." - whatever Mertonon actually says lol
-### pictures of the layer with reallocations
-### look at the weight selections, a few of them
+<img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
-### "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
-### Says here Hobbs is more related to the 400's.
+"Mertonon is saying to reallocate effort toward UX for the 400's and the table but not the API for permissions. It's saying that the weights for permissions should be adjusted like that."
+
+"Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
+
+"Says here Hobbs is more related to the 400's."
 
 <img src="https://mertonon.com/assets/hobbs_entry.png" width="30%" height="30%">
-<img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
 "Really? Hobbs it is, then."
 
