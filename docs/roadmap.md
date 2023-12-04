@@ -5,7 +5,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 Also look at small tasks roadmap
 
 - Prezzo
-- Backing up mertonon instances
+- Whole-grid dumps, which can also be uploaded I guess
 - Auditing BE w/ undo stuff
 - Auditing FE
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
