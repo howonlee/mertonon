@@ -41,13 +41,13 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "So, how's the role-based access control coming along?"
 
-<img src="https://mertonon.com/assets/estimate_grid1.png" alt="alt text" width="30%" height="30%">
-<img src="https://mertonon.com/assets/estimate_grid2.png" alt="alt text" width="30%" height="30%">
+<img src="https://mertonon.com/assets/estimate_grid1.png" width="30%" height="30%">
+<img src="https://mertonon.com/assets/estimate_grid2.png" width="30%" height="30%">
 
 "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
-<img src="https://mertonon.com/assets/dobbs_champion.png" alt="alt text" width="30%" height="30%">
-<img src="https://mertonon.com/assets/dobbs_weight.png" alt="alt text" width="30%" height="30%">
+<img src="https://mertonon.com/assets/dobbs_champion.png" width="30%" height="30%">
+<img src="https://mertonon.com/assets/dobbs_weight.png" width="30%" height="30%">
 
 "OK. What's that look like for the Mertonon adjustment?"
 
@@ -58,8 +58,8 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 ### "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week." - whatever Mertonon actually says lol
 ### Says here Hobbs is more related to the 400's.
 
-![Hobbs entry](https://mertonon.com/assets/hobbs_entry.png)
-![Layer reallocations](https://mertonon.com/assets/layer_realloc.png)
+<img src="https://mertonon.com/assets/hobbs_entry.png" width="30%" height="30%">
+<img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
 "Really? Hobbs it is, then."
 
