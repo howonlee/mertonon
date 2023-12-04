@@ -41,10 +41,10 @@ Mertonon is a budgeting tool for resources with politics, internal structure and
 
 "So, how's the role-based access control coming along?"
 
-![First estimate grid picture](https://mertonon.com/assets/estimate_grid1.png)
-![Second estimate grid picture](https://mertonon.com/assets/estimate_grid2.png)
-![Dobbs champion](https://mertonon.com/assets/dobbs_champion.png)
-![Dobbs weights](https://mertonon.com/assets/dobbs_weight.png)
+<img src="https://mertonon.com/assets/estimate_grid1.png" alt="alt text" width="40%" height="40%">
+<img src="https://mertonon.com/assets/estimate_grid2.png" alt="alt text" width="40%" height="40%">
+<img src="https://mertonon.com/assets/dobbs_champion.png" alt="alt text" width="40%" height="40%">
+<img src="https://mertonon.com/assets/dobbs_weight.png" alt="alt text" width="40%" height="40%">
 
 "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
