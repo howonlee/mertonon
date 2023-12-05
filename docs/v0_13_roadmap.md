@@ -27,9 +27,9 @@
 - [x] Make the website pages responsive
 - [x] "Conformance" for the endpoint
 
+- [ ] Poke at Jawon's comments - add a third peep who they explain this to
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 - [ ] Create blog index page on static
-- [ ] Poke at Jawon's comments
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 8th grade
 - [ ] Upload the estimation essay
