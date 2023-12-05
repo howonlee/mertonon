@@ -26,18 +26,19 @@
 - [x] Upload formspring form page, link to it on homepage
 - [x] Make the website pages responsive
 
+- [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 - [ ] Create blog index page on static
+- [ ] Poke at Jawon's comments
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 8th grade
 - [ ] Upload the estimation essay
-- [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 - [ ] "Rectification" for the thing, or "Conformance" or something different again...
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 
+- [ ] Post estimation essay - 9am wednesday, I think
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Auditing DDL stuff
-- [ ] Post estimation essay - 9am wednesday, I think
 - [ ] Readme hero gif - think about what to have in it
 
 - [ ] Auditing BE endpoint thinking (just thinking and sketching)

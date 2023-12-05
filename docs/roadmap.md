@@ -6,10 +6,10 @@ Also look at small tasks roadmap
 
 - Download page on the static website (need to proc the actual release on GH, so we get a latest webpage)
 - Prezzo
+- Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Whole-grid dumps, which can also be uploaded I guess
 - Auditing BE w/ undo stuff
 - Auditing FE
-- Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Toposort of Mertonon nodes
 - Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Try again on FE tests
