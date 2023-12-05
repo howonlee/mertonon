@@ -26,12 +26,14 @@
 - [x] Upload formspring form page, link to it on homepage
 - [x] Make the website pages responsive
 - [x] "Conformance" for the endpoint
+- [x] Create blog index page on static
 
 - [ ] Poke at Jawon's comments - add a third peep who they explain this to
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
-- [ ] Create blog index page on static
+- [ ] Estimation essay reading level - 9th grade
 - [ ] Estimation essay read-aloud 2 / 2
-- [ ] Estimation essay reading level - 8th grade
+- [ ] Estimation essay copy-edit
+- [ ] Link up estimation essay to blog index
 - [ ] Upload the estimation essay
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
