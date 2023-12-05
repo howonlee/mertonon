@@ -28,6 +28,7 @@
 - [x] "Conformance" for the endpoint
 - [x] Create blog index page on static
 
+- [x] Poke at Jawon's comments - nits
 - [ ] Poke at Jawon's comments - add a third peep who they explain this to
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 - [ ] Estimation essay reading level - 9th grade
