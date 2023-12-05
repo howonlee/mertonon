@@ -63,7 +63,7 @@
     {:grads grad-res
      :var-by-uuid var-by-uuid}))
 
-(defn competitiveness-grad
+(defn conformance-grad
   [{:keys [curr-loss losses inputs patterns final-var target-var] :as args}]
   (cmo/- (:value final-var)
          (:value target-var)))
@@ -71,8 +71,10 @@
 (s/defn loss-grad-function
   [{:keys [curr-loss losses inputs patterns final-var target-var] :as args}]
   (condp = (:type curr-loss)
-    :competitiveness (competitiveness-grad args)
-    (competitiveness-grad args)))
+    :conformance     (conformance-grad args)
+    ;; Old name for conformance
+    :competitiveness (conformance-grad args)
+    (conformance-grad args)))
 
 (defn op-numerical-grad
   "For testing only. Apply to a singular op only, not a loss. Returns gradient only.

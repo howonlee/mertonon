@@ -63,7 +63,7 @@
                      :layer-uuid ""
                      :name       ""
                      :label      ""
-                     :type       "competitiveness"})
+                     :type       "conformance"})
    :validations   [(validations/non-blank [:create-params :name] :name-blank)
                    (validations/non-blank [:create-params :layer-uuid] :layer-blank)
                    (validations/not-in-set

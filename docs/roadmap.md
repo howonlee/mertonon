@@ -29,7 +29,7 @@ Also look at small tasks roadmap
 
 - Easy SSO's BE
 - Easy SSO's FE
-- Whack a profit thing out for real, refactor the competitiveness thing to budget utilization
+- Whack a profit thing out for real, refactor the conformance thing
 - EE plugin making - dynamic loading? not doing dynamic loading? doing funky stuff? some registry or something?
 - Make some part of auditing EE properly
 - RBAC BE. EE plugin for full RBAC, CE for general user-admin thing

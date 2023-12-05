@@ -71,7 +71,7 @@ You are annoyed at those Mertonon devs for making everything fit in one number f
 
 ---
 
-Currently Mertonon can only aim for overall grid goals which formally correspond to competitiveness (formally speaking., reduction of profit for corporate market share). We will have others in time.
+Currently Mertonon can only aim for overall grid goals which formally correspond to conformance (formally speaking., conformity to outside conditions). We will have others in time.
 
 To get recommendations from Mertonon, you have to point out to it one layer that corresponds to inputs to the org's value flow (cost flow) and one layer that corresponds to outputs or goals.
 
