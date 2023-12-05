@@ -19,7 +19,7 @@ Doom that comes for you no matter the fundamental methodology. Doom that comes f
 
 The managerial job is one of negotiation. Managers are often trained in both negotiating and having a negotiating world-view whether by some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal. Monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
 
-That's not an invalid or illegitimate point of view. If you're there with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power. Whether a corporation or a government or nonprofit or what-have-you, that sort of negotiating is just the meat of the job of managing.
+That's not an invalid or illegitimate point of view. If you're sitting with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power. Whether a corporation or a government or nonprofit or what-have-you, that sort of negotiating is just the meat of the job of managing.
 
 However, the individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business. And the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
 
@@ -29,7 +29,7 @@ There is another unpleasant surprise, no surprise to those who've lived it: temp
 
 The U-corp handler has to be extended so that it can handle L-corp interfaces. That task is not a widget to buy: it is a compounded quantity. Does the new L-corp solution conflict with the previous M-corp solution? What about the W-ray emissions? We have a deadlock over whether we should go with the M-corp Standard or the U-corp Standard for handlers that some of the senior IC's have been fighting about for two years which will affect the handling. And we have to deal with the Noodle Phenomenon that the regulators are talking about.
 
-Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude projects span, from minutes to centuries. Doom!
+Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude that projects span, from minutes to centuries. Doom!
 
 This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty.
 
@@ -119,7 +119,7 @@ If you actually want to see our Mertonon instance, contact us, because we haven'
 
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
-We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
+We fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
 
 ---
 
