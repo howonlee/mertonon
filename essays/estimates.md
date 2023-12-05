@@ -53,7 +53,7 @@ _Robbs_: "We got news back from Dobbs at D-corp... he only likes the UX for perm
 <img src="https://mertonon.com/assets/dobbs_champion.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/dobbs_weight.png" width="30%" height="30%">
 
-_Yobbs_: Huh?
+_Yobbs_: Huh? What are these weight thingies?
 
 ########
 ########
@@ -65,6 +65,15 @@ _Vobbs_: "OK. What's that look like for the Mertonon adjustment?"
 <img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
 _Robbs_: "Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
+
+_Yobbs_: Wait, where's that number from? Seems to be a program, what's the inputs and outputs?
+
+########
+########
+########
+########
+
+_Yobbs_: How do I know it's not garbage in garbage out, that sort of thing?
 
 ########
 ########
