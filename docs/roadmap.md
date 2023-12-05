@@ -4,6 +4,7 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Download page on the static website (need to proc the actual release on GH, so we get a latest webpage)
 - Prezzo
 - Whole-grid dumps, which can also be uploaded I guess
 - Auditing BE w/ undo stuff
