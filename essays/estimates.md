@@ -66,7 +66,7 @@ _Vobbs_: "OK. What's that look like for the Mertonon adjustment?"
 
 _Robbs_: "Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
 
-_Yobbs_: Wait, where's that number from? Seems to be a program, what's the inputs and outputs?
+_Yobbs_: Wait, where's that number from? I don't get how this thing works, what's the inputs and outputs?
 
 ########
 ########
@@ -91,6 +91,8 @@ _Vobbs_: "Really? Hobbs it is, then."
 _Robbs_: "Done. I'll go tell Hobbs."
 
 _Vobbs_: "Cool. Meet again next week?"
+
+_Yobbs_: "Cool. Sounds good to me."
 
 _Robbs_: "Sounds good to me."
 
