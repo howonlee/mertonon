@@ -37,23 +37,39 @@ The intermediate structure of things is always new - your screws are always the 
 
 Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
 
-Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly. It is intended for organizational budgeting first and foremost.
+Mertonon is a new kind of budgeting tool. Mertonon is designed for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly. It is intended for organizational budgeting first and foremost.
 
 _Vobbs_: "So, how's the role-based access control coming along?"
 
 <img src="https://mertonon.com/assets/estimate_grid1.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/estimate_grid2.png" width="30%" height="30%">
 
+_Yobbs_: Wait, what's this?
+
+_Vobbs_: Mertonon. The rectangles are groupings of the intermediate tasks. What's the news from D-corp, Robbs?
+
 _Robbs_: "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
 <img src="https://mertonon.com/assets/dobbs_champion.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/dobbs_weight.png" width="30%" height="30%">
+
+_Yobbs_: Huh?
+
+########
+########
+########
+########
 
 _Vobbs_: "OK. What's that look like for the Mertonon adjustment?"
 
 <img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
 _Robbs_: "Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
+
+########
+########
+########
+########
 
 (ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
 
