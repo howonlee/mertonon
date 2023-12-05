@@ -39,35 +39,35 @@ Unlike basically every other instance of that genre, though, we do have somethin
 
 Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly. It is intended for organizational budgeting first and foremost.
 
-"So, how's the role-based access control coming along?"
+_Vobbs_: "So, how's the role-based access control coming along?"
 
 <img src="https://mertonon.com/assets/estimate_grid1.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/estimate_grid2.png" width="30%" height="30%">
 
-"We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
+_Robbs_: "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
 <img src="https://mertonon.com/assets/dobbs_champion.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/dobbs_weight.png" width="30%" height="30%">
 
-"OK. What's that look like for the Mertonon adjustment?"
+_Vobbs_: "OK. What's that look like for the Mertonon adjustment?"
 
 <img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
-"Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
+_Robbs_: "Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
 
 (ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
 
-"Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
+_Vobbs_: "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
 
-"Says here Hobbs is more related to the 400's."
+_Robbs_: "Says here Hobbs is more related to the 400's."
 
-"Really? Hobbs it is, then."
+_Vobbs_: "Really? Hobbs it is, then."
 
-"Done. I'll go tell Hobbs."
+_Robbs_: "Done. I'll go tell Hobbs."
 
-"Cool. Meet again next week?"
+_Vobbs_: "Cool. Meet again next week?"
 
-"Sounds good to me."
+_Robbs_: "Sounds good to me."
 
 If you're piqued by this little incomplete vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 

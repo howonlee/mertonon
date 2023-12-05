@@ -35,10 +35,10 @@
 - [ ] Estimation essay copy-edit
 - [ ] Link up estimation essay to blog index
 - [ ] Upload the estimation essay
-- [ ] Test for the stack push and pop
-- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 
 - [ ] Post estimation essay - 9am wednesday, I think
+- [ ] Test for the stack push and pop
+- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Auditing DDL stuff
 - [ ] Readme hero gif - think about what to have in it
