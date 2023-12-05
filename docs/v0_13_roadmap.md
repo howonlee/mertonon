@@ -29,10 +29,10 @@
 - [x] Create blog index page on static
 
 - [x] Poke at Jawon's comments - nits
+- [ ] Estimation essay read-aloud 2 / 2
 - [ ] Poke at Jawon's comments - add a third peep who they explain this to
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 - [ ] Estimation essay reading level - 9th grade
-- [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay copy-edit
 - [ ] Link up estimation essay to blog index
 - [ ] Upload the estimation essay
