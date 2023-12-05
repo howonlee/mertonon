@@ -25,6 +25,7 @@
 - [x] Write the script for uploading properly
 - [x] Upload formspring form page, link to it on homepage
 - [x] Make the website pages responsive
+- [x] "Conformance" for the endpoint
 
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
 - [ ] Create blog index page on static
@@ -32,7 +33,6 @@
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 8th grade
 - [ ] Upload the estimation essay
-- [ ] "Rectification" for the thing, or "Conformance" or something different again...
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 
