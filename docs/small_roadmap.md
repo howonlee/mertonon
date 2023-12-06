@@ -1,6 +1,7 @@
 Small tasks roadmap ("I could colorably do this in one day only")
 ---
 
+- Readme hero gif - think about what to have in it
 - DDL double-implementation tests
 - Enforce single password login per user validation in BE also at create time (instead of just at login time), not just in FE
 - Use banlist for password and lots of validation, requirements, entropy stuff

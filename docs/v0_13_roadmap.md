@@ -29,6 +29,7 @@
 - [x] Create blog index page on static
 
 - [x] Poke at Jawon's comments - nits
+
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Poke at Jawon's comments - add a third peep who they explain this to
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
@@ -36,14 +37,12 @@
 - [ ] Estimation essay copy-edit
 - [ ] Link up estimation essay to blog index
 - [ ] Upload the estimation essay
-
-- [ ] Post estimation essay - 9am wednesday, I think
 - [ ] Test for the stack push and pop
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Auditing DDL stuff
-- [ ] Readme hero gif - think about what to have in it
 
+- [ ] Post estimation essay - wait for Wayne
 - [ ] Auditing BE endpoint thinking (just thinking and sketching)
 - [ ] Theory of value outline, research
 - [ ] Changelog
