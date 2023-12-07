@@ -1,5 +1,8 @@
-The doom that hides in estimates - and our alternative
+The Doom in Estimates
 ---
+
+(With alternative)
+===
 
 A grim bureaucratic-political fate awaits many individual contributors in organizations. Here is the form of it. Management sits you down and asks,
 
@@ -132,8 +135,8 @@ If you actually want to see our Mertonon instance, contact us, because we haven'
 
 We fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
 
----
+- - -
 
 Again, if you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
-Thanks to JB, FH and the other 219 peeps for reading and comments.
+Thanks to JB, HW, and FH along with the other 219 peeps for reading and comments.
