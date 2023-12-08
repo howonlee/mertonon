@@ -1,8 +1,5 @@
-The Doom in Estimates
+The Doom in Estimates (with alternative)
 ---
-
-(With alternative)
-===
 
 A grim bureaucratic-political fate awaits many individual contributors in organizations. Here is the form of it. Management sits you down and asks,
 
