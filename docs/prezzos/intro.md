@@ -1,5 +1,8 @@
 ---
-theme: uncover
+marp: true
+theme: default
+class:
+  - invert
 ---
 
 ## Mertonon
