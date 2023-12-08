@@ -92,6 +92,17 @@ _Robbs_: "Done. I'll go tell Hobbs."
 
 _Vobbs_: "Cool. Meet again next week?"
 
+_Robbs_: Don't forget to kick off another gradient calculation.
+
+_Vobbs_: "Oh yeah, can do.
+
+#######
+#######
+#######
+#######
+
+_Vobbs_: "Anyhow, next week?"
+
 _Yobbs_: "Cool. Sounds good to me."
 
 _Robbs_: "Sounds good to me."
