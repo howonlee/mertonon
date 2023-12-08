@@ -8,5 +8,5 @@
    [:p "Mertonon is a tool for neural organizational management."]
    [:p "In accounting terms, Mertonon is a tool for semi-computational attribution of
        P&L to individual cost objects within responsibility
-       centers, for an overall P&L. More than one P&L, targets besides competitiveness, and other KPI's forthcoming."]
+       centers, for an overall P&L. More than one P&L, targets besides conformance, and other KPI's forthcoming."]
    [:p "In computing terms, Mertonon is a neural network model of your organization."]])

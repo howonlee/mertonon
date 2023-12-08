@@ -19,7 +19,7 @@
    [:div "Name: " (str (:name loss))]
    [:p (->> loss :label str)]
    [:div "Matching Layer UUID: " (str (:layer-uuid loss))]
-   [:div "Type: Competitiveness"]
+   [:div "Type: Conformance"]
    (if (not @(subscribe [:is-demo?]))
      [:div
       [util/sl (util/path ["loss" (:uuid loss) "update"]) [sc/button "Change Annotation"]]
@@ -34,7 +34,7 @@
    [:div "Name: " (str (:name input))]
    [:p (->> input :label str)]
    [:div "Matching Layer UUID: " (str (:layer-uuid input))]
-   [:div "Type: Competitiveness"]
+   [:div "Type: Conformance"]
    (if (not @(subscribe [:is-demo?]))
      [:div
       [util/sl (util/path ["input" (:uuid input) "update"]) [sc/button "Change Annotation"]]
@@ -64,7 +64,7 @@
            [single-loss-partial loss])]
    (if (empty? losses)
      [:p "No goals defined yet."])
-   [:p "(We have designed Mertonon goals to be dynamical eventually, but currently they're hardcoded to be competitiveness)"]])
+   [:p "(We have designed Mertonon goals to be dynamical eventually, but currently they're hardcoded to be conformance)"]])
 
 ;; ---
 ;; Before-fx

@@ -1,4 +1,4 @@
-The doom that hides in estimates - and our alternative
+The Doom in Estimates (with alternative)
 ---
 
 A grim bureaucratic-political fate awaits many individual contributors in organizations. Here is the form of it. Management sits you down and asks,
@@ -19,7 +19,7 @@ Doom that comes for you no matter the fundamental methodology. Doom that comes f
 
 The managerial job is one of negotiation. Managers are often trained in both negotiating and having a negotiating world-view whether by some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal. Monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
 
-That's not an invalid or illegitimate point of view. If you're there with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power. Whether a corporation or a government or nonprofit or what-have-you, that sort of negotiating is just the meat of the job of managing.
+That's not an invalid or illegitimate point of view. If you're sitting with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power. Whether a corporation or a government or nonprofit or what-have-you, that sort of negotiating is just the meat of the job of managing.
 
 However, the individual contributor, very often, has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business. And the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party doesn't know they're negotiating.
 
@@ -29,7 +29,7 @@ There is another unpleasant surprise, no surprise to those who've lived it: temp
 
 The U-corp handler has to be extended so that it can handle L-corp interfaces. That task is not a widget to buy: it is a compounded quantity. Does the new L-corp solution conflict with the previous M-corp solution? What about the W-ray emissions? We have a deadlock over whether we should go with the M-corp Standard or the U-corp Standard for handlers that some of the senior IC's have been fighting about for two years which will affect the handling. And we have to deal with the Noodle Phenomenon that the regulators are talking about.
 
-Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude projects span, from minutes to centuries. Doom!
+Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude that projects span, from minutes to centuries. Doom!
 
 This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty.
 
@@ -37,37 +37,64 @@ The intermediate structure of things is always new - your screws are always the 
 
 Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
 
-Mertonon is a budgeting tool for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly. It is intended for organizational budgeting first and foremost.
+Mertonon is a new kind of budgeting tool. Mertonon is designed for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly. It is intended for organizational budgeting first and foremost.
 
-"So, how's the role-based access control coming along?"
+_Vobbs_: "So, how's the role-based access control coming along?"
 
 <img src="https://mertonon.com/assets/estimate_grid1.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/estimate_grid2.png" width="30%" height="30%">
 
-"We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
+_Yobbs_: Wait, what's this?
+
+_Vobbs_: Mertonon. The rectangles are groupings of the intermediate tasks. What's the news from D-corp, Robbs?
+
+_Robbs_: "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
 
 <img src="https://mertonon.com/assets/dobbs_champion.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/dobbs_weight.png" width="30%" height="30%">
 
-"OK. What's that look like for the Mertonon adjustment?"
+_Yobbs_: Huh? What are these weight thingies?
+
+########
+########
+########
+########
+
+_Vobbs_: "OK. What's that look like for the Mertonon adjustment?"
 
 <img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
-"Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
+_Robbs_: "Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
+
+_Yobbs_: Wait, where's that number from? I don't get how this thing works, what's the inputs and outputs?
+
+########
+########
+########
+########
+
+_Yobbs_: How do I know it's not garbage in garbage out, that sort of thing?
+
+########
+########
+########
+########
 
 (ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
 
-"Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
+_Vobbs_: "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
 
-"Says here Hobbs is more related to the 400's."
+_Robbs_: "Says here Hobbs is more related to the 400's."
 
-"Really? Hobbs it is, then."
+_Vobbs_: "Really? Hobbs it is, then."
 
-"Done. I'll go tell Hobbs."
+_Robbs_: "Done. I'll go tell Hobbs."
 
-"Cool. Meet again next week?"
+_Vobbs_: "Cool. Meet again next week?"
 
-"Sounds good to me."
+_Yobbs_: "Cool. Sounds good to me."
+
+_Robbs_: "Sounds good to me."
 
 If you're piqued by this little incomplete vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
@@ -103,8 +130,10 @@ If you actually want to see our Mertonon instance, contact us, because we haven'
 
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
-We also fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
+We fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
 
----
+- - -
 
 Again, if you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
+
+Thanks to JB, HW, and FH along with the other 219 peeps for reading and comments.

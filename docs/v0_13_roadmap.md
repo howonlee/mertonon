@@ -13,34 +13,33 @@
 - [x] Hobbs entry screenshot
 - [x] Upload screenshots
 
-- [ ] Link up the uploaded screenshots...
-- [ ] Adjust those bits in essay to actually say the state in our instance
+- [x] Ask Wayne about estimation essay
+- [x] Ask Hebert and the yospos peeps about estimation essay
+- [x] Link up the uploaded screenshots...
+- [x] Adjust those bits in essay to actually say the state in our instance
+
+- [x] Install some markdown -> html thing for pagegen in bb
+- [x] Janitor aws cli to have user, etc
+- [x] Switch the website front page to something markdown generated
+- [x] Formspring form page in html / markdown
+- [x] Write the script for uploading properly
+- [x] Upload formspring form page, link to it on homepage
+- [x] Make the website pages responsive
+- [x] "Conformance" for the endpoint
+- [x] Create blog index page on static
+
+- [x] Poke at Jawon's comments - nits
+
+- [x] Prezzo choose tool again
+- [x] Prezzo first draft
+- [x] Add website back into main repo
+
+- [ ] Poke at Jawon's comments - add a third peep who they explain this to
 - [ ] Estimation essay read-aloud 2 / 2
-- [ ] Estimation essay reading level - 8th grade
-- [ ] Install some markdown -> html thing for pagegen in bb
-- [ ] Switch the website front page to something markdown generated
-- [ ] Think about uploading the site via our local box, too, instead of aws endpoint
-- [ ] Formspring form page in html
-- [ ] Upload formspring form page, link to it on homepage
+- [ ] Estimation essay reading level - 9th grade
+- [ ] Estimation essay copy-edit
+- [ ] Link up estimation essay to blog index
 - [ ] Upload the estimation essay
-- [ ] Ask Wayne about estimation essay
-- [ ] Ask Hebert and the yospos peeps about estimation essay
-
-- [ ] Reread what I have of the norm layer op net
-- [ ] Norm layer op class
-- [ ] Norm layer op testing. Think up writeup if necessary
-- [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
-
-- [ ] Post estimation essay - 9am monday, I think
-- [ ] "Rectification" for the thing, or "Conformance" or something different again...
-- [ ] Test for the stack push and pop
-- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
-- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
-- [ ] Auditing DDL stuff
-
-- [ ] Readme hero gif
-- [ ] Auditing BE endpoint thinking (just thinking and sketching)
-- [ ] Benford's law for stacked modifiers - rimworld and paradox games lol - start essay
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release
