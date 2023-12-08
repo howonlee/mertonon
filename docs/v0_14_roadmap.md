@@ -1,9 +1,9 @@
 - [x] Download page on the static website - keep it in the programmatic build. Use https://api.github.com/repos/howonlee/mertonon/releases/latest, should work unauthenticated-like
-- [ ] Prezzo mk 2
-- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Poke at Jawon's comments - just 4 places...
+- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Poke at Wayne's comments if he makes any
 
+- [ ] Prezzo mk 2 - add some example usage from the usage bits
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 9th grade
 - [ ] Estimation essay copy-edit
