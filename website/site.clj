@@ -4,6 +4,7 @@
 (require '[clojure.java.io :as io])
 (require '[hiccup2.core :as hc])
 (require '[markdown.core :as md])
+(require '[selmer.parser :as selmer])
 
 ;; ---
 ;; Partials and templates
@@ -45,11 +46,10 @@
 
 (defn md-body-template
   "md-body with a template"
-  ;;;;;
-  ;;;;;
-  ;;;;;
-  ;;;;;
-  nil)
+  [path assns]
+  (let [md-string        (slurp (clojure.core/format "./pages/%s" path))
+        formatted-md-str (selmer/render md-string assns)]
+    (hc/raw (md/md-to-html-string formatted-md-str))))
 
 (defn page [hero body]
   [:html.avenir.bg-mid-gray.white
@@ -76,14 +76,13 @@
 (defn contact-page []
   (page (hero "Contact Us") (md-body "contact.md")))
 
-(defn download-path []
-  (page (hero "Download Mertonon") (md-body-template "download.md" {:download-url latest-zip-download-url}))
+(defn download-page []
+  (page (hero "Download Mertonon") (md-body-template "download.md" {:dlurl latest-zip-download-url})))
 
 (defn index-page []
   (page (hero "Mertonon - Neural Organizational Management") (md-body "index.md")))
 
-(def page-map {
-               "blog_index.html" blog-index-page
+(def page-map {"blog_index.html" blog-index-page
                "contact.html"    contact-page
                "download.html"   download-page
                "index.html"      index-page})
