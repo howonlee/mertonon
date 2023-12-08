@@ -29,6 +29,8 @@
    [:span.w-40.pa2.tr
     [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./blog_index.html"}
      "Blog"]
+    [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./download.html"}
+     "Download"]
     [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./contact.html"}
      "Contact Us"]
     [:a.white {:href "https://github.com/howonlee/mertonon"}

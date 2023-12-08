@@ -2,6 +2,7 @@ Mertonon is a new way to plan and budget for organizations.
 
 <a class="link dim f6 ph3 pv2 mh2 dib white bg-black" href="https://github.com/howonlee/mertonon/blob/master/docs/setup.md">Get Started</a>
 <a class="link dim f6 ph3 pv2 mh2 dib white bg-black" href="https://buttondown.email/mertonon">Newsletter</a>
+<a class="link dim f6 ph3 pv2 mh2 dib white bg-black" href="./download.html">Download Mertonon</a>
 
 - - -
 
