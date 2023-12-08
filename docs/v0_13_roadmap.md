@@ -33,15 +33,12 @@
 - [x] Prezzo choose tool again
 - [x] Prezzo first draft
 
-- [ ] Estimation essay read-aloud 2 / 2
 - [ ] Poke at Jawon's comments - add a third peep who they explain this to
-- [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
+- [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 9th grade
 - [ ] Estimation essay copy-edit
 - [ ] Link up estimation essay to blog index
 - [ ] Upload the estimation essay
-
-- [ ] Post estimation essay - wait for Wayne
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release

@@ -4,6 +4,8 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- Post estimation essay HN - wait for Wayne
+- Sponsor newsletters - go back to the howonlee repo for lists of candidates
 - Test for the stack push and pop
 - Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
