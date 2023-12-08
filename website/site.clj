@@ -61,11 +61,12 @@
                "contact.html" contact-page
                "blog_index.html" blog-index-page})
 
+(def latest-zip-download-url
+  (let [http-res (http/get "https://api.github.com/repos/howonlee/mertonon/releases/latest")
+        asset-res   (first ((json/parse-string (http-res :body)) "assets"))
+        url         (asset-res "browser_download_url")]
+    url))
+
 (doall (for [[curr-page-name curr-page-fn] page-map]
          (with-open [wrtr (io/writer (clojure.core/format "./to_upload/%s" curr-page-name))]
            (.write wrtr (str (hc/html (curr-page-fn)))))))
-
-(println (let [http-res (http/get "https://api.github.com/repos/howonlee/mertonon/releases/latest")
-               asset-res   (first ((json/parse-string (http-res :body)) "assets"))
-               url         (asset-res "browser_download_url")]
-           url))
