@@ -2,7 +2,7 @@
 - [ ] Theory of value vaguest outline, research
 - [ ] Prezzo mk 2
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
-- [ ] Poke at Jawon's comments - add a third peep who they explain this to
+- [ ] Poke at Jawon's comments - just 4 places...
 - [ ] Poke at Wayne's comments if he makes any
 
 - [ ] Estimation essay read-aloud 2 / 2
