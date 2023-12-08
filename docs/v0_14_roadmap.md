@@ -1,18 +1,18 @@
 - [x] Download page on the static website - keep it in the programmatic build. Use https://api.github.com/repos/howonlee/mertonon/releases/latest, should work unauthenticated-like
 - [ ] Poke at Jawon's comments - just 4 places...
-- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Poke at Wayne's comments if he makes any
-
-- [ ] Prezzo mk 2 - add some example usage from the usage bits
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 9th grade
 - [ ] Estimation essay copy-edit
 - [ ] Link up estimation essay to blog index
 - [ ] Compile and upload the estimation essay
 
+- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
+- [ ] Prezzo mk 2 - add some example usage from the usage bits
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
-- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Whole-grid dump endpoint (with grids and a bigass join) -> don't I have this already? I might have this already.
+
+- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Test for the stack push and pop
 
 - [ ] Post estimation essay HN, mefi, slacks, reddit
