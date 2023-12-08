@@ -1,4 +1,4 @@
-- [ ] Download page on the static website - figure out samey jar name or something
+- [ ] Download page on the static website - keep it in the programmatic build. Use relative path to target, I think?
 - [ ] Theory of value vaguest outline, research
 - [ ] Prezzo mk 2
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
