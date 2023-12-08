@@ -73,7 +73,7 @@ _Yobbs_: Wait, where's that number from? I don't get how this thing works, what'
 ########
 ########
 
-_Yobbs_: How do I know it's not garbage in garbage out, that sort of thing?
+_Yobbs_: How do I know it's not garbage in garbage out, that sort of thing? Sounds political.
 
 ########
 ########
@@ -96,10 +96,8 @@ _Robbs_: Don't forget to kick off another gradient calculation.
 
 _Vobbs_: "Oh yeah, can do.
 
-#######
-#######
-#######
-#######
+<img src="https://mertonon.com/assets/kickoff_nav.png" width="30%" height="30%">
+<img src="https://mertonon.com/assets/kickoff_button.png" width="30%" height="30%">
 
 _Vobbs_: "Anyhow, next week?"
 
