@@ -9,6 +9,7 @@ Also look at small tasks roadmap
 - Toposort of Mertonon nodes
 - Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Try again on FE tests
+- CI/CD again
 - Cut postpostprealpha, sponsor more newsletters
 
 - Splitting and merging cost nodes
