@@ -1,4 +1,6 @@
 #!/usr/bin/env bb
+(require '[babashka.http-client :as http])
+(require '[cheshire.core :as json])
 (require '[clojure.java.io :as io])
 (require '[hiccup2.core :as hc])
 (require '[markdown.core :as md])
@@ -62,3 +64,8 @@
 (doall (for [[curr-page-name curr-page-fn] page-map]
          (with-open [wrtr (io/writer (clojure.core/format "./to_upload/%s" curr-page-name))]
            (.write wrtr (str (hc/html (curr-page-fn)))))))
+
+(println (let [http-res (http/get "https://api.github.com/repos/howonlee/mertonon/releases/latest")
+               asset-res   (first ((json/parse-string (http-res :body)) "assets"))
+               url         (asset-res "browser_download_url")]
+           url))
