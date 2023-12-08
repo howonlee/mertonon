@@ -100,3 +100,12 @@ v0.12.commits - November 30 2023
 
 - Change title of main page
 - Drafts of estimation essay
+
+v0.13.commits - December 7 2023
+---
+
+- Estimation essay, complete rewrite
+- Rudimentary presentation
+- Fold the website into the main repo
+- Made website responsive
+- Contact form on website
