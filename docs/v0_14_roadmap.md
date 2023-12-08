@@ -1,5 +1,4 @@
 - [x] Download page on the static website - keep it in the programmatic build. Use https://api.github.com/repos/howonlee/mertonon/releases/latest, should work unauthenticated-like
-- [ ] Theory of value vaguest outline, research
 - [ ] Prezzo mk 2
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 - [ ] Poke at Jawon's comments - just 4 places...
