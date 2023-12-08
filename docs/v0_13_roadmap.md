@@ -32,6 +32,7 @@
 
 - [x] Prezzo choose tool again
 - [x] Prezzo first draft
+- [x] Add website back into main repo
 
 - [ ] Poke at Jawon's comments - add a third peep who they explain this to
 - [ ] Estimation essay read-aloud 2 / 2
