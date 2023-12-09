@@ -7,24 +7,26 @@
 - [x] Estimation essay copy-edit
 - [x] Link up estimation essay to blog index
 - [x] Compile and upload the estimation essay
-- [ ] Poke at Wayne's comments if he makes any
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
-
-- [ ] Prezzo mk 2 - add some example usage from the usage bits
 - [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
+- [ ] Sponsor newsletters - send emails
+- [ ] Auditing BE endpoint thinking (just thinking and sketching) and tasking
+
+- [ ] Poke at Wayne's comments if he makes any
+- [ ] Prezzo mk 2 - add some example usage from the usage bits
 - [ ] Whole-grid dump endpoint (with grids and a bigass join) -> don't I have this already? I might have this already.
 
 - [ ] Post estimation essay HN, mefi, slacks, reddit
 - [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
 - [ ] Test for the stack push and pop
 
+- [ ] Sponsor newsletters - send replies, send payment
 - [ ] Auditing DDL stuff - write something down, edit as we get BE working
 - [ ] Whole-grid dump upload endpoint - upsert?
 
 - [ ] Whole-grid dump download FE
 - [ ] Whole-grid dump upload FE
 
-- [ ] Auditing BE endpoint thinking (just thinking and sketching) and tasking
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release
