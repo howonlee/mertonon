@@ -4,7 +4,7 @@
 - [x] Estimation essay reading level - 9th grade
 
 - [ ] Poke at Wayne's comments if he makes any
-- [ ] Estimation essay read-aloud 2 / 2
+- [x] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay copy-edit
 - [ ] Link up estimation essay to blog index
 - [ ] Compile and upload the estimation essay
