@@ -31,11 +31,11 @@ The U-corp handler has to be extended so that it can handle L-corp interfaces. T
 
 Doom!
 
+The intermediate structure of things is always new - your screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the U-corp-handler-extension, those are always new. Doom!
+
 Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude that projects span, from minutes to centuries. Doom!
 
 This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty.
-
-The intermediate structure of things is always new - your screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the U-corp-handler-extension, those are always new. Doom!
 
 Unlike basically every other instance of that genre, though, we do have something to suggest to you that's not some hortation to organize yourself differently or to spend more time thinking about what-have-you.
 
