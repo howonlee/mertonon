@@ -29,6 +29,8 @@ There is another unpleasant surprise, no surprise to those who've lived it: temp
 
 The U-corp handler has to be extended so that it can handle L-corp interfaces. That task is not a widget to buy: it is a compounded quantity. Does the new L-corp solution conflict with the previous M-corp solution? What about the W-ray emissions? We have a deadlock over whether we should go with the M-corp Standard or the U-corp Standard for handlers that some of the senior IC's have been fighting about for two years which will affect the handling. And we have to deal with the Noodle Phenomenon that the regulators are talking about.
 
+Doom!
+
 Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude that projects span, from minutes to centuries. Doom!
 
 This essay is one instance of a genre: there are a thousand essays decrying estimation in software and a relatively equal amount decrying estimation in other fields. The reason why the senior IC wriggles like a worm caught in the trap when asked for an estimate is because of that intermediate structure, which comes into their imagination and vision as innovation and uncertainty.
@@ -138,4 +140,4 @@ We fully intend that Mertonon's suggestions also work for the very specific quot
 
 Again, if you want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
-Thanks to JB, HW, and FH along with the other 219 peeps for reading and comments.
+Thanks to FH along with the other 219 peeps, and JB, for reading and comments.
