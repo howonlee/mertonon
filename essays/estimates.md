@@ -55,12 +55,9 @@ _Robbs_: "We got news back from Dobbs at D-corp... he only likes the UX for perm
 
 _Yobbs_: Huh? What are these weight thingies?
 
-########
-########
-########
-########
+_Robbs_: High weight from X to Y means that Y depends a lot on X. Low weight means that Y depends a little bit on X. We put in original values, and Mertonon suggests some weight adjustments to conform to outside info, in this case the feedback from Dobbs. Or other possible adjustment criteria that the Mertonon devs haven't added yet.
 
-_Vobbs_: "OK. What's that look like for the Mertonon adjustment?"
+_Vobbs_: "OK. What's that feedback from Dobbs look like for the Mertonon adjustment?"
 
 <img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
@@ -68,10 +65,9 @@ _Robbs_: "Mertonon is saying to reallocate effort toward UX for the 400's and no
 
 _Yobbs_: Wait, where's that number from? I don't get how this thing works, what's the inputs and outputs?
 
-########
-########
-########
-########
+_Robbs_: The inputs and outputs are politically determined. In this case, the inputs correspond to each of the workers and are just 1-0, where they're 1 if present or 0 if not, and the output also just correspond to whether there's been feedback from client corps or not. There's a whole menagerie of possible representations you could do.
+
+_Robbs_: Neural net backpropagation is basically the chain rule and caching. The thing you cache is called the delta, and it's the change in the overall goal when there's change in the activation value of one node in the neural network. This is usually used to figure out weight changes then thrown away, but Mertonon uses it to suggest changes to those nodes, too.
 
 _Yobbs_: How do I know it's not garbage in garbage out, that sort of thing? Sounds political.
 
