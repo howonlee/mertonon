@@ -31,7 +31,7 @@ The U-corp handler has to be extended so that it can handle L-corp interfaces. T
 
 Doom!
 
-The intermediate structure of things is always new - your screws are always the same, the wished-for product may be the same, but the screw-linkage-to-the-armature, the U-corp-handler-extension, those are always new. Doom!
+The intermediate structure of things is always new - your screws are always the same, the wished-for product may be Yet Another Electric Drill or Yet Another Customer Relationship Management App, but the screw-linkage-to-the-armature, the U-corp-handler-extension, those are always new. Doom!
 
 Such temporal costs do not add, but multiply. We know this because of the many orders of temporal magnitude that projects span, from minutes to centuries. Doom!
 
@@ -41,62 +41,64 @@ Unlike basically every other instance of that genre, though, we do have somethin
 
 Mertonon is a new kind of budgeting tool. Mertonon is designed for resources with politics, internal structure and intermediate structure, which we claim can substantively replace the underlying organizational purpose of estimates. Instead of estimating and having decisions on allocation of resources that way by determination of costs, Mertonon gives you some suggestions on where to allocate resources directly. It is intended for organizational budgeting first and foremost.
 
-_Vobbs_: "So, how's the role-based access control coming along?"
+_Vobbs_: So, how's the role-based access control coming along?
 
 <img src="https://mertonon.com/assets/estimate_grid1.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/estimate_grid2.png" width="30%" height="30%">
 
-_Yobbs_: Wait, what's this?
+_Tobbs_: Wait, what's this?
 
 _Vobbs_: Mertonon. The rectangles are groupings of the intermediate tasks. What's the news from D-corp, Robbs?
 
-_Robbs_: "We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact."
+_Robbs_: We got news back from Dobbs at D-corp... he only likes the UX for permissions, not the rest of it, so I put the weights in to reflect that fact.
 
 <img src="https://mertonon.com/assets/dobbs_champion.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/dobbs_weight.png" width="30%" height="30%">
 
-_Yobbs_: Huh? What are these weight thingies?
+_Tobbs_: Huh? What are these weight thingies?
 
 _Robbs_: High weight from X to Y means that Y depends a lot on X. Low weight means that Y depends a little bit on X. We put in original values, and Mertonon suggests some weight adjustments to conform to outside info, in this case the feedback from Dobbs. Or other possible adjustment criteria that the Mertonon devs haven't added yet.
 
-_Vobbs_: "OK. What's that feedback from Dobbs look like for the Mertonon adjustment?"
+_Vobbs_: OK. What's that feedback from Dobbs look like for the Mertonon adjustment?
 
-<img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
+_Robbs_: Don't forget to kick off the gradient calculation for the Dobbs feedback.
 
-_Robbs_: "Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays."
-
-_Yobbs_: Wait, where's that number from? I don't get how this thing works, what's the inputs and outputs?
-
-_Robbs_: The inputs and outputs are politically determined. In this case, the inputs correspond to each of the workers and are just 1-0, where they're 1 if present or 0 if not, and the output also just correspond to whether there's been feedback from client corps or not. There's a whole menagerie of possible representations you could do.
-
-_Robbs_: Neural net backpropagation is basically the chain rule and caching. The thing you cache is called the delta, and it's the change in the overall goal when there's change in the activation value of one node in the neural network. This is usually used to figure out weight changes then thrown away, but Mertonon uses it to suggest changes to those nodes, too.
-
-_Yobbs_: How do I know it's not garbage in garbage out, that sort of thing? Sounds political.
-
-_Robbs_: Well, it's a political budget. They're putting down their own view on the politics of the org. If people say things that aren't true, they're doing so to _us_. And there's no underlying stick we're whacking them with like with estimates, so there's no disincentive to tell the truth.
-
-_Vobbs_: "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
-
-_Robbs_: "Says here Hobbs is more related to the 400's."
-
-_Vobbs_: "Really? Hobbs it is, then."
-
-_Robbs_: "Done. I'll go tell Hobbs."
-
-_Vobbs_: "Cool. Meet again next week?"
-
-_Robbs_: Don't forget to kick off another gradient calculation.
-
-_Vobbs_: "Oh yeah, can do.
+_Vobbs_: Oh yeah, can do.
 
 <img src="https://mertonon.com/assets/kickoff_nav.png" width="30%" height="30%">
 <img src="https://mertonon.com/assets/kickoff_button.png" width="30%" height="30%">
 
-_Vobbs_: "Anyhow, next week?"
+_Vobbs_: Right, the Mertonon adjustment for Dobbs feedback.
 
-_Yobbs_: "Cool. Sounds good to me."
+<img src="https://mertonon.com/assets/layer_realloc.png" width="30%" height="30%">
 
-_Robbs_: "Sounds good to me."
+_Robbs_: Mertonon is saying to reallocate effort toward UX for the 400's and not the role displays.
+
+_Tobbs_: Wait, where's that number from? I don't get how this thing works, what's the inputs and outputs?
+
+_Robbs_: The inputs and outputs are politically determined. In this case, the inputs correspond to each of the workers and are just 1-0, where they're 1 if present or 0 if not, and the output also just correspond to whether there's been feedback from client corps or not.
+
+_Vobbs_: But that whole input-output structure is just because we agreed upon it when we started using Mertonon. There's a whole menagerie of possible representations you could do.
+
+_Robbs_: Neural net backpropagation is basically the chain rule and caching. The thing you cache is called the delta, and it's the change in the overall goal when there's change in the activation value of one node in the neural network. This is usually used to figure out weight changes then thrown away, but Mertonon uses it to suggest changes to those nodes, too.
+
+_Tobbs_: How do I know it's not garbage in garbage out, that sort of thing? Sounds political.
+
+_Robbs_: Well, it's a political budget. They're putting down their own view on the politics of the org. If people say things that aren't true, they're doing so to _us_. And there's no underlying stick we're whacking them with like with estimates, so there's no disincentive to tell the truth.
+
+_Vobbs_: Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week.
+
+_Robbs_: Says here Hobbs is more related to the 400's.
+
+_Vobbs_: Really? Hobbs it is, then.
+
+_Robbs_:"Done. I'll go tell Hobbs.
+
+_Vobbs_: Anyhow, next week?
+
+_Tobbs_: Cool. Sounds good to me.
+
+_Robbs_: Sounds good to me.
 
 If you're piqued by this little incomplete vignette and want some more details and information about Mertonon, contact us directly at [howon@mertonon.com](mailto:howon@mertonon.com) or browse the other docs [here](https://github.com/howonlee/mertonon/tree/master/docs). Here are docs for [setting up Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/setup.md) and here are docs for [using Mertonon](https://github.com/howonlee/mertonon/blob/master/docs/usage.md).
 
