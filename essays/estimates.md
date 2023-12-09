@@ -75,10 +75,7 @@ _Yobbs_: Wait, where's that number from? I don't get how this thing works, what'
 
 _Yobbs_: How do I know it's not garbage in garbage out, that sort of thing? Sounds political.
 
-########
-########
-########
-########
+_Robbs_: Well, it's a political budget. It's a representation of the politics of the org. If people say things that aren't true, they're doing so to _us_.
 
 (ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
 
