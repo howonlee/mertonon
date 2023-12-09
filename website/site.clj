@@ -1,7 +1,14 @@
 #!/usr/bin/env bb
+(require '[babashka.http-client :as http])
+(require '[cheshire.core :as json])
 (require '[clojure.java.io :as io])
 (require '[hiccup2.core :as hc])
 (require '[markdown.core :as md])
+(require '[selmer.parser :as selmer])
+
+;; ---
+;; Partials and templates
+;; ---
 
 (defn title []
   [:head
@@ -22,6 +29,8 @@
    [:span.w-40.pa2.tr
     [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./blog_index.html"}
      "Blog"]
+    [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./download.html"}
+     "Download"]
     [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./contact.html"}
      "Contact Us"]
     [:a.white {:href "https://github.com/howonlee/mertonon"}
@@ -37,6 +46,13 @@
   (let [md-string (slurp (clojure.core/format "./pages/%s" path))]
     (hc/raw (md/md-to-html-string md-string))))
 
+(defn md-body-template
+  "md-body with a template"
+  [path assns]
+  (let [md-string        (slurp (clojure.core/format "./pages/%s" path))
+        formatted-md-str (selmer/render md-string assns)]
+    (hc/raw (md/md-to-html-string formatted-md-str))))
+
 (defn page [hero body]
   [:html.avenir.bg-mid-gray.white
    (title)
@@ -46,18 +62,36 @@
     [:div.w-60.ma3.center.lh-copy.f4-l.f3-m.f2
      body]]])
 
-(defn index-page []
-  (page (hero "Mertonon - Neural Organizational Management") (md-body "index.md")))
+(def latest-zip-download-url
+  (let [http-res (http/get "https://api.github.com/repos/howonlee/mertonon/releases/latest")
+        asset-res   (first ((json/parse-string (http-res :body)) "assets"))
+        url         (asset-res "browser_download_url")]
+    url))
 
-(defn contact-page []
-  (page (hero "Contact Us") (md-body "contact.md")))
+;; ---
+;; Pages
+;; ---
 
 (defn blog-index-page []
   (page (hero "Mertonon Blog") (md-body "blog_index.md")))
 
-(def page-map {"index.html" index-page
-               "contact.html" contact-page
-               "blog_index.html" blog-index-page})
+(defn contact-page []
+  (page (hero "Contact Us") (md-body "contact.md")))
+
+(defn download-page []
+  (page (hero "Download Mertonon") (md-body-template "download.md" {:dlurl latest-zip-download-url})))
+
+(defn index-page []
+  (page (hero "Mertonon - Neural Organizational Management") (md-body "index.md")))
+
+(def page-map {"blog_index.html" blog-index-page
+               "contact.html"    contact-page
+               "download.html"   download-page
+               "index.html"      index-page})
+
+;; ---
+;; Webpage creation
+;; ---
 
 (doall (for [[curr-page-name curr-page-fn] page-map]
          (with-open [wrtr (io/writer (clojure.core/format "./to_upload/%s" curr-page-name))]

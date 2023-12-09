@@ -4,23 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
-- Post estimation essay HN - wait for Wayne
-- Sponsor newsletters - go back to the howonlee repo for lists of candidates
-- Test for the stack push and pop
-- Get the grad sidebar to say it's OK if the validations work, currently its a noop
-- Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
-- Auditing DDL stuff
-- Auditing BE endpoint thinking (just thinking and sketching)
-- Theory of value outline, research
-- Download page on the static website (need to proc the actual release on GH, so we get a latest webpage)
-- Prezzo mk 2
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
-- Whole-grid dumps, which can also be uploaded I guess
-- Auditing BE w/ undo stuff
 - Auditing FE
 - Toposort of Mertonon nodes
 - Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Try again on FE tests
+- CI/CD again
 - Cut postpostprealpha, sponsor more newsletters
 
 - Splitting and merging cost nodes

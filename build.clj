@@ -12,9 +12,12 @@
 ;; 7. Futz with changelog
 ;; 8. Land change PR
 ;; 9. Change working branch to master
-;; 10. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
-;; 11. Build this with `clj -T:build-ce uberjar`
-;; 12. Release
+;; 10. Pull from remote master
+;; 11. Build frontend release with `yarn release` todo: why does this take 2 stinkin minutes
+;; 12. Build this with `clj -T:build-ce uberjar`
+;; 13. Upload to github and cut github release
+;; 14. Kick off a website build to change download page
+;; 15. Upload website
 
 ;; Proper ci/cd coming when it's coming
 (def lib 'com.github.howonlee/mertonon)

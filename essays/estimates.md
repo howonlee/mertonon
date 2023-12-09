@@ -73,12 +73,9 @@ _Yobbs_: Wait, where's that number from? I don't get how this thing works, what'
 ########
 ########
 
-_Yobbs_: How do I know it's not garbage in garbage out, that sort of thing?
+_Yobbs_: How do I know it's not garbage in garbage out, that sort of thing? Sounds political.
 
-########
-########
-########
-########
+_Robbs_: Well, it's a political budget. They're putting down their own view on the politics of the org. If people say things that aren't true, they're doing so to _us_.
 
 (ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
 
@@ -91,6 +88,15 @@ _Vobbs_: "Really? Hobbs it is, then."
 _Robbs_: "Done. I'll go tell Hobbs."
 
 _Vobbs_: "Cool. Meet again next week?"
+
+_Robbs_: Don't forget to kick off another gradient calculation.
+
+_Vobbs_: "Oh yeah, can do.
+
+<img src="https://mertonon.com/assets/kickoff_nav.png" width="30%" height="30%">
+<img src="https://mertonon.com/assets/kickoff_button.png" width="30%" height="30%">
+
+_Vobbs_: "Anyhow, next week?"
 
 _Yobbs_: "Cool. Sounds good to me."
 

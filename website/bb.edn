@@ -1,1 +1,5 @@
-{:deps {markdown-clj/markdown-clj {:mvn/version "1.11.7"}}}
+{:deps {
+        ;; Keep it alphabetical
+        markdown-clj/markdown-clj {:mvn/version "1.11.7"} ;; Markdown -> HTML
+        org.babashka/http-client {:mvn/version "0.3.11"}  ;; HTTP client
+        }}
