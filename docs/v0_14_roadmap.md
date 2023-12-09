@@ -8,7 +8,7 @@
 - [x] Link up estimation essay to blog index
 - [x] Compile and upload the estimation essay
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
-- [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates
+- [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates. I think, like, 4 or 5?
 - [ ] Sponsor newsletters - send emails
 - [ ] Auditing BE endpoint thinking (just thinking and sketching) and tasking
 
