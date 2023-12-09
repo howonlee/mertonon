@@ -3,7 +3,7 @@ The Doom in Estimates (with alternative)
 
 A grim bureaucratic-political fate awaits many individual contributors in organizations. Here is the form of it. Management sits you down and asks,
 
-"So what's your estimate for this task?"
+"So, what's your estimate for this task?"
 
 If you're a callow youth, you give your offhand take. If you're not, you start wriggling like a worm caught in a bird's mouth. Perhaps you give a suitably considered and viciously well-padded prognosis. Perhaps you give a _gaze blank and pitiless as the sun_. Or perhaps you just shrug.
 
@@ -15,23 +15,23 @@ Either way, that's not the doom that comes for you.
 
 Doom!
 
-Doom that comes for you no matter if the estimation is story points or t-shirt sizes or work-breakdown or analogy estimates. Doom that comes for you no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental mismatch in worldviews between the manager and the IC.
+Doom that comes for you, no matter if the estimation is story points or t-shirt sizes or work-breakdown or analogy estimates. Doom that comes for you, no matter how little or how much actual data you have. Doom for _both_ the manager and the individual contributor. Doom that comes for you because of a fundamental mismatch in worldviews between the manager and the IC.
 
-The managerial job is one of negotiation. Managers are often trained both in negotiating and in having a negotiating world-view whether by some MBA or by the school of hard knocks. It seems natural to the manager to negotiate budgets, whether monetary or temporal. Monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
+The managerial job is one of negotiation. Managers are often trained both in negotiating and in having a negotiating worldview whether by some MBA or by the school of hard knocks. It seems natural for the manager to negotiate budgets, whether monetary or temporal. Monetary budgets are often surprisingly arbitrary, so throwing their weight around a bit can lead to better results for them and theirs.
 
-That's not an invalid or illegitimate point of view. If you're sitting with a manager and a budget in an organization, you're in some kind of organization which wields some legitimate power. Whether a corporation or a government or nonprofit or what-have-you, that sort of negotiating is just the meat of the job of managing.
+That's not an invalid or illegitimate point of view. If you're sitting with a manager and a budget in an organization, you're in some kind of organization that wields some legitimate power. Whether a corporation or a government or nonprofit or what-have-you, that sort of negotiating is just the meat of the job of managing.
 
 However, the individual contributor often has budgets both monetary and temporal forced upon them. Negotiation is possible, especially for the senior, but still a risky business. And the inexperienced are often not cognizant of the fact that the situation is a negotiable one. Doom is inherent in the nature of all negotiations where one party does not know they are negotiating.
 
 And the time budgets themselves are chancy. Monetary budgets can be scrimped and saved for. Cutting scope and taking shortcuts is how one saves and scrimps for a temporal budget. But any seasoned expert remembers the dread times when they were forced to cut time budget but not scope, because that is itself a point to haggle over.
 
-There is another unpleasant surprise, no surprise to those who've lived it. Temporal budgets have significant internal structure. If a widget costs ten dollars in money, to buy two widgets costs twenty. To buy 10^5 widgets costs less per widget, but that cost curve is known and can also be quoted by the widget manufacturer. Not so for time budgets.
+There is another unpleasant surprise, no surprise to those who've lived it. Temporal budgets have significant internal structure. If a widget costs ten dollars in money, buying two widgets costs twenty. To buy 10^5 widgets costs less per widget, but that cost curve is known and can also be quoted by the widget manufacturer. Not so for time budgets.
 
 The U-corp handler has to be extended so that it can handle L-corp interfaces. That task is not a widget to buy. It is a compounded quantity. Does the new L-corp solution conflict with the previous M-corp solution? What about the W-ray emissions? We have a deadlock over whether we should go with the M-corp Standard or the U-corp Standard for handlers that some of the senior IC's have been fighting about for two years which will affect the handling. And we have to deal with the Noodle Phenomenon that the regulators are talking about.
 
 Doom!
 
-The intermediate structure of things, to make things worse, is always new - your screws are always the same, the wished-for product may be Yet Another Electric Drill or Yet Another Customer Relationship Management App, but the screw-linkage-to-the-armature, the U-corp-handler-extension, those are always new.
+The intermediate structure of things, to make things worse, is always new: your screws are always the same, the wished-for product may be Yet Another Electric Drill or Yet Another Customer Relationship Management App, but the screw-linkage-to-the-armature, the U-corp-handler-extension - those are always new.
 
 Doom!
 
@@ -126,7 +126,7 @@ This approach is not suitable for absolute deadlines imposed by physical reality
 
 Did it? It's been 22 years. Agile is old enough to drink, even in America. And yet individual contributors still get asked for estimates daily, and those estimates still get ground down by negotiation.
 
-Agile as a manifesto-driven movement is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the doomed fool who adopts Scaled Agile Framework, a framework which I have seen exactly no decent software come out of!
+Agile as a manifesto-driven movement is so vague that it cannot fail, it can only be failed. Therefore, you can't actually expect results out of it - it's the culmination of, a result of, good corporate politics, not a path towards undoing bad corporate politics. Woe betide the doomed fool who adopts Scaled Agile Framework, a framework from which I have seen exactly no decent software come out of!
 
 ### How's this different from just Kanban?
 
@@ -138,7 +138,7 @@ If you actually want to see our Mertonon instance, contact us, because we haven'
 
 ### No, what I'm really here for is to have something to blame my failures on. Can Mertonon do this?
 
-We fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course you can blame Mertonon for your failures directly.
+We fully intend that Mertonon's suggestions also work for the very specific quotidian purpose of looking good and blaming someone else for your failures. A guide for that and countermeasures and counter-countermeasures and counter-counter-countermeasures is forthcoming whenever Mertonon allocates effort to it. And of course, you can blame Mertonon for your failures directly.
 
 - - -
 

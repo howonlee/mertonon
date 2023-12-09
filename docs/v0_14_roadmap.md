@@ -3,9 +3,9 @@
 - [x] Poke at rest of Jawon's comment places
 - [x] Estimation essay reading level - 9th grade
 
-- [ ] Poke at Wayne's comments if he makes any
 - [x] Estimation essay read-aloud 2 / 2
-- [ ] Estimation essay copy-edit
+- [x] Estimation essay copy-edit
+- [ ] Poke at Wayne's comments if he makes any
 - [ ] Link up estimation essay to blog index
 - [ ] Compile and upload the estimation essay
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
