@@ -43,13 +43,13 @@
 (defn md-body
   "This is a very stupid idea for a dynamic site and perfectly OK if and only if we only compile before uploading always"
   [path]
-  (let [md-string (slurp (clojure.core/format "./pages/%s" path))]
+  (let [md-string (slurp (clojure.core/format "./%s" path))]
     (hc/raw (md/md-to-html-string md-string))))
 
 (defn md-body-template
   "md-body with a template"
   [path assns]
-  (let [md-string        (slurp (clojure.core/format "./pages/%s" path))
+  (let [md-string        (slurp (clojure.core/format "./%s" path))
         formatted-md-str (selmer/render md-string assns)]
     (hc/raw (md/md-to-html-string formatted-md-str))))
 
@@ -73,16 +73,16 @@
 ;; ---
 
 (defn blog-index-page []
-  (page (hero "Mertonon Blog") (md-body "blog_index.md")))
+  (page (hero "Mertonon Blog") (md-body "pages/blog_index.md")))
 
 (defn contact-page []
-  (page (hero "Contact Us") (md-body "contact.md")))
+  (page (hero "Contact Us") (md-body "pages/contact.md")))
 
 (defn download-page []
-  (page (hero "Download Mertonon") (md-body-template "download.md" {:dlurl latest-zip-download-url})))
+  (page (hero "Download Mertonon") (md-body-template "pages/download.md" {:dlurl latest-zip-download-url})))
 
 (defn index-page []
-  (page (hero "Mertonon - Neural Organizational Management") (md-body "index.md")))
+  (page (hero "Mertonon - Neural Organizational Management") (md-body "pages/index.md")))
 
 (def page-map {"blog_index.html" blog-index-page
                "contact.html"    contact-page
