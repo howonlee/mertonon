@@ -5,9 +5,9 @@
 
 - [x] Estimation essay read-aloud 2 / 2
 - [x] Estimation essay copy-edit
+- [x] Link up estimation essay to blog index
+- [x] Compile and upload the estimation essay
 - [ ] Poke at Wayne's comments if he makes any
-- [ ] Link up estimation essay to blog index
-- [ ] Compile and upload the estimation essay
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop
 
 - [ ] Prezzo mk 2 - add some example usage from the usage bits
