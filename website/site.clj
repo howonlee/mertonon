@@ -84,10 +84,14 @@
 (defn index-page []
   (page (hero "Mertonon - Neural Organizational Management") (md-body "pages/index.md")))
 
-(def page-map {"blog_index.html" blog-index-page
-               "contact.html"    contact-page
-               "download.html"   download-page
-               "index.html"      index-page})
+(defn estimation-blog-page []
+  (page (hero "") (md-body "blog/estimates.md")))
+
+(def page-map {"blog_index.html"      blog-index-page
+               "contact.html"         contact-page
+               "download.html"        download-page
+               "index.html"           index-page
+               "blog_estimation.html" estimation-blog-page})
 
 ;; ---
 ;; Webpage creation
