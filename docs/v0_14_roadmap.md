@@ -1,5 +1,7 @@
 - [x] Download page on the static website - keep it in the programmatic build. Use https://api.github.com/repos/howonlee/mertonon/releases/latest, should work unauthenticated-like
-- [ ] Poke at Jawon's comments - just 4 places...
+- [x] Poke at Jawon's comments - 2 / 4 places
+
+- [ ] Poke at rest of Jawon's comment places
 - [ ] Poke at Wayne's comments if he makes any
 - [ ] Estimation essay read-aloud 2 / 2
 - [ ] Estimation essay reading level - 9th grade
