@@ -73,9 +73,7 @@ _Robbs_: Neural net backpropagation is basically the chain rule and caching. The
 
 _Yobbs_: How do I know it's not garbage in garbage out, that sort of thing? Sounds political.
 
-_Robbs_: Well, it's a political budget. They're putting down their own view on the politics of the org. If people say things that aren't true, they're doing so to _us_.
-
-(ed. - Explanation view for why is coming. Currently, you have to view previous weights and previous states manually)
+_Robbs_: Well, it's a political budget. They're putting down their own view on the politics of the org. If people say things that aren't true, they're doing so to _us_. And there's no underlying stick we're whacking them with like with estimates, so there's no disincentive to tell the truth.
 
 _Vobbs_: "Sounds good. Let's get Zobbs to go work this 400's task a bit. Mertonon suggestion says Pobbs but she's busy this week."
 
