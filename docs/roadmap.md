@@ -6,8 +6,11 @@ Also look at small tasks roadmap
 
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Auditing FE
+- Theory of value
+- Theory of inequality
+- Theory of class
 - Toposort of Mertonon nodes
-- Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
+- Weight high-cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Try again on FE tests
 - CI/CD again
 - Cut postpostprealpha, sponsor more newsletters
@@ -77,9 +80,6 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - EE: Whitelabelling
 - Minimap-like thing
 - Get the video done
-- Theory of value writeup - mark 1
-- Theory of inequality writeup - mark 1. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
-- Theory of class writeup
 - Search
 - Clj-kondo in CI/CD
 - Third party plugin use docs and examples
