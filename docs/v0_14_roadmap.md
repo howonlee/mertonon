@@ -9,10 +9,10 @@
 - [x] Compile and upload the estimation essay
 
 - [x] Last thing for mobile web
-- [ ] Post HN
-- [ ] Post Reddit
-- [ ] Post to the awful programming peeps
-- [ ] Poke at jawon and hillel and the yospos peeps to upvote it
+- [x] Post HN
+- [x] Post Reddit
+- [x] Post to the awful programming peeps
+- [x] Poke at jawon and hillel and the yospos peeps to upvote it
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release

@@ -58,7 +58,7 @@
    (nav)
    [:body.w-100
     hero
-    [:div.w-60.ma3.center.lh-copy.f4-l.f3-m.f2
+    [:div.w-60.ma3.center.lh-copy.f4-l.f5-m.f4
      body]]])
 
 (def latest-zip-download-url
