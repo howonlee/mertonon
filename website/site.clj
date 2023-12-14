@@ -25,13 +25,12 @@
 (defn nav []
   [:div.w-100.flex.items-left.justify-left.w-100.bg-black.white.f2
    [:span.w-40.pa1.v-mid [:a.link.dim.white {:href "./index.html"} "Mertonon"]]
-   [:span.w-20.pa2]
-   [:span.w-40.pa2.tr
-    [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./blog_index.html"}
+   [:span.w-60.pa2.tr
+    [:a.link.dim.white.f5.v-mid.pa2 {:href "./blog_index.html"}
      "Blog"]
-    [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./download.html"}
+    [:a.link.dim.white.f5.v-mid.pa2 {:href "./download.html"}
      "Download"]
-    [:a.link.dim.white.f5.v-mid.pa2.ma3 {:href "./contact.html"}
+    [:a.link.dim.white.f5.v-mid.pa2 {:href "./contact.html"}
      "Contact Us"]
     [:a.white {:href "https://github.com/howonlee/mertonon"}
      [:i.fa-brands.fa-github]]]])
@@ -59,7 +58,7 @@
    (nav)
    [:body.w-100
     hero
-    [:div.w-60.ma3.center.lh-copy.f4-l.f3-m.f2
+    [:div.w-60.ma3.center.lh-copy.f4-l.f5-m.f4
      body]]])
 
 (def latest-zip-download-url

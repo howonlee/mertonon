@@ -4,10 +4,33 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- [ ] Auditing BE endpoint thinking (just thinking and sketching) and tasking
+- [ ] Prezzo mk 2 - add some example usage from the usage bits
+- [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop. With test, somehow
+- [ ] Whole-grid dump zip file - same as the ordinary dump api but get it into a file, basically. Property is consonance w/ ordinary dump
+
+- [ ] Sponsor newsletters - go back to the howonlee repo for lists of candidates. I think, like, 4 or 5?
+- [ ] Sponsor newsletters - send emails
+- [ ] Poke at Wayne's comments if he makes any
+- [ ] Auditing SQL honeysql statement - overall audit thing. Start on it, anyhow
+- [ ] Test for the stack push and pop
+
+- [ ] Sponsor newsletters - send replies, send payment
+- [ ] Post estimation essay HN, mefi, slacks, reddit
+- [ ] Auditing DDL stuff - write something down, edit as we get BE working
+- [ ] Whole-grid dump upload endpoint - upsert
+
+- [ ] 'The Political Meaning of Data Structures' - still viable
+- [ ] Whole-grid dump download FE
+- [ ] Whole-grid dump upload FE
+
 - Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Auditing FE
+- Theory of value
+- Theory of inequality
+- Theory of class
 - Toposort of Mertonon nodes
-- Weight cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
+- Weight high-cardinality UX scaling - how to display 'possibility' of 100, 1000, etc weights?
 - Try again on FE tests
 - CI/CD again
 - Cut postpostprealpha, sponsor more newsletters
@@ -77,9 +100,6 @@ DSL's are terrifying epic quests in non-homoiconic languages but not too bad whe
 - EE: Whitelabelling
 - Minimap-like thing
 - Get the video done
-- Theory of value writeup - mark 1
-- Theory of inequality writeup - mark 1. I prolly need an invariance principle (like w/ the Gaussian measures on boolfuncs) for levy-stable stuff instead of just Gaussian to whack a Friedgut's thm out of it, to frolick around in neural net land, really
-- Theory of class writeup
 - Search
 - Clj-kondo in CI/CD
 - Third party plugin use docs and examples
