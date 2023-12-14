@@ -4,6 +4,12 @@ Community edition unless noted otherwise or we have a fit of pique or something.
 
 Also look at small tasks roadmap
 
+- [ ] Norm layer op implementation - look at it again. Just look at it
+- [ ] Norm layer op implementation - norm layer class, with scaling
+- [ ] Norm layer op implementation - norm layer class tests
+- [ ] Examine norm layer op results
+- [ ] Norm layer op writeup
+
 - [ ] Auditing BE endpoint thinking (just thinking and sketching) and tasking
 - [ ] Prezzo mk 2 - add some example usage from the usage bits
 - [ ] Get the grad sidebar to say it's OK if the validations work, currently its a noop. With test, somehow
@@ -24,7 +30,6 @@ Also look at small tasks roadmap
 - [ ] Whole-grid dump download FE
 - [ ] Whole-grid dump upload FE
 
-- Implement norm layer op in normal net and write about how the norm layer op is cool and good
 - Auditing FE
 - Theory of value
 - Theory of inequality
