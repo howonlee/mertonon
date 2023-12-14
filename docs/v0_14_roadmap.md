@@ -8,6 +8,7 @@
 - [x] Link up estimation essay to blog index
 - [x] Compile and upload the estimation essay
 
+- [x] Last thing for mobile web
 - [ ] Post HN
 - [ ] Post Reddit
 - [ ] Post to the awful programming peeps
