@@ -13,6 +13,6 @@
 - [x] Post Reddit
 - [x] Post to the awful programming peeps
 - [x] Poke at jawon and hillel and the yospos peeps to upvote it
-- [ ] Changelog
-- [ ] Poke around
-- [ ] Release
+- [x] Changelog
+- [x] Poke around
+- [x] Release
