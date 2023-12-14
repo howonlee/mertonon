@@ -109,3 +109,9 @@ v0.13.commits - December 7 2023
 - Fold the website into the main repo
 - Made website responsive
 - Contact form on website
+
+v0.14.commits - December 14 2023
+---
+
+- Static website generation actually generates
+- Estimation essay, published
