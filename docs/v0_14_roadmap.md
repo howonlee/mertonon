@@ -10,6 +10,8 @@
 
 - [ ] Post HN
 - [ ] Post Reddit
+- [ ] Post to the awful programming peeps
+- [ ] Poke at jawon and hillel and the yospos peeps to upvote it
 - [ ] Changelog
 - [ ] Poke around
 - [ ] Release
