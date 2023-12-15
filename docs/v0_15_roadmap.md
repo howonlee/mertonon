@@ -3,6 +3,7 @@
 - [ ] Norm layer op implementation - norm layer class tests
 - [ ] Examine norm layer op results
 - [ ] Norm layer op writeup
+- [ ] Website compatible with literally every phone. Check em individually
 
 - [ ] Auditing BE endpoint thinking (just thinking and sketching) and tasking
 - [ ] Prezzo mk 2 - add some example usage from the usage bits
